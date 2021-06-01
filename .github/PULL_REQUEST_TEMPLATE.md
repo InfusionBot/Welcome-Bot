@@ -12,7 +12,7 @@
 
 I have...
 
-- [ ] read and understood the [Contributing Guidelines][contributing]
+- [ ] Read and understood the [Contributing Guidelines][contributing]
 - [ ] Updated any nessecary files such as the README.md and/or CHANGELOG.md.
 
 ## Type of Pull request
@@ -37,4 +37,4 @@ Replace this line with a description about the changes you have made in this PR 
 Closes #
 
 <!-- Do not edit anything below this line! -->
-[contributing]: https://github.com/PuneetGopinath/welcome/blob/main/.github/CONTRIBUTING.md
+[contributing]: https://github.com/BaalKrshna/welcome-bot/blob/main/.github/CONTRIBUTING.md
