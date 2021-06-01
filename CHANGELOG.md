@@ -7,9 +7,11 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [Older changelogs](#older-changelogs)
 
 ## [v0.1.0]
-> **Released:** `TBA`
+> **Released:** `01-06-2021`
 
 ### Initial development release!
+
+[v0.1.0]: https://github.com/BaalKrshna/welcome-bot/releases/tag/v0.1.0
 
 ## Older changelogs
 - No older changelogs
