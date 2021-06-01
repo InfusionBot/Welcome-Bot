@@ -20,10 +20,10 @@ categories:
       - "Type: bug"
   - title: "📖 Docs"
     labels:
-      - "documentation"
+      - "Updates: documentation"
   - title: "🔧 Chores"
     labels:
-      - "dependencies"
+      - "Updates: dependencies"
 
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 version-resolver:
