@@ -1,7 +1,7 @@
-[coc]: https://github.com/PuneetGopinath/welcome/blob/main/.github/CODE_OF_CONDUCT.md
-[discussion]: https://github.com/PuneetGopinath/welcome/discussions
-[bug]: https://github.com/PuneetGopinath/welcome/issues/new?template=bug_report.md
-[feature]: https://github.com/PuneetGopinath/welcome/issues/new?template=feature_request.md
+[coc]: https://github.com/BaalKrshna/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md
+[discussion]: https://github.com/BaalKrshna/welcome-bot/discussions
+[bug]: https://github.com/BaalKrshna/welcome-bot/issues/new?template=bug_report.md
+[feature]: https://github.com/BaalKrshna/welcome-bot/issues/new?template=feature_request.md
 
 # Contributing to welcome-bot
 
