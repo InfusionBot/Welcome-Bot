@@ -6,22 +6,30 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    labels:
+      - "Updates: github action"
+      - "Updates: dependencies"
     pull-request-branch-name:
-      separator: "-"
+      separator: "/"
     commit-message:
       prefix: "Github Actions"
       include: "scope"
     reviewers:
       - PuneetGopinath
+      - abhijoshi2k
 
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
+    labels:
+      - "Updates: github action"
+      - "Updates: npm deps"
     pull-request-branch-name:
-      separator: "-"
+      separator: "/"
     commit-message:
       prefix: "npm"
       include: "scope"
     reviewers:
       - PuneetGopinath
+      - abhijoshi2k
