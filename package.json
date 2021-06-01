@@ -1,0 +1,34 @@
+{
+  "name": "welcome-bot",
+  "version": "0.1.0",
+  "description": "Welcome users when they join your discord server",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PuneetGopinath/welcome.git"
+  },
+  "keywords": [
+    "discord",
+    "js",
+    "node",
+    "discord-js"
+  ],
+  "author": "PuneetGopinath",
+  "license": "LGPL-2.1-only",
+  "bugs": {
+    "url": "https://github.com/PuneetGopinath/welcome/issues"
+  },
+  "homepage": "https://github.com/PuneetGopinath/welcome#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.0"
+  }
+}
