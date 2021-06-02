@@ -6,6 +6,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/BaalKrshna/welcome-bot)](https://github.com/BaalKrshna/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/BaalKrshna/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/6HWjd4B46x)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/BaalKrshna/welcome-bot/latest)
 
 ## Commands
 > Prefix: `!w`
@@ -14,7 +15,7 @@ If You're not sure what prefix is used can you just `@-mention` the bot (`@welco
 
 Commands:
 1. `!w ping` - Ping the bot.
-2. `!w test` - Test by welcome message
+2. `!w test` - Test by sending welcome message
 
 ## Inviting the bot
 The bot requires the following permissions:
@@ -29,6 +30,9 @@ If you want to add the bot without a `pre-made` role, use this link instead:
 > https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=0
 
 Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
+
+## Setting up the channel
+You have to have a channel named `new-members` or `general`, the bot will check for channel named `new-members` but if it does not exist it will use channel `general`.
 
 ## Botlists
 Discord welcome bot can be found on different Botlist sites.
