@@ -10,7 +10,7 @@
 ## Commands
 > Prefix: `!w`
 
-If You're not sure what prefix is used can you just mention the bot (`@welcome-bot#0914`) and it will tell you what prefix is used.
+If You're not sure what prefix is used can you just `@-mention` the bot (`@welcome-bot#0914`) and it will tell you what prefix is used.
 
 Commands:
 1. `!w ping` - Ping the bot.
@@ -25,10 +25,19 @@ The bot requires the following permissions:
 To invite the bot with all the necessary required permissions mentioned above you can use this invitation link:
 > https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68608
 
-If you want to add the bot without a pre-made role, use this link instead:
+If you want to add the bot without a `pre-made` role, use this link instead:
 > https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=0
 
-Note that when you add the bot without a pre-made role, you will need to give it one with the necessary required permissions.
+Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
+
+## Botlists
+Discord welcome bot can be found on different Botlist sites.
+Feel free to upvote her to show your support.
+
+### [Discord.boats](https://discord.boats/bot/848459799783669790)
+> Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
+
+![widget](https://discord.boats/api/widget/848459799783669790)
 
 ## Contributing
 You can find the contributing guidelines [here](https://github.com/BaalKrshna/welcome-bot/blob/main/.github/CONTRIBUTING.md)
