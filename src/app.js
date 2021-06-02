@@ -7,8 +7,9 @@ const Discord = require("discord.js");
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
+const serverCount = require("./functions/serverCount");
 
-if (!process.env.BOT_TOKEN) {
+if (!process.env.BOT_TOKEN || !process.env.BOT_ID || !process.env.DISCORD_BOATS_token) {
     const result = require("dotenv").config();
     if (result.error) {
         console.error(result.error);
@@ -26,6 +27,8 @@ client.on("ready", () => {
     // 15 * 60 * (1 second)
     // Update presence every 15 minutes
     setInterval(() => presence(client), 15 * 60 * 1000);
+    // Update server count in discord.boats every 25 minutes
+    setInterval(() => serverCount(client), 25 * 60 * 1000);
 });
 
 client.on("guildMemberAdd", (member) => {
