@@ -26,7 +26,8 @@
   "homepage": "https://github.com/PuneetGopinath/welcome#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "prettier": "^2.3.0"
