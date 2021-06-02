@@ -9,7 +9,11 @@ const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const serverCount = require("./functions/serverCount");
 
-if (!process.env.BOT_TOKEN || !process.env.BOT_ID || !process.env.DISCORD_BOATS_token) {
+if (
+    !process.env.BOT_TOKEN ||
+    !process.env.BOT_ID ||
+    !process.env.DISCORD_BOATS_token
+) {
     const result = require("dotenv").config();
     if (result.error) {
         console.error(result.error);
