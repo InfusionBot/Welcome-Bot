@@ -16,6 +16,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - Add `.npmignore`
 - Now this bot is added to the list of bots in [discord.boats] and updates the no of guilds the bot is joined, to discord.boats ([#3])
 - Change welcome message ([#6])
+- Add docs folder ([#8])
 
 ## [v0.1.0]
 
@@ -25,6 +26,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
+[#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
 [v0.2.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v0.2.0
