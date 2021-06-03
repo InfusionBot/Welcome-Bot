@@ -5,11 +5,12 @@ const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message) => {
-    let guildDB = await getGuild(message.guild);
+    let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
         const commandBody = message.content.slice(guildDB.prefix.length);
         const args = commandBody.split(" ");
-        const command = args.shift().toLowerCase();
+        args.shift();
+        const command = args[0].toLowerCase();
         switch (command) {
             case "ping":
                 message.reply(`Pong!`);
