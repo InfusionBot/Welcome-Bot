@@ -16,29 +16,37 @@ module.exports = (message) => {
             //Test greetUser function
             greetUser(message.guild, message.member);
             break;
-        case "set-chan":
-            //Set welcome channel
-            updateGuild(message.guild.id, "welcomeChannel", args[0]);
-            message.reply("channel set to " + args[0]);
+        case "set":
+            switch (args[0].toLowerCase()) {
+                case "chan":
+                    //Set welcome channel
+            updateGuild(message.guild.id, "welcomeChannel", args[1]);
+            message.reply("channel set to " + args[1]);
+                    break;
+                case "msg":
+                    //Set welcome message
+            updateGuild(message.guild.id, "welcomeMessage", args.join(" ").replace(args[0] + " ", ""));
+            message.reply("message set to " + args.join(" ").replace(args[0] + " ", ""));
+                    break;
+            }
             break;
-        case "get-chan":
-            //Get welcome channel
+        case "get":
+            switch (args[0].toLowerCase()) {
+                case "chan":
+                    //Get welcome channel
             message.reply(
                 "Channel currently is set to " +
                     (await getGuild(message.guild.id).welcomeChannel)
             );
-            break;
-        case "set-msg":
-            //Set welcome message
-            updateGuild(message.guild.id, "welcomeMessage", args.join(" "));
-            message.reply("message set to " + args.join(" "));
-            break;
-        case "get-msg":
-            //Get welcome message
+                    break;
+                case "msg":
+                    //Get welcome message
             message.reply(
                 "Message currently is set to " +
                     (await getGuild(message.guild.id).welcomeMessage)
             );
+                    break;
+            }
             break;
         default:
             message.reply(
