@@ -25,7 +25,7 @@ To invite the bot with all the necessary required permissions mentioned above yo
 > <https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68608>
 
 If you want to add the bot without a `pre-made` role, use this link instead:
-> <https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=0>
+> https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=0
 
 Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
 
