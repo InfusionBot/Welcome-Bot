@@ -7,7 +7,9 @@ const greetUser = function (guild, member) {
     let channel;
     let msg = `Welcome ${member} to the ${guild.name} server.`; //This string will be replaced to get from db afterwards
     //Replace Placeholders with their values
-    msg = msg.replace("{mention}", `${member}`).replace("{server}", `${guild.name}`);
+    msg = msg
+        .replace("{mention}", `${member}`)
+        .replace("{server}", `${guild.name}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
     channel = guild.channels.cache.find((ch) => ch.name === "new-members");
     if (!channel) {
