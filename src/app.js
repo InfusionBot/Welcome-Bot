@@ -12,7 +12,8 @@ const serverCount = require("./functions/serverCount");
 if (
     !process.env.BOT_TOKEN ||
     !process.env.BOT_ID ||
-    !process.env.DISCORD_BOATS_token || !process.env.MONGODB_URL
+    !process.env.DISCORD_BOATS_token ||
+    !process.env.MONGODB_URL
 ) {
     const result = require("dotenv").config();
     if (result.error) {
