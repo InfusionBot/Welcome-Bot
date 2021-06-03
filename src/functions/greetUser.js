@@ -6,13 +6,15 @@
 const getGuild = require("../db/functions/getGuild");
 const greetUser = async function (guild, member) {
     let channel;
+    let chan;
     let msg = await getGuild(guild.id).welcomeMessage;
     //Replace Placeholders with their values
     msg = msg
         .replace("{mention}", `${member}`)
         .replace("{server}", `${guild.name}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
-    channel = await getGuild(guild.id).welcomeChannel;
+    chan = await getGuild(guild.id).welcomeChannel;
+    channel = guild.channels.cache.find((ch) => ch.name === chan)
     channel.send(msg);
 };
 
