@@ -19,7 +19,7 @@ const guildSchema = new mongoose.Schema({
     welcomeMessage: {
         type: String,
         required: true,
-        default: "Welcome {mention} to the {server} guild",
+        default: "Welcome {mention} to the {server} server",
     },
 });
 
