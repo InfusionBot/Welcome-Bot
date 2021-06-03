@@ -1,12 +1,12 @@
 # Discord welcome bot
 > A discord.js bot to welcome users in your server
 
-[![GitHub stars](https://img.shields.io/github/stars/BaalKrshna/welcome-bot)](https://github.com/BaalKrshna/welcome-bot/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/BaalKrshna/welcome-bot)](https://github.com/BaalKrshna/welcome-bot/network)
-[![GitHub issues](https://img.shields.io/github/issues/BaalKrshna/welcome-bot)](https://github.com/BaalKrshna/welcome-bot/issues)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/BaalKrshna/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
+[![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
+[![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/6HWjd4B46x)
-![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/BaalKrshna/welcome-bot/latest)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
 ## Commands
 > Prefix: `!w`
@@ -44,4 +44,4 @@ Feel free to upvote her to show your support.
 ![widget](https://discord.boats/api/widget/848459799783669790)
 
 ## Contributing
-You can find the contributing guidelines [here](https://github.com/BaalKrshna/welcome-bot/blob/main/.github/CONTRIBUTING.md)
+You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)

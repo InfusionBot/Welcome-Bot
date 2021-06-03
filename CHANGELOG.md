@@ -22,10 +22,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
-[#3]: https://github.com/BaalKrshna/welcome-bot/pull/3
-[#6]: https://github.com/BaalKrshna/welcome-bot/pull/6
-[v0.2.0]: https://github.com/BaalKrshna/welcome-bot/releases/tag/v0.2.0
-[v0.1.0]: https://github.com/BaalKrshna/welcome-bot/releases/tag/v0.1.0
+[#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
+[#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v0.2.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v0.2.0
+[v0.1.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v0.1.0
 
 ## Older changelogs
 - No older changelogs
