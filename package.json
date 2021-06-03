@@ -1,6 +1,6 @@
 {
   "name": "welcome-bot",
-  "version": "1.0.0-rc4",
+  "version": "1.0.0-rc5",
   "description": "Welcome users when they join your discord server",
   "main": "src/app.js",
   "scripts": {
