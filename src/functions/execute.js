@@ -38,16 +38,15 @@ module.exports = async (message) => {
             }
             break;
         case "get":
+            let guildDB = await getGuild(message.guild);
             switch (args[0].toLowerCase()) {
                 case "chan":
                     //Get welcome channel
-                    let guildDB = await getGuild(message.guild);
                     message.reply(
                         "Channel currently is set to " + guildDB.welcomeChannel
                     );
                 case "msg":
                     //Get welcome message
-                    let guildDB = await getGuild(message.guild);
                     message.reply(
                         "Message currently is set to " + guildDB.welcomeMessage
                     );
