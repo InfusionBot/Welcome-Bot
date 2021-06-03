@@ -36,7 +36,7 @@ You have to have a channel named `new-members` or `general`, the bot will check 
 ## Botlists
 
 Discord welcome bot can be found on different Botlist sites.
-Feel free to upvote her to show your support.
+Feel free to upvote him to show your support.
 
 ### [Discord.boats](https://discord.boats/bot/848459799783669790)
 

@@ -23,8 +23,8 @@ if (
 }
 
 require("./db/connection");
-const updateGuild = require("db/functions/updateServer");
-const getGuild = require("db/functions/getServer");
+const updateGuild = require("db/functions/updateGuild");
+const getGuild = require("db/functions/getGuild");
 
 const client = new Discord.Client();
 const prefix = "!w ";
@@ -72,7 +72,7 @@ client.on("message", function (message) {
             case "get-msg":
             default:
                 //Set welcome message
-                message.reply("" + getGuild(message.guild.id).welcomeMessage);
+                message.reply("Message currently is set to " + getGuild(message.guild.id).welcomeMessage);
                 break;
         }
     }
