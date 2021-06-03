@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const serverSchema = new mongoose.Schema({
+const guildSchema = new mongoose.Schema({
     guildId: {
         type: String,
         required: true,
@@ -13,6 +13,8 @@ const serverSchema = new mongoose.Schema({
     },
     welcomeChannel: {
         type: String,
+        required: true,
+        default: "new-members",
     },
     welcomeMessage: {
         type: String,
@@ -21,6 +23,6 @@ const serverSchema = new mongoose.Schema({
     },
 });
 
-const Server = new mongoose.model("Server", serverSchema);
+const Guild = new mongoose.model("Guild", guildSchema);
 
-module.exports = Server;
+module.exports = Guild;

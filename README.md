@@ -9,9 +9,11 @@
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/6HWjd4B46x)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
-## Commands
+## Docs
 
-See [docs/commands.md](docs/commands.md)
+See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
+
+**Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Inviting the bot
 
@@ -31,18 +33,24 @@ Note that when you add the bot without a `pre-made` role, you will need to give 
 
 ## Setting up the channel
 
-You have to have a channel named `new-members` or `general`, the bot will check for channel named `new-members` but if it does not exist it will use channel `general`.
+You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
+
+You can change this channel name, by using the `set-chan` command, more info can be found in [docs for commands](docs/commands.md)
 
 ## Botlists
 
 Discord welcome bot can be found on different Botlist sites.
-Feel free to upvote her to show your support.
+Feel free to upvote him to show your support.
 
 ### [Discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
 ![widget](https://discord.boats/api/widget/848459799783669790)
+
+### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)
+
+> Discord's unbiased list, giving small bots and small servers a big chance!
 
 ## Contributing
 
