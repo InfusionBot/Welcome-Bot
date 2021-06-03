@@ -55,8 +55,8 @@ module.exports = async (message) => {
                     case "msg":
                         //Get welcome message
                         message.reply(
-                            "Message currently is set to " +
-                                guildDB.welcomeMessage
+                            "Message currently is set to '" +
+                                guildDB.welcomeMessage + "'"
                         );
                         break;
                 }
