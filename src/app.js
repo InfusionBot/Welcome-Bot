@@ -23,8 +23,10 @@ if (
 }
 
 require("./db/connection");
-const updateGuild = require("db/functions/updateGuild");
-const getGuild = require("db/functions/getGuild");
+const updateGuild = require("./db/functions/updateGuild");
+const getGuild = require("./db/functions/getGuild");
+const addGuild = require("./db/functions/addGuild");
+const removeGuild = require("./db/functions/removeGuild");
 
 const client = new Discord.Client();
 const prefix = "!w ";
@@ -40,9 +42,22 @@ client.on("ready", () => {
     setInterval(() => serverCount(client), 25 * 60 * 1000);
 });
 
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member.guild, member);
+});
+
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
+client.on("guildCreate" (guild) => {
+    //Bot has been invited to a new guild
+    addGuild(guild.id);
+});
+
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildDelete
+client.on("guildDelete" (guild) => {
+    //Bot has been kicked or banned in a guild
+    removeGuild(guild.id);
 });
 
 client.on("message", function (message) {
