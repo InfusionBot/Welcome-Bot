@@ -54,7 +54,7 @@ client.on("guildCreate", (guild) => {
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildDelete
-client.on("guildDelete" (guild) => {
+client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
 });

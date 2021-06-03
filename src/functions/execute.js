@@ -25,7 +25,7 @@ module.exports = (message) => {
                 //Get welcome channel
                 message.reply(
                     "Channel currently is set to " +
-                        getGuild(message.guild.id).welcomeChannel
+                        await getGuild(message.guild.id).welcomeChannel
                 );
                 break;
             case "set-msg":
@@ -37,7 +37,7 @@ module.exports = (message) => {
                 //Get welcome message
                 message.reply(
                     "Message currently is set to " +
-                        getGuild(message.guild.id).welcomeMessage
+                        await getGuild(message.guild.id).welcomeMessage
                 );
                 break;
             default:
