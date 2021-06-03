@@ -28,7 +28,10 @@ module.exports = async (message) => {
                             "welcomeChannel",
                             args[2].replace(args[1] + " ", "")
                         );
-                        message.reply("Welcome channel set to " + args[2].replace(args[1] + " ", ""));
+                        message.reply(
+                            "Welcome channel set to " +
+                                args[2].replace(args[1] + " ", "")
+                        );
                         break;
                     case "msg":
                         //Set welcome message
