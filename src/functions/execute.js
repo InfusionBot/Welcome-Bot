@@ -40,11 +40,16 @@ module.exports = async (message) => {
         case "get":
             switch (args[0].toLowerCase()) {
                 case "chan":
-                case "msg":
                     //Get welcome channel
                     let guild = await getGuild(message.guild);
                     message.reply(
                         "Channel currently is set to " + guild.welcomeChannel
+                    );
+                case "msg":
+                    //Get welcome message
+                    let guild = await getGuild(message.guild);
+                    message.reply(
+                        "Message currently is set to " + guild.welcomeMessage
                     );
                     break;
             }
