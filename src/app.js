@@ -8,20 +8,13 @@ const Discord = require("discord.js");
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const serverCount = require("./functions/serverCount");
+const execute = require("./functions/execute");
 
-if (
-    !process.env.BOT_TOKEN ||
-    !process.env.BOT_ID ||
-    !process.env.DISCORD_BOATS_token
-) {
-    const result = require("dotenv").config();
-    if (result.error) {
-        console.error(result.error);
-    }
-    //console.log(result.parsed);
-}
+const dotenv = require("dotenv").config();
 
 require("./db/connection");
+const addGuild = require("./db/functions/addGuild");
+const removeGuild = require("./db/functions/removeGuild");
 
 const client = new Discord.Client();
 const prefix = "!w ";
@@ -37,9 +30,22 @@ client.on("ready", () => {
     setInterval(() => serverCount(client), 25 * 60 * 1000);
 });
 
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member.guild, member);
+});
+
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
+client.on("guildCreate", (guild) => {
+    //Bot has been invited to a new guild
+    addGuild(guild.id);
+});
+
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildDelete
+client.on("guildDelete", (guild) => {
+    //Bot has been kicked or banned in a guild
+    removeGuild(guild.id);
 });
 
 client.on("message", function (message) {
@@ -50,18 +56,7 @@ client.on("message", function (message) {
         );
     }
     if (message.content.startsWith(prefix)) {
-        const commandBody = message.content.slice(prefix.length);
-        const args = commandBody.split(" ");
-        const command = args.shift().toLowerCase();
-        switch (command) {
-            case "ping":
-                message.reply(`Pong!`);
-                break;
-            case "test":
-                //Test greetUser function
-                greetUser(message.guild, message.member);
-                break;
-        }
+        execute(message);
     }
 });
 

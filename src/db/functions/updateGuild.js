@@ -1,14 +1,14 @@
-const Server = require("../../schema/serverSchema");
+const Guild = require("../../schema/guildSchema");
 
 module.exports = (guildId, property, value) => {
     return new Promise((resolve, reject) => {
-        Server.where({ guildId: guildId }).updateOne(
+        Guild.where({ guildId: guildId }).updateOne(
             { [property]: value },
             (err) => {
                 if (err) {
-                    return reject("Could not update server");
+                    return reject("Could not update guild");
                 } else {
-                    return resolve("Server Updated");
+                    return resolve("Guild Updated");
                 }
             }
         );
