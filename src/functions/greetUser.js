@@ -12,11 +12,7 @@ const greetUser = asnyc function (guild, member) {
         .replace("{mention}", `${member}`)
         .replace("{server}", `${guild.name}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
-    channel = guild.channels.cache.find((ch) => ch.name === "new-members");
-    if (!channel) {
-        channel = guild.channels.cache.find((ch) => ch.name === "general");
-    }
-    if (!channel) return;
+    channel = await getGuild(guild.id).welcomeChannel;
     channel.send(msg);
 };
 
