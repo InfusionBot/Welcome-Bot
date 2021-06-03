@@ -71,7 +71,10 @@ client.on("message", function (message) {
                 break;
             case "get-chan":
                 //Get welcome channel
-                message.reply("Channel currently is set to " + getGuild(message.guild.id).welcomeChannel);
+                message.reply(
+                    "Channel currently is set to " +
+                        getGuild(message.guild.id).welcomeChannel
+                );
                 break;
             case "set-msg":
                 //Set welcome message
@@ -80,10 +83,15 @@ client.on("message", function (message) {
                 break;
             case "get-msg":
                 //Get welcome message
-                message.reply("Message currently is set to " + getGuild(message.guild.id).welcomeMessage);
+                message.reply(
+                    "Message currently is set to " +
+                        getGuild(message.guild.id).welcomeMessage
+                );
                 break;
             default:
-                message.reply("Are you trying to run a command?\nI think you have a typo in the command.");
+                message.reply(
+                    "Are you trying to run a command?\nI think you have a typo in the command."
+                );
                 break;
         }
     }
