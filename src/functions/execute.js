@@ -1,8 +1,8 @@
 const greetUser = require("../functions/greetUser");
 
-require("./db/connection");
-const updateGuild = require("./db/functions/updateGuild");
-const getGuild = require("./db/functions/getGuild");
+require("../db/connection");
+const updateGuild = require("../db/functions/updateGuild");
+const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message) => {
     const commandBody = message.content.slice(prefix.length);
