@@ -72,7 +72,10 @@ client.on("message", function (message) {
             case "get-msg":
             default:
                 //Set welcome message
-                message.reply("Message currently is set to " + getGuild(message.guild.id).welcomeMessage);
+                message.reply(
+                    "Message currently is set to " +
+                        getGuild(message.guild.id).welcomeMessage
+                );
                 break;
         }
     }
