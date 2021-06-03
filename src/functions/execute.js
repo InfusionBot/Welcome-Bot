@@ -5,8 +5,8 @@ const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message) => {
-    if (message.content.startsWith(prefix)) {
-        let guildDB = await getGuild(message.guild);
+    let guildDB = await getGuild(message.guild);
+    if (message.content.startsWith(guildDB.prefix)) {
         const commandBody = message.content.slice(guildDB.prefix.length);
         const args = commandBody.split(" ");
         const command = args.shift().toLowerCase();
