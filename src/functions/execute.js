@@ -26,9 +26,9 @@ module.exports = async (message) => {
                         updateGuild(
                             message.guild.id,
                             "welcomeChannel",
-                            args[1]
+                            args[2]
                         );
-                        message.reply("channel set to " + args[1]);
+                        message.reply("Welcome channel set to " + args[2]);
                         break;
                     case "msg":
                         //Set welcome message
@@ -38,7 +38,7 @@ module.exports = async (message) => {
                             args.join(" ").replace(args[1] + " ", "")
                         );
                         message.reply(
-                            "message set to " +
+                            "Welcome message set to " +
                                 args.join(" ").replace(args[1] + " ", "")
                         );
                         break;
@@ -49,8 +49,8 @@ module.exports = async (message) => {
                     case "chan":
                         //Get welcome channel
                         message.reply(
-                            "Channel currently is set to " +
-                                guildDB.welcomeChannel
+                            "Channel currently is set to '" +
+                                guildDB.welcomeChannel + "'"
                         );
                     case "msg":
                         //Get welcome message
