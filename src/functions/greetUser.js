@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const getGuild = require("../db/functions/getGuild");
-const greetUser = async function (guild, member) {
+const greetUser = async (guild, member) => {
     let channel;
     let chan;
     let msg = await getGuild(guild.id).welcomeMessage;
@@ -14,7 +14,7 @@ const greetUser = async function (guild, member) {
         .replace("{server}", `${guild.name}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
     chan = await getGuild(guild.id).welcomeChannel;
-    channel = guild.channels.cache.find((ch) => ch.name === chan)
+    channel = guild.channels.cache.find((ch) => ch.name === chan);
     channel.send(msg);
 };
 
