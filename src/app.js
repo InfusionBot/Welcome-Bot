@@ -3,14 +3,14 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const dotenv = require("dotenv").config();
+
 const Discord = require("discord.js");
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const serverCount = require("./functions/serverCount");
 const execute = require("./functions/execute");
-
-const dotenv = require("dotenv").config();
 
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
