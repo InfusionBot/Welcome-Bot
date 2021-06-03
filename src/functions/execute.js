@@ -1,4 +1,4 @@
-const greetUser = require("./functions/greetUser");
+const greetUser = require("../functions/greetUser");
 
 require("./db/connection");
 const updateGuild = require("./db/functions/updateGuild");
