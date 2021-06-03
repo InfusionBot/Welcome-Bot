@@ -10,18 +10,7 @@ const greetUser = require("./functions/greetUser");
 const serverCount = require("./functions/serverCount");
 const execute = require("./functions/execute");
 
-if (
-    !process.env.BOT_TOKEN ||
-    !process.env.BOT_ID ||
-    !process.env.DISCORD_BOATS_token ||
-    !process.env.MONGODB_URL
-) {
-    const result = require("dotenv").config();
-    if (result.error) {
-        console.error(result.error);
-    }
-    //console.log(result.parsed);
-}
+const dotenv = require("dotenv").config();
 
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");

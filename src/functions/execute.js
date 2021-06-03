@@ -3,11 +3,8 @@ const greetUser = require("./functions/greetUser");
 require("./db/connection");
 const updateGuild = require("./db/functions/updateGuild");
 const getGuild = require("./db/functions/getGuild");
-const getGuild2 = async (guild) => {
-    return await getGuild(guild.id);
-};
 
-module.exports = (message) => {
+module.exports = async (message) => {
     const commandBody = message.content.slice(prefix.length);
     const args = commandBody.split(" ");
     const command = args.shift().toLowerCase();
@@ -43,17 +40,11 @@ module.exports = (message) => {
         case "get":
             switch (args[0].toLowerCase()) {
                 case "chan":
-                    //Get welcome channel
-                    message.reply(
-                        "Channel currently is set to " +
-                            getGuild2(message.guild).welcomeChannel
-                    );
-                    break;
                 case "msg":
-                    //Get welcome message
+                    //Get welcome channel
+                    let guild = await getGuild(message.guild);
                     message.reply(
-                        "Message currently is set to " +
-                            getGuild2(message.guild).welcomeMessage
+                        "Channel currently is set to " + guild.welcomeChannel
                     );
                     break;
             }
