@@ -4,20 +4,19 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const Discord = require("discord.js");
+const dotenv = require("dotenv").config();
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const serverCount = require("./functions/serverCount");
 const execute = require("./functions/execute");
 
-const dotenv = require("dotenv").config();
-
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
 
 const client = new Discord.Client();
-const prefix = "!w ";
+//const prefix = "!w ";
 
 client.on("ready", () => {
     // We logged in
