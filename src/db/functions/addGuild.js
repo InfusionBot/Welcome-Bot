@@ -1,10 +1,9 @@
 const Guild = require("../../schema/guildSchema");
 
-module.exports = (guildId, welcomeChannel) => {
+module.exports = (guildId) => {
     return new Promise((resolve, reject) => {
         let guild = new Guild({
             guildId: guildId,
-            welcomeChannel: welcomeChannel,
         });
 
         guild.save((err) => {
