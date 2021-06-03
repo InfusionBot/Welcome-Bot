@@ -1,18 +1,18 @@
-const Server = require("../../schema/serverSchema");
+const Guild = require("../../schema/guildSchema");
 
 module.exports = (guildId, welcomeChannel) => {
     return new Promise((resolve, reject) => {
-        let server = new Server({
+        let guild = new Guild({
             guildId: guildId,
             welcomeChannel: welcomeChannel,
         });
 
-        server.save((err) => {
+        guild.save((err) => {
             if (err) {
                 console.log(err);
-                return reject("Could Not Save Server");
+                return reject("Could Not Save Guild");
             } else {
-                return resolve(server);
+                return resolve(guild);
             }
         });
     });
