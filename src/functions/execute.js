@@ -46,14 +46,14 @@ module.exports = (message) => {
                     //Get welcome channel
                     message.reply(
                         "Channel currently is set to " +
-                            (getGuild2(message.guild).welcomeChannel)
+                            getGuild2(message.guild).welcomeChannel
                     );
                     break;
                 case "msg":
                     //Get welcome message
                     message.reply(
                         "Message currently is set to " +
-                            (getGuild2(message.guild).welcomeMessage)
+                            getGuild2(message.guild).welcomeMessage
                     );
                     break;
             }
