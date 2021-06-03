@@ -50,7 +50,8 @@ module.exports = async (message) => {
                         //Get welcome channel
                         message.reply(
                             "Channel currently is set to '" +
-                                guildDB.welcomeChannel + "'"
+                                guildDB.welcomeChannel +
+                                "'"
                         );
                     case "msg":
                         //Get welcome message
