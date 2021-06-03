@@ -12,7 +12,7 @@ const serverCount = require("./functions/serverCount");
 if (
     !process.env.BOT_TOKEN ||
     !process.env.BOT_ID ||
-    !process.env.DISCORD_BOATS_token
+    !process.env.DISCORD_BOATS_token || !process.env.MONGODB_URL
 ) {
     const result = require("dotenv").config();
     if (result.error) {
@@ -22,6 +22,8 @@ if (
 }
 
 require("./db/connection");
+const updateGuild = require("db/functions/updateServer");
+const getGuild = require("db/functions/getServer");
 
 const client = new Discord.Client();
 const prefix = "!w ";
@@ -60,6 +62,16 @@ client.on("message", function (message) {
             case "test":
                 //Test greetUser function
                 greetUser(message.guild, message.member);
+                break;
+            case "set-msg":
+                //Set welcome message
+                updateGuild(message.guild.id, "welcomeMessage", args.join(" "));
+                message.reply("message set to " + args.join(" "));
+                break;
+            case "get-msg":
+            default:
+                //Set welcome message
+                message.reply("" + getGuild(message.guild.id).welcomeMessage);
                 break;
         }
     }
