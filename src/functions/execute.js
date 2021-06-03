@@ -20,13 +20,20 @@ module.exports = (message) => {
             switch (args[0].toLowerCase()) {
                 case "chan":
                     //Set welcome channel
-            updateGuild(message.guild.id, "welcomeChannel", args[1]);
-            message.reply("channel set to " + args[1]);
+                    updateGuild(message.guild.id, "welcomeChannel", args[1]);
+                    message.reply("channel set to " + args[1]);
                     break;
                 case "msg":
                     //Set welcome message
-            updateGuild(message.guild.id, "welcomeMessage", args.join(" ").replace(args[0] + " ", ""));
-            message.reply("message set to " + args.join(" ").replace(args[0] + " ", ""));
+                    updateGuild(
+                        message.guild.id,
+                        "welcomeMessage",
+                        args.join(" ").replace(args[0] + " ", "")
+                    );
+                    message.reply(
+                        "message set to " +
+                            args.join(" ").replace(args[0] + " ", "")
+                    );
                     break;
             }
             break;
@@ -34,17 +41,17 @@ module.exports = (message) => {
             switch (args[0].toLowerCase()) {
                 case "chan":
                     //Get welcome channel
-            message.reply(
-                "Channel currently is set to " +
-                    (await getGuild(message.guild.id).welcomeChannel)
-            );
+                    message.reply(
+                        "Channel currently is set to " +
+                            (await getGuild(message.guild.id).welcomeChannel)
+                    );
                     break;
                 case "msg":
                     //Get welcome message
-            message.reply(
-                "Message currently is set to " +
-                    (await getGuild(message.guild.id).welcomeMessage)
-            );
+                    message.reply(
+                        "Message currently is set to " +
+                            (await getGuild(message.guild.id).welcomeMessage)
+                    );
                     break;
             }
             break;
