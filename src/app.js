@@ -17,7 +17,7 @@ const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
 
 const client = new Discord.Client();
-const prefix = "!w ";
+//const prefix = "!w ";
 
 client.on("ready", () => {
     // We logged in

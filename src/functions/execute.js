@@ -5,7 +5,8 @@ const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message) => {
-    const commandBody = message.content.slice(prefix.length);
+    let guildDB = await getGuild(message.guild);
+    const commandBody = message.content.slice(guildDBprefix.length);
     const args = commandBody.split(" ");
     const command = args.shift().toLowerCase();
     switch (command) {
@@ -38,7 +39,6 @@ module.exports = async (message) => {
             }
             break;
         case "get":
-            let guildDB = await getGuild(message.guild);
             switch (args[0].toLowerCase()) {
                 case "chan":
                     //Get welcome channel
