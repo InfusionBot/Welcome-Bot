@@ -20,7 +20,7 @@ module.exports = async (message) => {
                 greetUser(message.guild, message.member);
                 break;
             case "set":
-                switch (args[0].toLowerCase()) {
+                switch (args[1].toLowerCase()) {
                     case "chan":
                         //Set welcome channel
                         updateGuild(
@@ -45,7 +45,7 @@ module.exports = async (message) => {
                 }
                 break;
             case "get":
-                switch (args[0].toLowerCase()) {
+                switch (args[1].toLowerCase()) {
                     case "chan":
                         //Get welcome channel
                         message.reply(
