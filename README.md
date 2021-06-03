@@ -13,7 +13,7 @@
 
 See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
 
-**Important note**: Remeber to read the privacy policy and terms of service in the documentaion before inviting the bot.
+**Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Inviting the bot
 
