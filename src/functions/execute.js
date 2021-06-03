@@ -3,6 +3,9 @@ const greetUser = require("./functions/greetUser");
 require("./db/connection");
 const updateGuild = require("./db/functions/updateGuild");
 const getGuild = require("./db/functions/getGuild");
+const getGuild2 = async (guild) => {
+    return await getGuild(guild.id);
+};
 
 module.exports = (message) => {
     const commandBody = message.content.slice(prefix.length);
@@ -43,14 +46,14 @@ module.exports = (message) => {
                     //Get welcome channel
                     message.reply(
                         "Channel currently is set to " +
-                            (await getGuild(message.guild.id).welcomeChannel)
+                            (getGuild2(message.guild).welcomeChannel)
                     );
                     break;
                 case "msg":
                     //Get welcome message
                     message.reply(
                         "Message currently is set to " +
-                            (await getGuild(message.guild.id).welcomeMessage)
+                            (getGuild2(message.guild).welcomeMessage)
                     );
                     break;
             }
