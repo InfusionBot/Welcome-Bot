@@ -1,4 +1,5 @@
 # Discord welcome bot
+
 > A discord.js bot to welcome users in your server
 
 [![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
@@ -9,10 +10,13 @@
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
 ## Commands
+
 See [docs/commands.md](docs/commands.md)
 
 ## Inviting the bot
+
 The bot requires the following permissions:
+
 - Read messages
 - Send messages
 - Read Message History
@@ -26,16 +30,20 @@ If you want to add the bot without a `pre-made` role, use this link instead:
 Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
 
 ## Setting up the channel
+
 You have to have a channel named `new-members` or `general`, the bot will check for channel named `new-members` but if it does not exist it will use channel `general`.
 
 ## Botlists
+
 Discord welcome bot can be found on different Botlist sites.
 Feel free to upvote her to show your support.
 
 ### [Discord.boats](https://discord.boats/bot/848459799783669790)
+
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
 ![widget](https://discord.boats/api/widget/848459799783669790)
 
 ## Contributing
+
 You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)

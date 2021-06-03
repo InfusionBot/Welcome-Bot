@@ -21,6 +21,8 @@ if (
     //console.log(result.parsed);
 }
 
+require("./db/connection");
+
 const client = new Discord.Client();
 const prefix = "!w ";
 
