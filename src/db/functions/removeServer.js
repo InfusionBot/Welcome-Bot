@@ -6,7 +6,7 @@ module.exports = (guildId) => {
             if (err) {
                 return reject("Could not delete server");
             } else {
-                return resolve(true);
+                return resolve("Server Deleted");
             }
         });
     });
