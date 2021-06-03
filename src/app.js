@@ -48,7 +48,7 @@ client.on("guildMemberAdd", (member) => {
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
-client.on("guildCreate" (guild) => {
+client.on("guildCreate", (guild) => {
     //Bot has been invited to a new guild
     addGuild(guild.id);
 });
