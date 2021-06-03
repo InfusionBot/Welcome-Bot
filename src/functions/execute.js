@@ -35,11 +35,11 @@ module.exports = async (message) => {
                         updateGuild(
                             message.guild.id,
                             "welcomeMessage",
-                            args.join(" ").replace(args[0] + " ", "")
+                            args.join(" ").replace(args[1] + " ", "")
                         );
                         message.reply(
                             "message set to " +
-                                args.join(" ").replace(args[0] + " ", "")
+                                args.join(" ").replace(args[1] + " ", "")
                         );
                         break;
                 }
