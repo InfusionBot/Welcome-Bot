@@ -26,9 +26,9 @@ module.exports = async (message) => {
                         updateGuild(
                             message.guild.id,
                             "welcomeChannel",
-                            args[2]
+                            args[2].replace(args[1] + " ", "")
                         );
-                        message.reply("Welcome channel set to " + args[2]);
+                        message.reply("Welcome channel set to " + args[2].replace(args[1] + " ", ""));
                         break;
                     case "msg":
                         //Set welcome message
