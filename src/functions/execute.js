@@ -5,8 +5,9 @@ const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message) => {
+    if (message.content.startsWith(prefix)) {
     let guildDB = await getGuild(message.guild);
-    const commandBody = message.content.slice(guildDBprefix.length);
+    const commandBody = message.content.slice(guildDB.prefix.length);
     const args = commandBody.split(" ");
     const command = args.shift().toLowerCase();
     switch (command) {
@@ -58,5 +59,6 @@ module.exports = async (message) => {
                 "Are you trying to run a command?\nI think you have a typo in the command."
             );
             break;
+    }
     }
 };

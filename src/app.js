@@ -54,9 +54,7 @@ client.on("message", function (message) {
             `Hi there, ${message.author}\nMy prefix is ${prefix.trim()}`
         );
     }
-    if (message.content.startsWith(prefix)) {
-        execute(message);
-    }
+    execute(message);
 });
 
 // Login
