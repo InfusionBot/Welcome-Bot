@@ -44,6 +44,10 @@ Feel free to upvote her to show your support.
 
 ![widget](https://discord.boats/api/widget/848459799783669790)
 
+### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)
+
+> Discord's unbiased list, giving small bots and small servers a big chance!
+
 ## Contributing
 
 You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)
