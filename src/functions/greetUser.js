@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const getGuild = require("../db/functions/getGuild");
-const greetUser = asnyc function (guild, member) {
+const greetUser = async function (guild, member) {
     let channel;
     let msg = await getGuild(guild.id).welcomeMessage;
     //Replace Placeholders with their values
