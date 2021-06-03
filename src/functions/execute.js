@@ -56,7 +56,8 @@ module.exports = async (message) => {
                         //Get welcome message
                         message.reply(
                             "Message currently is set to '" +
-                                guildDB.welcomeMessage + "'"
+                                guildDB.welcomeMessage +
+                                "'"
                         );
                         break;
                 }
