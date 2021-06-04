@@ -185,7 +185,7 @@ module.exports = async (message, client) => {
                 );
                 break;
         }
-        if (client.typingIn(message.channel)) {
+        if (client.user.typingIn(message.channel)) {
             message.channel.stopTyping(true); //Force stop typing
         }
     }
