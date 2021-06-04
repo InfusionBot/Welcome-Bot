@@ -188,7 +188,7 @@ module.exports = async (message) => {
                 break;
             default:
                 message.reply(
-                    "Are you trying to run a command?\nI think you have a typo in the command."
+                    "Are you trying to run a command/subcommand?\nI think you have a typo in the command/subcommand."
                 );
                 break;
         }
