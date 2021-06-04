@@ -15,6 +15,7 @@ require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
 const getGuild = require("./db/functions/getGuild");
+const dbAuditor = require("./db/functions/dbAuditor");
 
 const client = new Discord.Client();
 //const prefix = "!w ";
@@ -30,6 +31,9 @@ client.on("ready", () => {
     setInterval(() => presence(client), 15 * 60 * 1000);
     // Update server count in discord.boats every 25 minutes
     setInterval(() => serverCount(client), 25 * 60 * 1000);
+    setInterval(() => {
+        dbAuditor(client);
+    }, 3 * 60 * 60 * 1000);
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
@@ -53,12 +57,35 @@ client.on("guildDelete", (guild) => {
 client.on("message", async function (message) {
     if (message.author.bot) return;
     const guildDB = await getGuild(message.guild.id);
+
     if (message.mentions.has(client.user)) {
-        message.channel.send(
-            `Hi there, ${message.author}\nMy prefix is ${guildDB.prefix.trim()}`
-        );
+        if (!message.reference) {
+            message.channel.startTyping();
+            message.channel.send(
+                `Hi there, ${
+                    message.author
+                }\nMy prefix is ${guildDB.prefix.trim()}`
+            );
+            message.channel.stopTyping();
+        } else {
+            message.channel.messages
+                .fetch(message.reference.messageID)
+                .then((msg) => {
+                    if (msg.author.id != client.user.id) {
+                        message.channel.startTyping();
+                        message.channel.send(
+                            `Hi there, ${
+                                message.author
+                            }\nMy prefix is ${guildDB.prefix.trim()}`
+                        );
+                        message.channel.stopTyping();
+                    }
+                })
+                .catch(console.error);
+        }
+    } else {
+        execute(message);
     }
-    execute(message, client);
 });
 
 // Login
