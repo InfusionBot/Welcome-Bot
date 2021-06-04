@@ -7,11 +7,13 @@ If You're not sure what prefix is used can you just `@-mention` the bot (`@welco
 These are the commands currently available:
 - `ping` - Ping the bot.
 - `test` - Test by sending welcome message
+- `chan`
+    - `set` - Set welcome channel, channel to send message
+    - `get` - Get currently set welcome channel
+    - `reset` - Reset channel back to default value
 - `set`
-    - `chan` - Set welcome channel (channel to send welcome message)
     - `msg` - Set welcome message
 - `get`
-    - `chan` - Get current welcome channel
     - `msg` - Get current welcome message
 
 All these commands should be prefixed with the `prefix` (`!w`) i.e. for command `ping` you have to send `!w ping` in the channel the bot has perms to read and send messages.
