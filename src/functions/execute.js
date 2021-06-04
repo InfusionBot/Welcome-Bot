@@ -17,40 +17,46 @@ module.exports = async (message) => {
                 break;
             case "test":
                 //Test greetUser function
-                if (message.member.hasPermission("ADMINISTRATOR")) {greetUser(message.guild, message.member);}
+                if (message.member.hasPermission("ADMINISTRATOR")) {
+                    greetUser(message.guild, message.member);
+                }
                 break;
             case "set":
                 if (message.member.hasPermission("ADMINISTRATOR")) {
-                switch (args[1].toLowerCase()) {
-                    case "chan":
-                        //Set welcome channel
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeChannel",
-                            args.join(" ").replace(`${args[0]} ${args[1]} `, "")
-                        );
-                        message.reply(
-                            "Welcome channel set to " +
+                    switch (args[1].toLowerCase()) {
+                        case "chan":
+                            //Set welcome channel
+                            updateGuild(
+                                message.guild.id,
+                                "welcomeChannel",
                                 args
                                     .join(" ")
                                     .replace(`${args[0]} ${args[1]} `, "")
-                        );
-                        break;
-                    case "msg":
-                        //Set welcome message
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeMessage",
-                            args.join(" ").replace(`${args[0]} ${args[1]} `, "")
-                        );
-                        message.reply(
-                            "Welcome message set to " +
+                            );
+                            message.reply(
+                                "Welcome channel set to " +
+                                    args
+                                        .join(" ")
+                                        .replace(`${args[0]} ${args[1]} `, "")
+                            );
+                            break;
+                        case "msg":
+                            //Set welcome message
+                            updateGuild(
+                                message.guild.id,
+                                "welcomeMessage",
                                 args
                                     .join(" ")
                                     .replace(`${args[0]} ${args[1]} `, "")
-                        );
-                        break;
-                }
+                            );
+                            message.reply(
+                                "Welcome message set to " +
+                                    args
+                                        .join(" ")
+                                        .replace(`${args[0]} ${args[1]} `, "")
+                            );
+                            break;
+                    }
                 }
                 break;
             case "get":
