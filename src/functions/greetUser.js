@@ -17,7 +17,7 @@ const greetUser = async (guild, member) => {
         .replace("{server}", `${guild.name}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
     channel.send(msg);
-    channel.stopTyping();
+    channel.stopTyping(true); //Force stop typing
 };
 
 module.exports = greetUser;

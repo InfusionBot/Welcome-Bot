@@ -4,7 +4,7 @@ require("../db/connection");
 const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
-module.exports = async (message) => {
+module.exports = async (message, client) => {
     let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
         const commandBody = message.content.slice(guildDB.prefix.length);
@@ -185,6 +185,8 @@ module.exports = async (message) => {
                 );
                 break;
         }
-        message.channel.stopTyping();
+        if (client.typingIn(message.channel)) {
+            message.channel.stopTyping(true); //Force stop typing
+        }
     }
 };
