@@ -21,10 +21,10 @@ module.exports = async (message) => {
                     greetUser(message.guild, message.member);
                 }
                 break;
-            case "set":
-                if (message.member.hasPermission("ADMINISTRATOR")) {
+            case "chan":
                     switch (args[1].toLowerCase()) {
-                        case "chan":
+                        case "set":
+                            if (message.member.hasPermission("ADMINISTRATOR")) {
                             //Set welcome channel
                             updateGuild(
                                 message.guild.id,
@@ -39,7 +39,37 @@ module.exports = async (message) => {
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
                             );
+                            } else {
+                                message.reply("Sorry, You don't have ADMINISTRATOR permission");
+                            }
                             break;
+                        case "get":
+                            //Get welcome channel
+                        message.reply(
+                            "Channel currently is set to '" +
+                                guildDB.welcomeChannel +
+                                "'"
+                        );
+                            break;
+                        case "reset":
+                            //Reset welcome channel
+                            updateGuild(
+                                message.guild.id,
+                                "welcomeChannel",
+                                "new-members"
+                            );
+                        message.reply(
+                            "Channel reset to '" +
+                                guildDB.welcomeChannel +
+                                "'"
+                        );
+                            break;
+                    }
+                }
+                break;
+            case "set":
+                if (message.member.hasPermission("ADMINISTRATOR")) {
+                    switch (args[1].toLowerCase()) {
                         case "msg":
                             //Set welcome message
                             updateGuild(
@@ -61,14 +91,6 @@ module.exports = async (message) => {
                 break;
             case "get":
                 switch (args[1].toLowerCase()) {
-                    case "chan":
-                        //Get welcome channel
-                        message.reply(
-                            "Channel currently is set to '" +
-                                guildDB.welcomeChannel +
-                                "'"
-                        );
-                        break;
                     case "msg":
                         //Get welcome message
                         message.reply(
