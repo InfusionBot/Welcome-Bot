@@ -148,7 +148,7 @@ module.exports = async (message) => {
                                     args
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "") +
-                                        "' (without quotes)"
+                                    "' (without quotes)"
                             );
                         } else {
                             message.reply(
