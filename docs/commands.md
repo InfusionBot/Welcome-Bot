@@ -15,6 +15,10 @@ These are the commands currently available:
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
+- `prefix`
+    - `set` - Set bot prefix
+    - `get` - Get currently set bot prefix
+    - `reset` - Reset prefix back to default value
 
 All these commands should be prefixed with the `prefix` (`!w`) i.e. for command `ping` you have to send `!w ping` in the channel the bot has perms to read and send messages.
 
