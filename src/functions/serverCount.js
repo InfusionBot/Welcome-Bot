@@ -34,7 +34,7 @@ const serverCount = function (client) {
     };
     postReq(data, options);
     const info = JSON.stringify({
-        guildCount: servers
+        guildCount: servers,
     });
     const opts = {
         hostname: "api.discordextremelist.xyz",
