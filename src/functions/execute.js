@@ -39,7 +39,8 @@ module.exports = async (message) => {
                                     args
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
-                                        .replace(" ", "") + "' (no quotes)"
+                                        .replace(" ", "") +
+                                    "' (no quotes)"
                             );
                         } else {
                             message.reply(
@@ -60,7 +61,9 @@ module.exports = async (message) => {
                         if (message.member.hasPermission("ADMINISTRATOR")) {
                             updateGuild(message.guild.id, "prefix", "!w");
                             message.reply(
-                                "Prefix reset to '" + guildDB.prefix + "' (no quotes)"
+                                "Prefix reset to '" +
+                                    guildDB.prefix +
+                                    "' (no quotes)"
                             );
                         } else {
                             message.reply(
@@ -88,7 +91,8 @@ module.exports = async (message) => {
                                     args
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
-                                        .replace(" ", "") + "' (no quotes)"
+                                        .replace(" ", "") +
+                                    "' (no quotes)"
                             );
                         } else {
                             message.reply(
