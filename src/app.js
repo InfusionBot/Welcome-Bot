@@ -7,6 +7,8 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const dotenv = require("dotenv").config();
 
+const client = new Discord.Client();
+
 client.commands = new Discord.Collection();
 
 const commandFolders = fs.readdirSync("./commands");
@@ -30,9 +32,6 @@ require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
 const getGuild = require("./db/functions/getGuild");
-
-const client = new Discord.Client();
-//const prefix = "!w ";
 
 client.on("ready", () => {
     // We logged in
