@@ -11,6 +11,7 @@ module.exports = async (message) => {
         const args = commandBody.split(" ");
         args.shift();
 
+        message.startTyping();
         switch (args[0].toLowerCase()) {
             case "ping":
                 message.reply("Pong!");
@@ -135,5 +136,6 @@ module.exports = async (message) => {
                 );
                 break;
         }
+        message.stopTyping();
     }
 };
