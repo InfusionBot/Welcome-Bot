@@ -59,16 +59,12 @@ module.exports = async (message) => {
                     case "reset":
                         //Reset bot prefix
                         if (message.member.hasPermission("ADMINISTRATOR")) {
-                            updateGuild(
-                                message.guild.id,
-                                "prefix",
-                                "!w"
-                            );
+                            updateGuild(message.guild.id, "prefix", "!w");
                             message.reply(
                                 "Prefix reset to '" +
                                     guildDB.welcomeChannel +
                                     "'"
-                            );  
+                            );
                         } else {
                             message.reply(
                                 "Sorry, You don't have ADMINISTRATOR permission"
