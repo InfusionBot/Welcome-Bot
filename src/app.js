@@ -28,6 +28,7 @@ client.on("ready", () => {
     setInterval(() => presence(client), 15 * 60 * 1000);
     // Update server count in discord.boats every 25 minutes
     setInterval(() => serverCount(client), 25 * 60 * 1000);
+    process.env.BOT_ID = client.user.id;
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
