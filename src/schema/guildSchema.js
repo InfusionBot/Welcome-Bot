@@ -9,16 +9,19 @@ const guildSchema = new mongoose.Schema({
     prefix: {
         type: String,
         required: true,
+        trim: true,
         default: "!w",
     },
     welcomeChannel: {
         type: String,
         required: true,
+        trim: true,
         default: "new-members",
     },
     welcomeMessage: {
         type: String,
         required: true,
+        trim: true,
         default: "Welcome {mention} to the {server} server",
     },
 });
