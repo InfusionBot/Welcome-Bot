@@ -73,7 +73,7 @@ client.on("message", async function (message) {
             `Hi there, ${message.author}\nMy prefix is ${guildDB.prefix.trim()}`
         );
     }
-    execute(message);
+    execute(message, client);
 });
 
 // Login
