@@ -24,33 +24,33 @@ const serverCount = function (client) {
         server_count: servers,
     });
     if (process.env.DISCORD_BOATS_token) {
-    const options = {
-        hostname: "discord.boats",
-        path: "/api/bot/" + process.env.BOT_ID,
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: process.env.DISCORD_BOATS_token,
-        },
-    };
-    postReq(data, options);
+        const options = {
+            hostname: "discord.boats",
+            path: "/api/bot/" + process.env.BOT_ID,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: process.env.DISCORD_BOATS_token,
+            },
+        };
+        postReq(data, options);
     } else {
         console.log("NOTE: DISCORD_BOATS_token is empty");
     }
     if (process.env.DELAPI_token) {
-    const info = JSON.stringify({
-        guildCount: servers,
-    });
-    const opts = {
-        hostname: "api.discordextremelist.xyz",
-        path: "/v2/bot/" + process.env.BOT_ID + "/stats",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: process.env.DELAPI_token,
-        },
-    };
-    postReq(info, opts);
+        const info = JSON.stringify({
+            guildCount: servers,
+        });
+        const opts = {
+            hostname: "api.discordextremelist.xyz",
+            path: "/v2/bot/" + process.env.BOT_ID + "/stats",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: process.env.DELAPI_token,
+            },
+        };
+        postReq(info, opts);
     } else {
         console.log("NOTE: DELAPI_token is empty");
     }
