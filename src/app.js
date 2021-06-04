@@ -14,6 +14,8 @@ const execute = require("./functions/execute");
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
+const getGuild = require("../db/functions/getGuild");
+let guildDB = await getGuild(message.guild.id);
 
 const client = new Discord.Client();
 //const prefix = "!w ";
