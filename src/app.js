@@ -14,7 +14,7 @@ const execute = require("./functions/execute");
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
-const getGuild = require("../db/functions/getGuild");
+const getGuild = require("./db/functions/getGuild");
 const getGuildDB = async function () {
     return await getGuild(message.guild.id);
 };
