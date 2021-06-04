@@ -62,7 +62,7 @@ module.exports = async (message) => {
                             updateGuild(message.guild.id, "prefix", "!w");
                             message.reply(
                                 "Prefix reset to '" +
-                                    guildDB.welcomeChannel +
+                                    guildDB.prefix +
                                     "'"
                             );
                         } else {
