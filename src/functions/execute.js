@@ -61,9 +61,7 @@ module.exports = async (message) => {
                         if (message.member.hasPermission("ADMINISTRATOR")) {
                             updateGuild(message.guild.id, "prefix", "!w");
                             message.reply(
-                                "Prefix reset to '" +
-                                    guildDB.prefix +
-                                    "'"
+                                "Prefix reset to '" + guildDB.prefix + "'"
                             );
                         } else {
                             message.reply(
