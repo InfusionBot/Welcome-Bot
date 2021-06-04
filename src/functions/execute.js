@@ -56,6 +56,7 @@ module.exports = async (message) => {
                         );
                         break;
                     case "reset":
+                        guildDB = await getGuild(message.guild.id);
                         //Reset bot prefix
                         if (message.member.hasPermission("ADMINISTRATOR")) {
                             updateGuild(message.guild.id, "prefix", "!w");
@@ -105,6 +106,7 @@ module.exports = async (message) => {
                         );
                         break;
                     case "reset":
+                        guildDB = await getGuild(message.guild.id);
                         //Reset welcome channel
                         if (message.member.hasPermission("ADMINISTRATOR")) {
                             updateGuild(
@@ -158,6 +160,7 @@ module.exports = async (message) => {
                         );
                         break;
                     case "reset":
+                        guildDB = await getGuild(message.guild.id);
                         //Reset welcome channel
                         if (message.member.hasPermission("ADMINISTRATOR")) {
                             updateGuild(
