@@ -31,13 +31,13 @@ module.exports = async (message) => {
                                 "welcomeChannel",
                                 args
                                     .join(" ")
-                                    .replace(`${args[0]} ${args[1]} `, "")
-                            );
+                                    .replace(`${args[0]} ${args[1]} `, "").replace(" ", "")
+                            );//replace(" ", "") to replace empty space, there is no empty space in a channel name
                             message.reply(
                                 "Welcome channel set to " +
                                     args
                                         .join(" ")
-                                        .replace(`${args[0]} ${args[1]} `, "")
+                                        .replace(`${args[0]} ${args[1]} `, "").replace(" ", "")
                             );
                         } else {
                             message.reply(
@@ -55,6 +55,7 @@ module.exports = async (message) => {
                         break;
                     case "reset":
                         //Reset welcome channel
+                        if (message.member.hasPermission("ADMINISTRATOR")) {
                         updateGuild(
                             message.guild.id,
                             "welcomeChannel",
@@ -63,13 +64,18 @@ module.exports = async (message) => {
                         message.reply(
                             "Channel reset to '" + guildDB.welcomeChannel + "'"
                         );
+                        } else {
+                            message.reply(
+                                "Sorry, You don't have ADMINISTRATOR permission"
+                            );
+                        }
                         break;
                 }
                 break;
-            case "set":
-                if (message.member.hasPermission("ADMINISTRATOR")) {
-                    switch (args[1].toLowerCase()) {
-                        case "msg":
+            case "message":
+                switch (args[1].toLowerCase()) {
+                    case "set":
+                        if (message.member.hasPermission("ADMINISTRATOR")) {
                             //Set welcome message
                             updateGuild(
                                 message.guild.id,
@@ -84,19 +90,36 @@ module.exports = async (message) => {
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
                             );
-                            break;
-                    }
-                }
-                break;
-            case "get":
-                switch (args[1].toLowerCase()) {
-                    case "msg":
-                        //Get welcome message
+                        } else {
+                            message.reply(
+                                "Sorry, You don't have ADMINISTRATOR permission"
+                            );
+                        }
+                        break;
+                    case "get":
+                        //Get welcome channel
                         message.reply(
                             "Message currently is set to '" +
                                 guildDB.welcomeMessage +
                                 "'"
                         );
+                        break;
+                    case "reset":
+                        //Reset welcome channel
+                        if (message.member.hasPermission("ADMINISTRATOR")) {
+                        updateGuild(
+                            message.guild.id,
+                            "welcomeMessage",
+                            "Welcome {mention} to the {server} server"
+                        );
+                        message.reply(
+                            "Message reset to '" + guildDB.welcomeMessage + "'"
+                        );
+                        } else {
+                            message.reply(
+                                "Sorry, You don't have ADMINISTRATOR permission"
+                            );
+                        }
                         break;
                 }
                 break;
