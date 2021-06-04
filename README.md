@@ -35,7 +35,7 @@ Note that when you add the bot without a `pre-made` role, you will need to give 
 
 You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
 
-You can change this channel name, by using the `set-chan` command, more info can be found in [docs for commands](docs/commands.md)
+You can change this channel name, by using the `chan set` command, more info can be found in [docs for commands](docs/commands.md)
 
 ## Botlists
 
