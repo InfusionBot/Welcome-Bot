@@ -22,6 +22,61 @@ module.exports = async (message) => {
                     greetUser(message.guild, message.member);
                 }
                 break;
+            case "prefix":
+                switch (args[1].toLowerCase()) {
+                    case "set":
+                        if (message.member.hasPermission("ADMINISTRATOR")) {
+                            //Set bot prefix
+                            updateGuild(
+                                message.guild.id,
+                                "prefix",
+                                args
+                                    .join(" ")
+                                    .replace(`${args[0]} ${args[1]} `, "")
+                                    .replace(" ", "")
+                            ); //replace(" ", "") to replace empty space, there is no empty space in a prefix
+                            message.reply(
+                                "Prefix set to " +
+                                    args
+                                        .join(" ")
+                                        .replace(`${args[0]} ${args[1]} `, "")
+                                        .replace(" ", "")
+                            );
+                        } else {
+                            message.reply(
+                                "Sorry, You don't have ADMINISTRATOR permission"
+                            );
+                        }
+                        break;
+                    case "get":
+                        //Get bot prefix
+                        message.reply(
+                            "Prefix in this server is set to '" +
+                                guildDB.prefix +
+                                "'"
+                        );
+                        break;
+                    case "reset":
+                        //Reset bot prefix
+                        if (message.member.hasPermission("ADMINISTRATOR")) {
+                            updateGuild(
+                                message.guild.id,
+                                "prefix",
+                                "!w"
+                            );
+                            message.reply(
+                                "Prefix reset to '" +
+                                    guildDB.welcomeChannel +
+                                    "'"
+                            );  
+                        } else {
+                            message.reply(
+                                "Sorry, You don't have ADMINISTRATOR permission"
+                            );
+                        }
+                        break;
+                }
+                break;
             case "chan":
                 switch (args[1].toLowerCase()) {
                     case "set":
