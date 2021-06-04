@@ -22,9 +22,9 @@ module.exports = async (message) => {
                 }
                 break;
             case "chan":
-                    switch (args[1].toLowerCase()) {
-                        case "set":
-                            if (message.member.hasPermission("ADMINISTRATOR")) {
+                switch (args[1].toLowerCase()) {
+                    case "set":
+                        if (message.member.hasPermission("ADMINISTRATOR")) {
                             //Set welcome channel
                             updateGuild(
                                 message.guild.id,
@@ -39,32 +39,32 @@ module.exports = async (message) => {
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
                             );
-                            } else {
-                                message.reply("Sorry, You don't have ADMINISTRATOR permission");
-                            }
-                            break;
-                        case "get":
-                            //Get welcome channel
+                        } else {
                             message.reply(
-                                "Channel currently is set to '" +
-                                    guildDB.welcomeChannel +
+                                "Sorry, You don't have ADMINISTRATOR permission"
+                            );
+                        }
+                        break;
+                    case "get":
+                        //Get welcome channel
+                        message.reply(
+                            "Channel currently is set to '" +
+                                guildDB.welcomeChannel +
                                 "'"
-                            );
-                            break;
-                        case "reset":
-                            //Reset welcome channel
-                            updateGuild(
-                                message.guild.id,
-                                "welcomeChannel",
-                                "new-members"
-                            );
-                            message.reply(
-                                "Channel reset to '" +
-                                    guildDB.welcomeChannel +
-                                    "'"
-                            );
-                            break;
-                    }
+                        );
+                        break;
+                    case "reset":
+                        //Reset welcome channel
+                        updateGuild(
+                            message.guild.id,
+                            "welcomeChannel",
+                            "new-members"
+                        );
+                        message.reply(
+                            "Channel reset to '" + guildDB.welcomeChannel + "'"
+                        );
+                        break;
+                }
                 break;
             case "set":
                 if (message.member.hasPermission("ADMINISTRATOR")) {
