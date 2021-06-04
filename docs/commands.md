@@ -11,7 +11,7 @@ These are the commands currently available:
     - `set` - Set welcome channel, channel to send message
     - `get` - Get currently set welcome channel
     - `reset` - Reset channel back to default value
-- `msg`
+- `message`
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
