@@ -1,5 +1,3 @@
-const greetUser = require("./greetUser");
-
 require("../db/connection");
 const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
@@ -7,78 +5,43 @@ const getGuild = require("../db/functions/getGuild");
 module.exports = async (message) => {
     let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
-        const commandBody = message.content.slice(guildDB.prefix.length);
-        const args = commandBody.split(" ");
-        args.shift();
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const commandName = args.shift().toLowerCase();
+
+	const command = client.commands.get(commandName)
+		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	if (!command) return;
+
+	if (command.guildOnly && message.channel.type === 'dm') {
+		return message.reply('I can\'t execute that command inside DMs!');
+	}
+
+	if (command.permissions) {
+		const authorPerms = message.channel.permissionsFor(message.author);
+		if (!authorPerms || !authorPerms.has(command.permissions)) {
+			return message.reply('You can not do this!');
+		}
+	}
+
+	if (command.args && !args.length) {
+		let reply = `You didn't provide any arguments, ${message.author}!`;
+
+		if (command.usage) {
+			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+		}
+
+		return message.channel.send(reply);
+	}
+
+	try {
+		command.execute(message, args);
+	} catch (error) {
+		console.error(error);
+		message.reply('there was an error trying to execute that command!');
+	}
 
         switch (args[0].toLowerCase()) {
-            case "ping":
-                message.reply("Pong!");
-                break;
-            case "test":
-                //Test greetUser function
-                if (message.member.hasPermission("ADMINISTRATOR")) {
-                    greetUser(message.guild, message.member);
-                }
-                break;
-            case "prefix":
-                switch (args[1].toLowerCase()) {
-                    case "set":
-                        if (message.member.hasPermission("ADMINISTRATOR")) {
-                            //Set bot prefix
-                            updateGuild(
-                                message.guild.id,
-                                "prefix",
-                                args
-                                    .join(" ")
-                                    .replace(`${args[0]} ${args[1]} `, "")
-                                    .replace(" ", "")
-                            ); //replace(" ", "") to replace empty space, there is no empty space in a prefix
-                            message.reply(
-                                "Prefix set to '" +
-                                    args
-                                        .join(" ")
-                                        .replace(`${args[0]} ${args[1]} `, "")
-                                        .replace(" ", "") +
-                                    "' (without quotes)"
-                            );
-                        } else {
-                            message.reply(
-                                "Sorry, You don't have ADMINISTRATOR permission"
-                            );
-                        }
-                        break;
-                    case "get":
-                        //Get bot prefix
-                        message.reply(
-                            "Prefix in this server is set to '" +
-                                guildDB.prefix +
-                                "' (without quotes)"
-                        );
-                        break;
-                    case "reset":
-                        guildDB = await getGuild(message.guild.id);
-                        //Reset bot prefix
-                        if (message.member.hasPermission("ADMINISTRATOR")) {
-                            updateGuild(message.guild.id, "prefix", "!w");
-                            message.reply(
-                                "Prefix reset to '" +
-                                    guildDB.prefix +
-                                    "' (without quotes)"
-                            );
-                        } else {
-                            message.reply(
-                                "Sorry, You don't have ADMINISTRATOR permission"
-                            );
-                        }
-                        break;
-                    default:
-                        message.reply(
-                            "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
-                        );
-                        break;
-                }
-                break;
             case "chan":
                 switch (args[1].toLowerCase()) {
                     case "set":
