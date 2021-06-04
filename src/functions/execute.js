@@ -10,8 +10,8 @@ module.exports = async (message) => {
         const commandBody = message.content.slice(guildDB.prefix.length);
         const args = commandBody.split(" ");
         args.shift();
-        const command = args[0].toLowerCase();
-        switch (command) {
+
+        switch (args[0].toLowerCase()) {
             case "ping":
                 message.reply(`Pong!`);
                 break;
@@ -26,20 +26,27 @@ module.exports = async (message) => {
                         updateGuild(
                             message.guild.id,
                             "welcomeChannel",
-                            args[1]
+                            args.join(" ").replace(`${args[0]} ${args[1]} `, "")
                         );
-                        message.reply("channel set to " + args[1]);
+                        message.reply(
+                            "Welcome channel set to " +
+                                args
+                                    .join(" ")
+                                    .replace(`${args[0]} ${args[1]} `, "")
+                        );
                         break;
                     case "msg":
                         //Set welcome message
                         updateGuild(
                             message.guild.id,
                             "welcomeMessage",
-                            args.join(" ").replace(args[1] + " ", "")
+                            args.join(" ").replace(`${args[0]} ${args[1]} `, "")
                         );
                         message.reply(
-                            "message set to " +
-                                args.join(" ").replace(args[1] + " ", "")
+                            "Welcome message set to " +
+                                args
+                                    .join(" ")
+                                    .replace(`${args[0]} ${args[1]} `, "")
                         );
                         break;
                 }
@@ -49,8 +56,9 @@ module.exports = async (message) => {
                     case "chan":
                         //Get welcome channel
                         message.reply(
-                            "Channel currently is set to " +
-                                guildDB.welcomeChannel
+                            "Channel currently is set to '" +
+                                guildDB.welcomeChannel +
+                                "'"
                         );
                     case "msg":
                         //Get welcome message
