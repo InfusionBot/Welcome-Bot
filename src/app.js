@@ -22,6 +22,7 @@ client.on("ready", () => {
     // We logged in
     console.log(`Logged in as ${client.user.tag}!`);
     presence(client);
+    serverCount(client)
     // 15 * 60 * (1 second)
     // Update presence every 15 minutes
     setInterval(() => presence(client), 15 * 60 * 1000);
