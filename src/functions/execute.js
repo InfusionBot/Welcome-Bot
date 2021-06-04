@@ -60,6 +60,7 @@ module.exports = async (message) => {
                                 guildDB.welcomeChannel +
                                 "'"
                         );
+                        break;
                     case "msg":
                         //Get welcome message
                         message.reply(
