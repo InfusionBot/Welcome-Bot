@@ -72,11 +72,11 @@ module.exports = async (message) => {
                             );
                         }
                         break;
-                        default:
-                            message.reply(
-                                "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
-                            );
-                            break;
+                    default:
+                        message.reply(
+                            "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
+                        );
+                        break;
                 }
                 break;
             case "chan":
@@ -134,11 +134,11 @@ module.exports = async (message) => {
                             );
                         }
                         break;
-                        default:
-                            message.reply(
-                                "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
-                            );
-                            break;
+                    default:
+                        message.reply(
+                            "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
+                        );
+                        break;
                 }
                 break;
             case "message":
@@ -194,11 +194,11 @@ module.exports = async (message) => {
                             );
                         }
                         break;
-                        default:
-                            message.reply(
-                                "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
-                            );
-                            break;
+                    default:
+                        message.reply(
+                            "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
+                        );
+                        break;
                 }
                 break;
             default:
