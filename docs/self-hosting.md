@@ -34,3 +34,4 @@ If you followed the previous step on preparing the bot will you only need to set
 | Option:                | Value required:                                                     |
 | ---------------------- | ------------------------------------------------------------------- |
 | `BOT_TOKEN`            | Valid Bot-token of your Bot-application to login.                   |
+| `MONGODB_URL`          | Valid URL provided by MongoDB when creating DB.                     |
