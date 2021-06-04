@@ -17,9 +17,10 @@ module.exports = async (message) => {
                 break;
             case "test":
                 //Test greetUser function
-                greetUser(message.guild, message.member);
+                if (message.member.hasPermission("ADMINISTRATOR")) {greetUser(message.guild, message.member);}
                 break;
             case "set":
+                if (message.member.hasPermission("ADMINISTRATOR")) {
                 switch (args[1].toLowerCase()) {
                     case "chan":
                         //Set welcome channel
@@ -49,6 +50,7 @@ module.exports = async (message) => {
                                     .replace(`${args[0]} ${args[1]} `, "")
                         );
                         break;
+                }
                 }
                 break;
             case "get":
