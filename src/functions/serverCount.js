@@ -23,6 +23,7 @@ const serverCount = function (client) {
     const data = JSON.stringify({
         server_count: servers,
     });
+    if (process.env.DISCORD_BOATS_token) {
     const options = {
         hostname: "discord.boats",
         path: "/api/bot/" + process.env.BOT_ID,
@@ -33,6 +34,10 @@ const serverCount = function (client) {
         },
     };
     postReq(data, options);
+    } else {
+        console.log("NOTE: DISCORD_BOATS_token is empty");
+    }
+    if (process.env.DELAPI_token) {
     const info = JSON.stringify({
         guildCount: servers,
     });
@@ -46,5 +51,8 @@ const serverCount = function (client) {
         },
     };
     postReq(info, opts);
+    } else {
+        console.log("NOTE: DELAPI_token is empty");
+    }
 };
 module.exports = serverCount;
