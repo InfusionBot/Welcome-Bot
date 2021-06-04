@@ -14,6 +14,11 @@ const execute = require("./functions/execute");
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
+const getGuild = require("../db/functions/getGuild");
+const getGuildDB = async function () {
+    return await getGuild(message.guild.id);
+};
+const guildDB = getGuildDB();
 
 const client = new Discord.Client();
 //const prefix = "!w ";
@@ -21,6 +26,7 @@ const client = new Discord.Client();
 client.on("ready", () => {
     // We logged in
     console.log(`Logged in as ${client.user.tag}!`);
+    process.env.BOT_ID = client.user.id;
     presence(client);
     serverCount(client);
     // 15 * 60 * (1 second)
