@@ -45,11 +45,11 @@ module.exports = async (message) => {
                             break;
                         case "get":
                             //Get welcome channel
-                        message.reply(
-                            "Channel currently is set to '" +
-                                guildDB.welcomeChannel +
+                            message.reply(
+                                "Channel currently is set to '" +
+                                    guildDB.welcomeChannel +
                                 "'"
-                        );
+                            );
                             break;
                         case "reset":
                             //Reset welcome channel
@@ -58,14 +58,13 @@ module.exports = async (message) => {
                                 "welcomeChannel",
                                 "new-members"
                             );
-                        message.reply(
-                            "Channel reset to '" +
-                                guildDB.welcomeChannel +
-                                "'"
-                        );
+                            message.reply(
+                                "Channel reset to '" +
+                                    guildDB.welcomeChannel +
+                                    "'"
+                            );
                             break;
                     }
-                }
                 break;
             case "set":
                 if (message.member.hasPermission("ADMINISTRATOR")) {
