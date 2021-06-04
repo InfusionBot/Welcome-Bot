@@ -9,6 +9,7 @@ const greetUser = async (guild, member) => {
     let channel = guild.channels.cache.find(
         (ch) => ch.name === guildDB.welcomeChannel
     );
+    channel.startTyping(1);
     let msg = guildDB.welcomeMessage;
     //Replace Placeholders with their values
     msg = msg
@@ -16,6 +17,7 @@ const greetUser = async (guild, member) => {
         .replace("{server}", `${guild.name}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
     channel.send(msg);
+    channel.stopTyping();
 };
 
 module.exports = greetUser;

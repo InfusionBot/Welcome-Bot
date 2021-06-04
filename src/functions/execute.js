@@ -4,14 +4,13 @@ require("../db/connection");
 const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
-module.exports = async (message, client) => {
+module.exports = async (message) => {
     let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
         const commandBody = message.content.slice(guildDB.prefix.length);
         const args = commandBody.split(" ");
         args.shift();
 
-        message.channel.startTyping();
         switch (args[0].toLowerCase()) {
             case "ping":
                 message.reply("Pong!");
@@ -184,9 +183,6 @@ module.exports = async (message, client) => {
                     "Are you trying to run a command?\nI think you have a typo in the command."
                 );
                 break;
-        }
-        if (client.user.typingIn(message.channel)) {
-            message.channel.stopTyping(true); //Force stop typing
         }
     }
 };
