@@ -6,7 +6,9 @@
 const getGuild = require("../db/functions/getGuild");
 const greetUser = async (guild, member) => {
     let guildDB = await getGuild(guild.id);
-    let channel = guild.channels.cache.find((ch) => ch.name === guildDB.welcomeChannel);
+    let channel = guild.channels.cache.find(
+        (ch) => ch.name === guildDB.welcomeChannel
+    );
     channel.startTyping();
     let msg = guildDB.welcomeMessage;
     //Replace Placeholders with their values
