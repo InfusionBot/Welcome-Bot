@@ -40,7 +40,7 @@ module.exports = async (message) => {
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
                                         .replace(" ", "") +
-                                    "' (no quotes)"
+                                    "' (without quotes)"
                             );
                         } else {
                             message.reply(
@@ -53,7 +53,7 @@ module.exports = async (message) => {
                         message.reply(
                             "Prefix in this server is set to '" +
                                 guildDB.prefix +
-                                "' (no quotes)"
+                                "' (without quotes)"
                         );
                         break;
                     case "reset":
@@ -64,7 +64,7 @@ module.exports = async (message) => {
                             message.reply(
                                 "Prefix reset to '" +
                                     guildDB.prefix +
-                                    "' (no quotes)"
+                                    "' (without quotes)"
                             );
                         } else {
                             message.reply(
@@ -93,7 +93,7 @@ module.exports = async (message) => {
                                         .join(" ")
                                         .replace(`${args[0]} ${args[1]} `, "")
                                         .replace(" ", "") +
-                                    "' (no quotes)"
+                                    "' (without quotes)"
                             );
                         } else {
                             message.reply(
@@ -106,7 +106,7 @@ module.exports = async (message) => {
                         message.reply(
                             "Channel currently is set to '" +
                                 guildDB.welcomeChannel +
-                                "' (no quotes)"
+                                "' (without quotes)"
                         );
                         break;
                     case "reset":
@@ -121,7 +121,7 @@ module.exports = async (message) => {
                             message.reply(
                                 "Channel reset to '" +
                                     guildDB.welcomeChannel +
-                                    "' (no quotes)"
+                                    "' (without quotes)"
                             );
                         } else {
                             message.reply(
@@ -144,10 +144,11 @@ module.exports = async (message) => {
                                     .replace(`${args[0]} ${args[1]} `, "")
                             );
                             message.reply(
-                                "Welcome message set to " +
+                                "Welcome message set to '" +
                                     args
                                         .join(" ")
-                                        .replace(`${args[0]} ${args[1]} `, "")
+                                        .replace(`${args[0]} ${args[1]} `, "") +
+                                        "' (without quotes)"
                             );
                         } else {
                             message.reply(
@@ -160,7 +161,7 @@ module.exports = async (message) => {
                         message.reply(
                             "Message currently is set to '" +
                                 guildDB.welcomeMessage +
-                                "' (no quotes)"
+                                "' (without quotes)"
                         );
                         break;
                     case "reset":
@@ -175,7 +176,7 @@ module.exports = async (message) => {
                             message.reply(
                                 "Message reset to '" +
                                     guildDB.welcomeMessage +
-                                    "' (no quotes)"
+                                    "' (without quotes)"
                             );
                         } else {
                             message.reply(
