@@ -19,3 +19,12 @@ All these commands should be prefixed with the `prefix` (`!w`) i.e. for command 
 In some of these you will see under a command their is a command, to execute those, send `command subcommand args` where `command` is the command, `subcommand` is the subcommand and `args` are the argument(s)
 
 Example usage of subcommand: `!w set msg Welcome {mention}!`
+
+## Placeholders in welcome message
+There are some placeholders you can use in the welcome message which will be replaced by their values by the bot.
+
+Example: `{server}` will be replaced by the server's name
+
+Available placeholders:
+- `{server}` - The server's name
+- `{mention}` - @-mention the user who has joined.
