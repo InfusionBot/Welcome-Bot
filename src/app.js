@@ -15,10 +15,6 @@ require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
 const removeGuild = require("./db/functions/removeGuild");
 const getGuild = require("./db/functions/getGuild");
-const getGuildDB = async function () {
-    return await getGuild(message.guild.id);
-};
-const guildDB = getGuildDB();
 
 const client = new Discord.Client();
 //const prefix = "!w ";
@@ -54,11 +50,12 @@ client.on("guildDelete", (guild) => {
     removeGuild(guild.id);
 });
 
-client.on("message", function (message) {
+client.on("message", async function (message) {
     if (message.author.bot) return;
+    const guildDB = await getGuild(message.guild.id);
     if (message.mentions.has(client.user)) {
         message.channel.send(
-            `Hi there, ${message.author}\nMy prefix is ${prefix.trim()}`
+            `Hi there, ${message.author}\nMy prefix is ${guildDB.prefix.trim()}`
         );
     }
     execute(message);
