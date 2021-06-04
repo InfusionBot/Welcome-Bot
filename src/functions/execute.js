@@ -31,13 +31,15 @@ module.exports = async (message) => {
                                 "welcomeChannel",
                                 args
                                     .join(" ")
-                                    .replace(`${args[0]} ${args[1]} `, "").replace(" ", "")
-                            );//replace(" ", "") to replace empty space, there is no empty space in a channel name
+                                    .replace(`${args[0]} ${args[1]} `, "")
+                                    .replace(" ", "")
+                            ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
                             message.reply(
                                 "Welcome channel set to " +
                                     args
                                         .join(" ")
-                                        .replace(`${args[0]} ${args[1]} `, "").replace(" ", "")
+                                        .replace(`${args[0]} ${args[1]} `, "")
+                                        .replace(" ", "")
                             );
                         } else {
                             message.reply(
@@ -56,14 +58,16 @@ module.exports = async (message) => {
                     case "reset":
                         //Reset welcome channel
                         if (message.member.hasPermission("ADMINISTRATOR")) {
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeChannel",
-                            "new-members"
-                        );
-                        message.reply(
-                            "Channel reset to '" + guildDB.welcomeChannel + "'"
-                        );
+                            updateGuild(
+                                message.guild.id,
+                                "welcomeChannel",
+                                "new-members"
+                            );
+                            message.reply(
+                                "Channel reset to '" +
+                                    guildDB.welcomeChannel +
+                                    "'"
+                            );
                         } else {
                             message.reply(
                                 "Sorry, You don't have ADMINISTRATOR permission"
@@ -107,14 +111,16 @@ module.exports = async (message) => {
                     case "reset":
                         //Reset welcome channel
                         if (message.member.hasPermission("ADMINISTRATOR")) {
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeMessage",
-                            "Welcome {mention} to the {server} server"
-                        );
-                        message.reply(
-                            "Message reset to '" + guildDB.welcomeMessage + "'"
-                        );
+                            updateGuild(
+                                message.guild.id,
+                                "welcomeMessage",
+                                "Welcome {mention} to the {server} server"
+                            );
+                            message.reply(
+                                "Message reset to '" +
+                                    guildDB.welcomeMessage +
+                                    "'"
+                            );
                         } else {
                             message.reply(
                                 "Sorry, You don't have ADMINISTRATOR permission"
