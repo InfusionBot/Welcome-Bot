@@ -7,6 +7,7 @@ const getGuild = require("../db/functions/getGuild");
 module.exports = async (message) => {
     let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
+        message.channel.startTyping();
         const commandBody = message.content.slice(guildDB.prefix.length);
         const args = commandBody.split(" ");
         args.shift();
@@ -192,5 +193,6 @@ module.exports = async (message) => {
                 );
                 break;
         }
+        message.channel.stopTyping();
     }
 };
