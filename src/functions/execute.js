@@ -1,4 +1,4 @@
-const greetUser = require("../functions/greetUser");
+const greetUser = require("./greetUser");
 
 require("../db/connection");
 const updateGuild = require("../db/functions/updateGuild");
@@ -13,7 +13,7 @@ module.exports = async (message) => {
 
         switch (args[0].toLowerCase()) {
             case "ping":
-                message.reply(`Pong!`);
+                message.reply("Pong!");
                 break;
             case "test":
                 //Test greetUser function
