@@ -20,7 +20,8 @@ for (const folder of commandFolders) {
         .readdirSync(`${commandFolder}/${folder}`)
         .filter((file) => file.endsWith(".js"));
     for (const file of commandFiles) {
-        const command = require(`${commandFolder}/${folder}/${file}`);
+        let module = file.replace(".js", "");
+        const command = require(`${commandFolder}/${folder}/${module}`);
         client.commands.set(command.name, command);
     }
 }
