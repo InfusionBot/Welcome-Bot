@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("../db/connection");
+const Discord = require("discord.js");
 const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
