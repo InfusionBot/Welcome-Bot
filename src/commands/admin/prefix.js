@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "prefix",
-    aliases: [],
+    //aliases: [],
     description: "Manage perfix for this server, subcommands: set, get, reset",
     args: true,
     async execute(message, args) {

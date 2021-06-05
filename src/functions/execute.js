@@ -10,7 +10,7 @@ const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message, client) => {
     let guildDB = await getGuild(message.guild.id);
-    if (message.content.startsWith(guildDB.prefix)) {
+    if (message.content.startsWith(guildDB.prefix.trim())) {
         const args = message.content
             .slice(guildDB.prefix.length)
             .trim()
@@ -79,7 +79,7 @@ module.exports = async (message, client) => {
             command.execute(message, args);
         } catch (error) {
             console.error(error);
-            message.reply("there was an error trying to execute that command!");
+            message.reply("There was an error trying to execute that command, to get help use the help command");
         }
     }
 };
