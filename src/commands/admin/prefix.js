@@ -6,8 +6,9 @@
 module.exports = {
     name: "prefix",
     //aliases: [],
-    description: "Manage perfix for this server, subcommands: set, get, reset",
-    args: true,
+    description: "Manage perfix for this server",
+    subcommand: true,
+    subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");

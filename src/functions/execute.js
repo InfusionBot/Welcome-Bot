@@ -48,6 +48,16 @@ module.exports = async (message, client) => {
             return message.channel.send(reply);
         }
 
+        if (command.subcommand && !args.length) {
+            let reply = `You didn't provide subcommand(s), ${message.author}!`;
+
+            if (command.subcommands) {
+                reply += `\nThe subcommand(s) available are: \`${command.subcommands.join(", ")}\``;
+            }
+
+            return message.channel.send(reply);
+        }
+
         const { cooldowns } = client;
 
         if (!cooldowns.has(command.name)) {

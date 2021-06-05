@@ -46,6 +46,8 @@ module.exports = {
             );
         if (command.description)
             data.push(`**Description:** ${command.description}`);
+        if (command.subcommands)
+            data.push(`**Subcommands:** ${command.subcommands.join(", ")}`);
         if (command.usage)
             data.push(
                 `**Usage:** ${guildDB.prefix}${command.name} ${command.usage}`
