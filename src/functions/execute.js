@@ -5,7 +5,6 @@ const getGuild = require("../db/functions/getGuild");
 module.exports = async (message, client) => {
     let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
-<<<<<<< HEAD
         const args = message.content
             .slice(guildDB.prefix.length)
             .trim()
@@ -46,7 +45,6 @@ module.exports = async (message, client) => {
         } catch (error) {
             console.error(error);
             message.reply("There was an error trying to execute that command!");
-=======
         message.channel.startTyping();
         const commandBody = message.content.slice(guildDB.prefix.length);
         const args = commandBody.trim().split(" ");
@@ -328,7 +326,10 @@ module.exports = async (message, client) => {
             message.reply(
                 "Are you trying to run a command?\nI think you have a typo in the command."
             );
+<<<<<<< HEAD
 >>>>>>> 03f4d83 (fixed commands)
+=======
+>>>>>>> 8555cdb32028737fc4765e5a530b39b314783dcc
         }
         message.channel.stopTyping();
     }
