@@ -15,7 +15,7 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                if (message.member.hasPermission("ADMINISTRATOR")) {
+                if (message.member.hasPermission("MANAGE_SERVER")) {
                     //Set welcome channel
                     updateGuild(
                         message.guild.id,
@@ -35,7 +35,7 @@ module.exports = {
                     );
                 } else {
                     message.reply(
-                        "Sorry, You don't have ADMINISTRATOR permission"
+                        "Sorry, You don't have MANAGE_SERVER permission"
                     );
                 }
                 break;
@@ -49,7 +49,7 @@ module.exports = {
                 break;
             case "reset":
                 //Reset welcome channel
-                if (message.member.hasPermission("ADMINISTRATOR")) {
+                if (message.member.hasPermission("MANAGE_SERVER")) {
                     updateGuild(
                         message.guild.id,
                         "welcomeChannel",
@@ -63,7 +63,7 @@ module.exports = {
                     );
                 } else {
                     message.reply(
-                        "Sorry, You don't have ADMINISTRATOR permission"
+                        "Sorry, You don't have MANAGE_SERVER permission"
                     );
                 }
                 break;

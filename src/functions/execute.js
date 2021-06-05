@@ -65,7 +65,7 @@ module.exports = async (message, client) => {
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
-                    `please wait ${timeLeft.toFixed(
+                    `Please wait ${timeLeft.toFixed(
                         1
                     )} more second(s) before reusing the \`${
                         command.name

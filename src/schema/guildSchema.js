@@ -14,8 +14,8 @@ const guildSchema = new mongoose.Schema({
     prefix: {
         type: String,
         required: true,
-        trim: false,
-        default: "!w ",
+        trim: true,
+        default: "w/",
     },
     welcomeChannel: {
         type: String,

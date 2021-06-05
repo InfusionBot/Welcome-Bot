@@ -6,7 +6,7 @@
 module.exports = {
     name: "test",
     aliases: [],
-    permissions: ["ADMINISTRATOR"],
+    permissions: ["MANAGE_SERVER"],
     description: "Test welcome bot",
     args: false,
     execute(message, args) {

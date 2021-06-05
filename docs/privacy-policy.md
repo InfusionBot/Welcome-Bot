@@ -10,7 +10,7 @@ No usage of data outside of the aformentioned cases will happen and the data is 
 The bot may store the following information automatically when being invited to a new Discord Server:
 
 - `guildId` with the `Server's ID` as value.
-- `prefix` with value `!w`.
+- `prefix` with value `w/`.
 - `welcomeChannel` with value `new-members`
 - `welcomeMessage` with value `Welcome {mention} to the {server} server`
 

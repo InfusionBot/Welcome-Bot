@@ -5,10 +5,10 @@
  */
 module.exports = {
     name: "ping",
-    aliases: ["online"],
-    description: "Ping the bot",
+    aliases: ["version"],
+    description: "Ping the bot and get it's version",
     args: false,
     execute(message, args) {
-        message.channel.send(`Pong ${message.author}`);
+        message.channel.send(`Pong ${message.author}\nMy version is v${process.env.BOT_VER}`);
     },
 };

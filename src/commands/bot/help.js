@@ -34,10 +34,12 @@ module.exports = {
             return message.reply("That is not a valid command!");
         }
 
-        data.push(`**Name:** ${command.name}`);
+        data.push(`**Command Name:** ${command.name}`);
 
         if (command.aliases)
             data.push(`**Aliases:** ${command.aliases.join(", ")}`);
+        if (command.permissions)
+            data.push(`**Permissions:** You need ${command.permissions.join(", ")} permission(s) to execute this command.`);
         if (command.description)
             data.push(`**Description:** ${command.description}`);
         if (command.usage)

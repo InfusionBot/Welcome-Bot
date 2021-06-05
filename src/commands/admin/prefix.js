@@ -14,21 +14,21 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                if (message.member.hasPermission("ADMINISTRATOR")) {
+                if (message.member.hasPermission("MANAGE_SERVER")) {
                     //Set bot prefix
                     updateGuild(
                         message.guild.id,
                         "prefix",
-                        args.join(" ").replace(`${args[0]} `, "")
+                        args.join(" ").replace(`${args[0]} `, "").trim()
                     );
                     message.reply(
                         "Prefix set to '" +
-                            args.join(" ").replace(`${args[0]} `, "") +
+                            args.join(" ").replace(`${args[0]} `, "").trim() +
                             "' (without quotes)"
                     );
                 } else {
                     message.reply(
-                        "Sorry, You don't have ADMINISTRATOR permission"
+                        "Sorry, You don't have MANAGE_SERVER permission"
                     );
                 }
                 break;
@@ -42,8 +42,8 @@ module.exports = {
                 break;
             case "reset":
                 //Reset bot prefix
-                if (message.member.hasPermission("ADMINISTRATOR")) {
-                    updateGuild(message.guild.id, "prefix", "!w ");
+                if (message.member.hasPermission("MANAGE_SERVER")) {
+                    updateGuild(message.guild.id, "prefix", "w/");
                     guildDB = await getGuild(message.guild.id);
                     message.reply(
                         "Prefix reset to '" +
@@ -52,7 +52,7 @@ module.exports = {
                     );
                 } else {
                     message.reply(
-                        "Sorry, You don't have ADMINISTRATOR permission"
+                        "Sorry, You don't have MANAGE_SERVER permission"
                     );
                 }
                 break;
