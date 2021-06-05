@@ -25,8 +25,8 @@ module.exports = {
                 commands.map((command) => command.name).join(", ")
             );
             msg.addField(
-                "",
-                `\nYou can send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
+                "Get help for specific command: ",
+                `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
             );
 
             return message.channel.send(msg);
