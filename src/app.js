@@ -11,7 +11,7 @@ const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
 
-const commandFolders = fs.readdirSync("./commands");
+const commandFolders = fs.readdirSync("./src/commands");
 
 for (const folder of commandFolders) {
     const commandFiles = fs
