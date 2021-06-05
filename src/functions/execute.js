@@ -23,7 +23,7 @@ module.exports = async (message, client) => {
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
-        if (!command && typeof command === "undefined") {
+        if (!command || typeof command === "undefined") {
             message.reply(errMsg);
         }
 
