@@ -5,7 +5,10 @@ const getGuild = require("../db/functions/getGuild");
 module.exports = async (message, client) => {
     let guildDB = await getGuild(message.guild.id);
     if (message.content.startsWith(guildDB.prefix)) {
-        const args = message.content.slice(guildDB.prefix.length).trim().split(/ +/);
+        const args = message.content
+            .slice(guildDB.prefix.length)
+            .trim()
+            .split(/ +/);
         const commandName = args.shift().toLowerCase();
 
         const command =
