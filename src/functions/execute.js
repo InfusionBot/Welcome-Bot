@@ -51,4 +51,5 @@ module.exports = async (message, client) => {
             console.error(error);
             message.reply("There was an error trying to execute that command!");
     }
+}
 };
