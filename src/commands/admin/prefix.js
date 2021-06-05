@@ -9,8 +9,8 @@ module.exports = {
     description: "Manage perfix for this server",
     args: true,
     async execute(message, args) {
-        const updateGuild = require("../db/functions/updateGuild");
-        const getGuild = require("../db/functions/getGuild");
+        const updateGuild = require("../../db/functions/updateGuild");
+        const getGuild = require("../../db/functions/getGuild");
         switch (args[0].toLowerCase()) {
             case "set":
                 if (message.member.hasPermission("ADMINISTRATOR")) {

@@ -10,7 +10,7 @@ module.exports = {
     description: "Test welcome bot",
     args: false,
     execute(message, args) {
-        const greetUser = require("../functions/greetUser");
+        const greetUser = require("../../functions/greetUser");
         greetUser(message.guild, message.member);
     },
 };

@@ -9,8 +9,8 @@ module.exports = {
     description: "Manage welcome channel for this server",
     args: true,
     async execute(message, args) {
-        const updateGuild = require("../db/functions/updateGuild");
-        const getGuild = require("../db/functions/getGuild");
+        const updateGuild = require("../../db/functions/updateGuild");
+        const getGuild = require("../../db/functions/getGuild");
         let guildDB;
         switch (args[0].toLowerCase()) {
             case "set":
