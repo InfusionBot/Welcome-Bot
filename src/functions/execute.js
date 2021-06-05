@@ -88,7 +88,9 @@ module.exports = async (message, client) => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
         try {
+            message.channel.startTyping();
             command.execute(message, args);
+            message.channel.stopTyping();
         } catch (error) {
             console.error(error);
             message.reply(

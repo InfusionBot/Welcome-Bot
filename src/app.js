@@ -48,8 +48,9 @@ client.on("ready", () => {
     // 15 * 60 * (1 second)
     // Update presence every 15 minutes
     setInterval(() => presence(client), 15 * 60 * 1000);
-    // Update server count in discord.boats every 25 minutes
-    setInterval(() => serverCount(client), 25 * 60 * 1000);
+    // Update server count every 25 minutes if environment is in PRODUCTION
+    if (process.env.PRODUCTION.toLowerCase() === "true")
+        setInterval(() => serverCount(client), 25 * 60 * 1000);
     //Run dbAuditor every 3 hours
     setInterval(() => {
         dbAuditor(client);
