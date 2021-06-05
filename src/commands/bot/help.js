@@ -11,7 +11,7 @@ module.exports = {
     cooldown: 5,
     async execute(message, args) {
         const getGuild = require("../db/functions/getGuild");
-        let guildDB = await getGuild(message);
+        let guildDB = await getGuild(message.guild.id);
         const data = [];
         const { commands } = message.client;
 
