@@ -11,6 +11,7 @@ module.exports = {
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
+        let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
                 if (message.member.hasPermission("ADMINISTRATOR")) {
@@ -40,10 +41,10 @@ module.exports = {
                 );
                 break;
             case "reset":
-                guildDB = await getGuild(message.guild.id);
                 //Reset bot prefix
                 if (message.member.hasPermission("ADMINISTRATOR")) {
                     updateGuild(message.guild.id, "prefix", "!w ");
+                    guildDB = await getGuild(message.guild.id);
                     message.reply(
                         "Prefix reset to '" +
                             guildDB.prefix +
