@@ -10,22 +10,22 @@ module.exports = {
     usage: "[command name]",
     cooldown: 5,
     async execute(message, args) {
-        const Discord = require("discord.js");
+        const { MessageEmbed } = require("discord.js");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
         const data = [];
-        let msg = new Discord.MessageEmbed();
+        let msg = new MessageEmbed();
         const { commands } = message.client;
 
+        msg.setTitle("Welcome Bot help");
         if (!args.length) {
-            msg.setTitle("Bot help");
             msg.setDescription("List of all commands available in the bot");
             msg.addField(
-                "Commands: ",
+                "Commands:",
                 commands.map((command) => command.name).join(", ")
             );
             msg.addField(
-                "Get help for specific command: ",
+                "Get help for specific command:",
                 `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
             );
 
@@ -43,27 +43,27 @@ module.exports = {
             );
         }
 
-        data.push(`**Command Name:** ${command.name}`);
+        msg.setDescription(`Help for ${command.name} command`);
+        msg.addField("Command Name:", command.name);
 
         if (command.aliases)
-            data.push(`**Aliases:** ${command.aliases.join(", ")}`);
+            msg.addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
-            data.push(
-                `**Permissions:** You need ${command.permissions.join(
-                    ", "
-                )} permission(s) to execute this command.`
+            msg.addField(
+                "Permissions:",
+                `You need ${command.permissions.join(", ")} permission(s) to execute this command.`
             );
         if (command.description)
-            data.push(`**Description:** ${command.description}`);
+            msg.addField("Description:", command.description);
         if (command.subcommands)
-            data.push(`**Subcommands:** ${command.subcommands.join(", ")}`);
+            msg.addField("Subcommands:", command.subcommands.join(", "));
         if (command.usage)
-            data.push(
-                `**Usage:** ${guildDB.prefix}${command.name} ${command.usage}`
+            msg.addField(
+                "Usage:", `${guildDB.prefix}${command.name} ${command.usage}`
             );
 
-        data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
+        msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 
-        message.channel.send(data, { split: true });
+        message.channel.send(msg);
     },
 };
