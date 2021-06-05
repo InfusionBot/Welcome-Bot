@@ -10,8 +10,8 @@ module.exports = {
     subcommand: true,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
-        const updateGuild = require("../db/functions/updateGuild");
-        const getGuild = require("../db/functions/getGuild");
+        const updateGuild = require("../../db/functions/updateGuild");
+        const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
