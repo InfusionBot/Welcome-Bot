@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "message",
-    aliases: [],
+    aliases: ["msg"],
     description: "Manage welcome message for this server",
     args: true,
     async execute(message, args) {

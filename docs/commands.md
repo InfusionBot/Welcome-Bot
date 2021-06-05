@@ -7,11 +7,12 @@ If You're not sure what prefix is used can you just `@-mention` the bot (`@welco
 These are the commands currently available:
 - `ping` - Ping the bot.
 - `test` - Test by sending welcome message
-- `chan`
+- `help` - Get help
+- `chan` or `channel`
     - `set` - Set welcome channel, channel to send message
     - `get` - Get currently set welcome channel
     - `reset` - Reset channel back to default value
-- `message`
+- `message` or `msg`
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
