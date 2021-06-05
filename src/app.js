@@ -102,7 +102,7 @@ client.on("message", async function (message) {
                 .catch(console.error);
         }
     } else {
-        execute(message);
+        execute(message, client);
     }
 });
 
