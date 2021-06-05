@@ -83,7 +83,9 @@ module.exports = async (message, client) => {
                 "There was an error trying to execute that command, to get help use the help command"
             );
         }
-    } else if (message.content.startsWith(guildDB.prefix.trim())) {
+        return;
+    }
+    if (message.content.startsWith(guildDB.prefix.trim())) {
         message.reply(`Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``);
     }
 };
