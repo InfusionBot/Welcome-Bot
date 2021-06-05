@@ -18,9 +18,12 @@ module.exports = {
         const { commands } = message.client;
 
         if (!args.length) {
-            msg.setTitle("Bot help")
+            msg.setTitle("Bot help");
             msg.setDescription("List of all commands available in the bot");
-            msg.addField("Commands: ", commands.map((command) => command.name).join(", "));
+            msg.addField(
+                "Commands: ",
+                commands.map((command) => command.name).join(", ")
+            );
             msg.addField(
                 "",
                 `\nYou can send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
