@@ -100,7 +100,7 @@ module.exports = async (message, client) => {
         }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         message.reply(
-                `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
-            );
+            `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
+        );
     }
 };
