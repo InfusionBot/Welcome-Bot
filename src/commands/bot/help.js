@@ -39,7 +39,11 @@ module.exports = {
         if (command.aliases)
             data.push(`**Aliases:** ${command.aliases.join(", ")}`);
         if (command.permissions)
-            data.push(`**Permissions:** You need ${command.permissions.join(", ")} permission(s) to execute this command.`);
+            data.push(
+                `**Permissions:** You need ${command.permissions.join(
+                    ", "
+                )} permission(s) to execute this command.`
+            );
         if (command.description)
             data.push(`**Description:** ${command.description}`);
         if (command.usage)
