@@ -12,14 +12,16 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
-const commandFolders = fs.readdirSync('./commands');
+const commandFolders = fs.readdirSync("./commands");
 
 for (const folder of commandFolders) {
-	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-	for (const file of commandFiles) {
-		const command = require(`./commands/${folder}/${file}`);
-		client.commands.set(command.name, command);
-	}
+    const commandFiles = fs
+        .readdirSync(`./commands/${folder}`)
+        .filter((file) => file.endsWith(".js"));
+    for (const file of commandFiles) {
+        const command = require(`./commands/${folder}/${file}`);
+        client.commands.set(command.name, command);
+    }
 }
 
 const presence = require("./functions/presence");
