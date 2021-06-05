@@ -12,7 +12,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
-const commandFolder = "./src/commands";
+const commandFolder = "./commands";
 const commandFolders = fs.readdirSync(commandFolder);
 
 for (const folder of commandFolders) {
