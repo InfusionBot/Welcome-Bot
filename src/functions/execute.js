@@ -10,6 +10,7 @@ const getGuild = require("../db/functions/getGuild");
 
 module.exports = async (message, client) => {
     let guildDB = await getGuild(message.guild.id);
+    let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
     if (message.content.startsWith(guildDB.prefix)) {
         const args = message.content
             .slice(guildDB.prefix.length)
@@ -23,9 +24,7 @@ module.exports = async (message, client) => {
             );
 
         if (!command) {
-            message.reply(
-                `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
-            );
+            message.reply(errMsg);
         }
 
         if (command.guildOnly && message.channel.type === "dm") {
@@ -88,8 +87,6 @@ module.exports = async (message, client) => {
             return;
         }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
-        message.reply(
-            `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
-        );
+        message.reply(errMsg);
     }
 };
