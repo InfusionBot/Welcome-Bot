@@ -43,7 +43,8 @@ client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
     process.env.BOT_ID = client.user.id;
     presence(client);
-    serverCount(client);
+    if (process.env.PRODUCTION.toLowerCase() === "true")
+        serverCount(client);
     // 15 * 60 * (1 second)
     // Update presence every 15 minutes
     setInterval(() => presence(client), 15 * 60 * 1000);
