@@ -13,16 +13,19 @@ module.exports = {
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
         const data = [];
+        let msg = new Discord.MessageEmbed();
         const { commands } = message.client;
 
         if (!args.length) {
-            data.push("List of all commands available in the bot:");
-            data.push(commands.map((command) => command.name).join(", "));
-            data.push(
+            msg.setTitle("Bot help")
+            msg.setDescription("List of all commands available in the bot");
+            msg.addField("Commands: ", commands.map((command) => command.name).join(", "));
+            msg.addField(
+                "",
                 `\nYou can send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
             );
 
-            return message.channel.send(data, { split: true });
+            return message.channel.send(msg);
         }
 
         const name = args[0].toLowerCase();
