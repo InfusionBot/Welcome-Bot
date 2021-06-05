@@ -52,7 +52,9 @@ module.exports = async (message, client) => {
             let reply = `You didn't provide subcommand(s), ${message.author}!`;
 
             if (command.subcommands) {
-                reply += `\nThe subcommand(s) available are: \`${command.subcommands.join(", ")}\``;
+                reply += `\nThe subcommand(s) available are: \`${command.subcommands.join(
+                    ", "
+                )}\``;
             }
 
             return message.channel.send(reply);
