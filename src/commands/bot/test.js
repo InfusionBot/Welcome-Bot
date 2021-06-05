@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "test",
-    aliases: [],
+    //aliases: [],
     permissions: ["MANAGE_SERVER"],
     description: "Test welcome bot",
     args: false,
