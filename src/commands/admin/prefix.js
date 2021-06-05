@@ -26,7 +26,7 @@ module.exports = {
                         "Prefix set to '" +
                             args
                                 .join(" ")
-                                .replace(`${args[0]} `, "")
+                                .replace(`${args[0]} `, "") +
                             "' (without quotes)"
                     );
                 } else {
