@@ -27,6 +27,10 @@ module.exports = {
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
             );
+            msg.addField(
+                "What is Cooldown:",
+                "Cooldown is the minimum time required to execute the same command again, (default: 3 seconds)"
+            );
 
             return message.channel.send(msg);
         }
