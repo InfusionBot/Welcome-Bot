@@ -3,9 +3,10 @@ module.exports = {
     aliases: ["chan"],
     description: "Manage welcome channel for this server",
     args: true,
-    execute(message, args) {
+    async execute(message, args) {
         const updateGuild = require("../db/functions/updateGuild");
         const getGuild = require("../db/functions/getGuild");
+        let guildDB;
         switch (args[0].toLowerCase()) {
             case "set":
                         if (message.member.hasPermission("ADMINISTRATOR")) {
