@@ -18,15 +18,11 @@ module.exports = {
                     updateGuild(
                         message.guild.id,
                         "prefix",
-                        args
-                            .join(" ")
-                            .replace(`${args[0]} `, "")
+                        args.join(" ").replace(`${args[0]} `, "")
                     );
                     message.reply(
                         "Prefix set to '" +
-                            args
-                                .join(" ")
-                                .replace(`${args[0]} `, "") +
+                            args.join(" ").replace(`${args[0]} `, "") +
                             "' (without quotes)"
                     );
                 } else {
