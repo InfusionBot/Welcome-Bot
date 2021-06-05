@@ -16,17 +16,26 @@ module.exports = {
         switch (args[0].toLowerCase()) {
             case "set":
                 if (message.member.hasPermission("MANAGE_SERVER")) {
-                    //Set bot prefix
-                    updateGuild(
-                        message.guild.id,
-                        "prefix",
-                        args.join(" ").replace(`${args[0]} `, "").trim()
-                    );
-                    message.reply(
-                        "Prefix set to '" +
-                            args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "' (without quotes)"
-                    );
+                    if (args[1]) {
+                        //Set bot prefix
+                        updateGuild(
+                            message.guild.id,
+                            "prefix",
+                            args.join(" ").replace(`${args[0]} `, "").trim()
+                        );
+                        message.reply(
+                            "Prefix set to '" +
+                                args
+                                    .join(" ")
+                                    .replace(`${args[0]} `, "")
+                                    .trim() +
+                                "' (without quotes)"
+                        );
+                    } else {
+                        message.reply(
+                            "Please supply valid value for setting prefix."
+                        );
+                    }
                 } else {
                     message.reply(
                         "Sorry, You don't have MANAGE_SERVER permission"

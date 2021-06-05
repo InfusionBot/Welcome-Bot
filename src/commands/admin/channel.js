@@ -16,23 +16,29 @@ module.exports = {
         switch (args[0].toLowerCase()) {
             case "set":
                 if (message.member.hasPermission("MANAGE_SERVER")) {
-                    //Set welcome channel
-                    updateGuild(
-                        message.guild.id,
-                        "welcomeChannel",
-                        args
-                            .join(" ")
-                            .replace(`${args[0]} `, "")
-                            .replace(" ", "")
-                    ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
-                    message.reply(
-                        "Welcome channel set to '" +
+                    if (args[1]) {
+                        //Set welcome channel
+                        updateGuild(
+                            message.guild.id,
+                            "welcomeChannel",
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
-                                .replace(" ", "") +
-                            "' (without quotes)"
-                    );
+                                .replace(" ", "")
+                        ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
+                        message.reply(
+                            "Welcome channel set to '" +
+                                args
+                                    .join(" ")
+                                    .replace(`${args[0]} `, "")
+                                    .replace(" ", "") +
+                                "' (without quotes)"
+                        );
+                    } else {
+                        message.reply(
+                            "Please supply valid value for setting channel."
+                        );
+                    }
                 } else {
                     message.reply(
                         "Sorry, You don't have MANAGE_SERVER permission"
