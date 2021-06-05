@@ -21,14 +21,12 @@ module.exports = {
                         args
                             .join(" ")
                             .replace(`${args[0]} `, "")
-                            .replace(" ", "")
-                    ); //replace(" ", "") to replace empty space, there is no empty space in a prefix
+                    );
                     message.reply(
                         "Prefix set to '" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
-                                .replace(" ", "") +
                             "' (without quotes)"
                     );
                 } else {
@@ -49,7 +47,7 @@ module.exports = {
                 guildDB = await getGuild(message.guild.id);
                 //Reset bot prefix
                 if (message.member.hasPermission("ADMINISTRATOR")) {
-                    updateGuild(message.guild.id, "prefix", "!w");
+                    updateGuild(message.guild.id, "prefix", "!w ");
                     message.reply(
                         "Prefix reset to '" +
                             guildDB.prefix +
