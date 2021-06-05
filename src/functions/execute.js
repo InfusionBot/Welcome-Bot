@@ -16,7 +16,7 @@ module.exports = async (message, client) => {
             .trim()
             .split(/ +/);
         const commandName = args.shift().toLowerCase();
-        if (commandName) {
+        if (args.length >= 0) {
             const command =
                 client.commands.get(commandName) ||
                 client.commands.find(
