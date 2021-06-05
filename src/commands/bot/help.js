@@ -50,7 +50,9 @@ module.exports = {
         if (command.permissions)
             msg.addField(
                 "Permissions:",
-                `You need ${command.permissions.join(", ")} permission(s) to execute this command.`
+                `You need ${command.permissions.join(
+                    ", "
+                )} permission(s) to execute this command.`
             );
         if (command.description)
             msg.addField("Description:", command.description);
@@ -58,7 +60,8 @@ module.exports = {
             msg.addField("Subcommands:", command.subcommands.join(", "));
         if (command.usage)
             msg.addField(
-                "Usage:", `${guildDB.prefix}${command.name} ${command.usage}`
+                "Usage:",
+                `${guildDB.prefix}${command.name} ${command.usage}`
             );
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);
