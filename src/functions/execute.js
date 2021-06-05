@@ -82,8 +82,8 @@ module.exports = async (message, client) => {
             message.reply(
                 "There was an error trying to execute that command, to get help use the help command"
             );
+            return;
         }
-        return;
     }
     if (message.content.startsWith(guildDB.prefix.trim())) {
         message.reply(
