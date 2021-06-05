@@ -31,7 +31,9 @@ module.exports = {
             commands.find((c) => c.aliases && c.aliases.includes(name));
 
         if (!command) {
-            return message.reply("That is not a valid command or command was disabled!");
+            return message.reply(
+                "That is not a valid command or command was disabled!"
+            );
         }
 
         data.push(`**Command Name:** ${command.name}`);
