@@ -5,15 +5,14 @@
  */
 module.exports = {
     name: "help",
-    description: "List all of my commands or info about a specific command.",
     aliases: ["commands"],
+    description: "List all of my commands or info about a specific command.",
     usage: "[command name]",
     cooldown: 5,
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
-        const data = [];
         let msg = new MessageEmbed();
         const { commands } = message.client;
 
