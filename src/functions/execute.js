@@ -16,14 +16,17 @@ module.exports = async (message, client) => {
             .trim()
             .split(/ +/);
         const commandName = args.shift().toLowerCase();
-        if (args.length >= 0) {
             const command =
                 client.commands.get(commandName) ||
                 client.commands.find(
                     (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
                 );
 
-            if (!command) return;
+            if (!command) {
+                message.reply(
+                `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
+            );
+            }
 
             if (command.guildOnly && message.channel.type === "dm") {
                 return message.reply(
@@ -93,11 +96,6 @@ module.exports = async (message, client) => {
                 );
                 return;
             }
-        } else {
-            message.reply(
-                `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
-            );
-        }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         message.reply(
             `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
