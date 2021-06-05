@@ -17,16 +17,22 @@ module.exports = {
             case "set":
                 if (message.member.hasPermission("MANAGE_SERVER")) {
                     //Set welcome message
-                    updateGuild(
-                        message.guild.id,
-                        "welcomeMessage",
-                        args.join(" ").replace(`${args[0]} `, "")
-                    );
-                    message.reply(
-                        "Welcome message set to '" +
-                            args.join(" ").replace(`${args[0]} `, "") +
-                            "' (without quotes)"
-                    );
+                    if (args[1]) {
+                        updateGuild(
+                            message.guild.id,
+                            "welcomeMessage",
+                            args.join(" ").replace(`${args[0]} `, "")
+                        );
+                        message.reply(
+                            "Welcome message set to '" +
+                                args.join(" ").replace(`${args[0]} `, "") +
+                                "' (without quotes)"
+                        );
+                    } else {
+                        message.reply(
+                            "Please supply valid value for setting message."
+                        );
+                    }
                 } else {
                     message.reply(
                         "Sorry, You don't have MANAGE_SERVER permission"
