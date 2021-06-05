@@ -10,7 +10,8 @@ module.exports = {
     disabled: true, //Is this command disabled? Optional
     subcommand: false, //Is at least 1 subcommand required? Optional
     subcommands: ["set", "get", "reset"], //What subcommands does this command have? Optional
-    execute(message, args) { //The function to execute the command, Required
+    execute(message, args) {
+        //The function to execute the command, Required
         return;
     },
 };

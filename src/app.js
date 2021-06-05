@@ -23,8 +23,7 @@ for (const folder of commandFolders) {
     for (const file of commandFiles) {
         let module = file.replace(".js", "");
         const command = require(`${commandFolder}/${folder}/${module}`);
-        if (!command.disabled)
-            client.commands.set(command.name, command);
+        if (!command.disabled) client.commands.set(command.name, command);
     }
 }
 
