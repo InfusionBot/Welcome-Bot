@@ -16,6 +16,7 @@ module.exports = async (message, client) => {
             .trim()
             .split(/ +/);
         const commandName = args.shift().toLowerCase();
+        if (args.length > 0) {
 
         const command =
             client.commands.get(commandName) ||
@@ -84,10 +85,10 @@ module.exports = async (message, client) => {
             );
             return;
         }
-    }
-    if (message.content.startsWith(guildDB.prefix.trim())) {
-        message.reply(
+        } else {
+            message.reply(
             `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``
         );
+        }
     }
 };
