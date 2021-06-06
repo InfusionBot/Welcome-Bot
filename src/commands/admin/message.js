@@ -16,37 +16,37 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                    //Set welcome message
-                    if (args[1]) {
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeMessage",
-                            args.join(" ").replace(`${args[0]} `, "")
-                        );
-                        message.reply(
-                            "Welcome message set to '" +
-                                args.join(" ").replace(`${args[0]} `, "") +
-                                "' (without quotes)"
-                        );
-                    } else {
-                        message.reply(
-                            "Please supply valid value for setting message."
-                        );
-                    }
-                break;
-            case "reset":
-                //Reset welcome channel
+                //Set welcome message
+                if (args[1]) {
                     updateGuild(
                         message.guild.id,
                         "welcomeMessage",
-                        "Welcome {mention} to the {server} server"
+                        args.join(" ").replace(`${args[0]} `, "")
                     );
-                    guildDB = await getGuild(message.guild.id);
                     message.reply(
-                        "Message reset to '" +
-                            guildDB.welcomeMessage +
+                        "Welcome message set to '" +
+                            args.join(" ").replace(`${args[0]} `, "") +
                             "' (without quotes)"
                     );
+                } else {
+                    message.reply(
+                        "Please supply valid value for setting message."
+                    );
+                }
+                break;
+            case "reset":
+                //Reset welcome channel
+                updateGuild(
+                    message.guild.id,
+                    "welcomeMessage",
+                    "Welcome {mention} to the {server} server"
+                );
+                guildDB = await getGuild(message.guild.id);
+                message.reply(
+                    "Message reset to '" +
+                        guildDB.welcomeMessage +
+                        "' (without quotes)"
+                );
                 break;
             default:
             case "get":

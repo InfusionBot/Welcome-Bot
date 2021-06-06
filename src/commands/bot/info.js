@@ -22,8 +22,8 @@ module.exports = {
         msg.addField(
             "Other links:",
             "[Support server](https://discord.gg/xxU7akJNbC)\n" +
-            "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-            "[Privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [Terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)"
+                "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
+                "[Privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [Terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)"
         );
         switch (args[0]) {
             case "--dm":
