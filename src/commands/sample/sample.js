@@ -8,6 +8,7 @@ module.exports = {
     aliases: ["example"], //Aliases for that command, Optional
     description: "desc", //Description of that command, Optional
     args: false, //Is at least 1 argument required? Optional
+    usage: "[arg1] (arg2)", //How to use this command? Optional. Here arg1 is required and arg2 is optional.
     disabled: true, //Is this command disabled? Optional
     subcommand: false, //Is at least 1 subcommand required? Optional
     subcommands: ["set", "get", "reset"], //What subcommands does this command have? Optional
