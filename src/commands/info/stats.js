@@ -15,7 +15,10 @@ module.exports = {
         msg.setDescription(`Statistics for ${message.guild.name} server`);
         //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
         msg.setThumbnail(message.guild.iconURL());
-        msg.addField("Members joined in your server:", message.guild.memberCount);
+        msg.addField(
+            "Members joined in your server:",
+            message.guild.memberCount
+        );
         switch (args[0]) {
             case "--dm":
                 message.author.send(msg);
