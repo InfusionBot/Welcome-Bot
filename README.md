@@ -6,7 +6,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
-[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/6HWjd4B46x)
+[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/xxU7akJNbC)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
 ## Docs
@@ -65,6 +65,9 @@ Feel free to upvote him to show your support.
 ## Self hosting
 
 [Click here to see self-hosting docs](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/self-hosting.md)
+
+## Questions?
+Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
 
 ## Contributing
 
