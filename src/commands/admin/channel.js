@@ -6,7 +6,8 @@
 module.exports = {
     name: "channel",
     aliases: ["chan"],
-    description: "Manage welcome channel for this server",
+    description: "Manage welcome channel for this server\nNot providing any arguments will display the current settings.",
+    permissions: ["MANAGE_SERVER"],
     subcommand: true,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
@@ -15,7 +16,6 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                if (message.member.hasPermission("MANAGE_SERVER")) {
                     if (args[1]) {
                         //Set welcome channel
                         updateGuild(
@@ -39,23 +39,9 @@ module.exports = {
                             "Please supply valid value for setting channel."
                         );
                     }
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
-                break;
-            case "get":
-                //Get welcome channel
-                message.reply(
-                    "Channel currently is set to '" +
-                        guildDB.welcomeChannel +
-                        "' (without quotes)"
-                );
                 break;
             case "reset":
                 //Reset welcome channel
-                if (message.member.hasPermission("MANAGE_SERVER")) {
                     updateGuild(
                         message.guild.id,
                         "welcomeChannel",
@@ -67,15 +53,14 @@ module.exports = {
                             guildDB.welcomeChannel +
                             "' (without quotes)"
                     );
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
                 break;
             default:
+            case "get":
+                //Get welcome channel
                 message.reply(
-                    "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
+                    "Channel currently is set to '" +
+                        guildDB.welcomeChannel +
+                        "' (without quotes)"
                 );
                 break;
         }

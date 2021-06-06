@@ -7,6 +7,7 @@ module.exports = {
     name: "prefix",
     //aliases: [],
     description: "Manage perfix for this server",
+    permissions: ["MANAGE_SERVER"],
     subcommand: true,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
@@ -15,7 +16,6 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                if (message.member.hasPermission("MANAGE_SERVER")) {
                     if (args[1]) {
                         //Set bot prefix
                         updateGuild(
@@ -36,11 +36,16 @@ module.exports = {
                             "Please supply valid value for setting prefix."
                         );
                     }
-                } else {
+                break;
+            case "reset":
+                //Reset bot prefix
+                    updateGuild(message.guild.id, "prefix", "w/");
+                    guildDB = await getGuild(message.guild.id);
                     message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
+                        "Prefix reset to '" +
+                            guildDB.prefix +
+                            "' (without quotes)"
                     );
-                }
                 break;
             case "get":
                 //Get bot prefix
@@ -49,22 +54,6 @@ module.exports = {
                         guildDB.prefix +
                         "' (without quotes)"
                 );
-                break;
-            case "reset":
-                //Reset bot prefix
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    updateGuild(message.guild.id, "prefix", "w/");
-                    guildDB = await getGuild(message.guild.id);
-                    message.reply(
-                        "Prefix reset to '" +
-                            guildDB.prefix +
-                            "' (without quotes)"
-                    );
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
                 break;
             default:
                 message.reply(

@@ -7,6 +7,7 @@ module.exports = {
     name: "message",
     aliases: ["msg"],
     description: "Manage welcome message for this server",
+    permissions: ["MANAGE_SERVER"],
     subcommand: true,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
@@ -15,7 +16,6 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                if (message.member.hasPermission("MANAGE_SERVER")) {
                     //Set welcome message
                     if (args[1]) {
                         updateGuild(
@@ -33,23 +33,9 @@ module.exports = {
                             "Please supply valid value for setting message."
                         );
                     }
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
-                break;
-            case "get":
-                //Get welcome channel
-                message.reply(
-                    "Message currently is set to '" +
-                        guildDB.welcomeMessage +
-                        "' (without quotes)"
-                );
                 break;
             case "reset":
                 //Reset welcome channel
-                if (message.member.hasPermission("MANAGE_SERVER")) {
                     updateGuild(
                         message.guild.id,
                         "welcomeMessage",
@@ -61,11 +47,14 @@ module.exports = {
                             guildDB.welcomeMessage +
                             "' (without quotes)"
                     );
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
+                break;
+            case "get":
+                //Get welcome channel
+                message.reply(
+                    "Message currently is set to '" +
+                        guildDB.welcomeMessage +
+                        "' (without quotes)"
+                );
                 break;
             default:
                 message.reply(
