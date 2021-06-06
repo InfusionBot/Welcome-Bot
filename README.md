@@ -11,6 +11,11 @@ Welcome-bot is a bot built for you, to invite new users to your servers. Customi
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/xxU7akJNbC)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
+## Features
+- Welcome message customizable
+- Change channel to send welcome message, quickly
+- User friendly - help and info commands available
+
 ## Docs
 
 See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
