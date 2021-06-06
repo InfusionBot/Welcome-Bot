@@ -2,6 +2,8 @@
 
 > A discord.js bot that sends a welcome message when a new user joins
 
+Welcome-bot is a bot built for you, to invite new users to your servers. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
+
 [![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
@@ -14,16 +16,39 @@
 See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
 
 ## Commands
-The commands available currently are:
-- `ping`
-- `test`
-- `message`
-- `channel`
+These are the commands currently available:
+- `ping` - Ping the bot.
+- `test` - Test by sending welcome message
+- `help` - Get help
+- `chan` or `channel`
+    - `set` - Set welcome channel, channel to send message
+    - `get` - Get currently set welcome channel
+    - `reset` - Reset channel back to default value
+- `message` or `msg`
+    - `set` - Set welcome message
+    - `get` - Get currently set welcome message
+    - `reset` - Reset message back to default value
 - `prefix`
+    - `set` - Set bot prefix
+    - `get` - Get currently set bot prefix
+    - `reset` - Reset prefix back to default value
 
 For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
+
+## Default values
+
+### Default message
+
+The default welcome message is `Welcome {mention} to the {server} server`. Some placeholders can be used here, for info on those placeholders, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/new-features/docs/commands.md#placeholders-in-welcome-message)
+
+### Default channel
+
+The default welcome channel is set to `new-members`, commonly used welcome channels are:
+- `welcome`
+- `new-members`
+- `new-users`
 
 ## Inviting the bot
 
