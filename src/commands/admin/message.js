@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["msg"],
     description: "Manage welcome message for this server",
     permissions: ["MANAGE_SERVER"],
-    subcommand: true,
+    subcommand: false,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
@@ -48,17 +48,13 @@ module.exports = {
                             "' (without quotes)"
                     );
                 break;
+            default:
             case "get":
                 //Get welcome channel
                 message.reply(
                     "Message currently is set to '" +
                         guildDB.welcomeMessage +
                         "' (without quotes)"
-                );
-                break;
-            default:
-                message.reply(
-                    "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
                 );
                 break;
         }

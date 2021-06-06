@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["chan"],
     description: "Manage welcome channel for this server\nNot providing any arguments will display the current settings.",
     permissions: ["MANAGE_SERVER"],
-    subcommand: true,
+    subcommand: false,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");

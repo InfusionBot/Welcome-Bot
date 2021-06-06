@@ -8,7 +8,7 @@ module.exports = {
     //aliases: [],
     description: "Manage perfix for this server",
     permissions: ["MANAGE_SERVER"],
-    subcommand: true,
+    subcommand: false,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
@@ -47,17 +47,13 @@ module.exports = {
                             "' (without quotes)"
                     );
                 break;
+            default:
             case "get":
                 //Get bot prefix
                 message.reply(
                     "Prefix in this server is set to '" +
                         guildDB.prefix +
                         "' (without quotes)"
-                );
-                break;
-            default:
-                message.reply(
-                    "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
                 );
                 break;
         }
