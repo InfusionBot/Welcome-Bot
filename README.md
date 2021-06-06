@@ -1,6 +1,6 @@
 # Discord welcome bot
 
-> A discord.js bot to welcome users in your server
+> A discord.js bot that sends a welcome message when a new user joins
 
 [![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
