@@ -13,6 +13,16 @@
 
 See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
 
+## Commands
+The commands available currently are:
+- `ping`
+- `test`
+- `message`
+- `channel`
+- `prefix`
+
+For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
+
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Inviting the bot
