@@ -7,6 +7,7 @@ module.exports = {
     name: "stats",
     //aliases: [],
     description: "Your server statistics",
+    usage: "(--dm)",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
