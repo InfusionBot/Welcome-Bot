@@ -9,8 +9,6 @@ module.exports = {
     description: "Ping the bot",
     cooldown: 5,
     execute(message, args) {
-        message.channel.send(
-            `Pong ${message.author}`
-        );
+        message.channel.send(`Pong ${message.author}`);
     },
 };
