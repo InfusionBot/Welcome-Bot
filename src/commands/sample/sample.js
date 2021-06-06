@@ -4,9 +4,10 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 module.exports = {
-    name: "sample", //Command name
+    name: "sample", //Command name, Required
     aliases: ["example"], //Aliases for that command, Optional
     description: "desc", //Description of that command, Optional
+    args: false, //Is at least 1 argument required? Optional
     disabled: true, //Is this command disabled? Optional
     subcommand: false, //Is at least 1 subcommand required? Optional
     subcommands: ["set", "get", "reset"], //What subcommands does this command have? Optional

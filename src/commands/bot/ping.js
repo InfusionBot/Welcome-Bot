@@ -5,12 +5,12 @@
  */
 module.exports = {
     name: "ping",
-    aliases: ["version"],
-    description: "Ping the bot and get it's version",
+    aliases: [],
+    description: "Ping the bot",
     cooldown: 5,
     execute(message, args) {
         message.channel.send(
-            `Pong ${message.author}\nMy version is v${process.env.BOT_VER}`
+            `Pong ${message.author}`
         );
     },
 };
