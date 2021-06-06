@@ -11,8 +11,8 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
         msg.setTitle("Info for Welcome bot");
-        msg.setDescription("Statistics and Debug information");
-        msg.setImage("https://i.imgur.com/bbSlsT7.png");
+        msg.setDescription("Statistics and Debug information also included");
+        msg.setThumbnail("https://i.imgur.com/bbSlsT7.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${process.env.BOT_VER}`);
         msg.addField("Bot lists:", `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)`);
