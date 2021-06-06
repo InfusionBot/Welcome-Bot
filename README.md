@@ -62,11 +62,16 @@ Feel free to upvote him to show your support.
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
+### [Discord.bots.gg/](https://discord.bots.gg/bots/848459799783669790)
+
+> The original Discord bot list, find the right bot for your server today.
+
 ## Self hosting
 
 [Click here to see self-hosting docs](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/self-hosting.md)
 
 ## Questions?
+
 Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
 
 ## Contributing
