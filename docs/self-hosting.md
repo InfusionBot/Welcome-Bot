@@ -32,7 +32,8 @@ To create it, first copy `.env.example` as `.env`, then add your bot token
 Note that you don't have to set values for every option in `.env` file.
 If you followed the previous step on preparing the bot will you only need to set the following options:
 
-| Option:                | Value required:                                                     |
-| ---------------------- | ------------------------------------------------------------------- |
-| `BOT_TOKEN`            | Valid Bot-token of your Bot-application to login.                   |
-| `MONGODB_URL`          | Valid URL provided by MongoDB when creating DB.                     |
+| Option:                | Value required:                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| `NODE_ENV`             | You have to set this to `development` when self-hosting or their will be problems |
+| `BOT_TOKEN`            | Valid Bot-token of your Bot-application to login.                                 |
+| `MONGODB_URL`          | Valid URL provided by MongoDB when creating DB.                                   |
