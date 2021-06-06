@@ -56,7 +56,7 @@ Feel free to upvote him to show your support.
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
-![widget](https://discord.boats/api/widget/848459799783669790)
+[![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
 
 ### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)
 
