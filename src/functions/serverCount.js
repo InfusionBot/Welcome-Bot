@@ -61,7 +61,7 @@ const serverCount = function (client) {
 
     if (process.env.DISCORD_BOTS_token) {
         data = JSON.stringify({
-            guildCount: servers
+            guildCount: servers,
         });
         options = {
             hostname: "discord.bots.gg",
