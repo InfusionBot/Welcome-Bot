@@ -6,12 +6,22 @@
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
-[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/6HWjd4B46x)
+[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/xxU7akJNbC)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
 ## Docs
 
 See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
+
+## Commands
+The commands available currently are:
+- `ping`
+- `test`
+- `message`
+- `channel`
+- `prefix`
+
+For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
@@ -46,11 +56,18 @@ Feel free to upvote him to show your support.
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
-![widget](https://discord.boats/api/widget/848459799783669790)
+[![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
 
 ### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
+
+## Self hosting
+
+[Click here to see self-hosting docs](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/self-hosting.md)
+
+## Questions?
+Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
 
 ## Contributing
 
