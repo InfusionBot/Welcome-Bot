@@ -65,7 +65,7 @@ module.exports = {
         if (command.usage)
             msg.addField(
                 "Usage:",
-                `${guildDB.prefix}${command.name} ${command.usage}`
+                `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`\n() = Optional\n[] = Required`
             );
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);
