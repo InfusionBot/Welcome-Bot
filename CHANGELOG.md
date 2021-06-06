@@ -6,9 +6,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
-## [v1.0.0]
+## [v1.1.0]
 
 > **Released:** `TBA`
+
+### Changes
+
+- Add help command ([#13])
+
+## [v1.0.0]
+
+> **Released:** `05-06-2021`
 
 ### Changes
 
@@ -20,6 +28,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
+[#13]: https://github.com/Welcome-Bot/welcome-bot/pull/13
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
