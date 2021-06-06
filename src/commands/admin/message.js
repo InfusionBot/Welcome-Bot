@@ -14,7 +14,12 @@ module.exports = {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
-        const subcommand = args[0].toLowerCase() || "";
+        let subcommand;
+        if (args[0]) {
+            subcommand = args[0].toLowerCase();
+        } else {
+            subcommand = "";
+        }
         switch (subcommand) {
             case "set":
                 //Set welcome message
