@@ -15,8 +15,14 @@ module.exports = {
         msg.setImage("https://i.imgur.com/bbSlsT7.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${process.env.BOT_VER}`);
-        msg.addField("Bot lists:", `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)`);
-        msg.addField("Other links:", `[Support server](https://discord.gg/xxU7akJNbC)\n[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n[privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)`);
+        msg.addField(
+            "Bot lists:",
+            `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)`
+        );
+        msg.addField(
+            "Other links:",
+            `[Support server](https://discord.gg/xxU7akJNbC)\n[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n[privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)`
+        );
         message.channel.send(msg);
     },
 };
