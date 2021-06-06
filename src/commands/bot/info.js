@@ -23,7 +23,7 @@ module.exports = {
             "Other links:",
             `[Support server](https://discord.gg/xxU7akJNbC)\n[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n[privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)`
         );
-        switch(args[0]) {
+        switch (args[0]) {
             case "--dm":
                 message.author.send(msg);
                 message.channel.send(`Check out your DMs ${message.author}`);
