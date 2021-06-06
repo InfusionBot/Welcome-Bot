@@ -16,36 +16,31 @@ module.exports = {
         let guildDB = await getGuild(message.guild.id);
         switch (args[0].toLowerCase()) {
             case "set":
-                    if (args[1]) {
-                        //Set bot prefix
-                        updateGuild(
-                            message.guild.id,
-                            "prefix",
-                            args.join(" ").replace(`${args[0]} `, "").trim()
-                        );
-                        message.reply(
-                            "Prefix set to '" +
-                                args
-                                    .join(" ")
-                                    .replace(`${args[0]} `, "")
-                                    .trim() +
-                                "' (without quotes)"
-                        );
-                    } else {
-                        message.reply(
-                            "Please supply valid value for setting prefix."
-                        );
-                    }
+                if (args[1]) {
+                    //Set bot prefix
+                    updateGuild(
+                        message.guild.id,
+                        "prefix",
+                        args.join(" ").replace(`${args[0]} `, "").trim()
+                    );
+                    message.reply(
+                        "Prefix set to '" +
+                            args.join(" ").replace(`${args[0]} `, "").trim() +
+                            "' (without quotes)"
+                    );
+                } else {
+                    message.reply(
+                        "Please supply valid value for setting prefix."
+                    );
+                }
                 break;
             case "reset":
                 //Reset bot prefix
-                    updateGuild(message.guild.id, "prefix", "w/");
-                    guildDB = await getGuild(message.guild.id);
-                    message.reply(
-                        "Prefix reset to '" +
-                            guildDB.prefix +
-                            "' (without quotes)"
-                    );
+                updateGuild(message.guild.id, "prefix", "w/");
+                guildDB = await getGuild(message.guild.id);
+                message.reply(
+                    "Prefix reset to '" + guildDB.prefix + "' (without quotes)"
+                );
                 break;
             case "get":
                 //Get bot prefix
