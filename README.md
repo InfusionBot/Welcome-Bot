@@ -62,6 +62,10 @@ Feel free to upvote him to show your support.
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
+## Self hosting
+
+[Click here to see self-hosting docs](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/self-hosting.md)
+
 ## Contributing
 
 You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)
