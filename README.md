@@ -20,6 +20,8 @@ Welcome-bot is a bot built for you, to invite new users to your servers. Customi
 
 See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
 
+**Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
+
 ## Commands
 These are the commands currently available:
 - `ping` - Ping the bot.
@@ -39,8 +41,6 @@ These are the commands currently available:
     - `reset` - Reset prefix back to default value
 
 For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
-
-**Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Default values
 
@@ -75,7 +75,7 @@ Note that when you add the bot without a `pre-made` role, you will need to give 
 
 You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
 
-You can change this channel name, by using the `chan set` command, more info can be found in [docs for commands](docs/commands.md)
+You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](docs/commands.md)
 
 ## Botlists
 
@@ -92,7 +92,7 @@ Feel free to upvote him to show your support.
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
-### [Discord.bots.gg/](https://discord.bots.gg/bots/848459799783669790)
+### [Discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
 > The original Discord bot list, find the right bot for your server today.
 
