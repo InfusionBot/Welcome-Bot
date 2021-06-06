@@ -11,6 +11,7 @@ process.env.BOT_VER = "1.1.0-dev";
 const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
+client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
 const commandFolder = __dirname + "/commands";
@@ -23,7 +24,11 @@ for (const folder of commandFolders) {
     for (const file of commandFiles) {
         let module = file.replace(".js", "");
         const command = require(`${commandFolder}/${folder}/${module}`);
-        if (!command.disabled) client.commands.set(command.name, command);
+        if (!command.disabled) {
+            client.commands.set(command.name, command);
+        } else {
+            client.disabled.set(command.name, command);
+        }
     }
 }
 
