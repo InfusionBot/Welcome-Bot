@@ -7,6 +7,7 @@ module.exports = {
     name: "sample", //Command name, Required
     aliases: ["example"], //Aliases for that command, Optional
     description: "desc", //Description of that command, Optional
+    permissions: [], //Permissions required by a member to execute this command
     args: false, //Is at least 1 argument required? Optional
     disabled: true, //Is this command disabled? Optional
     subcommand: false, //Is at least 1 subcommand required? Optional

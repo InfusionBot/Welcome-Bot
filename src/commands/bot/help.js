@@ -41,8 +41,8 @@ module.exports = {
             commands.find((c) => c.aliases && c.aliases.includes(name));
 
         if (!command) {
-            return message.reply(
-                "That is not a valid command or command was disabled!"
+            return message.channel.send(
+                `That is not a valid command or command was disabled, ${message.author}`
             );
         }
 
