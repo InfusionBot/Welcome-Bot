@@ -14,7 +14,8 @@ module.exports = {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
-        switch (args[0].toLowerCase()) {
+        const subcommand = args[0].toLowerCase() || "";
+        switch (subcommand) {
             case "set":
                 if (args[1]) {
                     //Set bot prefix
@@ -42,8 +43,8 @@ module.exports = {
                     "Prefix reset to '" + guildDB.prefix + "' (without quotes)"
                 );
                 break;
-            default:
             case "get":
+            default:
                 //Get bot prefix
                 message.reply(
                     "Prefix in this server is set to '" +
