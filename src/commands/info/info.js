@@ -5,13 +5,13 @@
  */
 module.exports = {
     name: "info",
-    aliases: ["debug", "stats"],
-    description: "Statistics and Debug information",
+    aliases: ["debug"],
+    description: "Debug information",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
-        msg.setTitle("Info for Welcome bot");
-        msg.setDescription("Statistics and Debug information also included");
+        msg.setTitle("Welcome-Bot");
+        msg.setDescription("Information and Support for Welcome-Bot");
         msg.setThumbnail("https://i.imgur.com/bbSlsT7.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${process.env.BOT_VER}`);
