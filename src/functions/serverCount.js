@@ -20,11 +20,14 @@ const serverCount = function (client) {
     const servers = client.guilds.cache.size;
     console.log(`Updating server count. Servers: ${servers}`);
 
-    const data = JSON.stringify({
-        server_count: servers,
-    });
+    let data;
+    let options;
+
     if (process.env.DISCORD_BOATS_token) {
-        const options = {
+        data = JSON.stringify({
+            server_count: servers,
+        });
+        options = {
             hostname: "discord.boats",
             path: "/api/bot/" + process.env.BOT_ID,
             method: "POST",
@@ -35,13 +38,14 @@ const serverCount = function (client) {
         };
         postReq(data, options);
     } else {
-        console.log("NOTE: DISCORD_BOATS_token is empty");
+        console.log("NOTE: DISCORD_BOATS_token is not set");
     }
+
     if (process.env.DELAPI_token) {
-        const info = JSON.stringify({
+        data = JSON.stringify({
             guildCount: servers,
         });
-        const opts = {
+        options = {
             hostname: "api.discordextremelist.xyz",
             path: "/v2/bot/" + process.env.BOT_ID + "/stats",
             method: "POST",
@@ -50,9 +54,27 @@ const serverCount = function (client) {
                 Authorization: process.env.DELAPI_token,
             },
         };
-        postReq(info, opts);
+        postReq(data, options);
     } else {
-        console.log("NOTE: DELAPI_token is empty");
+        console.log("NOTE: DELAPI_token is not set");
+    }
+
+    if (process.env.DISCORD_BOTS_token) {
+        data = JSON.stringify({
+            guildCount: servers
+        });
+        options = {
+            hostname: "discord.bots.gg",
+            path: "/api/v1/bots/" + process.env.BOT_ID + "/stats",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: process.env.DISCORD_BOTS_token,
+            },
+        };
+        postReq(data, options);
+    } else {
+        console.log("NOTE: DISCORD_BOTS_token is not set");
     }
 };
 module.exports = serverCount;
