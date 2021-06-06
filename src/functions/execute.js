@@ -24,7 +24,7 @@ module.exports = async (message, client) => {
             );
 
         if (!command || typeof command === "undefined") {
-            message.reply(errMsg);
+            //message.reply(errMsg);
         }
 
         if (command.guildOnly && message.channel.type === "dm") {
@@ -101,6 +101,6 @@ module.exports = async (message, client) => {
             return;
         }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
-        message.reply(errMsg);
+        //message.reply(errMsg);
     }
 };
