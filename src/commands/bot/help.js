@@ -7,7 +7,7 @@ module.exports = {
     name: "help",
     aliases: ["commands"],
     description: "List all of my commands or info about a specific command.",
-    usage: "[command name]",
+    usage: "(command name)",
     cooldown: 5,
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
@@ -65,7 +65,7 @@ module.exports = {
         if (command.usage)
             msg.addField(
                 "Usage:",
-                `${guildDB.prefix}${command.name} ${command.usage}`
+                `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`\n() = Optional\n[] = Required`
             );
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);

@@ -25,6 +25,14 @@ module.exports = {
             "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
             "[Privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [Terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)"
         );
-        message.channel.send(msg);
+        switch (args[0]) {
+            case "--dm":
+                message.author.send(msg);
+                message.channel.send(`Check out your DMs ${message.author}`);
+                break;
+            default:
+                message.channel.send(msg);
+                break;
+        }
     },
 };
