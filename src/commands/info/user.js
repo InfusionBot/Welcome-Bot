@@ -20,9 +20,9 @@ module.exports = {
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0]}`);
-        msg.setThumbnail(`${user.avatarURL}`);
+        msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        msg.addField("Avatar URL:", `[url](${user.avatarURL})`);
+        msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
         msg.addField("Joined:", `Joined discord at ${user.createdAt}\n`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
