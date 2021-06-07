@@ -25,6 +25,7 @@ module.exports = async (message, client) => {
 
         if (!command || typeof command === "undefined") {
             //message.reply(errMsg);
+            return;
         }
 
         if (command.guildOnly && message.channel.type === "dm") {
