@@ -6,13 +6,17 @@
 module.exports = {
     name: "user",
     aliases: ["whois"],
-    description: "Get information about a user. It will show your info if no user was mentioned",
+    description:
+        "Get information about a user. It will show your info if no user was mentioned",
     args: false,
     usage: "(@mention)",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");
-        const user = getUserFromMention(args[0] || `${message.author}`, message.client);
+        const user = getUserFromMention(
+            args[0] || `${message.author}`,
+            message.client
+        );
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0]}`);
