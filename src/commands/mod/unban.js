@@ -25,7 +25,9 @@ module.exports = {
             );
         }
 
-        if (args.length > 1) const reason = args.slice(1).join(" ");
+        if (args.length > 1) {
+            const reason = args.slice(1).join(" ");
+        }
         try {
             if (reason)
                 await message.guild.members.unban(user, reason);
