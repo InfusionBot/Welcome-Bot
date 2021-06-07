@@ -22,9 +22,17 @@ These are the commands currently available:
     - `reset` - Reset prefix back to default value
 
 Moderation commands (same perfix only):
-- `ban [@user]` - Ban a user
+- `ban [@user] (reason)` - Ban a user
 - `unban [user_id]` - Unban a user
-- `kick [@user]` - Kick a user
+- `kick [@user] (reason)` - Kick a user
+
+NOTE: `reason` will be set to "Not specified" if you don't specify any reason in the moderation commands
+
+The brakets in these commands mean:
+```
+[] = Required argument
+() = Optional argument
+```
 
 All these commands should be prefixed with prefix i.e. for command `ping` you have to send `w/ping` in the channel the bot has perms to read and send messages.
 
