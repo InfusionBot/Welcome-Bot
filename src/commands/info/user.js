@@ -13,16 +13,24 @@ module.exports = {
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");
+        const getUserFlags = require("../../functions/getUserFlags.js");
         const user = getUserFromMention(
             args[0] || `${message.author}`,
             message.client
         );
+        const badges = getUserFlags(user);
+        //Covert badges to images markdown
+        let badgesMD = [];
+        for (var i = 0; i < badges.length; i++) {
+            badgesMD.push(`![${badges[i].id}](${badges[i].url}`);
+        }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0] || message.author}`);
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
+        msg.addField("Badges:", badgesMD.join(" "));
         msg.addField(
             "Joined:",
             `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
