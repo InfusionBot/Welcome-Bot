@@ -2,7 +2,7 @@
 
 > A discord.js bot that sends a welcome message when a new user joins
 
-Welcome-bot is a bot built for you, to invite new users to your servers. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
+Welcome-bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
 [![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
