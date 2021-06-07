@@ -29,7 +29,7 @@ module.exports = {
         const reason = args.slice(1).join(" ");
         try {
             if (reason) user.kick(reason);
-            else user.kick(reason)
+            else user.kick(reason);
         } catch (error) {
             return message.channel.send(
                 `Failed to kick **${user.tag}**: ${error}`
