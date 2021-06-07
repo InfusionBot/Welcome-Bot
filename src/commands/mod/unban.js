@@ -10,6 +10,7 @@ module.exports = {
     permissions: ["BAN_MEMBERS"],
     bot_perms: ["BAN_MEMBERS"],
     args: true,
+    catchError: false,
     usage: "[@mention] [reason]",
     async execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
