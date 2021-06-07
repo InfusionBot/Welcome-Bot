@@ -18,7 +18,7 @@ module.exports = {
             args[0] || `${message.author}`,
             message.client
         );
-        let badges;
+        let badges = [];
         getUserFlags(user)
             .then((b) => {
                 badges = b;
