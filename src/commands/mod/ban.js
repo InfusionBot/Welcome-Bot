@@ -7,7 +7,7 @@ module.exports = {
     name: "ban",
     //aliases: [],
     description: "Ban a user.",
-    permissions: ["MANAGE_SERVER"],
+    permissions: ["BAN_MEMBERS"],
     args: true,
     usage: "[@mention] (reason)",
     execute(message, args) {
