@@ -23,9 +23,7 @@ module.exports = {
         try {
             await message.guild.members.unban(id);
         } catch (error) {
-            return message.channel.send(
-                `Failed to unban **${id}**: ${error}`
-            );
+            return message.channel.send(`Failed to unban **${id}**: ${error}`);
         }
 
         const user = message.client.users.cache.get(id);
