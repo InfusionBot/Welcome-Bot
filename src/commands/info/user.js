@@ -34,7 +34,9 @@ module.exports = {
         }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
-        msg.setDescription(`Information about ${args[0] || message.author} user`);
+        msg.setDescription(
+            `Information about ${args[0] || message.author} user`
+        );
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         msg.addField("Avatar URL:", `[${user.avatarURL()}](${user.avatarURL()})`);
