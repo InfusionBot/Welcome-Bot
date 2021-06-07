@@ -10,7 +10,7 @@ module.exports = {
         "Get information about a user. It will show your info if no user was mentioned",
     args: false,
     usage: "(@mention)",
-    execute(message, args) {
+    async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         const getUserFlags = require("../../functions/getUserFlags.js");
@@ -19,16 +19,17 @@ module.exports = {
             message.client
         );
         let badges = [];
-        getUserFlags(user)
+        await getUserFlags(user)
             .then((b) => {
                 badges = b;
             })
             .catch((err) => {
                 console.log(err);
             });
+
         //Covert badges to images markdown
         let badgesMD = [];
-        for (let i of badges) {
+        for (i = 0; i < badges.length; i++) {
             badgesMD[badgesMD.length] = `![${badges[i].id}](${badges[i].url}`;
         }
         let msg = new MessageEmbed();
@@ -37,7 +38,11 @@ module.exports = {
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
-        msg.addField("Badges:", badgesMD.join(" "));
+        if (badgesMD.length > 0) {
+            msg.addField("Badges:", badgesMD.join(" "));
+        } else {
+            msg.addField("Badges:", "None");
+        }
         msg.addField(
             "Joined:",
             `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
