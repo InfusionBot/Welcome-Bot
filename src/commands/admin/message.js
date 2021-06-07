@@ -45,7 +45,7 @@ module.exports = {
                 updateGuild(
                     message.guild.id,
                     "welcomeMessage",
-                    "Welcome {mention} to the {server} server"
+                    "Welcome {mention} to the {server} server!\nYou are our #{member_number}"
                 );
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
