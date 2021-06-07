@@ -7,16 +7,16 @@ module.exports = {
     name: "kick",
     //aliases: [],
     description: "Kick a user.",
-    permissions: ["BAN_MEMBERS"],
+    permissions: ["KICK_MEMBERS"],
+    bot_perms: ["KICK_MEMBERS"],
     args: true,
     catchError: false,
-    usage: "[@mention] (reason)",
+    usage: "[@mention] [reason]",
     execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
-        if (args.length < 1) {
-            //`args.length < 2` if reason is required
+        if (args.length < 2) {
             return message.reply(
-                "Please mention the user you want to kick (required) and specify a kick reason (optional)."
+                "Please mention the user you want to kick and specify a kick reason."
             );
         }
 
@@ -29,8 +29,7 @@ module.exports = {
 
         const reason = args.slice(1).join(" ");
         try {
-            if (reason) user.kick(reason);
-            else user.kick(reason);
+            user.kick(reason);
         } catch (error) {
             return message.channel.send(
                 `Failed to kick **${user.tag}**: ${error}`
