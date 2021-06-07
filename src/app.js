@@ -36,6 +36,7 @@ const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const serverCount = require("./functions/serverCount");
 const execute = require("./functions/execute");
+const uptime = require("./functions/uptime");
 
 require("./db/connection");
 const addGuild = require("./db/functions/addGuild");
@@ -55,6 +56,9 @@ client.on("ready", () => {
     // Update server count every 25 minutes if environment is in PRODUCTION
     if (process.env.NODE_ENV === "production")
         setInterval(() => serverCount(client), 25 * 60 * 1000);
+    uptime(client);
+    //Log uptime every 15 minutes
+    setInterval(() => uptime(client), 15 * 60 * 1000);
     //Run dbAuditor every 3 hours
     setInterval(() => {
         dbAuditor(client);
