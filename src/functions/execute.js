@@ -106,7 +106,7 @@ module.exports = async (message, client) => {
             } catch (error) {
                 console.error(error);
                 message.reply(
-                    "There was an error trying to execute that command, to get help use the help command"
+                    "There was an error trying to execute that command, please report this at https://github.com/Welcome-Bot/welcome-bot/issues"
                 );
                 return;
             }
