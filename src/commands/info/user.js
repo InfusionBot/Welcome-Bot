@@ -18,6 +18,11 @@ module.exports = {
             args[0] || `${message.author}`,
             message.client
         );
+
+        if (!user) {
+            return;
+        }
+
         let badges = [];
         await getUserFlags(user)
             .then((b) => {
@@ -51,6 +56,12 @@ module.exports = {
         );
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
+        msg.setFooter(
+            "By Welcome-Bot",
+            "https://avatars.githubusercontent.com/u/79972889?s=400&u=11afc3544ade67d46d2d97c966ec856b6abb0268&v=4"
+        );
+        msg.setColor("#33ddff");
+        msg.setTimestamp();
         message.channel.send(msg);
     },
 };
