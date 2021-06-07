@@ -25,7 +25,7 @@ module.exports = {
         msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
         msg.addField(
             "Joined:",
-            `Joined discord at ${user.createdAt}\nJoined ${message.guild.name} server at ${message.member.joinedAt}`
+            `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
         );
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
