@@ -28,8 +28,8 @@ module.exports = {
             });
         //Covert badges to images markdown
         let badgesMD = [];
-        for (var i = 0; i < badges.length; i++) {
-            badgesMD.push(`![${badges[i].id}](${badges[i].url}`);
+        for (let i of badges) {
+            badgesMD[badgesMD.length] = `![${badges[i].id}](${badges[i].url}`;
         }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
