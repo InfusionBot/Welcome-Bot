@@ -21,7 +21,7 @@ module.exports = {
         }
 
         const user = getUserFromMention(args[0], message.client);
-        const member = message.guild.members.cache.get(args[0]);
+        const member = message.guild.members.cache.get(user.id);
         if (!user) {
             return message.reply(
                 "Please use a proper mention if you want to kick someone."
