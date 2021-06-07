@@ -18,7 +18,8 @@ module.exports = {
             args[0] || `${message.author}`,
             message.client
         );
-        const badges = getUserFlags(user);
+        let badges;
+        getUserFlags(user).then(b => { badges = b; }).catch(err => { console.log(err) });
         //Covert badges to images markdown
         let badgesMD = [];
         for (var i = 0; i < badges.length; i++) {
