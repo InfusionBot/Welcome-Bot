@@ -39,7 +39,10 @@ module.exports = {
         );
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        msg.addField("Avatar URL:", `[${user.avatarURL()}](${user.avatarURL()})`);
+        msg.addField(
+            "Avatar URL:",
+            `[${user.avatarURL()}](${user.avatarURL()})`
+        );
         if (badgesMD.length > 0) {
             msg.addField("Badges:", badgesMD.join(" "));
         } else {
