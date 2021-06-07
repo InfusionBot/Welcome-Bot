@@ -13,7 +13,7 @@ module.exports = async (user) => {
             url: "https://cdn.discordapp.com/emojis/604997907397214208.png?v=1",
         },
         { id: "PARTNERED_SERVER_OWNER", url: "" },
-        { id: "HYPESQUAD_EVENTS", url: "" },
+        { id: "HYPESQUAD_EVENTS", url: "https://cdn.discordapp.com/emojis/604997907053281300.png?v=1" },
         {
             id: "BUGHUNTER_LEVEL_1",
             url: "https://cdn.discordapp.com/emojis/604997907095093248.png?v=1",
