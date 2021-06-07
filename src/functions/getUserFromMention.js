@@ -4,15 +4,15 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 module.exports = function (mention) {
-	if (!mention) return;
+    if (!mention) return;
 
-	if (mention.startsWith('<@') && mention.endsWith('>')) {
-		mention = mention.slice(2, -1);
+    if (mention.startsWith("<@") && mention.endsWith(">")) {
+        mention = mention.slice(2, -1);
 
-		if (mention.startsWith('!')) {
-			mention = mention.slice(1);
-		}
+        if (mention.startsWith("!")) {
+            mention = mention.slice(1);
+        }
 
-		return client.users.cache.get(mention);
-	}
+        return client.users.cache.get(mention);
+    }
 };
