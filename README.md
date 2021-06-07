@@ -15,6 +15,8 @@ Welcome-bot is a bot built for you, to invite new users to your servers. Customi
 - Welcome message customizable
 - Change channel to send welcome message, quickly
 - User friendly - help and info commands available
+- Multi-purpose
+    - Moderation - Ban, unban, kick users
 
 ## Docs
 
@@ -59,15 +61,19 @@ The default welcome channel is set to `new-members`, commonly used welcome chann
 
 The bot requires the following permissions:
 
-- Read messages
+- Read messages OR View channels (both are same)
 - Send messages
 - Read Message History
 
-To invite the bot with all the necessary required permissions mentioned above you can use this invitation link:
-> https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68608
+Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
-If you want to add the bot without a `pre-made` role, use this link instead:
-> https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=0
+- Ban Members
+
+To include the `moderation` feature, use this invite link:
+> https://discord.com/api/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68612
+
+To invite the bot with all the necessary required permissions **(without moderation)** mentioned above you can use this invitation link:
+> https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68608
 
 Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
 
