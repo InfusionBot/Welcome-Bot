@@ -45,6 +45,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@Welcome-Bot"
       - run: npm install
-      - run: npm publish --access=public
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_GITHUB_TOKEN}}
