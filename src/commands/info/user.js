@@ -23,7 +23,10 @@ module.exports = {
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
-        msg.addField("Joined:", `Joined discord at ${user.createdAt}\nJoined ${message.guild.name} server at ${user.joinedAt}`);
+        msg.addField(
+            "Joined:",
+            `Joined discord at ${user.createdAt}\nJoined ${message.guild.name} server at ${user.joinedAt}`
+        );
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
         message.channel.send(msg);
