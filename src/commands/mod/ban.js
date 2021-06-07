@@ -21,11 +21,15 @@ module.exports = {
         }
 
         const user = getUserFromMention(args[0], message.client);
+        const member = message.guild.members.cache.get(args[0]);
         if (!user) {
             return message.reply(
                 "Please use a proper mention if you want to ban someone."
             );
         }
+
+        if (member.roles.highest.position >= message.member.roles.highest.position)
+            return message.channel.send('You cannot ban someone with an equal or higher role');
 
         const reason = args.slice(1).join(" ") || "Not specified";
         try {
