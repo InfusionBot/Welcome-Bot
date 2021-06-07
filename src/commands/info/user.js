@@ -20,7 +20,7 @@ module.exports = {
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         msg.addField("Avatar URL:", `[url](${user.defaultAvatarURL})`);
         msg.addField("Joined:", `Joined discord at ${user.createdAt}\n`);
-        msg.addField("Presence:", `${user.presence}`)
+        msg.addField("Presence:", `${user.presence}`);
         message.channel.send(msg);
     },
 };
