@@ -20,7 +20,7 @@ module.exports = {
             );
         }
 
-        const user = getUserFromMention(args[0]);
+        const user = getUserFromMention(args[0], message.client);
         if (!user) {
             return message.reply(
                 "Please use a proper mention if you want to kick someone."
