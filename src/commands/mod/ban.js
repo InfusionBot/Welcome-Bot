@@ -8,6 +8,7 @@ module.exports = {
     //aliases: [],
     description: "Ban a user.",
     permissions: ["BAN_MEMBERS"],
+    bot_perms: ["BAN_MEMBERS"],
     args: true,
     usage: "[@mention] [reason]",
     async execute(message, args) {
