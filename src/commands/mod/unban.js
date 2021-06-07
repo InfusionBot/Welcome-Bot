@@ -11,31 +11,24 @@ module.exports = {
     bot_perms: ["BAN_MEMBERS"],
     args: true,
     catchError: false,
-    usage: "[@mention] [reason]",
+    usage: "[user_id]",
     async execute(message, args) {
-        const getUserFromMention = require("../../functions/getUserFromMention.js");
-        if (args.length < 2) {
+        const id = args[0];
+        if (!id) {
             return message.reply(
-                "Please mention the user you want to unban and specify a unban reason."
+                "Please use a proper user id if you want to unban someone."
             );
         }
 
-        const user = getUserFromMention(args[0], message.client);
-        if (!user) {
-            return message.reply(
-                "Please use a proper mention if you want to unban someone."
-            );
-        }
-
-        const reason = args.slice(1).join(" ");
         try {
-            await message.guild.members.unban(user, reason);
+            await message.guild.members.unban(id);
         } catch (error) {
             return message.channel.send(
-                `Failed to unban **${user.tag}**: ${error}`
+                `Failed to unban **${id}**: ${error}`
             );
         }
 
+        const user = message.client.users.cache.get(id);
         return message.channel.send(
             `Successfully unbanned **${user.tag}** from the server!`
         );
