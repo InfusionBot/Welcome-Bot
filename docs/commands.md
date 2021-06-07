@@ -9,22 +9,22 @@ These are the commands currently available:
 - `test` - Test by sending welcome message
 - `help` - Get help
 - `chan` or `channel`
-    - `set` - Set welcome channel, channel to send message
+    - `set [channel_name]` - Set welcome channel, channel to send message
     - `get` - Get currently set welcome channel
     - `reset` - Reset channel back to default value
 - `message` or `msg`
-    - `set` - Set welcome message
+    - `set [message]` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
 - `prefix`
-    - `set` - Set bot prefix
+    - `set [prefix]` - Set bot prefix
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
 Moderation commands (same perfix only):
-- `ban` - Ban a user
-- `unban` - Unban a user
-- `kick` - Kick a user
+- `ban [@user]` - Ban a user
+- `unban [user_id]` - Unban a user
+- `kick [@user]` - Kick a user
 
 All these commands should be prefixed with prefix i.e. for command `ping` you have to send `w/ping` in the channel the bot has perms to read and send messages.
 
