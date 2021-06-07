@@ -12,7 +12,8 @@ module.exports = {
     usage: "[@mention] (reason)",
     execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
-        if (args.length < 1) { //`args.length < 2` if reason is required
+        if (args.length < 1) {
+            //`args.length < 2` if reason is required
             return message.reply(
                 "Please mention the user you want to unban (required) and specify a unban reason (optional)."
             );
@@ -29,10 +30,8 @@ module.exports = {
             const reason = args.slice(1).join(" ");
         }
         try {
-            if (reason)
-                await message.guild.members.unban(user, reason);
-            else
-                await message.guild.members.unban(user);
+            if (reason) await message.guild.members.unban(user, reason);
+            else await message.guild.members.unban(user);
         } catch (error) {
             return message.channel.send(
                 `Failed to unban **${user.tag}**: ${error}`
