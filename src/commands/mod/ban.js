@@ -10,7 +10,7 @@ module.exports = {
     permissions: ["BAN_MEMBERS"],
     args: true,
     usage: "[@mention] (reason)",
-    execute(message, args) {
+    async execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         if (args.length < 1) {
             //`args.length < 2` if reason is required
