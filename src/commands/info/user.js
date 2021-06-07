@@ -17,7 +17,7 @@ module.exports = {
             args[0] || `${message.author}`,
             message.client
         );
-        const member = message.guild.members.filter(m => m.id === user.id);
+        const member = message.guild.members.filter((m) => m.id === user.id);
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0] || message.author}`);
