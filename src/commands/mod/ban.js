@@ -9,13 +9,12 @@ module.exports = {
     description: "Ban a user.",
     permissions: ["BAN_MEMBERS"],
     args: true,
-    usage: "[@mention] (reason)",
+    usage: "[@mention] [reason]",
     async execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
-        if (args.length < 1) {
-            //`args.length < 2` if reason is required
+        if (args.length < 2) {
             return message.reply(
-                "Please mention the user you want to ban (required) and specify a ban reason (optional)."
+                "Please mention the user you want to ban and specify a ban reason."
             );
         }
 
@@ -26,12 +25,9 @@ module.exports = {
             );
         }
 
-        if (args.length > 1) {
-            const reason = args.slice(1).join(" ");
-        }
+        const reason = args.slice(1).join(" ");
         try {
-            if (reason) await message.guild.members.ban(user, { reason });
-            else await message.guild.members.ban(user);
+            await message.guild.members.ban(user, { reason });
         } catch (error) {
             return message.channel.send(
                 `Failed to ban **${user.tag}**: ${error}`
