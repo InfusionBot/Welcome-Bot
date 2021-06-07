@@ -17,7 +17,6 @@ module.exports = {
             args[0] || `${message.author}`,
             message.client
         );
-        const member = message.guild.members.filter(m => m.id === user.id);
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0] || message.author}`);
@@ -26,7 +25,7 @@ module.exports = {
         msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
         msg.addField(
             "Joined:",
-            `Joined discord at ${user.createdAt}\nJoined ${message.guild.name} server at ${member.joinedAt}`
+            `Joined discord at ${user.createdAt}\nJoined ${message.guild.name} server at ${message.member.joinedAt}`
         );
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
