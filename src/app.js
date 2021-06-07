@@ -6,7 +6,7 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const dotenv = require("dotenv").config();
-process.env.BOT_VER = "1.1.0-dev";
+process.env.BOT_VER = "1.1.1-dev";
 
 const client = new Discord.Client();
 
