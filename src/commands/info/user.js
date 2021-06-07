@@ -39,15 +39,12 @@ module.exports = {
         }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
-        msg.setDescription(
-            `Information about ${args[0] || message.author} user`
-        );
+        msg.setDescription(`Information about ${args[0] || message.author}`);
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        msg.addField(
-            "Avatar URL:",
-            `[${user.avatarURL()}](${user.avatarURL()})`
-        );
+        let avatarURL = user.avatarURL().slice(0, 35);
+        avatarURL += "...";
+        msg.addField("Avatar URL:", `[${avatarURL}](${user.avatarURL()})`);
         if (badgesMD.length > 0) {
             msg.addField("Badges:", badgesMD.join(" "));
         } else {
