@@ -30,11 +30,11 @@ module.exports = {
         //Covert badges to images markdown
         let badgesMD = [];
         for (i = 0; i < badges.length; i++) {
-            badgesMD[badgesMD.length] = `![${badges[i].id}](${badges[i].url}`;
+            badgesMD[badgesMD.length] = `![${badges[i].id}](${badges[i].url})`;
         }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
-        msg.setDescription(`Information about ${args[0] || message.author}`);
+        msg.setDescription(`Information about ${args[0] || message.author} user`);
         msg.setThumbnail(`${user.avatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         msg.addField("Avatar URL:", `[url](${user.avatarURL()})`);
