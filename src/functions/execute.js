@@ -38,6 +38,13 @@ module.exports = async (message, client) => {
             }
         }
 
+        if (command.bot_perms) {
+            const botPerms = message.guild.me.permissionsIn(message.channel);
+            if (!botPerms || !botPerms.has(command.permissions)) {
+                return message.reply("You didn't give the bot permission to do this!");
+            }
+        }
+
         if (command.args && !args.length) {
             let reply = `You didn't provide any arguments, ${message.author}!`;
 
