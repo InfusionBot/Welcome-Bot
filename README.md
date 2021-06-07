@@ -68,9 +68,10 @@ The bot requires the following permissions:
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
 - Ban Members
+- Kick Members
 
 To include the `moderation` feature, use this invite link:
-> https://discord.com/api/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68612
+> https://discord.com/api/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68614
 
 To invite the bot with all the necessary required permissions **(without moderation)** mentioned above you can use this invitation link:
 > https://discord.com/oauth2/authorize?scope=bot&client_id=848459799783669790&permissions=68608
