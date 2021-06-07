@@ -21,6 +21,11 @@ These are the commands currently available:
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
+Moderation commands (same perfix only):
+- `ban` - Ban a user
+- `unban` - Unban a user
+- `kick` - Kick a user
+
 All these commands should be prefixed with prefix i.e. for command `ping` you have to send `w/ping` in the channel the bot has perms to read and send messages.
 
 In some of these you will see under a command their is a command, to execute those, send `command subcommand args` where `command` is the command, `subcommand` is the subcommand and `args` is/are the argument(s)
