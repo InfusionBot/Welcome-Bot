@@ -90,17 +90,17 @@ module.exports = async (message, client) => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
         if (!command.catchError) {
-        try {
-            message.channel.startTyping();
-            command.execute(message, args);
-            message.channel.stopTyping();
-        } catch (error) {
-            console.error(error);
-            message.reply(
-                "There was an error trying to execute that command, to get help use the help command"
-            );
-            return;
-        }
+            try {
+                message.channel.startTyping();
+                command.execute(message, args);
+                message.channel.stopTyping();
+            } catch (error) {
+                console.error(error);
+                message.reply(
+                    "There was an error trying to execute that command, to get help use the help command"
+                );
+                return;
+            }
         }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         //message.reply(errMsg);
