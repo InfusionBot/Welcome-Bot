@@ -11,12 +11,12 @@ module.exports = {
     bot_perms: ["BAN_MEMBERS"],
     args: true,
     catchError: false,
-    usage: "[@mention] [reason]",
+    usage: "[@user] (reason)",
     async execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
-        if (args.length < 2) {
+        if (args.length < 1) {
             return message.reply(
-                "Please mention the user you want to ban and specify a ban reason."
+                "Please mention the user you want to ban and specify a ban reason (optional)."
             );
         }
 
@@ -27,7 +27,7 @@ module.exports = {
             );
         }
 
-        const reason = args.slice(1).join(" ");
+        const reason = args.slice(1).join(" ") || "Not specified";
         try {
             await message.guild.members.ban(user, { reason });
         } catch (error) {
