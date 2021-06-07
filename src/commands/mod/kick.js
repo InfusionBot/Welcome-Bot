@@ -9,6 +9,7 @@ module.exports = {
     description: "Kick a user.",
     permissions: ["BAN_MEMBERS"],
     args: true,
+    catchError: false,
     usage: "[@mention] (reason)",
     execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
