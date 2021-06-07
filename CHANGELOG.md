@@ -6,9 +6,18 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+
+## [v1.1.1]
+
+> **Released:** `07-06-2021`
+
+### Bug fixes
+
+- Fix `prefix not defined`
+
 ## [v1.1.0]
 
-> **Released:** `TBA`
+> **Released:** `06-06-2021`
 
 ### Changes
 
