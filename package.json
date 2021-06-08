@@ -5,6 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/bot.js",
+    "dev": "nodemon src/bot.js",
     "format:check": "prettier --check .",
     "format": "prettier --write ."
   },
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "eslint": "^7.27.0",
-    "prettier": "^2.3.0"
+    "prettier": "^2.3.0",
+    "nodemon": "^2.0.7"
   }
 }
