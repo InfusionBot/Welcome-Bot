@@ -12,6 +12,5 @@ module.exports = {
     execute(message, args) {
         const greetUser = require("../../functions/greetUser");
         greetUser(message.guild, message.member);
-        message.reply("Test succeeded!!");
     },
 };
