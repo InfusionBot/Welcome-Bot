@@ -14,7 +14,8 @@ const greetUser = async (guild, member) => {
     //Replace Placeholders with their values
     msg = msg
         .replace("{mention}", `${member}`)
-        .replace("{server}", `${guild.name}`);
+        .replace("{server}", `${guild.name}`)
+        .replace("{member_count}", `${guild.memberCount}`);
     //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
     channel.send(msg);
     channel.stopTyping();
