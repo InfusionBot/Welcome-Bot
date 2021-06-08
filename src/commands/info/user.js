@@ -21,7 +21,11 @@ module.exports = {
                 message.client
             );
         } else {
-            user = message.client.users.cache.get(args[0]);
+            if (message.author.id !== message.client.user.id) {
+                user = message.client.users.cache.get(args[0]);
+            } else {
+                user = message.client.user;
+            }
         }
 
         if (!user) {
