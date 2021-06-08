@@ -56,7 +56,10 @@ module.exports = {
         );
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
-        msg.setFooter(`Requested by ${message.author.tag}`, `${message.author.avatarURL()}`);
+        msg.setFooter(
+            `Requested by ${message.author.tag}`,
+            `${message.author.avatarURL()}`
+        );
         msg.setColor("#33ddff");
         msg.setTimestamp();
         message.channel.send(msg);
