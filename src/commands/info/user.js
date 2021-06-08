@@ -21,7 +21,7 @@ module.exports = {
                 message.client
             );
         } else {
-            user = client.users.cache.get(args[0]);
+            user = message.client.users.cache.get(args[0]);
         }
 
         if (!user) {
