@@ -95,7 +95,7 @@ Feel free to upvote him to show your support.
 
 [![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
 
-### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)
+### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
