@@ -49,11 +49,11 @@ module.exports = {
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0] || message.author}`);
-        msg.setThumbnail(`${user.avatarURL()}`);
+        msg.setThumbnail(`${user.displayAvatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        let avatarURL = user.avatarURL().slice(0, 35);
-        avatarURL += "...";
-        msg.addField("Avatar URL:", `[${avatarURL}](${user.avatarURL()})`);
+        let avatarURL = user.displayAvatarURL().slice(0, 35);
+        displayAvatarURL += "...";
+        msg.addField("Avatar URL:", `[${avatarURL}](${user.displayAvatarURL()})`);
         if (badgesMD.length > 0) {
             msg.addField("Badges:", badgesMD.join(" "));
         } else {
@@ -67,7 +67,7 @@ module.exports = {
         msg.addField("Presence:", `${user.presence.status}`);
         msg.setFooter(
             `Requested by ${message.author.tag}`,
-            `${message.author.avatarURL()}`
+            `${message.author.displayAvatarURL()}`
         );
         msg.setColor("#33ddff");
         msg.setTimestamp();
