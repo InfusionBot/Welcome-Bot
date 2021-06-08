@@ -53,7 +53,10 @@ module.exports = {
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         let avatarURL = user.displayAvatarURL().slice(0, 35);
         displayAvatarURL += "...";
-        msg.addField("Avatar URL:", `[${avatarURL}](${user.displayAvatarURL()})`);
+        msg.addField(
+            "Avatar URL:",
+            `[${avatarURL}](${user.displayAvatarURL()})`
+        );
         if (badgesMD.length > 0) {
             msg.addField("Badges:", badgesMD.join(" "));
         } else {
