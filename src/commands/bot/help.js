@@ -49,7 +49,7 @@ module.exports = {
         msg.setDescription(`Help for ${command.name} command`);
         msg.addField("Command Name:", command.name);
 
-        if (command.aliases)
+        if (command.aliases && command.aliases !== [])
             msg.addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             msg.addField(
