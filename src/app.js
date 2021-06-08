@@ -105,9 +105,9 @@ client.on("message", async function (message) {
                 })
                 .catch(console.error);
         }
-    } else {
-        execute(message, client);
     }
+    //Whatever happens, if the message starts with prefix, the bot should execute it.
+    execute(message, client);
 });
 
 // Login

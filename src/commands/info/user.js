@@ -9,15 +9,20 @@ module.exports = {
     description:
         "Get information about a user. It will show your info if no user was mentioned",
     args: false,
-    usage: "(@mention)",
+    usage: "(@mention || user_id)",
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         const getUserFlags = require("../../functions/getUserFlags.js");
-        const user = getUserFromMention(
-            args[0] || `${message.author}`,
-            message.client
-        );
+        let user;
+        if (args[0].startsWith("@")) {
+            user = getUserFromMention(
+                args[0] || `${message.author}`,
+                message.client
+            );
+        } else {
+            user = client.users.cache.get(args[0]);
+        }
 
         if (!user) {
             return;

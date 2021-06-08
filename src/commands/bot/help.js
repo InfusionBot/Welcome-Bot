@@ -66,7 +66,7 @@ module.exports = {
             msg.addField(
                 "Usage:",
                 `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                    `\n[] = Required argument\n() = Optional argument`
+                    `\n[] = Required argument\n() = Optional argument\n|| = this OR that`
             );
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);
