@@ -9,6 +9,9 @@ const greetUser = async (guild, member) => {
     let channel = guild.channels.cache.find(
         (ch) => ch.name === guildDB.welcomeChannel
     );
+    if (!channel) {
+        return;
+    }
     channel.startTyping(1);
     let msg = guildDB.welcomeMessage;
     //Replace Placeholders with their values
