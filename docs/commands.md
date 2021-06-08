@@ -48,4 +48,4 @@ Example: `{server}` will be replaced by the server's name
 Available placeholders:
 - `{server}` - The server's name
 - `{mention}` - @-mention the user who has joined.
-- `{member_number}` - The number of the member, took from members count in the server, i.e "If their were 8 members and a new member joins, he is our 9th member!"
+- `{members}` - The number of the member, took from members count in the server, i.e "If their were 8 members and a new member joins, he is our 9th member!"

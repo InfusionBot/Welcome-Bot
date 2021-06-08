@@ -28,7 +28,7 @@ const guildSchema = new mongoose.Schema({
         required: true,
         trim: true,
         default:
-            "Welcome {mention} to the {server} server!\nYou are our #{member_number}",
+            "Welcome {mention} to the {server} server!\nYou are our #{members} member",
     },
 });
 
