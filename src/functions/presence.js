@@ -9,7 +9,7 @@ const presence = function (client) {
     client.user
         .setPresence({
             activity: {
-                name: `${servers} server${servers > 1 ? "s" : ""}`,
+                name: `w/help | ${servers} server${servers > 1 ? "s" : ""}`,
                 type: "WATCHING",
             },
         })

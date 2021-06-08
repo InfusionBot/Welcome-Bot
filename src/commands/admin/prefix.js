@@ -42,7 +42,7 @@ module.exports = {
                 break;
             case "reset":
                 //Reset bot prefix
-                updateGuild(message.guild.id, "prefix", "w/");
+                updateGuild(message.guild.id, "prefix", message.client.defaultPrefix);
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
                     "Prefix reset to '" + guildDB.prefix + "' (without quotes)"

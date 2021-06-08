@@ -15,14 +15,14 @@ module.exports = {
         msg.setDescription("Information and Support for Welcome-Bot");
         msg.setThumbnail("https://i.imgur.com/bbSlsT7.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
-        msg.addField("Version:", `${process.env.BOT_VER}`);
+        msg.addField("Version:", `${message.client.botVersion}`);
         msg.addField(
             "Bot lists:",
-            `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/848459799783669790)`
+            `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)`
         );
         msg.addField(
             "Other links:",
-            "[Support server](https://discord.gg/xxU7akJNbC)\n" +
+            "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
                 "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                 "[Privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [Terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)"
         );

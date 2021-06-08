@@ -6,13 +6,14 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const dotenv = require("dotenv").config();
-process.env.BOT_VER = "1.1.1-dev";
 
 const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
 client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
+client.defaultPrefix = "w/";
+client.botVersion = "1.1.1-dev";
 
 const commandFolder = __dirname + "/commands";
 const commandFolders = fs.readdirSync(commandFolder);
