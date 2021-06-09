@@ -46,9 +46,7 @@ module.exports = {
             user.kick(reason);
         } catch (error) {
             console.error(error);
-            return message.channel.send(
-                `Failed to kick **${user.tag}**`
-            );
+            return message.channel.send(`Failed to kick **${user.tag}**`);
         }
     },
 };
