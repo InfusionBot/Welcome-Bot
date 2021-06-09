@@ -7,7 +7,7 @@ module.exports = {
     name: "help",
     aliases: ["commands"],
     description: "List all of my commands or info about a specific command.",
-    usage: "[command name]",
+    usage: "(command name)",
     cooldown: 5,
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
@@ -29,7 +29,7 @@ module.exports = {
             );
             msg.addField(
                 "What is Cooldown:",
-                "Cooldown is the minimum time required to execute the same command again, (default: 3 seconds)"
+                "Cooldown is the minimum time required to execute the same command again"
             );
 
             return message.channel.send(msg);
@@ -41,20 +41,27 @@ module.exports = {
             commands.find((c) => c.aliases && c.aliases.includes(name));
 
         if (!command) {
-            return message.reply(
-                "That is not a valid command or command was disabled!"
+            return message.channel.send(
+                `That is not a valid command or command was disabled, ${message.author}`
             );
         }
 
         msg.setDescription(`Help for ${command.name} command`);
         msg.addField("Command Name:", command.name);
 
-        if (command.aliases)
+        if (command.aliases && command.aliases !== [])
             msg.addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             msg.addField(
                 "Permissions:",
                 `You need ${command.permissions.join(
+                    ", "
+                )} permission(s) to execute this command.`
+            );
+        if (command.bot_perms)
+            msg.addField(
+                "Bot Permissions:",
+                `The bot needs ${command.permissions.join(
                     ", "
                 )} permission(s) to execute this command.`
             );
@@ -65,7 +72,8 @@ module.exports = {
         if (command.usage)
             msg.addField(
                 "Usage:",
-                `${guildDB.prefix}${command.name} ${command.usage}`
+                `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
+                    `\n[] = Required argument\n() = Optional argument\n|| = this OR that`
             );
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);

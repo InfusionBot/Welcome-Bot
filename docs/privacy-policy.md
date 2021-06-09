@@ -11,8 +11,8 @@ The bot may store the following information automatically when being invited to 
 
 - `guildId` with the `Server's ID` as value.
 - `prefix` with value `w/`.
-- `welcomeChannel` with value `new-members`
-- `welcomeMessage` with value `Welcome {mention} to the {server} server`
+- `channel` with value `new-members`
+- `welcomeMessage` with value `Welcome {mention} to the {server} server!\nYou are our #{members} member`
 
 No other information outside of the above mentioned one will be stored.
 

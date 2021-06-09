@@ -7,68 +7,58 @@ module.exports = {
     name: "prefix",
     //aliases: [],
     description: "Manage perfix for this server",
-    subcommand: true,
+    permissions: ["MANAGE_SERVER"],
+    subcommand: false,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
-        switch (args[0].toLowerCase()) {
+        let subcommand;
+        if (args[0]) {
+            subcommand = args[0].toLowerCase();
+        } else {
+            subcommand = "";
+        }
+        switch (subcommand) {
             case "set":
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    if (args[1]) {
-                        //Set bot prefix
-                        updateGuild(
-                            message.guild.id,
-                            "prefix",
-                            args.join(" ").replace(`${args[0]} `, "").trim()
-                        );
-                        message.reply(
-                            "Prefix set to '" +
-                                args
-                                    .join(" ")
-                                    .replace(`${args[0]} `, "")
-                                    .trim() +
-                                "' (without quotes)"
-                        );
-                    } else {
-                        message.reply(
-                            "Please supply valid value for setting prefix."
-                        );
-                    }
+                if (args[1]) {
+                    //Set bot prefix
+                    updateGuild(
+                        message.guild.id,
+                        "prefix",
+                        args.join(" ").replace(`${args[0]} `, "").trim()
+                    );
+                    message.reply(
+                        "Prefix set to '" +
+                            args.join(" ").replace(`${args[0]} `, "").trim() +
+                            "' (without quotes)"
+                    );
                 } else {
                     message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
+                        "Please supply valid value for setting prefix."
                     );
                 }
                 break;
+            case "reset":
+                //Reset bot prefix
+                updateGuild(
+                    message.guild.id,
+                    "prefix",
+                    message.client.defaultPrefix
+                );
+                guildDB = await getGuild(message.guild.id);
+                message.reply(
+                    "Prefix reset to '" + guildDB.prefix + "' (without quotes)"
+                );
+                break;
             case "get":
+            default:
                 //Get bot prefix
                 message.reply(
                     "Prefix in this server is set to '" +
                         guildDB.prefix +
                         "' (without quotes)"
-                );
-                break;
-            case "reset":
-                //Reset bot prefix
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    updateGuild(message.guild.id, "prefix", "w/");
-                    guildDB = await getGuild(message.guild.id);
-                    message.reply(
-                        "Prefix reset to '" +
-                            guildDB.prefix +
-                            "' (without quotes)"
-                    );
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
-                break;
-            default:
-                message.reply(
-                    "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
                 );
                 break;
         }

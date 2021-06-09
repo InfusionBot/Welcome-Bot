@@ -7,13 +7,13 @@ const getGuild = require("../db/functions/getGuild");
 module.exports = async (guild, member) => {
     let guildDB = await getGuild(guild.id);
     let channel = guild.channels.cache.find(
-        (ch) => ch.name === guildDB.channel
+        (ch) => ch.name === guildDB.welcomeChannel
     );
     if (!channel) {
         return;
     }
     channel.startTyping(1);
-    let msg = guildDB.welcomeMessage;
+    let msg = guildDB.goodByeMessage;
     //Replace Placeholders with their values
     msg = msg
         .replace("{mention}", `${member}`)

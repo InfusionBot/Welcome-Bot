@@ -7,69 +7,60 @@ module.exports = {
     name: "message",
     aliases: ["msg"],
     description: "Manage welcome message for this server",
-    subcommand: true,
+    permissions: ["MANAGE_SERVER"],
+    subcommand: false,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
-        switch (args[0].toLowerCase()) {
+        let subcommand;
+        if (args[0]) {
+            subcommand = args[0].toLowerCase();
+        } else {
+            subcommand = "";
+        }
+        switch (subcommand) {
             case "set":
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    //Set welcome message
-                    if (args[1]) {
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeMessage",
-                            args.join(" ").replace(`${args[0]} `, "")
-                        );
-                        message.reply(
-                            "Welcome message set to '" +
-                                args.join(" ").replace(`${args[0]} `, "") +
-                                "' (without quotes)"
-                        );
-                    } else {
-                        message.reply(
-                            "Please supply valid value for setting message."
-                        );
-                    }
+                //Set welcome message
+                if (args[1]) {
+                    updateGuild(
+                        message.guild.id,
+                        "welcomeMessage",
+                        args.join(" ").replace(`${args[0]} `, "")
+                    );
+                    message.reply(
+                        "Welcome message set to '" +
+                            args.join(" ").replace(`${args[0]} `, "") +
+                            "' (without quotes)"
+                    );
                 } else {
                     message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
+                        "Please supply valid value for setting message."
                     );
                 }
                 break;
+            case "reset":
+                //Reset welcome channel
+                updateGuild(
+                    message.guild.id,
+                    "welcomeMessage",
+                    "Welcome {mention} to the {server} server!\nYou are our #{members} member"
+                );
+                guildDB = await getGuild(message.guild.id);
+                message.reply(
+                    "Message reset to '" +
+                        guildDB.welcomeMessage +
+                        "' (without quotes)"
+                );
+                break;
             case "get":
+            default:
                 //Get welcome channel
                 message.reply(
                     "Message currently is set to '" +
                         guildDB.welcomeMessage +
                         "' (without quotes)"
-                );
-                break;
-            case "reset":
-                //Reset welcome channel
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    updateGuild(
-                        message.guild.id,
-                        "welcomeMessage",
-                        "Welcome {mention} to the {server} server"
-                    );
-                    guildDB = await getGuild(message.guild.id);
-                    message.reply(
-                        "Message reset to '" +
-                            guildDB.welcomeMessage +
-                            "' (without quotes)"
-                    );
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
-                break;
-            default:
-                message.reply(
-                    "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
                 );
                 break;
         }

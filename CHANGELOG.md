@@ -6,6 +6,13 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+## [v1.2.0]
+
+> **Released:** `TBA`
+
+### Additions
+
+- Add info, stats, user, kick, ban, unban command and this bot can now be used as a logger for members in server ([#17])
 
 ## [v1.1.1]
 
@@ -37,6 +44,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
+[#17]: https://github.com/Welcome-Bot/welcome-bot/pull/17
 [#13]: https://github.com/Welcome-Bot/welcome-bot/pull/13
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3

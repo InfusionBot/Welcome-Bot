@@ -6,76 +6,64 @@
 module.exports = {
     name: "channel",
     aliases: ["chan"],
-    description: "Manage welcome channel for this server",
-    subcommand: true,
+    description:
+        "Manage channel for this server\nNot providing any arguments will display the current settings.",
+    permissions: ["MANAGE_SERVER"],
+    subcommand: false,
     subcommands: ["set", "get", "reset"],
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB = await getGuild(message.guild.id);
-        switch (args[0].toLowerCase()) {
+        let subcommand;
+        if (args[0]) {
+            subcommand = args[0].toLowerCase();
+        } else {
+            subcommand = "";
+        }
+        switch (subcommand) {
             case "set":
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    if (args[1]) {
-                        //Set welcome channel
-                        updateGuild(
-                            message.guild.id,
-                            "welcomeChannel",
+                if (args[1]) {
+                    //Set channel
+                    updateGuild(
+                        message.guild.id,
+                        "channel",
+                        args
+                            .join(" ")
+                            .replace(`${args[0]} `, "")
+                            .replace(" ", "")
+                    ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
+                    message.reply(
+                        "Channel set to '" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
-                                .replace(" ", "")
-                        ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
-                        message.reply(
-                            "Welcome channel set to '" +
-                                args
-                                    .join(" ")
-                                    .replace(`${args[0]} `, "")
-                                    .replace(" ", "") +
-                                "' (without quotes)"
-                        );
-                    } else {
-                        message.reply(
-                            "Please supply valid value for setting channel."
-                        );
-                    }
-                } else {
-                    message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
-                    );
-                }
-                break;
-            case "get":
-                //Get welcome channel
-                message.reply(
-                    "Channel currently is set to '" +
-                        guildDB.welcomeChannel +
-                        "' (without quotes)"
-                );
-                break;
-            case "reset":
-                //Reset welcome channel
-                if (message.member.hasPermission("MANAGE_SERVER")) {
-                    updateGuild(
-                        message.guild.id,
-                        "welcomeChannel",
-                        "new-members"
-                    );
-                    guildDB = await getGuild(message.guild.id);
-                    message.reply(
-                        "Channel reset to '" +
-                            guildDB.welcomeChannel +
+                                .replace(" ", "") +
                             "' (without quotes)"
                     );
                 } else {
                     message.reply(
-                        "Sorry, You don't have MANAGE_SERVER permission"
+                        "Please supply valid value for setting channel."
                     );
                 }
                 break;
-            default:
+            case "reset":
+                //Reset channel
+                updateGuild(message.guild.id, "channel", "new-members");
+                guildDB = await getGuild(message.guild.id);
                 message.reply(
-                    "Are you trying to run a subcommand?\nI think you have a typo in the subcommand."
+                    "Channel reset to '" +
+                        guildDB.channel +
+                        "' (without quotes)"
+                );
+                break;
+            case "get":
+            default:
+                //Get channel
+                message.reply(
+                    "Channel currently is set to '" +
+                        guildDB.channel +
+                        "' (without quotes)"
                 );
                 break;
         }

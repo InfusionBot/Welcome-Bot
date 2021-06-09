@@ -8,8 +8,7 @@ const { Collection } = require("discord.js");
 const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
-module.exports = async (message, client) => {
-    let guildDB = await getGuild(message.guild.id);
+module.exports = async (message, client, guildDB) => {
     let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
     if (message.content.startsWith(guildDB.prefix)) {
         const args = message.content
@@ -25,6 +24,7 @@ module.exports = async (message, client) => {
 
         if (!command || typeof command === "undefined") {
             //message.reply(errMsg);
+            return;
         }
 
         if (command.guildOnly && message.channel.type === "dm") {
@@ -35,6 +35,15 @@ module.exports = async (message, client) => {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
                 return message.reply("You don't have permission to do this!");
+            }
+        }
+
+        if (command.bot_perms) {
+            const botPerms = message.guild.me.permissionsIn(message.channel);
+            if (!botPerms || !botPerms.has(command.bot_perms)) {
+                return message.reply(
+                    "You didn't give the bot permission to do this!"
+                );
             }
         }
 
@@ -89,16 +98,18 @@ module.exports = async (message, client) => {
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-        try {
-            message.channel.startTyping();
-            command.execute(message, args);
-            message.channel.stopTyping();
-        } catch (error) {
-            console.error(error);
-            message.reply(
-                "There was an error trying to execute that command, to get help use the help command"
-            );
-            return;
+        if (command.catchError) {
+            try {
+                message.channel.startTyping();
+                command.execute(message, args);
+                message.channel.stopTyping();
+            } catch (error) {
+                console.error(error);
+                message.reply(
+                    "There was an error trying to execute that command, please report this at https://github.com/Welcome-Bot/welcome-bot/issues"
+                );
+                return;
+            }
         }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         //message.reply(errMsg);
