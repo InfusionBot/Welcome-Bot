@@ -31,7 +31,7 @@ We are an open source project on [GitHub](https://github.com/Welcome-Bot/welcome
 
 ## Docs
 
-See [docs folder](https://github.com/Welcome-Bot/welcome-bot/tree/main/docs)
+Check out the docs on out [gh pages site](https://welcome-bot.github.io/welcome-bot/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
