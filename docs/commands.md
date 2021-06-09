@@ -44,6 +44,8 @@ Manage prefix for this server
 
 ## Moderation commands
 
+NOTE: `reason` argument will be set to "Not specified" if you don't specify any reason
+
 ### `ban`
 
 Ban a user
@@ -59,15 +61,7 @@ Unban a user
 Kick a user
 - Usage: `[@user] (reason)`
 
-## Other commands
-
-### `ping`
-
-Ping the bot.
-
-### `test`
-
-Test by sending welcome message
+## General
 
 ### `help`
 
@@ -75,12 +69,33 @@ Get help
 - Usage: `(command_name)`
 - Alias: `commands`
 
-NOTE: `reason` will be set to "Not specified" if you don't specify any reason in the moderation commands
+### `ping`
+
+Ping the bot.
+
+## Miscellaneous
+
+### `test`
+
+Test by sending welcome message
+
+### `stats`
+
+Server statistics.
+
+### `user`
+
+Information on a user.
+- Usage: `[@mention || user_id]`
+- Aliases: `whois`
+
+- - -
 
 The brakets in these commands mean:
 ```
 [] = Required argument
 () = Optional argument
+|| = This OR That
 ```
 
 All these commands should be prefixed with prefix i.e. for command `ping` you have to send `w/ping` in the channel the bot has perms to read and send messages.
@@ -88,6 +103,8 @@ All these commands should be prefixed with prefix i.e. for command `ping` you ha
 In some of these you will see under a command their is a command, to execute those, send `command subcommand args` where `command` is the command, `subcommand` is the subcommand and `args` is/are the argument(s)
 
 Example usage of subcommand: `w/message set Welcome {mention}!`
+
+- - -
 
 ## Placeholders in welcome message
 There are some placeholders you can use in the welcome message which will be replaced by their values by the bot.
