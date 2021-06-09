@@ -41,7 +41,7 @@ module.exports = async (message, client) => {
 
         if (command.bot_perms) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
-            if (!botPerms || !botPerms.has(command.permissions)) {
+            if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.reply(
                     "You didn't give the bot permission to do this!"
                 );
