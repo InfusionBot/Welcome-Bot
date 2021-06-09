@@ -89,6 +89,11 @@ Information on a user.
 - Usage: `[@mention || user_id]`
 - Aliases: `whois`
 
+### `info`
+
+Information about the bot.
+Aliases: `debug`
+
 - - -
 
 The brakets in these commands mean:
