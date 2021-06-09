@@ -10,6 +10,7 @@ module.exports = {
     permissions: ["BAN_MEMBERS"],
     bot_perms: ["BAN_MEMBERS"],
     args: true,
+    guildOnly: true,
     catchError: false,
     usage: "[@user] (reason)",
     async execute(message, args) {

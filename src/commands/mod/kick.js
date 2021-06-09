@@ -10,6 +10,7 @@ module.exports = {
     permissions: ["KICK_MEMBERS"],
     bot_perms: ["KICK_MEMBERS"],
     args: true,
+    guildOnly: true,
     catchError: false,
     usage: "[@mention] (reason)",
     execute(message, args) {
