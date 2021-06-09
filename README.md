@@ -19,11 +19,11 @@ Adjust the settings to fit all the needs of your server! You can select the chan
 
 ### Reliable and High Quality
 
-With our revolutionary infrastructure implementation, we’re proud to achieve absolute 100% uptime! (but we are still only 99.9% uptime when we upgrade the bot to a new version) This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
+With our revolutionary infrastructure implementation, we’re proud to achieve absolute 100% uptime! (but still only 99.9% uptime when we upgrade the bot to a new version). This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
 
 ### Multi-purpose
 
-We also give you a feature "Moderation" that hepls you to quickly ban, unban and kick users
+We also give you a feature "Moderation" that hepls you to quickly ban, unban and kick users.
 
 ### Open Source
 
@@ -66,7 +66,7 @@ The default welcome message is `Welcome {mention} to the {server} server`. Some 
 The default welcome channel is set to `new-members`, commonly used welcome channels are:
 - `welcome`
 - `new-members`
-- `new-users`
+- `member-log`
 
 ## Inviting the bot
 
