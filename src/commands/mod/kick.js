@@ -11,7 +11,7 @@ module.exports = {
     bot_perms: ["KICK_MEMBERS"],
     args: true,
     guildOnly: true,
-    catchError: false,
+    catchError: true,
     usage: "[@mention] (reason)",
     execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
