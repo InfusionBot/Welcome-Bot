@@ -96,7 +96,7 @@ client.on("message", async function (message) {
     const guildDB = await getGuild(message.guild.id);
 
     if (message.mentions.has(client.user)) {
-        let reply = `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is '${guildDB.prefix}'\nSend \`${guildDB.prefix}help\` to get help`;
+        let reply = `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is '${guildDB.prefix}' in this server.\nSend \`${guildDB.prefix}help\` to get help`;
         if (!message.reference) {
             message.channel.startTyping();
             message.channel.send(reply);
