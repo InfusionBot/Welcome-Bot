@@ -112,12 +112,15 @@ client.on("message", async function (message) {
     if (message.guild) {
         const guildDB = await getGuild(message.guild.id);
     } else if (!message.guild) {
-        const guildDB = {prefix: "w/"};
+        const guildDB = { prefix: "w/" };
     }
 
     if (message.mentions.has(client.user)) {
-        const server = message.guild?" in this server.":"";
-        let reply = `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is '${guildDB.prefix}'` + server + `\nSend \`${guildDB.prefix}help\` to get help`;
+        const server = message.guild ? " in this server." : "";
+        let reply =
+            `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is '${guildDB.prefix}'` +
+            server +
+            `\nSend \`${guildDB.prefix}help\` to get help`;
         if (!message.reference) {
             message.channel.startTyping();
             message.channel.send(reply);
