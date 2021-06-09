@@ -46,9 +46,7 @@ module.exports = {
             await message.guild.members.ban(user, { reason });
         } catch (error) {
             console.error(error);
-            return message.channel.send(
-                `Failed to ban **${user.tag}**`
-            );
+            return message.channel.send(`Failed to ban **${user.tag}**`);
         }
 
         return message.channel.send(
