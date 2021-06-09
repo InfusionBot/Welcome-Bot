@@ -8,8 +8,7 @@ const { Collection } = require("discord.js");
 const updateGuild = require("../db/functions/updateGuild");
 const getGuild = require("../db/functions/getGuild");
 
-module.exports = async (message, client) => {
-    let guildDB = await getGuild(message.guild.id);
+module.exports = async (message, client, guildDB) => {
     let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
     if (message.content.startsWith(guildDB.prefix)) {
         const args = message.content
