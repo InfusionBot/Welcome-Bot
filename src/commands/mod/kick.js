@@ -29,7 +29,9 @@ module.exports = {
         }
         const member = message.guild.members.cache.get(user.id);
         if (!member)
-            return message.reply("We can't find that user in your server as a member.");
+            return message.reply(
+                "We can't find that user in your server as a member."
+            );
         if (user.id === message.client.user.id)
             return message.reply(
                 "Please don't try to kick me, you have to do it yourself."
