@@ -92,7 +92,6 @@ Information on a user.
 ### `info`
 
 Information about the bot.
-Aliases: `debug`
 
 - - -
 
