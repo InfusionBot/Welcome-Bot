@@ -19,7 +19,6 @@ module.exports = async (guild, member) => {
         .replace("{mention}", `${member}`)
         .replace("{server}", `${guild.name}`)
         .replace("{members}", `${guild.memberCount}`);
-    //https://discord.js.org/#/docs/collection/master/class/Collection?scrollTo=find
     channel.send(msg);
     channel.stopTyping();
 };
