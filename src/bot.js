@@ -17,6 +17,12 @@ client.botVersion = "1.1.1-dev";
 
 const commandFolder = __dirname + "/commands";
 const commandFolders = fs.readdirSync(commandFolder);
+let defaultOpts = {
+    bot_perms: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"],
+    args: false,
+    catchError: true,
+    disabled: false
+};
 
 for (const folder of commandFolders) {
     const commandFiles = fs
@@ -24,7 +30,17 @@ for (const folder of commandFolders) {
         .filter((file) => file.endsWith(".js"));
     for (const file of commandFiles) {
         let module = file.replace(".js", "");
-        const command = require(`${commandFolder}/${folder}/${module}`);
+        let command = require(`${commandFolder}/${folder}/${module}`);
+        if (command.bot_perms) {
+            command.bot_perms = [
+                ...defaultOpts.bot_perms,
+                ...commands.bot_perms
+            ];
+        }
+        command = {
+            ...defaultOpts,
+            ...command
+        };
         if (!command.disabled) {
             client.commands.set(command.name, command);
         } else {
