@@ -38,7 +38,7 @@ module.exports = {
             message.member.roles.highest.position
         )
             return message.channel.send(
-                "You cannot ban someone with an equal or higher role"
+                "You cannot ban someone with an equal or higher role!"
             );
 
         const reason = args.slice(1).join(" ") || "Not specified";
