@@ -13,7 +13,7 @@ module.exports = {
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");
-        const getUserFlags = require("../../functions/getUserFlags.js");
+        //const getUserFlags = require("../../functions/getUserFlags.js");
         let user;
         if (args[0]) {
             if (args[0].startsWith("@"))
@@ -34,7 +34,7 @@ module.exports = {
             return;
         }
 
-        let badges = [];
+        /*let badges = [];
         await getUserFlags(user)
             .then((b) => {
                 badges = b;
@@ -49,7 +49,7 @@ module.exports = {
             badgesStr[badgesStr.length] = `${message.client.emojis.cache.find(
                 (emoji) => emoji.id === badges[i].emoji
             )}`;
-        }
+        }*/
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
         msg.setDescription(`Information about ${args[0] || message.author}`);
@@ -61,11 +61,11 @@ module.exports = {
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`
         );
-        if (badgesStr.length > 0) {
+        /*if (badgesStr.length > 0) {
             msg.addField("Badges:", badgesStr.join(" "));
         } else {
             msg.addField("Badges:", "None");
-        }
+        }*/
         msg.addField(
             "Joined:",
             `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
