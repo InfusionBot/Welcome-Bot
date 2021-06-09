@@ -8,15 +8,22 @@ Welcome-bot is a bot built for you, to welcome new users to your servers mainly.
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
-[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://discord.gg/xxU7akJNbC)
+[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://dsc.gg/welcome-bot-guild)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 
 ## Features
-- Welcome message customizable
-- Change channel to send welcome message, quickly
-- User friendly - help and info commands available
-- Multi-purpose
-    - Moderation - Ban, unban, kick users
+
+### Customizable Settings
+
+Adjust the settings to fit all the needs of your server! You can select the channel to send welcome logs to, the welcome log message, the prefix of the bot for this server, and more…
+
+### Multi-purpose
+
+We also give you a feature "Moderation" that hepls you to quickly ban, unban and kick users
+
+### Open Source
+
+We are an open source project on [GitHub](https://github.com/Welcome-Bot/welcome-bot). Don’t believe what we’ve said earlier? Check out the source code for yourself! This means the maximum level of transparency, so you’ll never have to worry about privacy concerns.
 
 ## Docs
 
