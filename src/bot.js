@@ -21,7 +21,7 @@ let defaultOpts = {
     bot_perms: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"],
     args: false,
     catchError: true,
-    disabled: false
+    disabled: false,
 };
 
 for (const folder of commandFolders) {
@@ -34,12 +34,12 @@ for (const folder of commandFolders) {
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
-                ...commands.bot_perms
+                ...commands.bot_perms,
             ];
         }
         command = {
             ...defaultOpts,
-            ...command
+            ...command,
         };
         if (!command.disabled) {
             client.commands.set(command.name, command);
