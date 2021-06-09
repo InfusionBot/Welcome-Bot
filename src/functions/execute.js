@@ -99,7 +99,7 @@ module.exports = async (message, client) => {
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-        if (!command.catchError) {
+        if (command.catchError) {
             try {
                 message.channel.startTyping();
                 command.execute(message, args);
