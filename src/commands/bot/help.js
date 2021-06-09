@@ -58,6 +58,13 @@ module.exports = {
                     ", "
                 )} permission(s) to execute this command.`
             );
+        if (command.bot_perms)
+            msg.addField(
+                "Bot Permissions:",
+                `The bot needs ${command.permissions.join(
+                    ", "
+                )} permission(s) to execute this command.`
+            );
         if (command.description)
             msg.addField("Description:", command.description);
         if (command.subcommands)
