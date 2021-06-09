@@ -42,9 +42,9 @@ module.exports = {
             });
 
         //Covert badges to images markdown
-        let badgesMD = [];
-        for (i = 0; i < badges.length; i++) {
-            badgesMD[badgesMD.length] = `![${badges[i].id}](${badges[i].url})`;
+        let badgesStr = [];
+        for (var i = 0; i < badges.length; i++) {
+            badgesStr[badgesStr.length] = `${message.client.emojis.get(badges[i].emoji)}`;
         }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
@@ -52,13 +52,13 @@ module.exports = {
         msg.setThumbnail(`${user.displayAvatarURL()}`);
         msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         let avatarURL = user.displayAvatarURL().slice(0, 35);
-        displayAvatarURL += "...";
+        avatarURL += "...";
         msg.addField(
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`
         );
-        if (badgesMD.length > 0) {
-            msg.addField("Badges:", badgesMD.join(" "));
+        if (badgesStr.length > 0) {
+            msg.addField("Badges:", badgesStr.join(" "));
         } else {
             msg.addField("Badges:", "None");
         }
