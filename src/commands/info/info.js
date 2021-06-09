@@ -5,8 +5,8 @@
  */
 module.exports = {
     name: "info",
-    aliases: ["debug"],
-    description: "Debug information",
+    aliases: [],
+    description: "Bot information",
     usage: "(--dm)",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
