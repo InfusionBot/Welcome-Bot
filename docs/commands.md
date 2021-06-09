@@ -1,30 +1,79 @@
 # Commands - Discord Welcome bot
 
-> Prefix: `!w`
+> Default Prefix: `w/`
 
 If You're not sure what prefix is used can you just `@-mention` the bot (`@welcome-bot#0914`) and it will tell you what prefix is used.
 
-These are the commands currently available:
-- `ping` - Ping the bot.
-- `test` - Test by sending welcome message
-- `help` - Get help
-- `chan` or `channel`
-    - `set [channel_name]` - Set welcome channel, channel to send message
-    - `get` - Get currently set welcome channel
-    - `reset` - Reset channel back to default value
-- `message` or `msg`
-    - `set [message]` - Set welcome message
-    - `get` - Get currently set welcome message
-    - `reset` - Reset message back to default value
-- `prefix`
-    - `set [prefix]` - Set bot prefix
-    - `get` - Get currently set bot prefix
-    - `reset` - Reset prefix back to default value
+## Setup Commands
 
-Moderation commands (same perfix only):
-- `ban [@user] (reason)` - Ban a user
-- `unban [user_id]` - Unban a user
-- `kick [@user] (reason)` - Kick a user
+### `channel`
+
+Manage channel to send welcome messages and good bye messages
+
+**Subcommands:**
+- `set [channel_name]` - Set channel, channel to send message
+- `get` - Get currently set channel
+- `reset` - Reset channel back to default value
+
+- Usage: `(subcommand)`
+- Aliases: `chan`
+
+###  `message`
+
+Manage welcome message
+
+**Subcommands:**
+- `set [message]` - Set welcome message
+- `get` - Get currently set welcome message
+- `reset` - Reset message back to default value
+
+- Usage: `(subcommand)`
+- Aliases: `msg`
+
+### `prefix`
+
+Manage prefix for this server
+
+**Subcommands:**
+- `set [prefix]` - Set bot prefix
+- `get` - Get currently set bot prefix
+- `reset` - Reset prefix back to default value
+
+- Usage: `(subcommand)`
+- Aliases: `msg`
+
+## Moderation commands
+
+### `ban`
+
+Ban a user
+- Usage: `[@user] (reason)`
+
+### `unban`
+
+Unban a user
+- Usage: `[user_id]`
+
+### `kick`
+
+Kick a user
+- Usage: `[@user] (reason)`
+
+## Other commands
+
+### `ping`
+
+Ping the bot.
+
+### `test`
+
+Test by sending welcome message
+
+### `help`
+
+Get help
+- Usage: `(command_name)`
+- Alias: `commands`
 
 NOTE: `reason` will be set to "Not specified" if you don't specify any reason in the moderation commands
 
