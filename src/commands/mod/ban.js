@@ -21,12 +21,16 @@ module.exports = {
         }
 
         const user = getUserFromMention(args[0], message.client);
-        const member = message.guild.members.cache.get(user.id);
         if (!user) {
             return message.reply(
                 "Please use a proper mention if you want to ban someone."
             );
         }
+        const member = message.guild.members.cache.get(user.id);
+        if (user.id === message.client.user.id)
+            return message.reply(
+                "Please don't try to ban me, you have to do it yourself."
+            );
 
         if (
             member.roles.highest.position >=
