@@ -7,7 +7,7 @@ module.exports = {
     name: "channel",
     aliases: ["chan"],
     description:
-        "Manage welcome channel for this server\nNot providing any arguments will display the current settings.",
+        "Manage channel for this server\nNot providing any arguments will display the current settings.",
     permissions: ["MANAGE_SERVER"],
     subcommand: false,
     subcommands: ["set", "get", "reset"],
@@ -24,17 +24,17 @@ module.exports = {
         switch (subcommand) {
             case "set":
                 if (args[1]) {
-                    //Set welcome channel
+                    //Set channel
                     updateGuild(
                         message.guild.id,
-                        "welcomeChannel",
+                        "channel",
                         args
                             .join(" ")
                             .replace(`${args[0]} `, "")
                             .replace(" ", "")
                     ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
                     message.reply(
-                        "Welcome channel set to '" +
+                        "Channel set to '" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
@@ -48,21 +48,21 @@ module.exports = {
                 }
                 break;
             case "reset":
-                //Reset welcome channel
-                updateGuild(message.guild.id, "welcomeChannel", "new-members");
+                //Reset channel
+                updateGuild(message.guild.id, "channel", "new-members");
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
                     "Channel reset to '" +
-                        guildDB.welcomeChannel +
+                        guildDB.channel +
                         "' (without quotes)"
                 );
                 break;
             case "get":
             default:
-                //Get welcome channel
+                //Get channel
                 message.reply(
                     "Channel currently is set to '" +
-                        guildDB.welcomeChannel +
+                        guildDB.channel +
                         "' (without quotes)"
                 );
                 break;
