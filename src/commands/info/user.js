@@ -15,17 +15,16 @@ module.exports = {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         const getUserFlags = require("../../functions/getUserFlags.js");
         let user;
-        if (args[0].startsWith("@")) {
-            user = getUserFromMention(
-                args[0] || `${message.author}`,
-                message.client
-            );
-        } else {
-            if (message.author.id !== message.client.user.id) {
+        if (args[0]) {
+            if (args[0].startsWith("@"))
+                user = getUserFromMention(
+                    args[0] || `${message.author}`,
+                    message.client
+                );
+            if (typeof args[0] === "number" && args[0] !== message.client.user.id)
                 user = message.client.users.cache.get(args[0]);
-            } else {
-                user = message.client.user;
-            }
+        } else {
+            user = message.author;
         }
 
         if (!user) {
