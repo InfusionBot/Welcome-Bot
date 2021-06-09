@@ -29,7 +29,7 @@ module.exports = {
             );
             msg.addField(
                 "What is Cooldown:",
-                "Cooldown is the minimum time required to execute the same command again, (default: 3 seconds)"
+                "Cooldown is the minimum time required to execute the same command again"
             );
 
             return message.channel.send(msg);
