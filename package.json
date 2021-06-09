@@ -5,7 +5,6 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/bot.js",
-    "dev": "nodemon src/bot.js",
     "format:check": "prettier --check .",
     "format": "prettier --write ."
   },
