@@ -17,7 +17,7 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "w/",
     },
-    welcomeChannel: {
+    channel: {
         type: String,
         required: true,
         trim: true,
@@ -29,6 +29,13 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default:
             "Welcome {mention} to the {server} server!\nYou are our #{members} member",
+    },
+    goodByeMessage: {
+        type: String,
+        required: true,
+        trim: true,
+        default:
+            "Good Bye {mention}!\nWe are sad to see you go!",
     },
 });
 
