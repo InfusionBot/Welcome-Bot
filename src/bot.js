@@ -34,7 +34,7 @@ for (const folder of commandFolders) {
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
-                ...commands.bot_perms,
+                ...command.bot_perms,
             ];
         }
         command = {
