@@ -35,6 +35,7 @@ for (const folder of commandFolders) {
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
+const sayGoodBye = require("./functions/sayGoodBye");
 const serverCount = require("./functions/serverCount");
 const execute = require("./functions/execute");
 const uptime = require("./functions/uptime");
@@ -70,6 +71,12 @@ client.on("ready", () => {
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member.guild, member);
+});
+
+//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberRemove
+client.on("guildMemberRemove", (member) => {
+    // When a member leaves or is kicked or is banned
+    sayGoodBye(member.guild, member);
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
