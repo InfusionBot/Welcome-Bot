@@ -109,10 +109,11 @@ client.on("guildDelete", (guild) => {
 
 client.on("message", async function (message) {
     if (message.author.bot) return;
+    let guildDB;
     if (message.guild) {
-        const guildDB = await getGuild(message.guild.id);
+        guildDB = await getGuild(message.guild.id);
     } else if (!message.guild) {
-        const guildDB = { prefix: "w/" };
+        guildDB = { prefix: "w/" };
     }
 
     if (message.mentions.has(client.user)) {
