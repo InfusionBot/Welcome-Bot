@@ -34,8 +34,7 @@ const guildSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        default:
-            "Good Bye {mention}!\nWe are sad to see you go!",
+        default: "Good Bye {mention}!\nWe are sad to see you go!",
     },
 });
 
