@@ -28,6 +28,8 @@ module.exports = {
             );
         }
         const member = message.guild.members.cache.get(user.id);
+        if (!member)
+            return message.reply("We can't find that user in your server as a member.");
         if (user.id === message.client.user.id)
             return message.reply(
                 "Please don't try to kick me, you have to do it yourself."
@@ -43,10 +45,14 @@ module.exports = {
 
         const reason = args.slice(1).join(" ") || "Not specified";
         try {
-            user.kick(reason);
+            member.kick(reason);
         } catch (error) {
             console.error(error);
             return message.channel.send(`Failed to kick **${user.tag}**`);
         }
+
+        return message.channel.send(
+            `Successfully kicked **${user.tag}** from the server!`
+        );
     },
 };
