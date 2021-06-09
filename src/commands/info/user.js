@@ -46,7 +46,9 @@ module.exports = {
         //Covert badges to images markdown
         let badgesStr = [];
         for (var i = 0; i < badges.length; i++) {
-            badgesStr[badgesStr.length] = `${message.client.emojis.cache.find(emoji => emoji.id === badges[i].emoji)}`;
+            badgesStr[badgesStr.length] = `${message.client.emojis.cache.find(
+                (emoji) => emoji.id === badges[i].emoji
+            )}`;
         }
         let msg = new MessageEmbed();
         msg.setTitle(`${user.tag}`);
