@@ -21,7 +21,10 @@ module.exports = {
                     args[0] || `${message.author}`,
                     message.client
                 );
-            if (typeof args[0] === "number" && args[0] !== message.client.user.id)
+            if (
+                typeof args[0] === "number" &&
+                args[0] !== message.client.user.id
+            )
                 user = message.client.users.cache.get(args[0]);
         } else {
             user = message.author;
