@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const https = require("https");
-const postReq = function (data, options) {
+const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
@@ -36,7 +36,7 @@ module.exports = function (client) {
                 Authorization: process.env.DISCORD_BOATS_token,
             },
         };
-        postReq(data, options);
+        sendReq(data, options);
     } else {
         console.log("NOTE: DISCORD_BOATS_token is not set");
     }
@@ -54,7 +54,7 @@ module.exports = function (client) {
                 Authorization: process.env.DELAPI_token,
             },
         };
-        postReq(data, options);
+        sendReq(data, options);
     } else {
         console.log("NOTE: DELAPI_token is not set");
     }
@@ -72,7 +72,7 @@ module.exports = function (client) {
                 Authorization: process.env.DISCORD_BOTS_token,
             },
         };
-        postReq(data, options);
+        sendReq(data, options);
     } else {
         console.log("NOTE: DISCORD_BOTS_token is not set");
     }

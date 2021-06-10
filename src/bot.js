@@ -86,13 +86,13 @@ client.on("ready", () => {
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
-    greetUser(member.guild, member);
+    greetUser(member);
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberRemove
 client.on("guildMemberRemove", (member) => {
     // When a member leaves or is kicked or is banned
-    sayGoodBye(member.guild, member);
+    sayGoodBye(member);
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
