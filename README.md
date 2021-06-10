@@ -31,32 +31,47 @@ We are an open source project on [GitHub](https://github.com/Welcome-Bot/welcome
 
 ## Docs
 
-Check out the docs on out [gh pages site](https://welcome-bot.github.io/welcome-bot/docs)
+Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Commands
 These are the commands currently available:
-- `ping` - Ping the bot.
-- `test` - Test by sending welcome message
-- `help` - Get help
-- `channel`
+
+### Setup commands
+
+- [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
     - `get` - Get currently set welcome channel
     - `reset` - Reset channel back to default value
-- `message`
+- [`message`](https://welcome-bot.github.io/docs/commands.html#message)
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
-- `prefix`
+- [`prefix`](https://welcome-bot.github.io/docs/commands.html#prefix)
     - `set` - Set bot prefix
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
-- `ban` - Ban a user
-- `unban` - Unban a user
-- `kick` - Kick a user
 
-For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
+### Moderation commands
+
+- [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
+- [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
+- [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
+
+### General
+
+- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
+- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
+
+### Miscellaneous
+
+- [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
+- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
+- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
+- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+
+For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
 
 ## Default values
 
