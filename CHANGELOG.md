@@ -6,9 +6,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
-## [v1.2.0]
+## [v1.2.1]
 
 > **Released:** `TBA`
+
+### Bug fixes
+
+- Fix "Error: Cannot find module '/app/node_modules/welcome-bot/src/app.js'"
+
+## [v1.2.0]
+
+> **Released:** `10-06-2021`
 
 ### Additions
 

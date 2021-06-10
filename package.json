@@ -2,7 +2,7 @@
   "name": "welcome-bot",
   "version": "1.2.0",
   "description": "Welcome users when they join your discord server",
-  "main": "src/app.js",
+  "main": "src/bot.js",
   "scripts": {
     "start": "node src/bot.js",
     "format:check": "prettier --check .",
