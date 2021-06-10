@@ -38,7 +38,7 @@ module.exports = async (message, client, guildDB) => {
             }
         }
 
-        if (command.bot_perms) {
+        if (command.bot_perms && message.channel.type !== "dm") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.reply(
