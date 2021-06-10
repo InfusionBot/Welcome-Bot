@@ -9,6 +9,7 @@ module.exports = {
     description: "Ping the bot",
     cooldown: 5,
     execute(message, args) {
-        message.channel.send(`Pong ${message.author}`);
+        const timeTaken = Date.now() - message.createdTimestamp;
+        message.channel.send(`Pong ${message.author}, This message had a latency of ${timeTaken}ms.`);
     },
 };
