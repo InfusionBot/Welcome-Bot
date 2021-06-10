@@ -30,9 +30,9 @@ module.exports = {
                         args.join(" ").replace(`${args[0]} `, "").trim()
                     );
                     message.reply(
-                        "Prefix set to '" +
+                        "Prefix set to `" +
                             args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "' (without quotes)"
+                            "`"
                     );
                 } else {
                     message.reply(
@@ -49,16 +49,16 @@ module.exports = {
                 );
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
-                    "Prefix reset to '" + guildDB.prefix + "' (without quotes)"
+                    "Prefix reset to `" + guildDB.prefix + "`"
                 );
                 break;
             case "get":
             default:
                 //Get bot prefix
                 message.reply(
-                    "Prefix in this server is set to '" +
+                    "Prefix in this server is set to `" +
                         guildDB.prefix +
-                        "' (without quotes)"
+                        "`"
                 );
                 break;
         }

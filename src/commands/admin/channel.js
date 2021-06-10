@@ -34,12 +34,12 @@ module.exports = {
                             .replace(" ", "")
                     ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
                     message.reply(
-                        "Channel set to '" +
+                        "Channel set to `" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
                                 .replace(" ", "") +
-                            "' (without quotes)"
+                            "`"
                     );
                 } else {
                     message.reply(
@@ -52,18 +52,18 @@ module.exports = {
                 updateGuild(message.guild.id, "channel", "new-members");
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
-                    "Channel reset to '" +
+                    "Channel reset to `" +
                         guildDB.channel +
-                        "' (without quotes)"
+                        "`"
                 );
                 break;
             case "get":
             default:
                 //Get channel
                 message.reply(
-                    "Channel currently is set to '" +
+                    "Channel currently is set to `" +
                         guildDB.channel +
-                        "' (without quotes)"
+                        "`"
                 );
                 break;
         }
