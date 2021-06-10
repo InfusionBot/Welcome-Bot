@@ -49,7 +49,9 @@ module.exports = {
         msg.setDescription(`Help for ${command.name} command`);
         msg.addField("Command Name:", command.name);
 
-        if (command.aliases && command.aliases !== [])
+        if (command.description)
+            msg.addField("Description:", command.description);
+            if (command.aliases && command.aliases !== [])
             msg.addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             msg.addField(
@@ -61,12 +63,10 @@ module.exports = {
         if (command.bot_perms)
             msg.addField(
                 "Bot Permissions:",
-                `The bot needs ${command.permissions.join(
+                `The bot needs ${command.bot_perms.join(
                     ", "
                 )} permission(s) to execute this command.`
             );
-        if (command.description)
-            msg.addField("Description:", command.description);
         if (command.subcommands)
             msg.addField("Subcommands:", command.subcommands.join(", "));
         if (command.usage)
