@@ -8,14 +8,14 @@ const genImage = require("./genImage");
 module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
     let channel = member.guild.channels.cache.find(
-        (ch) => ch.name === member.guildDB.channel
+        (ch) => ch.name === guildDB.channel
     );
     let image;
     if (!channel) {
         return;
     }
     channel.startTyping(1);
-    let msg = member.guildDB.welcomeMessage;
+    let msg = guildDB.welcomeMessage;
     //Replace Placeholders with their values
     msg = msg
         .replace("{mention}", `${member}`)

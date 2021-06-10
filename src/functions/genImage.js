@@ -10,15 +10,17 @@ const sendReq = function (data, options) {
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
         })
-        .on("response", function(res) {
+        .on("response", function (res) {
             res.setEncoding("binary");
-            res.on("error", err => {
+            res.on("error", (err) => {
                 console.error(err);
-            }).on("data", chunk => {
-                body += chunk;
-            }).on ("end", () => {
-                return;
-            });
+            })
+                .on("data", (chunk) => {
+                    body += chunk;
+                })
+                .on("end", () => {
+                    return;
+                });
         })
         .on("error", (err) => {
             console.error(err.message);
