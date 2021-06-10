@@ -5,6 +5,7 @@
  */
 const getGuild = require("../db/functions/getGuild");
 const genImage = require("./genImage");
+const fs = require("fs");
 module.exports = async (member) => {
     const { Attachment } = require("discord.js");
     let guildDB = await getGuild(member.guild.id);
@@ -24,7 +25,13 @@ module.exports = async (member) => {
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
     image = genImage(member);
-    fs.writeFile(file, image);
-    channel.send(msg, new Attachment(file, "welcome-image.jpg"));
+    if (image) {
+        fs.writeFile(file, image, function (err) {
+            if (err) throw err;
+        });
+        channel.send(msg, new Attachment(file, "welcome-image.jpg"));
+    } else {
+        channel.send(msg);
+    }
     channel.stopTyping();
 };
