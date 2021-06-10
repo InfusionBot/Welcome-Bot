@@ -6,7 +6,7 @@
 const getGuild = require("../db/functions/getGuild");
 const genImage = require("./genImage");
 module.exports = async (member) => {
-    let member.guildDB = await getGuild(member.guild.id);
+    let guildDB = await getGuild(member.guild.id);
     let channel = member.guild.channels.cache.find(
         (ch) => ch.name === member.guildDB.channel
     );
