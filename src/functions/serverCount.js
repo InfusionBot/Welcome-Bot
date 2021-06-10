@@ -16,7 +16,7 @@ const postReq = function (data, options) {
     req.write(data);
     req.end();
 };
-const serverCount = function (client) {
+module.exports = function (client) {
     const servers = client.guilds.cache.size;
     console.log(`Updating server count. Servers: ${servers}`);
 
@@ -77,4 +77,3 @@ const serverCount = function (client) {
         console.log("NOTE: DISCORD_BOTS_token is not set");
     }
 };
-module.exports = serverCount;
