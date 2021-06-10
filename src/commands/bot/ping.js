@@ -10,6 +10,8 @@ module.exports = {
     cooldown: 5,
     execute(message, args) {
         const timeTaken = Date.now() - message.createdTimestamp;
-        message.channel.send(`Pong ${message.author}, This message had a latency of ${timeTaken}ms.`);
+        message.channel.send(
+            `Pong ${message.author}, This message had a latency of ${timeTaken}ms.`
+        );
     },
 };
