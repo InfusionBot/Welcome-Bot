@@ -51,7 +51,7 @@ module.exports = {
 
         if (command.description)
             msg.addField("Description:", command.description);
-            if (command.aliases && command.aliases !== [])
+        if (command.aliases && command.aliases !== [])
             msg.addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             msg.addField(
