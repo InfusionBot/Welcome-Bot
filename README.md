@@ -40,11 +40,11 @@ These are the commands currently available:
 - `ping` - Ping the bot.
 - `test` - Test by sending welcome message
 - `help` - Get help
-- `chan` or `channel`
+- `channel`
     - `set` - Set welcome channel, channel to send message
     - `get` - Get currently set welcome channel
     - `reset` - Reset channel back to default value
-- `message` or `msg`
+- `message`
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
@@ -52,6 +52,9 @@ These are the commands currently available:
     - `set` - Set bot prefix
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
+- `ban` - Ban a user
+- `unban` - Unban a user
+- `kick` - Kick a user
 
 For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
 
