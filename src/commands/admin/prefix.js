@@ -48,17 +48,13 @@ module.exports = {
                     message.client.defaultPrefix
                 );
                 guildDB = await getGuild(message.guild.id);
-                message.reply(
-                    "Prefix reset to `" + guildDB.prefix + "`"
-                );
+                message.reply("Prefix reset to `" + guildDB.prefix + "`");
                 break;
             case "get":
             default:
                 //Get bot prefix
                 message.reply(
-                    "Prefix in this server is set to `" +
-                        guildDB.prefix +
-                        "`"
+                    "Prefix in this server is set to `" + guildDB.prefix + "`"
                 );
                 break;
         }

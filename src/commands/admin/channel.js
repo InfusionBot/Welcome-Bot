@@ -51,19 +51,13 @@ module.exports = {
                 //Reset channel
                 updateGuild(message.guild.id, "channel", "new-members");
                 guildDB = await getGuild(message.guild.id);
-                message.reply(
-                    "Channel reset to `" +
-                        guildDB.channel +
-                        "`"
-                );
+                message.reply("Channel reset to `" + guildDB.channel + "`");
                 break;
             case "get":
             default:
                 //Get channel
                 message.reply(
-                    "Channel currently is set to `" +
-                        guildDB.channel +
-                        "`"
+                    "Channel currently is set to `" + guildDB.channel + "`"
                 );
                 break;
         }

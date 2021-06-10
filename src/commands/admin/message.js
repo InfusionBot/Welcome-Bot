@@ -49,9 +49,7 @@ module.exports = {
                 );
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
-                    "Message reset to ```\n" +
-                        guildDB.welcomeMessage +
-                        "\n```"
+                    "Message reset to ```\n" + guildDB.welcomeMessage + "\n```"
                 );
                 break;
             case "get":
