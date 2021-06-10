@@ -9,6 +9,8 @@ const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
+            console.log("headers: ", res.headers);
+            console.log("message: ", res.statusMessage);
         })
         .on("response", function (res) {
             res.setEncoding("binary");
@@ -40,7 +42,9 @@ module.exports = function (member) {
             username: member.user.tag,
             avatar: member.user.displayAvatarURL(),
             background: "#aaaaaa",
+            banner: "space",
             members: "You are our member #" + member.guild.memberCount,
+            icon: "pikachu",
         });
         options = {
             hostname: "api.fluxpoint.dev",
