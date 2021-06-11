@@ -42,9 +42,12 @@ module.exports = function (member) {
             username: member.user.tag,
             avatar: member.user.displayAvatarURL(),
             background: "#aaaaaa",
-            banner: "space",
             members: "You are our member #" + member.guild.memberCount,
             icon: "pikachu",
+            banner: "space",
+            color_welcome: "#ffffff",
+            color_username: "#ffffff",
+            color_members: "#ffffff",
         });
         options = {
             hostname: "api.fluxpoint.dev",
@@ -53,6 +56,7 @@ module.exports = function (member) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.IMAGE_token,
+                "User-Agent": process.env.userAgent,
             },
         };
         image = sendReq(data, options);

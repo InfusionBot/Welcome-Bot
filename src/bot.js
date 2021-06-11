@@ -14,6 +14,7 @@ client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.botVersion = "1.2.1";
+process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 
 const commandFolder = __dirname + "/commands";
 const commandFolders = fs.readdirSync(commandFolder);

@@ -34,6 +34,7 @@ module.exports = function (client) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.DISCORD_BOATS_token,
+                "User-Agent": process.env.userAgent,
             },
         };
         sendReq(data, options);
@@ -52,6 +53,7 @@ module.exports = function (client) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.DELAPI_token,
+                "User-Agent": process.env.userAgent,
             },
         };
         sendReq(data, options);
@@ -70,6 +72,7 @@ module.exports = function (client) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.DISCORD_BOTS_token,
+                "User-Agent": process.env.userAgent,
             },
         };
         sendReq(data, options);
