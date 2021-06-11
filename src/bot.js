@@ -15,6 +15,7 @@ client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.botVersion = "1.2.1";
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
+process.env.ownerIDs = ["815204465937481749"/*PuneetGopinath#6398*/, "693754859014324295"/*abhijoshi2k#6842*/];
 
 const commandFolder = __dirname + "/commands";
 const commandFolders = fs.readdirSync(commandFolder);
