@@ -20,7 +20,11 @@ module.exports = {
             "Members joined in your server:",
             message.guild.memberCount
         );
-        msg.addField("Online users in your server:", message.guild.members.filter(m => m.presence.status === "online").size);
+        msg.addField(
+            "Online users in your server:",
+            message.guild.members.filter((m) => m.presence.status === "online")
+                .size
+        );
         switch (args[0]) {
             case "--dm":
                 message.author.send(msg);
