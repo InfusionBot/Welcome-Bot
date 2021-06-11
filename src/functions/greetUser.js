@@ -13,11 +13,13 @@ module.exports = async (member) => {
         (ch) => ch.name === guildDB.channel
     );
     let image;
-    genImage(member).then(img => {
-        image = img;
-    }).catch(err => {
-        console.log(err);
-    });
+    genImage(member)
+        .then((img) => {
+            image = img;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     if (!channel) {
         return;
     }
