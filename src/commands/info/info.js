@@ -24,7 +24,7 @@ module.exports = {
         msg.addField(
             "Bot lists:",
             `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n` +
-            `[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)`
+                `[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)`
         );
         msg.addField(
             "Other links:",
