@@ -31,8 +31,13 @@ module.exports = async (message, client, guildDB) => {
             return message.reply("I can't execute that command inside DMs!");
         }
 
-        if (command.ownerOnly && !process.env.ownerIDs.includes(message.author.id)) {
-            return message.reply("This command can only be executed by bot owners");
+        if (
+            command.ownerOnly &&
+            !process.env.ownerIDs.includes(message.author.id)
+        ) {
+            return message.reply(
+                "This command can only be executed by bot owners"
+            );
         }
 
         if (command.permissions) {
