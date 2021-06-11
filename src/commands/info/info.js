@@ -17,6 +17,7 @@ module.exports = {
         msg.setThumbnail("https://i.imgur.com/bbSlsT7.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${message.client.botVersion}`);
+        msg.addField("Invite URL:", "[https://dsc.gg/welcome-bot2](https://dsc.gg/welcome-bot2)");
         msg.addField(
             "Bot lists:",
             `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)`
@@ -24,8 +25,9 @@ module.exports = {
         msg.addField(
             "Other links:",
             "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
-                "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-                "[Privacy policy](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/privacy-policy.md) and [Terms of service](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/terms.md)"
+            "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
+            "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](hhttps://welcome-bot.github.io/docs/terms.md)\n" +
+            "[Documentation](https://welcome-bot.github.io/docs)"
         );
         switch (args[0]) {
             case "--dm":
