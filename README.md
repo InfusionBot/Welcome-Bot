@@ -77,7 +77,7 @@ For more info on these commands, [visit our site](https://welcome-bot.github.io/
 
 ### Default message
 
-The default welcome message is `Welcome {mention} to the {server} server`. Some placeholders can be used here, for info on those placeholders, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/new-features/docs/commands.md#placeholders-in-welcome-message)
+The default welcome message is `Welcome {mention} to the {server} server`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
 
 ### Default channel
 
