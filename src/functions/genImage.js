@@ -30,6 +30,8 @@ const sendReq = function (data, options) {
 
     req.write(data);
     req.end();
+    console.log("'" + body + "'");
+    console.log("Done!");
     return body;
 };
 module.exports = function (member) {
