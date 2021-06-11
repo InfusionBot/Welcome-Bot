@@ -26,7 +26,10 @@ module.exports = async (member) => {
         .replace("{members}", `${member.guild.memberCount}`);
     image = genImage(member);
     if (image) {
-        let attachment = new Attachment(Buffer.from(image, 'utf-8'), "welcome-image.jpg");
+        let attachment = new Attachment(
+            Buffer.from(image, "utf-8"),
+            "welcome-image.jpg"
+        );
         channel.send(msg, attachment);
     } else {
         channel.send(msg);
