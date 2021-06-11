@@ -6,6 +6,14 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+## Unreleased
+
+> **Released:** `TBA`
+
+### Bug fixes
+
+- Help command shows `permissions required by bot` from `permissions`, instead it should show from `bot_perms`
+
 ## [v1.2.1]
 
 > **Released:** `TBA`
