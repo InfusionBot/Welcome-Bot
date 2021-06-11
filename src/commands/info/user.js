@@ -31,7 +31,7 @@ module.exports = {
         }
 
         if (!user) {
-            return;
+            return false;
         }
 
         /*let badges = [];
