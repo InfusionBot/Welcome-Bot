@@ -102,31 +102,29 @@ Additionally if you want `Moderation` [feature](#Features) to work, you will nee
 To include the `moderation` feature, use this invite link:
 > https://dsc.gg/welcome-bot
 
-To invite the bot with all the necessary required permissions **(without moderation)** mentioned above you can use this invitation link:
+To invite the bot with all the necessary required permissions **except permissions for moderation feature** mentioned above you can use this invitation link:
 > https://dsc.gg/welcome-bot2
-
-Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
 
 ## Setting up the channel
 
 You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
 
-You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](docs/commands.md)
+You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html)
 
 ## Botlists
 
 Discord welcome bot can be found on different Botlist sites.
 Feel free to upvote him to show your support.
 
+### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
+
+> Discord's unbiased list, giving small bots and small servers a big chance!
+
 ### [Discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
 [![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
-
-### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
-
-> Discord's unbiased list, giving small bots and small servers a big chance!
 
 ### [Discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
