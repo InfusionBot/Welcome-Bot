@@ -30,8 +30,6 @@ const sendReq = function (data, options) {
 
     req.write(data);
     req.end();
-    console.log("'" + body + "'");
-    console.log("Done!");
     return body;
 };
 module.exports = function (member) {
@@ -54,7 +52,7 @@ module.exports = function (member) {
         options = {
             hostname: "api.fluxpoint.dev",
             path: "/gen/welcome",
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.IMAGE_token,
