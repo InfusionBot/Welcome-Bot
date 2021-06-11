@@ -6,13 +6,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
-## Unreleased
+## [v1.3.0]
 
 > **Released:** `TBA`
 
 ### Bug fixes
 
 - Help command shows `permissions required by bot` from `permissions`, instead it should show from `bot_perms`
+
+### New features
+
+- Add eval, reload command for owner only
 
 ## [v1.2.1]
 
@@ -65,6 +69,11 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.3.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.3.0
+[v1.2.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.2.1
+[v1.2.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.2.0
+[v1.1.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.1.1
+[v1.1.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.1.0
 [v1.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.0.0
 
 ## Older changelogs
