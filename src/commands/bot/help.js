@@ -75,6 +75,8 @@ module.exports = {
                 `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
                     `\n[] = Required argument\n() = Optional argument\n|| = this OR that`
             );
+        if (command.ownerOnly)
+            msg.addField("Can be executed by:", "Welcome-Bot owner **ONLY**");
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 
