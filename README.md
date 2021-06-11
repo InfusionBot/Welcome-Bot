@@ -120,6 +120,10 @@ Feel free to upvote him to show your support.
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
+## [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
+
+> Find the best Discord Bots for your server with DisBotList!
+
 ### [Discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
