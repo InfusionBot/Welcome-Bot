@@ -10,6 +10,7 @@ module.exports = {
     permissions: ["MANAGE_SERVER"],
     subcommand: false,
     subcommands: ["set", "get", "reset"],
+    cooldown: 10,
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");

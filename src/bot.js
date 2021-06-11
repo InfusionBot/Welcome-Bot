@@ -24,6 +24,8 @@ let defaultOpts = {
     args: false,
     catchError: true,
     disabled: false,
+    cooldown: 3,
+    ownerOnly: false,
 };
 
 for (const folder of commandFolders) {

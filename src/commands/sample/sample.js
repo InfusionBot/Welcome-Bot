@@ -16,6 +16,8 @@ module.exports = {
     disabled: true, //Is this command disabled? Optional
     subcommand: false, //Is at least 1 subcommand required? Optional
     subcommands: ["set", "get", "reset"], //What subcommands does this command have? Optional
+    cooldown: 10, //Minimum time required to execute the same command again, Optional (default: 3)
+    ownerOnly: true, //Can only the owner(s) of this bot execute this command, Optional
     execute(message, args) {
         //The function to execute the command, Required
         return;
