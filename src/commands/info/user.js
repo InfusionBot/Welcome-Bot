@@ -16,11 +16,12 @@ module.exports = {
         //const getUserFlags = require("../../functions/getUserFlags.js");
         let user;
         if (args[0]) {
-            if (args[0].startsWith("@"))
+            if (args[0].startsWith("<@")) {
                 user = getUserFromMention(
                     args[0] || `${message.author}`,
                     message.client
                 );
+            }
             if (
                 typeof args[0] === "number" &&
                 args[0] !== message.client.user.id
