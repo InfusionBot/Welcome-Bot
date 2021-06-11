@@ -59,9 +59,16 @@ module.exports = function (member) {
                 "User-Agent": process.env.userAgent,
             },
         };
+        console.log("Done!");
         image = sendReq(data, options);
     } else {
         console.log("NOTE: IMAGE_token is not set");
     }
-    return image;
+    return new Promise(function (resolve, reject) {
+        if (image) {
+            resolve(image);
+        } else {
+            reject("Can't get image");
+        }
+    });
 };

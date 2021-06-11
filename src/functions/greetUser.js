@@ -7,13 +7,17 @@ const getGuild = require("../db/functions/getGuild");
 const genImage = require("./genImage");
 const fs = require("fs");
 module.exports = async (member) => {
-    const { Attachment } = require("discord.js");
+    const { MessageAttachment } = require("discord.js");
     let guildDB = await getGuild(member.guild.id);
     let channel = member.guild.channels.cache.find(
         (ch) => ch.name === guildDB.channel
     );
     let image;
-    const file = "./tempImage.jpg";
+    genImage(member).then(img => {
+        image = img;
+    }).catch(err => {
+        console.log(err);
+    });
     if (!channel) {
         return;
     }
@@ -24,15 +28,15 @@ module.exports = async (member) => {
         .replace("{mention}", `${member}`)
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
-    image = genImage(member);
     if (image) {
-        let attachment = new Attachment(
+        let attachment = new MessageAttachment(
             Buffer.from(image, "utf-8"),
             "welcome-image.jpg"
         );
         channel.send(msg, attachment);
     } else {
         channel.send(msg);
+        console.error("Can't get welcome image");
     }
     channel.stopTyping();
 };
