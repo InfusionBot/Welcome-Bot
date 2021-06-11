@@ -132,7 +132,7 @@ Feel free to upvote him to show your support.
 
 ## Self hosting
 
-[Click here to see self-hosting docs](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/self-hosting.md)
+[Click here to see self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html)
 
 ## Questions?
 

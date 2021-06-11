@@ -16,7 +16,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.2.1]
 
-> **Released:** `TBA`
+> **Released:** `10-06-2021`
 
 ### Bug fixes
 
