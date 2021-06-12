@@ -42,8 +42,11 @@ These are the commands currently available:
 
 - [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
+    - `setMod` - Set moderation logs channel
     - `get` - Get currently set welcome channel
-    - `reset` - Reset channel back to default value
+    - `getMod` - Get currently set moderation logs channel
+    - `reset` - Reset welcome channel back to default value
+    - `resetMod` - Reset moderation logs channel back to default value
 - [`message`](https://welcome-bot.github.io/docs/commands.html#message)
     - `set` - Set welcome message
     - `get` - Get currently set welcome message

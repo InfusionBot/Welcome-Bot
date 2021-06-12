@@ -110,7 +110,7 @@ module.exports = async (message, client, guildDB) => {
         if (command.catchError) {
             try {
                 message.channel.startTyping();
-                command.execute(message, args);
+                command.execute(message, args, guildDB);
                 message.channel.stopTyping();
             } catch (error) {
                 console.error(error);

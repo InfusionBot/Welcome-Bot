@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "ban",
     //aliases: [],
@@ -14,8 +15,9 @@ module.exports = {
     catchError: false,
     cooldown: 5,
     usage: "[@user] (reason)",
-    async execute(message, args) {
+    async execute(message, args, guildDB) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
+        let channel;
         if (args.length < 1) {
             return message.reply(
                 "Please mention the user you want to ban and specify a ban reason (optional)."
@@ -48,6 +50,14 @@ module.exports = {
         } catch (error) {
             console.error(error);
             return message.channel.send(`Failed to ban **${user.tag}**`);
+        }
+
+        if (guildDB.modLogChan && channel = members.guild.channels.find(ch => ch.name === guildDB.modLogChan)) {
+            msg = new MessageEmbed();
+            msg.setTitle(`User banned: ${user.tag} (${user.id})`);
+            msg.addField("Responsible moderator:", `${message.author.tag} (${message.author.id})`);
+            msg.addField("Reason:", reason)
+            channel.send(msg);
         }
 
         return message.channel.send(

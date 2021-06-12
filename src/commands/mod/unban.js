@@ -28,6 +28,14 @@ module.exports = {
             return message.channel.send(`Failed to unban **${id}**: ${error}`);
         }
 
+        if (guildDB.modLogChan && channel = members.guild.channels.find(ch => ch.name === guildDB.modLogChan)) {
+            msg = new MessageEmbed();
+            msg.setTitle(`User unbanned: ${user.tag} (${user.id})`);
+            msg.addField("Responsible moderator:", `${message.author.tag} (${message.author.id})`);
+            msg.addField("Reason:", reason)
+            channel.send(msg);
+        }
+
         const user = message.client.users.cache.get(id);
         return message.channel.send(
             `Successfully unbanned **${user.tag}** from the server!`
