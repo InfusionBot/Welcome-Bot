@@ -15,7 +15,7 @@ module.exports = {
         let guildDB;
         if (message.channel.type !== "dm")
             guildDB = await getGuild(message.guild.id);
-        else guildDB = {prefix: "w/"};
+        else guildDB = { prefix: "w/" };
         let msg = new MessageEmbed();
         const { commands } = message.client;
 
