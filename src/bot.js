@@ -14,6 +14,10 @@ client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.botVersion = "1.3.0";
+client.changelog = [
+    "Help command shows `permissions required by bot` from `permissions`, instead it should show from `bot_perms`",
+    "Add eval, reload command for owner only",
+];
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.env.ownerIDs = [
     "815204465937481749" /*PuneetGopinath#6398*/,
@@ -88,6 +92,7 @@ client.on("ready", () => {
     setInterval(() => {
         dbAuditor(client);
     }, 3 * 60 * 60 * 1000);
+    require("./functions/versionSender")(client);
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
