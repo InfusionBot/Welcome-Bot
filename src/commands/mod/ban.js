@@ -53,7 +53,7 @@ module.exports = {
         }
 
         if (guildDB.modLogChan) {
-            channel = members.guild.channels.find(
+            channel = member.guild.channels.cache.find(
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {

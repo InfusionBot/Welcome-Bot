@@ -14,7 +14,7 @@ module.exports = {
     catchError: true,
     cooldown: 5,
     usage: "[@mention] (reason)",
-    execute(message, args) {
+    execute(message, args, guildDB) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         if (args.length < 1) {
             return message.reply(
@@ -55,7 +55,7 @@ module.exports = {
         }
 
         if (guildDB.modLogChan) {
-            channel = members.guild.channels.find(
+            channel = member.guild.channels.cache.find(
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {
