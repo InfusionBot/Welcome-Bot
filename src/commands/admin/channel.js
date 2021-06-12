@@ -49,7 +49,7 @@ module.exports = {
                     );
                 }
                 break;
-            case "setMod":
+            case "setmod":
                 if (args[1]) {
                     //Set mod channel
                     updateGuild(
@@ -80,7 +80,7 @@ module.exports = {
                 guildDB = await getGuild(message.guild.id);
                 message.reply("Channel reset to `" + guildDB.channel + "`");
                 break;
-            case "resetMod":
+            case "resetmod":
                 //Reset mod channel
                 updateGuild(message.guild.id, "modLogChan", "mod-log");
                 guildDB = await getGuild(message.guild.id);
