@@ -13,9 +13,11 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
         const getGuild = require("../../db/functions/getGuild");
         let guildDB;
-        if (message.channel.type !== "dm")
+        if (message.guild && message.channel.type !== "dm") {
             guildDB = await getGuild(message.guild.id);
-        else guildDB = { prefix: "w/" };
+        } else {
+            guildDB = { prefix: "w/" };
+        }
         let msg = new MessageEmbed();
         const { commands } = message.client;
 
