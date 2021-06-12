@@ -54,12 +54,15 @@ module.exports = {
             return message.channel.send(`Failed to kick **${user.tag}**`);
         }
 
-        if (guildDB.modLogChan && channel = members.guild.channels.find(ch => ch.name === guildDB.modLogChan)) {
+        if (guildDB.modLogChan) {
+            channel = members.guild.channels.find(ch => ch.name === guildDB.modLogChan);
+            if (channel) {
             msg = new MessageEmbed();
             msg.setTitle(`User kicked: ${user.tag} (${user.id})`);
             msg.addField("Responsible moderator:", `${message.author.tag} (${message.author.id})`);
             msg.addField("Reason:", reason)
             channel.send(msg);
+            }
         }
 
         return message.channel.send(
