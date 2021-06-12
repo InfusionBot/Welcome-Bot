@@ -7,7 +7,7 @@ const getGuild = require("../db/functions/guild/getGuild");
 module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
     let channel = member.guild.channels.cache.find(
-        (ch) => ch.name === guildDB.welcomeChannel
+        (ch) => ch.name === guildDB.channel
     );
     if (!channel) {
         return;
