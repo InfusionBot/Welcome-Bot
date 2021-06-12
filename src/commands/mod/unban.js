@@ -14,7 +14,7 @@ module.exports = {
     catchError: false,
     cooldown: 5,
     usage: "[user_id]",
-    async execute(message, args) {
+    async execute(message, args, guildDB) {
         const id = args[0];
         if (!id) {
             return message.reply(
@@ -26,6 +26,22 @@ module.exports = {
             await message.guild.members.unban(id);
         } catch (error) {
             return message.channel.send(`Failed to unban **${id}**: ${error}`);
+        }
+
+        if (guildDB.modLogChan) {
+            channel = members.guild.channels.find(
+                (ch) => ch.name === guildDB.modLogChan
+            );
+            if (channel) {
+                msg = new MessageEmbed();
+                msg.setTitle(`User unbanned: ${user.tag} (${user.id})`);
+                msg.addField(
+                    "Responsible moderator:",
+                    `${message.author.tag} (${message.author.id})`
+                );
+                msg.addField("Reason:", reason);
+                channel.send(msg);
+            }
         }
 
         const user = message.client.users.cache.get(id);
