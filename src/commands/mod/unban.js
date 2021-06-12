@@ -14,7 +14,7 @@ module.exports = {
     catchError: false,
     cooldown: 5,
     usage: "[user_id]",
-    async execute(message, args) {
+    async execute(message, args, guildDB) {
         const id = args[0];
         if (!id) {
             return message.reply(
