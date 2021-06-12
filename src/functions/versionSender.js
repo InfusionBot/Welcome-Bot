@@ -20,7 +20,6 @@ module.exports = async (client) => {
                             (channel) => channel.name === "general"
                         )
                         .send(reply);
-                    console.log("done");
                 });
             }
         });
