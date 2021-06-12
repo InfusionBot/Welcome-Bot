@@ -35,7 +35,7 @@ module.exports = {
         if (!user) {
             return false;
         }
-        let member = message.guild.members.cache.find(m => m.id === user.id);
+        let member = message.guild.members.cache.find((m) => m.id === user.id);
 
         /*let badges = [];
         await getUserFlags(user)
@@ -73,8 +73,7 @@ module.exports = {
             "Joined:",
             `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
         );
-        if (member.nickname)
-            msg.addField("Nickname:", member.nickname);
+        if (member.nickname) msg.addField("Nickname:", member.nickname);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         msg.addField("Presence:", `${user.presence.status}`);
         msg.setFooter(
