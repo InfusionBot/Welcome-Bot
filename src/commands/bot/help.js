@@ -49,6 +49,8 @@ module.exports = {
         msg.setDescription(`Help for ${command.name} command`);
         msg.addField("Command Name:", command.name);
 
+        if (command.description)
+            msg.addField("Description:", command.description);
         if (command.aliases && command.aliases !== [])
             msg.addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
@@ -61,12 +63,10 @@ module.exports = {
         if (command.bot_perms)
             msg.addField(
                 "Bot Permissions:",
-                `The bot needs ${command.permissions.join(
+                `The bot needs ${command.bot_perms.join(
                     ", "
                 )} permission(s) to execute this command.`
             );
-        if (command.description)
-            msg.addField("Description:", command.description);
         if (command.subcommands)
             msg.addField("Subcommands:", command.subcommands.join(", "));
         if (command.usage)
@@ -75,6 +75,8 @@ module.exports = {
                 `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
                     `\n[] = Required argument\n() = Optional argument\n|| = this OR that`
             );
+        if (command.ownerOnly)
+            msg.addField("Can be executed by:", "Welcome-Bot owner **ONLY**");
 
         msg.addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 

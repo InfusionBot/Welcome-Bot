@@ -12,6 +12,7 @@ module.exports = {
     args: true,
     guildOnly: true,
     catchError: false,
+    cooldown: 5,
     usage: "[user_id]",
     async execute(message, args) {
         const id = args[0];

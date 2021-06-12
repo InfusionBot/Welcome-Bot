@@ -31,35 +31,53 @@ We are an open source project on [GitHub](https://github.com/Welcome-Bot/welcome
 
 ## Docs
 
-Check out the docs on out [gh pages site](https://welcome-bot.github.io/welcome-bot/docs)
+Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Commands
 These are the commands currently available:
-- `ping` - Ping the bot.
-- `test` - Test by sending welcome message
-- `help` - Get help
-- `chan` or `channel`
+
+### Setup commands
+
+- [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
     - `get` - Get currently set welcome channel
     - `reset` - Reset channel back to default value
-- `message` or `msg`
+- [`message`](https://welcome-bot.github.io/docs/commands.html#message)
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
-- `prefix`
+- [`prefix`](https://welcome-bot.github.io/docs/commands.html#prefix)
     - `set` - Set bot prefix
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
-For more info on their subcommands, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/commands.md)
+### Moderation commands
+
+- [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
+- [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
+- [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
+
+### General
+
+- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
+- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
+
+### Miscellaneous
+
+- [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
+- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
+- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
+- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+
+For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
 
 ## Default values
 
 ### Default message
 
-The default welcome message is `Welcome {mention} to the {server} server`. Some placeholders can be used here, for info on those placeholders, [click here](https://github.com/Welcome-Bot/welcome-bot/blob/new-features/docs/commands.md#placeholders-in-welcome-message)
+The default welcome message is `Welcome {mention} to the {server} server!\nYou are our #{members} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
 
 ### Default channel
 
@@ -84,21 +102,27 @@ Additionally if you want `Moderation` [feature](#Features) to work, you will nee
 To include the `moderation` feature, use this invite link:
 > https://dsc.gg/welcome-bot
 
-To invite the bot with all the necessary required permissions **(without moderation)** mentioned above you can use this invitation link:
+To invite the bot with all the necessary required permissions **except permissions for moderation feature** mentioned above you can use this invitation link:
 > https://dsc.gg/welcome-bot2
-
-Note that when you add the bot without a `pre-made` role, you will need to give it one with the necessary required permissions.
 
 ## Setting up the channel
 
 You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
 
-You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](docs/commands.md)
+You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html)
 
 ## Botlists
 
 Discord welcome bot can be found on different Botlist sites.
 Feel free to upvote him to show your support.
+
+### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
+
+> Discord's unbiased list, giving small bots and small servers a big chance!
+
+## [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
+
+> Find the best Discord Bots for your server with DisBotList!
 
 ### [Discord.boats](https://discord.boats/bot/848459799783669790)
 
@@ -106,17 +130,13 @@ Feel free to upvote him to show your support.
 
 [![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
 
-### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
-
-> Discord's unbiased list, giving small bots and small servers a big chance!
-
 ### [Discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
 > The original Discord bot list, find the right bot for your server today.
 
 ## Self hosting
 
-[Click here to see self-hosting docs](https://github.com/Welcome-Bot/welcome-bot/blob/main/docs/self-hosting.md)
+[Click here to see self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html)
 
 ## Questions?
 

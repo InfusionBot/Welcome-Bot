@@ -11,7 +11,7 @@ module.exports = {
     args: false,
     execute(message, args) {
         const greetUser = require("../../functions/greetUser");
-        greetUser(message.guild, message.member);
+        greetUser(message.member);
         message.react("👍");
     },
 };

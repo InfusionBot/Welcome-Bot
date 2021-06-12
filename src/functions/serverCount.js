@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const https = require("https");
-const postReq = function (data, options) {
+const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
@@ -16,7 +16,7 @@ const postReq = function (data, options) {
     req.write(data);
     req.end();
 };
-const serverCount = function (client) {
+module.exports = function (client) {
     const servers = client.guilds.cache.size;
     console.log(`Updating server count. Servers: ${servers}`);
 
@@ -34,9 +34,10 @@ const serverCount = function (client) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.DISCORD_BOATS_token,
+                "User-Agent": process.env.userAgent,
             },
         };
-        postReq(data, options);
+        sendReq(data, options);
     } else {
         console.log("NOTE: DISCORD_BOATS_token is not set");
     }
@@ -52,9 +53,10 @@ const serverCount = function (client) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.DELAPI_token,
+                "User-Agent": process.env.userAgent,
             },
         };
-        postReq(data, options);
+        sendReq(data, options);
     } else {
         console.log("NOTE: DELAPI_token is not set");
     }
@@ -70,11 +72,11 @@ const serverCount = function (client) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: process.env.DISCORD_BOTS_token,
+                "User-Agent": process.env.userAgent,
             },
         };
-        postReq(data, options);
+        sendReq(data, options);
     } else {
         console.log("NOTE: DISCORD_BOTS_token is not set");
     }
 };
-module.exports = serverCount;

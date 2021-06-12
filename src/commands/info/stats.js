@@ -8,6 +8,7 @@ module.exports = {
     //aliases: [],
     description: "Your server statistics",
     usage: "(--dm)",
+    cooldown: 10,
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
@@ -18,6 +19,11 @@ module.exports = {
         msg.addField(
             "Members joined in your server:",
             message.guild.memberCount
+        );
+        msg.addField(
+            "Online users in your server:",
+            message.guild.members.filter((m) => m.presence.status === "online")
+                .size
         );
         switch (args[0]) {
             case "--dm":

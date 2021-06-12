@@ -10,6 +10,7 @@ module.exports = {
     permissions: ["MANAGE_SERVER"],
     subcommand: false,
     subcommands: ["set", "get", "reset"],
+    cooldown: 10,
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
@@ -30,9 +31,9 @@ module.exports = {
                         args.join(" ").replace(`${args[0]} `, "").trim()
                     );
                     message.reply(
-                        "Prefix set to '" +
+                        "Prefix set to `" +
                             args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "' (without quotes)"
+                            "`"
                     );
                 } else {
                     message.reply(
@@ -48,17 +49,13 @@ module.exports = {
                     message.client.defaultPrefix
                 );
                 guildDB = await getGuild(message.guild.id);
-                message.reply(
-                    "Prefix reset to '" + guildDB.prefix + "' (without quotes)"
-                );
+                message.reply("Prefix reset to `" + guildDB.prefix + "`");
                 break;
             case "get":
             default:
                 //Get bot prefix
                 message.reply(
-                    "Prefix in this server is set to '" +
-                        guildDB.prefix +
-                        "' (without quotes)"
+                    "Prefix in this server is set to `" + guildDB.prefix + "`"
                 );
                 break;
         }

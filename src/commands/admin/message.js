@@ -10,6 +10,7 @@ module.exports = {
     permissions: ["MANAGE_SERVER"],
     subcommand: false,
     subcommands: ["set", "get", "reset"],
+    cooldown: 10,
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
@@ -30,9 +31,9 @@ module.exports = {
                         args.join(" ").replace(`${args[0]} `, "")
                     );
                     message.reply(
-                        "Welcome message set to '" +
+                        "Welcome message set to ```\n" +
                             args.join(" ").replace(`${args[0]} `, "") +
-                            "' (without quotes)"
+                            "\n```"
                     );
                 } else {
                     message.reply(
@@ -49,18 +50,16 @@ module.exports = {
                 );
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
-                    "Message reset to '" +
-                        guildDB.welcomeMessage +
-                        "' (without quotes)"
+                    "Message reset to ```\n" + guildDB.welcomeMessage + "\n```"
                 );
                 break;
             case "get":
             default:
                 //Get welcome channel
                 message.reply(
-                    "Message currently is set to '" +
+                    "Message currently is set to ```\n" +
                         guildDB.welcomeMessage +
-                        "' (without quotes)"
+                        "\n```"
                 );
                 break;
         }

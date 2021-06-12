@@ -31,6 +31,15 @@ module.exports = async (message, client, guildDB) => {
             return message.reply("I can't execute that command inside DMs!");
         }
 
+        if (
+            command.ownerOnly &&
+            !process.env.ownerIDs.includes(message.author.id)
+        ) {
+            return message.reply(
+                "This command can only be executed by bot owners"
+            );
+        }
+
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
@@ -38,7 +47,7 @@ module.exports = async (message, client, guildDB) => {
             }
         }
 
-        if (command.bot_perms) {
+        if (command.bot_perms && message.channel.type !== "dm") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.reply(

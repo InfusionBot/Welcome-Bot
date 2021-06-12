@@ -11,6 +11,7 @@ module.exports = {
     permissions: ["MANAGE_SERVER"],
     subcommand: false,
     subcommands: ["set", "get", "reset"],
+    cooldown: 10,
     async execute(message, args) {
         const updateGuild = require("../../db/functions/updateGuild");
         const getGuild = require("../../db/functions/getGuild");
@@ -34,12 +35,12 @@ module.exports = {
                             .replace(" ", "")
                     ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
                     message.reply(
-                        "Channel set to '" +
+                        "Channel set to `" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
                                 .replace(" ", "") +
-                            "' (without quotes)"
+                            "`"
                     );
                 } else {
                     message.reply(
@@ -51,19 +52,13 @@ module.exports = {
                 //Reset channel
                 updateGuild(message.guild.id, "channel", "new-members");
                 guildDB = await getGuild(message.guild.id);
-                message.reply(
-                    "Channel reset to '" +
-                        guildDB.channel +
-                        "' (without quotes)"
-                );
+                message.reply("Channel reset to `" + guildDB.channel + "`");
                 break;
             case "get":
             default:
                 //Get channel
                 message.reply(
-                    "Channel currently is set to '" +
-                        guildDB.channel +
-                        "' (without quotes)"
+                    "Channel currently is set to `" + guildDB.channel + "`"
                 );
                 break;
         }

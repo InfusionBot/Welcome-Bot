@@ -12,6 +12,7 @@ module.exports = {
     args: true,
     guildOnly: true,
     catchError: true,
+    cooldown: 5,
     usage: "[@mention] (reason)",
     execute(message, args) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
