@@ -12,6 +12,8 @@ module.exports = {
     cooldown: 10,
     async execute(message, args) {
         const getVersion = require("../../db/functions/version/getVersion.js");
+        if (!args[0])
+            args[0] = message.client.botVersion;
         if (args[0].startsWith("v")) {
             args[0].replace("v", "");
         }
