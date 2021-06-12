@@ -13,7 +13,7 @@ client.commands = new Discord.Collection();
 client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
-client.botVersion = "1.3.0";
+client.botVersion = "1.4.0";
 client.changelog = [
     "Fix bug `msg not working` (Issue: [#19]) ([#20])",
     "Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])",
