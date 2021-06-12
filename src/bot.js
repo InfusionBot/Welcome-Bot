@@ -13,7 +13,7 @@ client.commands = new Discord.Collection();
 client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
-client.botVersion = "1.2.1";
+client.botVersion = "1.3.0";
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.env.ownerIDs = [
     "815204465937481749" /*PuneetGopinath#6398*/,
