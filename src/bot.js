@@ -117,9 +117,9 @@ client.on("guildDelete", (guild) => {
 client.on("message", async function (message) {
     if (message.author.bot) return;
     let guildDB;
-    if (message.guild) {
+    if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);
-    } else if (!message.guild) {
+    } else {
         guildDB = { prefix: "w/" };
     }
 
