@@ -17,9 +17,9 @@ module.exports = async (client) => {
                     let clientGuild = client.guilds.cache.get(guild.guildId);
                     let systemChanel = clientGuild.systemChannelID;
                     clientGuild.channels.cache.get(systemChanel).send(reply);
-                    console.log("Version updated");
                 });
             }
         });
+        console.log("Version updated");
     }
 };
