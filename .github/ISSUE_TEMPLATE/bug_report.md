@@ -9,7 +9,6 @@ assignees: ''
 
 Please check these things before submitting your issue:
 
-- [ ] I am using the latest version.
 - [ ] I searched for duplicate or closed bug report [here](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue)
 
 **Describe the bug**
