@@ -9,18 +9,15 @@ module.exports = async (client) => {
             if (err) {
                 console.log(err);
             } else {
-                let reply = `New Version: **v${client.botVersion}**`;
+                let reply = `New Version: **${client.botVersion}**`;
                 client.changelog.forEach((change) => {
                     reply += `\n- ${change}`;
                 });
                 guilds.forEach((guild) => {
-                    client.guilds.cache
-                        .get(guild.guildId)
-                        .channels.cache.find(
-                            (channel) => channel.name === "general"
-                        )
-                        .send(reply);
-                    console.log("done");
+                    let clientGuild = client.guilds.cache.get(guild.guildId);
+                    let systemChanel = clientGuild.systemChannelID;
+                    clientGuild.channels.cache.get(systemChanel).send(reply);
+                    console.log("Version updated");
                 });
             }
         });
