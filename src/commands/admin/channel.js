@@ -93,6 +93,7 @@ module.exports = {
                 message.reply(
                     "Channel currently is set to `" + guildDB.channel + "`"
                 );
+                break;
             case "getMod":
                 //Get mod channel
                 message.reply(
