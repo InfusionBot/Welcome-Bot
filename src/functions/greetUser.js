@@ -38,7 +38,7 @@ module.exports = async (member) => {
         channel.send(msg, attachment);
     } else {*/
     channel.send(msg);
-    console.error("Can't get welcome image");
+    //console.error("Can't get welcome image");
     //}
     channel.stopTyping();
 };
