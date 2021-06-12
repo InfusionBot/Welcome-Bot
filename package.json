@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/bot.js",
     "format:check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "mkcommand": "cp -r src/commands/sample/sample.js src/commands/$npm_config_cat/$npm_config_command.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/Welcome-bot/welcome-bot#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "mongoose": "^5.12.12"

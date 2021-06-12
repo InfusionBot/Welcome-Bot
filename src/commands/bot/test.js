@@ -9,6 +9,7 @@ module.exports = {
     permissions: ["MANAGE_SERVER"],
     description: "Test welcome bot",
     args: false,
+    guildOnly: true,
     execute(message, args) {
         const greetUser = require("../../functions/greetUser");
         greetUser(message.member);

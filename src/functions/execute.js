@@ -5,8 +5,8 @@
  */
 require("../db/connection");
 const { Collection } = require("discord.js");
-const updateGuild = require("../db/functions/updateGuild");
-const getGuild = require("../db/functions/getGuild");
+const updateGuild = require("../db/functions/guild/updateGuild");
+const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, client, guildDB) => {
     let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
@@ -110,7 +110,7 @@ module.exports = async (message, client, guildDB) => {
         if (command.catchError) {
             try {
                 message.channel.startTyping();
-                command.execute(message, args);
+                command.execute(message, args, guildDB);
                 message.channel.stopTyping();
             } catch (error) {
                 console.error(error);

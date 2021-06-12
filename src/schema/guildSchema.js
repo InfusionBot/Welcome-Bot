@@ -36,6 +36,12 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "Good Bye {mention}!\nWe are sad to see you go!",
     },
+    modLogChan: {
+        type: String,
+        required: true,
+        trim: true,
+        default: "mod-log",
+    },
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);

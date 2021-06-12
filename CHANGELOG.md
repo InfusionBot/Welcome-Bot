@@ -6,9 +6,25 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
-## [v1.3.0]
+## [v1.4.0]
 
 > **Released:** `TBA`
+
+### Bug fixes
+
+- Fix bug `msg not working` (Issue: [#19]) ([#20])
+
+### Changes
+
+- Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])
+- Add new command version ([#20])
+- Add mkcommand script ([#20])
+- Moderation logger also! ([#20])
+- Add `restart` command for owner ([#20])
+
+## [v1.3.0]
+
+> **Released:** `12-06-2021`
 
 ### Bug fixes
 
@@ -64,6 +80,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
+[#20]: https://github.com/Welcome-Bot/welcome-bot/pull/20
+[#19]: https://github.com/Welcome-Bot/welcome-bot/issue/19
 [#17]: https://github.com/Welcome-Bot/welcome-bot/pull/17
 [#13]: https://github.com/Welcome-Bot/welcome-bot/pull/13
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
