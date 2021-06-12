@@ -7,7 +7,6 @@ module.exports = (versionName) => {
                 console.log(err);
                 return reject(err);
             } else if (ver) {
-                console.log("Version already added.");
                 return resolve(ver);
             } else {
                 return resolve(false);
