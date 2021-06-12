@@ -14,7 +14,7 @@ module.exports = {
         const getVersion = require("../../db/functions/version/getVersion.js");
         if (!args[0]) args[0] = message.client.botVersion;
         if (args[0].startsWith("v")) {
-            args[0].replace("v", "");
+            args[0] = args[0].replace("v", "");
         }
         let log = await getVersion(args[0] || message.client.botVersion);
         let reply = `Version: **${log.versionName}**`;
