@@ -11,8 +11,13 @@ module.exports = {
     cooldown: 5,
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
-        const getGuild = require("../../db/functions/getGuild");
-        let guildDB = await getGuild(message.guild.id);
+        const getGuild = require("../../db/functions/guild/getGuild");
+        let guildDB;
+        if (message.guild && message.channel.type !== "dm") {
+            guildDB = await getGuild(message.guild.id);
+        } else {
+            guildDB = { prefix: "w/" };
+        }
         let msg = new MessageEmbed();
         const { commands } = message.client;
 

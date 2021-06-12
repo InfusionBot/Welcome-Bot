@@ -42,8 +42,11 @@ These are the commands currently available:
 
 - [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
+    - `setMod` - Set moderation logs channel
     - `get` - Get currently set welcome channel
-    - `reset` - Reset channel back to default value
+    - `getMod` - Get currently set moderation logs channel
+    - `reset` - Reset welcome channel back to default value
+    - `resetMod` - Reset moderation logs channel back to default value
 - [`message`](https://welcome-bot.github.io/docs/commands.html#message)
     - `set` - Set welcome message
     - `get` - Get currently set welcome message
@@ -70,6 +73,7 @@ These are the commands currently available:
 - [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
 - [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
 - [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
 
 For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
 
