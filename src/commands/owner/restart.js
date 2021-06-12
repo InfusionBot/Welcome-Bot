@@ -3,7 +3,7 @@ module.exports = {
     description: "Restart the bot",
     cooldown: 30,
     ownerOnly: true,
-    async execute(message, args) {
+    execute(message, args) {
         let sentMsg;
         message.channel
             .send("Restarting...")
@@ -11,7 +11,7 @@ module.exports = {
                 message.client.destroy();
                 sentMsg = msg;
             })
-            .then(() => {
+            .then(async () => {
                 await new Promise((r) => setTimeout(r, 5000)); //Sleep for 5 secs
                 message.client.login(process.env.BOT_TOKEN);
                 sentMsg.edit("Restarted!");
