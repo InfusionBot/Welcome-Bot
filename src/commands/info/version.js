@@ -22,7 +22,7 @@ module.exports = {
         if (log) {
             reply = `Version: **${log.versionName}**`;
             log.changelog.forEach((change) => {
-                reply += `\n- ${change}`;
+                reply += `\n${change}`;
             });
         } else {
             reply = `Version \`${args[0]}\` does not exist! Latest version is: \`v${message.client.botVersion}\``;

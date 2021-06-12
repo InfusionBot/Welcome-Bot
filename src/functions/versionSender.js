@@ -11,7 +11,7 @@ module.exports = async (client) => {
             } else {
                 let reply = `New Version: **${client.botVersion}**`;
                 client.changelog.forEach((change) => {
-                    reply += `\n- ${change}`;
+                    reply += `\n${change}`;
                 });
                 guilds.forEach((guild) => {
                     let clientGuild = client.guilds.cache.get(guild.guildId);
