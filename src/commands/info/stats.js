@@ -9,6 +9,7 @@ module.exports = {
     description: "Your server statistics",
     usage: "(--dm)",
     cooldown: 10,
+    guildOnly: true,
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();

@@ -14,6 +14,10 @@ client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.botVersion = "1.3.0";
+client.changelog = [
+    "Help command shows `permissions required by bot` from `permissions`, instead it should show from `bot_perms`",
+    "Add eval, reload command for owner only",
+];
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.env.ownerIDs = [
     "815204465937481749" /*PuneetGopinath#6398*/,
@@ -64,9 +68,9 @@ const execute = require("./functions/execute");
 const uptime = require("./functions/uptime");
 
 require("./db/connection");
-const addGuild = require("./db/functions/addGuild");
-const removeGuild = require("./db/functions/removeGuild");
-const getGuild = require("./db/functions/getGuild");
+const addGuild = require("./db/functions/guild/addGuild");
+const removeGuild = require("./db/functions/guild/removeGuild");
+const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
 
 client.on("ready", () => {
@@ -88,6 +92,7 @@ client.on("ready", () => {
     setInterval(() => {
         dbAuditor(client);
     }, 3 * 60 * 60 * 1000);
+    require("./functions/versionSender")(client);
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
@@ -117,9 +122,9 @@ client.on("guildDelete", (guild) => {
 client.on("message", async function (message) {
     if (message.author.bot) return;
     let guildDB;
-    if (message.guild) {
+    if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);
-    } else if (!message.guild) {
+    } else {
         guildDB = { prefix: "w/" };
     }
 

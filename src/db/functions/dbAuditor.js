@@ -4,8 +4,8 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const Guild = require("../../schema/guildSchema");
-const removeGuild = require("./removeGuild");
-const addGuild = require("./addGuild");
+const removeGuild = require("./guild/removeGuild");
+const addGuild = require("./guild/addGuild");
 
 module.exports = (client) => {
     const actualGuilds = client.guilds.cache.map((guild) => guild.id);
