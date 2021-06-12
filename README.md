@@ -73,6 +73,7 @@ These are the commands currently available:
 - [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
 - [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
 - [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
 
 For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
 
