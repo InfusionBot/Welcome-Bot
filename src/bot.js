@@ -15,8 +15,11 @@ client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.botVersion = "1.3.0";
 client.changelog = [
-    "Help command shows `permissions required by bot` from `permissions`, instead it should show from `bot_perms`",
-    "Add eval, reload command for owner only",
+    "Fix bug `msg not working` (Issue: [#19]) ([#20])",
+    "Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])",
+    "Add new command version ([#20])",
+    "Moderation logger also! ([#20])",
+    "Add `restart` command for owner ([#20])",
 ];
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.env.ownerIDs = [
