@@ -13,6 +13,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 ### Bug fixes
 
 - Fix bug `msg not working` (Issue: [#19]) ([#20])
+- Fix goodBye
 
 ### Changes
 
