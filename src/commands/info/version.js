@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "version",
-    aliases: ["v", "ver"],
+    aliases: ["ver"],
     description: "Information on a version",
     args: false,
     guildOnly: true,
