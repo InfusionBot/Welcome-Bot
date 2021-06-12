@@ -11,7 +11,7 @@ module.exports = {
     cooldown: 5,
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
-        const getGuild = require("../../db/functions/getGuild");
+        const getGuild = require("../../db/functions/guild/getGuild");
         let guildDB = await getGuild(message.guild.id);
         let msg = new MessageEmbed();
         const { commands } = message.client;

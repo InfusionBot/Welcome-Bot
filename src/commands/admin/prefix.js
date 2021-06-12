@@ -12,8 +12,8 @@ module.exports = {
     subcommands: ["set", "get", "reset"],
     cooldown: 10,
     async execute(message, args) {
-        const updateGuild = require("../../db/functions/updateGuild");
-        const getGuild = require("../../db/functions/getGuild");
+        const updateGuild = require("../../db/functions/guild/updateGuild");
+        const getGuild = require("../../db/functions/guild/getGuild");
         let guildDB = await getGuild(message.guild.id);
         let subcommand;
         if (args[0]) {

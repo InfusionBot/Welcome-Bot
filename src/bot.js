@@ -64,9 +64,9 @@ const execute = require("./functions/execute");
 const uptime = require("./functions/uptime");
 
 require("./db/connection");
-const addGuild = require("./db/functions/addGuild");
-const removeGuild = require("./db/functions/removeGuild");
-const getGuild = require("./db/functions/getGuild");
+const addGuild = require("./db/functions/guild/addGuild");
+const removeGuild = require("./db/functions/guild/removeGuild");
+const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
 
 client.on("ready", () => {
