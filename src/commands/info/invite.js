@@ -8,6 +8,8 @@ module.exports = {
     description: "Get Invite link for the bot",
     cooldown: 20,
     execute(message, args) {
-        return message.channel.send("Here's the invite link: https://dsc.gg/welcome-bot2\nWant moderation feature to work also? Use this: https://dsc.gg/welcome-bot");
+        return message.channel.send(
+            "Here's the invite link: https://dsc.gg/welcome-bot2\nWant moderation feature to work also? Use this: https://dsc.gg/welcome-bot"
+        );
     },
 };
