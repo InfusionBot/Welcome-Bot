@@ -84,7 +84,9 @@ module.exports = {
                 //Reset mod channel
                 updateGuild(message.guild.id, "modLogChan", "mod-log");
                 guildDB = await getGuild(message.guild.id);
-                message.reply("Mod Channel reset to `" + guildDB.modLogChan + "`");
+                message.reply(
+                    "Mod Channel reset to `" + guildDB.modLogChan + "`"
+                );
                 break;
             case "get":
                 //Get channel
@@ -94,7 +96,9 @@ module.exports = {
             case "getMod":
                 //Get mod channel
                 message.reply(
-                    "Mod Channel currently is set to `" + guildDB.modLogChan + "`"
+                    "Mod Channel currently is set to `" +
+                        guildDB.modLogChan +
+                        "`"
                 );
                 break;
             default:
@@ -104,7 +108,9 @@ module.exports = {
                 );
                 //Get mod channel
                 message.reply(
-                    "Mod Channel currently is set to `" + guildDB.modLogChan + "`"
+                    "Mod Channel currently is set to `" +
+                        guildDB.modLogChan +
+                        "`"
                 );
                 break;
         }

@@ -29,13 +29,18 @@ module.exports = {
         }
 
         if (guildDB.modLogChan) {
-            channel = members.guild.channels.find(ch => ch.name === guildDB.modLogChan);
+            channel = members.guild.channels.find(
+                (ch) => ch.name === guildDB.modLogChan
+            );
             if (channel) {
-            msg = new MessageEmbed();
-            msg.setTitle(`User unbanned: ${user.tag} (${user.id})`);
-            msg.addField("Responsible moderator:", `${message.author.tag} (${message.author.id})`);
-            msg.addField("Reason:", reason)
-            channel.send(msg);
+                msg = new MessageEmbed();
+                msg.setTitle(`User unbanned: ${user.tag} (${user.id})`);
+                msg.addField(
+                    "Responsible moderator:",
+                    `${message.author.tag} (${message.author.id})`
+                );
+                msg.addField("Reason:", reason);
+                channel.send(msg);
             }
         }
 
