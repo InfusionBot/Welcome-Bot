@@ -29,7 +29,8 @@
     "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "mongoose": "^5.12.12"
+    "mongoose": "^5.12.12",
+    "pokemon": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^7.27.0",
