@@ -72,10 +72,16 @@ module.exports = {
                 );
             });
             reactionCollector.on("end", () => {
-                curPage.reactions.removeAll().catch(err => {
+                curPage.reactions.removeAll().catch((err) => {
                     console.error(err);
                 });
-                curPage.edit(pages[page].setFooter(`Page ${page + 1} / ${pages.length} | Pagination timeout`))
+                curPage.edit(
+                    pages[page].setFooter(
+                        `Page ${page + 1} / ${
+                            pages.length
+                        } | Pagination timeout`
+                    )
+                );
             });
             return;
         }
