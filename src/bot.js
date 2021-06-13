@@ -15,10 +15,10 @@ client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.categories = [
     "Setup commands",
-    "Fun",
     "General",
     "Miscellaneous",
     "Moderation",
+    "Fun",
     "Owner Only",
 ];
 client.botVersion = "1.4.0";
