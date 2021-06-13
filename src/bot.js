@@ -6,6 +6,7 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const dotenv = require("dotenv").config();
+const package = require("../package.json");
 
 const client = new Discord.Client();
 
@@ -21,17 +22,8 @@ client.categories = [
     "Fun",
     "Owner Only",
 ];
-client.botVersion = "1.4.0";
-client.changelog = [
-    "**Bug Fixes**",
-    "Fix bug `msg not working` (Issue: [#19]) ([#20])",
-    "Fix goodBye",
-    "**Changes**",
-    "Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])",
-    "Add new command version ([#20])",
-    "Moderation logger also! ([#20])",
-    "Add `restart` command for owner ([#20])",
-];
+client.botVersion = package.version;
+client.changelog = package.changelog;
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.env.ownerIDs = [
     "815204465937481749" /*PuneetGopinath#6398*/,

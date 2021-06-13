@@ -1,6 +1,16 @@
 {
   "name": "welcome-bot",
   "version": "1.4.0",
+  "changelog": [
+    "**Bug Fixes**",
+    "Fix bug `msg not working` (Issue: [#19]) ([#20])",
+    "Fix goodBye",
+    "**Changes**",
+    "Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])",
+    "Add new command version ([#20])",
+    "Moderation logger also! ([#20])",
+    "Add `restart` command for owner ([#20])"
+  ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
   "scripts": {

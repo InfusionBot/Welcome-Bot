@@ -18,9 +18,15 @@ module.exports = async (client) => {
                     }
                 });
                 guilds.forEach((guild) => {
-                    let clientGuild = client.guilds.cache.get(guild.guildId);
-                    let systemChanel = clientGuild.systemChannelID;
-                    clientGuild.channels.cache.get(systemChanel).send(reply);
+                    if (guild.unsubscribe) {
+                        let clientGuild = client.guilds.cache.get(
+                            guild.guildId
+                        );
+                        let systemChanel = clientGuild.systemChannelID;
+                        clientGuild.channels.cache
+                            .get(systemChanel)
+                            .send(reply);
+                    }
                 });
             }
         });
