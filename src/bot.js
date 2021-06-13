@@ -47,7 +47,7 @@ let defaultOpts = {
         "VIEW_CHANNEL",
         "SEND_MESSAGES",
         "READ_MESSAGE_HISTORY",
-        "ADD_REACTIONS",
+        "MANAGE_MESSAGES",
     ],
     args: false,
     catchError: true,
