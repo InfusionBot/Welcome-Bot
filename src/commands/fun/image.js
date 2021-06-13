@@ -12,7 +12,10 @@ module.exports = {
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const randomImage = require("../../functions/randomImage.js");
-        const url = await randomImage();
+        const url = await randomImage().catch(err => {
+            console.error(err);
+            message.reply("Oh! Some error occurred");
+        });
         if (url.startsWith("http")) {
             let image = new MessageEmbed();
             image.setImage(url);
