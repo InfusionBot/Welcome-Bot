@@ -72,12 +72,20 @@ module.exports = {
                 );
             });
             reactionCollector.on("end", () => {
-                curPage.reactions.removeAll().catch(err => {
+                curPage.reactions.removeAll().catch((err) => {
                     console.error(err);
                     if (err.message.search("Missing Permissions") !== -1)
-                        message.channel.send("Looks like you didn't give bot MANAGE_MESSAGES permission.");
+                        message.channel.send(
+                            "Looks like you didn't give bot MANAGE_MESSAGES permission."
+                        );
                 });
-                curPage.edit(pages[page].setFooter(`Page ${page + 1} / ${pages.length} | Pagination timeout`))
+                curPage.edit(
+                    pages[page].setFooter(
+                        `Page ${page + 1} / ${
+                            pages.length
+                        } | Pagination timeout`
+                    )
+                );
             });
             return;
         }
