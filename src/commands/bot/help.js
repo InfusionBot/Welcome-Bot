@@ -79,7 +79,7 @@ module.exports = {
                     pages[page].setFooter(
                         `Page ${page + 1} / ${
                             pages.length
-                        } | Pagination timeout`
+                        } | Pagination timed out`
                     )
                 );
             });
