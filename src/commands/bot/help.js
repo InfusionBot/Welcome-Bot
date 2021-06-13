@@ -17,6 +17,7 @@ module.exports = {
         const emojiList = ["⏪", "⏩"];
         let page = 0;
         let pages = [new MessageEmbed()];
+        let timeout = 120000; //12 secs timeout
 
         pages[0].setTitle("Welcome Bot help");
         if (!args.length) {
@@ -54,7 +55,7 @@ module.exports = {
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
                     emojiList.includes(reaction.emoji.name) && !user.bot,
-                { time: 120000 /*12 secs timeout*/ }
+                { time: timeout }
             );
             reactionCollector.on("collect", (reaction) => {
                 reaction.users.remove(message.author);
@@ -71,9 +72,12 @@ module.exports = {
                 );
             });
             reactionCollector.on("end", () => {
-                if (!curPage.deleted) {
-                    curPage.reactions.removeAll();
-                }
+                curPage.reactions.removeAll().catch(err => {
+                    console.error(err);
+                    if (err.message.search("Missing Permissions") !== -1)
+                        message.channel.send("Looks like you didn't give bot ADD_REACTIONS permission.");
+                });
+                curPage.edit(pages[page].setFooter(`Page ${page + 1} / ${pages.length} | Pagination timeout`))
             });
             return;
         }
