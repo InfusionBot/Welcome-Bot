@@ -43,7 +43,12 @@ process.on("exit", (code) => {
 const commandFolder = __dirname + "/commands";
 const commandFolders = fs.readdirSync(commandFolder);
 let defaultOpts = {
-    bot_perms: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY", "ADD_REACTIONS"],
+    bot_perms: [
+        "VIEW_CHANNEL",
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "ADD_REACTIONS",
+    ],
     args: false,
     catchError: true,
     disabled: false,
