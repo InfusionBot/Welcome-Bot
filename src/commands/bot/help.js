@@ -55,19 +55,6 @@ module.exports = {
                     emojiList.includes(reaction.emoji.name) && !user.bot,
                 { time: 120000 /*12 secs timeout*/ }
             );
-            reactionCollector.on("collect", (reaction) => {
-                reaction.users.remove(msg.author);
-                switch (reaction.emoji.name) {
-                    case emojiList[0]:
-                        page = page > 0 ? --page : pages.length - 1;
-                        break;
-                    case emojiList[1]:
-                        page = page + 1 < pages.length ? ++page : 0;
-                        break;
-                }
-                curPage.edit(
-                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
-                );
                 reactionCollector.on("collect", reaction => {
                     reaction.users.remove(message.author);
                     switch (reaction.emoji.name) {
