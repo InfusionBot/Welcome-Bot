@@ -17,6 +17,8 @@ module.exports = {
         totalSeconds %= 3600; //Get remainder of totalSeconds and 3600 (by division) and stores result in totalSeconds
         const minutes = Math.floor(totalSeconds / 60); //total seconds divided by 60 to get minutes
         const seconds = Math.floor(totalSeconds % 60); //total seconds divided by 60 to get seconds
-        return message.channel.send(`Uptime of the bot: ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`);
+        return message.channel.send(
+            `Uptime of the bot: ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
+        );
     },
 };
