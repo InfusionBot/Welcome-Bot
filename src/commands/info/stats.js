@@ -18,9 +18,11 @@ module.exports = {
         //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
         msg.setThumbnail(message.guild.iconURL());
         msg.addField(
-            "Members joined in your server:",
-            message.guild.memberCount
+            "Members in this server:",
+            message.guild.members.cache.filter(m => !m.user.bot).size
         );
+        msg.addField("Bots in this server:", message.guild.members.cache.filter(m => m.user.bot).size);
+        msg.addField("Total users and bots", message.guild.memberCount);
         msg.addField(
             "Online users in your server:",
             message.guild.members.filter((m) => m.presence.status === "online")
