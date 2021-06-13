@@ -56,7 +56,7 @@ These are the commands currently available:
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
-### Moderation commands
+### Moderation
 
 - [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
 - [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
@@ -66,6 +66,7 @@ These are the commands currently available:
 
 - [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
 - [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
+- [`invite` - Get the invite link to invite the bot to your server](https://welcome-bot.github.io/docs/commands.html#invite)
 
 ### Miscellaneous
 
