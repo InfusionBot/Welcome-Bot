@@ -19,9 +19,12 @@ module.exports = {
         msg.setThumbnail(message.guild.iconURL());
         msg.addField(
             "Members in this server:",
-            message.guild.members.cache.filter(m => !m.user.bot).size
+            message.guild.members.cache.filter((m) => !m.user.bot).size
         );
-        msg.addField("Bots in this server:", message.guild.members.cache.filter(m => m.user.bot).size);
+        msg.addField(
+            "Bots in this server:",
+            message.guild.members.cache.filter((m) => m.user.bot).size
+        );
         msg.addField("Total users and bots", message.guild.memberCount);
         msg.addField(
             "Online users in your server:",

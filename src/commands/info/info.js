@@ -18,7 +18,10 @@ module.exports = {
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${message.client.botVersion}`);
         msg.addField("Commands:", `${message.client.commands.size}`);
-        msg.addField("The no of channels bot is currently handling:", `${message.client.channels.cache.size}`);
+        msg.addField(
+            "The no of channels bot is currently handling:",
+            `${message.client.channels.cache.size}`
+        );
         msg.addField(
             "Invite URL:",
             "[https://dsc.gg/welcome-bot2](https://dsc.gg/welcome-bot2)"
