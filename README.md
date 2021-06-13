@@ -111,9 +111,17 @@ To invite the bot with all the necessary required permissions **except permissio
 
 ## Setting up the channel
 
-You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
+### Welcome channel
 
-You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html)
+By default the bot will check for a channel named `new-members`.
+
+You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+
+### Moderation channel
+
+By default the bot will check for a channel named `mod-log`.
+
+You can change this channel name, by using the `channel setMod` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
 
 ## Botlists
 
