@@ -16,30 +16,27 @@ module.exports = {
         const { commands } = message.client;
         const emojiList = ["⏪", "⏩"];
         let page = 0;
-        let pages = [
-            new MessageEmbed(),
-        ];
+        let pages = [new MessageEmbed()];
 
         pages[0].setTitle("Welcome Bot help");
         if (!args.length) {
             let p;
-            message.client.categories.forEach(cat => {
+            message.client.categories.forEach((cat) => {
                 p = pages.length;
                 let commandsCat = [];
                 let i = 1;
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(`Welcome Bot help - ${cat} Category`);
-                message.client.commands.forEach(command => {
+                message.client.commands.forEach((command) => {
                     commandsCat.push(`${i}. ${command.name}`);
                     i++;
                 });
                 pages[p].addField("Commands in this category:", commandsCat);
             });
-            pages[0].setDescription("List of all commands available in the bot");
-            pages[0].addField(
-                "No of Commands:",
-                commands.size
+            pages[0].setDescription(
+                "List of all commands available in the bot"
             );
+            pages[0].addField("No of Commands:", commands.size);
             pages[0].addField(
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
@@ -49,11 +46,27 @@ module.exports = {
                 "Cooldown is the minimum time required to execute the same command again"
             );
 
-            const curPage = await message.channel.send(pages[page].setFooter(`Page ${page + 1} / ${pages.length}`));
+            const curPage = await message.channel.send(
+                pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
+            );
             for (const emoji of emojiList) await curPage.react(emoji);
             const reactionCollector = curPage.createReactionCollector(
-                (reaction, user) => emojiList.includes(reaction.emoji.name) && !user.bot,
-                { time: 120000/*12 secs timeout*/ }
+                (reaction, user) =>
+                    emojiList.includes(reaction.emoji.name) && !user.bot,
+                { time: 120000 /*12 secs timeout*/ }
+            );
+            reactionCollector.on("collect", (reaction) => {
+                reaction.users.remove(msg.author);
+                switch (reaction.emoji.name) {
+                    case emojiList[0]:
+                        page = page > 0 ? --page : pages.length - 1;
+                        break;
+                    case emojiList[1]:
+                        page = page + 1 < pages.length ? ++page : 0;
+                        break;
+                }
+                curPage.edit(
+                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
                 );
                 reactionCollector.on("collect", reaction => {
                     reaction.users.remove(message.author);
@@ -116,7 +129,10 @@ module.exports = {
                     `\n[] = Required argument\n() = Optional argument\n|| = this OR that`
             );
         if (command.ownerOnly)
-            pages[0].addField("Can be executed by:", "Welcome-Bot owner **ONLY**");
+            pages[0].addField(
+                "Can be executed by:",
+                "Welcome-Bot owner **ONLY**"
+            );
 
         pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 
