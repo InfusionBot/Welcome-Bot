@@ -15,6 +15,7 @@ client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.categories = [
     "Setup commands",
+    "Fun",
     "General",
     "Miscellaneous",
     "Moderation",
