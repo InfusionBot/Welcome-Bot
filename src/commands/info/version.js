@@ -8,11 +8,18 @@ module.exports = {
     aliases: ["ver"],
     description: "Information on a version",
     args: false,
-    guildOnly: true,
     usage: "(version)",
     cooldown: 10,
     execute: async (message, args) => {
         const getVersion = require("../../db/functions/version/getVersion.js");
+        /*if (args[0] && args[0] === "unsubscribe") {
+            if (unsubscribe()) {//function to set in db that the user don't want to receive version updates
+                message.channel.send("Successfully unsubscribed!");
+            } else {
+                message.channel.send("An error occurred.");
+            }
+            return;
+        }*/
         if (!args[0]) args[0] = message.client.botVersion;
         if (args[0].startsWith("v")) {
             args[0] = args[0].replace("v", "");
@@ -29,7 +36,7 @@ module.exports = {
                 }
             });
         } else {
-            reply = `Version \`${args[0]}\` does not exist! Latest version is: \`v${message.client.botVersion}\``;
+            reply = `Version \`${args[0]}\` does not exist or is very old! Latest version is: \`v${message.client.botVersion}\``;
         }
         message.channel.send(reply);
     },
