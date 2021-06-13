@@ -22,8 +22,16 @@ module.exports = async (message, guildDB) => {
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
-        if (message.client.disabled && (message.client.disabled.get(commandName) || message.client.disabled.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)))) {
-            return message.channel.send(`That command was disabled, ${message.author}`);
+        if (
+            message.client.disabled &&
+            (message.client.disabled.get(commandName) ||
+                message.client.disabled.find(
+                    (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
+                ))
+        ) {
+            return message.channel.send(
+                `That command was disabled, ${message.author}`
+            );
         }
 
         if (!command || typeof command === "undefined") {
@@ -32,7 +40,9 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.guildOnly && message.channel.type === "dm") {
-            return message.channel.send(`I can't execute that command inside DMs, ${message.author}`);
+            return message.channel.send(
+                `I can't execute that command inside DMs, ${message.author}`
+            );
         }
 
         if (
@@ -47,7 +57,9 @@ module.exports = async (message, guildDB) => {
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.channel.send("You don't have permission to do this!");
+                return message.channel.send(
+                    "You don't have permission to do this!"
+                );
             }
         }
 
