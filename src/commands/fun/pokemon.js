@@ -14,12 +14,12 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
         const randomImage = require("../../functions/randomImage.js");
         const url = await randomImage(args[0]);
-        if (url.startsWith("http")) {
+        if (url && url.startsWith("http")) {
             let image = new MessageEmbed();
             image.setImage(url);
             message.channel.send(image);
-        } else {
-            message.reply("Oh! Could not find that Pokemon");
+            return;
         }
+        message.reply("Oh! Could not find that Pokemon");
     },
 };
