@@ -42,6 +42,7 @@ let defaultOpts = {
     disabled: false,
     cooldown: 3,
     ownerOnly: false,
+    category: "General",
 };
 
 for (const folder of commandFolders) {
@@ -157,7 +158,7 @@ client.on("message", async function (message) {
         }
     }
     //Whatever happens, if the message starts with prefix, the bot should execute it.
-    execute(message, client, guildDB);
+    execute(message, guildDB);
 });
 
 // Login
