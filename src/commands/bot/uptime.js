@@ -9,8 +9,8 @@ module.exports = {
     description: "Get uptime of the bot",
     cooldown: 10,
     execute(message, args) {
-        //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=uptime
-        let totalSeconds = client.uptime / 1000; //1000 ms = 1 sec
+        //https://discord.js.org/#/docs/main/v12/class/message.client?scrollTo=uptime
+        let totalSeconds = message.client.uptime / 1000; //1000 ms = 1 sec
         const days = Math.floor(totalSeconds / 86400); //total seconds divided by 86400 to get days
         totalSeconds %= 86400; //Get remainder of totalSeconds and 86400 (by division) and stores result in totalSeconds
         const hours = Math.floor(totalSeconds / 3600); //total seconds divided by 3600 to get hours
