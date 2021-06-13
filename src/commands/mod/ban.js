@@ -15,6 +15,7 @@ module.exports = {
     catchError: false,
     cooldown: 5,
     usage: "[@user] (reason)",
+    category: "Moderation",
     async execute(message, args, guildDB) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         let channel;

@@ -18,6 +18,7 @@ module.exports = {
     subcommands: ["set", "get", "reset"],
     cooldown: 10,
     ownerOnly: true,
+    category: "Sample",
     execute(message, args) {
         return;
     },

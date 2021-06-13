@@ -15,6 +15,7 @@ module.exports = {
     catchError: false,
     cooldown: 5,
     usage: "[user_id]",
+    category: "Moderation",
     async execute(message, args, guildDB) {
         const id = args[0];
         if (!id) {

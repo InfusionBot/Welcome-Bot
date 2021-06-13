@@ -7,6 +7,7 @@ module.exports = {
     usage: "[statement]",
     cooldown: 30,
     ownerOnly: true,
+    category: "Owner Only",
     execute(message, args) {
         const content = message.content.split(" ").slice(1).join(" ");
         const result = new Promise((resolve) => resolve(eval(content)));

@@ -9,15 +9,10 @@ module.exports = {
     description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
     cooldown: 5,
-    async execute(message, args) {
+    category: "General",
+    async execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         const getGuild = require("../../db/functions/guild/getGuild");
-        let guildDB;
-        if (message.guild && message.channel.type !== "dm") {
-            guildDB = await getGuild(message.guild.id);
-        } else {
-            guildDB = { prefix: "w/" };
-        }
         let msg = new MessageEmbed();
         const { commands } = message.client;
 

@@ -10,6 +10,7 @@ module.exports = {
     args: false,
     usage: "(version)",
     cooldown: 10,
+    category: "Miscellaneous",
     execute: async (message, args) => {
         const getVersion = require("../../db/functions/version/getVersion.js");
         /*if (args[0] && args[0] === "unsubscribe") {

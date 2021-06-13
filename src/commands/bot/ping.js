@@ -8,6 +8,7 @@ module.exports = {
     //aliases: [],
     description: "Ping the bot",
     cooldown: 5,
+    category: "General",
     execute(message, args) {
         const timeTaken = Date.now() - message.createdTimestamp;
         message.channel.send(

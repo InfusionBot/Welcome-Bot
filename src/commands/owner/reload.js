@@ -7,6 +7,7 @@ module.exports = {
     usage: "[command]",
     cooldown: 30,
     ownerOnly: true,
+    category: "Owner Only",
     execute(message, args) {
         const commandName = args[0].toLowerCase();
         const command =

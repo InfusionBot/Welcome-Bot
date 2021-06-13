@@ -3,6 +3,7 @@ module.exports = {
     description: "Restart the bot",
     cooldown: 30,
     ownerOnly: true,
+    category: "Owner Only",
     execute(message, args) {
         let sentMsg;
         message.channel

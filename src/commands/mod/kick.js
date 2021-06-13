@@ -15,6 +15,7 @@ module.exports = {
     catchError: true,
     cooldown: 5,
     usage: "[@mention] (reason)",
+    category: "Moderation",
     execute(message, args, guildDB) {
         const getUserFromMention = require("../../functions/getUserFromMention.js");
         if (args.length < 1) {
