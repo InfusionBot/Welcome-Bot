@@ -98,6 +98,7 @@ The bot requires the following permissions:
 - Read messages OR View channels (both are same)
 - Send messages
 - Read Message History
+- Add Reactions
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 

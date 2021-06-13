@@ -56,7 +56,7 @@ module.exports = {
                 { time: 120000/*12 secs timeout*/ }
                 );
                 reactionCollector.on("collect", reaction => {
-                    reaction.users.remove(msg.author);
+                    reaction.users.remove(message.author);
                     switch (reaction.emoji.name) {
                         case emojiList[0]:
                             page = page > 0 ? --page : pages.length - 1;
