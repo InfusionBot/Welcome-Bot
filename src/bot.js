@@ -13,6 +13,13 @@ client.commands = new Discord.Collection();
 client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
+client.categories = [
+    "Setup commands",
+    "General",
+    "Miscellaneous",
+    "Moderation",
+    "Owner Only",
+];
 client.botVersion = "1.4.0";
 client.changelog = [
     "**Bug Fixes**",
@@ -131,7 +138,7 @@ client.on("message", async function (message) {
     if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);
     } else {
-        guildDB = { prefix: "w/" };
+        guildDB = { prefix: client.defaultPrefix };
     }
 
     if (message.mentions.has(client.user)) {

@@ -18,7 +18,7 @@ module.exports = {
         msg.setThumbnail("https://i.imgur.com/bbSlsT7.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${message.client.botVersion}`);
-        msg.addField("Commands:", `${message.client.commands.size}`);
+        msg.addField("No of Commands:", `${message.client.commands.size}`);
         msg.addField(
             "The no of channels bot is currently handling:",
             `${message.client.channels.cache.size}`
