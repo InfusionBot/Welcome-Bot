@@ -17,6 +17,8 @@ module.exports = {
             let image = new MessageEmbed();
             image.setImage(url);
             message.channel.send(image);
+        } else {
+            message.reply("Oh! Some error");
         }
     },
 };
