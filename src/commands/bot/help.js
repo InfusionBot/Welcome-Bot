@@ -28,7 +28,8 @@ module.exports = {
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(`Welcome Bot help - ${cat} Category`);
                 message.client.commands.forEach((command) => {
-                    commandsCat.push(`${i}. ${command.name}`);
+                    if (command.category === cat)
+                        commandsCat.push(`${i}. ${command.name}`);
                     i++;
                 });
                 pages[p].addField("Commands in this category:", commandsCat);
