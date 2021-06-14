@@ -15,13 +15,13 @@ client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.categories = [
-    {name:"Setup", emoji:"",},
-    {name:"General", emoji:"",},
-    {name:"Information", emoji:"",},
-    {name:"Moderation", emoji:"",},
-    {name:"Miscellaneous", emoji:"",},
-    {name:"Fun", emoji:"<:fun:854002049095303188>",},
-    {name:"Owner Only", emoji:"",},
+    { name: "Setup", emoji: "" },
+    { name: "General", emoji: "" },
+    { name: "Information", emoji: "" },
+    { name: "Moderation", emoji: "" },
+    { name: "Miscellaneous", emoji: "" },
+    { name: "Fun", emoji: "<:fun:854002049095303188>" },
+    { name: "Owner Only", emoji: "" },
 ];
 client.botVersion = package.version;
 client.changelog = package.changelog;
