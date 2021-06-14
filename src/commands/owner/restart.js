@@ -13,7 +13,7 @@ module.exports = {
                 sentMsg = msg;
             })
             .then(async () => {
-                await new Promise((r) => setTimeout(r, 5000)); //Sleep for 5 secs
+                message.client.wait(5000); //Sleep for 5 secs
                 message.client.login(process.env.BOT_TOKEN);
                 sentMsg.edit("Restarted!");
             });

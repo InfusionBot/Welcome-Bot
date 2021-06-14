@@ -79,7 +79,7 @@ module.exports = {
                         page = page + 1 < pages.length ? ++page : 0;
                         break;
                     case emojiList[2]:
-                        curPage.delete();
+                        return curPage.delete();
                         break;
                 }
                 curPage.edit(
