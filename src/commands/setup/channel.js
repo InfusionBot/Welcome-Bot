@@ -86,7 +86,9 @@ module.exports = {
             case "get":
                 //Get channel
                 message.reply(
-                    "Welcome Channel currently is set to `" + guildDB.channel + "`"
+                    "Welcome Channel currently is set to `" +
+                        guildDB.channel +
+                        "`"
                 );
                 break;
             case "getmod":
@@ -100,7 +102,9 @@ module.exports = {
             default:
                 //Get channel
                 message.reply(
-                    "Welcome Channel currently is set to `" + guildDB.channel + "`"
+                    "Welcome Channel currently is set to `" +
+                        guildDB.channel +
+                        "`"
                 );
                 //Get mod channel
                 message.reply(
