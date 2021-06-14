@@ -9,7 +9,7 @@ module.exports = {
     description: "Execute a statement",
     args: true,
     usage: "[statement]",
-    cooldown: 30,
+    cooldown: 20,
     ownerOnly: true,
     category: "Owner Only",
     execute(message, args, guildDB) {
