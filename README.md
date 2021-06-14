@@ -19,7 +19,7 @@ Adjust the settings to fit all the needs of your server! You can select the chan
 
 ### Reliable and High Quality
 
-With our revolutionary infrastructure implementation, we’re proud to achieve absolute 100% uptime! (but still only 99.9% uptime when we upgrade the bot to a new version). This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
+With our revolutionary infrastructure implementation, we’re proud to achieve absolute 99.9% uptime!. This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
 
 ### Multi-purpose
 
