@@ -14,21 +14,36 @@ module.exports = {
     execute: async (message, args) => {
         const getVersion = require("../../db/functions/version/getVersion.js");
         const updateGuild = require("../../db/functions/guild/updateGuild.js");
-        if (args[0] && args[0].toLowerCase() === "unsubscribe" && message.guild) {
+        if (
+            args[0] &&
+            args[0].toLowerCase() === "unsubscribe" &&
+            message.guild
+        ) {
             if (updateGuild(message.guild.id)) {
                 message.channel.send("Successfully unsubscribed!");
             } else {
                 message.channel.send("An error occurred.");
             }
             return;
-        } else if (args[0] && args[0].toLowerCase() === "subscribe" && message.guild) {
+        } else if (
+            args[0] &&
+            args[0].toLowerCase() === "subscribe" &&
+            message.guild
+        ) {
             if (subscribe()) {
                 message.channel.send("Successfully subscribed!");
             } else {
                 message.channel.send("An error occurred.");
             }
-        } else if (!message.guild && args[0] && (args[0].toLowerCase() === "subscribe" || args[0].toLowerCase() === "unsubscribe")) {
-            message.channel.send("We don't send version updates by DMs. If you want to unsubscribe/subscribe for version updates, do it in a server.");
+        } else if (
+            !message.guild &&
+            args[0] &&
+            (args[0].toLowerCase() === "subscribe" ||
+                args[0].toLowerCase() === "unsubscribe")
+        ) {
+            message.channel.send(
+                "We don't send version updates by DMs. If you want to unsubscribe/subscribe for version updates, do it in a server."
+            );
         }
 
         if (!args[0]) args[0] = message.client.botVersion;
