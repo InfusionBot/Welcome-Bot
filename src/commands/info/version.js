@@ -19,7 +19,7 @@ module.exports = {
             args[0].toLowerCase() === "unsubscribe" &&
             message.guild
         ) {
-            if (updateGuild(message.guild.id)) {
+            if (updateGuild(message.guild.id, "subscribed", false)) {
                 message.channel.send("Successfully unsubscribed!");
             } else {
                 message.channel.send("An error occurred.");
@@ -30,11 +30,12 @@ module.exports = {
             args[0].toLowerCase() === "subscribe" &&
             message.guild
         ) {
-            if (subscribe()) {
+            if (updateGuild(message.guild.id, "subscribed", true)) {
                 message.channel.send("Successfully subscribed!");
             } else {
                 message.channel.send("An error occurred.");
             }
+            return;
         } else if (
             !message.guild &&
             args[0] &&
