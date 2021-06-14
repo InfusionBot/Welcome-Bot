@@ -14,7 +14,7 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
         const getGuild = require("../../db/functions/guild/getGuild");
         const { commands } = message.client;
-        const emojiList = ["⏪", "⏩"];
+        const emojiList = ["⏪", "⏩", "❌"];
         let page = 0;
         let pages = [new MessageEmbed()];
         let timeout = 120000; //12 secs timeout
@@ -67,6 +67,7 @@ module.exports = {
                 { time: timeout }
             );
             reactionCollector.on("collect", (reaction) => {
+                // Remove the reaction when the user react to the message
                 reaction.users.remove(message.author);
                 switch (reaction.emoji.name) {
                     case emojiList[0]:
@@ -74,6 +75,9 @@ module.exports = {
                         break;
                     case emojiList[1]:
                         page = page + 1 < pages.length ? ++page : 0;
+                        break;
+                    case emojiList[2]:
+                        curPage.delete();
                         break;
                 }
                 curPage.edit(
