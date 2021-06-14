@@ -27,14 +27,14 @@ module.exports = {
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(
-                    `Welcome Bot help - ${cat.emoji} ${cat.name} Category`
+                    `Welcome Bot help - ${cat.name} Category`
                 );
                 message.client.commands.forEach((command) => {
                     if (command.category === cat.name)
                         commandsCat.push(`- ${command.name}`);
                 });
                 pages[p].addField(
-                    "Commands in this category:",
+                    `Commands in this category (${cat.emoji})`,
                     commandsCat.join("\n")
                 );
             });
