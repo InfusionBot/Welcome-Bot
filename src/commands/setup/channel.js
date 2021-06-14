@@ -13,7 +13,7 @@ module.exports = {
     subcommands: ["set", "setMod", "get", "getMod", "reset", "resetMod"],
     cooldown: 10,
     guildOnly: true,
-    category: "Setup commands",
+    category: "Setup",
     async execute(message, args, guildDB) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
