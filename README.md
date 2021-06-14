@@ -38,7 +38,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 ## Commands
 These are the commands currently available:
 
-### Setup commands
+### Setup
 
 - [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
@@ -56,25 +56,28 @@ These are the commands currently available:
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
-### Moderation
-
-- [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
-- [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
-- [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
-
 ### General
 
 - [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
 - [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
 - [`invite` - Get the invite link to invite the bot to your server](https://welcome-bot.github.io/docs/commands.html#invite)
 
+### Information
+
+- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
+- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
+- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
+
+### Moderation
+
+- [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
+- [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
+- [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
+
 ### Miscellaneous
 
 - [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
-- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
-- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
-- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
-- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
 
 For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
 

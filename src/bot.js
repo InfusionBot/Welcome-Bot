@@ -15,7 +15,7 @@ client.disabled = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.defaultPrefix = "w/";
 client.categories = [
-    "Setup commands",
+    "Setup",
     "General",
     "Information",
     "Moderation",
