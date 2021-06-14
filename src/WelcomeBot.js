@@ -9,12 +9,11 @@ const util = require("util");
 const packageJson = require("../package.json");
 
 class WelcomeBot extends Client {
-
-    constructor () {
+    constructor() {
         super({
             allowedMentions: {
-                parse: ["users"]
-            }
+                parse: ["users"],
+            },
         });
         this.commands = new Collection();
         this.disabled = new Collection();
@@ -46,7 +45,7 @@ class WelcomeBot extends Client {
         }
     }
 
-    loadCommand (commandPath, commandName) {
+    loadCommand(commandPath, commandName) {
         let defaultOpts = {
             bot_perms: [
                 "VIEW_CHANNEL",
@@ -61,7 +60,10 @@ class WelcomeBot extends Client {
             ownerOnly: false,
             category: "General",
         };
-        let command = require(`${commandPath}/${commandName.replace(".js", "")}`);
+        let command = require(`${commandPath}/${commandName.replace(
+            ".js",
+            ""
+        )}`);
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
