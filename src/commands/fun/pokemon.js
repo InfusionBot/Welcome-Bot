@@ -24,6 +24,5 @@ module.exports = {
             message.channel.send(image);
             return;
         }
-        message.reply("Oh! Could not find that Pokemon");
     },
 };
