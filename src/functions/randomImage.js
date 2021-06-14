@@ -14,7 +14,7 @@ module.exports = function (random = true) {
     if (random === true) random = pokemon.random();
     else random = toTitleCase(random);
     return new Promise(function (resolve, reject) {
-        let imageId = pokemon.getId(random).catch(err => {
+        let imageId = pokemon.getId(random).catch((err) => {
             console.error(err);
             return reject(err);
         });
