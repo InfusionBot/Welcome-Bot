@@ -5,7 +5,8 @@
  */
 module.exports = {
     name: "enable",
-    description: "Enable/Disable welcome and goodbye logs. Not providing any args will show current settings.",
+    description:
+        "Enable/Disable welcome and goodbye logs. Not providing any args will show current settings.",
     args: false,
     guildOnly: true,
     usage: "[true / false]",
@@ -21,7 +22,13 @@ module.exports = {
                 updateGuild(message.guild.id, "enableWelcome", false);
                 break;
             default:
-                return message.channel.send(`Welcome and goodBye logs is ${getGuild(message.guild.id).enableWelcome ? "enabled" : "disabled"}`);
+                return message.channel.send(
+                    `Welcome and goodBye logs is ${
+                        getGuild(message.guild.id).enableWelcome
+                            ? "enabled"
+                            : "disabled"
+                    }`
+                );
                 break;
         }
         return;
