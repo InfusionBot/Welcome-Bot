@@ -26,7 +26,7 @@ module.exports = {
         const commandFolders = fs.readdirSync(commandFolder);
         const folderName = commandFolders.find((folder) =>
             fs
-                .readdirSync(commandFolder + `/${folder}`)
+                .readdirSync(`${commandFolder}/${folder}`)
                 .includes(`${command.name}.js`)
         );
 
@@ -35,8 +35,7 @@ module.exports = {
         ];
 
         try {
-            const newCommand = require(`../${folderName}/${command.name}.js`);
-            message.client.commands.set(newCommand.name, newCommand);
+            message.client.loadCommand(`${commandFolder}/${folder}`, command.name);
             message.channel.send(
                 `Command \`${newCommand.name}\` was reloaded!`
             );
