@@ -44,6 +44,10 @@ const guildSchema = new mongoose.Schema({
     },
     unsubscribed: {
         type: Boolean,
+        default: false,
+    },
+    enableWelcome: {
+        type: Boolean,
         default: true,
     },
 });

@@ -31,7 +31,7 @@ module.exports = {
                             .replace(" ", "")
                     ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
                     message.reply(
-                        "Channel set to `" +
+                        "Welcome Channel set to `" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
@@ -86,7 +86,7 @@ module.exports = {
             case "get":
                 //Get channel
                 message.reply(
-                    "Channel currently is set to `" + guildDB.channel + "`"
+                    "Welcome Channel currently is set to `" + guildDB.channel + "`"
                 );
                 break;
             case "getmod":
@@ -100,7 +100,7 @@ module.exports = {
             default:
                 //Get channel
                 message.reply(
-                    "Channel currently is set to `" + guildDB.channel + "`"
+                    "Welcome Channel currently is set to `" + guildDB.channel + "`"
                 );
                 //Get mod channel
                 message.reply(
