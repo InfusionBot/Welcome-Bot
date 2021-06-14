@@ -40,7 +40,10 @@ module.exports = {
                 "List of all commands available in the bot"
             );
             pages[0].addField("No of Commands:", commands.size);
-            pages[0].addField("No of categories:", message.client.categories.length);
+            pages[0].addField(
+                "No of categories:",
+                message.client.categories.length
+            );
             pages[0].addField(
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
@@ -49,7 +52,10 @@ module.exports = {
                 "What is Cooldown:",
                 "Cooldown is the minimum time required to execute the same command again"
             );
-            pages[0].addField("Want full list for commands?", "Go to the next page!");
+            pages[0].addField(
+                "Want full list for commands?",
+                "Go to the next page!"
+            );
 
             const curPage = await message.channel.send(
                 pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
