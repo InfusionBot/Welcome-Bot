@@ -17,6 +17,7 @@ module.exports = async (client) => {
                         reply += `\n- ${change}`;
                     }
                 });
+                reply += `\n\nIf you want to unsubscribe from these version updates, send \`${guildDB.prefix}version unsubscribe\``;
                 guilds.forEach((guild) => {
                     if (guild.subscribed) {
                         let clientGuild = client.guilds.cache.get(

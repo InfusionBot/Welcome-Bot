@@ -18,6 +18,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `image` - Get a random pokemon image
 - New command `pokemon` - Get image for a pokemon character
 
+### Changes
+
+- Add option to subscribe/unsubcribe to version updates.
+
 ## [v1.4.0]
 
 > **Released:** `12-06-2021`
