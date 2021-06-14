@@ -27,7 +27,7 @@ client.botVersion = package.version;
 client.changelog = package.changelog;
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.env.ownerIDs = [
-    "815204465937481749" /*PuneetGopinath#6398*/,
+    "815204465937481749" /*PuneetGopinath#6300*/,
     "693754859014324295" /*abhijoshi2k#6842*/,
 ];
 process.on("exit", (code) => {
