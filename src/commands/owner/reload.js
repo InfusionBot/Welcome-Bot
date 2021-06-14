@@ -35,7 +35,10 @@ module.exports = {
         ];
 
         try {
-            message.client.loadCommand(`${commandFolder}/${folder}`, command.name);
+            message.client.loadCommand(
+                `${commandFolder}/${folder}`,
+                command.name
+            );
             message.channel.send(
                 `Command \`${newCommand.name}\` was reloaded!`
             );
