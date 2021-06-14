@@ -123,7 +123,9 @@ client.on("guildMemberRemove", (member) => {
 client.on("guildCreate", (guild) => {
     //Bot has been invited to a new guild
     addGuild(guild.id);
-    guild.channels.cache.find((ch) => ch.id === guild.systemChannelID).send("Thank you for choosing this bot! To get started, type `w/help`");
+    guild.channels.cache
+        .find((ch) => ch.id === guild.systemChannelID)
+        .send("Thank you for choosing this bot! To get started, type `w/help`");
 });
 
 //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildDelete
