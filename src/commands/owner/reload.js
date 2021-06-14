@@ -35,7 +35,7 @@ module.exports = {
         ];
 
         try {
-            message.client.loadCommand(
+            const newCommand = message.client.loadCommand(
                 `${commandFolder}/${folderName}`,
                 command.name
             );

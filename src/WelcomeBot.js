@@ -79,6 +79,7 @@ class WelcomeBot extends Client {
         } else {
             this.disabled.set(command.name, command);
         }
+        return command;
     }
 }
 
