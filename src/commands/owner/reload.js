@@ -31,11 +31,11 @@ module.exports = {
         );
 
         delete require.cache[
-            require.resolve(commandFolder + `/${folderName}/${command.name}.js`)
+            require.resolve(`${commandFolder}/${folderName}/${command.name}.js`)
         ];
 
         try {
-            message.client.loadCommand(`${commandFolder}/${folder}`, command.name);
+            message.client.loadCommand(`${commandFolder}/${folderName}`, command.name);
             message.channel.send(
                 `Command \`${newCommand.name}\` was reloaded!`
             );
