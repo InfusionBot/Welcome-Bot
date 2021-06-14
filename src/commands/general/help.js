@@ -26,9 +26,7 @@ module.exports = {
                 p = pages.length;
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
-                pages[p].setTitle(
-                    `Welcome Bot help - ${cat.name} Category`
-                );
+                pages[p].setTitle(`Welcome Bot help - ${cat.name} Category`);
                 message.client.commands.forEach((command) => {
                     if (command.category === cat.name)
                         commandsCat.push(`- ${command.name}`);
