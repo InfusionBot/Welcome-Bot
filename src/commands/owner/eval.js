@@ -1,4 +1,5 @@
 const fs = require("fs");
+const getGuild = require("../../db/functions/guild/getGuild");
 
 module.exports = {
     name: "eval",
