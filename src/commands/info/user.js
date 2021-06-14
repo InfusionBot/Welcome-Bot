@@ -11,7 +11,7 @@ module.exports = {
     args: false,
     guildOnly: true,
     usage: "(@mention || user_id)",
-    category: "Miscellaneous",
+    category: "Information",
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");

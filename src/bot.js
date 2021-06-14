@@ -17,6 +17,7 @@ client.defaultPrefix = "w/";
 client.categories = [
     "Setup commands",
     "General",
+    "Information",
     "Miscellaneous",
     "Moderation",
     "Fun",

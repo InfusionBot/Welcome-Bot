@@ -10,7 +10,7 @@ module.exports = {
     usage: "(--dm)",
     cooldown: 10,
     guildOnly: true,
-    category: "Miscellaneous",
+    category: "Information",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();

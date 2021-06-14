@@ -10,7 +10,7 @@ module.exports = {
     args: false,
     usage: "(version)",
     cooldown: 10,
-    category: "Miscellaneous",
+    category: "Information",
     execute: async (message, args) => {
         const getVersion = require("../../db/functions/version/getVersion.js");
         const updateGuild = require("../../db/functions/guild/updateGuild.js");

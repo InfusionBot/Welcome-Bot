@@ -9,7 +9,7 @@ module.exports = {
     description: "Bot information",
     usage: "(--dm)",
     cooldown: 10,
-    category: "Miscellaneous",
+    category: "Information",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
