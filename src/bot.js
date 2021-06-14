@@ -88,17 +88,17 @@ const removeGuild = require("./db/functions/guild/removeGuild");
 const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
 
-client.on("ready", async () => {
+client.on("ready", () => {
     // We logged in
     console.log(
         `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
     );
     process.env.BOT_ID = client.user.id;
-    await presence(client);
+    presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);
     // 15 * 60 * (1 second)
     // Update presence every 15 minutes
-    setInterval(async () => await presence(client), 15 * 60 * 1000);
+    setInterval(() => presence(client), 15 * 60 * 1000);
     // Update server count every 25 minutes if environment is in PRODUCTION
     if (process.env.NODE_ENV === "production")
         setInterval(() => serverCount(client), 25 * 60 * 1000);
