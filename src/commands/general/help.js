@@ -31,7 +31,10 @@ module.exports = {
                     if (command.category === cat)
                         commandsCat.push(`- ${command.name}`);
                 });
-                pages[p].addField("Commands in this category:", commandsCat.join("\n"));
+                pages[p].addField(
+                    "Commands in this category:",
+                    commandsCat.join("\n")
+                );
             });
             pages[0].setDescription(
                 "List of all commands available in the bot"
