@@ -8,8 +8,7 @@ module.exports = async function (client) {
     const chans = client.channels.cache.size;
     const users = client.users.cache.size;
     console.log(`Updating presence. Servers: ${servers}`);
-    for (var i = 0; i < 100; i++) {
-        client.user
+        await client.user
             .setPresence({
                 activity: {
                     name: `w/help | ${servers} server${servers > 1 ? "s" : ""}`,
@@ -17,7 +16,7 @@ module.exports = async function (client) {
                 },
             })
             .catch((error) => console.error(error));
-        client.user
+        await client.user
             .setPresence({
                 activity: {
                     name: `w/help | handling ${chans} channel${
@@ -27,7 +26,7 @@ module.exports = async function (client) {
                 },
             })
             .catch((error) => console.error(error));
-        client.user
+        await client.user
             .setPresence({
                 activity: {
                     name: `w/help | giving hand to ${users} user${
@@ -37,5 +36,4 @@ module.exports = async function (client) {
                 },
             })
             .catch((error) => console.error(error));
-    }
 };
