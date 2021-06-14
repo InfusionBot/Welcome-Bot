@@ -137,7 +137,7 @@ module.exports = {
             pages[0].addField(
                 "Usage:",
                 `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                    `\n[] = Required argument\n() = Optional argument\n|| = this OR that`
+                    `\n[] = Required argument\n() = Optional argument\n/ = Either this or that value for that argument`
             );
         if (command.ownerOnly)
             pages[0].addField(
