@@ -6,9 +6,21 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
-## [v1.4.0]
+## [v1.5.0]
 
 > **Released:** `TBA`
+
+### New features
+
+- New command `invite` - Get invite link to invite the bot to your server
+- A paginated help
+- New command category: `Fun`
+- New command `image` - Get a random pokemon image
+- New command `pokemon` - Get image for a pokemon character
+
+## [v1.4.0]
+
+> **Released:** `12-06-2021`
 
 ### Bug fixes
 
