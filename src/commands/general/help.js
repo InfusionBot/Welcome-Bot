@@ -25,15 +25,13 @@ module.exports = {
             message.client.categories.forEach((cat) => {
                 p = pages.length;
                 let commandsCat = [];
-                let i = 1;
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(`Welcome Bot help - ${cat} Category`);
                 message.client.commands.forEach((command) => {
                     if (command.category === cat)
                         commandsCat.push(`- ${command.name}`);
-                    i++;
                 });
-                pages[p].addField("Commands in this category:", commandsCat);
+                pages[p].addField("Commands in this category:", commandsCat.join("\n"));
             });
             pages[0].setDescription(
                 "List of all commands available in the bot"
