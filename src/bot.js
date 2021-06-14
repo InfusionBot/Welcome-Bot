@@ -18,8 +18,8 @@ client.categories = [
     "Setup commands",
     "General",
     "Information",
-    "Miscellaneous",
     "Moderation",
+    "Miscellaneous",
     "Fun",
     "Owner Only",
 ];
