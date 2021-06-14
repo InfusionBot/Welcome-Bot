@@ -17,6 +17,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command category: `Fun`
 - New command `image` - Get a random pokemon image
 - New command `pokemon` - Get image for a pokemon character
+- Send `Thank you for choosing this bot!...` after bot is invited to a guild
+- New command `enable` - To enable/disable welcome & goodBye logs
 
 ### Changes
 
