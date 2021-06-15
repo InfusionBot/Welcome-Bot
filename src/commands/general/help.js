@@ -32,8 +32,8 @@ module.exports = {
                         commandsCat.push(`- ${command.name}`);
                 });
                 pages[p].addField(
-                    `Commands in this category (${cat.emoji})`,
-                    commandsCat.join("\n")
+                    `Commands in this category`,
+                    `(${cat.emoji})\n\n${commandsCat.join("\n")}`
                 );
             });
             pages[0].setDescription(
