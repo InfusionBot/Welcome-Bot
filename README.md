@@ -42,6 +42,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 ![support](https://botlist.space/bot/848459799783669790/badge?property=support)
 ![library](https://botlist.space/bot/848459799783669790/badge?property=library)
 ![prefix](https://botlist.space/bot/848459799783669790/badge?property=prefix)
+![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)
 
 ## Commands
 These are the commands currently available:
