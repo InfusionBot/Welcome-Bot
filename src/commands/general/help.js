@@ -128,7 +128,9 @@ module.exports = {
         if (command.bot_perms)
             pages[0].addField(
                 "Bot Permissions:",
-                `${message.client.emojis.cache.find(e => e.name === "warning")} The bot needs ${command.bot_perms.join(
+                `${message.client.emojis.cache.find(
+                    (e) => e.name === "warning"
+                )} The bot needs ${command.bot_perms.join(
                     ", "
                 )} permission(s) to execute this command.`
             );
