@@ -19,10 +19,13 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `pokemon` - Get image for a pokemon character
 - Send `Thank you for choosing this bot!...` after bot is invited to a guild
 - New command `enable` - To enable/disable welcome & goodBye logs
+- Send thank you for inviting bot message in a server's system channel after invited.
+- New command `figlet` - Implement the FIGfont spec
 
 ### Changes
 
 - Add option to subscribe/unsubcribe to version updates.
+- New class `WelcomeBot` which extends class `Discord.Client`
 
 ## [v1.4.0]
 
