@@ -11,14 +11,14 @@ const packageJson = require("../package.json");
 class WelcomeBot extends Client {
     constructor() {
         super({
-            allowedMentions: {
-                parse: ["users"],
-            },
+            messageCacheMaxSize: 100,
         });
         this.commands = new Collection();
         this.disabled = new Collection();
         this.cooldowns = new Collection();
         this.defaultPrefix = "w/";
+        this.guildSchema = require("./schema/guildSchema");
+        this.versionSchema = require("./schema/versionSchema");
         this.categories = [
             { name: "Setup", emoji: "" },
             { name: "General", emoji: "" },

@@ -19,7 +19,7 @@ module.exports = {
     cooldown: 10,
     ownerOnly: true,
     category: "Sample",
-    execute(message, args) {
+    execute(message, args, guildDB) {
         return;
     },
 };
