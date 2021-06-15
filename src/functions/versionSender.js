@@ -1,4 +1,5 @@
 const addVersion = require("../db/functions/version/addVersion");
+const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (client) => {
     const newVersion = await addVersion(client.botVersion, client.changelog);
@@ -8,7 +9,7 @@ module.exports = async (client) => {
             if (err) {
                 console.log(err);
             } else {
-                let reply = `New Version: **${client.botVersion}**`;
+                let msg = `New Version: **${client.botVersion}**`;
                 client.changelog.forEach((change) => {
                     if (change.startsWith("**")) {
                         reply += `\n${change}`;
@@ -16,12 +17,14 @@ module.exports = async (client) => {
                         reply += `\n- ${change}`;
                     }
                 });
-                reply += `\n\nIf you want to unsubscribe from these version updates, send \`${guildDB.prefix}version unsubscribe\``;
+                let guildDB;
                 guilds.forEach((guild) => {
                     if (!guild.unsubscribed) {
                         let clientGuild = client.guilds.cache.get(
                             guild.guildId
                         );
+                        guildDB = getGuild(guild.guildId);
+                        let reply = msg + `\n\nIf you want to unsubscribe from these version updates, send \`${guildDB.prefix}version unsubscribe\``;
                         let systemChanel = clientGuild.systemChannelID;
                         clientGuild.channels.cache
                             .get(systemChanel)
