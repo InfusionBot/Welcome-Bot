@@ -13,16 +13,11 @@ module.exports = {
     subcommands: ["set", "setMod", "get", "getMod", "reset", "resetMod"],
     cooldown: 10,
     guildOnly: true,
-    async execute(message, args) {
+    category: "Setup",
+    async execute(message, args, guildDB) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
-        let guildDB = await getGuild(message.guild.id);
-        let subcommand;
-        if (args[0]) {
-            subcommand = args[0].toLowerCase();
-        } else {
-            subcommand = "";
-        }
+        let subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
                 if (args[1]) {
@@ -36,7 +31,7 @@ module.exports = {
                             .replace(" ", "")
                     ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
                     message.reply(
-                        "Channel set to `" +
+                        "Welcome Channel set to `" +
                             args
                                 .join(" ")
                                 .replace(`${args[0]} `, "")
@@ -91,7 +86,9 @@ module.exports = {
             case "get":
                 //Get channel
                 message.reply(
-                    "Channel currently is set to `" + guildDB.channel + "`"
+                    "Welcome Channel currently is set to `" +
+                        guildDB.channel +
+                        "`"
                 );
                 break;
             case "getmod":
@@ -105,7 +102,9 @@ module.exports = {
             default:
                 //Get channel
                 message.reply(
-                    "Channel currently is set to `" + guildDB.channel + "`"
+                    "Welcome Channel currently is set to `" +
+                        guildDB.channel +
+                        "`"
                 );
                 //Get mod channel
                 message.reply(

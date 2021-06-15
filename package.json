@@ -1,6 +1,16 @@
 {
   "name": "welcome-bot",
   "version": "1.4.0",
+  "changelog": [
+    "**Bug Fixes**",
+    "Fix bug `msg not working` (Issue: [#19]) ([#20])",
+    "Fix goodBye",
+    "**Changes**",
+    "Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])",
+    "Add new command version ([#20])",
+    "Moderation logger also! ([#20])",
+    "Add `restart` command for owner ([#20])"
+  ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
   "scripts": {
@@ -11,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Welcome-bot/welcome.git"
+    "url": "git+https://github.com/Welcome-bot/welcome-bot.git"
   },
   "keywords": [
     "discord",
@@ -29,7 +39,8 @@
     "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "mongoose": "^5.12.12"
+    "mongoose": "^5.12.12",
+    "pokemon": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^7.27.0",

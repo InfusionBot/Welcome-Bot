@@ -5,11 +5,12 @@
  */
 module.exports = {
     name: "stats",
-    //aliases: [],
+    aliases: ["server"],
     description: "Your server statistics",
     usage: "(--dm)",
     cooldown: 10,
     guildOnly: true,
+    category: "Information",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
@@ -18,13 +19,19 @@ module.exports = {
         //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
         msg.setThumbnail(message.guild.iconURL());
         msg.addField(
-            "Members joined in your server:",
-            message.guild.memberCount
+            "Members in this server:",
+            message.guild.members.cache.filter((m) => !m.user.bot).size
         );
         msg.addField(
+            "Bots in this server:",
+            message.guild.members.cache.filter((m) => m.user.bot).size
+        );
+        msg.addField("Total users and bots", message.guild.memberCount);
+        msg.addField(
             "Online users in your server:",
-            message.guild.members.filter((m) => m.presence.status === "online")
-                .size
+            message.guild.members.cache.filter(
+                (m) => m.presence.status === "online"
+            ).size
         );
         switch (args[0]) {
             case "--dm":

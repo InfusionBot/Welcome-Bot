@@ -18,7 +18,8 @@ module.exports = {
     subcommands: ["set", "get", "reset"],
     cooldown: 10,
     ownerOnly: true,
-    execute(message, args) {
+    category: "Sample",
+    execute(message, args, guildDB) {
         return;
     },
 };

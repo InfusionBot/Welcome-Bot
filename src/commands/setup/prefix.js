@@ -12,16 +12,11 @@ module.exports = {
     subcommands: ["set", "get", "reset"],
     cooldown: 10,
     guildOnly: true,
-    async execute(message, args) {
+    category: "Setup",
+    async execute(message, args, guildDB) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
-        let guildDB = await getGuild(message.guild.id);
-        let subcommand;
-        if (args[0]) {
-            subcommand = args[0].toLowerCase();
-        } else {
-            subcommand = "";
-        }
+        let subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
                 if (args[1]) {

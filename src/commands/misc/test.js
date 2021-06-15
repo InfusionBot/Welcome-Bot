@@ -10,6 +10,7 @@ module.exports = {
     description: "Test welcome bot",
     args: false,
     guildOnly: true,
+    category: "Miscellaneous",
     execute(message, args) {
         const greetUser = require("../../functions/greetUser");
         greetUser(message.member);

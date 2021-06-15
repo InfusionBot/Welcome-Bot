@@ -9,17 +9,23 @@ module.exports = {
     description: "Bot information",
     usage: "(--dm)",
     cooldown: 10,
+    category: "Information",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         let msg = new MessageEmbed();
         msg.setTitle("Welcome-Bot");
         msg.setDescription("Information and Support for Welcome-Bot");
-        msg.setThumbnail("https://i.imgur.com/bbSlsT7.png");
+        msg.setThumbnail("https://i.imgur.com/2BF9mxi.png");
         msg.addField("Servers joined:", message.client.guilds.cache.size);
         msg.addField("Version:", `${message.client.botVersion}`);
+        msg.addField("No of Commands:", `${message.client.commands.size}`);
+        msg.addField(
+            "The no of channels bot is currently handling:",
+            `${message.client.channels.cache.size}`
+        );
         msg.addField(
             "Invite URL:",
-            "[https://dsc.gg/welcome-bot2](https://dsc.gg/welcome-bot2)"
+            "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
         );
         msg.addField(
             "Bot lists:",
@@ -30,7 +36,7 @@ module.exports = {
             "Other links:",
             "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
                 "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-                "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](hhttps://welcome-bot.github.io/docs/terms.md)\n" +
+                "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
                 "[Documentation](https://welcome-bot.github.io/docs)"
         );
         switch (args[0]) {

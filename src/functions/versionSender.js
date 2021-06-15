@@ -1,9 +1,8 @@
-const Guild = require("../schema/guildSchema");
-
 const addVersion = require("../db/functions/version/addVersion");
 
 module.exports = async (client) => {
     const newVersion = await addVersion(client.botVersion, client.changelog);
+    const Guild = client.guildSchema;
     if (newVersion) {
         Guild.where({}).find((err, guilds) => {
             if (err) {
@@ -17,10 +16,17 @@ module.exports = async (client) => {
                         reply += `\n- ${change}`;
                     }
                 });
+                reply += `\n\nIf you want to unsubscribe from these version updates, send \`${guildDB.prefix}version unsubscribe\``;
                 guilds.forEach((guild) => {
-                    let clientGuild = client.guilds.cache.get(guild.guildId);
-                    let systemChanel = clientGuild.systemChannelID;
-                    clientGuild.channels.cache.get(systemChanel).send(reply);
+                    if (!guild.unsubscribed) {
+                        let clientGuild = client.guilds.cache.get(
+                            guild.guildId
+                        );
+                        let systemChanel = clientGuild.systemChannelID;
+                        clientGuild.channels.cache
+                            .get(systemChanel)
+                            .send(reply);
+                    }
                 });
             }
         });

@@ -1,13 +1,18 @@
 const fs = require("fs");
+const getGuild = require("../../db/functions/guild/getGuild");
+const versionSender = require("../../functions/versionSender.js");
+const presence = require("../../functions/presence.js");
+const serverCount = require("../../functions/serverCount.js");
 
 module.exports = {
     name: "eval",
     description: "Execute a statement",
     args: true,
     usage: "[statement]",
-    cooldown: 30,
+    cooldown: 20,
     ownerOnly: true,
-    execute(message, args) {
+    category: "Owner Only",
+    execute(message, args, guildDB) {
         const content = message.content.split(" ").slice(1).join(" ");
         const result = new Promise((resolve) => resolve(eval(content)));
 

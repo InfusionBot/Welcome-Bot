@@ -6,9 +6,30 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
-## [v1.4.0]
+## [v1.5.0]
 
 > **Released:** `TBA`
+
+### New features
+
+- New command `invite` - Get invite link to invite the bot to your server
+- A paginated help
+- New command category: `Fun`
+- New command `image` - Get a random pokemon image
+- New command `pokemon` - Get image for a pokemon character
+- Send `Thank you for choosing this bot!...` after bot is invited to a guild
+- New command `enable` - To enable/disable welcome & goodBye logs
+- Send thank you for inviting bot message in a server's system channel after invited.
+- New command `figlet` - Implement the FIGfont spec
+
+### Changes
+
+- Add option to subscribe/unsubcribe to version updates.
+- New class `WelcomeBot` which extends class `Discord.Client`
+
+## [v1.4.0]
+
+> **Released:** `12-06-2021`
 
 ### Bug fixes
 
@@ -88,6 +109,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.5.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.5.0
+[v1.4.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.4.0
 [v1.3.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.3.0
 [v1.2.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.2.1
 [v1.2.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.2.0

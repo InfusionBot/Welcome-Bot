@@ -10,7 +10,8 @@ module.exports = {
         "Get information about a user. It will show your info if no user was mentioned",
     args: false,
     guildOnly: true,
-    usage: "(@mention || user_id)",
+    usage: "(@mention / user_id)",
+    category: "Information",
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
         const getUserFromMention = require("../../functions/getUserFromMention.js");

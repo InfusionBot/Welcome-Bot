@@ -42,6 +42,14 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "mod-log",
     },
+    unsubscribed: {
+        type: Boolean,
+        default: false,
+    },
+    enableWelcome: {
+        type: Boolean,
+        default: true,
+    },
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);

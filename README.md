@@ -10,6 +10,7 @@ Welcome-bot is a bot built for you, to welcome new users to your servers mainly.
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://dsc.gg/welcome-bot-guild)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
+[![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
 
 ## Features
 
@@ -19,7 +20,7 @@ Adjust the settings to fit all the needs of your server! You can select the chan
 
 ### Reliable and High Quality
 
-With our revolutionary infrastructure implementation, we’re proud to achieve absolute 100% uptime! (but still only 99.9% uptime when we upgrade the bot to a new version). This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
+With our revolutionary infrastructure implementation, we’re proud to achieve absolute 99.9% uptime!. This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
 
 ### Multi-purpose
 
@@ -35,10 +36,17 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
+## Bot status
+
+![tag](https://botlist.space/bot/848459799783669790/badge?property=tag)
+![support](https://botlist.space/bot/848459799783669790/badge?property=support)
+![library](https://botlist.space/bot/848459799783669790/badge?property=library)
+![prefix](https://botlist.space/bot/848459799783669790/badge?property=prefix)
+
 ## Commands
 These are the commands currently available:
 
-### Setup commands
+### Setup
 
 - [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
@@ -56,24 +64,28 @@ These are the commands currently available:
     - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
-### Moderation commands
+### General
+
+- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
+- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
+- [`invite` - Get the invite link to invite the bot to your server](https://welcome-bot.github.io/docs/commands.html#invite)
+
+### Information
+
+- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
+- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
+- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
+
+### Moderation
 
 - [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
 - [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
 - [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
 
-### General
-
-- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
-- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
-
 ### Miscellaneous
 
 - [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
-- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
-- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
-- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
-- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
 
 For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
 
@@ -97,6 +109,7 @@ The bot requires the following permissions:
 - Read messages OR View channels (both are same)
 - Send messages
 - Read Message History
+- Manage messages
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
@@ -111,9 +124,17 @@ To invite the bot with all the necessary required permissions **except permissio
 
 ## Setting up the channel
 
-You can to have a channel named `new-members`, the bot will check for channel named `new-members` by default.
+### Welcome channel
 
-You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html)
+By default the bot will check for a channel named `new-members`.
+
+You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+
+### Moderation channel
+
+By default the bot will check for a channel named `mod-log`.
+
+You can change this channel name, by using the `channel setMod` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
 
 ## Botlists
 
@@ -124,7 +145,7 @@ Feel free to upvote him to show your support.
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
-## [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
+### [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
 
 > Find the best Discord Bots for your server with DisBotList!
 

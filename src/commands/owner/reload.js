@@ -7,6 +7,7 @@ module.exports = {
     usage: "[command]",
     cooldown: 30,
     ownerOnly: true,
+    category: "Owner Only",
     execute(message, args) {
         const commandName = args[0].toLowerCase();
         const command =
@@ -25,24 +26,26 @@ module.exports = {
         const commandFolders = fs.readdirSync(commandFolder);
         const folderName = commandFolders.find((folder) =>
             fs
-                .readdirSync(commandFolder + `/${folder}`)
+                .readdirSync(`${commandFolder}/${folder}`)
                 .includes(`${command.name}.js`)
         );
 
         delete require.cache[
-            require.resolve(commandFolder + `/${folderName}/${command.name}.js`)
+            require.resolve(`${commandFolder}/${folderName}/${command.name}.js`)
         ];
 
         try {
-            const newCommand = require(`../${folderName}/${command.name}.js`);
-            message.client.commands.set(newCommand.name, newCommand);
+            const newCommand = message.client.loadCommand(
+                `${commandFolder}/${folderName}`,
+                command.name
+            );
             message.channel.send(
                 `Command \`${newCommand.name}\` was reloaded!`
             );
         } catch (error) {
             console.error(error);
             message.channel.send(
-                `There was an error while reloading a command \`${command.name}\`:\n\`${error.message}\``
+                `There was an error while reloading a command \`${command.name}\``
             );
         }
     },
