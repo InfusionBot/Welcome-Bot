@@ -23,11 +23,11 @@ module.exports = async (member) => {
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
     let embed = new MessageEmbed()
-    .setColor('#0099ff')
-    .setTitle(`Welcome ${user.tag}!`)
-    .setDescription(msg)
-    .setThumbnail(`${member.user.displayAvatarURL()}`)
-    .setFooter(`Total members: ${member.guild.memberCount}`);
+        .setColor("#0099ff")
+        .setTitle(`Welcome ${user.tag}!`)
+        .setDescription(msg)
+        .setThumbnail(`${member.user.displayAvatarURL()}`)
+        .setFooter(`Total members: ${member.guild.memberCount}`);
     channel.send(msg);
     channel.stopTyping();
 };
