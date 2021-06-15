@@ -79,4 +79,23 @@ module.exports = function (client) {
     } else {
         console.log("NOTE: DISCORD_BOTS_token is not set");
     }
+
+    if (process.env.DISCORDLIST_token) {
+        data = JSON.stringify({
+            server_count: servers,
+        });
+        options = {
+            hostname: "api.botlist.space",
+            path: "/v1/bots/" + process.env.BOT_ID,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: process.env.DISCORDLIST_token,
+                "User-Agent": process.env.userAgent,
+            },
+        };
+        sendReq(data, options);
+    } else {
+        console.log("NOTE: is not set");
+    }
 };

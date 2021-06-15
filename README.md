@@ -138,7 +138,7 @@ Feel free to upvote him to show your support.
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
-## [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
+### [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
 
 > Find the best Discord Bots for your server with DisBotList!
 
