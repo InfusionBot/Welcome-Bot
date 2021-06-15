@@ -33,7 +33,7 @@ module.exports = {
                 });
                 pages[p].addField(
                     `Commands in this category`,
-                    `(${cat.emoji})\n\n${commandsCat.join("\n")}`
+                    `${commandsCat.join("\n")}`
                 );
             });
             pages[0].setDescription(
