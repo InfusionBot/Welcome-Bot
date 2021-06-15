@@ -24,10 +24,10 @@ module.exports = async (member) => {
         .replace("{members}", `${member.guild.memberCount}`);
     let embed = new MessageEmbed()
         .setColor("#0099ff")
-        .setTitle(`Welcome ${user.tag}!`)
+        .setTitle(`Welcome ${member.user.tag}!`)
         .setDescription(msg)
         .setThumbnail(`${member.user.displayAvatarURL()}`)
         .setFooter(`Total members: ${member.guild.memberCount}`);
-    channel.send(msg);
+    channel.send(embed);
     channel.stopTyping();
 };
