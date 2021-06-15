@@ -42,7 +42,7 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "mod-log",
     },
-    unsubscribed: {
+    subscribed: {
         type: Boolean,
         default: false,
     },

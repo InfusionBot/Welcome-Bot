@@ -19,7 +19,7 @@ module.exports = async (client) => {
                 });
 
                 guilds.forEach((guild) => {
-                    if (!guild.unsubscribed) {
+                    if (guild.subscribed) {
                         let clientGuild = client.guilds.cache.get(
                             guild.guildId
                         );
