@@ -14,12 +14,12 @@ module.exports = {
     category: "Information",
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
-        const getUserFromMention = require("../../functions/getUserFromMention.js");
+        const { userFromMention } = require("../../functions/get.js");
         //const getUserFlags = require("../../functions/getUserFlags.js");
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
-                user = getUserFromMention(
+                user = userFromMention(
                     args[0] || `${message.author}`,
                     message.client
                 );

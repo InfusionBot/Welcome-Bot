@@ -31,6 +31,8 @@ class WelcomeBot extends Client {
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
         this.changelog = packageJson.changelog;
+        this.botServerId = "836854115526770708";
+        this.newsChannelId = "854247641747423232";
 
         const commandFolder = __dirname + "/commands";
         const commandFolders = fs.readdirSync(commandFolder);
