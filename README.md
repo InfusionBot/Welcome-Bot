@@ -10,6 +10,7 @@ Welcome-bot is a bot built for you, to welcome new users to your servers mainly.
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://dsc.gg/welcome-bot-guild)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
+[![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
 
 ## Features
 
