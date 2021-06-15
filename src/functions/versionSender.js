@@ -24,7 +24,9 @@ module.exports = async (client) => {
                             guild.guildId
                         );
                         guildDB = getGuild(guild.guildId);
-                        let reply = msg + `\n\nIf you want to unsubscribe from these version updates, send \`${guildDB.prefix}version unsubscribe\``;
+                        let reply =
+                            msg +
+                            `\n\nIf you want to unsubscribe from these version updates, send \`${guildDB.prefix}version unsubscribe\``;
                         let systemChanel = clientGuild.systemChannelID;
                         clientGuild.channels.cache
                             .get(systemChanel)
