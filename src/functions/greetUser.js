@@ -7,19 +7,11 @@ const getGuild = require("../db/functions/guild/getGuild");
 //const genImage = require("./genImage");
 //const fs = require("fs");
 module.exports = async (member) => {
-    //const { MessageAttachment } = require("discord.js");
+    const { MessageEmbed } = require("discord.js");
     let guildDB = await getGuild(member.guild.id);
     let channel = member.guild.channels.cache.find(
         (ch) => ch.name === guildDB.channel
     );
-    /*let image;
-    genImage(member)
-        .then((img) => {
-            image = img;
-        })
-        .catch((err) => {
-            console.log(err);
-        });*/
     if (!channel) {
         return;
     }
@@ -30,15 +22,12 @@ module.exports = async (member) => {
         .replace("{mention}", `${member}`)
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
-    /*if (image) {
-        let attachment = new MessageAttachment(
-            Buffer.from(image, "utf-8"),
-            "welcome-image.jpg"
-        );
-        channel.send(msg, attachment);
-    } else {*/
+    let embed = new MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle(`Welcome ${user.tag}!`)
+    .setDescription(msg)
+    .setThumbnail(`${member.user.displayAvatarURL()}`)
+    .setFooter(`Total members: ${member.guild.memberCount}`);
     channel.send(msg);
-    //console.error("Can't get welcome image");
-    //}
     channel.stopTyping();
 };
