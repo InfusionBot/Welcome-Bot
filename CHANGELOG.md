@@ -8,6 +8,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.5.1]
 
+> **Released:** `15-06-2021`
+
 ### Bug fixes
 - Fix bug: not posting server count to botlist.space ([#23])
 
