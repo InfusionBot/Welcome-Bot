@@ -87,7 +87,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.botlist.space",
-            path: "/v1/bots/" + process.env.DISCORDLIST_BOT_ID,
+            path: "/v1/bots/" + process.env.DISCORDLIST_BOT_ID, //852146388178698242
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
