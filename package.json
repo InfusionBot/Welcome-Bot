@@ -1,20 +1,11 @@
 {
   "name": "welcome-bot",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "changelog": [
-    "**New features**",
-    "New command `invite` - Get invite link to invite the bot to your server",
-    "A paginated help",
-    "New command category: `Fun`",
-    "New command `image` - Get a random pokemon image",
-    "New command `pokemon` - Get image for a pokemon character",
-    "Send `Thank you for choosing this bot!...` after bot is invited to a guild",
-    "New command `enable` - To enable/disable welcome & goodBye logs",
-    "Send thank you for inviting bot message in a server's system channel after invited.",
-    "New command `figlet` - Implement the FIGfont spec",
-    "Add option to subscribe/unsubcribe to version updates.",
+    "**Bug fixes**",
+    "Fix bug: not posting server count to botlist.space ([#23])",
     "**Changes**",
-    "New class `WelcomeBot` which extends class `Discord.Client`"
+    "Use embed to send welcome message!"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
