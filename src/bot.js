@@ -14,6 +14,7 @@ process.env.ownerIDs = [
     "815204465937481749" /*PuneetGopinath#6300*/,
     "693754859014324295" /*abhijoshi2k#6842*/,
 ];
+process.env.DISCORDLIST_BOT_ID = "852146388178698242";
 process.on("exit", (code) => {
     client.destroy();
 });

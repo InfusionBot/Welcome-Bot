@@ -8,6 +8,7 @@ const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
+            console.log("headers: ", res.headers);
         })
         .on("error", (err) => {
             console.error(err.message);
@@ -86,7 +87,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.botlist.space",
-            path: "/v1/bots/" + process.env.BOT_ID,
+            path: "/v1/bots/" + process.env.DISCORDLIST_BOT_ID,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
