@@ -24,7 +24,10 @@ module.exports = {
         } else {
             message.reply("Please provide a proper channel which exists.");
         }
-        message.guild.channels.cache.get(channelId).addFollower(message.client.newsChannelId).catch(console.error);
+        message.guild.channels.cache
+            .get(channelId)
+            .addFollower(message.client.newsChannelId)
+            .catch(console.error);
         return;
     },
 };
