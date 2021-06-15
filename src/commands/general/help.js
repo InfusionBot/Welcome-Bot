@@ -8,6 +8,7 @@ module.exports = {
     aliases: ["commands"],
     description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
+    bot_perms: ["MANAGE_MESSAGES"],
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB) {

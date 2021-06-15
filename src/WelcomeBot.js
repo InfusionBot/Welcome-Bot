@@ -51,7 +51,6 @@ class WelcomeBot extends Client {
                 "VIEW_CHANNEL",
                 "SEND_MESSAGES",
                 "READ_MESSAGE_HISTORY",
-                "MANAGE_MESSAGES",
             ],
             args: false,
             catchError: true,
