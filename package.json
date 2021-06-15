@@ -1,15 +1,13 @@
 {
   "name": "welcome-bot",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "changelog": [
-    "**Bug Fixes**",
-    "Fix bug `msg not working` (Issue: [#19]) ([#20])",
-    "Fix goodBye",
+    "**New features**",
+    "New command `invite` - Get invite link to invite the bot to your server",
+    "A paginated help",
     "**Changes**",
-    "Add new subcommands for `channel` command - `setMod`, `getMod`, `resetMod` ([#20])",
-    "Add new command version ([#20])",
-    "Moderation logger also! ([#20])",
-    "Add `restart` command for owner ([#20])"
+    "Add option to subscribe/unsubcribe to version updates.",
+    "New class `WelcomeBot` which extends class `Discord.Client`"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
