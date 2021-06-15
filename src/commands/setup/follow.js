@@ -25,7 +25,7 @@ module.exports = {
             message.reply("Please provide a proper channel which exists.");
         }
         message.guild.channels.cache
-            .find(chan => chan.id === channelId)
+            .find((chan) => chan.id === channelId)
             .addFollower(message.client.newsChannelId)
             .catch(console.error);
         return;
