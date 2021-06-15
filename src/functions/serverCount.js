@@ -8,7 +8,6 @@ const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
-            console.log("headers: ", res.headers);
         })
         .on("error", (err) => {
             console.error(err.message);
@@ -97,6 +96,6 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("NOTE: is not set");
+        console.log("NOTE: DISCORDLIST_token is not set");
     }
 };
