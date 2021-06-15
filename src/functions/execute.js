@@ -67,13 +67,13 @@ module.exports = async (message, guildDB) => {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.channel.send(
-                    "You didn't give the bot permission to do this!"
+                    `You didn't give the bot permission to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.`
                 );
             }
         }
 
         if (command.args && !args.length) {
-            let reply = `You didn't provide any arguments, ${message.author}!`;
+            let reply = `You didn't provide any arguments, ${message.author}! Arguments are required for this command.`;
 
             if (command.usage) {
                 reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
