@@ -16,7 +16,7 @@ module.exports = {
         msg.setTitle("Welcome-Bot");
         msg.setDescription("Information and Support for Welcome-Bot");
         msg.setThumbnail("https://i.imgur.com/2BF9mxi.png");
-        msg.addField("Servers joined:", message.client.guilds.cache.size);
+        msg.addField("Servers joined:", `${message.client.guilds.cache.size}`);
         msg.addField("Version:", `${message.client.botVersion}`);
         msg.addField("No of Commands:", `${message.client.commands.size}`);
         msg.addField(

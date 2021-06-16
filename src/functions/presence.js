@@ -18,6 +18,5 @@ module.exports = function (client) {
                 } | giving hand to ${users} user${users > 1 ? "s" : ""}`,
                 type: "WATCHING",
             },
-        })
-        .catch((error) => console.error(error));
+        });
 };

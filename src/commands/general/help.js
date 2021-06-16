@@ -40,10 +40,10 @@ module.exports = {
             pages[0].setDescription(
                 "List of all commands available in the bot"
             );
-            pages[0].addField("No of Commands:", commands.size);
+            pages[0].addField("No of Commands:", `${commands.size}`);
             pages[0].addField(
                 "No of categories:",
-                message.client.categories.length
+                `${message.client.categories.length}`
             );
             pages[0].addField(
                 "Get help for specific command:",

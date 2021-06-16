@@ -4,13 +4,24 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, Intents } = require("discord.js");
 const util = require("util");
 const packageJson = require("../package.json");
 
 class WelcomeBot extends Client {
     constructor() {
+        //https://discord.js.org/#/docs/main/master/class/Intents?scrollTo=s-FLAGS
         super({
+            intents: [
+                Intents.FLAGS.GUILDS,
+                Intents.FLAGS.GUILD_MEMBERS,
+                Intents.FLAGS.GUILD_BANS,
+                Intents.FLAGS.GUILD_WEBHOOKS,
+                Intents.FLAGS.GUILD_MESSAGES,
+                Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+                Intents.FLAGS.DIRECT_MESSAGES,
+                Intents.FLAGS.DIRECT_MESSAGE_REACTIONS
+            ],
             messageCacheMaxSize: 100,
         });
         this.commands = new Collection();
