@@ -8,12 +8,10 @@ module.exports = function (client) {
     const chans = client.channels.cache.size;
     const users = client.users.cache.size;
     console.log(`Updating presence. Servers: ${servers}`);
-    client.user
-        .setPresence({
-            activitys: [{
-                name: `w/help | ${servers} server${
-                    servers > 1 ? "s" : ""
-                }`,
+    client.user.setPresence({
+        activitys: [
+            {
+                name: `w/help | ${servers} server${servers > 1 ? "s" : ""}`,
                 type: "WATCHING",
             },
             {
@@ -21,6 +19,7 @@ module.exports = function (client) {
                     chans > 1 ? "s" : ""
                 }`,
                 type: "WATCHING",
-            },],
-        });
+            },
+        ],
+    });
 };

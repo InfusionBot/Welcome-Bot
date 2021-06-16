@@ -39,9 +39,7 @@ module.exports = {
                 `${commandFolder}/${folderName}`,
                 command.name
             );
-            message.reply(
-                `Command \`${newCommand.name}\` was reloaded!`
-            );
+            message.reply(`Command \`${newCommand.name}\` was reloaded!`);
         } catch (error) {
             console.error(error);
             message.reply(

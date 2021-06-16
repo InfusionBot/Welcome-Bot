@@ -24,9 +24,7 @@ module.exports = {
             default:
                 return message.channel.send(
                     `Welcome and goodBye logs are ${
-                        guildDB.enableWelcome
-                            ? "enabled"
-                            : "disabled"
+                        guildDB.enableWelcome ? "enabled" : "disabled"
                     }`
                 );
                 break;

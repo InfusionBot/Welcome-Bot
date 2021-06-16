@@ -35,11 +35,11 @@ module.exports = {
         );
         switch (args[0]) {
             case "--dm":
-                message.author.send({embeds: [embed]});
+                message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs ${message.author}`);
                 break;
             default:
-                message.channel.send({embeds: [embed]});
+                message.channel.send({ embeds: [embed] });
                 break;
         }
     },

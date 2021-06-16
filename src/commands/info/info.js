@@ -16,7 +16,10 @@ module.exports = {
         embed.setTitle("Welcome-Bot");
         embed.setDescription("Information and Support for Welcome-Bot");
         embed.setThumbnail("https://i.imgur.com/2BF9mxi.png");
-        embed.addField("Servers joined:", `${message.client.guilds.cache.size}`);
+        embed.addField(
+            "Servers joined:",
+            `${message.client.guilds.cache.size}`
+        );
         embed.addField("Version:", `${message.client.botVersion}`);
         embed.addField("No of Commands:", `${message.client.commands.size}`);
         embed.addField(
@@ -41,11 +44,11 @@ module.exports = {
         );
         switch (args[0]) {
             case "--dm":
-                message.author.send({embeds: [embed]});
+                message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs ${message.author}`);
                 break;
             default:
-                message.channel.send({embeds: [embed]});
+                message.channel.send({ embeds: [embed] });
                 break;
         }
     },

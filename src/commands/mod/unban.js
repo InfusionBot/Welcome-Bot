@@ -42,7 +42,7 @@ module.exports = {
                     `${message.author.tag} (${message.author.id})`
                 );
                 embed.addField("Reason:", reason);
-                channel.send({embeds: [embed]});
+                channel.send({ embeds: [embed] });
             }
         }
 

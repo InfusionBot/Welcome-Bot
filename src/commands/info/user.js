@@ -83,6 +83,6 @@ module.exports = {
         );
         embed.setColor("#33ddff");
         embed.setTimestamp();
-        message.channel.send({embeds: [embed]});
+        message.channel.send({ embeds: [embed] });
     },
 };

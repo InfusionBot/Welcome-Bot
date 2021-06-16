@@ -6,7 +6,8 @@ module.exports = {
     category: "Owner Only",
     execute(message, args) {
         let sentMsg;
-        message.reply("Restarting...")
+        message
+            .reply("Restarting...")
             .then((msg) => {
                 message.client.destroy();
                 sentMsg = msg;

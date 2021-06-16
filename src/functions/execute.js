@@ -57,9 +57,7 @@ module.exports = async (message, guildDB) => {
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.reply(
-                    "You don't have permission to do this!"
-                );
+                return message.reply("You don't have permission to do this!");
             }
         }
 
