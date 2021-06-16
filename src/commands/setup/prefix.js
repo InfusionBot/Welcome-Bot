@@ -44,8 +44,10 @@ module.exports = {
                     "prefix",
                     message.client.defaultPrefix
                 );
-                guildDB = await getGuild(message.guild.id);
-                message.reply("Prefix reset to `" + guildDB.prefix + "`");
+
+                message.reply(
+                    "Prefix reset to `" + message.client.defaultPrefix + "`"
+                );
                 break;
             case "get":
             default:
