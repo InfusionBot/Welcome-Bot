@@ -93,6 +93,9 @@ client.on("message", async function (message) {
             `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"` +
             server +
             `\nSend \`${guildDB.prefix}help\` to get help`;
+        if (message.guild) {
+            reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
+        }
         if (!message.reference) {
             message.channel.startTyping();
             message.channel.send(reply);
