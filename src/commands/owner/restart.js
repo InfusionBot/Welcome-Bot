@@ -6,8 +6,8 @@ module.exports = {
     category: "Owner Only",
     execute(message, args) {
         let sentMsg;
-        message.channel
-            .send("Restarting...")
+        message
+            .reply("Restarting...")
             .then((msg) => {
                 message.client.destroy();
                 sentMsg = msg;

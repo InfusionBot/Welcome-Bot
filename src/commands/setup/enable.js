@@ -12,7 +12,7 @@ module.exports = {
     usage: "[true / false]",
     cooldown: 10,
     category: "Setup",
-    execute(message, args) {
+    execute(message, args, guildDB) {
         args[0] = args[0] ? args[0] : "";
         switch (args[0]) {
             case "true":
@@ -23,10 +23,8 @@ module.exports = {
                 break;
             default:
                 return message.channel.send(
-                    `Welcome and goodBye logs is ${
-                        getGuild(message.guild.id).enableWelcome
-                            ? "enabled"
-                            : "disabled"
+                    `Welcome and goodBye logs are ${
+                        guildDB.enableWelcome ? "enabled" : "disabled"
                     }`
                 );
                 break;
