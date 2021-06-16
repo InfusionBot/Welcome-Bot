@@ -17,7 +17,11 @@ module.exports = function (random = true) {
     return new Promise(function (resolve, reject) {
         let imageId = pokemon.getId(random);
         let imageUrl = `https://pokeres.bastionbot.org/images/pokemon/${imageId}.png`;
-        if (imageUrl && imageUrl.startsWith("http") && typeof imageId === "number") {
+        if (
+            imageUrl &&
+            imageUrl.startsWith("http") &&
+            typeof imageId === "number"
+        ) {
             resolve(imageUrl);
         } else {
             reject("A bug");

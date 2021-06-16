@@ -21,7 +21,7 @@ module.exports = {
         if (url && url.startsWith("http")) {
             let image = new MessageEmbed();
             image.setImage(url);
-            message.channel.send({embeds: [image]});
+            message.channel.send({ embeds: [image] });
             return;
         }
     },
