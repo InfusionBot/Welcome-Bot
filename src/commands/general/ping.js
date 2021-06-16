@@ -10,9 +10,11 @@ module.exports = {
     cooldown: 5,
     category: "General",
     execute(message, args) {
-        const timeTaken = Date.now() - message.createdTimestamp;
+        let msg = `Pong ${message.author}\nWebsocket heartbeat: ${message.client.ws.ping}ms.`;
         message.channel.send(
-            `Pong ${message.author}, This message had a latency of ${timeTaken}ms.`
-        );
+            msg + `\nGetting roundtrip latency`
+        ).then(sent => {
+            sent.edit(msg + `Roundtrip latency: ${sent.createdTimestamp - message.createdTimestamp}ms`);
+        });
     },
 };
