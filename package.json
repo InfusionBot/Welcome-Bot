@@ -33,7 +33,7 @@
   "homepage": "https://github.com/Welcome-bot/welcome-bot#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "discord.js": "github:discordjs/discord.js",
+    "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
     "mongoose": "^5.12.12",
     "pokemon": "^2.2.0"
