@@ -39,12 +39,12 @@ module.exports = {
                 `${commandFolder}/${folderName}`,
                 command.name
             );
-            message.channel.send(
+            message.reply(
                 `Command \`${newCommand.name}\` was reloaded!`
             );
         } catch (error) {
             console.error(error);
-            message.channel.send(
+            message.reply(
                 `There was an error while reloading a command \`${command.name}\``
             );
         }

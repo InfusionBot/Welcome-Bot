@@ -10,13 +10,17 @@ module.exports = function (client) {
     console.log(`Updating presence. Servers: ${servers}`);
     client.user
         .setPresence({
-            activity: {
+            activitys: [{
                 name: `w/help | ${servers} server${
                     servers > 1 ? "s" : ""
-                } | handling ${chans} channel${
-                    chans > 1 ? "s" : ""
-                } | giving hand to ${users} user${users > 1 ? "s" : ""}`,
+                }`,
                 type: "WATCHING",
             },
+            {
+                name: `w/help | handling ${chans} channel${
+                    chans > 1 ? "s" : ""
+                }`,
+                type: "WATCHING",
+            },],
         });
 };

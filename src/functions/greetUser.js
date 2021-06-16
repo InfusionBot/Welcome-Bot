@@ -28,6 +28,6 @@ module.exports = async (member) => {
         .setDescription(msg)
         .setThumbnail(`${member.user.displayAvatarURL()}`)
         .setFooter(`Total members: ${member.guild.memberCount}`);
-    channel.send(embed);
+    channel.send({embeds: [embed]});
     channel.stopTyping();
 };

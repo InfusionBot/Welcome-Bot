@@ -58,14 +58,14 @@ module.exports = {
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {
-                msg = new MessageEmbed();
-                msg.setTitle(`User banned: ${user.tag} (${user.id})`);
-                msg.addField(
+                embed = new MessageEmbed();
+                embed.setTitle(`User banned: ${user.tag} (${user.id})`);
+                embed.addField(
                     "Responsible moderator:",
                     `${message.author.tag} (${message.author.id})`
                 );
-                msg.addField("Reason:", reason);
-                channel.send(msg);
+                embed.addField("Reason:", reason);
+                channel.send({embeds: [embed]});
             }
         }
 

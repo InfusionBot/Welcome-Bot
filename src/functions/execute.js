@@ -40,7 +40,7 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.guildOnly && message.channel.type === "dm") {
-            return message.channel.send(
+            return message.reply(
                 `I can't execute that command inside DMs, ${message.author}`
             );
         }
@@ -57,7 +57,7 @@ module.exports = async (message, guildDB) => {
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.channel.send(
+                return message.reply(
                     "You don't have permission to do this!"
                 );
             }
@@ -66,7 +66,7 @@ module.exports = async (message, guildDB) => {
         if (command.bot_perms && message.channel.type !== "dm") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(command.bot_perms)) {
-                return message.channel.send(
+                return message.reply(
                     `You didn't give the bot permission to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.`
                 );
             }
@@ -79,7 +79,7 @@ module.exports = async (message, guildDB) => {
                 reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
             }
 
-            return message.channel.send(reply);
+            return message.reply(reply);
         }
 
         if (command.subcommand && !args.length) {
@@ -91,7 +91,7 @@ module.exports = async (message, guildDB) => {
                 )}\``;
             }
 
-            return message.channel.send(reply);
+            return message.reply(reply);
         }
 
         const { cooldowns } = message.client;

@@ -58,9 +58,9 @@ module.exports = {
                 "Go to the next page!"
             );
 
-            const curPage = await message.channel.send(
-                pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
-            );
+            const curPage = await message.channel.send({
+                embeds: [pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)]
+            });
             for (const emoji of emojiList) await curPage.react(emoji);
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
@@ -81,21 +81,21 @@ module.exports = {
                         return curPage.delete();
                         break;
                 }
-                curPage.edit(
-                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
-                );
+                curPage.edit({
+                    embeds: [pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)]
+                });
             });
             reactionCollector.on("end", () => {
                 curPage.reactions.removeAll().catch((err) => {
                     console.error(err);
                 });
-                curPage.edit(
+                curPage.edit({ embeds: [
                     pages[page].setFooter(
                         `Page ${page + 1} / ${
                             pages.length
                         } | Pagination timed out`
                     )
-                );
+                ]});
             });
             return;
         }
@@ -148,6 +148,6 @@ module.exports = {
 
         pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 
-        message.channel.send(pages[0]);
+        message.channel.send({embeds: pages[0]});
     },
 };

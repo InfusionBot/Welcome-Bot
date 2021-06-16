@@ -13,21 +13,21 @@ module.exports = {
     category: "Information",
     execute(message, args) {
         const { MessageEmbed } = require("discord.js");
-        let msg = new MessageEmbed();
-        msg.setTitle("Statistics");
-        msg.setDescription(`Statistics for ${message.guild.name} server`);
+        let embed = new MessageEmbed();
+        embed.setTitle("Statistics");
+        embed.setDescription(`Statistics for ${message.guild.name} server`);
         //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
-        msg.setThumbnail(message.guild.iconURL());
-        msg.addField(
+        embed.setThumbnail(message.guild.iconURL());
+        embed.addField(
             "Members in this server:",
             message.guild.members.cache.filter((m) => !m.user.bot).size
         );
-        msg.addField(
+        embed.addField(
             "Bots in this server:",
             message.guild.members.cache.filter((m) => m.user.bot).size
         );
-        msg.addField("Total users and bots", message.guild.memberCount);
-        msg.addField(
+        embed.addField("Total users and bots", message.guild.memberCount);
+        embed.addField(
             "Online users in your server:",
             message.guild.members.cache.filter(
                 (m) => m.presence.status === "online"
@@ -35,11 +35,11 @@ module.exports = {
         );
         switch (args[0]) {
             case "--dm":
-                message.author.send(msg);
+                message.author.send({embeds: [embed]});
                 message.channel.send(`Check out your DMs ${message.author}`);
                 break;
             default:
-                message.channel.send(msg);
+                message.channel.send({embeds: [embed]});
                 break;
         }
     },
