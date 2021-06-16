@@ -14,6 +14,9 @@ process.env.ownerIDs = [
     "815204465937481749" /*PuneetGopinath#6300*/,
     "693754859014324295" /*abhijoshi2k#6842*/,
 ];
+process.on("unhandledRejection", error => {
+    console.error("Unhandled promise rejection:", error);
+});
 process.on("exit", (code) => {
     client.destroy();
 });

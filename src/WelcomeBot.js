@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
-const { Client, Collection, Intents } = require("discord.js");
+const { Client, Collection, Intents, Permissions } = require("discord.js");
 const util = require("util");
 const packageJson = require("../package.json");
 
@@ -34,10 +34,44 @@ class WelcomeBot extends Client {
             { name: "Setup", emoji: "" },
             { name: "General", emoji: "" },
             { name: "Information", emoji: "" },
+            { name: "Manage", emoji: "" },
             { name: "Moderation", emoji: "" },
             { name: "Miscellaneous", emoji: "" },
             { name: "Fun", emoji: "<:fun:854002049095303188>" },
             { name: "Owner Only", emoji: "" },
+        ];
+        this.allPerms = [
+        {perm: "ADMINISTRATOR", val: "Administrator"},
+        {perm: "CREATE_INSTANT_INVITE", val: "Create Instant Invite"},
+        {perm: "KICK_MEMBERS", val: "Kick Members"},
+        {perm: "BAN_MEMBERS", val: "Ban Members"},
+        {perm: "MANAGE_CHANNELS", val: "Manage Channels"},
+        {perm: "MANAGE_GUILD", val: "Manage Server"},
+        {perm: "ADD_REACTIONS", val: "Add Reactions"},
+        {perm: "VIEW_AUDIT_LOG", val: "View Audit Log"},
+        {perm: "PRIORITY_SPEAKER", val: "Priority Speaker"},
+        {perm: "STREAM", val: "Stream"},
+        {perm: "VIEW_CHANNEL", val: "View Channels"},
+        {perm: "SEND_MESSAGES", val: "Send Messages"},
+        {perm: "SEND_TTS_MESSAGES", val: "Send TTS Messages"},
+        {perm: "MANAGE_MESSAGES", val: "Manage Messages"},
+        {perm: "EMBED_LINKS", val: "Embed Links"},
+        {perm: "ATTACH_FILES", val: "Attach Files"},
+        {perm: "READ_MESSAGE_HISTORY", val: "Read Message History"},
+        {perm: "MENTION_EVERYONE", val: "Mention Everyone"},
+        {perm: "USE_EXTERNAL_EMOJIS", val: "Use External Emojis"},
+        {perm: "VIEW_GUILD_INSIGHTS", val: "View Server Insights"},
+        {perm: "CONNECT", val: "Connect"},
+        {perm: "SPEAK", val: "Speak"},
+        {perm: "MUTE_MEMBERS", val: "Mute Members"},
+        {perm: "DEAFEN_MEMBERS", val: "Deafen Members"},
+        {perm: "MOVE_MEMBERS", val: "Move Members"},
+        {perm: "USE_VAD", val: "Use Voice Activity"},
+        {perm: "CHANGE_NICKNAME", val: "Change Nickname"},
+        {perm: "MANAGE_NICKNAMES", val: "Manage Nicknames"},
+        {perm: "MANAGE_ROLES", val: "Manage Roles"},
+        {perm: "MANAGE_WEBHOOKS", val: "Manage Webhooks"},
+        {perm: "MANAGE_EMOJIS", val: "Manage Emojis"},
         ];
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
@@ -61,9 +95,9 @@ class WelcomeBot extends Client {
     loadCommand(commandPath, commandName) {
         let defaultOpts = {
             bot_perms: [
-                "VIEW_CHANNEL",
-                "SEND_MESSAGES",
-                "READ_MESSAGE_HISTORY",
+                Permissions.FLAGS.VIEW_CHANNEL,
+                Permissions.FLAGS.SEND_MESSAGES,
+                Permissions.FLAGS.READ_MESSAGE_HISTORY,
             ],
             args: false,
             catchError: true,
@@ -77,10 +111,26 @@ class WelcomeBot extends Client {
             ""
         )}`);
         if (command.bot_perms) {
+            let index;
+            for (var i = 0; i < this.allPerms.length; i++) {
+                index = command.bot_perms.indexOf(this.allPerms[i].perm);
+                if (index !== -1) {
+                    command.bot_perms[index] = Permissions.FLAGS[this.allPerms[i].perm];
+                }
+            }
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
                 ...command.bot_perms,
             ];
+        }
+        if (command.permissions) {
+            let index;
+            for (var i = 0; i < this.allPerms.length; i++) {
+                index = command.permissions.indexOf(this.allPerms[i].perm);
+                if (index !== -1) {
+                    command.permissions[index] = Permissions.FLAGS[this.allPerms[i].perm];
+                }
+            }
         }
         command = {
             ...defaultOpts,

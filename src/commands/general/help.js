@@ -14,6 +14,7 @@ module.exports = {
     async execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         const getGuild = require("../../db/functions/guild/getGuild");
+        const beautifyPerms = require("../../functions/beautifyPerms");
         const { commands } = message.client;
         const emojiList = ["⏪", "⏩", "❌"];
         let page = 0;
@@ -33,7 +34,7 @@ module.exports = {
                         commandsCat.push(`- ${command.name}`);
                 });
                 pages[p].addField(
-                    `Commands in this category`,
+                    `${cat.emoji} Commands in this category`,
                     `${commandsCat.join("\n")}`
                 );
             });
@@ -122,26 +123,26 @@ module.exports = {
         pages[0].setDescription(`Help for ${command.name} command`);
         pages[0].addField("Command Name:", command.name);
 
-        if (command.description)
-            pages[0].addField("Description:", command.description);
+        if (command.description) {
+            let desc = command.description;
+            if (command.bot_perms)
+                desc += `\nThe bot needs ${beautifyPerms(command.bot_perms, message.client.allPerms).join(", ")} permission(s) to execute this command.`;
+            pages[0].addField("Description:", desc);
+        }
         if (command.aliases && command.aliases !== [])
             pages[0].addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             pages[0].addField(
                 "Permissions:",
-                `You need ${command.permissions.join(
-                    ", "
-                )} permission(s) to execute this command.`
+                `You need ${beautifyPerms(command.permissions, message.client.allPerms).join(", ")} permission(s) to execute this command.`
             );
-        if (command.bot_perms)
-            pages[0].addField(
-                "Bot Permissions:",
-                `The bot needs ${command.bot_perms.join(
-                    ", "
-                )} permission(s) to execute this command.`
-            );
-        if (command.subcommands)
-            pages[0].addField("Subcommands:", command.subcommands.join(", "));
+        if (command.subcommands) {
+            let subcommands = [];
+            for (var i = 0; i < command.subcommands.length; i++) {
+                subcommands.push(`\`${command.subcommands[i]}\` - ${command.subs_desc[i]}`);
+            }
+            pages[0].addField("Subcommands:", subcommands.join(`\n`));
+        }
         if (command.usage)
             pages[0].addField(
                 "Usage:",
@@ -156,6 +157,6 @@ module.exports = {
 
         pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 
-        message.channel.send({ embeds: pages[0] });
+        message.channel.send({ embeds: [pages[0]] });
     },
 };

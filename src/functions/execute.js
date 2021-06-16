@@ -4,12 +4,14 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("../db/connection");
-const { Collection } = require("discord.js");
+const { Collection, MessageEmbed } = require("discord.js");
 const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
     let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
+    let embed = new MessageEmbed();
+    embed.setColor("#ff0000");
     if (message.content.startsWith(guildDB.prefix)) {
         const args = message.content
             .slice(guildDB.prefix.length)
@@ -71,17 +73,20 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.args && !args.length) {
-            let reply = `You didn't provide any arguments, ${message.author}! Arguments are required for this command.`;
+            let reply = `Arguments are required for this command.`;
 
             if (command.usage) {
                 reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
             }
 
-            return message.reply(reply);
+            embed.setTitle("No args provided");
+            embed.addField(`You didn't provide any arguments, ${message.author.tag}!`, reply);
+            embed.addField("Want help?", `Send \`${guildDB.prefix}help ${command.name}\``);
+            return message.reply({embeds: [embed]});
         }
 
         if (command.subcommand && !args.length) {
-            let reply = `You didn't provide any subcommand, ${message.author}!`;
+            let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
                 reply += `\nThe subcommand(s) available are: \`${command.subcommands.join(
@@ -89,7 +94,10 @@ module.exports = async (message, guildDB) => {
                 )}\``;
             }
 
-            return message.reply(reply);
+            embed.setTitle("No subcommands provided");
+            embed.addField(`You didn't provide any subcommand, ${message.author.tag}!`, reply);
+            embed.addField("Want help?", `Send \`${guildDB.prefix}help ${command.name}\``);
+            return message.reply({embeds: [embed]});
         }
 
         const { cooldowns } = message.client;
@@ -128,9 +136,10 @@ module.exports = async (message, guildDB) => {
                 message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);
-                message.reply(
-                    "There was an error trying to execute that command, please report this at https://github.com/Welcome-Bot/welcome-bot/issues"
-                );
+                embed.setTitle("An error occurred!").
+                embed.addField("\u200b", "There was an error trying to execute that command.");
+                embed.addField("Please report this at https://github.com/Welcome-Bot/welcome-bot/issues", "\u200b");
+                message.reply({embeds: [embed]});
                 return;
             }
         }
