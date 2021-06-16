@@ -14,7 +14,7 @@ module.exports = {
         message.channel.send(
             msg + `\nGetting roundtrip latency`
         ).then(sent => {
-            sent.edit(msg + `Roundtrip latency: ${sent.createdTimestamp - message.createdTimestamp}ms`);
+            sent.edit(msg + `\nRoundtrip latency: ${sent.createdTimestamp - message.createdTimestamp}ms`);
         });
     },
 };
