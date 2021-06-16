@@ -24,8 +24,9 @@ module.exports = {
         } else {
             message.reply("Please provide a proper channel which exists.");
         }
-        message.client.guilds.cache.get(message.client.botServerId).channels.cache
-            .get(message.client.newsChannelId)
+        message.client.guilds.cache
+            .get(message.client.botServerId)
+            .channels.cache.get(message.client.newsChannelId)
             .addFollower(channelId)
             .catch((err) => {
                 console.error(err);
