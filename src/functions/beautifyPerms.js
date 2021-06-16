@@ -7,7 +7,7 @@
 module.exports = function (perms, allPerms) {
     let index;
     for (var i = 0; i < allPerms.length; i++) {
-        index = perms.indexOf(allPerms[i].perm)
+        index = perms.indexOf(allPerms[i].perm);
         if (index !== -1) {
             perms[index] = allPerms[i].val;
         }

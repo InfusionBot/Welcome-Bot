@@ -126,7 +126,10 @@ module.exports = {
         if (command.description) {
             let desc = command.description;
             if (command.bot_perms)
-                desc += `\nThe bot needs ${beautifyPerms(command.bot_perms, message.client.allPerms).join(", ")} permission(s) to execute this command.`;
+                desc += `\nThe bot needs ${beautifyPerms(
+                    command.bot_perms,
+                    message.client.allPerms
+                ).join(", ")} permission(s) to execute this command.`;
             pages[0].addField("Description:", desc);
         }
         if (command.aliases && command.aliases !== [])
@@ -134,12 +137,17 @@ module.exports = {
         if (command.permissions)
             pages[0].addField(
                 "Permissions:",
-                `You need ${beautifyPerms(command.permissions, message.client.allPerms).join(", ")} permission(s) to execute this command.`
+                `You need ${beautifyPerms(
+                    command.permissions,
+                    message.client.allPerms
+                ).join(", ")} permission(s) to execute this command.`
             );
         if (command.subcommands) {
             let subcommands = [];
             for (var i = 0; i < command.subcommands.length; i++) {
-                subcommands.push(`\`${command.subcommands[i]}\` - ${command.subs_desc[i]}`);
+                subcommands.push(
+                    `\`${command.subcommands[i]}\` - ${command.subs_desc[i]}`
+                );
             }
             pages[0].addField("Subcommands:", subcommands.join(`\n`));
         }

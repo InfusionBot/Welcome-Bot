@@ -80,9 +80,15 @@ module.exports = async (message, guildDB) => {
             }
 
             embed.setTitle("No args provided");
-            embed.addField(`You didn't provide any arguments, ${message.author.tag}!`, reply);
-            embed.addField("Want help?", `Send \`${guildDB.prefix}help ${command.name}\``);
-            return message.reply({embeds: [embed]});
+            embed.addField(
+                `You didn't provide any arguments, ${message.author.tag}!`,
+                reply
+            );
+            embed.addField(
+                "Want help?",
+                `Send \`${guildDB.prefix}help ${command.name}\``
+            );
+            return message.reply({ embeds: [embed] });
         }
 
         if (command.subcommand && !args.length) {
@@ -95,9 +101,15 @@ module.exports = async (message, guildDB) => {
             }
 
             embed.setTitle("No subcommands provided");
-            embed.addField(`You didn't provide any subcommand, ${message.author.tag}!`, reply);
-            embed.addField("Want help?", `Send \`${guildDB.prefix}help ${command.name}\``);
-            return message.reply({embeds: [embed]});
+            embed.addField(
+                `You didn't provide any subcommand, ${message.author.tag}!`,
+                reply
+            );
+            embed.addField(
+                "Want help?",
+                `Send \`${guildDB.prefix}help ${command.name}\``
+            );
+            return message.reply({ embeds: [embed] });
         }
 
         const { cooldowns } = message.client;
@@ -136,10 +148,17 @@ module.exports = async (message, guildDB) => {
                 message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);
-                embed.setTitle("An error occurred!").
-                embed.addField("\u200b", "There was an error trying to execute that command.");
-                embed.addField("Please report this at https://github.com/Welcome-Bot/welcome-bot/issues", "\u200b");
-                message.reply({embeds: [embed]});
+                embed
+                    .setTitle("An error occurred!")
+                    .embed.addField(
+                        "\u200b",
+                        "There was an error trying to execute that command."
+                    );
+                embed.addField(
+                    "Please report this at https://github.com/Welcome-Bot/welcome-bot/issues",
+                    "\u200b"
+                );
+                message.reply({ embeds: [embed] });
                 return;
             }
         }
