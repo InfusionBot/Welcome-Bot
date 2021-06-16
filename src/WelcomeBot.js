@@ -80,16 +80,7 @@ class WelcomeBot extends Client {
         this.newsChannelId = "847459283876577360";
 
         const commandFolder = __dirname + "/commands";
-        const commandFolders = fs.readdirSync(commandFolder);
-
-        for (const folder of commandFolders) {
-            const commandFiles = fs
-                .readdirSync(`${commandFolder}/${folder}`)
-                .filter((file) => file.endsWith(".js"));
-            for (const file of commandFiles) {
-                this.loadCommand(`${commandFolder}/${folder}`, file);
-            }
-        }
+        this.loadCommands(commandFolder);
     }
 
     loadCommand(commandPath, commandName) {
@@ -144,6 +135,19 @@ class WelcomeBot extends Client {
             this.disabled.set(command.name, command);
         }
         return command;
+    }
+
+    loadCommands(commandFolder) {
+        const commandFolders = fs.readdirSync(commandFolder);
+
+        for (const folder of commandFolders) {
+            const commandFiles = fs
+                .readdirSync(`${commandFolder}/${folder}`)
+                .filter((file) => file.endsWith(".js"));
+            for (const file of commandFiles) {
+                this.loadCommand(`${commandFolder}/${folder}`, file);
+            }
+        }
     }
 }
 
