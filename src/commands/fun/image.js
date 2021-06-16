@@ -19,9 +19,9 @@ module.exports = {
         if (url.startsWith("http")) {
             let image = new MessageEmbed();
             image.setImage(url);
-            message.channel.send(image);
+            message.channel.send({embeds: [image]});
             return;
         }
-        message.reply("Oh! Some error occurred");
+        message.reply("Oh! Maybe some error occurred");
     },
 };
