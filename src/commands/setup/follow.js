@@ -27,9 +27,9 @@ module.exports = {
         message.client.guilds.cache.get(message.client.botServerId).channels.cache
             .get(message.client.newsChannelId)
             .addFollower(channelId)
-            .catch(err => {
-                console.error(err)
-                message.reply("")
+            .catch((err) => {
+                console.error(err);
+                message.reply("");
             });
         message.channel.send("Successfully followed");
     },
