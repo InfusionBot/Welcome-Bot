@@ -27,7 +27,10 @@ module.exports = {
         message.client.botGuild.channels
             .get(message.client.newsChannelId)
             .addFollower(channelId)
-            .catch(console.error);
-        return;
+            .catch(err => {
+                console.error(err)
+                message.reply("")
+            });
+        message.channel.send("Successfully followed");
     },
 };

@@ -32,7 +32,7 @@ class WelcomeBot extends Client {
         this.botVersion = packageJson.version;
         this.changelog = packageJson.changelog;
         this.botServerId = "836854115526770708";
-        this.newsChannelId = "854247641747423232";
+        this.newsChannelId = "847459283876577360";
         this.botGuild = this.guilds.cache.get(this.botServerId);
 
         const commandFolder = __dirname + "/commands";

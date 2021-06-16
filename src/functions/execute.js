@@ -128,8 +128,8 @@ module.exports = async (message, guildDB) => {
                 message.channel.startTyping();
                 command.execute(message, args, guildDB);
                 message.channel.stopTyping(true);
-            } catch (error) {
-                console.error(error);
+            } catch (err) {
+                console.error(err);
                 message.reply(
                     "There was an error trying to execute that command, please report this at https://github.com/Welcome-Bot/welcome-bot/issues"
                 );
