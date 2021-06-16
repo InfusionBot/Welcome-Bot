@@ -11,10 +11,15 @@ module.exports = {
     category: "General",
     execute(message, args) {
         let msg = `Pong ${message.author}\nWebsocket heartbeat: ${message.client.ws.ping}ms.`;
-        message.channel.send(
-            msg + `\nGetting roundtrip latency`
-        ).then(sent => {
-            sent.edit(msg + `\nRoundtrip latency: ${sent.createdTimestamp - message.createdTimestamp}ms`);
-        });
+        message.channel
+            .send(msg + `\nGetting roundtrip latency`)
+            .then((sent) => {
+                sent.edit(
+                    msg +
+                        `\nRoundtrip latency: ${
+                            sent.createdTimestamp - message.createdTimestamp
+                        }ms`
+                );
+            });
     },
 };
