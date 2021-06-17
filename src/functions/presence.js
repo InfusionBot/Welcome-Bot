@@ -11,9 +11,7 @@ module.exports = function (client) {
     client.user.setPresence({
         activities: [
             {
-                name: `w/help | ${servers} server${
-                    servers > 1 ? "s" : ""
-                }`,
+                name: `w/help | ${servers} server${servers > 1 ? "s" : ""}`,
                 type: "WATCHING",
             },
             {
