@@ -161,11 +161,11 @@ module.exports = async (message, guildDB) => {
                 console.error(err);
                 embed
                     .setTitle("An error occurred!")
-                    .embed.addField(
+                    .addField(
                         "\u200b",
                         "There was an error trying to execute that command."
-                    );
-                embed.addField(
+                    )
+                .addField(
                     "Please report this at https://github.com/Welcome-Bot/welcome-bot/issues",
                     "\u200b"
                 );

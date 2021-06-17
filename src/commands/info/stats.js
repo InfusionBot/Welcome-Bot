@@ -20,18 +20,18 @@ module.exports = {
         embed.setThumbnail(message.guild.iconURL());
         embed.addField(
             "Members in this server:",
-            message.guild.members.cache.filter((m) => !m.user.bot).size
+            `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
         );
         embed.addField(
             "Bots in this server:",
-            message.guild.members.cache.filter((m) => m.user.bot).size
+            `${message.guild.members.cache.filter((m) => m.user.bot).size}`
         );
-        embed.addField("Total users and bots", message.guild.memberCount);
+        embed.addField("Total users and bots", `${message.guild.memberCount}`);
         embed.addField(
             "Online users in your server:",
-            message.guild.members.cache.filter(
+            `${message.guild.members.cache.filter(
                 (m) => m.presence.status === "online"
-            ).size
+            ).size}`
         );
         embed.addField("Server was created at:", `${message.guild.createdAt}`);
         embed.addField("Server region:", `${message.guild.region}`);
