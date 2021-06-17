@@ -35,7 +35,10 @@ module.exports = {
         );
         embed.addField("Server was created at:", `${message.guild.createdAt}`);
         embed.addField("Server region:", `${message.guild.region}`);
-        embed.addField("Maximum amount of members allowed in this server", `${message.guild.maximumMembers}`)
+        embed.addField(
+            "Maximum amount of members allowed in this server",
+            `${message.guild.maximumMembers}`
+        );
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
