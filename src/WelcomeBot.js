@@ -41,37 +41,37 @@ class WelcomeBot extends Client {
             { name: "Owner Only", emoji: "" },
         ];
         this.allPerms = [
-            { perm: "ADMINISTRATOR", val: "Administrator" },
-            { perm: "CREATE_INSTANT_INVITE", val: "Create Instant Invite" },
-            { perm: "KICK_MEMBERS", val: "Kick Members" },
-            { perm: "BAN_MEMBERS", val: "Ban Members" },
-            { perm: "MANAGE_CHANNELS", val: "Manage Channels" },
-            { perm: "MANAGE_GUILD", val: "Manage Server" },
-            { perm: "ADD_REACTIONS", val: "Add Reactions" },
-            { perm: "VIEW_AUDIT_LOG", val: "View Audit Log" },
-            { perm: "PRIORITY_SPEAKER", val: "Priority Speaker" },
-            { perm: "STREAM", val: "Stream" },
-            { perm: "VIEW_CHANNEL", val: "View Channels" },
-            { perm: "SEND_MESSAGES", val: "Send Messages" },
-            { perm: "SEND_TTS_MESSAGES", val: "Send TTS Messages" },
-            { perm: "MANAGE_MESSAGES", val: "Manage Messages" },
-            { perm: "EMBED_LINKS", val: "Embed Links" },
-            { perm: "ATTACH_FILES", val: "Attach Files" },
-            { perm: "READ_MESSAGE_HISTORY", val: "Read Message History" },
-            { perm: "MENTION_EVERYONE", val: "Mention Everyone" },
-            { perm: "USE_EXTERNAL_EMOJIS", val: "Use External Emojis" },
-            { perm: "VIEW_GUILD_INSIGHTS", val: "View Server Insights" },
-            { perm: "CONNECT", val: "Connect" },
-            { perm: "SPEAK", val: "Speak" },
-            { perm: "MUTE_MEMBERS", val: "Mute Members" },
-            { perm: "DEAFEN_MEMBERS", val: "Deafen Members" },
-            { perm: "MOVE_MEMBERS", val: "Move Members" },
-            { perm: "USE_VAD", val: "Use Voice Activity" },
-            { perm: "CHANGE_NICKNAME", val: "Change Nickname" },
-            { perm: "MANAGE_NICKNAMES", val: "Manage Nicknames" },
-            { perm: "MANAGE_ROLES", val: "Manage Roles" },
-            { perm: "MANAGE_WEBHOOKS", val: "Manage Webhooks" },
-            { perm: "MANAGE_EMOJIS", val: "Manage Emojis" },
+            { perm: Permissions.FLAGS.ADMINISTRATOR, val: "Administrator" },
+            { perm: Permissions.FLAGS.CREATE_INSTANT_INVITE, val: "Create Instant Invite" },
+            { perm: Permissions.FLAGS.KICK_MEMBERS, val: "Kick Members" },
+            { perm: Permissions.FLAGS.BAN_MEMBERS, val: "Ban Members" },
+            { perm: Permissions.FLAGS.MANAGE_CHANNELS, val: "Manage Channels" },
+            { perm: Permissions.FLAGS.MANAGE_GUILD, val: "Manage Server" },
+            { perm: Permissions.FLAGS.ADD_REACTIONS, val: "Add Reactions" },
+            { perm: Permissions.FLAGS.VIEW_AUDIT_LOG, val: "View Audit Log" },
+            { perm: Permissions.FLAGS.PRIORITY_SPEAKER, val: "Priority Speaker" },
+            { perm: Permissions.FLAGS.STREAM, val: "Stream" },
+            { perm: Permissions.FLAGS.VIEW_CHANNEL, val: "View Channels" },
+            { perm: Permissions.FLAGS.SEND_MESSAGES, val: "Send Messages" },
+            { perm: Permissions.FLAGS.SEND_TTS_MESSAGES, val: "Send TTS Messages" },
+            { perm: Permissions.FLAGS.MANAGE_MESSAGES, val: "Manage Messages" },
+            { perm: Permissions.FLAGS.EMBED_LINKS, val: "Embed Links" },
+            { perm: Permissions.FLAGS.ATTACH_FILES, val: "Attach Files" },
+            { perm: Permissions.FLAGS.READ_MESSAGE_HISTORY, val: "Read Message History" },
+            { perm: Permissions.FLAGS.MENTION_EVERYONE, val: "Mention Everyone" },
+            { perm: Permissions.FLAGS.USE_EXTERNAL_EMOJIS, val: "Use External Emojis" },
+            { perm: Permissions.FLAGS.VIEW_GUILD_INSIGHTS, val: "View Server Insights" },
+            { perm: Permissions.FLAGS.CONNECT, val: "Connect" },
+            { perm: Permissions.FLAGS.SPEAK, val: "Speak" },
+            { perm: Permissions.FLAGS.MUTE_MEMBERS, val: "Mute Members" },
+            { perm: Permissions.FLAGS.DEAFEN_MEMBERS, val: "Deafen Members" },
+            { perm: Permissions.FLAGS.MOVE_MEMBERS, val: "Move Members" },
+            { perm: Permissions.FLAGS.USE_VAD, val: "Use Voice Activity" },
+            { perm: Permissions.FLAGS.CHANGE_NICKNAME, val: "Change Nickname" },
+            { perm: Permissions.FLAGS.MANAGE_NICKNAMES, val: "Manage Nicknames" },
+            { perm: Permissions.FLAGS.MANAGE_ROLES, val: "Manage Roles" },
+            { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "Manage Webhooks" },
+            { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "Manage Emojis" },
         ];
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
@@ -102,30 +102,10 @@ class WelcomeBot extends Client {
             ""
         )}`);
         if (command.bot_perms) {
-            command.rawBotPerms = command.bot_perms;
-            let index;
-            for (var i = 0; i < this.allPerms.length; i++) {
-                index = command.bot_perms.indexOf(this.allPerms[i].perm);
-                if (index !== -1) {
-                    command.bot_perms[index] =
-                        Permissions.FLAGS[this.allPerms[i].perm];
-                }
-            }
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
                 ...command.bot_perms,
             ];
-        }
-        if (command.permissions) {
-            command.rawPerms = command.permissions;
-            let index;
-            for (var i = 0; i < this.allPerms.length; i++) {
-                index = command.permissions.indexOf(this.allPerms[i].perm);
-                if (index !== -1) {
-                    command.permissions[index] =
-                        Permissions.FLAGS[this.allPerms[i].perm];
-                }
-            }
         }
         command = {
             ...defaultOpts,

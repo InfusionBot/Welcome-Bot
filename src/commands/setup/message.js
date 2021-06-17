@@ -3,11 +3,12 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
 module.exports = {
     name: "message",
     aliases: ["msg"],
     description: "Manage welcome message for this server",
-    permissions: ["MANAGE_SERVER"],
+    permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
     subcommands: ["set", "get", "reset"],
     cooldown: 10,

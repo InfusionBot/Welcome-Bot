@@ -3,11 +3,12 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
 module.exports = {
     name: "prune",
     description: "Prune messages.",
-    permissions: ["MANAGE_GUILD"],
-    bot_perms: ["MANAGE_MESSAGES"],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
+    bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     args: true,
     guildOnly: true,
     usage: "[no of msg to prune / subcommand]",

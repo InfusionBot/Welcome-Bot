@@ -6,11 +6,12 @@
 
 module.exports = function (perms, allPerms) {
     let index;
+    let newPerms = [];
     for (var i = 0; i < allPerms.length; i++) {
         index = perms.indexOf(allPerms[i].perm);
         if (index !== -1) {
-            perms[index] = allPerms[i].val;
+            newPerms[index] = allPerms[i].val;
         }
     }
-    return perms;
+    return newPerms;
 };

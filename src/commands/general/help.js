@@ -3,12 +3,13 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["commands"],
     description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
-    bot_perms: ["MANAGE_MESSAGES"],
+    bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB) {
@@ -127,7 +128,7 @@ module.exports = {
             let desc = command.description;
             if (command.bot_perms)
                 desc += `\nThe bot needs ${beautifyPerms(
-                    command.rawBotPerms,
+                    command.bot_perms,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`;
             pages[0].addField("Description:", desc);
@@ -138,7 +139,7 @@ module.exports = {
             pages[0].addField(
                 "Permissions:",
                 `You need ${beautifyPerms(
-                    command.rawPerms,
+                    command.permissions,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`
             );
