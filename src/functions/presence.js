@@ -9,7 +9,7 @@ module.exports = function (client) {
     const users = client.users.cache.size;
     console.log(`Updating presence. Servers: ${servers}`);
     client.user.setPresence({
-        activitys: [
+        activities: [
             {
                 name: `w/help | ${servers} server${
                     servers > 1 ? "s" : ""
