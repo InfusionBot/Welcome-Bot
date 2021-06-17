@@ -127,7 +127,7 @@ module.exports = {
             let desc = command.description;
             if (command.bot_perms)
                 desc += `\nThe bot needs ${beautifyPerms(
-                    command.bot_perms,
+                    command.rawBotPerms,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`;
             pages[0].addField("Description:", desc);
@@ -138,7 +138,7 @@ module.exports = {
             pages[0].addField(
                 "Permissions:",
                 `You need ${beautifyPerms(
-                    command.permissions,
+                    command.rawPerms,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`
             );

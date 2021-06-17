@@ -102,6 +102,7 @@ class WelcomeBot extends Client {
             ""
         )}`);
         if (command.bot_perms) {
+            command.rawBotPerms = command.bot_perms;
             let index;
             for (var i = 0; i < this.allPerms.length; i++) {
                 index = command.bot_perms.indexOf(this.allPerms[i].perm);
@@ -116,6 +117,7 @@ class WelcomeBot extends Client {
             ];
         }
         if (command.permissions) {
+            command.rawPerms = command.permissions;
             let index;
             for (var i = 0; i < this.allPerms.length; i++) {
                 index = command.permissions.indexOf(this.allPerms[i].perm);
