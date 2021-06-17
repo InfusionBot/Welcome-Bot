@@ -13,9 +13,7 @@ module.exports = function (client) {
             {
                 name: `${client.defaultPrefix}help | ${servers} server${
                     servers > 1 ? "s" : ""
-                } | looking at ${chans} channel${
-                    chans > 1 ? "s" : ""
-                }`,
+                } | looking at ${chans} channel${chans > 1 ? "s" : ""}`,
                 type: "WATCHING",
             },
         ],
