@@ -18,30 +18,33 @@ module.exports = {
     ownerOnly: true,
     category: "Owner Only",
     execute(message, args, guildDB) {
-        const content = message.content.split(" ").slice(1).join(" ");
+        const content = args.join(" ");
         const result = new Promise((resolve) => resolve(eval(content)));
+        const clean = text => {
+            if (typeof(text) === "string") {
+                return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+            } else {
+                return text;
+            }
+        }
 
         return result
             .then((output) => {
                 if (typeof output !== "string") {
-                    output = require("util").inspect(output, { depth: 0 });
+                    output = require("util").inspect(output);
                 }
 
                 if (output.includes(message.client.token)) {
                     output = output.replace(message.client.token, "T0K3N");
                 }
-                message.channel.send(output, {
-                    code: "js",
-                });
+                message.channel.send("```\n" + clean(output) + "\n```");
             })
             .catch((err) => {
                 err = err.toString();
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }
-                message.channel.send(err, {
-                    code: "js",
-                });
+                message.channel.send("```\n" + clean(err) + "\n```");
             });
     },
 };

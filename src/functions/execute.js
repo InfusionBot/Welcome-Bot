@@ -9,26 +9,18 @@ const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
+    const prefixes = [message.client.defaultPrefix, guildDB.prefix, `${message.client.user.id} `];
+    const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
+    const prefix = message.content.match(prefixRegex);
     if (!message.client.application?.owner) await message.client.application?.fetch();
-    let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
-    if (
-        message.content.startsWith(guildDB.prefix) ||
-        message.content.startsWith(message.client.defaultPrefix)
-    ) {
-        let args;
-        if (message.content.startsWith(guildDB.prefix)) {
-            args = message.content
-                .slice(guildDB.prefix.length)
-                .trim()
-                .split(/ +/);
-        } else {
-            args = message.content
-                .slice(message.client.defaultPrefix.length)
-                .trim()
-                .split(/ +/);
-        }
+    if (prefix) {
+        let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
+        let args = message.content
+            .slice(prefix.length)
+            .trim()
+            .split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
             message.client.commands.get(commandName) ||
