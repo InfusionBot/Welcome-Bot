@@ -9,7 +9,8 @@ const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
-    if (!message.client.application?.owner) await message.client.application?.fetch();
+    if (!message.client.application?.owner)
+        await message.client.application?.fetch();
     let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
@@ -61,7 +62,10 @@ module.exports = async (message, guildDB) => {
 
         if (
             command.ownerOnly &&
-            !(process.env.ownerIDs.includes(message.author.id) || message.author.id === client.application?.owner.id)
+            !(
+                process.env.ownerIDs.includes(message.author.id) ||
+                message.author.id === client.application?.owner.id
+            )
         ) {
             return message.reply(
                 "This command can only be executed by bot owners"
