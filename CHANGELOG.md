@@ -10,6 +10,12 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 > **Released:** `TBA`
 
+### New features
+
+- New command `follow` - Send news and version updates to a specific channel
+- New command `prune` - Prune (delete) messages
+- You can use default prefix also after setting custom prefix
+
 ### Changes
 
 - Upgrade to djs v13 ([#25])
