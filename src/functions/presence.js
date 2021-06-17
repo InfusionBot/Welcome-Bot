@@ -13,7 +13,13 @@ module.exports = function (client) {
             {
                 name: `w/help | ${servers} server${
                     servers > 1 ? "s" : ""
-                } | handling ${chans} channel${chans > 1 ? "s" : ""}`,
+                }`,
+                type: "WATCHING",
+            },
+            {
+                name: `w/help | looking at ${chans} channel${
+                    chans > 1 ? "s" : ""
+                }`,
                 type: "WATCHING",
             },
         ],
