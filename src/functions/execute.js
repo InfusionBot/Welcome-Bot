@@ -53,7 +53,10 @@ module.exports = async (message, guildDB) => {
 
         if (
             command.ownerOnly &&
-            !(process.env.ownerIDs.includes(message.author.id) || message.author.id === client.application?.owner.id)
+            !(
+                process.env.ownerIDs.includes(message.author.id) ||
+                message.author.id === client.application?.owner.id
+            )
         ) {
             return message.reply(
                 "This command can only be executed by bot owners"

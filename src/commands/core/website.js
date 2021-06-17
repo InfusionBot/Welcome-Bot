@@ -10,15 +10,26 @@ module.exports = {
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {
-        const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
+        const {
+            MessageActionRow,
+            MessageButton,
+            MessageEmbed,
+        } = require("discord.js");
         let embed = new MessageEmbed();
-        embed.addField("Wanna get link to Welcome-Bot's website?", `Here's it: ${message.client.site}`);
+        embed.addField(
+            "Wanna get link to Welcome-Bot's website?",
+            `Here's it: ${message.client.site}`
+        );
         let button = new MessageButton()
-        .setLabel("Website")
-        .setURL(message.client.site)
-        .setStyle("LINK");
+            .setLabel("Website")
+            .setURL(message.client.site)
+            .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
-        message.channel.send({embeds: [embed], ephemeral: true, components: [row]});
+        message.channel.send({
+            embeds: [embed],
+            ephemeral: true,
+            components: [row],
+        });
         return;
     },
 };
