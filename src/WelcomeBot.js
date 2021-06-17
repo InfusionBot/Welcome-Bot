@@ -41,6 +41,7 @@ class WelcomeBot extends Client {
             { name: "Miscellaneous", emoji: "" },
             { name: "Fun", emoji: "<:fun:854002049095303188>" },
             { name: "Owner Only", emoji: "" },
+            { name: "Core", emoji: "" },
         ];
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "Administrator" },
@@ -99,6 +100,7 @@ class WelcomeBot extends Client {
             { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "Manage Webhooks" },
             { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "Manage Emojis" },
         ];
+        this.site = "https://welcome-bot.github.io/";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
         this.changelog = packageJson.changelog;
@@ -127,6 +129,10 @@ class WelcomeBot extends Client {
             ".js",
             ""
         )}`);
+        if (command.name !== command.name.toLowerCase()) {
+            throw new TypeError("Command names must be lower case only");
+            process.exit();
+        }
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,

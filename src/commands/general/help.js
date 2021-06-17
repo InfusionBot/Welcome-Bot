@@ -20,7 +20,7 @@ module.exports = {
         const emojiList = ["⏪", "⏩", "❌"];
         let page = 0;
         let pages = [new MessageEmbed()];
-        let timeout = 120000; //12 secs timeout
+        let timeout = 200000; //20 secs timeout
 
         pages[0].setTitle("Welcome Bot help");
         if (!args.length) {
