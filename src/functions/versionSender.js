@@ -36,6 +36,6 @@ module.exports = async (client) => {
                 });
             }
         });
-        console.log("Version updated");
+        client.logger.log("Version updated", "debug");
     }
 };
