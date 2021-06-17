@@ -14,13 +14,16 @@ module.exports = {
     cooldown: 10,
     category: "Setup",
     execute(message, args, guildDB) {
+        const updateGuild = require("../../db/functions/guild/updateGuild");
         args[0] = args[0] ? args[0] : "";
         switch (args[0]) {
             case "true":
                 updateGuild(message.guild.id, "enableWelcome", true);
+                message.react("👍");
                 break;
             case "false":
                 updateGuild(message.guild.id, "enableWelcome", false);
+                message.react("👍");
                 break;
             default:
                 return message.channel.send(

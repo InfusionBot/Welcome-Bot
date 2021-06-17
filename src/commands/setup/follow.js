@@ -31,7 +31,7 @@ module.exports = {
             .addFollower(channelId)
             .catch((err) => {
                 console.error(err);
-                message.reply("");
+                message.reply("An error occurred");
             });
         message.channel.send("Successfully followed");
     },
