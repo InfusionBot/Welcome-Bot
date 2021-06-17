@@ -17,6 +17,7 @@ module.exports = async (client) => {
                         reply += `\n- ${change}`;
                     }
                 });
+                client.channels.cache.get(client.newsChannelId).send(reply);
 
                 guilds.forEach((guild) => {
                     if (guild.subscribed) {

@@ -54,19 +54,16 @@ client.on("ready", () => {
     require("./functions/versionSender")(client);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberRemove
 client.on("guildMemberRemove", (member) => {
     // When a member leaves or is kicked or is banned
     sayGoodBye(member);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
 client.on("guildCreate", (guild) => {
     //Bot has been invited to a new guild
     addGuild(guild.id);
@@ -75,7 +72,6 @@ client.on("guildCreate", (guild) => {
         .send("Thank you for choosing this bot! To get started, type `w/help`");
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildDelete
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
