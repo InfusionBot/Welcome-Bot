@@ -20,13 +20,15 @@ module.exports = {
     execute(message, args, guildDB) {
         const content = args.join(" ");
         const result = new Promise((resolve) => resolve(eval(content)));
-        const clean = text => {
-            if (typeof(text) === "string") {
-                return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+        const clean = (text) => {
+            if (typeof text === "string") {
+                return text
+                    .replace(/`/g, "`" + String.fromCharCode(8203))
+                    .replace(/@/g, "@" + String.fromCharCode(8203));
             } else {
                 return text;
             }
-        }
+        };
 
         return result
             .then((output) => {
