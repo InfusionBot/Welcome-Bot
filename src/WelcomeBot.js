@@ -7,6 +7,7 @@ const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
 const util = require("util");
 const packageJson = require("../package.json");
+const logger = require("colors-logger");
 
 class WelcomeBot extends Client {
     constructor() {
@@ -25,6 +26,7 @@ class WelcomeBot extends Client {
             messageCacheMaxSize: 100,
         });
         this.commands = new Collection();
+        this.logger = logger;
         this.disabled = new Collection();
         this.cooldowns = new Collection();
         this.defaultPrefix = "w/";

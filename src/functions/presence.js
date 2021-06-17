@@ -7,7 +7,7 @@ module.exports = function (client) {
     const servers = client.guilds.cache.size;
     const chans = client.channels.cache.size;
     const users = client.users.cache.size;
-    console.log(`Updating presence. Servers: ${servers}`);
+    client.logger.log(`Updating presence. Servers: ${servers}`, "debug");
     client.user.setPresence({
         activities: [
             {

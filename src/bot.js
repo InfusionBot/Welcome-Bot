@@ -35,7 +35,7 @@ const dbAuditor = require("./db/functions/dbAuditor");
 
 client.on("ready", () => {
     // We logged in
-    console.log(
+    client.logger.log(
         `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
     );
     process.env.BOT_ID = client.user.id;
