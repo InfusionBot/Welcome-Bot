@@ -9,7 +9,7 @@ const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
-    const prefixes = [message.client.defaultPrefix, guildDB.prefix, `${message.client.user.id} `];
+    const prefixes = [message.client.defaultPrefix, guildDB.prefix, `<@!?${message.client.user.id}> `];
     const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
     const prefix = message.content.match(prefixRegex);
     if (!message.client.application?.owner) await message.client.application?.fetch();
