@@ -12,18 +12,21 @@ module.exports = async (message, guildDB) => {
     let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
-    if (message.content.startsWith(guildDB.prefix) || message.content.startsWith(message.client.defaultPrefix)) {
+    if (
+        message.content.startsWith(guildDB.prefix) ||
+        message.content.startsWith(message.client.defaultPrefix)
+    ) {
         let args;
         if (message.content.startsWith(guildDB.prefix)) {
-        args = message.content
-            .slice(guildDB.prefix.length)
-            .trim()
-            .split(/ +/);
+            args = message.content
+                .slice(guildDB.prefix.length)
+                .trim()
+                .split(/ +/);
         } else {
-        args = message.content
-            .slice(message.client.defaultPrefix.length)
-            .trim()
-            .split(/ +/);
+            args = message.content
+                .slice(message.client.defaultPrefix.length)
+                .trim()
+                .split(/ +/);
         }
         const commandName = args.shift().toLowerCase();
         const command =
