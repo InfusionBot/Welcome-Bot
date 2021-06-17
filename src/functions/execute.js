@@ -12,7 +12,7 @@ module.exports = async (message, guildDB) => {
     const prefixes = [
         message.client.defaultPrefix,
         guildDB.prefix,
-        `<@!?${message.client.user.id}> `
+        `<@!?${message.client.user.id}> `,
     ];
     const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
     const prefix = message.content.match(prefixRegex);
