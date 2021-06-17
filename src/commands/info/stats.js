@@ -29,9 +29,11 @@ module.exports = {
         embed.addField("Total users and bots", `${message.guild.memberCount}`);
         embed.addField(
             "Online users in your server:",
-            `${message.guild.members.cache.filter(
-                (m) => m.presence.status === "online"
-            ).size}`
+            `${
+                message.guild.members.cache.filter(
+                    (m) => m.presence.status === "online"
+                ).size
+            }`
         );
         embed.addField("Server was created at:", `${message.guild.createdAt}`);
         embed.addField("Server region:", `${message.guild.region}`);

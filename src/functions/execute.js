@@ -165,10 +165,10 @@ module.exports = async (message, guildDB) => {
                         "\u200b",
                         "There was an error trying to execute that command."
                     )
-                .addField(
-                    "Please report this at https://github.com/Welcome-Bot/welcome-bot/issues",
-                    "\u200b"
-                );
+                    .addField(
+                        "Please report this at https://github.com/Welcome-Bot/welcome-bot/issues",
+                        "\u200b"
+                    );
                 message.reply({ embeds: [embed] });
                 return;
             }
