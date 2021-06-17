@@ -9,18 +9,20 @@ const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
-    const prefixes = [message.client.defaultPrefix, guildDB.prefix, `${message.client.user.id} `];
+    const prefixes = [
+        message.client.defaultPrefix,
+        guildDB.prefix,
+        `${message.client.user.id} `,
+    ];
     const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
     const prefix = message.content.match(prefixRegex);
-    if (!message.client.application?.owner) await message.client.application?.fetch();
+    if (!message.client.application?.owner)
+        await message.client.application?.fetch();
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
     if (prefix) {
         let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
-        let args = message.content
-            .slice(prefix.length)
-            .trim()
-            .split(/ +/);
+        let args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
             message.client.commands.get(commandName) ||
