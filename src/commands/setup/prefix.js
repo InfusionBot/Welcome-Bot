@@ -27,9 +27,9 @@ module.exports = {
                         args.join(" ").replace(`${args[0]} `, "").trim()
                     );
                     message.reply(
-                        "Prefix set to `" +
+                        "Custom prefix has been set to `" +
                             args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "`"
+                            "`\nYou can still use the default prefix (" + message.client.defaultPrefix + ")."
                     );
                 } else {
                     message.reply(
