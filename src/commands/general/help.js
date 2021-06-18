@@ -20,7 +20,7 @@ module.exports = {
             first: "⏮",
             back: "⏪",
             forward: "⏩",
-            last: "⏭", 
+            last: "⏭",
             stop: "⏹",
         };
         let page = 0;
@@ -67,9 +67,9 @@ module.exports = {
                     pages[page].setFooter(`Page ${page + 1} / ${pages.length}`),
                 ],
             });
-            emojiList.forEach(emoji, async () => {
-                await curPage.react(emoji);
-            });
+            for (var key in emojiList) {
+                await curPage.react(emojiList[key]);
+            }
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
                     emojiList.includes(reaction.emoji.name) && !user.bot,
