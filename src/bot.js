@@ -73,8 +73,8 @@ client.on("guildCreate", (guild) => {
         .find((ch) => ch.id === guild.systemChannelID)
         .send("Thank you for choosing this bot! To get started, type `w/help`");
     let embed = new MessageEmbed()
-    .setTitle(`Added to "${guild.name}"`)
-    .setDescription(`${guild.id}`);
+        .setTitle(`Added to "${guild.name}"`)
+        .setDescription(`${guild.id}`);
     client.channels.cache.get(client.loggingChannelId).send(embed);
 });
 
@@ -82,8 +82,8 @@ client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
     let embed = new MessageEmbed()
-    .setTitle(`Added to "${guild.name}"`)
-    .setDescription(`${guild.id}`);
+        .setTitle(`Added to "${guild.name}"`)
+        .setDescription(`${guild.id}`);
     client.channels.cache.get(client.loggingChannelId).send(embed);
 });
 
