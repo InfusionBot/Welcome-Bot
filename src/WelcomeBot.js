@@ -107,6 +107,14 @@ class WelcomeBot extends Client {
         this.botServerId = "836854115526770708";
         this.newsChannelId = "847459283876577360";
         this.loggingChannelId = "855331801635749888";
+        this.ownerIDs = [
+            "815204465937481749" /*PuneetGopinath#6300*/,
+            "693754859014324295" /*abhijoshi2k#6842*/,
+        ];
+        this.ownersTags = [
+            "PuneetGopinath#6300",
+            "abhijoshi2k#6842",
+        ];
 
         const commandFolder = __dirname + "/commands";
         this.loadCommands(commandFolder);

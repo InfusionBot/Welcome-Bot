@@ -26,6 +26,7 @@ module.exports = {
             "The no of channels bot is currently handling:",
             `${message.client.channels.cache.size}`
         );
+        embed.addField("👑 Bot owners", `Welcome-Bot was created by ${message.client.ownerTags.join(", ")}`);
         embed.addField(
             "Invite URL:",
             "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
