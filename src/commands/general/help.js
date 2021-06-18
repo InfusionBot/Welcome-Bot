@@ -72,7 +72,8 @@ module.exports = {
             }
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
-                    Object.values(emojiList).includes(reaction.emoji.name) && !user.bot,
+                    Object.values(emojiList).includes(reaction.emoji.name) &&
+                    !user.bot,
                 { time: timeout }
             );
             reactionCollector.on("collect", (reaction) => {
