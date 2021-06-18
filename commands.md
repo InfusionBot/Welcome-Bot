@@ -1,6 +1,19 @@
+# Table of contents
+
+- [Setup](#setup)
+- [General](#general)
+- [Information](#information)
+- [Manage](#manage)
+- [Moderation](#moderation)
+- [Miscellaneous](#miscellaneous)
+- [Fun](#fun)
+- [Owner Only](#owner-only)
+- [Core](#core)
+
 Welcome-Bot contains more than **20 commands** in **9 categories**!
 
 #### Contents in a command
+
 **Subcommands**: Subcommands to that command if available  
 **Name**: The name of the command  
 **Description**: A brief explanation of the purpose of the command  
