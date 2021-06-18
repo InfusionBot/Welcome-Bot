@@ -27,11 +27,16 @@ module.exports = (client) => {
                     );
                 }
             }
-            text += `### \`${cmd.name}\`\n\n` +
-                `##### Subcommands:\n\n- ${subcommands ? subcommands.join("\n- ") : "None"}\n\n##### Info\n\n` +
+            text +=
+                `### \`${cmd.name}\`\n\n` +
+                `##### Subcommands:\n\n- ${
+                    subcommands ? subcommands.join("\n- ") : "None"
+                }\n\n##### Info\n\n` +
                 `- Description: ${cmd.description}\n` +
                 `- Usage: ${cmd.usage ? cmd.usage : "None"}\n` +
-                `- Aliases: ${cmd.aliases ? cmd.aliases.join(", ") : "None"}\n` +
+                `- Aliases: ${
+                    cmd.aliases ? cmd.aliases.join(", ") : "None"
+                }\n` +
                 `- Cooldown: ${cmd.cooldown}\n`;
         });
     });
