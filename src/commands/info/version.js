@@ -11,40 +11,20 @@ module.exports = {
     usage: "(version)",
     cooldown: 10,
     category: "Information",
-    execute: async (message, args) => {
+    execute: async (message, args, guildDB) => {
         const getVersion = require("../../db/functions/version/getVersion.js");
-        const updateGuild = require("../../db/functions/guild/updateGuild.js");
         if (
             args[0] &&
             args[0].toLowerCase() === "unsubscribe" &&
             message.guild
         ) {
-            if (updateGuild(message.guild.id, "subscribed", false)) {
-                message.channel.send("Successfully unsubscribed!");
-            } else {
-                message.channel.send("An error occurred.");
-            }
-            return;
+            message.reply(`This subcommand will be removed soon.\nInstead create a new channel (recommended to use \`#w-bot-news\`), then send \`${guildDB.prefix}follow #chan\` where #chan is the channel you created now.`);
         } else if (
             args[0] &&
             args[0].toLowerCase() === "subscribe" &&
             message.guild
         ) {
-            if (updateGuild(message.guild.id, "subscribed", true)) {
-                message.channel.send("Successfully subscribed!");
-            } else {
-                message.channel.send("An error occurred.");
-            }
-            return;
-        } else if (
-            !message.guild &&
-            args[0] &&
-            (args[0].toLowerCase() === "subscribe" ||
-                args[0].toLowerCase() === "unsubscribe")
-        ) {
-            message.channel.send(
-                "We don't send version updates by DMs. If you want to unsubscribe/subscribe for version updates, do it in a server."
-            );
+            message.reply(`This subcommand will be removed soon.\nInstead create a new channel (recommended to use \`#w-bot-news\`), then send \`${guildDB.prefix}follow #chan\` where #chan is the channel you created now.`);
         }
 
         if (!args[0]) args[0] = message.client.botVersion;

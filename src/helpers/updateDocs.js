@@ -11,7 +11,7 @@ module.exports = (client) => {
         commands.size / 10
     )}0 commands** in **${
         categories.length
-    } categories**!\n\n#### Contents in a command\n**Subcommands**: Subcommands to that command if available\n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Aliases**: Duplicate names for this command which can be used.  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
+    } categories**!\n\n#### Contents in a command\n**Subcommands**: Subcommands to that command if available  \n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Aliases**: Duplicate names for this command which can be used.  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
     categories.forEach((cat) => {
         const cmds = commands
             .filter((cmd) => cmd.category === cat.name)
@@ -37,7 +37,7 @@ module.exports = (client) => {
                 `- Aliases: ${
                     cmd.aliases ? cmd.aliases.join(", ") : "None"
                 }\n` +
-                `- Cooldown: ${cmd.cooldown}\n`;
+                `- Cooldown: ${cmd.cooldown}\n\n`;
         });
     });
     fs.writeFileSync("./commands.md", text);

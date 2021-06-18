@@ -14,7 +14,6 @@ module.exports = {
     category: "General",
     async execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
-        const getGuild = require("../../db/functions/guild/getGuild");
         const beautifyPerms = require("../../functions/beautifyPerms");
         const { commands } = message.client;
         const emojiList = ["⏪", "⏩", "❌"];
@@ -53,10 +52,10 @@ module.exports = {
             );
             pages[0].addField(
                 "What is Cooldown:",
-                "Cooldown is the minimum time required to execute the same command again"
+                "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
             );
             pages[0].addField(
-                "Want full list for commands?",
+                "Want list of commands?",
                 "Go to the next page!"
             );
 
@@ -156,7 +155,7 @@ module.exports = {
             pages[0].addField(
                 "Usage:",
                 `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                    `\n[] = Required argument\n() = Optional argument\n/ = Either this or that value for that argument`
+                    `\n[] = Required argument\n() = Optional argument\n/ = Anyone`
             );
         if (command.ownerOnly)
             pages[0].addField(
