@@ -72,7 +72,7 @@ module.exports = {
             }
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
-                    emojiList.includes(reaction.emoji.name) && !user.bot,
+                    Object.values(emojiList).includes(reaction.emoji.name) && !user.bot,
                 { time: timeout }
             );
             reactionCollector.on("collect", (reaction) => {
@@ -92,7 +92,7 @@ module.exports = {
                         page = 0;
                         break;
                     case emojiList["last"]:
-                        page = pages.length;
+                        page = pages.length - 1;
                         break;
                 }
                 curPage.edit({
