@@ -15,10 +15,12 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `follow` - Send news and version updates to a specific channel
 - New command `prune` - Prune (delete) messages
 - You can use default prefix also after setting custom prefix
+- New command `lib` - Find out what library is used to build bot
 
 ### Changes
 
 - Upgrade to djs v13 ([#25])
+- Rename `info` command to `botinfo`
 
 ## [v1.5.1]
 
