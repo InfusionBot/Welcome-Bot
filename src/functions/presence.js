@@ -7,7 +7,6 @@ module.exports = function (client) {
     const servers = client.guilds.cache.size;
     const commands = client.commands.size;
     const users = client.users.cache.size;
-    client.logger.log(`Updating presence. Servers: ${servers}`, "debug");
     const presences = [
         {
             name: `${servers} server${
@@ -20,7 +19,7 @@ module.exports = function (client) {
             type: "PLAYING",
         },
         {
-            name: `${users} user${users > 1 ? "s" : ""} | ${client.defaultPrefix}help`,
+            name: `${users} online user${users > 1 ? "s" : ""} | ${client.defaultPrefix}help`,
             type: "WATCHING",
         },
     ];

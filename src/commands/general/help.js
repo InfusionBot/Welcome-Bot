@@ -16,7 +16,13 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
         const { commands } = message.client;
-        const emojiList = ["⏪", "⏩", "❌"];
+        const emojiList = {
+            first: "⏮",
+            back: "⏪",
+            forward: "⏩",
+            last: "⏭", 
+            stop: "⏹",
+        };
         let page = 0;
         let pages = [new MessageEmbed()];
         let timeout = 200000; //20 secs timeout
@@ -71,14 +77,20 @@ module.exports = {
                 // Remove the reaction when the user react to the message
                 reaction.users.remove(message.author);
                 switch (reaction.emoji.name) {
-                    case emojiList[0]:
+                    case emojiList["back"]:
                         page = page > 0 ? --page : pages.length - 1;
                         break;
-                    case emojiList[1]:
+                    case emojiList["forward"]:
                         page = page + 1 < pages.length ? ++page : 0;
                         break;
-                    case emojiList[2]:
+                    case emojiList["stop"]:
                         return curPage.delete();
+                        break;
+                    case emojiList["first"]:
+                        page = 0;
+                        break;
+                    case emojiList["last"]:
+                        page = pages.length;
                         break;
                 }
                 curPage.edit({
