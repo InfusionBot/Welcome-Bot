@@ -8,13 +8,17 @@ module.exports = (client) => {
     const fs = require("fs");
     const { commands, categories } = client;
     let text = fs.readFileSync(__dirname + "/cmdTemplate.md", "utf8");
-    text = text.replace("{commandsRoundToTen}", `${Math.floor(commands.size / 10)}0`).replace("{categoriesSize}", categories.length);
+    text = text
+        .replace("{commandsRoundToTen}", `${Math.floor(commands.size / 10)}0`)
+        .replace("{categoriesSize}", categories.length);
     let toc = "# Table of contents\n\n"; //Table of contents
     categories.forEach((cat) => {
         const cmds = commands
             .filter((cmd) => cmd.category === cat.name)
             .array();
-        toc += `- [${cat.name}](#${cat.name.toLowerCase().replace(" ", "-")})\n`;
+        toc += `- [${cat.name}](#${cat.name
+            .toLowerCase()
+            .replace(" ", "-")})\n`;
         text += `## ${cat.name} (${cmds.length} commands)\n\n`;
         cmds.forEach((cmd) => {
             let subcommands;
