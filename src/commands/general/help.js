@@ -54,10 +54,7 @@ module.exports = {
                 "What is Cooldown:",
                 "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
             );
-            pages[0].addField(
-                "Want list of commands?",
-                "Go to the next page!"
-            );
+            pages[0].addField("Want list of commands?", "Go to the next page!");
 
             const curPage = await message.channel.send({
                 embeds: [
