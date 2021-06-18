@@ -7,15 +7,14 @@
 module.exports = (client) => {
     const fs = require("fs");
     const { commands, categories } = client;
-    let text = `Welcome-Bot contains more than **${Math.floor(
-        commands.size / 10
-    )}0 commands** in **${
-        categories.length
-    } categories**!\n\n#### Contents in a command\n**Subcommands**: Subcommands to that command if available  \n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Aliases**: Duplicate names for this command which can be used.  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
+    let text = fs.readFileSync(__dirname + "/cmdTemplate.md", "utf8");
+    text = text.replace("{commandsRoundToTen}", `${Math.floor(commands.size / 10)}0`).replace("{categoriesSize}", categories.length);
+    let toc = "# Table of contents\n\n"; //Table of contents
     categories.forEach((cat) => {
         const cmds = commands
             .filter((cmd) => cmd.category === cat.name)
             .array();
+        toc += `- [${cat.name}](#${cat.name.toLowerCase().replace(" ", "-")})\n`;
         text += `## ${cat.name} (${cmds.length} commands)\n\n`;
         cmds.forEach((cmd) => {
             let subcommands;
@@ -40,6 +39,6 @@ module.exports = (client) => {
                 `- Cooldown: ${cmd.cooldown}\n\n`;
         });
     });
-    fs.writeFileSync("./commands.md", text);
+    fs.writeFileSync("./commands.md", `${toc}\n${text}`);
     client.logger.log("Docs updated!", "debug");
 };
