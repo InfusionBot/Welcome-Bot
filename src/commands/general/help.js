@@ -20,7 +20,7 @@ module.exports = {
             first: "⏮",
             back: "⏪",
             forward: "⏩",
-            last: "⏭", 
+            last: "⏭",
             stop: "⏹",
         };
         let page = 0;
