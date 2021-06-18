@@ -43,63 +43,7 @@ class WelcomeBot extends Client {
             { name: "Owner Only", emoji: "" },
             { name: "Core", emoji: "" },
         ];
-        this.allPerms = [
-            { perm: Permissions.FLAGS.ADMINISTRATOR, val: "Administrator" },
-            {
-                perm: Permissions.FLAGS.CREATE_INSTANT_INVITE,
-                val: "Create Instant Invite",
-            },
-            { perm: Permissions.FLAGS.KICK_MEMBERS, val: "Kick Members" },
-            { perm: Permissions.FLAGS.BAN_MEMBERS, val: "Ban Members" },
-            { perm: Permissions.FLAGS.MANAGE_CHANNELS, val: "Manage Channels" },
-            { perm: Permissions.FLAGS.MANAGE_GUILD, val: "Manage Server" },
-            { perm: Permissions.FLAGS.ADD_REACTIONS, val: "Add Reactions" },
-            { perm: Permissions.FLAGS.VIEW_AUDIT_LOG, val: "View Audit Log" },
-            {
-                perm: Permissions.FLAGS.PRIORITY_SPEAKER,
-                val: "Priority Speaker",
-            },
-            { perm: Permissions.FLAGS.STREAM, val: "Stream" },
-            { perm: Permissions.FLAGS.VIEW_CHANNEL, val: "View Channels" },
-            { perm: Permissions.FLAGS.SEND_MESSAGES, val: "Send Messages" },
-            {
-                perm: Permissions.FLAGS.SEND_TTS_MESSAGES,
-                val: "Send TTS Messages",
-            },
-            { perm: Permissions.FLAGS.MANAGE_MESSAGES, val: "Manage Messages" },
-            { perm: Permissions.FLAGS.EMBED_LINKS, val: "Embed Links" },
-            { perm: Permissions.FLAGS.ATTACH_FILES, val: "Attach Files" },
-            {
-                perm: Permissions.FLAGS.READ_MESSAGE_HISTORY,
-                val: "Read Message History",
-            },
-            {
-                perm: Permissions.FLAGS.MENTION_EVERYONE,
-                val: "Mention Everyone",
-            },
-            {
-                perm: Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
-                val: "Use External Emojis",
-            },
-            {
-                perm: Permissions.FLAGS.VIEW_GUILD_INSIGHTS,
-                val: "View Server Insights",
-            },
-            { perm: Permissions.FLAGS.CONNECT, val: "Connect" },
-            { perm: Permissions.FLAGS.SPEAK, val: "Speak" },
-            { perm: Permissions.FLAGS.MUTE_MEMBERS, val: "Mute Members" },
-            { perm: Permissions.FLAGS.DEAFEN_MEMBERS, val: "Deafen Members" },
-            { perm: Permissions.FLAGS.MOVE_MEMBERS, val: "Move Members" },
-            { perm: Permissions.FLAGS.USE_VAD, val: "Use Voice Activity" },
-            { perm: Permissions.FLAGS.CHANGE_NICKNAME, val: "Change Nickname" },
-            {
-                perm: Permissions.FLAGS.MANAGE_NICKNAMES,
-                val: "Manage Nicknames",
-            },
-            { perm: Permissions.FLAGS.MANAGE_ROLES, val: "Manage Roles" },
-            { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "Manage Webhooks" },
-            { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "Manage Emojis" },
-        ];
+        this.allPerms = require("./permissions.json");
         this.site = "https://welcome-bot.github.io/";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
