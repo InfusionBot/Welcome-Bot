@@ -129,8 +129,16 @@ class WelcomeBot extends Client {
             ".js",
             ""
         )}`);
+        let validated = true;
         if (command.name !== command.name.toLowerCase()) {
             throw new TypeError("Command names must be lower case only");
+            validated = false;
+        }
+        if (command.subcommands && !command.subs_desc) {
+            throw new TypeError("If subcommands are provided then their description should also be provided");
+            validated = false;
+        }
+        if (!validated) {
             process.exit();
         }
         if (command.bot_perms) {
