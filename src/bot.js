@@ -53,7 +53,7 @@ client.on("ready", () => {
         dbAuditor(client);
     }, 3 * 60 * 60 * 1000);
     require("./functions/versionSender")(client);
-    require("./helpers/updateDocs")(client);
+    if (process.env.NODE_ENV !== "production") require("./helpers/updateDocs")(client);
 });
 
 client.on("guildMemberAdd", (member) => {
