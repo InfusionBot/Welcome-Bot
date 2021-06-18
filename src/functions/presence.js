@@ -9,23 +9,25 @@ module.exports = function (client) {
     const users = client.users.cache.size;
     const presences = [
         {
-            name: `${servers} server${
-                servers > 1 ? "s" : ""
-            } | ${client.defaultPrefix}help`,
+            name: `${servers} server${servers > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
             type: "WATCHING",
         },
         {
-            name: `${commands} command${commands > 1 ? "s" : ""} | ${client.defaultPrefix}help`,
+            name: `${commands} command${commands > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
             type: "PLAYING",
         },
         {
-            name: `${users} online user${users > 1 ? "s" : ""} | ${client.defaultPrefix}help`,
+            name: `${users} online user${users > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
             type: "WATCHING",
         },
     ];
     client.user.setPresence({
-        activities: [
-            presences[Math.floor(Math.random() * presences.length)],
-        ],
+        activities: [presences[Math.floor(Math.random() * presences.length)]],
     });
 };
