@@ -8,12 +8,12 @@ module.exports = {
     description: "Fetches a random waifu (lewd if the channel is NSFW) and displays it.",
     cooldown: 10,
     category: "Anime",
-    execute(message, args, guildDB) {
+    async execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         embed = new MessageEmbed();
         const fetch = require("node-fetch");
         const waifuAPI = "https://waifu.pics/api";
-        const type = channel.nsfw ? "nsfw" : "sfw";
+        const type = message.channel.nsfw ? "nsfw" : "sfw";
         const { url } = await fetch(`${waifuAPI}/${type}/waifu`).then(res => res.json());
         embed.setImage(url);
         message.channel.send({embeds: [embed]});
