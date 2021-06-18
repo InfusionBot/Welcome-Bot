@@ -40,6 +40,7 @@ class WelcomeBot extends Client {
             { name: "Moderation", emoji: "" },
             { name: "Miscellaneous", emoji: "" },
             { name: "Fun", emoji: "<:fun:854002049095303188>" },
+            { name: "Anime", emoji: "" },
             { name: "Owner Only", emoji: "" },
             { name: "Core", emoji: "" },
         ];
