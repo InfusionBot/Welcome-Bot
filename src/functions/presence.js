@@ -5,17 +5,28 @@
  */
 module.exports = function (client) {
     const servers = client.guilds.cache.size;
-    const chans = client.channels.cache.size;
+    const commands = client.commands.size;
     const users = client.users.cache.size;
     client.logger.log(`Updating presence. Servers: ${servers}`, "debug");
+    const presences = [
+        {
+            name: `${servers} server${
+                servers > 1 ? "s" : ""
+            } | ${client.defaultPrefix}help`,
+            type: "WATCHING",
+        },
+        {
+            name: `${commands} command${commands > 1 ? "s" : ""} | ${client.defaultPrefix}help`,
+            type: "PLAYING",
+        },
+        {
+            name: `${users} user${users > 1 ? "s" : ""} | ${client.defaultPrefix}help`,
+            type: "WATCHING",
+        },
+    ];
     client.user.setPresence({
         activities: [
-            {
-                name: `${client.defaultPrefix}help | ${servers} server${
-                    servers > 1 ? "s" : ""
-                } | looking at ${chans} channel${chans > 1 ? "s" : ""}`,
-                type: "WATCHING",
-            },
+            presences[Math.floor(Math.random() * presences.length)],
         ],
     });
 };

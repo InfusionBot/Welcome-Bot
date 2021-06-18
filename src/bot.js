@@ -42,9 +42,9 @@ client.on("ready", () => {
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);
-    // 15 * 60 * (1 second)
-    // Update presence every 15 minutes
-    setInterval(() => presence(client), 15 * 60 * 1000);
+    // 1 * 60 * (1 second)
+    // Update presence every 1 minute
+    setInterval(() => presence(client), 1 * 60 * 1000);
     // Update server count every 25 minutes if environment is in PRODUCTION
     if (process.env.NODE_ENV === "production")
         setInterval(() => serverCount(client), 25 * 60 * 1000);
