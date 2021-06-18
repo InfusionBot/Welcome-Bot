@@ -6,6 +6,7 @@
 const fs = require("fs");
 const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
+const { MessageEmbed } = require("discord.js");
 
 const client = new WelcomeBot();
 
@@ -71,11 +72,19 @@ client.on("guildCreate", (guild) => {
     guild.channels.cache
         .find((ch) => ch.id === guild.systemChannelID)
         .send("Thank you for choosing this bot! To get started, type `w/help`");
+    let embed = new MessageEmbed()
+    .setTitle(`Added to "${guild.name}"`)
+    .setDescription(`${guild.id}`);
+    client.channels.cache.get(client.loggingChannelId).send(embed);
 });
 
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
+    let embed = new MessageEmbed()
+    .setTitle(`Added to "${guild.name}"`)
+    .setDescription(`${guild.id}`);
+    client.channels.cache.get(client.loggingChannelId).send(embed);
 });
 
 client.on("message", async function (message) {
