@@ -18,8 +18,8 @@ module.exports = {
         const sides = ["heads", "tails"];
         const chosenSide = sides[Math.floor(Math.random() * sides.length)];
         let embed = new MessageEmbed()
-        .setThumbnail(coins[chosenSide])
-        .setDescription(`I've flipped a coin and it landed ${chosenSide}`);
-        message.channel.send({embeds: [embed]});
+            .setThumbnail(coins[chosenSide])
+            .setDescription(`I've flipped a coin and it landed ${chosenSide}`);
+        message.channel.send({ embeds: [embed] });
     },
 };
