@@ -135,7 +135,9 @@ class WelcomeBot extends Client {
             validated = false;
         }
         if (command.subcommands && !command.subs_desc) {
-            throw new TypeError("If subcommands are provided then their description should also be provided");
+            throw new TypeError(
+                "If subcommands are provided then their description should also be provided"
+            );
             validated = false;
         }
         if (!validated) {

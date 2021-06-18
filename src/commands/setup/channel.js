@@ -12,7 +12,12 @@ module.exports = {
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
     subcommands: ["set", "setMod", "reset", "resetMod"],
-    subs_desc: ["Set Welcome channel", "Set Moderation channel", "Reset Welcome channel", "Reset Moderation channel"],
+    subs_desc: [
+        "Set Welcome channel",
+        "Set Moderation channel",
+        "Reset Welcome channel",
+        "Reset Moderation channel",
+    ],
     cooldown: 10,
     guildOnly: true,
     category: "Setup",

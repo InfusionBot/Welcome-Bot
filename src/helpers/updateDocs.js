@@ -8,14 +8,27 @@ module.exports = (client) => {
     const fs = require("fs");
     const table = require("markdown-table");
     const { commands, categories } = client;
-    let text = `Welcome-Bot contains more than **${Math.floor(commands.size/10)}0 commands** in **${categories.length} categories**!\n\n#### Contents of the table\n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Subcommands**: Subcommands to that command if availsble  \n**Aliases**: Duplicate names for this command which can be used.  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
-    categories.forEach(cat => {
+    let text = `Welcome-Bot contains more than **${Math.floor(
+        commands.size / 10
+    )}0 commands** in **${
+        categories.length
+    } categories**!\n\n#### Contents of the table\n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Subcommands**: Subcommands to that command if availsble  \n**Aliases**: Duplicate names for this command which can be used.  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
+    categories.forEach((cat) => {
         const arrCat = [
-            [ "Name", "Description", "Usage", "Subcommands", "Aliases", "Cooldown" ]
+            [
+                "Name",
+                "Description",
+                "Usage",
+                "Subcommands",
+                "Aliases",
+                "Cooldown",
+            ],
         ];
-        const cmds = commands.filter(cmd => cmd.category === cat.name).array();
+        const cmds = commands
+            .filter((cmd) => cmd.category === cat.name)
+            .array();
         text += `### ${cat.name} (${cmds.length} commands)`;
-        cmds.forEach(cmd => {
+        cmds.forEach((cmd) => {
             let subcommands;
             if (cmd.subcommands) {
                 subcommands = [];
@@ -28,9 +41,9 @@ module.exports = (client) => {
             arrCat.push([
                 `**${cmd.name}**`,
                 `${cmd.description}`,
-                `${cmd.usage?cmd.usage:"None"}`,
-                `${subcommands?subcommands.join("\n"):"None"}`,
-                `${cmd.aliases?cmd.aliases.join(", "):"None"}`,
+                `${cmd.usage ? cmd.usage : "None"}`,
+                `${subcommands ? subcommands.join("\n") : "None"}`,
+                `${cmd.aliases ? cmd.aliases.join(", ") : "None"}`,
                 `${cmd.cooldown}`,
             ]);
         });
