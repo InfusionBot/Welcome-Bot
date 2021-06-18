@@ -16,6 +16,6 @@ module.exports = {
             "Discord.js v13 (master branch)",
             "We are opensource, you can check out source code at [GitHub](https://github.com/Welcome-Bot/welcome-bot)"
         );
-        return message.reply({embeds: [embed]});
+        return message.reply({ embeds: [embed] });
     },
 };
