@@ -58,18 +58,20 @@ module.exports = {
             });
         } else {
             if (messages) {
-                message.channel
-                    .bulkDelete(messages, true)
-                    .catch((err) => {
-                        console.error(err);
-                        message.channel.send(errMsg);
-                    });
+                message.channel.bulkDelete(messages, true).catch((err) => {
+                    console.error(err);
+                    message.channel.send(errMsg);
+                });
             } else {
                 return message.channel.send(errMsg);
             }
         }
-        message.channel.send("Pruning done👍. This message will be deleted in 5 seconds").then((msg) => {
-            setTimeout(() => {msg.delete()}, 5000);
-        });
+        message.channel
+            .send("Pruning done👍. This message will be deleted in 5 seconds")
+            .then((msg) => {
+                setTimeout(() => {
+                    msg.delete();
+                }, 5000);
+            });
     },
 };
