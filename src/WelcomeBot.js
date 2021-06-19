@@ -23,6 +23,7 @@ class WelcomeBot extends Client {
                 Intents.FLAGS.DIRECT_MESSAGES,
                 Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
             ],
+            partials: ["CHANNEL"],
             messageCacheMaxSize: 100,
         });
         this.commands = new Collection();
