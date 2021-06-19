@@ -37,6 +37,9 @@ module.exports = {
             return false;
         }
         let member = message.guild.members.cache.find((m) => m.id === user.id);
+        if (!member) {
+            return message.reply("That user was not found in this server");
+        }
 
         /*let badges = [];
         await getUserFlags(user)
