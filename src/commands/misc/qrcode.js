@@ -18,17 +18,40 @@ module.exports = {
         let embed = new MessageEmbed();
         const baseURL = "http://api.qrserver.com/v1";
         if (!args[1])
-            return message.reply("Please provide a data / image_url to generate / read a qrcode respectively");
+            return message.reply(
+                "Please provide a data / image_url to generate / read a qrcode respectively"
+            );
         switch (args[0]) {
             case "generate":
-                return message.channel.send({embeds: [embed.setImage(`${baseURL}/create-qr-code/?data=${encodeURIComponent(args[1])}`)]});
+                return message.channel.send({
+                    embeds: [
+                        embed.setImage(
+                            `${baseURL}/create-qr-code/?data=${encodeURIComponent(
+                                args[1]
+                            )}`
+                        ),
+                    ],
+                });
                 break;
             case "read":
-                if (!(args[1].startsWith("http://") | args[1].startsWith("https://")))
-                    return message.reply("Invalid Image url, check whether your url includes protocol");
-                const body = await fetch(`${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(args[1]).replace(/\*/g, "%2A")}`).then(res => res.json());
+                if (
+                    !(
+                        args[1].startsWith("http://") |
+                        args[1].startsWith("https://")
+                    )
+                )
+                    return message.reply(
+                        "Invalid Image url, check whether your url includes protocol"
+                    );
+                const body = await fetch(
+                    `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
+                        args[1]
+                    ).replace(/\*/g, "%2A")}`
+                ).then((res) => res.json());
                 if (body[0].symbol[0] && body[0].symbol[0].data !== null) {
-                    return message.channel.send({embeds: [embed.setDescription(body[0].symbol[0].data)]});
+                    return message.channel.send({
+                        embeds: [embed.setDescription(body[0].symbol[0].data)],
+                    });
                 }
                 break;
             default:
