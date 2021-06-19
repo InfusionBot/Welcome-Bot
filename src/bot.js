@@ -92,6 +92,7 @@ client.on("message", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
+    execute(message, guildDB);
 
     if (message.mentions.has(client.user)) {
         const server = message.guild ? " in this server." : "";
@@ -119,8 +120,6 @@ client.on("message", async function (message) {
                 .catch(console.error);
         }
     }
-    //Whatever happens, if the message starts with prefix, the bot should execute it.
-    execute(message, guildDB);
 });
 
 // Login
