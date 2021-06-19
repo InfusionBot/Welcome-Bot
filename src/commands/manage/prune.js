@@ -12,7 +12,7 @@ module.exports = {
     args: true,
     guildOnly: true,
     usage: "[no of msg to prune / subcommand]",
-    subcommands: ["all", "bots", "*"],
+    subcommands: ["all", "bots", "*[string]"],
     subs_desc: [
         "Delete 100 messages",
         "Delete all messages sent by a bot",
@@ -30,17 +30,17 @@ module.exports = {
                 break;
             case "bots":
                 messages = message.channel.messages.cache.filter(
-                    (m) => m.author.bot
+                    (m) => m.author.bot === true
                 );
                 break;
         }
-        if (args[0].startsWith("*")) {
+        if (typeof args[0] === "string" && args[0].startsWith("*")) {
             args[0] = args[0].slice(1); //Remove * from it
             messages = message.channel.messages.cache.filter(
                 (m) => m.content.indexOf(args[0]) !== -1
             );
         }
-        if (typeof args[0] === "number") {
+        if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]) + 1;
             if (isNaN(amount)) {
                 return message.reply(
@@ -57,15 +57,19 @@ module.exports = {
                 message.channel.send(errMsg);
             });
         } else {
-            if (messages)
-                return message.channel
+            if (messages) {
+                message.channel
                     .bulkDelete(messages, true)
                     .catch((err) => {
                         console.error(err);
                         message.channel.send(errMsg);
                     });
-            message.channel.send(errMsg);
+            } else {
+                return message.channel.send(errMsg);
+            }
         }
-        message.react("👍");
+        message.channel.send("Pruning done👍. This message will be deleted in 4 seconds").then((msg) => {
+            setTimeout(() => {msg.delete()}, 4000);
+        });
     },
 };
