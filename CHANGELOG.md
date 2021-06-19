@@ -16,6 +16,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `prune` - Prune (delete) messages
 - You can use default prefix also after setting custom prefix
 - New command `lib` - Find out what library is used to build bot
+- New command `coinflip` - The bot will flip the coin for you.
+- New command `qrcode` - Generate/Read qrcodes
 
 ### Changes
 
