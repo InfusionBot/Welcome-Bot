@@ -21,7 +21,7 @@ module.exports = function (client) {
             type: "PLAYING",
         },
         {
-            name: `${users} online user${users > 1 ? "s" : ""} | ${
+            name: `${users} user${users > 1 ? "s" : ""} | ${
                 client.defaultPrefix
             }help`,
             type: "WATCHING",
