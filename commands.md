@@ -7,10 +7,12 @@
 - [Moderation](#moderation)
 - [Miscellaneous](#miscellaneous)
 - [Fun](#fun)
+- [Anime](#anime)
+- [Games](#games)
 - [Owner Only](#owner-only)
 - [Core](#core)
 
-Welcome-Bot contains more than **20 commands** in **9 categories**!
+Welcome-Bot contains more than **20 commands** in **11 categories**!
 
 #### Contents in a command
 
@@ -96,19 +98,6 @@ Not providing any arguments will display the current settings.
 
 ## General (3 commands)
 
-### `help`
-
-##### Subcommands:
-
-- None
-
-##### Info
-
-- Description: List all of my commands or info about a specific command.
-- Usage: (command name)
-- Aliases: commands
-- Cooldown: 5
-
 ### `invite`
 
 ##### Subcommands:
@@ -135,9 +124,22 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 5
 
+### `help`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: List all of my commands or info about a specific command.
+- Usage: (command name)
+- Aliases: commands
+- Cooldown: 5
+
 ## Information (4 commands)
 
-### `info`
+### `botinfo`
 
 ##### Subcommands:
 
@@ -147,7 +149,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Bot information
 - Usage: (--dm)
-- Aliases: 
+- Aliases: botstats
 - Cooldown: 10
 
 ### `stats`
@@ -197,7 +199,7 @@ Not providing any arguments will display the current settings.
 
 - `all` - Delete 100 messages
 - `bots` - Delete all messages sent by a bot
-- `*` - `*Text` will delete any message containing "Text"
+- `*[string]` - `*Text` will delete any message containing "Text"
 
 ##### Info
 
@@ -247,20 +249,7 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 5
 
-## Miscellaneous (2 commands)
-
-### `test`
-
-##### Subcommands:
-
-- None
-
-##### Info
-
-- Description: Test welcome message
-- Usage: None
-- Aliases: None
-- Cooldown: 3
+## Miscellaneous (3 commands)
 
 ### `uptime`
 
@@ -275,6 +264,33 @@ Not providing any arguments will display the current settings.
 - Aliases: getuptime
 - Cooldown: 10
 
+### `qrcode`
+
+##### Subcommands:
+
+- `generate` - Generate a qrcode
+- `read` - Read a qrcode
+
+##### Info
+
+- Description: Generate/Read a qrcode
+- Usage: [subcommand] [data / image_url]
+- Aliases: None
+- Cooldown: 10
+
+### `test`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Test welcome message
+- Usage: None
+- Aliases: None
+- Cooldown: 3
+
 ## Fun (3 commands)
 
 ### `figlet`
@@ -287,7 +303,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Implement the FIGfont spec in JS
 - Usage: [string]
-- Aliases: 
+- Aliases: asciify, bigtext
 - Cooldown: 10
 
 ### `image`
@@ -314,6 +330,36 @@ Not providing any arguments will display the current settings.
 - Description: Get a pokemon image
 - Usage: [pokemon character]
 - Aliases: pokémon
+- Cooldown: 10
+
+## Anime (1 commands)
+
+### `waifu`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Fetches a random waifu (lewd if the channel is NSFW) and displays it.
+- Usage: None
+- Aliases: None
+- Cooldown: 10
+
+## Games (1 commands)
+
+### `coinflip`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Flips a coin.
+- Usage: None
+- Aliases: cf
 - Cooldown: 10
 
 ## Owner Only (3 commands)
@@ -357,7 +403,20 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 30
 
-## Core (1 commands)
+## Core (2 commands)
+
+### `lib`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Library used to build Welcome-Bot
+- Usage: None
+- Aliases: library
+- Cooldown: 10
 
 ### `website`
 

@@ -170,6 +170,7 @@ module.exports = async (message, guildDB) => {
                 message.reply({ embeds: [embed] });
                 return;
             }
+            return true;
         }
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         //message.reply(errMsg);

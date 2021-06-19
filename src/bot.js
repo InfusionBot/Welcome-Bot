@@ -92,9 +92,9 @@ client.on("message", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
-    execute(message, guildDB);
+    const executeResult= execute(message, guildDB);
 
-    if (message.mentions.has(client.user)) {
+    if (message.mentions.has(client.user) && executeResult !== true) {
         const server = message.guild ? " in this server." : "";
         let reply =
             `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"` +
