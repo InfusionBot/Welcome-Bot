@@ -10,7 +10,7 @@ module.exports = {
     usage: "(--dm)",
     cooldown: 10,
     category: "Information",
-    execute(message, args) {
+    execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         let embed = new MessageEmbed();
         embed.setTitle("Welcome-Bot");

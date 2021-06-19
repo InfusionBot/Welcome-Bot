@@ -11,7 +11,7 @@ module.exports = {
     usage: "(version)",
     cooldown: 10,
     category: "Information",
-    execute: async (message, args, guildDB) => {
+    async execute(message, args, guildDB) {
         const getVersion = require("../../db/functions/version/getVersion.js");
         if (
             args[0] &&
