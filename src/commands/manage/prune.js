@@ -68,8 +68,8 @@ module.exports = {
                 return message.channel.send(errMsg);
             }
         }
-        message.channel.send("Pruning done👍. This message will be deleted in 4 seconds").then((msg) => {
-            setTimeout(() => {msg.delete()}, 4000);
+        message.channel.send("Pruning done👍. This message will be deleted in 5 seconds").then((msg) => {
+            setTimeout(() => {msg.delete()}, 5000);
         });
     },
 };
