@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "figlet",
-    aliases: [],
+    aliases: ["asciify", "bigtext"],
     description: "Implement the FIGfont spec in JS",
     args: true,
     usage: "[string]",
