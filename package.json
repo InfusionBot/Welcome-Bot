@@ -1,11 +1,17 @@
 {
   "name": "welcome-bot",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "changelog": [
-    "**Bug fixes**",
-    "Fix bug: not posting server count to botlist.space ([#23])",
+    "**New features**",
+    "New command `follow` - Send news and version updates to a specific channel",
+    "New command `prune` - Prune (delete) messages",
+    "You can use default prefix also after setting custom prefix",
+    "New command `lib` - Find out what library is used to build bot",
+    "New command `coinflip` - The bot will flip the coin for you.",
+    "New command `qrcode` - Generate/Read qrcodes",
     "**Changes**",
-    "Use embed to send welcome message!"
+    "Upgrade to djs v13 ([#25])",
+    "Rename `info` command to `botinfo`"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
