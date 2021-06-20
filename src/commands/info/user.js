@@ -9,7 +9,6 @@ module.exports = {
     description:
         "Get information about a user. It will show your info if no user was mentioned",
     args: false,
-    guildOnly: true,
     usage: "(@mention / user_id)",
     category: "Information",
     async execute(message, args) {
@@ -37,7 +36,7 @@ module.exports = {
             return false;
         }
         let member = message.guild.members.cache.find((m) => m.id === user.id);
-        if (!member) {
+        if (!member && message.guild) {
             return message.reply("That user was not found in this server");
         }
 
@@ -75,10 +74,10 @@ module.exports = {
         }*/
         embed.addField(
             "Joined:",
-            `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
+            `Joined discord at *${user.createdAt}*` + message.guild ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*` : ""
         );
         embed.addField("Locale:", `${user.locale}`);
-        if (member.nickname) embed.addField("Nickname:", `${member.Nickname}`);
+        if (member && member.nickname) embed.addField("Nickname:", `${member.Nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         embed.addField("Presence:", `${user.presence.status}`);
         embed.setFooter(
