@@ -77,7 +77,10 @@ module.exports = {
         }*/
         embed.addField(
             "Joined:",
-            `Joined discord at *${user.createdAt}*` + (message.guild ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*` : "")
+            `Joined discord at *${user.createdAt}*` +
+                (message.guild
+                    ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
+                    : "")
         );
         embed.addField("Locale:", `${user.locale}`);
         if (member && member.nickname)
