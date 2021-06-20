@@ -35,9 +35,12 @@ module.exports = {
         if (!user) {
             return false;
         }
-        let member = message.guild.members.cache.find((m) => m.id === user.id);
-        if (!member && message.guild) {
-            return message.reply("That user was not found in this server");
+        let member;
+        if (message.guild) {
+            member = message.guild.members.cache.find((m) => m.id === user.id);
+            if (!member) {
+                return message.reply("That user was not found in this server");
+            }
         }
 
         /*let badges = [];
@@ -74,7 +77,7 @@ module.exports = {
         }*/
         embed.addField(
             "Joined:",
-            `Joined discord at *${user.createdAt}*` + message.guild ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*` : ""
+            `Joined discord at *${user.createdAt}*` + (message.guild ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*` : "")
         );
         embed.addField("Locale:", `${user.locale}`);
         if (member && member.nickname) embed.addField("Nickname:", `${member.Nickname}`);
