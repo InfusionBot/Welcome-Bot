@@ -76,7 +76,9 @@ client.on("guildCreate", (guild) => {
     let embed = new MessageEmbed()
         .setTitle(`Added to "${guild.name}"`)
         .setDescription(`${guild.id}`);
-    client.channels.cache.get(client.loggingChannelId).send({embeds: [embed]});
+    client.channels.cache
+        .get(client.loggingChannelId)
+        .send({ embeds: [embed] });
 });
 
 client.on("guildDelete", (guild) => {
@@ -85,7 +87,9 @@ client.on("guildDelete", (guild) => {
     let embed = new MessageEmbed()
         .setTitle(`Added to "${guild.name}"`)
         .setDescription(`${guild.id}`);
-    client.channels.cache.get(client.loggingChannelId).send({embeds: [embed]});
+    client.channels.cache
+        .get(client.loggingChannelId)
+        .send({ embeds: [embed] });
 });
 
 client.on("message", async function (message) {
