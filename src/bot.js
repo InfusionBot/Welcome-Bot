@@ -10,14 +10,6 @@ const { MessageEmbed } = require("discord.js");
 
 const client = new WelcomeBot();
 
-process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
-process.on("unhandledRejection", (error) => {
-    console.error("Unhandled promise rejection:", error);
-});
-process.on("exit", (code) => {
-    client.destroy();
-});
-
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const sayGoodBye = require("./functions/sayGoodBye");
@@ -29,6 +21,17 @@ const addGuild = require("./db/functions/guild/addGuild");
 const removeGuild = require("./db/functions/guild/removeGuild");
 const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
+
+process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
+process.on("unhandledRejection", (error) => {
+    console.error("Unhandled promise rejection:", error);
+    if (error.message.indexOf("No guild with guild ID") !== -1 && client && dbAuditor) {
+        dbAuditor(client);
+    }
+});
+process.on("exit", (code) => {
+    client.destroy();
+});
 
 client.on("ready", () => {
     // We logged in
