@@ -75,9 +75,11 @@ client.on("guildCreate", (guild) => {
     //Bot has been invited to a new guild
     addGuild(guild.id);
     if (guild.systemChannelID) {
-    guild.channels.cache
-        .get(guild.systemChannelID)
-        .send("Thank you for choosing this bot! To get started, type `w/help`");
+        guild.channels.cache
+            .get(guild.systemChannelID)
+            .send(
+                "Thank you for choosing this bot! To get started, type `w/help`"
+            );
     }
     let embed = new MessageEmbed()
         .setTitle(`Added to "${guild.name}"`)
