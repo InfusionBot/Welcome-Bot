@@ -44,6 +44,7 @@ client.on("ready", () => {
     // Update server count every 25 minutes if environment is in PRODUCTION
     if (process.env.NODE_ENV === "production")
         setInterval(() => serverCount(client), 25 * 60 * 1000);
+    dbAuditor(client);
     //Run dbAuditor every 3 hours
     setInterval(() => {
         dbAuditor(client);
