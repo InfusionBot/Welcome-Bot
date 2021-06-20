@@ -5,19 +5,29 @@
  */
 module.exports = function (client) {
     const servers = client.guilds.cache.size;
-    const chans = client.channels.cache.size;
+    const commands = client.commands.size;
     const users = client.users.cache.size;
-    console.log(`Updating presence. Servers: ${servers}`);
-    client.user
-        .setPresence({
-            activity: {
-                name: `w/help | ${servers} server${
-                    servers > 1 ? "s" : ""
-                } | handling ${chans} channel${
-                    chans > 1 ? "s" : ""
-                } | giving hand to ${users} user${users > 1 ? "s" : ""}`,
-                type: "WATCHING",
-            },
-        })
-        .catch((error) => console.error(error));
+    const presences = [
+        {
+            name: `${servers} server${servers > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
+            type: "WATCHING",
+        },
+        {
+            name: `${commands} command${commands > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
+            type: "PLAYING",
+        },
+        {
+            name: `${users} user${users > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
+            type: "WATCHING",
+        },
+    ];
+    client.user.setPresence({
+        activities: [presences[Math.floor(Math.random() * presences.length)]],
+    });
 };

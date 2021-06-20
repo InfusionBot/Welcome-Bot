@@ -14,12 +14,12 @@ module.exports = {
     category: "Information",
     async execute(message, args) {
         const { MessageEmbed } = require("discord.js");
-        const getUserFromMention = require("../../functions/getUserFromMention.js");
+        const { userFromMention } = require("../../functions/get.js");
         //const getUserFlags = require("../../functions/getUserFlags.js");
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
-                user = getUserFromMention(
+                user = userFromMention(
                     args[0] || `${message.author}`,
                     message.client
                 );
@@ -37,6 +37,9 @@ module.exports = {
             return false;
         }
         let member = message.guild.members.cache.find((m) => m.id === user.id);
+        if (!member) {
+            return message.reply("That user was not found in this server");
+        }
 
         /*let badges = [];
         await getUserFlags(user)
@@ -54,35 +57,36 @@ module.exports = {
                 (emoji) => emoji.id === badges[i].emoji
             )}`;
         }*/
-        let msg = new MessageEmbed();
-        msg.setTitle(`${user.tag}`);
-        msg.setDescription(`Information about ${args[0] || message.author}`);
-        msg.setThumbnail(`${user.displayAvatarURL()}`);
-        msg.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
+        let embed = new MessageEmbed();
+        embed.setTitle(`${user.tag}`);
+        embed.setDescription(`Information about ${args[0] || message.author}`);
+        embed.setThumbnail(`${user.displayAvatarURL()}`);
+        embed.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
         let avatarURL = user.displayAvatarURL().slice(0, 35);
         avatarURL += "...";
-        msg.addField(
+        embed.addField(
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`
         );
         /*if (badgesStr.length > 0) {
-            msg.addField("Badges:", badgesStr.join(" "));
+            embed.addField("Badges:", badgesStr.join(" "));
         } else {
-            msg.addField("Badges:", "None");
+            embed.addField("Badges:", "None");
         }*/
-        msg.addField(
+        embed.addField(
             "Joined:",
             `Joined discord at *${user.createdAt}*\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
         );
-        if (member.nickname) msg.addField("Nickname:", member.nickname);
+        embed.addField("Locale:", `${user.locale}`);
+        if (member.nickname) embed.addField("Nickname:", `${member.Nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
-        msg.addField("Presence:", `${user.presence.status}`);
-        msg.setFooter(
+        embed.addField("Presence:", `${user.presence.status}`);
+        embed.setFooter(
             `Requested by ${message.author.tag}`,
             `${message.author.displayAvatarURL()}`
         );
-        msg.setColor("#33ddff");
-        msg.setTimestamp();
-        message.channel.send(msg);
+        embed.setColor("#33ddff");
+        embed.setTimestamp();
+        message.channel.send({ embeds: [embed] });
     },
 };

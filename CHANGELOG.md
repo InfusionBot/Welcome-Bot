@@ -6,14 +6,34 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+## [v1.6.0]
+
+> **Released:** `TBA`
+
+### New features
+
+- New command `follow` - Send news and version updates to a specific channel
+- New command `prune` - Prune (delete) messages
+- You can use default prefix also after setting custom prefix
+- New command `lib` - Find out what library is used to build bot
+- New command `coinflip` - The bot will flip the coin for you.
+- New command `qrcode` - Generate/Read qrcodes
+
+### Changes
+
+- Upgrade to djs v13 ([#25])
+- Rename `info` command to `botinfo`
+
 ## [v1.5.1]
 
 > **Released:** `15-06-2021`
 
 ### Bug fixes
+
 - Fix bug: not posting server count to botlist.space ([#23])
 
 ### Changes
+
 - Use embed to send welcome message!
 
 ## [v1.5.0]
@@ -112,6 +132,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
+[#25]: https://github.com/Welcome-Bot/welcome-bot/pull/25
 [#23]: https://github.com/Welcome-Bot/welcome-bot/pull/23
 [#20]: https://github.com/Welcome-Bot/welcome-bot/pull/20
 [#19]: https://github.com/Welcome-Bot/welcome-bot/issue/19

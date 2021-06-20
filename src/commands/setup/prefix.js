@@ -3,13 +3,15 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
 module.exports = {
     name: "prefix",
     //aliases: [],
     description: "Manage perfix for this server",
-    permissions: ["MANAGE_SERVER"],
+    permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
-    subcommands: ["set", "get", "reset"],
+    subcommands: ["set", "reset"],
+    subs_desc: ["Set prefix", "Reset prefix"],
     cooldown: 10,
     guildOnly: true,
     category: "Setup",
@@ -27,9 +29,11 @@ module.exports = {
                         args.join(" ").replace(`${args[0]} `, "").trim()
                     );
                     message.reply(
-                        "Prefix set to `" +
+                        "Custom prefix has been set to `" +
                             args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "`"
+                            "`\nYou can still use the default prefix (" +
+                            message.client.defaultPrefix +
+                            ")."
                     );
                 } else {
                     message.reply(

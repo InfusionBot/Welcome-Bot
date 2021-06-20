@@ -1,3 +1,8 @@
+/**
+ * Discord Welcome bot
+ * Copyright (c) 2021 The Welcome-Bot Team and Contributors
+ * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
+ */
 const fs = require("fs");
 
 module.exports = {
@@ -39,12 +44,10 @@ module.exports = {
                 `${commandFolder}/${folderName}`,
                 command.name
             );
-            message.channel.send(
-                `Command \`${newCommand.name}\` was reloaded!`
-            );
+            message.reply(`Command \`${newCommand.name}\` was reloaded!`);
         } catch (error) {
             console.error(error);
-            message.channel.send(
+            message.reply(
                 `There was an error while reloading a command \`${command.name}\``
             );
         }

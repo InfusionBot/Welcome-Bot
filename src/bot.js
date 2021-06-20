@@ -6,14 +6,14 @@
 const fs = require("fs");
 const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
+const { MessageEmbed } = require("discord.js");
 
 const client = new WelcomeBot();
 
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
-process.env.ownerIDs = [
-    "815204465937481749" /*PuneetGopinath#6300*/,
-    "693754859014324295" /*abhijoshi2k#6842*/,
-];
+process.on("unhandledRejection", (error) => {
+    console.error("Unhandled promise rejection:", error);
+});
 process.on("exit", (code) => {
     client.destroy();
 });
@@ -32,50 +32,57 @@ const dbAuditor = require("./db/functions/dbAuditor");
 
 client.on("ready", () => {
     // We logged in
-    console.log(
+    client.logger.log(
         `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
     );
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);
-    // 15 * 60 * (1 second)
-    // Update presence every 15 minutes
-    setInterval(() => presence(client), 15 * 60 * 1000);
+    // 1 * 60 * (1 second)
+    // Update presence every 1 minute
+    setInterval(() => presence(client), 1 * 60 * 1000);
     // Update server count every 25 minutes if environment is in PRODUCTION
     if (process.env.NODE_ENV === "production")
         setInterval(() => serverCount(client), 25 * 60 * 1000);
+    dbAuditor(client);
     //Run dbAuditor every 3 hours
     setInterval(() => {
         dbAuditor(client);
     }, 3 * 60 * 60 * 1000);
     require("./functions/versionSender")(client);
+    if (process.env.NODE_ENV !== "production")
+        require("./helpers/updateDocs")(client);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberAdd
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildMemberRemove
 client.on("guildMemberRemove", (member) => {
     // When a member leaves or is kicked or is banned
     sayGoodBye(member);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildCreate
 client.on("guildCreate", (guild) => {
     //Bot has been invited to a new guild
     addGuild(guild.id);
     guild.channels.cache
         .find((ch) => ch.id === guild.systemChannelID)
         .send("Thank you for choosing this bot! To get started, type `w/help`");
+    let embed = new MessageEmbed()
+        .setTitle(`Added to "${guild.name}"`)
+        .setDescription(`${guild.id}`);
+    client.channels.cache.get(client.loggingChannelId).send(embed);
 });
 
-//https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=e-guildDelete
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
+    let embed = new MessageEmbed()
+        .setTitle(`Added to "${guild.name}"`)
+        .setDescription(`${guild.id}`);
+    client.channels.cache.get(client.loggingChannelId).send(embed);
 });
 
 client.on("message", async function (message) {
@@ -86,13 +93,17 @@ client.on("message", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
+    const executeResult = execute(message, guildDB);
 
-    if (message.mentions.has(client.user)) {
+    if (message.mentions.has(client.user) && executeResult !== true) {
         const server = message.guild ? " in this server." : "";
         let reply =
             `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"` +
             server +
             `\nSend \`${guildDB.prefix}help\` to get help`;
+        if (message.guild) {
+            reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
+        }
         if (!message.reference) {
             message.channel.startTyping();
             message.channel.send(reply);
@@ -110,8 +121,6 @@ client.on("message", async function (message) {
                 .catch(console.error);
         }
     }
-    //Whatever happens, if the message starts with prefix, the bot should execute it.
-    execute(message, guildDB);
 });
 
 // Login

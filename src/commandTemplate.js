@@ -11,13 +11,14 @@ module.exports = {
     bot_perms: [],
     args: false,
     guildOnly: true,
-    catchError: false,
+    catchError: true,
     usage: "[arg1] (arg2)",
-    disabled: true,
+    disabled: false,
     subcommand: false,
-    subcommands: ["set", "get", "reset"],
+    subcommands: ["set", "reset"],
+    subs_desc: ["Set this", "Reset that"],
     cooldown: 10,
-    ownerOnly: true,
+    ownerOnly: false,
     category: "Sample",
     execute(message, args, guildDB) {
         return;

@@ -3,22 +3,29 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["commands"],
     description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
-    bot_perms: ["MANAGE_MESSAGES"],
+    bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
-        const getGuild = require("../../db/functions/guild/getGuild");
+        const beautifyPerms = require("../../functions/beautifyPerms");
         const { commands } = message.client;
-        const emojiList = ["⏪", "⏩", "❌"];
+        const emojiList = {
+            first: "⏮",
+            back: "⏪",
+            forward: "⏩",
+            last: "⏭",
+            stop: "⏹",
+        };
         let page = 0;
         let pages = [new MessageEmbed()];
-        let timeout = 120000; //12 secs timeout
+        let timeout = 200000; //20 secs timeout
 
         pages[0].setTitle("Welcome Bot help");
         if (!args.length) {
@@ -33,17 +40,17 @@ module.exports = {
                         commandsCat.push(`- ${command.name}`);
                 });
                 pages[p].addField(
-                    `Commands in this category`,
+                    `${cat.emoji} Commands in this category`,
                     `${commandsCat.join("\n")}`
                 );
             });
             pages[0].setDescription(
                 "List of all commands available in the bot"
             );
-            pages[0].addField("No of Commands:", commands.size);
+            pages[0].addField("No of Commands:", `${commands.size}`);
             pages[0].addField(
                 "No of categories:",
-                message.client.categories.length
+                `${message.client.categories.length}`
             );
             pages[0].addField(
                 "Get help for specific command:",
@@ -51,51 +58,65 @@ module.exports = {
             );
             pages[0].addField(
                 "What is Cooldown:",
-                "Cooldown is the minimum time required to execute the same command again"
+                "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
             );
-            pages[0].addField(
-                "Want full list for commands?",
-                "Go to the next page!"
-            );
+            pages[0].addField("Want list of commands?", "Go to the next page!");
 
-            const curPage = await message.channel.send(
-                pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
-            );
-            for (const emoji of emojiList) await curPage.react(emoji);
+            const curPage = await message.channel.send({
+                embeds: [
+                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`),
+                ],
+            });
+            for (var key in emojiList) {
+                await curPage.react(emojiList[key]);
+            }
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
-                    emojiList.includes(reaction.emoji.name) && !user.bot,
+                    Object.values(emojiList).includes(reaction.emoji.name) &&
+                    !user.bot,
                 { time: timeout }
             );
             reactionCollector.on("collect", (reaction) => {
                 // Remove the reaction when the user react to the message
                 reaction.users.remove(message.author);
                 switch (reaction.emoji.name) {
-                    case emojiList[0]:
+                    case emojiList["back"]:
                         page = page > 0 ? --page : pages.length - 1;
                         break;
-                    case emojiList[1]:
+                    case emojiList["forward"]:
                         page = page + 1 < pages.length ? ++page : 0;
                         break;
-                    case emojiList[2]:
+                    case emojiList["stop"]:
                         return curPage.delete();
                         break;
+                    case emojiList["first"]:
+                        page = 0;
+                        break;
+                    case emojiList["last"]:
+                        page = pages.length - 1;
+                        break;
                 }
-                curPage.edit(
-                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)
-                );
+                curPage.edit({
+                    embeds: [
+                        pages[page].setFooter(
+                            `Page ${page + 1} / ${pages.length}`
+                        ),
+                    ],
+                });
             });
             reactionCollector.on("end", () => {
                 curPage.reactions.removeAll().catch((err) => {
                     console.error(err);
                 });
-                curPage.edit(
-                    pages[page].setFooter(
-                        `Page ${page + 1} / ${
-                            pages.length
-                        } | Pagination timed out`
-                    )
-                );
+                curPage.edit({
+                    embeds: [
+                        pages[page].setFooter(
+                            `Page ${page + 1} / ${
+                                pages.length
+                            } | Pagination timed out`
+                        ),
+                    ],
+                });
             });
             return;
         }
@@ -114,31 +135,39 @@ module.exports = {
         pages[0].setDescription(`Help for ${command.name} command`);
         pages[0].addField("Command Name:", command.name);
 
-        if (command.description)
-            pages[0].addField("Description:", command.description);
+        if (command.description) {
+            let desc = command.description;
+            if (command.bot_perms)
+                desc += `\nThe bot needs ${beautifyPerms(
+                    command.bot_perms,
+                    message.client.allPerms
+                ).join(", ")} permission(s) to execute this command.`;
+            pages[0].addField("Description:", desc);
+        }
         if (command.aliases && command.aliases !== [])
             pages[0].addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             pages[0].addField(
                 "Permissions:",
-                `You need ${command.permissions.join(
-                    ", "
-                )} permission(s) to execute this command.`
+                `You need ${beautifyPerms(
+                    command.permissions,
+                    message.client.allPerms
+                ).join(", ")} permission(s) to execute this command.`
             );
-        if (command.bot_perms)
-            pages[0].addField(
-                "Bot Permissions:",
-                `The bot needs ${command.bot_perms.join(
-                    ", "
-                )} permission(s) to execute this command.`
-            );
-        if (command.subcommands)
-            pages[0].addField("Subcommands:", command.subcommands.join(", "));
+        if (command.subcommands) {
+            let subcommands = [];
+            for (var i = 0; i < command.subcommands.length; i++) {
+                subcommands.push(
+                    `\`${command.subcommands[i]}\` - ${command.subs_desc[i]}`
+                );
+            }
+            pages[0].addField("Subcommands:", subcommands.join(`\n`));
+        }
         if (command.usage)
             pages[0].addField(
                 "Usage:",
                 `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                    `\n[] = Required argument\n() = Optional argument\n/ = Either this or that value for that argument`
+                    `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
             );
         if (command.ownerOnly)
             pages[0].addField(
@@ -148,6 +177,6 @@ module.exports = {
 
         pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
 
-        message.channel.send(pages[0]);
+        message.channel.send({ embeds: [pages[0]] });
     },
 };

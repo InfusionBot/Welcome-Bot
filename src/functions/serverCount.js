@@ -8,7 +8,6 @@ const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
             console.log("statusCode: ", res.statusCode);
-            console.log("headers: ", res.headers);
         })
         .on("error", (err) => {
             console.error(err.message);
@@ -19,7 +18,7 @@ const sendReq = function (data, options) {
 };
 module.exports = function (client) {
     const servers = client.guilds.cache.size;
-    console.log(`Updating server count. Servers: ${servers}`);
+    client.logger.log(`Updating server count. Servers: ${servers}`, "debug");
 
     let data;
     let options;
@@ -40,7 +39,7 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("NOTE: DISCORD_BOATS_token is not set");
+        console.log("DISCORD_BOATS_token is not set", "warn");
     }
 
     if (process.env.DELAPI_token) {
@@ -59,7 +58,7 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("NOTE: DELAPI_token is not set");
+        console.log("DELAPI_token is not set", "warn");
     }
 
     if (process.env.DISCORD_BOTS_token) {
@@ -78,7 +77,7 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("NOTE: DISCORD_BOTS_token is not set");
+        console.log("DISCORD_BOTS_token is not set", "warn");
     }
 
     if (process.env.DISCORDLIST_token) {
@@ -97,6 +96,6 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("NOTE: is not set");
+        console.log("DISCORDLIST_token is not set", "warn");
     }
 };

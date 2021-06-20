@@ -3,13 +3,13 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, Permissions } = require("discord.js");
 module.exports = {
     name: "kick",
     //aliases: [],
     description: "Kick a user.",
-    permissions: ["KICK_MEMBERS"],
-    bot_perms: ["KICK_MEMBERS"],
+    permissions: [Permissions.FLAGS.KICK_MEMBERS],
+    bot_perms: [Permissions.FLAGS.KICK_MEMBERS],
     args: true,
     guildOnly: true,
     catchError: true,
@@ -61,14 +61,14 @@ module.exports = {
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {
-                msg = new MessageEmbed();
-                msg.setTitle(`User kicked: ${user.tag} (${user.id})`);
-                msg.addField(
+                embed = new MessageEmbed();
+                embed.setTitle(`User kicked: ${user.tag} (${user.id})`);
+                embed.addField(
                     "Responsible moderator:",
                     `${message.author.tag} (${message.author.id})`
                 );
-                msg.addField("Reason:", reason);
-                channel.send(msg);
+                embed.addField("Reason:", reason);
+                channel.send({ embeds: [embed] });
             }
         }
 
