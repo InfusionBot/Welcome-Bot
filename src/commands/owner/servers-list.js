@@ -60,12 +60,12 @@ module.exports = {
                 case emojiList["back"]:
                     i0 = i0 - 10;
                     i1 = i1 - 10;
-                    page = page > 0 ? --page : pages.length - 1;
+                    page = page - 1;
                     break;
                 case emojiList["forward"]:
                     i0 = i0 + 10;
                     i1 = i1 + 10;
-                    page = page + 1 < pages.length ? ++page : 0;
+                    page = page + 1;
                     break;
                 case emojiList["stop"]:
                     return curPage.delete();
