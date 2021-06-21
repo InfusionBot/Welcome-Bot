@@ -8,7 +8,7 @@ module.exports = {
     name: "channel",
     aliases: ["chan"],
     description:
-        "Manage channel for this server\nNot providing any arguments will display the current settings.",
+        "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
     subcommands: ["set", "setMod", "reset", "resetMod"],
