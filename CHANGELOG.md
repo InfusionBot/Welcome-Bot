@@ -6,9 +6,22 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+## [v1.6.1]
+
+> **Released:** `21-06-2021`
+
+### Bug fixes
+
+- Run dbAuditor on start & when no guild found when using `updateGuild` function
+- Not sending embed message for new guilds and guilds removed
+
+### Changes
+
+- User command works in DMs also now
+
 ## [v1.6.0]
 
-> **Released:** `TBA`
+> **Released:** `20-06-2021`
 
 ### New features
 

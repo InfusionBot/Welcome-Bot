@@ -2,16 +2,11 @@
   "name": "welcome-bot",
   "version": "1.6.0",
   "changelog": [
-    "**New features**",
-    "New command `follow` - Send news and version updates to a specific channel",
-    "New command `prune` - Prune (delete) messages",
-    "You can use default prefix also after setting custom prefix",
-    "New command `lib` - Find out what library is used to build bot",
-    "New command `coinflip` - The bot will flip the coin for you.",
-    "New command `qrcode` - Generate/Read qrcodes",
+    "**Bug fixes**",
+    "Run dbAuditor on start & when no guild found when using `updateGuild` function",
+    "Not sending embed message for new guilds and guilds removed",
     "**Changes**",
-    "Upgrade to djs v13 ([#25])",
-    "Rename `info` command to `botinfo`"
+    "User command works in DMs also now"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
