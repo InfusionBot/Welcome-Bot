@@ -1,6 +1,6 @@
 {
   "name": "welcome-bot",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "changelog": [
     "**Bug fixes**",
     "Run dbAuditor on start & when no guild found when using `updateGuild` function",
