@@ -137,11 +137,13 @@ module.exports = {
 
         if (command.description) {
             let desc = command.description;
-            if (command.bot_perms)
+            if (command.bot_perms) {
                 desc += `\nThe bot needs ${beautifyPerms(
                     command.bot_perms,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`;
+                desc += `You have given: ${beautifyPerms(message.guild.me.permissionsIn(message.channel), message.client.allPerms).join(", ")}`;
+            }
             pages[0].addField("Description:", desc);
         }
         if (command.aliases && command.aliases !== [])
