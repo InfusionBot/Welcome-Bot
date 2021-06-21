@@ -112,27 +112,30 @@ client.on("message", async function (message) {
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
     if (!mentionRegex.test(message.content)) return;
-        let reply =
-            `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"${message.guild ? " in this server." : ""}\nSend \`${guildDB.prefix}help\` to get help`;
-        if (message.guild) {
-            reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
-        }
-        if (!message.reference) {
-            message.channel.startTyping();
-            message.channel.send(reply);
-            message.channel.stopTyping();
-        } else {
-            message.channel.messages
-                .fetch(message.reference.messageID)
-                .then((msg) => {
-                    if (msg.author.id != client.user.id) {
-                        message.channel.startTyping();
-                        message.channel.send(reply);
-                        message.channel.stopTyping();
-                    }
-                })
-                .catch(console.error);
-        }
+    let reply = `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${
+        guildDB.prefix
+    }"${message.guild ? " in this server." : ""}\nSend \`${
+        guildDB.prefix
+    }help\` to get help`;
+    if (message.guild) {
+        reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
+    }
+    if (!message.reference) {
+        message.channel.startTyping();
+        message.channel.send(reply);
+        message.channel.stopTyping();
+    } else {
+        message.channel.messages
+            .fetch(message.reference.messageID)
+            .then((msg) => {
+                if (msg.author.id != client.user.id) {
+                    message.channel.startTyping();
+                    message.channel.send(reply);
+                    message.channel.stopTyping();
+                }
+            })
+            .catch(console.error);
+    }
 });
 
 // Login
