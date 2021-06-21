@@ -12,7 +12,7 @@
 - [Owner Only](#owner-only)
 - [Core](#core)
 
-Welcome-Bot contains more than **20 commands** in **11 categories**!
+Welcome-Bot contains more than **30 commands** in **11 categories**!
 
 #### Contents in a command
 
@@ -403,7 +403,20 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 30
 
-## Core (2 commands)
+## Core (3 commands)
+
+### `botperms`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: List of permissions given to bot
+- Usage: None
+- Aliases: None
+- Cooldown: 10
 
 ### `lib`
 
