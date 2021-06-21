@@ -6,7 +6,7 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
-    aliases: ["commands"],
+    aliases: ["commands", "cmd"],
     description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
     bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
