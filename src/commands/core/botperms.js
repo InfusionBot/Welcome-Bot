@@ -12,10 +12,17 @@ module.exports = {
     category: "Core",
     execute(message, args, guildDB) {
         const beautifyPerms = require("../../functions/beautifyPerms");
-        let permsGiven = message.guild.me.permissionsIn(message.channel).toArray();
+        let permsGiven = message.guild.me
+            .permissionsIn(message.channel)
+            .toArray();
         for (var i = 0; i < permsGiven.length; i++) {
             permsGiven[i] = Permissions.FLAGS[permsGiven[i]];
         }
-        message.reply(`You have given: ${beautifyPerms(permsGiven, message.client.allPerms).join(", ")}`);
+        message.reply(
+            `You have given: ${beautifyPerms(
+                permsGiven,
+                message.client.allPerms
+            ).join(", ")}`
+        );
     },
 };
