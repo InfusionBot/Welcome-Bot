@@ -134,7 +134,7 @@ Not providing any arguments will display the current settings.
 
 - Description: List all of my commands or info about a specific command.
 - Usage: (command name)
-- Aliases: commands
+- Aliases: commands, cmd
 - Cooldown: 5
 
 ## Information (4 commands)
@@ -403,7 +403,7 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 30
 
-## Core (3 commands)
+## Core (4 commands)
 
 ### `botperms`
 
@@ -429,6 +429,19 @@ Not providing any arguments will display the current settings.
 - Description: Library used to build Welcome-Bot
 - Usage: None
 - Aliases: library
+- Cooldown: 10
+
+### `support`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Link to Support Server of Welcome-Bot
+- Usage: None
+- Aliases: supportserver, supportguild
 - Cooldown: 10
 
 ### `website`
