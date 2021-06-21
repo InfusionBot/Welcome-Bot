@@ -8,7 +8,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.6.1]
 
-> **Released:** `20-06-2021`
+> **Released:** `21-06-2021`
 
 ### Bug fixes
 
