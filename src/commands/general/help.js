@@ -142,7 +142,10 @@ module.exports = {
                     command.bot_perms,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`;
-                desc += `You have given: ${beautifyPerms(message.guild.me.permissionsIn(message.channel), message.client.allPerms).join(", ")}`;
+                desc += `You have given: ${beautifyPerms(
+                    message.guild.me.permissionsIn(message.channel),
+                    message.client.allPerms
+                ).join(", ")}`;
             }
             pages[0].addField("Description:", desc);
         }
