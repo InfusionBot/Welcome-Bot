@@ -23,6 +23,7 @@ module.exports = async (member) => {
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
     let embed = new MessageEmbed()
+        .setAuthor(message.author.tag, message.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
         .setColor("#0099ff")
         .setTitle(`Welcome ${member.user.tag}!`)
         .setDescription(msg)
