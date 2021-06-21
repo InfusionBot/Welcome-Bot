@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "support",
-    aliases: ["supportserver", "supportguild"],
+    aliases: ["getsupport"],
     description: "Link to Support Server of Welcome-Bot",
     cooldown: 10,
     category: "Core",
@@ -17,7 +17,7 @@ module.exports = {
         }
         ownersMentions = ownersMentions.trim();
         let embed = new MessageEmbed()
-            .setTitle("Support Server for Welcome-Bot")
+            .setTitle("Get Support for Welcome-Bot")
             .addField("Bot owners:", ownersMentions)
             .addField("Bot owners IDs:", message.client.ownerIDs.join(", "))
             .addField("\u200b", `Link: https://dsc.gg/welcome-bot-guild`);
