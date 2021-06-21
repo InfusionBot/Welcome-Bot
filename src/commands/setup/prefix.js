@@ -57,7 +57,7 @@ module.exports = {
             default:
                 //Get bot prefix
                 message.reply(
-                    "Prefix in this server is set to `" + guildDB.prefix + "`"
+                    "Custom Prefix in this server is currently set to `" + guildDB.prefix + "`"
                 );
                 break;
         }
