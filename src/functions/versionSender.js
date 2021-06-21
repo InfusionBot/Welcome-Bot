@@ -17,7 +17,13 @@ module.exports = async (client) => {
                         reply += `\n- ${change}`;
                     }
                 });
-                client.channels.cache.get(client.newsChannelId).send(reply);
+                if (process.env.NODE_ENV === "production") {
+                const newsChannel = client.channels.cache.get(client.newsChannelId);
+                if (newsChannel)
+                    newsChannel.send(reply);
+                else
+                    client.logger.log("NODE_ENV is in production and bot can't find newsChannel to send version updates");
+                }
 
                 guilds.forEach((guild) => {
                     if (guild.subscribed) {
