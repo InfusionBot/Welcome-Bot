@@ -362,7 +362,7 @@ Not providing any arguments will display the current settings.
 - Aliases: cf
 - Cooldown: 10
 
-## Owner Only (3 commands)
+## Owner Only (4 commands)
 
 ### `eval`
 
@@ -402,6 +402,19 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: None
 - Cooldown: 30
+
+### `servers-list`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Show the servers list!
+- Usage: None
+- Aliases: slist
+- Cooldown: 10
 
 ## Core (4 commands)
 
