@@ -17,10 +17,10 @@ module.exports = {
         }
         ownersMentions = ownersMentions.trim();
         let embed = new MessageEmbed()
-        .setTitle("Support Server for Welcome-Bot")
-        .addField("Bot owners:", ownersMentions)
-        .addField("Bot owners IDs:", message.client.ownerIDs.join(", "))
-        .addField("\u200b", `Link: https://dsc.gg/welcome-bot-guild`);
-        message.channel.send({embeds: [embed]});
+            .setTitle("Support Server for Welcome-Bot")
+            .addField("Bot owners:", ownersMentions)
+            .addField("Bot owners IDs:", message.client.ownerIDs.join(", "))
+            .addField("\u200b", `Link: https://dsc.gg/welcome-bot-guild`);
+        message.channel.send({ embeds: [embed] });
     },
 };
