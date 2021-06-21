@@ -110,7 +110,8 @@ client.on("message", async function (message) {
     }
     execute(message, guildDB);
 
-    if (message.content.startsWith(`<@!?${message.client.user.id}>`)) {
+    const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
+    if (!mentionRegex.test(message.content)) return;
         let reply =
             `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"${message.guild ? " in this server." : ""}\nSend \`${guildDB.prefix}help\` to get help`;
         if (message.guild) {
@@ -132,7 +133,6 @@ client.on("message", async function (message) {
                 })
                 .catch(console.error);
         }
-    }
 });
 
 // Login
