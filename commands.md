@@ -36,7 +36,7 @@ Welcome-Bot contains more than **20 commands** in **11 categories**!
 
 ##### Info
 
-- Description: Manage channel for this server
+- Description: Manage channel settings for this server
 Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: chan
@@ -63,7 +63,7 @@ Not providing any arguments will display the current settings.
 
 ##### Info
 
-- Description: Get news and version updates to this bot.
+- Description: Get news and version updates to this bot sent to a specific channel.
 - Usage: [channel / channel id]
 - Aliases: getnews
 - Cooldown: 10
