@@ -121,7 +121,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Ping the bot
 - Usage: None
-- Aliases: None
+- Aliases: latency
 - Cooldown: 5
 
 ### `help`
@@ -262,20 +262,7 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 5
 
-## Miscellaneous (3 commands)
-
-### `uptime`
-
-##### Subcommands:
-
-- None
-
-##### Info
-
-- Description: Get uptime of the bot
-- Usage: None
-- Aliases: getuptime
-- Cooldown: 10
+## Miscellaneous (2 commands)
 
 ### `qrcode`
 
@@ -429,7 +416,7 @@ Not providing any arguments will display the current settings.
 - Aliases: slist
 - Cooldown: 10
 
-## Core (4 commands)
+## Core (5 commands)
 
 ### `botperms`
 
@@ -465,9 +452,22 @@ Not providing any arguments will display the current settings.
 
 ##### Info
 
-- Description: Link to Support Server of Welcome-Bot
+- Description: Get Support for Welcome-Bot
 - Usage: None
 - Aliases: getsupport
+- Cooldown: 10
+
+### `uptime`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Get uptime of the bot
+- Usage: None
+- Aliases: getuptime
 - Cooldown: 10
 
 ### `website`
