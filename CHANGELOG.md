@@ -6,6 +6,22 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+## [v1.7.0]
+
+> **Released:** `TBA`
+
+### Bug fixes
+
+- Fix all moderation commands don't work
+- Fix bug: "If user is not in cache, the user won't be found"
+
+### New features
+
+- New command `perms` - Find all permissions given to you or a specific user
+- `uptime` command moved from misc category to core category
+- New command `support` - Get support for Welcome-Bot
+- New command `botperms` - Get permissions bot has been given
+
 ## [v1.6.1]
 
 > **Released:** `21-06-2021`
