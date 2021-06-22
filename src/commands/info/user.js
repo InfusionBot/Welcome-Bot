@@ -28,8 +28,7 @@ module.exports = {
                 args[0] !== message.client.user.id
             ) {
                 user = message.client.users.cache.get(args[0]);
-                if (!user)
-                    user = await message.client.users.fetch(args[0]);
+                if (!user) user = await message.client.users.fetch(args[0]);
             }
         } else {
             user = message.author;
