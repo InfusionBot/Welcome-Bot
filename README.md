@@ -105,10 +105,11 @@ The default welcome channel is set to `new-members`, commonly used welcome chann
 
 The bot requires the following permissions:
 
-- Read messages OR View channels (both are same)
+- Read messages (View channels)
 - Send messages
 - Read Message History
 - Manage messages
+- Embed links
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
