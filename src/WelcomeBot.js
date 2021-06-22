@@ -34,7 +34,7 @@ class WelcomeBot extends Client {
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.categories = [
-            { name: "Setup", emoji: "" },
+            { name: "Setup", emoji: "<:setup:854316242097537034>" },
             { name: "General", emoji: "" },
             { name: "Information", emoji: "" },
             { name: "Manage", emoji: "" },
@@ -42,8 +42,8 @@ class WelcomeBot extends Client {
             { name: "Miscellaneous", emoji: "" },
             { name: "Fun", emoji: "<:fun:854002049095303188>" },
             { name: "Anime", emoji: "" },
-            { name: "Games", emoji: "" },
-            { name: "Owner Only", emoji: "" },
+            { name: "Games", emoji: "<:games:856910189490864140>" },
+            { name: "Owner Only", emoji: "<:owner:854009566572183572>" },
             { name: "Core", emoji: "" },
         ];
         this.allPerms = [
