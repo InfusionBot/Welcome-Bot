@@ -16,7 +16,7 @@ module.exports = {
     cooldown: 5,
     usage: "[@mention] (reason)",
     category: "Moderation",
-    execute(message, args, guildDB) {
+    async execute(message, args, guildDB) {
         const { userFromMention } = require("../../functions/get.js");
         if (args.length < 1) {
             return message.reply(
