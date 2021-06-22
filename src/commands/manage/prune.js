@@ -41,7 +41,7 @@ module.exports = {
             );
         }
         if (!isNaN(parseInt(args[0]))) {
-            const amount = parseInt(args[0]) + 1;
+            const amount = parseInt(args[0]);
             if (isNaN(amount)) {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
@@ -66,8 +66,9 @@ module.exports = {
                 return message.channel.send(errMsg);
             }
         }
+        message.delete();
         message.channel
-            .send("Pruning done👍. This message will be deleted in 5 seconds")
+            .send("Pruning done 👍. This message will be deleted in 5 seconds")
             .then((msg) => {
                 setTimeout(() => {
                     msg.delete();
