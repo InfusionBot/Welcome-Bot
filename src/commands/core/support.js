@@ -6,7 +6,7 @@
 module.exports = {
     name: "support",
     aliases: ["getsupport"],
-    description: "Link to Support Server of Welcome-Bot",
+    description: "Get Support for Welcome-Bot",
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {
