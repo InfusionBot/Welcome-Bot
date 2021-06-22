@@ -96,7 +96,7 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 10
 
-## General (3 commands)
+## General (4 commands)
 
 ### `invite`
 
@@ -135,6 +135,19 @@ Not providing any arguments will display the current settings.
 - Description: List all of my commands or info about a specific command.
 - Usage: (command name)
 - Aliases: commands, cmd
+- Cooldown: 5
+
+### `perms`
+
+##### Subcommands:
+
+- None
+
+##### Info
+
+- Description: Get permissions given to a specific user. Not providing any mention will show your permissions
+- Usage: (@mention / user_id)
+- Aliases: permissions
 - Cooldown: 5
 
 ## Information (4 commands)
@@ -454,7 +467,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Link to Support Server of Welcome-Bot
 - Usage: None
-- Aliases: supportserver, supportguild
+- Aliases: getsupport
 - Cooldown: 10
 
 ### `website`
