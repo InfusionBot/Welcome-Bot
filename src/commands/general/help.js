@@ -128,7 +128,7 @@ module.exports = {
 
         if (!command) {
             return message.channel.send(
-                `That is not a valid command or command was disabled, ${message.author}`
+                `That is not a valid command, ${message.author}`
             );
         }
 
