@@ -37,7 +37,6 @@ class WelcomeBot extends Client {
             { name: "Setup", emoji: "<:setup:854316242097537034>" },
             { name: "General", emoji: "<:pikachu2:852569608259239936>" },
             { name: "Information", emoji: "ℹ️" },
-            { name: "Manage", emoji: "" },
             { name: "Moderation", emoji: "" },
             { name: "Miscellaneous", emoji: "" },
             { name: "Fun", emoji: "<:fun:854002049095303188>" },

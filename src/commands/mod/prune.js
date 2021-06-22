@@ -19,7 +19,7 @@ module.exports = {
         '`*Text` will delete any message containing "Text"',
     ],
     cooldown: 10,
-    category: "Manage",
+    category: "Moderation",
     execute(message, args, guildDB) {
         let messages;
         let errMsg =
