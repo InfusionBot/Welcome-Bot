@@ -6,7 +6,8 @@
 module.exports = {
     name: "perms",
     aliases: ["permissions"],
-    description: "Get permissions given to a specific user. Not providing any mention will show your permissions",
+    description:
+        "Get permissions given to a specific user. Not providing any mention will show your permissions",
     args: false,
     guildOnly: true,
     usage: "(@mention / user_id)",
@@ -41,17 +42,25 @@ module.exports = {
         if (!member) {
             return message.reply("That user was not found in this server");
         }
-        let text = `Permissions for **${user.tag}** in *${message.channel.name}* channel` + "\n```\n\n";
+        let text =
+            `Permissions for **${user.tag}** in *${message.channel.name}* channel` +
+            "\n```\n\n";
         const mPermissions = message.channel.permissionsFor(member);
         const permissions = Object.keys(Permissions.FLAGS);
         let allowed = 0;
         let denied = 0;
         permissions.forEach((perm) => {
-            if (!mPermissions.has(perm)){
-                text += `${beautifyPerms([Permissions.FLAGS[perm]], message.client.allPerms).join("\n")} ❌\n`;
+            if (!mPermissions.has(perm)) {
+                text += `${beautifyPerms(
+                    [Permissions.FLAGS[perm]],
+                    message.client.allPerms
+                ).join("\n")} ❌\n`;
                 denied++;
             } else {
-                text += `${beautifyPerms([Permissions.FLAGS[perm]], message.client.allPerms).join("\n")} ✅\n`;
+                text += `${beautifyPerms(
+                    [Permissions.FLAGS[perm]],
+                    message.client.allPerms
+                ).join("\n")} ✅\n`;
                 allowed++;
             }
         });
