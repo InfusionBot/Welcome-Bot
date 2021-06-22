@@ -35,8 +35,8 @@ class WelcomeBot extends Client {
         this.versionSchema = require("./schema/versionSchema");
         this.categories = [
             { name: "Setup", emoji: "<:setup:854316242097537034>" },
-            { name: "General", emoji: "" },
-            { name: "Information", emoji: "" },
+            { name: "General", emoji: "<:pikachu2:852569608259239936>" },
+            { name: "Information", emoji: "ℹ️" },
             { name: "Manage", emoji: "" },
             { name: "Moderation", emoji: "" },
             { name: "Miscellaneous", emoji: "" },
