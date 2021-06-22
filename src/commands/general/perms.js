@@ -13,7 +13,7 @@ module.exports = {
     usage: "(@mention / user_id)",
     cooldown: 5,
     category: "General",
-    execute(message, args, guildDB) {
+    async execute(message, args, guildDB) {
         const { Permissions } = require("discord.js");
         const { userFromMention } = require("../../functions/get.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
@@ -26,21 +26,27 @@ module.exports = {
                 );
             }
             if (
-                typeof args[0] === "number" &&
+                !isNaN(parseInt(args[0])) &&
                 args[0] !== message.client.user.id
-            )
+            ) {
                 user = message.client.users.cache.get(args[0]);
+                if (!user)
+                    user = await message.client.users.fetch(args[0]);
+            }
         } else {
             user = message.author;
         }
 
         if (!user) {
+            message.reply("An error occurred when trying to find the user");
             return false;
         }
         let member;
-        member = message.guild.members.cache.find((m) => m.id === user.id);
+        member = message.guild.members.cache.get(user.id);
         if (!member) {
-            return message.reply("That user was not found in this server");
+            member = await message.guild.members.fetch(user.id);
+            if (!member)
+                return message.reply("That user was not found in this server");
         }
         let text =
             `Permissions for **${user.tag}** in *${message.channel.name}* channel` +
