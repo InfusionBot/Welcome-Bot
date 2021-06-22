@@ -40,6 +40,7 @@ module.exports = {
                 (m) => m.content.indexOf(args[0]) !== -1
             );
         }
+        message.delete();
         if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]);
             if (isNaN(amount)) {
@@ -66,7 +67,6 @@ module.exports = {
                 return message.channel.send(errMsg);
             }
         }
-        message.delete();
         message.channel
             .send("Pruning done 👍. This message will be deleted in 5 seconds")
             .then((msg) => {
