@@ -102,6 +102,8 @@ class WelcomeBot extends Client {
             { perm: Permissions.FLAGS.MANAGE_ROLES, val: "Manage Roles" },
             { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "Manage Webhooks" },
             { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "Manage Emojis" },
+            { perm: Permissions.FLAGS.USE_APPLICATION_COMMANDS, val: "Use Slash commands" },
+            { perm: Permissions.FLAGS.REQUEST_TO_SPEAK, val: "Request to Speak" },
         ];
         this.site = "https://welcome-bot.github.io/";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
