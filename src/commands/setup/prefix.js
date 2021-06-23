@@ -10,7 +10,10 @@ module.exports = {
     description: "Manage perfix for this server",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
-    subcommands: [{name:"set", desc:"Set Custom prefix"}, {name:"reset", desc:"Reset Custom prefix"}],
+    subcommands: [
+        { name: "set", desc: "Set Custom prefix" },
+        { name: "reset", desc: "Reset Custom prefix" },
+    ],
     cooldown: 10,
     guildOnly: true,
     category: "Setup",
