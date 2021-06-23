@@ -62,7 +62,7 @@ client.on("ready", () => {
 });
 
 client.on("debug", (info) => {
-    if (!info.match(/^(heartbeat|token|connect)/gi))
+    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi))
         client.logger.log(info, "debug");
 });
 
