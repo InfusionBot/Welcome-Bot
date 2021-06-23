@@ -28,7 +28,7 @@ module.exports = (client) => {
                 }
             }
             text +=
-                `### \`${cmd.name}\`\n\n` +
+                `\n### \`${cmd.name}\`\n\n` +
                 `##### Subcommands:\n\n- ${
                     subcommands ? subcommands.join("\n- ") : "None"
                 }\n\n##### Cmd info\n\n` +

@@ -2,8 +2,8 @@ Welcome-Bot contains more than **30 commands** in **10 categories**!
 
 #### Contents in a command
 
-**Subcommands**: Subcommands to that command if available  
 **Name**: The name of the command  
+**Subcommands**: Subcommands to that command if available  
 **Description**: A brief explanation of the purpose of the command  
 **Usage**: The arguments/options that the command takes in parameters  
 **Aliases**: Duplicate names for this command which can be used.  
@@ -26,6 +26,7 @@ Welcome-Bot contains more than **30 commands** in **10 categories**!
 
 ## Setup (5 commands)
 
+
 ### `channel`
 
 ##### Subcommands:
@@ -42,6 +43,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `chan`
 - Cooldown: 10
+
 ### `enable`
 
 ##### Subcommands:
@@ -54,6 +56,7 @@ Not providing any arguments will display the current settings.
 - Usage: [true / false]
 - Aliases: None
 - Cooldown: 10
+
 ### `follow`
 
 ##### Subcommands:
@@ -66,6 +69,7 @@ Not providing any arguments will display the current settings.
 - Usage: [channel / channel id]
 - Aliases: `getnews`
 - Cooldown: 10
+
 ### `message`
 
 ##### Subcommands:
@@ -79,6 +83,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `msg`
 - Cooldown: 10
+
 ### `prefix`
 
 ##### Subcommands:
@@ -95,6 +100,7 @@ Not providing any arguments will display the current settings.
 
 ## General (4 commands)
 
+
 ### `invite`
 
 ##### Subcommands:
@@ -107,6 +113,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: None
 - Cooldown: 20
+
 ### `ping`
 
 ##### Subcommands:
@@ -119,6 +126,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `latency`
 - Cooldown: 5
+
 ### `help`
 
 ##### Subcommands:
@@ -131,6 +139,7 @@ Not providing any arguments will display the current settings.
 - Usage: (command name)
 - Aliases: `commands`, `cmd`
 - Cooldown: 5
+
 ### `perms`
 
 ##### Subcommands:
@@ -146,6 +155,7 @@ Not providing any arguments will display the current settings.
 
 ## Information (4 commands)
 
+
 ### `botinfo`
 
 ##### Subcommands:
@@ -158,6 +168,7 @@ Not providing any arguments will display the current settings.
 - Usage: (--dm)
 - Aliases: `botstats`
 - Cooldown: 10
+
 ### `stats`
 
 ##### Subcommands:
@@ -170,6 +181,7 @@ Not providing any arguments will display the current settings.
 - Usage: (--dm)
 - Aliases: `server`
 - Cooldown: 10
+
 ### `user`
 
 ##### Subcommands:
@@ -182,6 +194,7 @@ Not providing any arguments will display the current settings.
 - Usage: (@mention / user_id)
 - Aliases: `whois`
 - Cooldown: 3
+
 ### `version`
 
 ##### Subcommands:
@@ -197,6 +210,7 @@ Not providing any arguments will display the current settings.
 
 ## Moderation (4 commands)
 
+
 ### `ban`
 
 ##### Subcommands:
@@ -209,6 +223,7 @@ Not providing any arguments will display the current settings.
 - Usage: [@user] (reason)
 - Aliases: None
 - Cooldown: 5
+
 ### `kick`
 
 ##### Subcommands:
@@ -221,6 +236,7 @@ Not providing any arguments will display the current settings.
 - Usage: [@mention] (reason)
 - Aliases: None
 - Cooldown: 5
+
 ### `prune`
 
 ##### Subcommands:
@@ -235,6 +251,7 @@ Not providing any arguments will display the current settings.
 - Usage: [no of msg to prune / subcommand]
 - Aliases: None
 - Cooldown: 10
+
 ### `unban`
 
 ##### Subcommands:
@@ -250,6 +267,7 @@ Not providing any arguments will display the current settings.
 
 ## Miscellaneous (2 commands)
 
+
 ### `qrcode`
 
 ##### Subcommands:
@@ -263,6 +281,7 @@ Not providing any arguments will display the current settings.
 - Usage: [subcommand] [data / image_url]
 - Aliases: None
 - Cooldown: 10
+
 ### `test`
 
 ##### Subcommands:
@@ -278,6 +297,7 @@ Not providing any arguments will display the current settings.
 
 ## Fun (3 commands)
 
+
 ### `figlet`
 
 ##### Subcommands:
@@ -290,6 +310,7 @@ Not providing any arguments will display the current settings.
 - Usage: [string]
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 10
+
 ### `image`
 
 ##### Subcommands:
@@ -302,6 +323,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `randomImage`
 - Cooldown: 10
+
 ### `pokemon`
 
 ##### Subcommands:
@@ -316,6 +338,7 @@ Not providing any arguments will display the current settings.
 - Cooldown: 10
 
 ## Anime (1 commands)
+
 
 ### `waifu`
 
@@ -332,6 +355,7 @@ Not providing any arguments will display the current settings.
 
 ## Games (1 commands)
 
+
 ### `coinflip`
 
 ##### Subcommands:
@@ -347,6 +371,7 @@ Not providing any arguments will display the current settings.
 
 ## Owner Only (4 commands)
 
+
 ### `eval`
 
 ##### Subcommands:
@@ -359,6 +384,7 @@ Not providing any arguments will display the current settings.
 - Usage: [statement]
 - Aliases: None
 - Cooldown: 20
+
 ### `reload`
 
 ##### Subcommands:
@@ -371,6 +397,7 @@ Not providing any arguments will display the current settings.
 - Usage: [command]
 - Aliases: None
 - Cooldown: 30
+
 ### `restart`
 
 ##### Subcommands:
@@ -383,6 +410,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: None
 - Cooldown: 30
+
 ### `servers-list`
 
 ##### Subcommands:
@@ -398,6 +426,7 @@ Not providing any arguments will display the current settings.
 
 ## Core (5 commands)
 
+
 ### `botperms`
 
 ##### Subcommands:
@@ -410,6 +439,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: None
 - Cooldown: 10
+
 ### `lib`
 
 ##### Subcommands:
@@ -422,6 +452,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `library`
 - Cooldown: 10
+
 ### `support`
 
 ##### Subcommands:
@@ -434,6 +465,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `getsupport`
 - Cooldown: 10
+
 ### `uptime`
 
 ##### Subcommands:
@@ -446,6 +478,7 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `getuptime`
 - Cooldown: 10
+
 ### `website`
 
 ##### Subcommands:
