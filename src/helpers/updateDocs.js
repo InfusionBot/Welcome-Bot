@@ -16,7 +16,7 @@ module.exports = (client) => {
         toc += `- [${cat.name}](#${cat.name
             .toLowerCase()
             .replace(" ", "-")})\n`;
-        text += `\n## ${cat.name} (${cmds.length} commands)\n\n`;
+        text += `\n## ${cat.name} (${cmds.length} commands)\n`;
         cmds.forEach((cmd) => {
             let subcommands;
             if (cmd.subcommands) {
