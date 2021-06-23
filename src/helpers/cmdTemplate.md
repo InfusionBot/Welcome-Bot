@@ -9,3 +9,5 @@ Welcome-Bot contains more than **{commandsRoundToTen} commands** in **{categorie
 **Aliases**: Duplicate names for this command which can be used.  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
+{toc}
+
