@@ -61,6 +61,10 @@ client.on("ready", () => {
         require("./helpers/updateDocs")(client);
 });
 
+client.on("debug", (info) => {
+    if (!(info.match(/heartbeat/gi) && info.match(/token/gi))) client.logger.log(info, "debug");
+});
+
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member);
