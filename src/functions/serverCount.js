@@ -85,7 +85,7 @@ module.exports = function (client) {
             server_count: servers,
         });
         options = {
-            hostname: "api.botlist.space",
+            hostname: "api.discordlist.space",
             path: "/v1/bots/" + process.env.DISCORDLIST_BOT_ID, //852146388178698242
             method: "POST",
             headers: {
