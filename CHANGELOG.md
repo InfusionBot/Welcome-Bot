@@ -6,6 +6,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+[Legend](#legend)
+
 ## [v1.7.0]
 
 > **Released:** `TBA`
@@ -21,6 +23,12 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - `uptime` command moved from misc category to core category
 - New command `support` - Get support for Welcome-Bot
 - New command `botperms` - Get permissions bot has been given
+
+### Changes
+
+- Minor changes to docs auto updater
+- Delete Manage category and move prune command to mod category
+- Add missing perms which where added in djs v13
 
 ## [v1.6.1]
 
@@ -178,6 +186,11 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [v1.1.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.1.1
 [v1.1.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.1.0
 [v1.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.0.0
+
+## Legend
+
+- `perms` = `permissions`
+- `djs` = `discord.js`
 
 ## Older changelogs
 
