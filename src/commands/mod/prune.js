@@ -18,7 +18,7 @@ module.exports = {
         "Delete all messages sent by a bot",
         '`*Text` will delete any message containing "Text"',
     ],
-    cooldown: 10,
+    cooldown: 5,
     category: "Moderation",
     execute(message, args, guildDB) {
         let messages;
