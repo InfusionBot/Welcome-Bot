@@ -18,6 +18,7 @@ module.exports = {
     ownerOnly: true,
     category: "Owner Only",
     execute(message, args, guildDB) {
+        const client = message.client;
         const content = args.join(" ");
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
@@ -42,7 +43,7 @@ module.exports = {
                 message.channel.send("```\n" + clean(output) + "\n```");
             })
             .catch((err) => {
-                err = err.toString();
+                err = JSON.strigify(err, null, 4);
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }
