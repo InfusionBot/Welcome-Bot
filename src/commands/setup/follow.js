@@ -7,7 +7,8 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "follow",
     aliases: ["getnews"],
-    description: "Get news and version updates to this bot.",
+    description:
+        "Get news and version updates to this bot sent to a specific channel.",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     bot_perms: [Permissions.FLAGS.MANAGE_WEBHOOKS],
     guildOnly: true,

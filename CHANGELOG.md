@@ -6,6 +6,30 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Older changelogs](#older-changelogs)
 
+[Legend](#legend)
+
+## [v1.7.0]
+
+> **Released:** `TBA`
+
+### Bug fixes
+
+- Fix all moderation commands don't work
+- Fix bug: "If user is not in cache, the user won't be found"
+
+### New features
+
+- New command `perms` - Find all permissions given to you or a specific user
+- New command `support` - Get support for Welcome-Bot
+- New command `botperms` - Get permissions bot has been given
+
+### Changes
+
+- Minor changes to docs auto updater
+- Delete Manage category and move prune command to mod category
+- Add missing perms which where added in djs v13
+- `uptime` command moved from misc category to core category
+
 ## [v1.6.1]
 
 > **Released:** `21-06-2021`
@@ -162,6 +186,11 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [v1.1.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.1.1
 [v1.1.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.1.0
 [v1.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.0.0
+
+## Legend
+
+- `perms` = `permissions`
+- `djs` = `discord.js`
 
 ## Older changelogs
 

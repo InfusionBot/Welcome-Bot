@@ -34,16 +34,15 @@ class WelcomeBot extends Client {
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.categories = [
-            { name: "Setup", emoji: "" },
-            { name: "General", emoji: "" },
-            { name: "Information", emoji: "" },
-            { name: "Manage", emoji: "" },
+            { name: "Setup", emoji: "<:setup:854316242097537034>" },
+            { name: "General", emoji: "<:pikachu2:852569608259239936>" },
+            { name: "Information", emoji: "ℹ️" },
             { name: "Moderation", emoji: "" },
             { name: "Miscellaneous", emoji: "" },
             { name: "Fun", emoji: "<:fun:854002049095303188>" },
-            { name: "Anime", emoji: "" },
-            { name: "Games", emoji: "" },
-            { name: "Owner Only", emoji: "" },
+            { name: "Anime", emoji: "📷" },
+            { name: "Games", emoji: "<:games:856910189490864140>" },
+            { name: "Owner Only", emoji: "<:owner:854009566572183572>" },
             { name: "Core", emoji: "" },
         ];
         this.allPerms = [
@@ -102,6 +101,14 @@ class WelcomeBot extends Client {
             { perm: Permissions.FLAGS.MANAGE_ROLES, val: "Manage Roles" },
             { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "Manage Webhooks" },
             { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "Manage Emojis" },
+            {
+                perm: Permissions.FLAGS.USE_APPLICATION_COMMANDS,
+                val: "Use Slash commands",
+            },
+            {
+                perm: Permissions.FLAGS.REQUEST_TO_SPEAK,
+                val: "Request to Speak",
+            },
         ];
         this.site = "https://welcome-bot.github.io/";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
@@ -114,7 +121,7 @@ class WelcomeBot extends Client {
             "815204465937481749" /*PuneetGopinath#6300*/,
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
-        this.ownersTags = ["PuneetGopinath#6300", "abhijoshi2k#6842"];
+        this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
 
         const commandFolder = __dirname + "/commands";
         this.loadCommands(commandFolder);
@@ -143,11 +150,19 @@ class WelcomeBot extends Client {
             throw new TypeError("Command names must be lower case only");
             validated = false;
         }
-        if (command.subcommands && !command.subs_desc) {
-            throw new TypeError(
-                "If subcommands are provided then their description should also be provided"
-            );
-            validated = false;
+        if (command.subcommands) {
+            for (var i = 0; i < command.subcommands.length; i++) {
+                if (
+                    command.subcommands[i].name &&
+                    !command.subcommands[i].desc
+                ) {
+                    throw new TypeError(
+                        "If subcommands are provided then their description should also be provided\nDescription not provided for " +
+                            command.subcommands[i].name
+                    );
+                    validated = false;
+                }
+            }
         }
         if (!validated) {
             process.exit();

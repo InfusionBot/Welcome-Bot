@@ -24,23 +24,25 @@ module.exports = {
                 );
             }
             if (
-                typeof args[0] === "number" &&
+                !isNaN(parseInt(args[0])) &&
                 args[0] !== message.client.user.id
-            )
+            ) {
                 user = message.client.users.cache.get(args[0]);
+                if (!user) user = await message.client.users.fetch(args[0]);
+            }
         } else {
             user = message.author;
         }
 
         if (!user) {
+            message.reply("An error occurred when trying to find the user");
             return false;
         }
         let member;
-        if (message.guild) {
-            member = message.guild.members.cache.find((m) => m.id === user.id);
-            if (!member) {
+        if (!member) {
+            member = await message.guild.members.fetch(user.id);
+            if (!member)
                 return message.reply("That user was not found in this server");
-            }
         }
 
         /*let badges = [];
@@ -84,7 +86,7 @@ module.exports = {
         );
         embed.addField("Locale:", `${user.locale}`);
         if (member && member.nickname)
-            embed.addField("Nickname:", `${member.Nickname}`);
+            embed.addField("Nickname:", `${member.nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         embed.addField("Presence:", `${user.presence.status}`);
         embed.setFooter(

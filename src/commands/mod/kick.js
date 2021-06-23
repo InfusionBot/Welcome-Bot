@@ -16,25 +16,26 @@ module.exports = {
     cooldown: 5,
     usage: "[@mention] (reason)",
     category: "Moderation",
-    execute(message, args, guildDB) {
-        const getUserFromMention = require("../../functions/getUserFromMention.js");
+    async execute(message, args, guildDB) {
+        const { userFromMention } = require("../../functions/get.js");
         if (args.length < 1) {
             return message.reply(
                 "Please mention the user you want to kick and specify a kick reason (optional)."
             );
         }
 
-        const user = getUserFromMention(args[0], message.client);
+        const user = userFromMention(args[0], message.client);
         if (!user) {
             return message.reply(
                 "Please use a proper mention if you want to kick someone."
             );
         }
         const member = message.guild.members.cache.get(user.id);
-        if (!member)
-            return message.reply(
-                "We can't find that user in your server as a member."
-            );
+        if (!member) {
+            member = await message.guild.members.fetch(user.id);
+            if (!member)
+                return message.reply("That user was not found in this server");
+        }
         if (user.id === message.client.user.id)
             return message.reply(
                 "Please don't try to kick me, you have to do it yourself."

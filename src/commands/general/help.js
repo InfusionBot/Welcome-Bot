@@ -6,7 +6,7 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
-    aliases: ["commands"],
+    aliases: ["commands", "cmd"],
     description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
     bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
@@ -73,7 +73,7 @@ module.exports = {
             const reactionCollector = curPage.createReactionCollector(
                 (reaction, user) =>
                     Object.values(emojiList).includes(reaction.emoji.name) &&
-                    !user.bot,
+                    user.id === message.author.id,
                 { time: timeout }
             );
             reactionCollector.on("collect", (reaction) => {
@@ -128,7 +128,7 @@ module.exports = {
 
         if (!command) {
             return message.channel.send(
-                `That is not a valid command or command was disabled, ${message.author}`
+                `That is not a valid command, ${message.author}`
             );
         }
 
@@ -137,11 +137,12 @@ module.exports = {
 
         if (command.description) {
             let desc = command.description;
-            if (command.bot_perms)
+            if (command.bot_perms) {
                 desc += `\nThe bot needs ${beautifyPerms(
                     command.bot_perms,
                     message.client.allPerms
                 ).join(", ")} permission(s) to execute this command.`;
+            }
             pages[0].addField("Description:", desc);
         }
         if (command.aliases && command.aliases !== [])
@@ -158,7 +159,7 @@ module.exports = {
             let subcommands = [];
             for (var i = 0; i < command.subcommands.length; i++) {
                 subcommands.push(
-                    `\`${command.subcommands[i]}\` - ${command.subs_desc[i]}`
+                    `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
                 );
             }
             pages[0].addField("Subcommands:", subcommands.join(`\n`));

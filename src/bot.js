@@ -61,6 +61,15 @@ client.on("ready", () => {
         require("./helpers/updateDocs")(client);
 });
 
+client.on("debug", (info) => {
+    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi))
+        client.logger.log(info, "debug");
+});
+
+client.on("rateLimit", (info) => {
+    client.logger.log(JSON.stringify(info, null, 4), "warn");
+});
+
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member);
@@ -93,7 +102,7 @@ client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
     let embed = new MessageEmbed()
-        .setTitle(`Added to "${guild.name}"`)
+        .setTitle(`Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
         .get(client.loggingChannelId)
@@ -108,33 +117,33 @@ client.on("message", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
-    const executeResult = execute(message, guildDB);
+    execute(message, guildDB);
 
-    if (message.mentions.has(client.user) && executeResult !== true) {
-        const server = message.guild ? " in this server." : "";
-        let reply =
-            `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"` +
-            server +
-            `\nSend \`${guildDB.prefix}help\` to get help`;
-        if (message.guild) {
-            reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
-        }
-        if (!message.reference) {
-            message.channel.startTyping();
-            message.channel.send(reply);
-            message.channel.stopTyping();
-        } else {
-            message.channel.messages
-                .fetch(message.reference.messageID)
-                .then((msg) => {
-                    if (msg.author.id != client.user.id) {
-                        message.channel.startTyping();
-                        message.channel.send(reply);
-                        message.channel.stopTyping();
-                    }
-                })
-                .catch(console.error);
-        }
+    const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
+    if (!mentionRegex.test(message.content)) return;
+    let reply = `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${
+        guildDB.prefix
+    }"${message.guild ? " in this server." : ""}\nSend \`${
+        guildDB.prefix
+    }help\` to get help`;
+    if (message.guild) {
+        reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
+    }
+    if (!message.reference) {
+        message.channel.startTyping();
+        message.channel.send(reply);
+        message.channel.stopTyping();
+    } else {
+        message.channel.messages
+            .fetch(message.reference.messageID)
+            .then((msg) => {
+                if (msg.author.id != client.user.id) {
+                    message.channel.startTyping();
+                    message.channel.send(reply);
+                    message.channel.stopTyping();
+                }
+            })
+            .catch(console.error);
     }
 });
 

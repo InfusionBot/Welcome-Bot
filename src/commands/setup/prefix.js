@@ -10,8 +10,10 @@ module.exports = {
     description: "Manage perfix for this server",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
-    subcommands: ["set", "reset"],
-    subs_desc: ["Set prefix", "Reset prefix"],
+    subcommands: [
+        { name: "set", desc: "Set Custom prefix" },
+        { name: "reset", desc: "Reset Custom prefix" },
+    ],
     cooldown: 10,
     guildOnly: true,
     category: "Setup",
@@ -57,7 +59,9 @@ module.exports = {
             default:
                 //Get bot prefix
                 message.reply(
-                    "Prefix in this server is set to `" + guildDB.prefix + "`"
+                    "Custom Prefix in this server is currently set to `" +
+                        guildDB.prefix +
+                        "`"
                 );
                 break;
         }

@@ -17,8 +17,8 @@ module.exports = {
     usage: "[user_id]",
     category: "Moderation",
     async execute(message, args, guildDB) {
-        const id = args[0];
-        if (!id) {
+        const id = parseInt(args[0]);
+        if (!id || isNaN(id)) {
             return message.reply(
                 "Please use a proper user id if you want to unban someone."
             );

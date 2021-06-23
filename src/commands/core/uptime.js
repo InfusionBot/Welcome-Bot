@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["getuptime"],
     description: "Get uptime of the bot",
     cooldown: 10,
-    category: "Miscellaneous",
+    category: "Core",
     execute(message, args) {
         //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=uptime
         let totalSeconds = message.client.uptime / 1000; //1000 ms = 1 sec

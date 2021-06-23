@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "ping",
-    //aliases: [],
+    aliases: ["latency"],
     description: "Ping the bot",
     cooldown: 5,
     category: "General",

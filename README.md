@@ -24,7 +24,7 @@ With our revolutionary infrastructure implementation, we’re proud to achieve a
 
 ### Multi-purpose
 
-We also give you a feature "Moderation" that hepls you to quickly ban, unban and kick users.
+The bot is multi-purpose!! It means that there are a lot of other uses of the bot, some of them are banning, kicking, unbanning users, pruning (or purging) messages, etc.
 
 ### Open Source
 
@@ -49,31 +49,29 @@ These are the commands currently available:
 
 ### Setup
 
-- [`channel`](https://welcome-bot.github.io/docs/commands.html#channel)
+- [`channel` - Manage channel settings for this server](https://welcome-bot.github.io/docs/commands.html#channel)
     - `set` - Set welcome channel, channel to send message
     - `setMod` - Set moderation logs channel
-    - `get` - Get currently set welcome channel
-    - `getMod` - Get currently set moderation logs channel
     - `reset` - Reset welcome channel back to default value
     - `resetMod` - Reset moderation logs channel back to default value
-- [`message`](https://welcome-bot.github.io/docs/commands.html#message)
+- [`enable` - Enable/Disable welcome and goodbye logs.](https://welcome-bot.github.io/docs/commands.html#enable)
+- [`follow` - Get news and version updates to this bot sent to a specific channel.](https://welcome-bot.github.io/docs/commands.html#follow)
+- [`message` - Manage welcome message for this server](https://welcome-bot.github.io/docs/commands.html#message)
     - `set` - Set welcome message
-    - `get` - Get currently set welcome message
     - `reset` - Reset message back to default value
-- [`prefix`](https://welcome-bot.github.io/docs/commands.html#prefix)
+- [`prefix` - Manage perfix for this server](https://welcome-bot.github.io/docs/commands.html#prefix)
     - `set` - Set bot prefix
-    - `get` - Get currently set bot prefix
     - `reset` - Reset prefix back to default value
 
 ### General
 
-- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
-- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
 - [`invite` - Get the invite link to invite the bot to your server](https://welcome-bot.github.io/docs/commands.html#invite)
+- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
+- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
 
 ### Information
 
-- [`info` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#info)
+- [`botinfo` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#botinfo)
 - [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
 - [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
 - [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
@@ -107,10 +105,11 @@ The default welcome channel is set to `new-members`, commonly used welcome chann
 
 The bot requires the following permissions:
 
-- Read messages OR View channels (both are same)
+- Read messages (View channels)
 - Send messages
 - Read Message History
 - Manage messages
+- Embed links
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
@@ -167,6 +166,10 @@ Feel free to upvote him to show your support.
 ## Questions?
 
 Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
+
+## Roadmap
+
+Here's the [link to roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1). Roadmap is a `TO DO` list.
 
 ## Contributing
 

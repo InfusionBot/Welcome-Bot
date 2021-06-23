@@ -8,15 +8,14 @@ module.exports = {
     name: "channel",
     aliases: ["chan"],
     description:
-        "Manage channel for this server\nNot providing any arguments will display the current settings.",
+        "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
-    subcommands: ["set", "setMod", "reset", "resetMod"],
-    subs_desc: [
-        "Set Welcome channel",
-        "Set Moderation channel",
-        "Reset Welcome channel",
-        "Reset Moderation channel",
+    subcommands: [
+        { name: "set", desc: "Set Welcome channel" },
+        { name: "setMod", desc: "Set Moderation channel" },
+        { name: "reset", desc: "Reset Welcome channel" },
+        { name: "resetMod", desc: "Reset Moderation channel" },
     ],
     cooldown: 10,
     guildOnly: true,

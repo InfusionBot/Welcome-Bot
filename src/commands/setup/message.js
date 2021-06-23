@@ -10,8 +10,10 @@ module.exports = {
     description: "Manage welcome message for this server",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
-    subcommands: ["set", "reset"],
-    subs_desc: ["Set Welcome message", "Reset Welcome message"],
+    subcommands: [
+        { name: "set", desc: "Set Welcome message" },
+        { name: "reset", desc: "Reset Welcome message" },
+    ],
     cooldown: 10,
     guildOnly: true,
     category: "Setup",
