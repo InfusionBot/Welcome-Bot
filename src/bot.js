@@ -102,7 +102,7 @@ client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
     let embed = new MessageEmbed()
-        .setTitle(`Added to "${guild.name}"`)
+        .setTitle(`Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
         .get(client.loggingChannelId)
