@@ -8,7 +8,10 @@ module.exports = {
     description: "Generate/Read a qrcode",
     usage: "[subcommand] [data / image_url]",
     subcommand: true,
-    subcommands: [{name:"generate", desc:"Generate a qrcode"}, {name:"read", desc:"Read a qrcode"}],
+    subcommands: [
+        { name: "generate", desc: "Generate a qrcode" },
+        { name: "read", desc: "Read a qrcode" },
+    ],
     cooldown: 10,
     category: "Miscellaneous",
     async execute(message, args, guildDB) {

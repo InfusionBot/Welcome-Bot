@@ -15,7 +15,10 @@ module.exports = {
     usage: "[arg1] (arg2)",
     disabled: false,
     subcommand: false,
-    subcommands: [{name:"set", desc:"Set this"}, {name:"reset", desc:"Reset that"}],
+    subcommands: [
+        { name: "set", desc: "Set this" },
+        { name: "reset", desc: "Reset that" },
+    ],
     cooldown: 10,
     ownerOnly: false,
     category: "Sample",
