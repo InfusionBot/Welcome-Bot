@@ -66,6 +66,10 @@ client.on("debug", (info) => {
         client.logger.log(info, "debug");
 });
 
+client.on("rateLimit", (info) => {
+    client.logger.log(JSON.stringify(info, null, 4), "warn");
+});
+
 client.on("guildMemberAdd", (member) => {
     // When a new member joins
     greetUser(member);
