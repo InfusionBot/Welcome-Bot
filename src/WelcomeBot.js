@@ -150,11 +150,15 @@ class WelcomeBot extends Client {
             throw new TypeError("Command names must be lower case only");
             validated = false;
         }
-        if (command.subcommands && !command.subs_desc) {
-            throw new TypeError(
-                "If subcommands are provided then their description should also be provided"
-            );
-            validated = false;
+        if (command.subcommands) {
+        for (var i = 0; i < command.subcommands.length; i++) {
+            if (command.subcommands[i].name && !command.subcommands[i].desc) {
+                throw new TypeError(
+                    "If subcommands are provided then their description should also be provided\nDescription not provided for " + command.subcommands[i].name
+                );
+                validated = false;
+            }
+        }
         }
         if (!validated) {
             process.exit();

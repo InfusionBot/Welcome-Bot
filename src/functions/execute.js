@@ -104,7 +104,11 @@ module.exports = async (message, guildDB) => {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
-                reply += `\nThe subcommand(s) available are: \`${command.subcommands.join(
+                let subcmds = [];
+                for (var i = 0; i < command.subcommands.length; i++) {
+                    subcmds.push(command.subcommands[i].name);
+                }
+                reply += `\nThe subcommand(s) available are: \`${subcmds.join(
                     ", "
                 )}\``;
             }

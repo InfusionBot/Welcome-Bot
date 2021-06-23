@@ -159,7 +159,7 @@ module.exports = {
             let subcommands = [];
             for (var i = 0; i < command.subcommands.length; i++) {
                 subcommands.push(
-                    `\`${command.subcommands[i]}\` - ${command.subs_desc[i]}`
+                    `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
                 );
             }
             pages[0].addField("Subcommands:", subcommands.join(`\n`));

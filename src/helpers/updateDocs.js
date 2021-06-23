@@ -23,7 +23,7 @@ module.exports = (client) => {
                 subcommands = [];
                 for (var i = 0; i < cmd.subcommands.length; i++) {
                     subcommands.push(
-                        `\`${cmd.subcommands[i]}\` - ${cmd.subs_desc[i]}`
+                        `\`${cmd.subcommands[i].name}\` - ${cmd.subcommands[i].desc}`
                     );
                 }
             }

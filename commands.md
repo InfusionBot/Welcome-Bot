@@ -26,7 +26,6 @@ Welcome-Bot contains more than **30 commands** in **10 categories**!
 
 ## Setup (5 commands)
 
-
 ### `channel`
 
 ##### Subcommands:
@@ -88,8 +87,8 @@ Not providing any arguments will display the current settings.
 
 ##### Subcommands:
 
-- `set` - Set prefix
-- `reset` - Reset prefix
+- `set` - Set Custom prefix
+- `reset` - Reset Custom prefix
 
 ##### Cmd info
 
@@ -99,7 +98,6 @@ Not providing any arguments will display the current settings.
 - Cooldown: 10
 
 ## General (4 commands)
-
 
 ### `invite`
 
@@ -155,7 +153,6 @@ Not providing any arguments will display the current settings.
 
 ## Information (4 commands)
 
-
 ### `botinfo`
 
 ##### Subcommands:
@@ -210,7 +207,6 @@ Not providing any arguments will display the current settings.
 
 ## Moderation (4 commands)
 
-
 ### `ban`
 
 ##### Subcommands:
@@ -242,7 +238,7 @@ Not providing any arguments will display the current settings.
 ##### Subcommands:
 
 - `all` - Delete 100 messages
-- `bots` - Delete all messages sent by a bot
+- `bots` - Delete all messages sent by a bot in this channel
 - `*[string]` - `*Text` will delete any message containing "Text"
 
 ##### Cmd info
@@ -250,7 +246,7 @@ Not providing any arguments will display the current settings.
 - Description: Prune messages.
 - Usage: [no of msg to prune / subcommand]
 - Aliases: None
-- Cooldown: 10
+- Cooldown: 5
 
 ### `unban`
 
@@ -266,7 +262,6 @@ Not providing any arguments will display the current settings.
 - Cooldown: 5
 
 ## Miscellaneous (2 commands)
-
 
 ### `qrcode`
 
@@ -296,7 +291,6 @@ Not providing any arguments will display the current settings.
 - Cooldown: 3
 
 ## Fun (3 commands)
-
 
 ### `figlet`
 
@@ -339,7 +333,6 @@ Not providing any arguments will display the current settings.
 
 ## Anime (1 commands)
 
-
 ### `waifu`
 
 ##### Subcommands:
@@ -355,7 +348,6 @@ Not providing any arguments will display the current settings.
 
 ## Games (1 commands)
 
-
 ### `coinflip`
 
 ##### Subcommands:
@@ -370,7 +362,6 @@ Not providing any arguments will display the current settings.
 - Cooldown: 10
 
 ## Owner Only (4 commands)
-
 
 ### `eval`
 
@@ -425,7 +416,6 @@ Not providing any arguments will display the current settings.
 - Cooldown: 10
 
 ## Core (5 commands)
-
 
 ### `botperms`
 

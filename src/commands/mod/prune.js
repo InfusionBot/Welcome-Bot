@@ -12,12 +12,7 @@ module.exports = {
     args: true,
     guildOnly: true,
     usage: "[no of msg to prune / subcommand]",
-    subcommands: ["all", "bots", "*[string]"],
-    subs_desc: [
-        "Delete 100 messages",
-        "Delete all messages sent by a bot",
-        '`*Text` will delete any message containing "Text"',
-    ],
+    subcommands: [{name:"all", desc:"Delete 100 messages"}, {name:"bots", desc:"Delete all messages sent by a bot in this channel"}, {name:"*[string]", desc:'`*Text` will delete any message containing "Text"'}],
     cooldown: 5,
     category: "Moderation",
     execute(message, args, guildDB) {
