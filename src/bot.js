@@ -62,7 +62,8 @@ client.on("ready", () => {
 });
 
 client.on("debug", (info) => {
-    if (!(info.match(/heartbeat/gi) && info.match(/token/gi))) client.logger.log(info, "debug");
+    if (!(info.match(/heartbeat/gi) && info.match(/token/gi)))
+        client.logger.log(info, "debug");
 });
 
 client.on("guildMemberAdd", (member) => {
