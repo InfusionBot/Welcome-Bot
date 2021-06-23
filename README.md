@@ -167,6 +167,10 @@ Feel free to upvote him to show your support.
 
 Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
 
+## Roadmap
+
+Here's the [link to roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1). Roadmap is a `TO DO` list.
+
 ## Contributing
 
 You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)
