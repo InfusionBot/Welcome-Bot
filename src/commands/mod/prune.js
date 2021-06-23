@@ -7,6 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "prune",
     description: "Prune messages.",
+    aliases: ["purge"],
     permissions: [Permissions.FLAGS.MANAGE_GUILD],
     bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     args: true,

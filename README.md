@@ -24,7 +24,7 @@ With our revolutionary infrastructure implementation, we’re proud to achieve a
 
 ### Multi-purpose
 
-We also give you a feature "Moderation" that hepls you to quickly ban, unban and kick users.
+The bot is multi-purpose!! It means that there are a lot of other uses of the bot, some of them are banning, kicking, unbanning users, pruning (or purging) messages, etc.
 
 ### Open Source
 
