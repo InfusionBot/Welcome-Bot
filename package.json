@@ -3,10 +3,17 @@
   "version": "1.6.1",
   "changelog": [
     "**Bug fixes**",
-    "Run dbAuditor on start & when no guild found when using `updateGuild` function",
-    "Not sending embed message for new guilds and guilds removed",
+    "Fix all moderation commands don't work",
+    "Fix bug: \"If user is not in cache, the user won't be found\"",
+    "**New features**",
+    "New command `perms` - Find all permissions given to you or a specific user",
+    "New command `support` - Get support for Welcome-Bot",
+    "New command `botperms` - Get permissions bot has been given",
     "**Changes**",
-    "User command works in DMs also now"
+    "Minor changes to docs auto updater",
+    "Delete Manage category and move prune command to mod category",
+    "Add missing perms which where added in djs v13",
+    "`uptime` command moved from misc category to core category"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",

@@ -20,7 +20,6 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 ### New features
 
 - New command `perms` - Find all permissions given to you or a specific user
-- `uptime` command moved from misc category to core category
 - New command `support` - Get support for Welcome-Bot
 - New command `botperms` - Get permissions bot has been given
 
@@ -29,6 +28,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - Minor changes to docs auto updater
 - Delete Manage category and move prune command to mod category
 - Add missing perms which where added in djs v13
+- `uptime` command moved from misc category to core category
 
 ## [v1.6.1]
 
