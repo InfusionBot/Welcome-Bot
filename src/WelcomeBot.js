@@ -34,16 +34,16 @@ class WelcomeBot extends Client {
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.categories = [
-            { name: "Setup", emoji: "<:setup:854316242097537034>" },
-            { name: "General", emoji: "<:pikachu2:852569608259239936>" },
-            { name: "Information", emoji: "ℹ️" },
-            { name: "Moderation", emoji: "" },
-            { name: "Miscellaneous", emoji: "" },
-            { name: "Fun", emoji: "<:fun:854002049095303188>" },
-            { name: "Anime", emoji: "📷" },
-            { name: "Games", emoji: "<:games:856910189490864140>" },
-            { name: "Owner Only", emoji: "<:owner:854009566572183572>" },
-            { name: "Core", emoji: "" },
+            { name: "Setup", key: "setup", emoji: "<:setup:854316242097537034>" },
+            { name: "General", key: "general", emoji: "<:pikachu2:852569608259239936>" },
+            { name: "Information", key: "info", emoji: "ℹ️" },
+            { name: "Moderation", key: "mod", emoji: "" },
+            { name: "Miscellaneous", key: "misc", emoji: "" },
+            { name: "Fun", key: "fun", emoji: "<:fun:854002049095303188>" },
+            { name: "Anime", key: "anime", emoji: "📷" },
+            { name: "Games", key: "games", emoji: "<:games:856910189490864140>" },
+            { name: "Owner Only", key: "owner", emoji: "<:owner:854009566572183572>" },
+            { name: "Core", key: "core", emoji: "" },
         ];
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "Administrator" },
