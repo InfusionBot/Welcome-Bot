@@ -82,5 +82,20 @@
   },
   "servers-list": {
     "cmdDesc": "Show the servers list!"
+  },
+  "channel": {
+    "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings."
+  },
+  "enable": {
+    "cmdDesc": "Enable/Disable welcome and goodbye logs. Not providing any args will show current settings."
+  },
+  "follow": {
+    "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
+  },
+  "message": {
+    "cmdDesc": "Manage welcome message for this server"
+  },
+  "prefix": {
+    "cmdDesc": "Manage perfix for this server"
   }
 }
