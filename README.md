@@ -1,6 +1,6 @@
 # Discord welcome bot
 
-> A discord.js bot that sends a welcome message when a new user joins
+> A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...
 
 Welcome-bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
