@@ -1,0 +1,29 @@
+{
+  "waifu": {
+    "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
+  },
+  "botperms": {
+    "cmdDesc": "List of permissions given to bot"
+  },
+  "invite": {
+    "cmdDesc": "Get Invite link for the bot"
+  },
+  "lib": {
+    "cmdDesc": "Library used to build Welcome-Bot"
+  },
+  "ping": {
+    "cmdDesc": "Ping the bot"
+  },
+  "support": {
+    "cmdDesc": "Get Support for Welcome-Bot"
+  },
+  "uptime": {
+    "cmdDesc": "Get uptime of the bot"
+  },
+  "website": {
+    "cmdDesc": "Link to Welcome-Bot's website"
+  },
+  "help": {
+    "cmdDesc": "List all of commands or info about a specific command."
+  }
+}
