@@ -1,11 +1,11 @@
 {
-    "waifu": {
-        "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
-    },
-    "botperms": {
-        "cmdDesc": "List of permissions given to bot"
-    },
-    "help": {
-        "cmdDesc": "List all of commands or info about a specific command."
-    }
+  "waifu": {
+    "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
+  },
+  "botperms": {
+    "cmdDesc": "List of permissions given to bot"
+  },
+  "help": {
+    "cmdDesc": "List all of commands or info about a specific command."
+  }
 }
