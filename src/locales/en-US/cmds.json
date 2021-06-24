@@ -40,5 +40,17 @@
   },
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any mention will show your permissions"
+  },
+  "botinfo": {
+    "cmdDesc": "Bot information"
+  },
+  "stats": {
+    "cmdDesc": "Your server statistics"
+  },
+  "user": {
+    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
+  },
+  "version": {
+    "cmdDesc": "Information on a version"
   }
 }
