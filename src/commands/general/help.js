@@ -12,7 +12,7 @@ module.exports = {
     bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
     category: "General",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
         const { commands } = message.client;
@@ -34,7 +34,7 @@ module.exports = {
                 p = pages.length;
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
-                pages[p].setTitle(`Welcome Bot help - ${cat.name} Category`);
+                pages[p].setTitle(`Welcome Bot help - ${t(`categories.${cat.key}`)} Category`);
                 message.client.commands.forEach((command) => {
                     if (command.category === cat.name)
                         commandsCat.push(`- ${command.name}`);
