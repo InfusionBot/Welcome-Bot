@@ -58,5 +58,17 @@
   },
   "test": {
     "cmdDesc": "Test welcome message"
+  },
+  "ban": {
+    "cmdDesc": "Ban a user."
+  },
+  "kick": {
+    "cmdDesc": "Kick a user."
+  },
+  "prune": {
+    "cmdDesc": "Prune messages."
+  },
+  "unban": {
+    "cmdDesc": "Unban a user."
   }
 }
