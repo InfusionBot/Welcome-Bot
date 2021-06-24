@@ -37,5 +37,8 @@
   },
   "help": {
     "cmdDesc": "List all of commands or info about a specific command."
+  },
+  "perms": {
+    "cmdDesc": "Get permissions given to a specific user. Not providing any mention will show your permissions"
   }
 }
