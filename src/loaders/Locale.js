@@ -5,20 +5,23 @@ const fs = require("fs");
 module.exports = async (client, dirPath = "src/locales") => {
     const dir = fs.readdirSync(dirPath);
     try {
-        await i18next.use(translationBackend).init({
-            ns: ["categories", "cmds", "permissions"],
-            preload: dir,
-            fallbackLng: "en-US",
-            backend: {
-                loadPath: `${dirPath}/{{lng}}/{{ns}}.json`
+        await i18next.use(translationBackend).init(
+            {
+                ns: ["categories", "cmds", "permissions"],
+                preload: dir,
+                fallbackLng: "en-US",
+                backend: {
+                    loadPath: `${dirPath}/{{lng}}/{{ns}}.json`,
+                },
+                interpolation: {
+                    escapeValue: false,
+                },
+                returnEmptyString: false,
             },
-            interpolation: {
-                escapeValue: false,
-            },
-            returnEmptyString: false,
-        }, () => {
-            client.logger.log("i18next initialized", "debug");
-        });
+            () => {
+                client.logger.log("i18next initialized", "debug");
+            }
+        );
         client.i18next = i18next;
         return true;
     } catch (e) {
