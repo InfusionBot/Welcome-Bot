@@ -30,7 +30,7 @@ class WelcomeBot extends Client {
         this.logger = new Logger();
         this.disabled = new Collection();
         this.cooldowns = new Collection();
-        this.defaultPrefix = "w/";
+        this.defaultPrefix = process.env.PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.categories = [

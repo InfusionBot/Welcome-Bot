@@ -45,7 +45,7 @@
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
     "figlet": "^1.5.0",
-    "i18n": "^0.13.3",
+    "i18next": "^20.0.0",
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
     "pokemon": "^2.2.0"

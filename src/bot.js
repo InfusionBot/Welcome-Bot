@@ -148,4 +148,4 @@ client.on("message", async function (message) {
 });
 
 // Login
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.DISCORD_TOKEN);
