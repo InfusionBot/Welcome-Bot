@@ -70,5 +70,17 @@
   },
   "unban": {
     "cmdDesc": "Unban a user."
+  },
+  "eval": {
+    "cmdDesc": "Execute a statement"
+  },
+  "reload": {
+    "cmdDesc": "Reloads a command"
+  },
+  "restart": {
+    "cmdDesc": "Restart the bot"
+  },
+  "servers-list": {
+    "cmdDesc": "Show the servers list!"
   }
 }
