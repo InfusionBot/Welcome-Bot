@@ -59,6 +59,7 @@ client.on("ready", () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
+    require("./loaders/Locale.js")(client);
 });
 
 client.on("debug", (info) => {
