@@ -6,7 +6,7 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "botperms",
-    //description: "List of permissions given to bot",
+    description: "List of permissions given to bot",
     guildOnly: true,
     cooldown: 10,
     category: "Core",

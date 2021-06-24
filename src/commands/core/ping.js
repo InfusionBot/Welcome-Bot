@@ -6,7 +6,7 @@
 module.exports = {
     name: "ping",
     aliases: ["latency"],
-    //description: "Ping the bot",
+    description: "Ping the bot",
     cooldown: 5,
     category: "General",
     execute(message, args) {
