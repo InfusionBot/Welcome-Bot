@@ -23,6 +23,18 @@
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
+  "figlet": {
+    "cmdDesc": "Implement the FIGfont spec in JS"
+  },
+  "image": {
+    "cmdDesc": "Generate a random pokemon image"
+  },
+  "pokemon": {
+    "cmdDesc": "Get a pokemon image"
+  },
+  "coinflip": {
+    "cmdDesc": "Flips a coin."
+  },
   "help": {
     "cmdDesc": "List all of commands or info about a specific command."
   }
