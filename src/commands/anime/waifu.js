@@ -5,8 +5,8 @@
  */
 module.exports = {
     name: "waifu",
-    description:
-        "Fetches a random waifu (lewd if the channel is NSFW) and displays it.",
+    //description:
+        //"Fetches a random waifu (lewd if the channel is NSFW) and displays it.",
     cooldown: 10,
     category: "Anime",
     async execute(message, args, guildDB) {

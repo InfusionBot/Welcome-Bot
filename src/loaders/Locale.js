@@ -1,5 +1,5 @@
 const i18next = require("i18next");
-const translationBackend = require("i18next-fs-backend");
+const translationBackend = require("i18next-node-fs-backend");
 const fs = require("fs");
 
 module.exports = async (client, dirPath = "src/locales") => {
@@ -10,12 +10,14 @@ module.exports = async (client, dirPath = "src/locales") => {
                 ns: ["categories", "cmds", "permissions"],
                 preload: dir,
                 fallbackLng: "en-US",
+                whitelist: ["en-US"],
                 backend: {
                     loadPath: `${dirPath}/{{lng}}/{{ns}}.json`,
                 },
                 interpolation: {
                     escapeValue: false,
                 },
+                debug: process.env.NODE_ENV === "development",
                 returnEmptyString: false,
             },
             () => {

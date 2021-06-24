@@ -161,7 +161,7 @@ module.exports = async (message, guildDB) => {
                     message,
                     args,
                     guildDB,
-                    message.client.i18next.t
+                    message.client.i18next.getFixedT(guildDB.lang || "en-US")
                 );
                 message.channel.stopTyping(true);
             } catch (err) {

@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["commands", "cmd"],
-    description: "List all of my commands or info about a specific command.",
+    //description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
     bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
@@ -35,7 +35,7 @@ module.exports = {
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(
-                    `Welcome Bot help - ${t(`categories.${cat.key}`)} Category`
+                    `Welcome Bot help - ${t(`categories:${cat.key}`)} Category`
                 );
                 message.client.commands.forEach((command) => {
                     if (command.category === cat.name)
@@ -137,17 +137,15 @@ module.exports = {
         pages[0].setDescription(`Help for ${command.name} command`);
         pages[0].addField("Command Name:", command.name);
 
-        if (command.description) {
-            let desc = command.description;
-            if (command.bot_perms) {
-                desc += `\nThe bot needs ${beautifyPerms(
-                    command.bot_perms,
-                    message.client.allPerms
-                ).join(", ")} permission(s) to execute this command.`;
-            }
-            pages[0].addField("Description:", desc);
+        let desc = t(`cmds:${command.name}.cmdDesc`);
+        if (command.bot_perms) {
+            desc += `\nThe bot needs ${beautifyPerms(
+                command.bot_perms,
+                message.client.allPerms
+            ).join(", ")} permission(s) to execute this command.`;
         }
-        if (command.aliases && command.aliases !== [])
+        pages[0].addField("Description:", desc);
+        if (command.aliases)
             pages[0].addField("Aliases: ", command.aliases.join(", "));
         if (command.permissions)
             pages[0].addField(

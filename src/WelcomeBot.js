@@ -138,9 +138,6 @@ class WelcomeBot extends Client {
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
-
-        const commandFolder = __dirname + "/commands";
-        this.loadCommands(commandFolder);
     }
 
     loadCommand(commandPath, commandName) {
