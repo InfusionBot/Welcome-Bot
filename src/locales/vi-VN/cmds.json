@@ -23,7 +23,64 @@
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
+  "figlet": {
+    "cmdDesc": "Implement the FIGfont spec in JS"
+  },
+  "image": {
+    "cmdDesc": "Generate a random pokemon image"
+  },
+  "pokemon": {
+    "cmdDesc": "Get a pokemon image"
+  },
+  "coinflip": {
+    "cmdDesc": "Flips a coin."
+  },
   "help": {
     "cmdDesc": "List all of commands or info about a specific command."
+  },
+  "perms": {
+    "cmdDesc": "Get permissions given to a specific user. Not providing any mention will show your permissions"
+  },
+  "botinfo": {
+    "cmdDesc": "Bot information"
+  },
+  "stats": {
+    "cmdDesc": "Your server statistics"
+  },
+  "user": {
+    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
+  },
+  "version": {
+    "cmdDesc": "Information on a version"
+  },
+  "qrcode": {
+    "cmdDesc": "Generate/Read a qrcode"
+  },
+  "test": {
+    "cmdDesc": "Test welcome message"
+  },
+  "ban": {
+    "cmdDesc": "Ban a user."
+  },
+  "kick": {
+    "cmdDesc": "Kick a user."
+  },
+  "prune": {
+    "cmdDesc": "Prune messages."
+  },
+  "unban": {
+    "cmdDesc": "Unban a user."
+  },
+  "eval": {
+    "cmdDesc": "Execute a statement"
+  },
+  "reload": {
+    "cmdDesc": "Reloads a command"
+  },
+  "restart": {
+    "cmdDesc": "Restart the bot"
+  },
+  "servers-list": {
+    "cmdDesc": "Show the servers list!"
   }
 }
