@@ -25,7 +25,7 @@ module.exports = async (client, dirPath = "src/locales") => {
         client.i18next = i18next;
         return true;
     } catch (e) {
-        client.logger.log(JSON.strigify(e, null, 4), "error");
+        client.logger.log(JSON.stringify(e, null, 4), "error");
     }
     return false;
 };
