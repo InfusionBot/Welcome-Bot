@@ -17,7 +17,6 @@ module.exports = async (client, dirPath = "src/locales") => {
                 interpolation: {
                     escapeValue: false,
                 },
-                debug: process.env.NODE_ENV === "development",
                 returnEmptyString: false,
             },
             () => {
