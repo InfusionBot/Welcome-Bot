@@ -52,5 +52,11 @@
   },
   "version": {
     "cmdDesc": "Information on a version"
+  },
+  "qrcode": {
+    "cmdDesc": "Generate/Read a qrcode"
+  },
+  "test": {
+    "cmdDesc": "Test welcome message"
   }
 }
