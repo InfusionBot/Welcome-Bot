@@ -142,7 +142,12 @@ module.exports = async (message, guildDB) => {
 
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
-                return message.reply(translate(`errors:cooldown`, {seconds:timeLeft.toFixed(1), command:command.name}));
+                return message.reply(
+                    translate(`errors:cooldown`, {
+                        seconds: timeLeft.toFixed(1),
+                        command: command.name,
+                    })
+                );
             }
         }
 
@@ -152,12 +157,7 @@ module.exports = async (message, guildDB) => {
         if (command.catchError) {
             try {
                 message.channel.startTyping();
-                command.execute(
-                    message,
-                    args,
-                    guildDB,
-                    translate
-                );
+                command.execute(message, args, guildDB, translate);
                 message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);

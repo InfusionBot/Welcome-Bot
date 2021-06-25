@@ -51,7 +51,7 @@ const guildSchema = new mongoose.Schema({
         required: true,
         trim: true,
         default: "en-US",
-    }
+    },
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);
