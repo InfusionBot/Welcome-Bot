@@ -13,17 +13,17 @@ module.exports = {
     cooldown: 30,
     ownerOnly: true,
     category: "Owner Only",
-    execute(message, args) {
+    execute(message, args, guildDB, t) {
         const commandName = args[0].toLowerCase();
         const command =
-            message.client.commands.get(commandName) ||
-            message.client.commands.find(
+            message.client.commands.enabled.get(commandName) ||
+            message.client.commands.enabled.find(
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
         if (!command) {
             return message.channel.send(
-                `There is no command with name or alias \`${commandName}\`, ${message.author}!`
+                `There is no command with name or alias: \`${commandName}\`, ${message.author}!`
             );
         }
 
@@ -45,8 +45,8 @@ module.exports = {
                 command.name
             );
             message.reply(`Command \`${newCommand.name}\` was reloaded!`);
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            message.client.logger.log(JSON.stringify(err, null, 4), "err");
             message.reply(
                 `There was an error while reloading a command \`${command.name}\``
             );

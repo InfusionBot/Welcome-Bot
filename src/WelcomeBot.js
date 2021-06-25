@@ -26,10 +26,12 @@ class WelcomeBot extends Client {
             partials: ["CHANNEL"],
             messageCacheMaxSize: 100,
         });
-        this.commands = new Collection();
+        this.commands = {
+            enabled: new Collection(),
+            disabled: new Collection(),
+            cooldowns: new Collection(),
+        };
         this.logger = new Logger();
-        this.disabled = new Collection();
-        this.cooldowns = new Collection();
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
@@ -191,9 +193,9 @@ class WelcomeBot extends Client {
             ...command,
         };
         if (!command.disabled) {
-            this.commands.set(command.name, command);
+            this.commands.enabled.set(command.name, command);
         } else {
-            this.disabled.set(command.name, command);
+            this.commands.disabled.set(command.name, command);
         }
         return command;
     }

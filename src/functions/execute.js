@@ -14,6 +14,7 @@ module.exports = async (message, guildDB) => {
         guildDB.prefix,
         `<@!?${message.client.user.id}> `,
     ];
+    const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
     const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
     const prefix = message.content.match(prefixRegex);
     if (!message.client.application?.owner)
@@ -25,8 +26,8 @@ module.exports = async (message, guildDB) => {
         let args = message.content.slice(prefix[0].length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
-            message.client.commands.get(commandName) ||
-            message.client.commands.find(
+            message.client.commands.enabled.get(commandName) ||
+            message.client.commands.enabled.find(
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
@@ -125,7 +126,7 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
-        const { cooldowns } = message.client;
+        const { cooldowns } = message.client.commands;
 
         if (!cooldowns.has(command.name)) {
             cooldowns.set(command.name, new Collection());
@@ -161,7 +162,7 @@ module.exports = async (message, guildDB) => {
                     message,
                     args,
                     guildDB,
-                    message.client.i18next.getFixedT(guildDB.lang || "en-US")
+                    translate
                 );
                 message.channel.stopTyping(true);
             } catch (err) {
