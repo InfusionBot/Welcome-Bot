@@ -11,7 +11,7 @@
   "STREAM": "Stream",
   "VIEW_CHANNEL": "Read Messages",
   "SEND_MESSAGES": "Send Messages",
-  "SEND_TTS_MESSAGES": "Send TTS Messages",
+  "SEND_TTS_MESSAGES": "إرسال رسائل الـ TTS",
   "MANAGE_MESSAGES": "Manage Messages",
   "EMBED_LINKS": "Embed Links",
   "ATTACH_FILES": "Attach Files",
