@@ -3,7 +3,14 @@ const translationBackend = require("i18next-node-fs-backend");
 const fs = require("fs");
 
 module.exports = async (client, dirPath = "src/locales") => {
-    const dir = fs.readdirSync(dirPath);
+    let dir;
+    if (fs.existsSync(dirPath)) {
+        dir = fs.readdirSync(dirPath);
+    } else if (fs.existsSync(dirPath.replace("src/", ""))) {
+        dir = fs.readdirSync(dirPath.replace("src/", ""));
+    } else {
+        client.logger.log(`Can't read ${dirPath}, also tried ${dirPath.replace("src/", "")}`);
+    }
     try {
         await i18next.use(translationBackend).init(
             {
