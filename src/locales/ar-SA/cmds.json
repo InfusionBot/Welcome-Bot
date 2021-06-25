@@ -69,7 +69,7 @@
     "cmdDesc": "Prune messages."
   },
   "unban": {
-    "cmdDesc": "Unban a user."
+    "cmdDesc": "فك حظر مستخدم."
   },
   "eval": {
     "cmdDesc": "Execute a statement"
