@@ -7,6 +7,8 @@
   "MANAGE_GUILD": "Manage Server",
   "ADD_REACTIONS": "Add Reactions",
   "VIEW_AUDIT_LOG": "View Audit Log",
+  "PRIORITY_SPEAKER": "Priority Speaker",
+  "STREAM": "Stream",
   "VIEW_CHANNEL": "Read Messages",
   "SEND_MESSAGES": "Send Messages",
   "SEND_TTS_MESSAGES": "Send TTS Messages",
