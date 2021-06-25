@@ -142,7 +142,7 @@ module.exports = async (message, guildDB) => {
 
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
-                return message.reply(translate(`errors:cooldown`, timeLeft.toFixed(1), command.name));
+                return message.reply(translate(`errors:cooldown`, {seconds:timeLeft.toFixed(1), command:command.name}));
             }
         }
 
