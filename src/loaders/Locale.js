@@ -2,8 +2,8 @@ const i18next = require("i18next");
 const translationBackend = require("i18next-node-fs-backend");
 const fs = require("fs");
 
-module.exports = async (client, dirPath = "../locales") => {
-    const dir = fs.readdirSync(__dirname + dirPath);
+module.exports = async (client, dirPath = "src/locales") => {
+    const dir = fs.readdirSync(dirPath);
     try {
         await i18next.use(translationBackend).init(
             {
