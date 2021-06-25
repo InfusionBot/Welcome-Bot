@@ -7,9 +7,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
     if (fs.existsSync(dirPath)) {
         dir = fs.readdirSync(dirPath);
     } else {
-        client.logger.log(
-            `Can't read ${dirPath}`
-        );
+        client.logger.log(`Can't read ${dirPath}`);
         console.log("dirname" + __dirname);
     }
     try {
