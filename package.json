@@ -3,7 +3,7 @@
   "version": "1.7.1",
   "changelog": [
     "**Bug fixes**",
-    "Fix bug: `ReferenceError: message is not defined`","
+    "Fix bug: `ReferenceError: message is not defined`",
     "Fix not posting server count to botlist.space"
   ],
   "description": "Welcome users when they join your discord server",
