@@ -40,14 +40,14 @@ module.exports = {
                 if (output.includes(message.client.token)) {
                     output = output.replace(message.client.token, "T0K3N");
                 }
-                message.channel.send("```\n" + clean(output) + "\n```");
+                message.channel.send("```js\n" + clean(output) + "\n```");
             })
             .catch((err) => {
                 err = JSON.strigify(err, null, 4);
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }
-                message.channel.send("```\n" + clean(err) + "\n```");
+                message.channel.send("`ERROR`\n```js\n" + clean(err) + "\n```");
             });
     },
 };

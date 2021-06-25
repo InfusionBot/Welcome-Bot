@@ -8,7 +8,6 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
         dir = fs.readdirSync(dirPath);
     } else {
         client.logger.log(`Can't read ${dirPath}`);
-        console.log("dirname" + __dirname);
     }
     try {
         await i18next.use(translationBackend).init(
