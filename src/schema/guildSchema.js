@@ -50,7 +50,7 @@ const guildSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        default,: "en-US",
+        default: "en-US",
     }
 });
 
