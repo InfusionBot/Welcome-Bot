@@ -23,7 +23,7 @@ module.exports = (client) => {
 
             actualGuilds.forEach((guildId) => {
                 if (!guildIdArray.includes(guildId)) {
-                    addGuild(guildId);
+                    addGuild(guildId, "en-US");
                 }
             });
         }

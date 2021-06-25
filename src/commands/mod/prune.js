@@ -53,9 +53,9 @@ module.exports = {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
                 );
-            } else if (amount <= 1 || amount > 100) {
+            } else if (amount <= 0 || amount >= 100) {
                 return message.reply(
-                    "Please input a number between 1 and 99 only."
+                    "Please input a number between 0 and 100 only."
                 );
             }
 
