@@ -1,0 +1,19 @@
+{
+  "generic": "An error occurred.",
+  "guildOnly": "This can only be done in servers.",
+  "developerOnly": "Only the bot developers can do that.",
+  "cooldown": "Woah! Slow down buddy! Wait for {{seconds}} more second(s) before reusing the {{command}} command.",
+  "missingParameters": "You have to give me parameters!",
+  "notTrueOrFalse": "You have to give me a value that is true or false.",
+  "invalidNumber": "You have to give me a valid number.",
+  "invalidUser": "You have to give me a valid user.",
+  "databaseOnly": "Sorry, I don't have a database connection right now!",
+  "commandNotFound": "I couldn't find any command with that name.",
+  "invalidURL": "You have to give me a valid URL!",
+  "invalidImageLink": "You have to give me a valid image link.",
+  "imageParsingError": "An error occurred while parsing the image.",
+  "invalidChannel": "You forgot to mention a channel or I couldn't find it.",
+  "youDontHavePermission": "You're missing the following permission in that channel: {{permission}}",
+  "iDontHavePermission": "I'm missing the following permission in that channel: {{permission}}",
+  "channelDoesntExist": "That channel doesn't exist or I couldn't find it."
+}
