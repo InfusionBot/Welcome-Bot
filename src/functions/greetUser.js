@@ -24,8 +24,8 @@ module.exports = async (member) => {
         .replace("{members}", `${member.guild.memberCount}`);
     let embed = new MessageEmbed()
         .setAuthor(
-            message.author.tag,
-            message.author.displayAvatarURL({
+            member.user.tag,
+            member.user.displayAvatarURL({
                 size: 512,
                 dynamic: true,
                 format: "png",
