@@ -8,9 +8,18 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.7.0]
+## [v1.7.1]
 
 > **Released:** `TBA`
+
+### Bug fixes
+
+- Fix bug: `ReferenceError: message is not defined`
+- Fix not posting server count to botlist.space
+
+## [v1.7.0]
+
+> **Released:** `25-06-2021`
 
 ### Bug fixes
 
@@ -178,6 +187,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.7.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.1
+[v1.7.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.0
+[v1.6.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.6.1
+[v1.6.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.6.0
 [v1.5.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.5.0
 [v1.4.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.4.0
 [v1.3.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.3.0
