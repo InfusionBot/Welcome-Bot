@@ -15,7 +15,7 @@ module.exports = {
     async execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
-        const { commands } = message.client;
+        const commands = message.client.commands.enabled;
         const emojiList = {
             first: "⏮",
             back: "⏪",
