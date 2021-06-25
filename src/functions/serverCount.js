@@ -86,7 +86,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordlist.space",
-            path: "/v1/bots/" + process.env.DISCORDLIST_BOT_ID, //852146388178698242
+            path: "/v1/bots/" + process.env.BOT_ID,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
