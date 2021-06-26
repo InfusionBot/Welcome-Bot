@@ -6,8 +6,7 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "enable",
-    description:
-        "Enable welcome / goodbye logs.",
+    description: "Enable welcome / goodbye logs.",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: true,
     subcommands: [
