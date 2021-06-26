@@ -1,12 +1,12 @@
 {
   "setup": "Setup",
   "general": "General",
-  "info": "Information",
-  "mod": "Moderation",
+  "info": "Información",
+  "mod": "Moderación",
   "misc": "Miscellaneous",
-  "fun": "Fun",
+  "fun": "Diversión",
   "anime": "Anime",
-  "games": "Juegos\n",
+  "games": "Juegos",
   "owner": "Owner Only",
   "core": "Core"
 }
