@@ -46,6 +46,10 @@ const guildSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
+    enableGoodbye: {
+        type: Boolean,
+        default: true,
+    },
     lang: {
         type: String,
         required: true,

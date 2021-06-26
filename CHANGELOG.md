@@ -8,6 +8,18 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.8.0]
+
+> **Released:** `TBA`
+
+### New features
+
+- New command `disable` - Disable welcome /goodBye logs
+
+### Changes
+
+- `enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs
+
 ## [v1.7.1]
 
 > **Released:** `TBA`

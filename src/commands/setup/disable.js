@@ -5,14 +5,14 @@
  */
 const { Permissions } = require("discord.js");
 module.exports = {
-    name: "enable",
+    name: "disable",
     description:
-        "Enable welcome / goodbye logs.",
+        "Disable welcome / goodbye logs.",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: true,
     subcommands: [
-        { name: "welcome", desc: "Enable welcome logs" },
-        { name: "goodbye", desc: "Enable goodBye logs" },
+        { name: "welcome", desc: "Disable welcome logs" },
+        { name: "goodbye", desc: "Disable goodBye logs" },
         { name: "show", desc: "Show current settings" },
     ],
     guildOnly: true,
@@ -24,11 +24,11 @@ module.exports = {
         args[0] = args[0] ? args[0] : "";
         switch (args[0]) {
             case "welcome":
-                updateGuild(message.guild.id, "enableWelcome", true);
+                updateGuild(message.guild.id, "enableWelcome", false);
                 message.react("👍");
                 break;
             case "goodbye":
-                updateGuild(message.guild.id, "enableGoodbye", true);
+                updateGuild(message.guild.id, "enableGoodbye", false);
                 message.react("👍");
                 break;
             default:
