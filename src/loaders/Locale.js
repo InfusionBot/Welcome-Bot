@@ -15,7 +15,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 ns: ["categories", "cmds", "errors", "permissions"],
                 preload: dir,
                 fallbackLng: "en-US",
-                whitelist: ["en-US"],
+                whitelist: Object.keys(require(__dirname + `/../locales/en-US/languages.json`)),
                 backend: {
                     loadPath: `${dirPath}/{{lng}}/{{ns}}.json`,
                 },

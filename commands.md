@@ -24,7 +24,7 @@ Welcome-Bot contains more than **30 commands** in **10 categories**!
 
 
 
-## Setup (6 commands)
+## Setup (7 commands)
 
 ### `channel`
 
@@ -85,6 +85,19 @@ Not providing any arguments will display the current settings.
 - Usage: [channel / channel id]
 - Aliases: `getnews`
 - Cooldown: 10
+
+### `lang`
+
+##### Subcommands:
+
+- `list` - List of all languages available
+
+##### Cmd info
+
+- Description: Change language
+- Usage: (lang)
+- Aliases: `language`, `changelang`, `getlang`
+- Cooldown: 5
 
 ### `message`
 
