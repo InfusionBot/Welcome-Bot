@@ -13,9 +13,7 @@ module.exports = {
     guildOnly: true,
     usage: "(lang)",
     subcommand: false,
-    subcommands: [
-        { name: "list", desc: "List of all languages available" },
-    ],
+    subcommands: [{ name: "list", desc: "List of all languages available" }],
     cooldown: 5,
     category: "Setup",
     execute(message, args, guildDB, t) {
@@ -29,7 +27,9 @@ module.exports = {
             return message.reply(str);
         }
         if (args[0] && !Object.keys(list).includes(args[0])) {
-            return message.reply(`Invalid locale, send \`${guildDB.prefix}lang list\` to get a list of locales available.`);
+            return message.reply(
+                `Invalid locale, send \`${guildDB.prefix}lang list\` to get a list of locales available.`
+            );
         }
         if (args[0]) {
             updateGuild(message.guild.id, "lang", args[0]);
