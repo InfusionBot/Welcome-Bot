@@ -5,6 +5,7 @@
  */
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
+const Command = require("./classes/Command");
 const util = require("util");
 const packageJson = require("../package.json");
 const Logger = require("colors-logger");
@@ -160,28 +161,6 @@ class WelcomeBot extends Client {
             ".js",
             ""
         )}`);
-        let validated = true;
-        if (command.name !== command.name.toLowerCase()) {
-            throw new TypeError("Command names must be lower case only");
-            validated = false;
-        }
-        if (command.subcommands) {
-            for (var i = 0; i < command.subcommands.length; i++) {
-                if (
-                    command.subcommands[i].name &&
-                    !command.subcommands[i].desc
-                ) {
-                    throw new TypeError(
-                        "If subcommands are provided then their description should also be provided\nDescription not provided for " +
-                            command.subcommands[i].name
-                    );
-                    validated = false;
-                }
-            }
-        }
-        if (!validated) {
-            process.exit();
-        }
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
@@ -192,6 +171,7 @@ class WelcomeBot extends Client {
             ...defaultOpts,
             ...command,
         };
+        command = new Command(this, command);
         if (!command.disabled) {
             this.commands.enabled.set(command.name, command);
         } else {
