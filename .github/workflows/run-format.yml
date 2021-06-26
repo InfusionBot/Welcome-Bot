@@ -17,7 +17,8 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: "12.x"
-      - uses: webfactory/ssh-agent@v0.5.3
+      - if: {{ github.repository_owner == 'Welcome-Bot' }}
+        uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Install dependencies

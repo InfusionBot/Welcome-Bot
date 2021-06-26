@@ -14,11 +14,31 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### New features
 
-- New command `disable` - Disable welcome /goodBye logs
+- New command `disable` - Disable welcome / goodBye logs
 
 ### Changes
 
 - `enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs
+
+## [v1.7.3]
+
+> **Released:** `25-06-2021`
+
+### Bug fixes
+
+- Fix sending welcome and goodbye logs even when they are disabled
+
+### Chores
+
+- npm(deps): bump mongoose from 5.12.14 to 5.12.15 ([#34])
+
+## [v1.7.2]
+
+> **Released:** `25-06-2021`
+
+### Bug fixes
+
+- Bump version
 
 ## [v1.7.1]
 
@@ -190,6 +210,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 <!-- Links -->
 [discord.boats]: https://discord.boats/
+[#34]: https://github.com/Welcome-Bot/welcome-bot/pull/34
 [#25]: https://github.com/Welcome-Bot/welcome-bot/pull/25
 [#23]: https://github.com/Welcome-Bot/welcome-bot/pull/23
 [#20]: https://github.com/Welcome-Bot/welcome-bot/pull/20
@@ -199,6 +220,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.7.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.3
+[v1.7.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.2
 [v1.7.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.1
 [v1.7.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.0
 [v1.6.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.6.1
