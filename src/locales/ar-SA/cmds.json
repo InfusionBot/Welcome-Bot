@@ -36,7 +36,8 @@
     "cmdDesc": "Flips a coin."
   },
   "help": {
-    "cmdDesc": "List all of commands or info about a specific command."
+    "cmdDesc": "List all of commands or info about a specific command.",
+    "cmdHelp": "Help for {{cmd}} command"
   },
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any mention will show your permissions"
