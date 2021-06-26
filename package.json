@@ -1,10 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "changelog": [
     "**Bug fixes**",
-    "Fix bug: `ReferenceError: message is not defined`",
-    "Fix not posting server count to botlist.space"
+    "Fix sending welcome and goodbye logs even when they are disabled"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",

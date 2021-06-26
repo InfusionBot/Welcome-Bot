@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.7.1]
+## [v1.7.2]
 
 > **Released:** `TBA`
+
+### Bug fixes
+
+- Fix sending welcome and goodbye logs even when they are disabled
+
+## [v1.7.1]
+
+> **Released:** `25-06-2021`
 
 ### Bug fixes
 
@@ -19,7 +27,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.7.0]
 
-> **Released:** `25-06-2021`
+> **Released:** `24-06-2021`
 
 ### Bug fixes
 
