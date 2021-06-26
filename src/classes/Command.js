@@ -36,10 +36,10 @@ module.exports = class Command {
         this.description = command.description;
         this.permissions = command.permissions || [];
         this.bot_perms = command.bot_perms || [
-                Permissions.FLAGS.VIEW_CHANNEL,
-                Permissions.FLAGS.SEND_MESSAGES,
-                Permissions.FLAGS.READ_MESSAGE_HISTORY,
-            ];
+            Permissions.FLAGS.VIEW_CHANNEL,
+            Permissions.FLAGS.SEND_MESSAGES,
+            Permissions.FLAGS.READ_MESSAGE_HISTORY,
+        ];
         this.args = command.args || false;
         this.guildOnly = command.guildOnly || false;
         this.catchError = command.catchError || true;
