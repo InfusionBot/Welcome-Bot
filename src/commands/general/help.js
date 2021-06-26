@@ -48,7 +48,11 @@ module.exports = {
                 );
                 message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
-                        commandsCat.push(`- ${command.name} - ${t(`cmds:${command.name}.cmdDesc`)}`);
+                        commandsCat.push(
+                            `- ${command.name} - ${t(
+                                `cmds:${command.name}.cmdDesc`
+                            )}`
+                        );
                 });
                 pages[p].addField(
                     `${cat.emoji} Commands in this category`,
@@ -143,7 +147,7 @@ module.exports = {
             );
         }
 
-        pages[0].setDescription(t(`cmds:help.cmdHelp`, {cmd:command.name}));
+        pages[0].setDescription(t(`cmds:help.cmdHelp`, { cmd: command.name }));
         pages[0].addField("Command Name:", command.name);
 
         let desc = t(`cmds:${command.name}.cmdDesc`);

@@ -67,7 +67,9 @@ module.exports = async (message, guildDB) => {
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.reply("You don't have permission(s) to do this!");
+                return message.reply(
+                    "You don't have permission(s) to do this!"
+                );
             }
         }
 
@@ -162,7 +164,9 @@ module.exports = async (message, guildDB) => {
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(
-                        `Please report this to <@!?${message.client.ownerIDs.join("> OR <@!?")}>`,
+                        `Please report this to <@!?${message.client.ownerIDs.join(
+                            "> OR <@!?"
+                        )}>`,
                         "\u200b"
                     );
                 message.reply({ embeds: [embed] });
