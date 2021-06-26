@@ -29,9 +29,7 @@ module.exports = {
         switch (args[0]) {
             case "set":
                 if (!Object.keys(list).includes(args[1]))
-                    return message.reply(
-                        `Invalid locale, send \`${guildDB.prefix}lang list\` to get a list of locales available.`
-                    );
+                    return message.reply(t("cmds:lang.invalid", {cmd: `\`${guildDB.prefix}lang list\``}));
                 updateGuild(message.guild.id, "lang", args[1]);
                 return message.reply(`Language set to ${args[1]}`);
                 break;
