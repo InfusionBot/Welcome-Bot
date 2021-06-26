@@ -429,7 +429,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Show the servers list!
 - Usage: None
-- Aliases: `slist`
+- Aliases: `slist`, `serverslist`
 - Cooldown: 10
 
 ## Core (5 commands)
