@@ -61,9 +61,7 @@ module.exports = async (message, guildDB) => {
                 message.author.id === client.application?.owner.id
             )
         ) {
-            return message.reply(
-                t("errors:developerOnly")
-            );
+            return message.reply(t("errors:developerOnly"));
         }
 
         if (command.permissions) {
