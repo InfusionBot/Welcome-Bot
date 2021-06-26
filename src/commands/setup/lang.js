@@ -26,13 +26,12 @@ module.exports = {
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
         }
-        if (args[0] && !Object.keys(list).includes(args[0])) {
-            return message.reply(
-                `Invalid locale, send \`${guildDB.prefix}lang list\` to get a list of locales available.`
-            );
-        }
         switch (args[0]) {
             case "set":
+                if (!Object.keys(list).includes(args[0]))
+                    return message.reply(
+                        `Invalid locale, send \`${guildDB.prefix}lang list\` to get a list of locales available.`
+                    );
                 updateGuild(message.guild.id, "lang", args[0]);
                 return message.reply(`Language set to ${args[0]}`);
                 break;
