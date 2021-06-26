@@ -24,7 +24,7 @@ Welcome-Bot contains more than **30 commands** in **10 categories**!
 
 
 
-## Setup (5 commands)
+## Setup (6 commands)
 
 ### `channel`
 
@@ -43,16 +43,33 @@ Not providing any arguments will display the current settings.
 - Aliases: `chan`
 - Cooldown: 10
 
+### `disable`
+
+##### Subcommands:
+
+- `welcome` - Disable welcome logs
+- `goodbye` - Disable goodBye logs
+- `show` - Show current settings
+
+##### Cmd info
+
+- Description: Disable welcome / goodbye logs.
+- Usage: [subcommand]
+- Aliases: None
+- Cooldown: 10
+
 ### `enable`
 
 ##### Subcommands:
 
-- None
+- `welcome` - Enable welcome logs
+- `goodbye` - Enable goodBye logs
+- `show` - Show current settings
 
 ##### Cmd info
 
-- Description: Enable/Disable welcome and goodbye logs. Not providing any args will show current settings.
-- Usage: [true / false]
+- Description: Enable welcome / goodbye logs.
+- Usage: [subcommand]
 - Aliases: None
 - Cooldown: 10
 
