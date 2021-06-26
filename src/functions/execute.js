@@ -67,7 +67,7 @@ module.exports = async (message, guildDB) => {
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.reply("You don't have permission to do this!");
+                return message.reply("You don't have permission(s) to do this!");
             }
         }
 
@@ -75,7 +75,7 @@ module.exports = async (message, guildDB) => {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.reply(
-                    `You didn't give the bot permission to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
+                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}perms <@!?${message.client.user.id}>\` in this channel itself.`
                 );
             }
         }
@@ -162,11 +162,7 @@ module.exports = async (message, guildDB) => {
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(
-                        "\u200b",
-                        "There was an error trying to execute that command."
-                    )
-                    .addField(
-                        "Please report this at https://github.com/Welcome-Bot/welcome-bot/issues",
+                        `Please report this to <@!?${message.client.ownerIDs.join("> OR <@!?")}>`,
                         "\u200b"
                     );
                 message.reply({ embeds: [embed] });
