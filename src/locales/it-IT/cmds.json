@@ -93,6 +93,10 @@
   "follow": {
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
   },
+  "lang": {
+    "cmdDesc": "Change language",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available."
+  },
   "message": {
     "cmdDesc": "Manage welcome message for this server"
   },
