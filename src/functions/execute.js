@@ -62,7 +62,7 @@ module.exports = async (message, guildDB) => {
             )
         ) {
             return message.reply(
-                "This command can only be executed by bot owners"
+                t("errors:developerOnly")
             );
         }
 
@@ -162,7 +162,7 @@ module.exports = async (message, guildDB) => {
             } catch (err) {
                 console.error(err);
                 embed
-                    .setTitle("An error occurred!")
+                    .setTitle(t("errors:generic"))
                     .addField(
                         "\u200b",
                         "There was an error trying to execute that command."
