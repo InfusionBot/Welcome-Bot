@@ -7,7 +7,7 @@ const getGuild = require("../db/functions/guild/getGuild");
 const { MessageEmbed } = require("discord.js");
 module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
-    if (!guildDB.enableGoodbye) return;
+    if (!guildDB.enableWelcome) return;
     let channel = member.guild.channels.cache.find(
         (ch) => ch.name === guildDB.channel
     );
