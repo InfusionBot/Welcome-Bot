@@ -11,9 +11,12 @@ module.exports = {
     permissions: [Permissions.FLAGS.MANAGE_GUILD],
     args: false,
     guildOnly: true,
-    usage: "(lang)",
+    usage: "(subcommand) (lang)",
     subcommand: false,
-    subcommands: [{ name: "list", desc: "List of all languages available" }],
+    subcommands: [
+        { name: "list", desc: "List of all languages available" },
+        { name: "set", desc: "Set language" },
+    ],
     cooldown: 5,
     category: "Setup",
     execute(message, args, guildDB, t) {
@@ -21,20 +24,24 @@ module.exports = {
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
         let str = "";
         for (const l in list) {
-            str += `\`${l}\` - ${list[l]}`;
-        }
-        if (args[0] && args[0] === "list") {
-            return message.reply(str);
+            str += `\`${l}\` - ${list[l]}\n`;
         }
         if (args[0] && !Object.keys(list).includes(args[0])) {
             return message.reply(
                 `Invalid locale, send \`${guildDB.prefix}lang list\` to get a list of locales available.`
             );
         }
-        if (args[0]) {
-            updateGuild(message.guild.id, "lang", args[0]);
-            return message.reply(`Language set to ${args[0]}`);
+        switch (args[0]) {
+            case "set":
+                updateGuild(message.guild.id, "lang", args[0]);
+                return message.reply(`Language set to ${args[0]}`);
+                break;
+            case "list":
+                return message.reply(str);
+                break;
+            default:
+                message.reply(`Language is currently set to ${guildDB.lang}`);
+                break;
         }
-        message.reply(`Language is currently set to ${guildDB.lang}`);
     },
 };
