@@ -46,7 +46,7 @@ module.exports = {
                 pages[p].setTitle(
                     `Welcome-Bot help - ${t(`categories:${cat.key}`)} Category`
                 );
-                message.client.commands.forEach((command) => {
+                message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
                         commandsCat.push(`- ${command.name}`);
                 });
