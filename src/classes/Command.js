@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 
-class Command {
+module.exports = class Command {
     constructor(client, command) {
         if (command.name !== command.name.toLowerCase()) {
             throw new TypeError("Command names must be lower case only");
@@ -53,4 +53,4 @@ class Command {
         this.execute = command.execute;
         return command;
     }
-}
+};
