@@ -7,15 +7,24 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["commands", "cmd"],
-    //description: "List all of my commands or info about a specific command.",
+    description: "List all of my commands or info about a specific command.",
     usage: "(command name)",
-    bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
+    //bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
-        const { commands } = message.client;
+        if (message.channel.type !== "dm") {
+            const botPerms = message.guild.me.permissionsIn(message.channel);
+            if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
+                message.reply(
+                    `${t("errors:note")}: ${t("errors:iDontHavePermission", {
+                        permission: t("permissions:MANAGE_MESSAGES"),
+                    })}, ${t("errors:pagination")}`
+                );
+        }
+        const commands = message.client.commands.enabled;
         const emojiList = {
             first: "⏮",
             back: "⏪",
@@ -27,7 +36,7 @@ module.exports = {
         let pages = [new MessageEmbed()];
         let timeout = 200000; //20 secs timeout
 
-        pages[0].setTitle("Welcome Bot help");
+        pages[0].setTitle("Welcome-Bot help");
         if (!args.length) {
             let p;
             message.client.categories.forEach((cat) => {
@@ -35,11 +44,15 @@ module.exports = {
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(
-                    `Welcome Bot help - ${t(`categories:${cat.key}`)} Category`
+                    `Welcome-Bot help - ${t(`categories:${cat.key}`)} Category`
                 );
-                message.client.commands.forEach((command) => {
+                message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
-                        commandsCat.push(`- ${command.name}`);
+                        commandsCat.push(
+                            `- ${command.name} - ${t(
+                                `cmds:${command.name}.cmdDesc`
+                            )}`
+                        );
                 });
                 pages[p].addField(
                     `${cat.emoji} Commands in this category`,
@@ -56,7 +69,7 @@ module.exports = {
             );
             pages[0].addField(
                 "Get help for specific command:",
-                `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
+                `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
             );
             pages[0].addField(
                 "What is Cooldown:",
@@ -130,18 +143,19 @@ module.exports = {
 
         if (!command) {
             return message.channel.send(
-                `That is not a valid command, ${message.author}`
+                `${t("errors:commandNotFound")}, ${message.author}`
             );
         }
 
-        pages[0].setDescription(`Help for ${command.name} command`);
+        pages[0].setDescription(t(`cmds:help.cmdHelp`, { cmd: command.name }));
         pages[0].addField("Command Name:", command.name);
 
         let desc = t(`cmds:${command.name}.cmdDesc`);
         if (command.bot_perms) {
             desc += `\nThe bot needs ${beautifyPerms(
                 command.bot_perms,
-                message.client.allPerms
+                message.client.allPerms,
+                t
             ).join(", ")} permission(s) to execute this command.`;
         }
         pages[0].addField("Description:", desc);
@@ -152,7 +166,8 @@ module.exports = {
                 "Permissions:",
                 `You need ${beautifyPerms(
                     command.permissions,
-                    message.client.allPerms
+                    message.client.allPerms,
+                    t
                 ).join(", ")} permission(s) to execute this command.`
             );
         if (command.subcommands) {
@@ -173,7 +188,7 @@ module.exports = {
         if (command.ownerOnly)
             pages[0].addField(
                 "Can be executed by:",
-                "Welcome-Bot owner **ONLY**"
+                "Welcome-Bot owners **ONLY**"
             );
 
         pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);

@@ -4,11 +4,10 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const getGuild = require("../db/functions/guild/getGuild");
-//const genImage = require("./genImage");
-//const fs = require("fs");
+const { MessageEmbed } = require("discord.js");
 module.exports = async (member) => {
-    const { MessageEmbed } = require("discord.js");
     let guildDB = await getGuild(member.guild.id);
+    if (!guildDB.enableWelcome) return;
     let channel = member.guild.channels.cache.find(
         (ch) => ch.name === guildDB.channel
     );
@@ -24,8 +23,8 @@ module.exports = async (member) => {
         .replace("{members}", `${member.guild.memberCount}`);
     let embed = new MessageEmbed()
         .setAuthor(
-            message.author.tag,
-            message.author.displayAvatarURL({
+            member.user.tag,
+            member.user.displayAvatarURL({
                 size: 512,
                 dynamic: true,
                 format: "png",

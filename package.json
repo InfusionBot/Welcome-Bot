@@ -1,19 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "1.7.0",
+  "version": "1.7.3",
   "changelog": [
     "**Bug fixes**",
-    "Fix all moderation commands don't work",
-    "Fix bug: \"If user is not in cache, the user won't be found\"",
-    "**New features**",
-    "New command `perms` - Find all permissions given to you or a specific user",
-    "New command `support` - Get support for Welcome-Bot",
-    "New command `botperms` - Get permissions bot has been given",
-    "**Changes**",
-    "Minor changes to docs auto updater",
-    "Delete Manage category and move prune command to mod category",
-    "Add missing perms which where added in djs v13",
-    "`uptime` command moved from misc category to core category"
+    "Fix sending welcome and goodbye logs even when they are disabled"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",

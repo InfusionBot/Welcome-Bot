@@ -10,7 +10,7 @@ module.exports = {
     guildOnly: true,
     cooldown: 10,
     category: "Core",
-    execute(message, args, guildDB) {
+    execute(message, args, guildDB, t) {
         const beautifyPerms = require("../../functions/beautifyPerms");
         let permsGiven = message.guild.me
             .permissionsIn(message.channel)
@@ -21,7 +21,8 @@ module.exports = {
         message.reply(
             `You have given: ${beautifyPerms(
                 permsGiven,
-                message.client.allPerms
+                message.client.allPerms,
+                t
             ).join(", ")}`
         );
     },

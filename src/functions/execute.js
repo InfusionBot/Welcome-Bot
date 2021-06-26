@@ -14,6 +14,7 @@ module.exports = async (message, guildDB) => {
         guildDB.prefix,
         `<@!?${message.client.user.id}> `,
     ];
+    const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
     const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
     const prefix = message.content.match(prefixRegex);
     if (!message.client.application?.owner)
@@ -25,8 +26,8 @@ module.exports = async (message, guildDB) => {
         let args = message.content.slice(prefix[0].length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
-            message.client.commands.get(commandName) ||
-            message.client.commands.find(
+            message.client.commands.enabled.get(commandName) ||
+            message.client.commands.enabled.find(
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
@@ -60,15 +61,15 @@ module.exports = async (message, guildDB) => {
                 message.author.id === client.application?.owner.id
             )
         ) {
-            return message.reply(
-                "This command can only be executed by bot owners"
-            );
+            return message.reply(t("errors:developerOnly"));
         }
 
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.reply("You don't have permission to do this!");
+                return message.reply(
+                    "You don't have permission(s) to do this!"
+                );
             }
         }
 
@@ -76,7 +77,7 @@ module.exports = async (message, guildDB) => {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.reply(
-                    `You didn't give the bot permission to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
+                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}perms <@!?${message.client.user.id}>\` in this channel itself.`
                 );
             }
         }
@@ -125,7 +126,7 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
-        const { cooldowns } = message.client;
+        const { cooldowns } = message.client.commands;
 
         if (!cooldowns.has(command.name)) {
             cooldowns.set(command.name, new Collection());
@@ -142,11 +143,10 @@ module.exports = async (message, guildDB) => {
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
-                    `Please wait ${timeLeft.toFixed(
-                        1
-                    )} more second(s) before reusing the \`${
-                        command.name
-                    }\` command.`
+                    translate(`errors:cooldown`, {
+                        seconds: timeLeft.toFixed(1),
+                        command: command.name,
+                    })
                 );
             }
         }
@@ -157,23 +157,16 @@ module.exports = async (message, guildDB) => {
         if (command.catchError) {
             try {
                 message.channel.startTyping();
-                command.execute(
-                    message,
-                    args,
-                    guildDB,
-                    message.client.i18next.getFixedT(guildDB.lang || "en-US")
-                );
+                command.execute(message, args, guildDB, translate);
                 message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);
                 embed
-                    .setTitle("An error occurred!")
+                    .setTitle(t("errors:generic"))
                     .addField(
-                        "\u200b",
-                        "There was an error trying to execute that command."
-                    )
-                    .addField(
-                        "Please report this at https://github.com/Welcome-Bot/welcome-bot/issues",
+                        `Please report this to <@!?${message.client.ownerIDs.join(
+                            "> OR <@!?"
+                        )}>`,
                         "\u200b"
                     );
                 message.reply({ embeds: [embed] });

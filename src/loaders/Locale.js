@@ -2,15 +2,22 @@ const i18next = require("i18next");
 const translationBackend = require("i18next-node-fs-backend");
 const fs = require("fs");
 
-module.exports = async (client, dirPath = "src/locales") => {
-    const dir = fs.readdirSync(dirPath);
+module.exports = async (client, dirPath = __dirname + "/../locales") => {
+    let dir;
+    if (fs.existsSync(dirPath)) {
+        dir = fs.readdirSync(dirPath);
+    } else {
+        client.logger.log(`Can't read ${dirPath}`);
+    }
     try {
         await i18next.use(translationBackend).init(
             {
-                ns: ["categories", "cmds", "permissions"],
+                ns: ["categories", "cmds", "errors", "permissions"],
                 preload: dir,
                 fallbackLng: "en-US",
-                whitelist: ["en-US"],
+                whitelist: Object.keys(
+                    require(__dirname + `/../locales/en-US/languages.json`)
+                ),
                 backend: {
                     loadPath: `${dirPath}/{{lng}}/{{ns}}.json`,
                 },

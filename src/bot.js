@@ -83,8 +83,9 @@ client.on("guildMemberRemove", (member) => {
 });
 
 client.on("guildCreate", (guild) => {
+    const lang = guild.preferredLocale || "en-US";
     //Bot has been invited to a new guild
-    addGuild(guild.id);
+    addGuild(guild.id, lang);
     if (guild.systemChannelID) {
         guild.channels.cache
             .get(guild.systemChannelID)
