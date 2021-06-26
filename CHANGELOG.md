@@ -22,7 +22,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.7.1]
 
-> **Released:** `TBA`
+> **Released:** `25-06-2021`
 
 ### Bug fixes
 
@@ -31,7 +31,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.7.0]
 
-> **Released:** `25-06-2021`
+> **Released:** `24-06-2021`
 
 ### Bug fixes
 
