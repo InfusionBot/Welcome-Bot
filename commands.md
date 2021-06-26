@@ -245,7 +245,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Prune messages.
 - Usage: [no of msg to prune / subcommand]
-- Aliases: None
+- Aliases: `purge`
 - Cooldown: 5
 
 ### `unban`
