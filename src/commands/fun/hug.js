@@ -41,9 +41,14 @@ module.exports = {
             return message.reply(t("cmds:hug.errorYourself"));
         }
         let embed = new MessageEmbed()
-            .setTitle(t("cmds:hug.hug", {author:message.author.tag, user:user.tag}))
+            .setTitle(
+                t("cmds:hug.hug", {
+                    author: message.author.tag,
+                    user: user.tag,
+                })
+            )
             .setImage(res.url)
             .setColor("RANDOM");
-        message.reply({embeds: [embed]});
+        message.reply({ embeds: [embed] });
     },
 };
