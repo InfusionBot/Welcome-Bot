@@ -26,6 +26,11 @@
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS"
   },
+  "hug": {
+    "cmdDesc": "Give a hug to a user",
+    "hug": "{{author}} gave a hug to {{user}}",
+    "errorYourself": "You can't hug yourself."
+  },
   "image": {
     "cmdDesc": "Generate a random pokemon image"
   },
@@ -36,11 +41,11 @@
     "cmdDesc": "Flips a coin."
   },
   "help": {
-    "cmdDesc": "List all of commands or info about a specific command.",
+    "cmdDesc": "List all commands or get info for a specific command.",
     "cmdHelp": "Help for {{cmd}} command"
   },
   "perms": {
-    "cmdDesc": "Get permissions given to a specific user. Not providing any mention will show your permissions"
+    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
   },
   "botinfo": {
     "cmdDesc": "Bot information"
@@ -106,6 +111,6 @@
     "cmdDesc": "Manage welcome message for this server"
   },
   "prefix": {
-    "cmdDesc": "Manage perfix for this server"
+    "cmdDesc": "Manage prefix for this server"
   }
 }
