@@ -12,40 +12,40 @@ module.exports = {
     category: "Information",
     execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
-        let embed = new MessageEmbed();
-        embed.setTitle("Welcome-Bot");
-        embed.setDescription("Information and Support for Welcome-Bot");
-        embed.setThumbnail("https://i.imgur.com/2BF9mxi.png");
-        embed.addField(
-            "Servers joined:",
-            `${message.client.guilds.cache.size}`
-        );
-        embed.addField("Version:", `${message.client.botVersion}`);
-        embed.addField("No of Commands:", `${message.client.commands.size}`);
-        embed.addField(
-            "The no of channels bot is currently handling:",
-            `${message.client.channels.cache.size}`
-        );
-        embed.addField(
-            "👑 Bot owners",
-            `Welcome-Bot was created by ${message.client.ownersTags.join(", ")}`
-        );
-        embed.addField(
-            "Invite URL:",
-            "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
-        );
-        embed.addField(
-            "Bot lists:",
-            `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n` +
-                `[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)`
-        );
-        embed.addField(
-            "Other links:",
-            "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
-                "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-                "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
-                "[Documentation](https://welcome-bot.github.io/docs)"
-        );
+        let embed = new MessageEmbed()
+            .setTitle("Welcome-Bot")
+            .setDescription("Information and Support for Welcome-Bot")
+            .setThumbnail("https://i.imgur.com/2BF9mxi.png")
+            .addField("Servers joined:", `${message.client.guilds.cache.size}`)
+            .addField("Version:", `${message.client.botVersion}`)
+            .addField("No of Commands:", `${message.client.commands.size}`)
+            .addField(
+                "The no of channels bot is currently handling:",
+                `${message.client.channels.cache.size}`
+            )
+            .addField(
+                "👑 Bot owners",
+                `Welcome-Bot was created by ${message.client.ownersTags.join(
+                    ", "
+                )}`
+            )
+            .addField(
+                "Invite URL:",
+                "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
+            )
+            .addField(
+                "Bot lists:",
+                `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n` +
+                    `[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)`
+            )
+            .addField(
+                "Other links:",
+                "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
+                    "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
+                    "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
+                    "[Documentation](https://welcome-bot.github.io/docs)"
+            )
+            .setImage("https://i.imgur.com/FwVH77A.gif");
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
