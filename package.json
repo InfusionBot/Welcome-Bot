@@ -1,9 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "changelog": [
     "**Bug fixes**",
-    "Fix bug related to permissions (fix 2)"
+    "minor fix"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
