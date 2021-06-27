@@ -17,5 +17,5 @@
   "youDontHavePermission": "You're missing the following permission in that channel: {{permission}}",
   "iDontHavePermission": "I'm missing the following permission in that channel: {{permission}}",
   "channelDoesntExist": "That channel doesn't exist or I couldn't find it.",
-  "userNotFound": "An error occurred when trying to find the user"
+  "userNotFound": "An error occurred while trying to find that user."
 }
