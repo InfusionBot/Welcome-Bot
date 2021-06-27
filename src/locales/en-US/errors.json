@@ -16,5 +16,6 @@
   "invalidChannel": "You forgot to mention a channel or I couldn't find it.",
   "youDontHavePermission": "You're missing the following permission in that channel: {{permission}}",
   "iDontHavePermission": "I'm missing the following permission in that channel: {{permission}}",
-  "channelDoesntExist": "That channel doesn't exist or I couldn't find it."
+  "channelDoesntExist": "That channel doesn't exist or I couldn't find it.",
+  "userNotFound": "An error occurred while trying to find that user."
 }
