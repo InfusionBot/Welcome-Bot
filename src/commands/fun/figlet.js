@@ -13,8 +13,7 @@ module.exports = {
     category: "Fun",
     async execute(message, args) {
         const figlet = require("figlet");
-        const util = require("util");
-        const figletAsync = util.promisify(figlet);
+        const figletAsync = require("util").promisify(figlet);
         let text = args.join(" ");
         let result;
         if (text.length > 20) {
