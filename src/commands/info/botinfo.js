@@ -12,40 +12,41 @@ module.exports = {
     category: "Information",
     execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
-        let embed = new MessageEmbed();
-        embed.setTitle("Welcome-Bot");
-        embed.setDescription("Information and Support for Welcome-Bot");
-        embed.setThumbnail("https://i.imgur.com/2BF9mxi.png");
-        embed.addField(
+        let embed = new MessageEmbed()
+        .setTitle("Welcome-Bot")
+        .setDescription("Information and Support for Welcome-Bot")
+        .setThumbnail("https://i.imgur.com/2BF9mxi.png")
+        .addField(
             "Servers joined:",
             `${message.client.guilds.cache.size}`
-        );
-        embed.addField("Version:", `${message.client.botVersion}`);
-        embed.addField("No of Commands:", `${message.client.commands.size}`);
-        embed.addField(
+        )
+        .addField("Version:", `${message.client.botVersion}`)
+        .addField("No of Commands:", `${message.client.commands.size}`)
+        .addField(
             "The no of channels bot is currently handling:",
             `${message.client.channels.cache.size}`
-        );
-        embed.addField(
+        )
+        .addField(
             "👑 Bot owners",
             `Welcome-Bot was created by ${message.client.ownersTags.join(", ")}`
-        );
-        embed.addField(
+        )
+        .addField(
             "Invite URL:",
             "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
-        );
-        embed.addField(
+        )
+        .addField(
             "Bot lists:",
             `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n` +
                 `[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)`
-        );
-        embed.addField(
+        )
+        .addField(
             "Other links:",
             "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
                 "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                 "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
                 "[Documentation](https://welcome-bot.github.io/docs)"
-        );
+        )
+        .setImage("https://i.imgur.com/FwVH77A.gif");
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
