@@ -74,13 +74,12 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.bot_perms && message.channel.type !== "dm") {
-            const botPerms = Object.values(
-                message.guild.me.permissionsIn(message.channel)
-            );
+            const botPerms = message.guild.me.permissionsIn(message.channel);
 
-            if (!botPerms || !botPerms.includes(command.bot_perms)) {
+            if (!botPerms || !botPerms.has(command.bot_perms)) {
+                console.log(botPerms, command.bot_perms);
                 return message.reply(
-                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}perms <@!?${message.client.user.id}>\` in this channel itself.`
+                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
                 );
             }
         }

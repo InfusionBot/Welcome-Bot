@@ -13,8 +13,9 @@ module.exports = {
     usage: "[mention / user id]",
     cooldown: 3,
     category: "Fun",
-    execute(message, args, guildDB, t) {
-        const res = await fetch("https://nekos.life/api/v2/img/cuddle").json();
+    async execute(message, args, guildDB, t) {
+        let res = await fetch("https://nekos.life/api/v2/img/cuddle");
+        res = await res.json();
         const { userFromMention } = require("../../functions/get.js");
         let user;
         if (args[0]) {
@@ -25,8 +26,7 @@ module.exports = {
                 );
             }
             if (
-                !isNaN(parseInt(args[0])) &&
-                args[0] !== message.client.user.id
+                !isNaN(parseInt(args[0]))
             ) {
                 user = message.client.users.cache.get(args[0]);
                 if (!user) user = await message.client.users.fetch(args[0]);
