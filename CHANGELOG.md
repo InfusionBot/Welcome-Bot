@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.7.6]
+## [v1.7.8]
 
 > **Released:** `TBA`
+
+### Bug fixes
+
+- Revert changes
+
+## [v1.7.6]
+
+> **Released:** `27-06-2021`
 
 ### Bug fixes
 
@@ -232,6 +240,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.7.8]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.8
 [v1.7.6]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.6
 [v1.7.5]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.5
 [v1.7.4]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.4
