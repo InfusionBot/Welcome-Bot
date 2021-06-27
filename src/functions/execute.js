@@ -65,7 +65,9 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.permissions) {
-            const authorPerms = message.channel.permissionsFor(message.author);
+            const authorPerms = Object.values(
+                message.channel.permissionsFor(message.author)
+            );
             if (!authorPerms || !authorPerms.has(command.permissions)) {
                 return message.reply(
                     "You don't have permission(s) to do this!"
@@ -74,7 +76,9 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.bot_perms && message.channel.type !== "dm") {
-            const botPerms = message.guild.me.permissionsIn(message.channel);
+            const botPerms = Object.values(
+                message.guild.me.permissionsIn(message.channel)
+            );
             if (!botPerms || !botPerms.has(command.bot_perms)) {
                 return message.reply(
                     `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}perms <@!?${message.client.user.id}>\` in this channel itself.`
