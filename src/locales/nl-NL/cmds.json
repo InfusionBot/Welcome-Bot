@@ -26,6 +26,11 @@
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS"
   },
+  "hug": {
+    "cmdDesc": "Give a hug to a user",
+    "hug": "{{author}} gave a hug to {{user}}",
+    "errorYourself": "You can't hug yourself."
+  },
   "image": {
     "cmdDesc": "Generate a random pokemon image"
   },
