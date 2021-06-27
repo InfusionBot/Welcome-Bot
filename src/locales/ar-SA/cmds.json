@@ -87,8 +87,11 @@
   "channel": {
     "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings."
   },
+  "disable": {
+    "cmdDesc": "Disable welcome and goodbye logs."
+  },
   "enable": {
-    "cmdDesc": "Enable/Disable welcome and goodbye logs. Not providing any args will show current settings."
+    "cmdDesc": "Enable welcome and goodbye logs."
   },
   "follow": {
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
