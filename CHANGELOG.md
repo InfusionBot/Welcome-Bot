@@ -20,9 +20,25 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 - `enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs
 
+## [v1.7.5]
+
+> **Released:** `TBA`
+
+### Bug fixes
+
+- Fix bug related to permissions (fix 2)
+
+## [v1.7.4]
+
+> **Released:** `27-06-2021`
+
+### Bug fixes
+
+- Fix bug related to permissions
+
 ## [v1.7.3]
 
-> **Released:** `25-06-2021`
+> **Released:** `26-06-2021`
 
 ### Bug fixes
 
@@ -220,6 +236,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.7.5]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.5
+[v1.7.4]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.4
 [v1.7.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.3
 [v1.7.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.2
 [v1.7.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.1
