@@ -35,13 +35,13 @@ module.exports = {
                         })
                     );
                 updateGuild(message.guild.id, "lang", args[1]);
-                return message.reply(`Language set to ${args[1]}`);
+                return message.reply(t("cmds:lang.success", {lang: args[1]}));
                 break;
             case "list":
                 return message.reply(str);
                 break;
             default:
-                message.reply(`Language is currently set to ${guildDB.lang}`);
+                message.reply(t("cmds:lang.show", {lang:guildDB.lang}));
                 break;
         }
     },
