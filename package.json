@@ -1,9 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "changelog": [
     "**Bug fixes**",
-    "Fix sending welcome and goodbye logs even when they are disabled"
+    "Fix bug related to permissions"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
