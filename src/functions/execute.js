@@ -69,7 +69,7 @@ module.exports = async (message, guildDB) => {
             const authorPerms = Object.values(
                 message.channel.permissionsFor(message.author)
             );
-            if (!authorPerms || !authorPerms.has(command.permissions)) {
+            if (!authorPerms || !authorPerms.includes(command.permissions)) {
                 return message.reply("You don't have permission to do this!");
             }
         }
@@ -78,7 +78,7 @@ module.exports = async (message, guildDB) => {
             const botPerms = Object.values(
                 message.guild.me.permissionsIn(message.channel)
             );
-            if (!botPerms || !botPerms.has(command.bot_perms)) {
+            if (!botPerms || !botPerms.includes(command.bot_perms)) {
                 return message.reply(
                     `You didn't give the bot permission to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
                 );
