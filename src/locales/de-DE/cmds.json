@@ -52,7 +52,10 @@
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command.",
-    "cmdHelp": "Help for {{cmd}} command"
+    "cmdHelp": "Help for {{cmd}} command",
+    "cmds": "Use arrows ⏪⏩",
+    "bot-help": "Welcome-Bot help",
+    "in-cat": "Commands in this category"
   },
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
