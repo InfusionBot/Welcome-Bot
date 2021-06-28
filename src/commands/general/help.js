@@ -142,9 +142,7 @@ module.exports = {
         const command =
             commands.get(name) ||
             commands.find((c) => c.aliases && c.aliases.includes(name));
-        const category = categories.find(
-            (c) => c.name.toLowerCase() === name
-        );
+        const category = categories.find((c) => c.name.toLowerCase() === name);
 
         if (!command || !category) {
             if (!command)
