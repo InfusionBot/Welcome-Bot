@@ -375,7 +375,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `random-image`
 - Cooldown: 10
 
-### `kids`
+### `kiss`
 
 ##### Subcommands:
 
