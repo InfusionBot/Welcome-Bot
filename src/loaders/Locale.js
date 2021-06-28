@@ -1,8 +1,14 @@
 const i18next = require("i18next");
 const translationBackend = require("i18next-node-fs-backend");
 const fs = require("fs");
+const fetch = require("node-fetch");
+const unzip = require("unzipper");
 
 module.exports = async (client, dirPath = __dirname + "/../locales") => {
+    //Download all locales from translations branch and extract it
+    fetch("https://github.com/Welcome-Bot/welcome-bot/archive/refs/heads/translations.zip").then(res => {
+        res.body.pipe(unzip.Extract({path: dirPath.replace("/locales", "")}));
+    });
     let dir;
     if (fs.existsSync(dirPath)) {
         dir = fs.readdirSync(dirPath);
