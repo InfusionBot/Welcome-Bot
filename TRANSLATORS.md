@@ -2,6 +2,6 @@
 
 Thanks goes to these wonderful people who helped translate Welcome-Bot to differente languages
 
-- [PuneetGopinath](https://github.com/PuneetGopinath) - English, Arabic
+- [PuneetGopinath](https://crowdin.com/profile/PuneetGopinath) - English, Arabic
 - [Abhijoshi2k](https://github.com/abhijoshi2k) - English
 - [iigalaxy](https://crowdin.com/profile/iigalaxy) - Spanish
