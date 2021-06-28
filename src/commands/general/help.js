@@ -61,7 +61,7 @@ module.exports = {
                 });
                 pages[p].addField(
                     `${cat.emoji} ${t("cmds:help.in-cat")}`,
-                    `\`\`\`\n${commandsCat.join(" • ")}\n\`\`\``
+                    `\`\`\`\n${commandsCat.join("\n")}\n\`\`\``
                 );
             });
             pages[0].setDescription(
