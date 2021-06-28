@@ -37,7 +37,9 @@ module.exports = {
         let pages = [new MessageEmbed()];
         let timeout = 200000; //20 secs timeout
 
-        pages[0].setTitle(t("cmds:help.bot-help"));
+        for (var i = 0; i < pages.length; i++) {
+            pages[i].setTitle(t("cmds:help.bot-help"));
+        }
         if (!args.length) {
             let p;
             categories.forEach((cat) => {
@@ -154,6 +156,7 @@ module.exports = {
                 );
         }
 
+        if (command) {
         pages[0].setDescription(t(`cmds:help.cmdHelp`, { cmd: command.name }));
         pages[0].addField("Command Name:", command.name);
 
@@ -199,6 +202,15 @@ module.exports = {
             );
 
         pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
+        } else if (category) {
+            let commandsInCat = [];
+            const arrCmds = commands.toArray();
+            for (var i = 0; i < arrCmds.length; i++) {
+                if (commands.get(i).category.toLowerCase() === category.toLowerCase())
+                    commandsInCat.push(`${arrCmds[i]} - ${t(`cmds:${i}.cmdDesc`)}`);
+            }
+            pages[0].addField("\u200b", `\`\`\`\n${commandsInCat.join(" • ")}\n\`\`\``);
+        }
 
         message.channel.send({ embeds: [pages[0]] });
     },
