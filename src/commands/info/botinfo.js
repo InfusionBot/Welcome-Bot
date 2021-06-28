@@ -46,7 +46,7 @@ module.exports = {
                     "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
                     "[Documentation](https://welcome-bot.github.io/docs)"
             )
-            .setImage("https://i.imgur.com/FwVH77A.gif");
+            .setImage("https://welcome-bot.github.io/assets/img/graphics3-standard.gif");
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
