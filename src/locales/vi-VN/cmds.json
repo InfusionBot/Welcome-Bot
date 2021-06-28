@@ -28,18 +28,18 @@
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
-    "success": "{{author}} gave a hug to {{user}}",
+    "success": "{{author}} gives a hug to {{user}}",
     "errorYourself": "You can't hug yourself."
   },
   "cuddle": {
-    "cmdDesc": "Cuddle a user",
+    "cmdDesc": "Cuddle with a user",
     "success": "{{author}} just cuddled to {{user}}",
     "errorYourself": "You can't cuddle yourself."
   },
   "kiss": {
     "cmdDesc": "Kiss a user",
     "success": "{{author}} just kissed to {{user}}",
-    "errorYourself": "You can't kiss yourself."
+    "errorYourself": "You can't kiss yourself!"
   },
   "image": {
     "cmdDesc": "Generate a random pokemon image"
