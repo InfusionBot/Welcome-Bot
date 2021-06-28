@@ -4,3 +4,4 @@ Thanks goes to these wonderful people who helped translate Welcome-Bot to differ
 
 - [PuneetGopinath](https://github.com/PuneetGopinath) - English, Arabic
 - [Abhijoshi2k](https://github.com/abhijoshi2k) - English
+- [iigalaxy](https://crowdin.com/profile/iigalaxy) - Spanish
