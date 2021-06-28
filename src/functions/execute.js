@@ -164,7 +164,7 @@ module.exports = async (message, guildDB) => {
                     .setTitle(translate("errors:generic"))
                     .addField(
                         `Please report this to ${message.client.ownersTags.join(
-                            " or "
+                            " OR "
                         )}`,
                         "\u200b"
                     );
