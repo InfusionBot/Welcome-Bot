@@ -65,10 +65,8 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.permissions) {
-            const authorPerms = Object.values(
-                message.channel.permissionsFor(message.author)
-            );
-            if (!authorPerms || !authorPerms.includes(command.permissions)) {
+            const authorPerms = message.channel.permissionsFor(message.author);
+            if (!authorPerms || !authorPerms.has(command.permissions)) {
                 return message.reply("You don't have permission to do this!");
             }
         }
@@ -163,11 +161,11 @@ module.exports = async (message, guildDB) => {
             } catch (err) {
                 console.error(err);
                 embed
-                    .setTitle(t("errors:generic"))
+                    .setTitle(translate("errors:generic"))
                     .addField(
-                        `Please report this to <@!?${message.client.ownerIDs.join(
-                            "> OR <@!?"
-                        )}>`,
+                        `Please report this to ${message.client.ownersTags.join(
+                            " OR "
+                        )}`,
                         "\u200b"
                     );
                 message.reply({ embeds: [embed] });
