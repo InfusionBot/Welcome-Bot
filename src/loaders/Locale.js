@@ -6,8 +6,10 @@ const unzip = require("unzipper");
 
 module.exports = async (client, dirPath = __dirname + "/../locales") => {
     //Download all locales from translations branch and extract it
-    fetch("https://github.com/Welcome-Bot/welcome-bot/archive/refs/heads/translations.zip").then(res => {
-        res.body.pipe(unzip.Extract({path: dirPath.replace("/locales", "")}));
+    fetch(
+        "https://github.com/Welcome-Bot/welcome-bot/archive/refs/heads/translations.zip"
+    ).then((res) => {
+        res.body.pipe(unzip.Extract({ path: dirPath.replace("/locales", "") }));
     });
     let dir;
     if (fs.existsSync(dirPath)) {
