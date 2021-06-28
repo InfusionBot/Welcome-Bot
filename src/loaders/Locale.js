@@ -12,7 +12,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
         res.body.pipe(unzip.Extract({ path: dirPath.replace("/locales", "") }));
     });
     if (fs.existsSync(dirPath.replace("/locales", "/translations"))) {
-        fs.rmdir(dirPath.replace("/locales", "/translations"), {
+        fs.rmdirSync(dirPath.replace("/locales", "/translations"), {
             recursive: true,
         });
     }
