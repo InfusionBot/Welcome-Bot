@@ -144,7 +144,7 @@ module.exports = {
             commands.find((c) => c.aliases && c.aliases.includes(name));
         const category = categories.find((c) => c.name.toLowerCase() === name);
 
-        if (!command || !category) {
+        if (!command && !category) {
             if (!command)
                 return message.channel.send(
                     `${t("errors:commandNotFound")}, ${message.author}`
