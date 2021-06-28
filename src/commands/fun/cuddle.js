@@ -35,7 +35,7 @@ module.exports = {
             return false;
         }
         if (user.id === message.author.id) {
-            return message.reply(t("cmds:hug.errorYourself"));
+            return message.reply(t("cmds:cuddle.errorYourself"));
         }
         let embed = new MessageEmbed()
             .setTitle(
