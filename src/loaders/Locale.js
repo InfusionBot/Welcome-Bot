@@ -11,6 +11,9 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
     ).then((res) => {
         res.body.pipe(unzip.Extract({ path: dirPath.replace("/locales", "") }));
     });
+    if (fs.existsSync(dirPath.replace("/locales", "/translations"))) {
+        fs.rmdir(dirPath.replace("/locales", "/translations"), {recursive: true});
+    }
     if (fs.existsSync(dirPath.replace("/locales", "/welcome-bot-translations"))) {
         fs.renameSync(dirPath.replace("/locales", "/welcome-bot-translations"), dirPath.replace("/locales", "/translations"), err => {
             if (err)
