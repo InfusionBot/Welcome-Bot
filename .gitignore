@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Welcome-Bot translations
-src/welcome-bot-translations/
+src/translations/
