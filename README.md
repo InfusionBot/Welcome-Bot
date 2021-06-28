@@ -87,7 +87,7 @@ These are the commands currently available:
 
 - [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
 
-For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
+These commands may not be up to date, [visit our site](https://welcome-bot.github.io/docs/commands.html) for up to date commands
 
 ## Default values
 
@@ -142,21 +142,25 @@ You can change this channel name, by using the `channel setMod` command, more in
 Discord welcome bot can be found on different Botlist sites.
 Feel free to upvote him to show your support.
 
-### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
+### [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
-### [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
+### [disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
 
 > Find the best Discord Bots for your server with DisBotList!
 
-### [Discord.boats](https://discord.boats/bot/848459799783669790)
+### [dblist.xyz](https://dblist.xyz/bot/848459799783669790)
+
+> Find the best Discord bots for your server with our discord bot list. Browse information on each bot and vote for your favourites.
+
+### [discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
 [![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
 
-### [Discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
+### [discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
 > The original Discord bot list, find the right bot for your server today.
 
