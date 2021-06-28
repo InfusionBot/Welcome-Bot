@@ -163,9 +163,7 @@ module.exports = async (message, guildDB) => {
                 embed
                     .setTitle(translate("errors:generic"))
                     .addField(
-                        `Please report this to <@!?${message.client.ownerIDs.join(
-                            "> OR <@!?"
-                        )}>`,
+                        `Please report this to ${message.client.ownerTags.join(" or ")}`,
                         "\u200b"
                     );
                 message.reply({ embeds: [embed] });
