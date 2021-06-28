@@ -37,11 +37,13 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
-client.on("ready", () => {
+client.on("ready", async () => {
     // We logged in
     client.logger.log(
         `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
     );
+    await require("./loaders/Locale.js")(client);
+    client.loadCommands(__dirname + "/commands");
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);
@@ -81,8 +83,9 @@ client.on("guildMemberRemove", (member) => {
 });
 
 client.on("guildCreate", (guild) => {
+    const lang = guild.preferredLocale || "en-US";
     //Bot has been invited to a new guild
-    addGuild(guild.id);
+    addGuild(guild.id, lang);
     if (guild.systemChannelID) {
         guild.channels.cache
             .get(guild.systemChannelID)
@@ -148,4 +151,4 @@ client.on("message", async function (message) {
 });
 
 // Login
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.DISCORD_TOKEN);

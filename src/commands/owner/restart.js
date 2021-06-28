@@ -19,7 +19,7 @@ module.exports = {
             })
             .then(async () => {
                 message.client.wait(5000); //Sleep for 5 secs
-                message.client.login(process.env.BOT_TOKEN);
+                message.client.login(process.env.DISCORD_TOKEN);
                 sentMsg.edit("Restarted!");
             });
     },

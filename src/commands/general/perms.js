@@ -13,7 +13,7 @@ module.exports = {
     usage: "(@mention / user_id)",
     cooldown: 5,
     category: "General",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const { Permissions } = require("discord.js");
         const { userFromMention } = require("../../functions/get.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
@@ -58,13 +58,15 @@ module.exports = {
             if (!mPermissions.has(perm)) {
                 text += `${beautifyPerms(
                     [Permissions.FLAGS[perm]],
-                    message.client.allPerms
+                    message.client.allPerms,
+                    t
                 ).join("\n")} ❌\n`;
                 denied++;
             } else {
                 text += `${beautifyPerms(
                     [Permissions.FLAGS[perm]],
-                    message.client.allPerms
+                    message.client.allPerms,
+                    t
                 ).join("\n")} ✅\n`;
                 allowed++;
             }

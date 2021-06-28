@@ -1,6 +1,6 @@
 # Discord welcome bot
 
-> A discord.js bot that sends a welcome message when a new user joins
+> A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...
 
 Welcome-bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
@@ -11,6 +11,7 @@ Welcome-bot is a bot built for you, to welcome new users to your servers mainly.
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://dsc.gg/welcome-bot-guild)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 [![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
+[![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 
 ## Features
 
@@ -42,7 +43,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 ![support](https://botlist.space/bot/848459799783669790/badge?property=support)
 ![library](https://botlist.space/bot/848459799783669790/badge?property=library)
 ![prefix](https://botlist.space/bot/848459799783669790/badge?property=prefix)
-<!--![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)-->
+![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)
 
 ## Commands
 These are the commands currently available:
@@ -86,7 +87,7 @@ These are the commands currently available:
 
 - [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
 
-For more info on these commands, [visit our site](https://welcome-bot.github.io/docs/commands.html)
+These commands may not be up to date, [visit our site](https://welcome-bot.github.io/docs/commands.html) for up to date commands
 
 ## Default values
 
@@ -141,21 +142,25 @@ You can change this channel name, by using the `channel setMod` command, more in
 Discord welcome bot can be found on different Botlist sites.
 Feel free to upvote him to show your support.
 
-### [Discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
+### [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
 
 > Discord's unbiased list, giving small bots and small servers a big chance!
 
-### [Disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
+### [disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)
 
 > Find the best Discord Bots for your server with DisBotList!
 
-### [Discord.boats](https://discord.boats/bot/848459799783669790)
+### [dblist.xyz](https://dblist.xyz/bot/848459799783669790)
+
+> Find the best Discord bots for your server with our discord bot list. Browse information on each bot and vote for your favourites.
+
+### [discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
 [![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
 
-### [Discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
+### [discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
 > The original Discord bot list, find the right bot for your server today.
 

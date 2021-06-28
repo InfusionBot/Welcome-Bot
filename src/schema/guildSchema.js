@@ -46,6 +46,16 @@ const guildSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
+    enableGoodbye: {
+        type: Boolean,
+        default: true,
+    },
+    lang: {
+        type: String,
+        required: true,
+        trim: true,
+        default: "en-US",
+    },
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);

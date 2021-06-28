@@ -5,6 +5,7 @@
  */
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
+const Command = require("./classes/Command");
 const util = require("util");
 const packageJson = require("../package.json");
 const Logger = require("colors-logger");
@@ -26,88 +27,106 @@ class WelcomeBot extends Client {
             partials: ["CHANNEL"],
             messageCacheMaxSize: 100,
         });
-        this.commands = new Collection();
+        this.commands = {
+            enabled: new Collection(),
+            disabled: new Collection(),
+            cooldowns: new Collection(),
+        };
         this.logger = new Logger();
-        this.disabled = new Collection();
-        this.cooldowns = new Collection();
-        this.defaultPrefix = "w/";
+        this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.categories = [
-            { name: "Setup", emoji: "<:setup:854316242097537034>" },
-            { name: "General", emoji: "<:pikachu2:852569608259239936>" },
-            { name: "Information", emoji: "ℹ️" },
-            { name: "Moderation", emoji: "" },
-            { name: "Miscellaneous", emoji: "" },
-            { name: "Fun", emoji: "<:fun:854002049095303188>" },
-            { name: "Anime", emoji: "📷" },
-            { name: "Games", emoji: "<:games:856910189490864140>" },
-            { name: "Owner Only", emoji: "<:owner:854009566572183572>" },
-            { name: "Core", emoji: "" },
+            {
+                name: "Setup",
+                key: "setup",
+                emoji: "<:setup:854316242097537034>",
+            },
+            {
+                name: "General",
+                key: "general",
+                emoji: "<:pikachu2:852569608259239936>",
+            },
+            { name: "Information", key: "info", emoji: "ℹ️" },
+            { name: "Moderation", key: "mod", emoji: "" },
+            { name: "Miscellaneous", key: "misc", emoji: "" },
+            { name: "Fun", key: "fun", emoji: "<:fun:854002049095303188>" },
+            { name: "Anime", key: "anime", emoji: "📷" },
+            {
+                name: "Games",
+                key: "games",
+                emoji: "<:games:856910189490864140>",
+            },
+            {
+                name: "Owner Only",
+                key: "owner",
+                emoji: "<:owner:854009566572183572>",
+            },
+            { name: "Core", key: "core", emoji: "" },
         ];
         this.allPerms = [
-            { perm: Permissions.FLAGS.ADMINISTRATOR, val: "Administrator" },
+            { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
             {
                 perm: Permissions.FLAGS.CREATE_INSTANT_INVITE,
-                val: "Create Instant Invite",
+                val: "CREATE_INSTANT_INVITE",
             },
-            { perm: Permissions.FLAGS.KICK_MEMBERS, val: "Kick Members" },
-            { perm: Permissions.FLAGS.BAN_MEMBERS, val: "Ban Members" },
-            { perm: Permissions.FLAGS.MANAGE_CHANNELS, val: "Manage Channels" },
-            { perm: Permissions.FLAGS.MANAGE_GUILD, val: "Manage Server" },
-            { perm: Permissions.FLAGS.ADD_REACTIONS, val: "Add Reactions" },
-            { perm: Permissions.FLAGS.VIEW_AUDIT_LOG, val: "View Audit Log" },
+            { perm: Permissions.FLAGS.KICK_MEMBERS, val: "KICK_MEMBERS" },
+            { perm: Permissions.FLAGS.BAN_MEMBERS, val: "BAN_MEMBERS" },
+            { perm: Permissions.FLAGS.MANAGE_CHANNELS, val: "MANAGE_CHANNELS" },
+            { perm: Permissions.FLAGS.MANAGE_GUILD, val: "MANAGE_GUILD" },
+            { perm: Permissions.FLAGS.ADD_REACTIONS, val: "ADD_REACTIONS" },
+            { perm: Permissions.FLAGS.VIEW_AUDIT_LOG, val: "VIEW_AUDIT_LOG" },
             {
                 perm: Permissions.FLAGS.PRIORITY_SPEAKER,
-                val: "Priority Speaker",
+                val: "PRIORITY_SPEAKER",
             },
-            { perm: Permissions.FLAGS.STREAM, val: "Stream" },
-            { perm: Permissions.FLAGS.VIEW_CHANNEL, val: "View Channels" },
-            { perm: Permissions.FLAGS.SEND_MESSAGES, val: "Send Messages" },
+            { perm: Permissions.FLAGS.STREAM, val: "STREAM" },
+            { perm: Permissions.FLAGS.VIEW_CHANNEL, val: "VIEW_CHANNEL" },
+            { perm: Permissions.FLAGS.SEND_MESSAGES, val: "SEND_MESSAGES" },
             {
                 perm: Permissions.FLAGS.SEND_TTS_MESSAGES,
-                val: "Send TTS Messages",
+                val: "SEND_TTS_MESSAGES",
             },
-            { perm: Permissions.FLAGS.MANAGE_MESSAGES, val: "Manage Messages" },
-            { perm: Permissions.FLAGS.EMBED_LINKS, val: "Embed Links" },
-            { perm: Permissions.FLAGS.ATTACH_FILES, val: "Attach Files" },
+            { perm: Permissions.FLAGS.MANAGE_MESSAGES, val: "MANAGE_MESSAGES" },
+            { perm: Permissions.FLAGS.EMBED_LINKS, val: "EMBED_LINKS" },
+            { perm: Permissions.FLAGS.ATTACH_FILES, val: "ATTACH_FILES" },
             {
                 perm: Permissions.FLAGS.READ_MESSAGE_HISTORY,
-                val: "Read Message History",
+                val: "READ_MESSAGE_HISTORY",
             },
             {
                 perm: Permissions.FLAGS.MENTION_EVERYONE,
-                val: "Mention Everyone",
+                val: "MENTION_EVERYONE",
             },
             {
                 perm: Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
-                val: "Use External Emojis",
+                val: "USE_EXTERNAL_EMOJIS",
             },
             {
                 perm: Permissions.FLAGS.VIEW_GUILD_INSIGHTS,
-                val: "View Server Insights",
+                val: "VIEW_GUILD_INSIGHTS",
             },
-            { perm: Permissions.FLAGS.CONNECT, val: "Connect" },
-            { perm: Permissions.FLAGS.SPEAK, val: "Speak" },
-            { perm: Permissions.FLAGS.MUTE_MEMBERS, val: "Mute Members" },
-            { perm: Permissions.FLAGS.DEAFEN_MEMBERS, val: "Deafen Members" },
-            { perm: Permissions.FLAGS.MOVE_MEMBERS, val: "Move Members" },
-            { perm: Permissions.FLAGS.USE_VAD, val: "Use Voice Activity" },
-            { perm: Permissions.FLAGS.CHANGE_NICKNAME, val: "Change Nickname" },
+            { perm: Permissions.FLAGS.CONNECT, val: "CHANGE_NICKNAME" },
+            { perm: Permissions.FLAGS.SPEAK, val: "SPEAK" },
+            { perm: Permissions.FLAGS.MUTE_MEMBERS, val: "MUTE_MEMBERS" },
+            { perm: Permissions.FLAGS.DEAFEN_MEMBERS, val: "DEAFEN_MEMBERS" },
+            { perm: Permissions.FLAGS.MOVE_MEMBERS, val: "MOVE_MEMBERS" },
+            { perm: Permissions.FLAGS.USE_VAD, val: "USE_VAD" },
+            { perm: Permissions.FLAGS.CHANGE_NICKNAME, val: "CHANGE_NICKNAME" },
             {
                 perm: Permissions.FLAGS.MANAGE_NICKNAMES,
-                val: "Manage Nicknames",
+                val: "MANAGE_NICKNAMES",
             },
-            { perm: Permissions.FLAGS.MANAGE_ROLES, val: "Manage Roles" },
-            { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "Manage Webhooks" },
-            { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "Manage Emojis" },
+            { perm: Permissions.FLAGS.MANAGE_ROLES, val: "MANAGE_ROLES" },
+            { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "MANAGE_WEBHOOKS" },
+            { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "MANAGE_EMOJIS" },
             {
                 perm: Permissions.FLAGS.USE_APPLICATION_COMMANDS,
-                val: "Use Slash commands",
+                val: "USE_APPLICATION_COMMANDS",
             },
             {
                 perm: Permissions.FLAGS.REQUEST_TO_SPEAK,
-                val: "Request to Speak",
+                val: "REQUEST_TO_SPEAK",
             },
         ];
         this.site = "https://welcome-bot.github.io/";
@@ -122,9 +141,6 @@ class WelcomeBot extends Client {
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
-
-        const commandFolder = __dirname + "/commands";
-        this.loadCommands(commandFolder);
     }
 
     loadCommand(commandPath, commandName) {
@@ -145,28 +161,6 @@ class WelcomeBot extends Client {
             ".js",
             ""
         )}`);
-        let validated = true;
-        if (command.name !== command.name.toLowerCase()) {
-            throw new TypeError("Command names must be lower case only");
-            validated = false;
-        }
-        if (command.subcommands) {
-            for (var i = 0; i < command.subcommands.length; i++) {
-                if (
-                    command.subcommands[i].name &&
-                    !command.subcommands[i].desc
-                ) {
-                    throw new TypeError(
-                        "If subcommands are provided then their description should also be provided\nDescription not provided for " +
-                            command.subcommands[i].name
-                    );
-                    validated = false;
-                }
-            }
-        }
-        if (!validated) {
-            process.exit();
-        }
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
@@ -177,10 +171,11 @@ class WelcomeBot extends Client {
             ...defaultOpts,
             ...command,
         };
+        command = new Command(this, command);
         if (!command.disabled) {
-            this.commands.set(command.name, command);
+            this.commands.enabled.set(command.name, command);
         } else {
-            this.disabled.set(command.name, command);
+            this.commands.disabled.set(command.name, command);
         }
         return command;
     }

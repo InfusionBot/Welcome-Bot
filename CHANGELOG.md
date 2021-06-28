@@ -8,6 +8,24 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.8.0]
+
+> **Released:** `TBA`
+
+### New features
+
+- New command `disable` - Disable welcome / goodBye logs
+- Support translation
+- New command `lang` - Change language
+- New command `hug` - Hug a user
+- New command `cuddle` - Cuddle with a user
+- New command `kiss` - Kiss a user
+- You can get a list of all commands in a category using help command
+
+### Changes
+
+- `enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs
+
 ## [v1.7.8]
 
 > **Released:** `TBA`

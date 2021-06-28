@@ -39,7 +39,7 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("DISCORD_BOATS_token is not set", "warn");
+        client.logger.log("DISCORD_BOATS_token is not set", "warn");
     }
 
     if (process.env.DELAPI_token) {
@@ -58,7 +58,7 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("DELAPI_token is not set", "warn");
+        client.logger.log("DELAPI_token is not set", "warn");
     }
 
     if (process.env.DISCORD_BOTS_token) {
@@ -77,7 +77,7 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("DISCORD_BOTS_token is not set", "warn");
+        client.logger.log("DISCORD_BOTS_token is not set", "warn");
     }
 
     if (process.env.DISCORDLIST_token) {
@@ -96,6 +96,6 @@ module.exports = function (client) {
         };
         sendReq(data, options);
     } else {
-        console.log("DISCORDLIST_token is not set", "warn");
+        client.logger.log("DISCORDLIST_token is not set", "warn");
     }
 };

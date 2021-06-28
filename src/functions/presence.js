@@ -5,7 +5,7 @@
  */
 module.exports = function (client) {
     const servers = client.guilds.cache.size;
-    const commands = client.commands.size;
+    const commands = client.commands.enabled.size;
     const users = client.users.cache.size;
     const presences = [
         {

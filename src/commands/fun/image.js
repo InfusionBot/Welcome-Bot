@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "image",
-    aliases: ["randomImage"],
+    aliases: ["random-image"],
     description: "Generate a random pokemon image",
     cooldown: 10,
     category: "Fun",

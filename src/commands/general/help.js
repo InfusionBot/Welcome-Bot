@@ -8,14 +8,24 @@ module.exports = {
     name: "help",
     aliases: ["commands", "cmd"],
     description: "List all of my commands or info about a specific command.",
-    usage: "(command name)",
-    bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
+    usage: "(command name / category)",
+    //bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
     category: "General",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
-        const { commands } = message.client;
+        if (message.channel.type !== "dm" && !args.length) {
+            const botPerms = message.guild.me.permissionsIn(message.channel);
+            if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
+                message.reply(
+                    `${t("errors:note")}: ${t("errors:iDontHavePermission", {
+                        permission: t("permissions:MANAGE_MESSAGES"),
+                    })}, ${t("errors:pagination")}`
+                );
+        }
+        const commands = message.client.commands.enabled;
+        const { categories } = message.client;
         const emojiList = {
             first: "⏮",
             back: "⏪",
@@ -27,40 +37,47 @@ module.exports = {
         let pages = [new MessageEmbed()];
         let timeout = 200000; //20 secs timeout
 
-        pages[0].setTitle("Welcome Bot help");
+        for (var i = 0; i < pages.length; i++) {
+            pages[i].setTitle(t("cmds:help.bot-help"));
+        }
         if (!args.length) {
             let p;
-            message.client.categories.forEach((cat) => {
+            categories.forEach((cat) => {
                 p = pages.length;
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
-                pages[p].setTitle(`Welcome Bot help - ${cat.name} Category`);
-                message.client.commands.forEach((command) => {
+                pages[p].setTitle(
+                    `${t("cmds:help.bot-help")} - ${t(
+                        `categories:${cat.key}`
+                    )} Category`
+                );
+                message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
-                        commandsCat.push(`- ${command.name}`);
+                        commandsCat.push(
+                            `• ${command.name} - ${t(
+                                `cmds:${command.name}.cmdDesc`
+                            )}`
+                        );
                 });
                 pages[p].addField(
-                    `${cat.emoji} Commands in this category`,
-                    `${commandsCat.join("\n")}`
+                    `${cat.emoji} ${t("cmds:help.in-cat")}`,
+                    `\`\`\`\n${commandsCat.join("\n")}\n\`\`\``
                 );
             });
             pages[0].setDescription(
                 "List of all commands available in the bot"
             );
             pages[0].addField("No of Commands:", `${commands.size}`);
-            pages[0].addField(
-                "No of categories:",
-                `${message.client.categories.length}`
-            );
+            pages[0].addField("No of categories:", `${categories.length}`);
             pages[0].addField(
                 "Get help for specific command:",
-                `Send \`${guildDB.prefix}help [command name]\` to get info on a specific command!`
+                `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
             );
             pages[0].addField(
                 "What is Cooldown:",
                 "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
             );
-            pages[0].addField("Want list of commands?", "Go to the next page!");
+            pages[0].addField("Commands", `${t("cmds:help.cmds")}`);
 
             const curPage = await message.channel.send({
                 embeds: [
@@ -125,58 +142,83 @@ module.exports = {
         const command =
             commands.get(name) ||
             commands.find((c) => c.aliases && c.aliases.includes(name));
+        const category = categories.find((c) => c.name.toLowerCase() === name);
 
-        if (!command) {
-            return message.channel.send(
-                `That is not a valid command, ${message.author}`
-            );
+        if (!command && !category) {
+            if (!command)
+                return message.channel.send(
+                    `${t("errors:commandNotFound")}, ${message.author}`
+                );
+            if (!category)
+                return message.channel.send(
+                    `${t("errors:categoryNotFound")}, ${message.author}`
+                );
         }
 
-        pages[0].setDescription(`Help for ${command.name} command`);
-        pages[0].addField("Command Name:", command.name);
+        if (command) {
+            pages[0].setDescription(
+                t(`cmds:help.cmdHelp`, { cmd: command.name })
+            );
+            pages[0].addField("Command Name:", command.name);
 
-        if (command.description) {
-            let desc = command.description;
+            let desc = t(`cmds:${command.name}.cmdDesc`);
             if (command.bot_perms) {
                 desc += `\nThe bot needs ${beautifyPerms(
                     command.bot_perms,
-                    message.client.allPerms
+                    message.client.allPerms,
+                    t
                 ).join(", ")} permission(s) to execute this command.`;
             }
             pages[0].addField("Description:", desc);
-        }
-        if (command.aliases && command.aliases !== [])
-            pages[0].addField("Aliases: ", command.aliases.join(", "));
-        if (command.permissions)
-            pages[0].addField(
-                "Permissions:",
-                `You need ${beautifyPerms(
-                    command.permissions,
-                    message.client.allPerms
-                ).join(", ")} permission(s) to execute this command.`
-            );
-        if (command.subcommands) {
-            let subcommands = [];
-            for (var i = 0; i < command.subcommands.length; i++) {
-                subcommands.push(
-                    `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
+            if (command.aliases)
+                pages[0].addField("Aliases: ", command.aliases.join(", "));
+            if (command.permissions)
+                pages[0].addField(
+                    "Permissions:",
+                    `You need ${beautifyPerms(
+                        command.permissions,
+                        message.client.allPerms,
+                        t
+                    ).join(", ")} permission(s) to execute this command.`
                 );
+            if (command.subcommands) {
+                let subcommands = [];
+                for (var i = 0; i < command.subcommands.length; i++) {
+                    subcommands.push(
+                        `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
+                    );
+                }
+                pages[0].addField("Subcommands:", subcommands.join(`\n`));
             }
-            pages[0].addField("Subcommands:", subcommands.join(`\n`));
-        }
-        if (command.usage)
-            pages[0].addField(
-                "Usage:",
-                `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                    `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
-            );
-        if (command.ownerOnly)
-            pages[0].addField(
-                "Can be executed by:",
-                "Welcome-Bot owner **ONLY**"
-            );
+            if (command.usage)
+                pages[0].addField(
+                    "Usage:",
+                    `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
+                        `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
+                );
+            if (command.ownerOnly)
+                pages[0].addField(
+                    "Can be executed by:",
+                    "Welcome-Bot developers **ONLY**"
+                );
 
-        pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
+            pages[0].addField(
+                "Cooldown:",
+                `${command.cooldown || 3} second(s)`
+            );
+        } else if (category) {
+            let commandsInCat = [];
+            commands.each((cmd) => {
+                if (cmd.category.toLowerCase() === category.name.toLowerCase())
+                    commandsInCat.push(
+                        `${cmd.name} - ${t(`cmds:${cmd.name}.cmdDesc`)}`
+                    );
+            });
+            pages[0].addField(
+                "Commands in this category",
+                `\`\`\`\n• ${commandsInCat.join("\n• ")}\n\`\`\``
+            );
+        }
 
         message.channel.send({ embeds: [pages[0]] });
     },

@@ -1,0 +1,12 @@
+{
+  "setup": "Preparar",
+  "general": "General",
+  "info": "Información",
+  "mod": "Moderación",
+  "misc": "Miscellaneous",
+  "fun": "Diversión",
+  "anime": "Anime",
+  "games": "Juegos",
+  "owner": "Owner Only",
+  "core": "Core"
+}

@@ -24,7 +24,7 @@ Welcome-Bot contains more than **30 commands** in **10 categories**!
 
 
 
-## Setup (5 commands)
+## Setup (7 commands)
 
 ### `channel`
 
@@ -43,16 +43,33 @@ Not providing any arguments will display the current settings.
 - Aliases: `chan`
 - Cooldown: 10
 
+### `disable`
+
+##### Subcommands:
+
+- `welcome` - Disable welcome logs
+- `goodbye` - Disable goodBye logs
+- `show` - Show current settings
+
+##### Cmd info
+
+- Description: Disable welcome / goodbye logs.
+- Usage: [subcommand]
+- Aliases: None
+- Cooldown: 10
+
 ### `enable`
 
 ##### Subcommands:
 
-- None
+- `welcome` - Enable welcome logs
+- `goodbye` - Enable goodBye logs
+- `show` - Show current settings
 
 ##### Cmd info
 
-- Description: Enable/Disable welcome and goodbye logs. Not providing any args will show current settings.
-- Usage: [true / false]
+- Description: Enable welcome / goodbye logs.
+- Usage: [subcommand]
 - Aliases: None
 - Cooldown: 10
 
@@ -68,6 +85,20 @@ Not providing any arguments will display the current settings.
 - Usage: [channel / channel id]
 - Aliases: `getnews`
 - Cooldown: 10
+
+### `lang`
+
+##### Subcommands:
+
+- `list` - List of all languages available
+- `set` - Set language
+
+##### Cmd info
+
+- Description: Change language
+- Usage: (subcommand) (lang)
+- Aliases: `language`, `changelang`, `getlang`
+- Cooldown: 5
 
 ### `message`
 
@@ -134,7 +165,7 @@ Not providing any arguments will display the current settings.
 ##### Cmd info
 
 - Description: List all of my commands or info about a specific command.
-- Usage: (command name)
+- Usage: (command name / category)
 - Aliases: `commands`, `cmd`
 - Cooldown: 5
 
@@ -290,7 +321,20 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 3
 
-## Fun (3 commands)
+## Fun (6 commands)
+
+### `cuddle`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Cuddle a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
 
 ### `figlet`
 
@@ -305,6 +349,19 @@ Not providing any arguments will display the current settings.
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 10
 
+### `hug`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Give a hug to a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
 ### `image`
 
 ##### Subcommands:
@@ -315,8 +372,21 @@ Not providing any arguments will display the current settings.
 
 - Description: Generate a random pokemon image
 - Usage: None
-- Aliases: `randomImage`
+- Aliases: `random-image`
 - Cooldown: 10
+
+### `kiss`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Kiss a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
 
 ### `pokemon`
 
@@ -412,7 +482,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Show the servers list!
 - Usage: None
-- Aliases: `slist`
+- Aliases: `slist`, `serverslist`
 - Cooldown: 10
 
 ## Core (5 commands)

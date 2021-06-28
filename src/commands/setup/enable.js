@@ -6,29 +6,36 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "enable",
-    description:
-        "Enable/Disable welcome and goodbye logs. Not providing any args will show current settings.",
-    args: false,
+    description: "Enable welcome / goodbye logs.",
+    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    subcommand: true,
+    subcommands: [
+        { name: "welcome", desc: "Enable welcome logs" },
+        { name: "goodbye", desc: "Enable goodBye logs" },
+        { name: "show", desc: "Show current settings" },
+    ],
     guildOnly: true,
-    usage: "[true / false]",
+    usage: "[subcommand]",
     cooldown: 10,
     category: "Setup",
     execute(message, args, guildDB) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         args[0] = args[0] ? args[0] : "";
         switch (args[0]) {
-            case "true":
+            case "welcome":
                 updateGuild(message.guild.id, "enableWelcome", true);
                 message.react("👍");
                 break;
-            case "false":
-                updateGuild(message.guild.id, "enableWelcome", false);
+            case "goodbye":
+                updateGuild(message.guild.id, "enableGoodbye", true);
                 message.react("👍");
                 break;
             default:
                 return message.channel.send(
-                    `Welcome and goodBye logs are ${
+                    `Welcome logs are ${
                         guildDB.enableWelcome ? "enabled" : "disabled"
+                    }\nAnd goodBye logs are ${
+                        guildDB.enableGoodbye ? "enabled" : "disabled"
                     }`
                 );
                 break;

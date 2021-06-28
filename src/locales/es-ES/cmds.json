@@ -1,0 +1,129 @@
+{
+  "waifu": {
+    "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
+  },
+  "botperms": {
+    "cmdDesc": "List of permissions given to bot"
+  },
+  "invite": {
+    "cmdDesc": "Get Invite link for the bot"
+  },
+  "lib": {
+    "cmdDesc": "Library used to build Welcome-Bot"
+  },
+  "ping": {
+    "cmdDesc": "Ping the bot"
+  },
+  "support": {
+    "cmdDesc": "Get Support for Welcome-Bot"
+  },
+  "uptime": {
+    "cmdDesc": "Get uptime of the bot"
+  },
+  "website": {
+    "cmdDesc": "Link to Welcome-Bot's website"
+  },
+  "figlet": {
+    "cmdDesc": "Implement the FIGfont spec in JS"
+  },
+  "hug": {
+    "cmdDesc": "Give a hug to a user",
+    "success": "{{author}} gives a hug to {{user}}",
+    "errorYourself": "You can't hug yourself."
+  },
+  "cuddle": {
+    "cmdDesc": "Cuddle with a user",
+    "success": "{{author}} just cuddled to {{user}}",
+    "errorYourself": "You can't cuddle yourself."
+  },
+  "kiss": {
+    "cmdDesc": "Kiss a user",
+    "success": "{{author}} just kissed to {{user}}",
+    "errorYourself": "You can't kiss yourself!"
+  },
+  "image": {
+    "cmdDesc": "Generate a random pokemon image"
+  },
+  "pokemon": {
+    "cmdDesc": "Get a pokemon image"
+  },
+  "coinflip": {
+    "cmdDesc": "Flips a coin."
+  },
+  "help": {
+    "cmdDesc": "List all commands or get info for a specific command.",
+    "cmdHelp": "Ayuda para el comando {{cmd}}",
+    "cmds": "Use arrows ⏪⏩",
+    "bot-help": "Welcome-Bot help",
+    "in-cat": "Commands in this category"
+  },
+  "perms": {
+    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
+  },
+  "botinfo": {
+    "cmdDesc": "Bot information"
+  },
+  "stats": {
+    "cmdDesc": "Your server statistics"
+  },
+  "user": {
+    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
+  },
+  "version": {
+    "cmdDesc": "Information on a version"
+  },
+  "qrcode": {
+    "cmdDesc": "Generate/Read a qrcode"
+  },
+  "test": {
+    "cmdDesc": "Test welcome message"
+  },
+  "ban": {
+    "cmdDesc": "Ban a user."
+  },
+  "kick": {
+    "cmdDesc": "Kick a user."
+  },
+  "prune": {
+    "cmdDesc": "Prune messages."
+  },
+  "unban": {
+    "cmdDesc": "Unban a user."
+  },
+  "eval": {
+    "cmdDesc": "Execute a statement"
+  },
+  "reload": {
+    "cmdDesc": "Reloads a command"
+  },
+  "restart": {
+    "cmdDesc": "Restart the bot"
+  },
+  "servers-list": {
+    "cmdDesc": "Show the servers list!"
+  },
+  "channel": {
+    "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings."
+  },
+  "disable": {
+    "cmdDesc": "Disable welcome and goodbye logs."
+  },
+  "enable": {
+    "cmdDesc": "Enable welcome and goodbye logs."
+  },
+  "follow": {
+    "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
+  },
+  "lang": {
+    "cmdDesc": "Change language",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
+    "success": "Language set to {{lang}}",
+    "show": "Language is currently set to {{lang}}"
+  },
+  "message": {
+    "cmdDesc": "Manage welcome message for this server"
+  },
+  "prefix": {
+    "cmdDesc": "Manage prefix for this server"
+  }
+}

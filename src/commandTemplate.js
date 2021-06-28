@@ -22,7 +22,7 @@ module.exports = {
     cooldown: 10,
     ownerOnly: false,
     category: "Sample",
-    execute(message, args, guildDB) {
+    execute(message, args, guildDB, t) {
         return;
     },
 };

@@ -6,7 +6,8 @@
 
 module.exports = (client) => {
     const fs = require("fs");
-    const { commands, categories } = client;
+    const { categories } = client;
+    const commands = client.commands.enabled;
     let text = fs.readFileSync(__dirname + "/cmdTemplate.md", "utf8");
     let toc = "# Table of contents\n\n"; //Table of contents
     categories.forEach((cat) => {
