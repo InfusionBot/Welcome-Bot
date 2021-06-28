@@ -21,7 +21,11 @@ module.exports = {
     category: "Setup",
     execute(message, args, guildDB, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
-        const list = require(`${message.client.localeDir ? message.client.localeDir : __dirname + "/../../translations"}/${guildDB.lang}/languages.json`);
+        const list = require(`${
+            message.client.localeDir
+                ? message.client.localeDir
+                : __dirname + "/../../translations"
+        }/${guildDB.lang}/languages.json`);
         let str = "";
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
