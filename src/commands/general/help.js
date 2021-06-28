@@ -142,7 +142,9 @@ module.exports = {
         const command =
             commands.get(name) ||
             commands.find((c) => c.aliases && c.aliases.includes(name));
-        const category = categories.find((c) => c.name.toLowerCase() === name).name;
+        const category = categories.find(
+            (c) => c.name.toLowerCase() === name
+        ).name;
 
         if (!command && !category) {
             if (!command)
@@ -210,9 +212,14 @@ module.exports = {
             let commandsInCat = [];
             commands.each((cmd) => {
                 if (cmd.category.toLowerCase() === category.toLowerCase())
-                    commandsInCat.push(`${cmd.name} - ${t(`cmds:${cmd.name}.cmdDesc`)}`);
+                    commandsInCat.push(
+                        `${cmd.name} - ${t(`cmds:${cmd.name}.cmdDesc`)}`
+                    );
             });
-            pages[0].addField("\u200b", `\`\`\`\n• ${commandsInCat.join("\n• ")}\n\`\`\``);
+            pages[0].addField(
+                "\u200b",
+                `\`\`\`\n• ${commandsInCat.join("\n• ")}\n\`\`\``
+            );
         }
 
         message.channel.send({ embeds: [pages[0]] });
