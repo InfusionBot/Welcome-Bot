@@ -33,7 +33,6 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 "/welcome-bot-translations"
             )}`
         );
-        dirPath = dirPath.replace("/locales", "/translations");
     }
     let dir;
     if (fs.existsSync(dirPath)) {
@@ -63,10 +62,10 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
             }
         );
         client.i18next = i18next;
+        client.localeDir = dirPath;
         return true;
     } catch (e) {
         client.logger.log(JSON.stringify(e, null, 4), "error");
     }
-    client.localeDir = dirPath;
     return false;
 };
