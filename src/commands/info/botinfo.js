@@ -35,8 +35,9 @@ module.exports = {
             )
             .addField(
                 "Bot lists:",
-                `[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n` +
-                    `[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)`
+                "[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
+                    "[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
+                    "[dblist.xyz](https://dblist.xyz/bot/848459799783669790)"
             )
             .addField(
                 "Other links:",
