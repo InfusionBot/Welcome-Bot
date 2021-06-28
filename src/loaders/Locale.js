@@ -26,7 +26,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 if (err) throw err;
             }
         );
-        dirPath = dirPath.replace("/locales", "/translations") + "/locales";
+        dirPath = dirPath.replace("/locales", "/translations");
     } else {
         client.logger.log(
             `Looks like locales not downloaded, can't find ${dirPath.replace(
@@ -53,6 +53,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 backend: {
                     loadPath: `${dirPath}/{{lng}}/{{ns}}.json`,
                 },
+                debug: true,
                 interpolation: {
                     escapeValue: false,
                 },

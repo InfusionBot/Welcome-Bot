@@ -163,7 +163,7 @@ module.exports = async (message, guildDB) => {
                 embed
                     .setTitle(translate("errors:generic"))
                     .addField(
-                        `Please report this to ${message.client.ownerTags.join(
+                        `Please report this to ${message.client.ownersTags.join(
                             " or "
                         )}`,
                         "\u200b"
