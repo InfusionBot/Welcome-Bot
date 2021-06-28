@@ -161,7 +161,7 @@ module.exports = async (message, guildDB) => {
             } catch (err) {
                 console.error(err);
                 embed
-                    .setTitle(t("errors:generic"))
+                    .setTitle(translate("errors:generic"))
                     .addField(
                         `Please report this to <@!?${message.client.ownerIDs.join(
                             "> OR <@!?"

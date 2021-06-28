@@ -60,5 +60,6 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
     } catch (e) {
         client.logger.log(JSON.stringify(e, null, 4), "error");
     }
+    client.localeDir = dirPath;
     return false;
 };
