@@ -45,7 +45,9 @@ module.exports = {
                 let commandsCat = [];
                 pages[p] = new MessageEmbed();
                 pages[p].setTitle(
-                    `${t("cmds:help.bot-help")} - ${t(`categories:${cat.key}`)} Category`
+                    `${t("cmds:help.bot-help")} - ${t(
+                        `categories:${cat.key}`
+                    )} Category`
                 );
                 message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
@@ -64,10 +66,7 @@ module.exports = {
                 "List of all commands available in the bot"
             );
             pages[0].addField("No of Commands:", `${commands.size}`);
-            pages[0].addField(
-                "No of categories:",
-                `${categories.length}`
-            );
+            pages[0].addField("No of categories:", `${categories.length}`);
             pages[0].addField(
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
@@ -141,7 +140,7 @@ module.exports = {
         const command =
             commands.get(name) ||
             commands.find((c) => c.aliases && c.aliases.includes(name));
-        const category = categories.find(c => c.name.toLowerCase() === name);
+        const category = categories.find((c) => c.name.toLowerCase() === name);
 
         if (!command && !category) {
             if (!command)
