@@ -156,51 +156,56 @@ module.exports = {
         }
 
         if (command) {
-        pages[0].setDescription(t(`cmds:help.cmdHelp`, { cmd: command.name }));
-        pages[0].addField("Command Name:", command.name);
+            pages[0].setDescription(
+                t(`cmds:help.cmdHelp`, { cmd: command.name })
+            );
+            pages[0].addField("Command Name:", command.name);
 
-        let desc = t(`cmds:${command.name}.cmdDesc`);
-        if (command.bot_perms) {
-            desc += `\nThe bot needs ${beautifyPerms(
-                command.bot_perms,
-                message.client.allPerms,
-                t
-            ).join(", ")} permission(s) to execute this command.`;
-        }
-        pages[0].addField("Description:", desc);
-        if (command.aliases)
-            pages[0].addField("Aliases: ", command.aliases.join(", "));
-        if (command.permissions)
-            pages[0].addField(
-                "Permissions:",
-                `You need ${beautifyPerms(
-                    command.permissions,
+            let desc = t(`cmds:${command.name}.cmdDesc`);
+            if (command.bot_perms) {
+                desc += `\nThe bot needs ${beautifyPerms(
+                    command.bot_perms,
                     message.client.allPerms,
                     t
-                ).join(", ")} permission(s) to execute this command.`
-            );
-        if (command.subcommands) {
-            let subcommands = [];
-            for (var i = 0; i < command.subcommands.length; i++) {
-                subcommands.push(
-                    `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
-                );
+                ).join(", ")} permission(s) to execute this command.`;
             }
-            pages[0].addField("Subcommands:", subcommands.join(`\n`));
-        }
-        if (command.usage)
-            pages[0].addField(
-                "Usage:",
-                `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                    `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
-            );
-        if (command.ownerOnly)
-            pages[0].addField(
-                "Can be executed by:",
-                "Welcome-Bot developers **ONLY**"
-            );
+            pages[0].addField("Description:", desc);
+            if (command.aliases)
+                pages[0].addField("Aliases: ", command.aliases.join(", "));
+            if (command.permissions)
+                pages[0].addField(
+                    "Permissions:",
+                    `You need ${beautifyPerms(
+                        command.permissions,
+                        message.client.allPerms,
+                        t
+                    ).join(", ")} permission(s) to execute this command.`
+                );
+            if (command.subcommands) {
+                let subcommands = [];
+                for (var i = 0; i < command.subcommands.length; i++) {
+                    subcommands.push(
+                        `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
+                    );
+                }
+                pages[0].addField("Subcommands:", subcommands.join(`\n`));
+            }
+            if (command.usage)
+                pages[0].addField(
+                    "Usage:",
+                    `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
+                        `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
+                );
+            if (command.ownerOnly)
+                pages[0].addField(
+                    "Can be executed by:",
+                    "Welcome-Bot developers **ONLY**"
+                );
 
-        pages[0].addField("Cooldown:", `${command.cooldown || 3} second(s)`);
+            pages[0].addField(
+                "Cooldown:",
+                `${command.cooldown || 3} second(s)`
+            );
         } else if (category) {
             let commandsInCat = [];
             commands.each((cmd) => {
