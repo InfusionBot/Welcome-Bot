@@ -11,13 +11,23 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
     ).then((res) => {
         res.body.pipe(unzip.Extract({ path: dirPath.replace("/locales", "") }));
     });
-    if (fs.existsSync(dirPath.replace("/locales", "/welcome-bot-translations"))) {
-        fs.renameSync(dirPath.replace("/locales", "/welcome-bot-translations"), dirPath.replace("/locales", "/translations"), err => {
-            if (err)
-                throw err;
-        });
+    if (
+        fs.existsSync(dirPath.replace("/locales", "/welcome-bot-translations"))
+    ) {
+        fs.renameSync(
+            dirPath.replace("/locales", "/welcome-bot-translations"),
+            dirPath.replace("/locales", "/translations"),
+            (err) => {
+                if (err) throw err;
+            }
+        );
     } else {
-        client.logger.log(`Looks like locales not downloaded, can't find ${dirPath.replace("/locales", "/welcome-bot-translations")}`);
+        client.logger.log(
+            `Looks like locales not downloaded, can't find ${dirPath.replace(
+                "/locales",
+                "/welcome-bot-translations"
+            )}`
+        );
         dirPath = dirPath.replace("/locales", "/translations");
     }
     let dir;
