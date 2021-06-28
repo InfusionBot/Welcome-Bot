@@ -39,7 +39,7 @@ module.exports = {
         }
         let embed = new MessageEmbed()
             .setTitle(
-                t("cmds:hug.hug", {
+                t("cmds:hug.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })
