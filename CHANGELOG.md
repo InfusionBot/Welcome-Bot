@@ -19,6 +19,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `hug` - Hug a user
 - New command `cuddle` - Cuddle with a user
 - New command `kiss` - Kiss a user
+- You can get a list of all commands in a category using help command
 
 ### Changes
 
