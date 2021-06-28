@@ -54,7 +54,7 @@ module.exports = {
                 message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
                         commandsCat.push(
-                            `- ${command.name} - ${t(
+                            `• ${command.name} - ${t(
                                 `cmds:${command.name}.cmdDesc`
                             )}`
                         );
@@ -146,7 +146,7 @@ module.exports = {
             (c) => c.name.toLowerCase() === name
         );
 
-        if (!command && !category) {
+        if (!command || !category) {
             if (!command)
                 return message.channel.send(
                     `${t("errors:commandNotFound")}, ${message.author}`
@@ -217,7 +217,7 @@ module.exports = {
                     );
             });
             pages[0].addField(
-                "\u200b",
+                "Commands in this category",
                 `\`\`\`\n• ${commandsInCat.join("\n• ")}\n\`\`\``
             );
         }
