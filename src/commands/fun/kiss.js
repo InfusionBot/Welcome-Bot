@@ -6,14 +6,14 @@
 const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
-    name: "hug",
-    description: "Give a hug to a user",
+    name: "kiss",
+    description: "Kiss a user",
     args: true,
     usage: "[mention / user id]",
     cooldown: 3,
     category: "Fun",
     async execute(message, args, guildDB, t) {
-        let res = await fetch("https://nekos.life/api/v2/img/hug");
+        let res = await fetch("https://nekos.life/api/v2/img/kiss");
         res = await res.json();
         const { userFromMention } = require("../../functions/get.js");
         let user;
@@ -35,11 +35,11 @@ module.exports = {
             return false;
         }
         if (user.id === message.author.id) {
-            return message.reply(t("cmds:hug.errorYourself"));
+            return message.reply(t("cmds:kiss.errorYourself"));
         }
         let embed = new MessageEmbed()
             .setTitle(
-                t("cmds:hug.success", {
+                t("cmds:kiss.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })

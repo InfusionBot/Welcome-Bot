@@ -91,11 +91,12 @@ Not providing any arguments will display the current settings.
 ##### Subcommands:
 
 - `list` - List of all languages available
+- `set` - Set language
 
 ##### Cmd info
 
 - Description: Change language
-- Usage: (lang)
+- Usage: (subcommand) (lang)
 - Aliases: `language`, `changelang`, `getlang`
 - Cooldown: 5
 
@@ -164,7 +165,7 @@ Not providing any arguments will display the current settings.
 ##### Cmd info
 
 - Description: List all of my commands or info about a specific command.
-- Usage: (command name)
+- Usage: (command name / category)
 - Aliases: `commands`, `cmd`
 - Cooldown: 5
 
@@ -320,7 +321,20 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 3
 
-## Fun (3 commands)
+## Fun (6 commands)
+
+### `cuddle`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Cuddle a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
 
 ### `figlet`
 
@@ -335,6 +349,19 @@ Not providing any arguments will display the current settings.
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 10
 
+### `hug`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Give a hug to a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
 ### `image`
 
 ##### Subcommands:
@@ -345,8 +372,21 @@ Not providing any arguments will display the current settings.
 
 - Description: Generate a random pokemon image
 - Usage: None
-- Aliases: `randomImage`
+- Aliases: `random-image`
 - Cooldown: 10
+
+### `kiss`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Kiss a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
 
 ### `pokemon`
 
