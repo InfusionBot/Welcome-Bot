@@ -144,7 +144,7 @@ module.exports = {
             commands.find((c) => c.aliases && c.aliases.includes(name));
         const category = categories.find(
             (c) => c.name.toLowerCase() === name
-        ).name;
+        );
 
         if (!command && !category) {
             if (!command)
@@ -211,7 +211,7 @@ module.exports = {
         } else if (category) {
             let commandsInCat = [];
             commands.each((cmd) => {
-                if (cmd.category.toLowerCase() === category.toLowerCase())
+                if (cmd.category.toLowerCase() === category.name.toLowerCase())
                     commandsInCat.push(
                         `${cmd.name} - ${t(`cmds:${cmd.name}.cmdDesc`)}`
                     );
