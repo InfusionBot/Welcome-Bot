@@ -28,7 +28,10 @@ module.exports = {
             await message.guild.members.unban(id);
         } catch (err) {
             if (!err.toString().includes("Unknown Ban")) console.error(err);
-            else return message.reply("Looks like that person is not banned at all in this server. Double check the person's id!");
+            else
+                return message.reply(
+                    "Looks like that person is not banned at all in this server. Double check the person's id!"
+                );
             return message.channel.send(`Failed to unban **${id}**`);
         }
 
