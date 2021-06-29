@@ -9,7 +9,7 @@ module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
     if (!guildDB.enableWelcome) return;
     let channel;
-    if (!isNaN(guildDB.channel)) {
+    if (isNaN(guildDB.channel)) {
         channel = member.guild.channels.cache.find(
             (ch) => ch.name === guildDB.channel
         );
