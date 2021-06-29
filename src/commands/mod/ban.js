@@ -16,7 +16,7 @@ module.exports = {
     cooldown: 5,
     usage: "[@user] (reason)",
     category: "Moderation",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const { userFromMention } = require("../../functions/get.js");
         let channel;
         if (args.length < 1) {
@@ -35,7 +35,7 @@ module.exports = {
         if (!member) {
             member = await message.guild.members.fetch(user.id);
             if (!member)
-                return message.reply("That user was not found in this server");
+                return message.reply(t("errors:userNotFound"));
         }
         if (user.id === message.client.user.id)
             return message.reply(

@@ -9,6 +9,7 @@ const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
+    const client = message.client;
     const prefixes = [
         message.client.defaultPrefix,
         guildDB.prefix,
@@ -153,6 +154,8 @@ module.exports = async (message, guildDB) => {
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
+        if (client.debug) client.logger.log(`Starting to execute cmd: ${command.name}`);
+        message.channel.startTyping();
         if (command.catchError) {
             try {
                 message.channel.startTyping();
@@ -171,7 +174,11 @@ module.exports = async (message, guildDB) => {
                 message.reply({ embeds: [embed] });
                 return;
             }
+        } else {
+            command.execute(message, args, guildDB, translate);
         }
+        message.channel.stopTyping(true);
+        if (client.debug) client.logger.log(`Finished executing cmd: ${command.name}`);
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         //message.reply(errMsg);
     }
