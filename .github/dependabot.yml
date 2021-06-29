@@ -22,6 +22,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "i18next"
     labels:
       - "Updates: github action"
       - "Updates: npm deps"
