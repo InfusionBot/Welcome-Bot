@@ -53,13 +53,13 @@ module.exports = {
         const reason = args.slice(1).join(" ") || "Not specified";
         try {
             await message.guild.members.ban(user, { reason });
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
             return message.channel.send(`Failed to ban **${user.tag}**`);
         }
 
         if (guildDB.modLogChan) {
-            channel = member.guild.channels.cache.find(
+            channel = message.guild.channels.cache.find(
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {
