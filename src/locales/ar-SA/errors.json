@@ -1,6 +1,6 @@
 {
   "generic": "حدث خطأ!",
-  "guildOnly": "This can only be done in servers.",
+  "guildOnly": "هذا يمكن أن يتم فقط في الخوادم.",
   "pagination": "Pagination won't work fully.",
   "note": "Please note that",
   "developerOnly": "Only the bot developers can execute that command.",
@@ -18,5 +18,5 @@
   "youDontHavePermission": "You're missing the following permission in that channel: {{permission}}",
   "iDontHavePermission": "I'm missing the following permission in that channel: {{permission}}",
   "channelDoesntExist": "That channel doesn't exist or I couldn't find it.",
-  "userNotFound": "An error occurred while trying to find that user."
+  "userNotFound": "حدث خطأ أثناء محاولة العثور على هذا المستخدم."
 }
