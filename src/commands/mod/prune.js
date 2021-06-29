@@ -46,9 +46,8 @@ module.exports = {
                 (m) => m.content.indexOf(args[0]) !== -1
             );
         }
-        message.delete();
         if (!isNaN(parseInt(args[0]))) {
-            const amount = parseInt(args[0] + 1);
+            const amount = parseInt(args[0]) + 1;
             if (isNaN(amount)) {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
@@ -65,6 +64,7 @@ module.exports = {
             });
         } else {
             if (messages) {
+                message.delete();
                 message.channel.bulkDelete(messages, true).catch((err) => {
                     console.error(err);
                     message.channel.send(errMsg);
