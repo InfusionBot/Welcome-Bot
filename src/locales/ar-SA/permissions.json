@@ -1,5 +1,5 @@
 {
-  "ADMINISTRATOR": "مدير النظام",
+  "ADMINISTRATOR": "Administrator",
   "CREATE_INSTANT_INVITE": "Create Instant Invite",
   "KICK_MEMBERS": "Kick Members",
   "BAN_MEMBERS": "Ban Members",
@@ -11,7 +11,7 @@
   "STREAM": "Stream",
   "VIEW_CHANNEL": "Read Messages",
   "SEND_MESSAGES": "Send Messages",
-  "SEND_TTS_MESSAGES": "إرسال رسائل الـ TTS",
+  "SEND_TTS_MESSAGES": "Send TTS Messages",
   "MANAGE_MESSAGES": "Manage Messages",
   "EMBED_LINKS": "Embed Links",
   "ATTACH_FILES": "Attach Files",
