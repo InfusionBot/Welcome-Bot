@@ -52,7 +52,7 @@
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command.",
-    "cmdHelp": "Ayuda para el comando {{cmd}}",
+    "cmdHelp": "Help for {{cmd}} command",
     "cmds": "Use arrows ⏪⏩",
     "bot-help": "Welcome-Bot help",
     "in-cat": "Commands in this category"

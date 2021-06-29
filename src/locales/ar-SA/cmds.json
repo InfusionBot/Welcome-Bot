@@ -9,16 +9,16 @@
     "cmdDesc": "Get Invite link for the bot"
   },
   "lib": {
-    "cmdDesc": "Library used to build Welcome-Bot"
+    "cmdDesc": "المكتبة المستخدمة لبناء Welcome-Bot"
   },
   "ping": {
     "cmdDesc": "Ping the bot"
   },
   "support": {
-    "cmdDesc": "Get Support for Welcome-Bot"
+    "cmdDesc": "احصل على دعم لـ Welcome-Bot"
   },
   "uptime": {
-    "cmdDesc": "Get uptime of the bot"
+    "cmdDesc": "احصل على وقت مبكر من البوت"
   },
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
@@ -48,11 +48,11 @@
     "cmdDesc": "Get a pokemon image"
   },
   "coinflip": {
-    "cmdDesc": "Flips a coin."
+    "cmdDesc": "قلب عملة معدنية."
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command.",
-    "cmdHelp": "Help for {{cmd}} command",
+    "cmdHelp": "مساعدة للأمر {{cmd}}",
     "cmds": "Use arrows ⏪⏩",
     "bot-help": "Welcome-Bot help",
     "in-cat": "Commands in this category"
@@ -79,7 +79,7 @@
     "cmdDesc": "Test welcome message"
   },
   "ban": {
-    "cmdDesc": "Ban a user."
+    "cmdDesc": "حظر المستخدم."
   },
   "kick": {
     "cmdDesc": "Kick a user."
@@ -94,10 +94,10 @@
     "cmdDesc": "Execute a statement"
   },
   "reload": {
-    "cmdDesc": "Reloads a command"
+    "cmdDesc": "إعادة تحميل أمر"
   },
   "restart": {
-    "cmdDesc": "Restart the bot"
+    "cmdDesc": "إعادة تشغيل البوت"
   },
   "servers-list": {
     "cmdDesc": "Show the servers list!"
@@ -115,10 +115,10 @@
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
   },
   "lang": {
-    "cmdDesc": "Change language",
-    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language set to {{lang}}",
-    "show": "Language is currently set to {{lang}}"
+    "cmdDesc": "تغيير اللغة",
+    "invalid": "لغة غير صالحة، أرسل {{cmd}} للحصول على قائمة بلديات متاحة.",
+    "success": "تم تحديد اللغة إلى {{lang}}",
+    "show": "لقد تم تعيين اللغة إلى {{lang}}"
   },
   "message": {
     "cmdDesc": "Manage welcome message for this server"
