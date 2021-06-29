@@ -48,7 +48,7 @@ module.exports = {
         }
         message.delete();
         if (!isNaN(parseInt(args[0]))) {
-            const amount = parseInt(args[0]);
+            const amount = parseInt(args[0] + 1);
             if (isNaN(amount)) {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
