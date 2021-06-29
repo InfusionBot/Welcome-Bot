@@ -79,7 +79,7 @@
     "cmdDesc": "Test welcome message"
   },
   "ban": {
-    "cmdDesc": "Ban a user."
+    "cmdDesc": "حظر المستخدم."
   },
   "kick": {
     "cmdDesc": "Kick a user."
