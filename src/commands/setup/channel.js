@@ -30,6 +30,7 @@ module.exports = {
                 if (args[1]) {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         args[1] = channelIdFromMention(args[1]);
+                        args[1] = message.guild.channels.fetch(args[1]).name;
                     }
                     //Set channel
                     updateGuild(
@@ -58,6 +59,7 @@ module.exports = {
                 if (args[1]) {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         args[1] = channelIdFromMention(args[1]);
+                        args[1] = message.guild.channels.fetch(args[1]).name;
                     }
                     //Set mod channel
                     updateGuild(
