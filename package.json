@@ -1,9 +1,17 @@
 {
   "name": "welcome-bot",
-  "version": "1.7.8",
+  "version": "1.8.0",
   "changelog": [
-    "**Bug fixes**",
-    "Revert changes"
+    "**New features**",
+    "New command `disable` - Disable welcome / goodBye logs",
+    "Support translation",
+    "New command `lang` - Change language",
+    "New command `hug` - Hug a user",
+    "New command `cuddle` - Cuddle with a user",
+    "New command `kiss` - Kiss a user",
+    "You can get a list of all commands in a category using help command",
+    "**Changes**",
+    "`enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
