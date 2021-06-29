@@ -25,6 +25,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 ### Changes
 
 - `enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs
+- Add Support for mentioning channels when setting the welcome & mod log channel. i.e. if you send `w/channel set member-log` it will work fine but what if you send `w/channel set #member-log`
 
 ## [v1.7.8]
 

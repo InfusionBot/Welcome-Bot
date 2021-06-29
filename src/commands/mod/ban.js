@@ -16,7 +16,7 @@ module.exports = {
     cooldown: 5,
     usage: "[@user] (reason)",
     category: "Moderation",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const { userFromMention } = require("../../functions/get.js");
         let channel;
         if (args.length < 1) {
@@ -34,8 +34,7 @@ module.exports = {
         const member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply("That user was not found in this server");
+            if (!member) return message.reply(t("errors:userNotFound"));
         }
         if (user.id === message.client.user.id)
             return message.reply(
@@ -53,13 +52,13 @@ module.exports = {
         const reason = args.slice(1).join(" ") || "Not specified";
         try {
             await message.guild.members.ban(user, { reason });
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
             return message.channel.send(`Failed to ban **${user.tag}**`);
         }
 
         if (guildDB.modLogChan) {
-            channel = member.guild.channels.cache.find(
+            channel = message.guild.channels.cache.find(
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {

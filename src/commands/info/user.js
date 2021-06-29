@@ -11,7 +11,7 @@ module.exports = {
     args: false,
     usage: "(@mention / user_id)",
     category: "Information",
-    async execute(message, args) {
+    async execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         const { userFromMention } = require("../../functions/get.js");
         //const getUserFlags = require("../../functions/getUserFlags.js");
@@ -35,7 +35,7 @@ module.exports = {
         }
 
         if (!user) {
-            message.reply("An error occurred when trying to find the user");
+            message.reply(t("errors:userNotFound"));
             return false;
         }
         let member;
