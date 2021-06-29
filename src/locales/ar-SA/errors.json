@@ -4,7 +4,7 @@
   "pagination": "Pagination won't work fully.",
   "note": "Please note that",
   "developerOnly": "Only the bot developers can execute that command.",
-  "cooldown": "يا إلهي! إبطاء صديق! انتظر لمدة {{seconds}} ثانية أخرى قبل إعادة استخدام الأمر {{command}}.",
+  "cooldown": "Woah! Slow down buddy! Wait for {{seconds}} more second(s) before reusing the {{command}} command.",
   "missingArgs": "You are missing some arguments, give me them!",
   "notTrueOrFalse": "You have to give me a value that is true or false.",
   "invalidNumber": "You have to give me a valid number.",
