@@ -45,6 +45,7 @@ module.exports = async (message, guildDB) => {
         }
 
         if (!command || typeof command === "undefined") {
+            if (client.debug) client.logger.log(`Can't find command: ${commandName}`)
             //message.reply(errMsg);
             return;
         }
