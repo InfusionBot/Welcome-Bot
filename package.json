@@ -1,19 +1,13 @@
 {
   "name": "welcome-bot",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "changelog": [
     "**New features**",
-    "New command `disable` - Disable welcome / goodBye logs",
-    "Support translation",
-    "New command `lang` - Change language",
-    "New command `hug` - Hug a user",
-    "New command `cuddle` - Cuddle with a user",
-    "New command `kiss` - Kiss a user",
-    "You can get a list of all commands in a category using help command",
-    "**Changes**",
-    "`enable` command uses subcommands instead of passing boolen args (true, false) and only is used to enable logs",
+    "New translations",
     "**Bug fixes**",
-    "Fix bug: ban & unban not not working"
+    "Fix showing `undefined` for commands count in botinfo",
+    "**Changes**",
+    "Move cuddle, hug, kiss commands to anime category"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
