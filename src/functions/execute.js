@@ -189,7 +189,8 @@ module.exports = async (message, guildDB) => {
                 `Finished executing cmd: ${command.name}`,
                 "debug"
             );
-    } else if (message.content.startsWith(guildDB.prefix.trim())) {
-        //message.reply(errMsg);
+    } else if (client.debug) {
+        client.logger.log("prefix did not match", "debug");
+        console.log("PREFIX match:", prefix);
     }
 };
