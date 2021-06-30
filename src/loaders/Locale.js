@@ -24,6 +24,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 interpolation: {
                     escapeValue: false,
                 },
+                debug: client.debug,
                 returnEmptyString: false,
             },
             () => {
