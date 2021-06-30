@@ -155,7 +155,10 @@ module.exports = async (message, guildDB) => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
         if (client.debug)
-            client.logger.log(`Starting to execute cmd: ${command.name}`);
+            client.logger.log(
+                `Starting to execute cmd: ${command.name}`,
+                "debug"
+            );
         message.channel.startTyping();
         if (command.catchError) {
             try {
@@ -180,7 +183,10 @@ module.exports = async (message, guildDB) => {
         }
         message.channel.stopTyping(true);
         if (client.debug)
-            client.logger.log(`Finished executing cmd: ${command.name}`);
+            client.logger.log(
+                `Finished executing cmd: ${command.name}`,
+                "debug"
+            );
     } else if (message.content.startsWith(guildDB.prefix.trim())) {
         //message.reply(errMsg);
     }

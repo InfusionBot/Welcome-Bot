@@ -11,7 +11,7 @@ const packageJson = require("../package.json");
 const Logger = require("colors-logger");
 
 class WelcomeBot extends Client {
-    constructor() {
+    constructor(opts) {
         //https://discord.js.org/#/docs/main/master/class/Intents?scrollTo=s-FLAGS
         super({
             intents: [
@@ -140,7 +140,7 @@ class WelcomeBot extends Client {
             "815204465937481749" /*PuneetGopinath#6300*/,
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
-        this.debug = process.env.NODE_ENV === true;
+        this.debug = opts.debug || process.env.NODE_ENV === "development";
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
     }
 
