@@ -129,7 +129,8 @@ client.on("message", async function (message) {
     }
     if (client.debug) client.logger.log("running execute func", "debug");
     execute(message, guildDB);
-    if (client.debug) client.logger.log("finished running execute func", "debug");
+    if (client.debug)
+        client.logger.log("finished running execute func", "debug");
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
     if (!mentionRegex.test(message.content)) return;
