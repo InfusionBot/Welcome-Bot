@@ -10,21 +10,22 @@ const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
     const client = message.client;
+    const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        message.client.defaultPrefix,
-        guildDB.prefix,
-        `<@!?${message.client.user.id}> `,
+        escapeRegex(message.client.defaultPrefix),
+        escapeRegex(guildDB.prefix),
     ];
+    const prefixRegex = new RegExp(`^(<@!?${message.client.user.id}> |${prefixes.join("|")})\\s*`);
+    const prefixMatch = message.content.match(prefixRegex);
+    const [, prefix] = prefixMatch;
     const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
-    const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
-    const prefix = message.content.match(prefixRegex);
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
-    if (prefix && prefix[0]) {
+    if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
-        let args = message.content.slice(prefix[0].length).trim().split(/ +/);
+        let args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
             message.client.commands.enabled.get(commandName) ||
@@ -191,6 +192,6 @@ module.exports = async (message, guildDB) => {
             );
     } else if (client.debug) {
         client.logger.log("prefix did not match", "debug");
-        console.log("PREFIX match:", prefix);
+        console.log("PREFIX match:", prefixMatch);
     }
 };
