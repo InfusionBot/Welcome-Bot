@@ -8,7 +8,7 @@ const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
 const { MessageEmbed } = require("discord.js");
 
-const client = new WelcomeBot();
+const client = new WelcomeBot({debug:process.env.NODE_ENV === "development"});
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
@@ -113,7 +113,7 @@ client.on("guildDelete", (guild) => {
 });
 
 client.on("message", async function (message) {
-    if (client.debug) client.logger.log("message event triggered");
+    if (client.debug) client.logger.log("message event triggered", "debug");
     if (message.author.bot) return;
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
