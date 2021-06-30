@@ -8,7 +8,9 @@ const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
 const { MessageEmbed } = require("discord.js");
 
-const client = new WelcomeBot({debug:process.env.NODE_ENV === "development"});
+const client = new WelcomeBot({
+    debug: process.env.NODE_ENV === "development",
+});
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
