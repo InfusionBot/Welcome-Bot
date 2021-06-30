@@ -24,13 +24,14 @@ const dbAuditor = require("./db/functions/dbAuditor");
 
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.on("unhandledRejection", (error) => {
-    console.error("Unhandled promise rejection:", error);
     if (
         error.message.indexOf("No guild with guild ID") !== -1 &&
         client &&
         dbAuditor
     ) {
         dbAuditor(client);
+    } else {
+        console.error("Unhandled promise rejection:", error);
     }
 });
 process.on("exit", (code) => {
@@ -64,11 +65,12 @@ client.on("ready", async () => {
 });
 
 client.on("debug", (info) => {
-    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi))
+    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug)
         client.logger.log(info, "debug");
 });
 
 client.on("rateLimit", (info) => {
+    client.logger.log("You are being rate limited!", "warn");
     client.logger.log(JSON.stringify(info, null, 4), "warn");
 });
 
