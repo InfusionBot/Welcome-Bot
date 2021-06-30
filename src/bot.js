@@ -64,6 +64,8 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
+    if (client.debug)
+        client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
 });
 
 client.on("debug", (info) => {
@@ -125,7 +127,10 @@ client.on("message", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
+    if (client.debug) client.logger.log("running execute func", "debug");
     execute(message, guildDB);
+    if (client.debug)
+        client.logger.log("finished running execute func", "debug");
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
     if (!mentionRegex.test(message.content)) return;
