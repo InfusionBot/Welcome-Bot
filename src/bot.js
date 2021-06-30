@@ -119,8 +119,8 @@ client.on("guildDelete", (guild) => {
 });
 
 client.on("message", async function (message) {
-    if (client.debug) client.logger.log("message event triggered", "debug");
     if (message.author.bot) return;
+    if (client.debug) client.logger.log("message event triggered", "debug");
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);

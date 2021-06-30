@@ -18,6 +18,7 @@ module.exports = async (message, guildDB) => {
     const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
     const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
     const prefix = message.content.match(prefixRegex);
+    console.log(prefix);
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
     let embed = new MessageEmbed();
@@ -189,7 +190,7 @@ module.exports = async (message, guildDB) => {
                 `Finished executing cmd: ${command.name}`,
                 "debug"
             );
-    } else if (message.content.startsWith(guildDB.prefix.trim())) {
-        //message.reply(errMsg);
+    } else if (client.debug) {
+        client.logger.log("prefix did not match", "debug");
     }
 };
