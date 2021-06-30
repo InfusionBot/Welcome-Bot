@@ -113,6 +113,7 @@ client.on("guildDelete", (guild) => {
 });
 
 client.on("message", async function (message) {
+    if (client.debug) client.logger.log("message event triggered");
     if (message.author.bot) return;
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
