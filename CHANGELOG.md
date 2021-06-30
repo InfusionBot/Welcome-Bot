@@ -8,6 +8,22 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.9.0]
+
+> **Released:** `TBA`
+
+### New features
+
+- New translations
+
+### Bug fixes
+
+- Fix showing `undefined` for commands count in botinfo
+
+### Changes
+
+- Move cuddle, hug, kiss commands to anime category
+
 ## [v1.8.0]
 
 > **Released:** `TBA`
