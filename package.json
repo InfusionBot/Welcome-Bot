@@ -2,12 +2,8 @@
   "name": "welcome-bot",
   "version": "1.9.0",
   "changelog": [
-    "**New features**",
-    "New translations",
-    "**Bug fixes**",
-    "Fix showing `undefined` for commands count in botinfo",
     "**Changes**",
-    "Move cuddle, hug, kiss commands to anime category"
+    "More debugging"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",

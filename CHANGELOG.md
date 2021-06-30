@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.9.0]
+## [v1.9.1]
 
 > **Released:** `TBA`
+
+### Changes
+
+- More debugging
+
+## [v1.9.0]
+
+> **Released:** `30-06-2021`
 
 ### New features
 
@@ -26,7 +34,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.8.0]
 
-> **Released:** `TBA`
+> **Released:** `29-06-2021`
 
 ### New features
 
