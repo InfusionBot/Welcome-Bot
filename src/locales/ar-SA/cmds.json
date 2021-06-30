@@ -70,13 +70,13 @@
     "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
   },
   "version": {
-    "cmdDesc": "Information on a version"
+    "cmdDesc": "Get information on a version or latest version"
   },
   "qrcode": {
-    "cmdDesc": "Generate/Read a qrcode"
+    "cmdDesc": "Generate or Read a qrcode"
   },
   "test": {
-    "cmdDesc": "Test welcome message"
+    "cmdDesc": "Test by sending welcome message"
   },
   "ban": {
     "cmdDesc": "حظر المستخدم."
