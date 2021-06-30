@@ -23,7 +23,7 @@ module.exports = async (message, guildDB) => {
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
     if (prefix && prefix[0]) {
-        let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
+        //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
         let args = message.content.slice(prefix[0].length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
@@ -45,6 +45,8 @@ module.exports = async (message, guildDB) => {
         }
 
         if (!command || typeof command === "undefined") {
+            if (client.debug)
+                client.logger.log(`Can't find command: ${commandName}`);
             //message.reply(errMsg);
             return;
         }
