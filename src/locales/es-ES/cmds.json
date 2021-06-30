@@ -28,7 +28,7 @@
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
-    "success": "{{author}} gives a hug to {{user}}",
+    "success": "{{author}} has hugged {{user}}",
     "errorYourself": "You can't hug yourself."
   },
   "cuddle": {
@@ -38,7 +38,7 @@
   },
   "kiss": {
     "cmdDesc": "Kiss a user",
-    "success": "{{author}} just kissed to {{user}}",
+    "success": "{{author}} has kissed {{user}}",
     "errorYourself": "You can't kiss yourself!"
   },
   "image": {
@@ -48,11 +48,11 @@
     "cmdDesc": "Get a pokemon image"
   },
   "coinflip": {
-    "cmdDesc": "Flips a coin."
+    "cmdDesc": "Flip a coin."
   },
   "help": {
-    "cmdDesc": "List all commands or get info for a specific command.",
-    "cmdHelp": "Help for {{cmd}} command",
+    "cmdDesc": "List all commands or get info for a specific command/category.",
+    "cmdHelp": "Ayuda para el comando {{cmd}}",
     "cmds": "Use arrows ⏪⏩",
     "bot-help": "Welcome-Bot help",
     "in-cat": "Commands in this category"
