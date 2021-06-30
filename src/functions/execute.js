@@ -10,12 +10,14 @@ const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (message, guildDB) => {
     const client = message.client;
-    const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
         escapeRegex(message.client.defaultPrefix),
         escapeRegex(guildDB.prefix),
     ];
-    const prefixRegex = new RegExp(`^(<@!?${message.client.user.id}> |${prefixes.join("|")})\\s*`);
+    const prefixRegex = new RegExp(
+        `^(<@!?${message.client.user.id}> |${prefixes.join("|")})\\s*`
+    );
     const prefixMatch = message.content.match(prefixRegex);
     const [, prefix] = prefixMatch;
     const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
