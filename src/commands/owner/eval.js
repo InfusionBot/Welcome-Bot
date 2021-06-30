@@ -34,7 +34,7 @@ module.exports = {
         return result
             .then((output) => {
                 if (typeof output !== "string") {
-                    output = require("util").inspect(output);
+                    output = require("util").inspect(output, { depth: 0 }); //depth should be 0 as it will give contents of object in a property, in this object. That makes the message too long.
                 }
 
                 if (output.includes(message.client.token)) {

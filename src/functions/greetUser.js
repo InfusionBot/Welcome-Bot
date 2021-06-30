@@ -8,9 +8,16 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
     if (!guildDB.enableWelcome) return;
-    let channel = member.guild.channels.cache.find(
-        (ch) => ch.name === guildDB.channel
-    );
+    let channel;
+    if (isNaN(guildDB.channel)) {
+        channel = member.guild.channels.cache.find(
+            (ch) => ch.name === guildDB.channel
+        );
+    } else {
+        channel = member.guild.channels.cache.find(
+            (ch) => ch.id === guildDB.channel
+        );
+    }
     if (!channel) {
         return;
     }

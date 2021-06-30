@@ -23,10 +23,14 @@ module.exports = {
     async execute(message, args, guildDB) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
+        const { channelIdFromMention } = require("../../functions/get.js");
         let subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
                 if (args[1]) {
+                    if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
+                        args[1] = channelIdFromMention(args[1]);
+                    }
                     //Set channel
                     updateGuild(
                         message.guild.id,
@@ -52,6 +56,9 @@ module.exports = {
                 break;
             case "setmod":
                 if (args[1]) {
+                    if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
+                        args[1] = channelIdFromMention(args[1]);
+                    }
                     //Set mod channel
                     updateGuild(
                         message.guild.id,

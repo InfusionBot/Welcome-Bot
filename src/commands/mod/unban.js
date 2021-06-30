@@ -17,8 +17,8 @@ module.exports = {
     usage: "[user_id]",
     category: "Moderation",
     async execute(message, args, guildDB) {
-        const id = parseInt(args[0]);
-        if (!id || isNaN(id)) {
+        const id = args[0];
+        if (!id || isNaN(parseInt(id))) {
             return message.reply(
                 "Please use a proper user id if you want to unban someone."
             );
@@ -26,12 +26,17 @@ module.exports = {
 
         try {
             await message.guild.members.unban(id);
-        } catch (error) {
-            return message.channel.send(`Failed to unban **${id}**: ${error}`);
+        } catch (err) {
+            if (!err.toString().includes("Unknown Ban")) console.error(err);
+            else
+                return message.reply(
+                    "Looks like that person is not banned at all in this server. Double check the person's id!"
+                );
+            return message.channel.send(`Failed to unban **${id}**`);
         }
 
         if (guildDB.modLogChan) {
-            channel = member.guild.channels.cache.find(
+            channel = message.guild.channels.cache.find(
                 (ch) => ch.name === guildDB.modLogChan
             );
             if (channel) {

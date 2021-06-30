@@ -21,7 +21,7 @@ module.exports = {
     execute(message, args, guildDB) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         args[0] = args[0] ? args[0] : "";
-        switch (args[0]) {
+        switch (args[0].toLowerCase()) {
             case "welcome":
                 updateGuild(message.guild.id, "enableWelcome", true);
                 message.react("👍");

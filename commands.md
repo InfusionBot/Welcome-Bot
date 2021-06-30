@@ -336,19 +336,6 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 3
 
-### `figlet`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Implement the FIGfont spec in JS
-- Usage: [string]
-- Aliases: `asciify`, `bigtext`
-- Cooldown: 10
-
 ### `hug`
 
 ##### Subcommands:
@@ -362,19 +349,6 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 3
 
-### `image`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Generate a random pokemon image
-- Usage: None
-- Aliases: `random-image`
-- Cooldown: 10
-
 ### `kiss`
 
 ##### Subcommands:
@@ -387,6 +361,32 @@ Not providing any arguments will display the current settings.
 - Usage: [mention / user id]
 - Aliases: None
 - Cooldown: 3
+
+### `figlet`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Implement the FIGfont spec in JS
+- Usage: [string]
+- Aliases: `asciify`, `bigtext`
+- Cooldown: 10
+
+### `image`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Generate a random pokemon image
+- Usage: None
+- Aliases: `random-image`
+- Cooldown: 10
 
 ### `pokemon`
 
