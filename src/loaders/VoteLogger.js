@@ -5,11 +5,18 @@
  */
 const DBL = require("dblapi.js");
 module.exports = (client, logsChannel) => {
-    const dbl = new DBL(process.env.DBL_token, { webhookPort: process.env.DBL_port, webhookAuth: process.env.DBL_webhook_pass });
+    const dbl = new DBL(process.env.DBL_token, {
+        webhookPort: process.env.DBL_port,
+        webhookAuth: process.env.DBL_webhook_pass,
+    });
     dbl.webhook.on("vote", async (vote) => {
         const dUser = await client.users.fetch(vote.user);
         if (logsChannel) {
-            logsChannel.send(`⬆️ **${dUser.toString()}** (\`${dUser.id}\`) voted for **Welcome-Bot**!`);
+            logsChannel.send(
+                `⬆️ **${dUser.toString()}** (\`${
+                    dUser.id
+                }\`) voted for **Welcome-Bot**!`
+            );
         }
     });
 };
