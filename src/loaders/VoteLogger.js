@@ -9,7 +9,7 @@ module.exports = (client, logsChannel) => {
     dbl.webhook.on("vote", async (vote) => {
         const dUser = await client.users.fetch(vote.user);
         if (logsChannel) {
-            logsChannel.send(`⬆️ **${dUser.toString()}** (`${dUser.id}`) voted for **Welcome-Bot**!`);
+            logsChannel.send(`⬆️ **${dUser.toString()}** (\`${dUser.id}\`) voted for **Welcome-Bot**!`);
         }
     });
 };
