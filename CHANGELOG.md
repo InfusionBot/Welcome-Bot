@@ -8,9 +8,22 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.9.3]
+## [v1.10.0]
 
 > **Released:** `TBA`
+
+### New features
+
+- New command `avatar` - Get avatar of a user
+- New translations
+
+### Bug fixes
+
+- Fix prune command
+
+## [v1.9.3]
+
+> **Released:** `30-06-2021`
 
 ### Changes
 
@@ -303,6 +316,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.10.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.0
 [v1.9.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.3
 [v1.9.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.2
 [v1.9.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.1
