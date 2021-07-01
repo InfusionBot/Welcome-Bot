@@ -41,6 +41,11 @@
     "success": "{{author}} has kissed {{user}}",
     "errorYourself": "You can't kiss yourself!"
   },
+  "slap": {
+    "cmdDesc": "Slap a user",
+    "success": "{{author}} slapped {{user}}",
+    "errorYourself": "You can't slap yourself!"
+  },
   "image": {
     "cmdDesc": "Generate a random pokemon image"
   },
