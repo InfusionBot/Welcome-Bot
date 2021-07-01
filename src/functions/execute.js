@@ -18,8 +18,7 @@ module.exports = async (message, guildDB) => {
     const prefixRegex = new RegExp(
         `^(<@!?${message.client.user.id}> |${prefixes.join("|")})\\s*`
     );
-    const prefixMatch = message.content.match(prefixRegex);
-    const [, prefix] = prefixMatch;
+    const [, prefix] = message.content.match(prefixRegex);
     const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
@@ -194,6 +193,6 @@ module.exports = async (message, guildDB) => {
             );
     } else if (client.debug) {
         client.logger.log("prefix did not match", "debug");
-        console.log("PREFIX match:", prefixMatch);
+        console.log("PREFIX match:", message.content.match(prefixRegex));
     }
 };
