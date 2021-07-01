@@ -36,7 +36,7 @@ module.exports = {
                 break;
             case "bots":
                 messages = message.channel.messages.cache.filter(
-                    (m) => m.author.bot === true
+                    (m) => m.author.bot
                 );
                 break;
         }
@@ -48,13 +48,13 @@ module.exports = {
         }
         if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]) + 1;
-            if (isNaN(amount)) {
+            /*if (isNaN(amount)) {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
                 );
-            } else if (amount <= 0 || amount >= 100) {
+            } else*/ if (amount <= 1 || amount > 99) {
                 return message.reply(
-                    "Please input a number between 0 and 100 only."
+                    "Please input a number between 1 and 99 only."
                 );
             }
 
