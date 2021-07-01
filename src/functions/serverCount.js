@@ -98,4 +98,24 @@ module.exports = function (client) {
     } else {
         client.logger.log("DISCORDLIST_token is not set", "warn");
     }
+
+    if (process.env.DISSERVNET_token) {
+        data = JSON.stringify({
+            servers,
+            shards: 0
+        });
+        options = {
+            hostname: "api.discordservices.net",
+            path: "/bot/" + process.env.BOT_ID + "/stats",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: process.env.DISSERVNET_token,
+                "User-Agent": process.env.userAgent,
+            },
+        };
+        sendReq(data, options);
+    } else {
+        client.logger.log("DISSERVNET_token is not set", "warn");
+    }
 };
