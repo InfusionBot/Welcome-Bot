@@ -77,7 +77,7 @@
     "cmdDesc": "Get information on a version or latest version"
   },
   "qrcode": {
-    "cmdDesc": "Generate or Read a qrcode"
+    "cmdDesc": "Generate or Read a QR code"
   },
   "test": {
     "cmdDesc": "Test by sending welcome message"
@@ -89,13 +89,13 @@
     "cmdDesc": "Kick a user."
   },
   "prune": {
-    "cmdDesc": "Prune messages."
+    "cmdDesc": "Prune Messages."
   },
   "unban": {
     "cmdDesc": "Unban a user."
   },
   "eval": {
-    "cmdDesc": "Execute a statement"
+    "cmdDesc": "Execute a JS statement."
   },
   "reload": {
     "cmdDesc": "Reloads a command"
@@ -104,7 +104,7 @@
     "cmdDesc": "Restart the bot"
   },
   "servers-list": {
-    "cmdDesc": "Show the servers list!"
+    "cmdDesc": "Show the list of servers the bot is in."
   },
   "channel": {
     "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings."
