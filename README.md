@@ -17,6 +17,13 @@ Feel free to add a star ⭐ to the repository to promote the project!
 
 ## Features
 
+### Complete bot
+
+Welcome-Bot offers:
+- 🇫🇷 Support for translations (limited languages)
+- ✉️ Support for commands in direct messages
+- 🥳 35+ commands
+
 ### Customizable Settings
 
 Adjust the settings to fit all the needs of your server! You can select the channel to send welcome logs to, the welcome log message, the prefix of the bot for this server, and more…
