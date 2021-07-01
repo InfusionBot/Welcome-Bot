@@ -8,7 +8,9 @@ const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
 const { MessageEmbed } = require("discord.js");
 
-const client = new WelcomeBot();
+const client = new WelcomeBot({
+    debug: process.env.NODE_ENV === "development",
+});
 
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
@@ -24,13 +26,14 @@ const dbAuditor = require("./db/functions/dbAuditor");
 
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.on("unhandledRejection", (error) => {
-    console.error("Unhandled promise rejection:", error);
     if (
         error.message.indexOf("No guild with guild ID") !== -1 &&
         client &&
         dbAuditor
     ) {
         dbAuditor(client);
+    } else {
+        console.error("Unhandled promise rejection:", error);
     }
 });
 process.on("exit", (code) => {
@@ -61,14 +64,17 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
+    if (client.debug)
+        client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
 });
 
 client.on("debug", (info) => {
-    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi))
+    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug)
         client.logger.log(info, "debug");
 });
 
 client.on("rateLimit", (info) => {
+    client.logger.log("You are being rate limited!", "warn");
     client.logger.log(JSON.stringify(info, null, 4), "warn");
 });
 
@@ -114,13 +120,17 @@ client.on("guildDelete", (guild) => {
 
 client.on("message", async function (message) {
     if (message.author.bot) return;
+    if (client.debug) client.logger.log("message event triggered", "debug");
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
+    if (client.debug) client.logger.log("running execute func", "debug");
     execute(message, guildDB);
+    if (client.debug)
+        client.logger.log("finished running execute func", "debug");
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
     if (!mentionRegex.test(message.content)) return;

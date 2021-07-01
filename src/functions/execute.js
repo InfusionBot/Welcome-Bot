@@ -23,7 +23,7 @@ module.exports = async (message, guildDB) => {
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
     if (prefix && prefix[0]) {
-        let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
+        //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
         let args = message.content.slice(prefix[0].length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
@@ -45,6 +45,8 @@ module.exports = async (message, guildDB) => {
         }
 
         if (!command || typeof command === "undefined") {
+            if (client.debug)
+                client.logger.log(`Can't find command: ${commandName}`);
             //message.reply(errMsg);
             return;
         }
@@ -155,7 +157,10 @@ module.exports = async (message, guildDB) => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
         if (client.debug)
-            client.logger.log(`Starting to execute cmd: ${command.name}`);
+            client.logger.log(
+                `Starting to execute cmd: ${command.name}`,
+                "debug"
+            );
         message.channel.startTyping();
         if (command.catchError) {
             try {
@@ -180,8 +185,12 @@ module.exports = async (message, guildDB) => {
         }
         message.channel.stopTyping(true);
         if (client.debug)
-            client.logger.log(`Finished executing cmd: ${command.name}`);
-    } else if (message.content.startsWith(guildDB.prefix.trim())) {
-        //message.reply(errMsg);
+            client.logger.log(
+                `Finished executing cmd: ${command.name}`,
+                "debug"
+            );
+    } else if (client.debug) {
+        client.logger.log("prefix did not match", "debug");
+        console.log("PREFIX match:", prefix);
     }
 };

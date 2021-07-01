@@ -8,9 +8,33 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.9.0]
+## [v1.9.3]
 
 > **Released:** `TBA`
+
+### Changes
+
+- debug in translations
+
+## [v1.9.2]
+
+> **Released:** `30-06-2021`
+
+### Changes
+
+- Some more debugging
+
+## [v1.9.1]
+
+> **Released:** `30-06-2021`
+
+### Changes
+
+- More debugging
+
+## [v1.9.0]
+
+> **Released:** `30-06-2021`
 
 ### New features
 
@@ -26,7 +50,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.8.0]
 
-> **Released:** `TBA`
+> **Released:** `29-06-2021`
 
 ### New features
 
@@ -279,6 +303,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.9.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.3
+[v1.9.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.2
+[v1.9.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.1
+[v1.9.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.0
 [v1.8.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.8.0
 [v1.7.8]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.8
 [v1.7.6]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.7.6
