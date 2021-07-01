@@ -195,5 +195,6 @@ module.exports = async (message, guildDB) => {
     } else if (client.debug) {
         client.logger.log("prefix did not match", "debug");
         console.log("PREFIX match:", prefixMatch);
+        return false;
     }
 };
