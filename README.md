@@ -154,6 +154,10 @@ Feel free to upvote him to show your support.
 
 > Find the best Discord bots for your server with our discord bot list. Browse information on each bot and vote for your favourites.
 
+### [discordservices.net](https://discordservices.net/bot/848459799783669790)
+
+> A brand new botlist that aims to deliver the best experience for its users and bot developers.
+
 ### [discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
@@ -166,7 +170,7 @@ Feel free to upvote him to show your support.
 
 ## Self hosting
 
-[Click here to see self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html)
+[Self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html) are available on our website.
 
 ## Questions?
 
