@@ -102,7 +102,7 @@ module.exports = function (client) {
     if (process.env.DISSERVNET_token) {
         data = JSON.stringify({
             servers,
-            shards: 0
+            shards: 0,
         });
         options = {
             hostname: "api.discordservices.net",
