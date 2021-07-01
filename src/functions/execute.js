@@ -77,7 +77,18 @@ module.exports = async (message, guildDB) => {
             }
             for (var i = 0; i < command.permissions.length; i++) {
                 if (!authorPerms.has(command.permissions[i])) {
-                    return message.reply(t("errors:youDontHavePermission", {permission:translate(`permissions:${new Permissions(command.permissions[i]).toArray().join("").toUpperCase()}`)}));
+                    return message.reply(
+                        t("errors:youDontHavePermission", {
+                            permission: translate(
+                                `permissions:${new Permissions(
+                                    command.permissions[i]
+                                )
+                                    .toArray()
+                                    .join("")
+                                    .toUpperCase()}`
+                            ),
+                        })
+                    );
                 }
             }
         }
