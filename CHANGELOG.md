@@ -21,6 +21,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 - Fix prune command
 
+### Changes
+
+- From this version, if user does not have a required permission, the bot says that instead of saying `Send w/botperms to get a list of permissions you habe given...`
+
 ## [v1.9.3]
 
 > **Released:** `30-06-2021`

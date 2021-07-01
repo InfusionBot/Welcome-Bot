@@ -4,9 +4,10 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("../db/connection");
-const { Collection, MessageEmbed } = require("discord.js");
+const { Collection, MessageEmbed, Permissions } = require("discord.js");
 const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
+const beautifyPerms = require("../functions/beautifyPerms");
 
 module.exports = async (message, guildDB) => {
     const client = message.client;
@@ -71,8 +72,13 @@ module.exports = async (message, guildDB) => {
 
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
-            if (!authorPerms || !authorPerms.has(command.permissions)) {
+            if (!authorPerms) {
                 return message.reply("You don't have permission to do this!");
+            }
+            for (var i = 0; i < command.permissions.length; i++) {
+                if (!authorPerms.has(command.permissions[i])) {
+                    return message.reply(t("errors:youDontHavePermission", {permission:translate(`permissions:${new Permissions(command.permissions[i]).toArray().join("").toUpperCase()}`)}));
+                }
             }
         }
 
