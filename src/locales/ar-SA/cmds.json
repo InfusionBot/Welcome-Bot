@@ -118,7 +118,7 @@
     "cmdDesc": "تغيير اللغة",
     "invalid": "لغة غير صالحة، أرسل {{cmd}} للحصول على قائمة بلديات متاحة.",
     "success": "تم تحديد اللغة إلى {{lang}}",
-    "show": "لقد تم تعيين اللغة إلى {{lang}}"
+    "show": "Language successfully set to {{lang}}"
   },
   "message": {
     "cmdDesc": "Manage welcome message for this server"
