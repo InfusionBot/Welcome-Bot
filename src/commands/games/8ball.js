@@ -18,9 +18,7 @@ module.exports = {
         res = await res.json();
         const text = args.join(" ");
         let embed = new MessageEmbed()
-            .setTitle(
-                text
-            )
+            .setTitle(text)
             .setDescription(res.response)
             .setImage(res.url)
             .setColor("RANDOM");
