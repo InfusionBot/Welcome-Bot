@@ -91,7 +91,7 @@ module.exports = {
                 filter: (reaction, user) =>
                     Object.values(emojiList).includes(reaction.emoji.name) &&
                     user.id === message.author.id,
-                { time: timeout }
+                time: timeout,
             });
             reactionCollector.on("collect", (reaction) => {
                 // Remove the reaction when the user react to the message
