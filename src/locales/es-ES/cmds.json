@@ -118,7 +118,7 @@
     "cmdDesc": "Change language",
     "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
     "success": "Language set to {{lang}}",
-    "show": "Language is currently set to {{lang}}"
+    "show": "Language successfully set to {{lang}}"
   },
   "message": {
     "cmdDesc": "Manage welcome message for this server"
