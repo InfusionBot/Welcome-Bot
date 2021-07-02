@@ -52,6 +52,9 @@
   "pokemon": {
     "cmdDesc": "Get a pokemon image"
   },
+  "8ball": {
+    "cmdDesc": "Get your fortune by asking your question"
+  },
   "coinflip": {
     "cmdDesc": "Flip a coin."
   },
