@@ -15,7 +15,7 @@ module.exports = (client, logsChannel) => {
             logsChannel.send(
                 `⬆️ **${dUser.toString()}** (\`${
                     dUser.id
-                }\`) voted for **Welcome-Bot**!`
+                }\`) voted for **Welcome-Bot** on top.gg!`
             );
         }
     });
