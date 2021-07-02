@@ -87,12 +87,12 @@ module.exports = {
             for (var key in emojiList) {
                 await curPage.react(emojiList[key]);
             }
-            const reactionCollector = curPage.createReactionCollector(
-                (reaction, user) =>
+            const reactionCollector = curPage.createReactionCollector({
+                filter: (reaction, user) =>
                     Object.values(emojiList).includes(reaction.emoji.name) &&
                     user.id === message.author.id,
                 { time: timeout }
-            );
+            });
             reactionCollector.on("collect", (reaction) => {
                 // Remove the reaction when the user react to the message
                 reaction.users.remove(message.author);
