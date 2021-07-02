@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **30 commands** in **10 categories**!
+Welcome-Bot contains more than **40 commands** in **10 categories**!
 
 #### Contents in a command
 
@@ -182,7 +182,20 @@ Not providing any arguments will display the current settings.
 - Aliases: `permissions`
 - Cooldown: 5
 
-## Information (4 commands)
+## Information (5 commands)
+
+### `avatar`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get a user's avatar
+- Usage: (mention / user id)
+- Aliases: `dp`, `profile`
+- Cooldown: 5
 
 ### `botinfo`
 
@@ -321,46 +334,7 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 3
 
-## Fun (6 commands)
-
-### `cuddle`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Cuddle a user
-- Usage: [mention / user id]
-- Aliases: None
-- Cooldown: 3
-
-### `hug`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Give a hug to a user
-- Usage: [mention / user id]
-- Aliases: None
-- Cooldown: 3
-
-### `kiss`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Kiss a user
-- Usage: [mention / user id]
-- Aliases: None
-- Cooldown: 3
+## Fun (3 commands)
 
 ### `figlet`
 
@@ -401,7 +375,59 @@ Not providing any arguments will display the current settings.
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## Anime (1 commands)
+## Anime (5 commands)
+
+### `cuddle`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Cuddle a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
+### `hug`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Give a hug to a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
+### `kiss`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Kiss a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
+### `slap`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Slap a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
 
 ### `waifu`
 
@@ -416,7 +442,20 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 10
 
-## Games (1 commands)
+## Games (2 commands)
+
+### `8ball`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get your fortune by asking your question
+- Usage: [question]
+- Aliases: `eightball`
+- Cooldown: 3
 
 ### `coinflip`
 
