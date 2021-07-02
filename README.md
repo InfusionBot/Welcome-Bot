@@ -181,13 +181,27 @@ Feel free to upvote him to show your support.
 
 [Self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html) are available on our website.
 
+## Supporters
+
+👏 A big thank you goes to all the supporters of this project!
+
+You prove that the Discord Welcome-Bot has some value for you!
+
+### Stargazers
+
+[![stargazers image](https://reporoster.com/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
+
+### Contributors
+
+[![contributors image](https://contrib.rocks/image?repo=Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/contributors)
+
 ## Questions?
 
 Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
 
 ## Roadmap
 
-Here's the [link to roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1). Roadmap is a `TO DO` list.
+Visit our [Roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1) for planned and upcoming features.
 
 ## Contributing
 
