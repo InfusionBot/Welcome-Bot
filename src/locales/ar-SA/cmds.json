@@ -24,7 +24,7 @@
     "cmdDesc": "رابط إلى موقع Welcome-Bot"
   },
   "figlet": {
-    "cmdDesc": "Implement the FIGfont spec in JS"
+    "cmdDesc": "تنفيذ سرعة FIGfont في JS"
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
@@ -42,7 +42,7 @@
     "errorYourself": "You can't kiss yourself!"
   },
   "image": {
-    "cmdDesc": "Generate a random pokemon image"
+    "cmdDesc": "إنشاء صورة شعبية عشوائية"
   },
   "pokemon": {
     "cmdDesc": "Get a pokemon image"
@@ -51,9 +51,9 @@
     "cmdDesc": "قلب عملة معدنية."
   },
   "help": {
-    "cmdDesc": "List all commands or get info for a specific command/category.",
+    "cmdDesc": "قائمة جميع الأوامر أو الحصول على معلومات لأوامر / فئة محددة.",
     "cmdHelp": "مساعدة للأمر {{cmd}}",
-    "cmds": "Use arrows ⏪⏩",
+    "cmds": "استخدم الأسهم ⏪⏩",
     "bot-help": "مساعدة Welcome-Bot",
     "in-cat": "Commands in this category"
   },
@@ -64,10 +64,10 @@
     "cmdDesc": "Bot information"
   },
   "stats": {
-    "cmdDesc": "Your server statistics"
+    "cmdDesc": "إحصائيات الخادم الخاص بك"
   },
   "user": {
-    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
+    "cmdDesc": "الحصول على معلومات حول المستخدم. سوف تظهر معلوماتك إذا لم يتم ذكر أي مستخدم"
   },
   "version": {
     "cmdDesc": "Get information on a version or latest version"
