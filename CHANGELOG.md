@@ -25,6 +25,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 ### Changes
 
 - From this version, if user does not have a required permission, the bot says that instead of saying `Send w/botperms to get a list of permissions you have given...`
+- Docs updater takes command description from en-US locales folder itself now.
 
 ## [v1.9.3]
 
