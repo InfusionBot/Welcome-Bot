@@ -73,7 +73,7 @@ module.exports = async (message, guildDB) => {
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
-                return message.reply("You don't have permission to do this!");
+                return message.reply(t("errors:youDontHavePermShort"));
             }
             for (var i = 0; i < command.permissions.length; i++) {
                 if (!authorPerms.has(command.permissions[i])) {
@@ -104,7 +104,7 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.args && !args.length) {
-            let reply = `Arguments are required for this command.`;
+            let reply = t("errors:missingArgs");
 
             if (command.usage) {
                 reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
