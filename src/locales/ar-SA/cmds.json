@@ -1,18 +1,18 @@
 {
   "waifu": {
-    "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
+    "cmdDesc": "يجلب تنازلا عشوائيا (يسهل إذا كانت القناة NSFW) ويعرضه."
   },
   "botperms": {
     "cmdDesc": "قائمة الأذونات الممنوحة للبوت"
   },
   "invite": {
-    "cmdDesc": "Get Invite link for the bot"
+    "cmdDesc": "الحصول على رابط دعوة للبوت"
   },
   "lib": {
     "cmdDesc": "المكتبة المستخدمة لبناء Welcome-Bot"
   },
   "ping": {
-    "cmdDesc": "Ping the bot"
+    "cmdDesc": "ربط البوت"
   },
   "support": {
     "cmdDesc": "احصل على دعم لـ Welcome-Bot"
@@ -21,7 +21,7 @@
     "cmdDesc": "احصل على وقت مبكر من البوت"
   },
   "website": {
-    "cmdDesc": "Link to Welcome-Bot's website"
+    "cmdDesc": "رابط إلى موقع Welcome-Bot"
   },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS"
@@ -48,13 +48,13 @@
     "cmdDesc": "Get a pokemon image"
   },
   "coinflip": {
-    "cmdDesc": "Flip a coin."
+    "cmdDesc": "قلب عملة معدنية."
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command/category.",
     "cmdHelp": "مساعدة للأمر {{cmd}}",
     "cmds": "Use arrows ⏪⏩",
-    "bot-help": "Welcome-Bot help",
+    "bot-help": "مساعدة Welcome-Bot",
     "in-cat": "Commands in this category"
   },
   "perms": {
@@ -73,7 +73,7 @@
     "cmdDesc": "Get information on a version or latest version"
   },
   "qrcode": {
-    "cmdDesc": "Generate or Read a QR code"
+    "cmdDesc": "إنشاء/قراءة رمز Qrcode"
   },
   "test": {
     "cmdDesc": "Test by sending welcome message"
@@ -85,13 +85,13 @@
     "cmdDesc": "Kick a user."
   },
   "prune": {
-    "cmdDesc": "Prune Messages."
+    "cmdDesc": "إحباط الرسائل."
   },
   "unban": {
     "cmdDesc": "فك حظر مستخدم."
   },
   "eval": {
-    "cmdDesc": "Execute a JS statement."
+    "cmdDesc": "تنفيذ بيان."
   },
   "reload": {
     "cmdDesc": "إعادة تحميل أمر"
@@ -118,7 +118,7 @@
     "cmdDesc": "تغيير اللغة",
     "invalid": "لغة غير صالحة، أرسل {{cmd}} للحصول على قائمة بلديات متاحة.",
     "success": "تم تحديد اللغة إلى {{lang}}",
-    "show": "لقد تم تعيين اللغة إلى {{lang}}"
+    "show": "Language successfully set to {{lang}}"
   },
   "message": {
     "cmdDesc": "Manage welcome message for this server"
