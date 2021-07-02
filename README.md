@@ -55,48 +55,8 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 ![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)
 
 ## Commands
-These are the commands currently available:
 
-### Setup
-
-- [`channel` - Manage channel settings for this server](https://welcome-bot.github.io/docs/commands.html#channel)
-    - `set` - Set welcome channel, channel to send message
-    - `setMod` - Set moderation logs channel
-    - `reset` - Reset welcome channel back to default value
-    - `resetMod` - Reset moderation logs channel back to default value
-- [`enable` - Enable/Disable welcome and goodbye logs.](https://welcome-bot.github.io/docs/commands.html#enable)
-- [`follow` - Get news and version updates to this bot sent to a specific channel.](https://welcome-bot.github.io/docs/commands.html#follow)
-- [`message` - Manage welcome message for this server](https://welcome-bot.github.io/docs/commands.html#message)
-    - `set` - Set welcome message
-    - `reset` - Reset message back to default value
-- [`prefix` - Manage perfix for this server](https://welcome-bot.github.io/docs/commands.html#prefix)
-    - `set` - Set bot prefix
-    - `reset` - Reset prefix back to default value
-
-### General
-
-- [`invite` - Get the invite link to invite the bot to your server](https://welcome-bot.github.io/docs/commands.html#invite)
-- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
-- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
-
-### Information
-
-- [`botinfo` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#botinfo)
-- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
-- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
-- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
-
-### Moderation
-
-- [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
-- [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
-- [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
-
-### Miscellaneous
-
-- [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
-
-These commands may not be up to date, [visit our site](https://welcome-bot.github.io/docs/commands.html) for up to date commands
+Welcome-Bot has more than 35+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands
 
 ## Default values
 
