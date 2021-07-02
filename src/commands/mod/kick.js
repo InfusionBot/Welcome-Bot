@@ -7,7 +7,7 @@ const { MessageEmbed, Permissions } = require("discord.js");
 module.exports = {
     name: "kick",
     //aliases: [],
-    description: "Kick a user.",
+    //description: "Kick a user.",
     permissions: [Permissions.FLAGS.KICK_MEMBERS],
     bot_perms: [Permissions.FLAGS.KICK_MEMBERS],
     args: true,

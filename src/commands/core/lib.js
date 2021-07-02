@@ -6,7 +6,7 @@
 module.exports = {
     name: "lib",
     aliases: ["library"],
-    description: "Library used to build Welcome-Bot",
+    //description: "Library used to build Welcome-Bot",
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {

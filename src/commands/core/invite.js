@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "invite",
-    description: "Get Invite link for the bot",
+    //description: "Get Invite link for the bot",
     cooldown: 20,
     category: "General",
     execute(message, args) {

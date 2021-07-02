@@ -6,8 +6,8 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "prefix",
-    //aliases: [],
-    description: "Manage perfix for this server",
+    aliases: ["getprefix"],
+    //description: "Manage perfix for this server",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
     subcommands: [

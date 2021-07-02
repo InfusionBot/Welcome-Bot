@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "qrcode",
-    description: "Generate/Read a qrcode",
+    //description: "Generate/Read a qrcode",
     usage: "[subcommand] [data / image_url]",
     subcommand: true,
     subcommands: [

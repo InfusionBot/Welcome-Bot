@@ -8,8 +8,8 @@ const { userFromMention } = require("../../functions/get.js");
 module.exports = {
     name: "user",
     aliases: ["whois"],
-    description:
-        "Get information about a user. It will show your info if no user was mentioned",
+    //description:
+    //"Get information about a user. It will show your info if no user was mentioned",
     args: false,
     usage: "(@mention / user_id)",
     category: "Information",

@@ -11,7 +11,7 @@ const serverCount = require("../../functions/serverCount.js");
 
 module.exports = {
     name: "eval",
-    description: "Execute a statement",
+    //description: "Execute a statement",
     args: true,
     usage: "[statement]",
     cooldown: 20,

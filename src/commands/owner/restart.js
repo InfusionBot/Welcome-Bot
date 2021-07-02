@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "restart",
-    description: "Restart the bot",
+    //description: "Restart the bot",
     cooldown: 30,
     ownerOnly: true,
     category: "Owner Only",

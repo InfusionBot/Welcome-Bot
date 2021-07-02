@@ -6,7 +6,7 @@
 module.exports = {
     name: "servers-list",
     aliases: ["slist"],
-    description: "Show the servers list!",
+    //description: "Show the servers list!",
     cooldown: 10,
     ownerOnly: true,
     category: "Owner Only",

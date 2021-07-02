@@ -6,7 +6,7 @@
 module.exports = {
     name: "version",
     aliases: ["ver"],
-    description: "Information on a version",
+    //description: "Information on a version",
     args: false,
     usage: "(version)",
     cooldown: 10,

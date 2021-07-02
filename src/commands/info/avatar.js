@@ -8,7 +8,7 @@ const { userFromMention } = require("../../functions/get.js");
 module.exports = {
     name: "avatar",
     aliases: ["dp", "profile"],
-    description: "Get a user's avatar",
+    //description: "Get a user's avatar",
     args: false,
     usage: "(mention / user id)",
     cooldown: 5,

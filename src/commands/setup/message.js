@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "message",
     aliases: ["msg"],
-    description: "Manage welcome message for this server",
+    //description: "Manage welcome message for this server",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
     subcommands: [

@@ -6,7 +6,7 @@
 module.exports = {
     name: "uptime",
     aliases: ["getuptime"],
-    description: "Get uptime of the bot",
+    //description: "Get uptime of the bot",
     cooldown: 10,
     category: "Core",
     execute(message, args) {

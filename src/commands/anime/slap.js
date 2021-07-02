@@ -7,7 +7,7 @@ const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "slap",
-    description: "Slap a user",
+    //description: "Slap a user",
     args: true,
     usage: "[mention / user id]",
     cooldown: 3,

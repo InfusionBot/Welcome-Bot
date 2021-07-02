@@ -7,7 +7,7 @@ const { MessageEmbed, Permissions } = require("discord.js");
 module.exports = {
     name: "ban",
     //aliases: [],
-    description: "Ban a user.",
+    //description: "Ban a user.",
     permissions: [Permissions.FLAGS.BAN_MEMBERS],
     bot_perms: [Permissions.FLAGS.BAN_MEMBERS],
     args: true,

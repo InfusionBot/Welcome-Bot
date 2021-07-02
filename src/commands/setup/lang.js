@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "lang",
     aliases: ["language", "changelang", "getlang"],
-    description: "Change language",
+    //description: "Change language",
     permissions: [Permissions.FLAGS.MANAGE_GUILD],
     args: false,
     guildOnly: true,

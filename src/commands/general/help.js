@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["commands", "cmd"],
-    description: "List all of my commands or info about a specific command.",
+    //description: "List all of my commands or info about a specific command.",
     usage: "(command name / category)",
     //bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
@@ -194,7 +194,7 @@ module.exports = {
                 pages[0].addField(
                     "Usage:",
                     `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                        `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
+                        `\n**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.`
                 );
             if (command.ownerOnly)
                 pages[0].addField(
