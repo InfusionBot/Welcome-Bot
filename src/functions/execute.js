@@ -23,7 +23,7 @@ module.exports = async (message, guildDB) => {
     try {
         [, prefix] = message.content.match(prefixRegex);
     } catch (e) {}
-    const translate = client.i18next.getFixedT(guildDB.lang || "en-US");
+    const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
     let embed = new MessageEmbed();
@@ -82,7 +82,7 @@ module.exports = async (message, guildDB) => {
                 if (!authorPerms.has(command.permissions[i])) {
                     return message.reply(
                         t("errors:youDontHavePermission", {
-                            permission: translate(
+                            permission: t(
                                 `permissions:${new Permissions(
                                     command.permissions[i]
                                 )
@@ -167,7 +167,7 @@ module.exports = async (message, guildDB) => {
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
-                    translate(`errors:cooldown`, {
+                    t(`errors:cooldown`, {
                         seconds: timeLeft.toFixed(1),
                         command: command.name,
                     })
@@ -187,12 +187,12 @@ module.exports = async (message, guildDB) => {
         if (command.catchError) {
             try {
                 message.channel.startTyping();
-                command.execute(message, args, guildDB, translate);
+                command.execute(message, args, guildDB, t);
                 message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);
                 embed
-                    .setTitle(translate("errors:generic"))
+                    .setTitle(t("errors:generic"))
                     .addField(
                         `Please report this to ${message.client.ownersTags.join(
                             " OR "
@@ -203,7 +203,7 @@ module.exports = async (message, guildDB) => {
                 return;
             }
         } else {
-            command.execute(message, args, guildDB, translate);
+            command.execute(message, args, guildDB, t);
         }
         message.channel.stopTyping(true);
         if (client.debug)
