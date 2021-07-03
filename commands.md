@@ -1,5 +1,10 @@
 Welcome-Bot contains more than **40 commands** in **10 categories**!
 
+### **Usage Key!**
+
+- The `[` and `]` around the argument mean it’s required.  
+- The `(` and `)` around the argument mean it’s optional.
+
 #### Contents in a command
 
 **Name**: The name of the command  
@@ -53,7 +58,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Disable welcome / goodbye logs.
+- Description: Disable welcome and goodbye logs.
 - Usage: [subcommand]
 - Aliases: None
 - Cooldown: 10
@@ -68,7 +73,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Enable welcome / goodbye logs.
+- Description: Enable welcome and goodbye logs.
 - Usage: [subcommand]
 - Aliases: None
 - Cooldown: 10
@@ -123,9 +128,9 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Manage perfix for this server
+- Description: Manage prefix for this server
 - Usage: None
-- Aliases: None
+- Aliases: `getprefix`
 - Cooldown: 10
 
 ## General (4 commands)
@@ -164,7 +169,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: List all of my commands or info about a specific command.
+- Description: List all commands or get info for a specific command/category.
 - Usage: (command name / category)
 - Aliases: `commands`, `cmd`
 - Cooldown: 5
@@ -177,7 +182,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Get permissions given to a specific user. Not providing any mention will show your permissions
+- Description: Get permissions given to a specific user. Not providing any user mention will show your permissions
 - Usage: (@mention / user_id)
 - Aliases: `permissions`
 - Cooldown: 5
@@ -207,7 +212,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Bot information
 - Usage: (--dm)
-- Aliases: `botstats`
+- Aliases: `botstats`, `info`
 - Cooldown: 10
 
 ### `stats`
@@ -244,7 +249,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Information on a version
+- Description: Get information on a version or latest version
 - Usage: (version)
 - Aliases: `ver`
 - Cooldown: 10
@@ -287,7 +292,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Prune messages.
+- Description: Prune Messages.
 - Usage: [no of msg to prune / subcommand]
 - Aliases: `purge`
 - Cooldown: 5
@@ -316,7 +321,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Generate/Read a qrcode
+- Description: Generate or Read a QR code
 - Usage: [subcommand] [data / image_url]
 - Aliases: None
 - Cooldown: 10
@@ -329,7 +334,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Test welcome message
+- Description: Test by sending welcome message
 - Usage: None
 - Aliases: None
 - Cooldown: 3
@@ -385,7 +390,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Cuddle a user
+- Description: Cuddle with a user
 - Usage: [mention / user id]
 - Aliases: None
 - Cooldown: 3
@@ -465,7 +470,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Flips a coin.
+- Description: Flip a coin.
 - Usage: None
 - Aliases: `cf`
 - Cooldown: 10
@@ -480,7 +485,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Execute a statement
+- Description: Execute a JS statement.
 - Usage: [statement]
 - Aliases: None
 - Cooldown: 20
@@ -519,7 +524,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Show the servers list!
+- Description: Show the list of servers the bot is in.
 - Usage: None
 - Aliases: `slist`, `serverslist`
 - Cooldown: 10
