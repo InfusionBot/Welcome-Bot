@@ -94,7 +94,7 @@
     "cmdDesc": "حظر المستخدم."
   },
   "kick": {
-    "cmdDesc": "Kick a user."
+    "cmdDesc": "طرد المستخدم."
   },
   "prune": {
     "cmdDesc": "إحباط الرسائل."
