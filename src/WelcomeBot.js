@@ -48,8 +48,8 @@ class WelcomeBot extends Client {
                 emoji: "<:pikachu2:852569608259239936>",
             },
             { name: "Information", key: "info", emoji: "ℹ️" },
-            { name: "Moderation", key: "mod", emoji: "" },
-            { name: "Miscellaneous", key: "misc", emoji: "" },
+            { name: "Moderation", key: "mod", emoji: ":scales:" },
+            { name: "Miscellaneous", key: "misc", emoji: ":tada:" },
             { name: "Fun", key: "fun", emoji: "<:fun:854002049095303188>" },
             { name: "Anime", key: "anime", emoji: "📷" },
             {
@@ -62,7 +62,7 @@ class WelcomeBot extends Client {
                 key: "owner",
                 emoji: "<:owner:854009566572183572>",
             },
-            { name: "Core", key: "core", emoji: "" },
+            { name: "Core", key: "core", emoji: ":robot:" },
         ];
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
