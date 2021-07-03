@@ -13,14 +13,14 @@ module.exports = async (message, guildDB) => {
     const client = message.client;
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        escapeRegex(message.client.defaultPrefix),
+        escapeRegex(client.defaultPrefix),
         escapeRegex(guildDB.prefix),
     ];
     const prefixRegex = new RegExp(
-        `^(<@!?${message.client.user.id}> |${prefixes.join("|")})\\s*`
+        `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
     );
-    const [, prefix] = message.content.match(prefixRegex);
-    const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
+    const [, prefix] = message.content.match(prefixRegex).catch(e);
+    const translate = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
     let embed = new MessageEmbed();
