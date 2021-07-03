@@ -26,7 +26,7 @@ module.exports = {
         }
 
         embed
-            .setTitle(t("cmds.avatar.profile", { user: user.tag }))
+            .setTitle(t("cmds:avatar.profile", { user: user.tag }))
             .setImage(user.displayAvatarURL({ dynamic: true }));
         message.channel.send({ embeds: [embed] });
     },
