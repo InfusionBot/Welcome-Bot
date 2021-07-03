@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "botinfo",
-    aliases: ["botstats", "info"],
+    aliases: ["bi", "binfo", "info"],
     //description: "Bot information",
     usage: "(--dm)",
     cooldown: 10,

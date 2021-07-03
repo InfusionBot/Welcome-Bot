@@ -41,6 +41,11 @@
     "success": "{{author}} has kissed {{user}}",
     "errorYourself": "You can't kiss yourself!"
   },
+  "pat": {
+    "cmdDesc": "Pats someone",
+    "success": "{{author}} pats {{user}}",
+    "errorYourself": "You can't pat yourself!"
+  },
   "slap": {
     "cmdDesc": "Slap a user",
     "success": "{{author}} slapped {{user}}",
