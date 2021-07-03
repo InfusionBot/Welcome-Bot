@@ -18,6 +18,7 @@ module.exports = {
             .setThumbnail("https://i.imgur.com/2BF9mxi.png")
             .addField("Servers joined:", `${message.client.guilds.cache.size}`)
             .addField("Version:", `${message.client.botVersion}`)
+            .addField("Node.js version:", process.version)
             .addField(
                 "No of Commands:",
                 `${message.client.commands.enabled.size}`
