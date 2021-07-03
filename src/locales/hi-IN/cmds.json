@@ -1,30 +1,30 @@
 {
   "waifu": {
-    "cmdDesc": "يجلب تنازلا عشوائيا (يسهل إذا كانت القناة NSFW) ويعرضه."
+    "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
   },
   "botperms": {
-    "cmdDesc": "قائمة الأذونات الممنوحة للبوت"
+    "cmdDesc": "List of permissions given to bot"
   },
   "invite": {
-    "cmdDesc": "الحصول على رابط دعوة للبوت"
+    "cmdDesc": "Get Invite link for the bot"
   },
   "lib": {
-    "cmdDesc": "المكتبة المستخدمة لبناء Welcome-Bot"
+    "cmdDesc": "Library used to build Welcome-Bot"
   },
   "ping": {
-    "cmdDesc": "ربط البوت"
+    "cmdDesc": "Ping the bot"
   },
   "support": {
-    "cmdDesc": "احصل على دعم لـ Welcome-Bot"
+    "cmdDesc": "Get Support for Welcome-Bot"
   },
   "uptime": {
-    "cmdDesc": "احصل على وقت مبكر من البوت"
+    "cmdDesc": "Get uptime of the bot"
   },
   "website": {
-    "cmdDesc": "رابط إلى موقع Welcome-Bot"
+    "cmdDesc": "Link to Welcome-Bot's website"
   },
   "figlet": {
-    "cmdDesc": "تنفيذ سرعة FIGfont في JS"
+    "cmdDesc": "Implement the FIGfont spec in JS"
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
@@ -47,7 +47,7 @@
     "errorYourself": "You can't slap yourself!"
   },
   "image": {
-    "cmdDesc": "إنشاء صورة شعبية عشوائية"
+    "cmdDesc": "Generate a random pokemon image"
   },
   "pokemon": {
     "cmdDesc": "Get a pokemon image"
@@ -56,13 +56,13 @@
     "cmdDesc": "Get your fortune by asking your question"
   },
   "coinflip": {
-    "cmdDesc": "قلب عملة معدنية."
+    "cmdDesc": "सिक्का उछालें!"
   },
   "help": {
-    "cmdDesc": "قائمة جميع الأوامر أو الحصول على معلومات لأوامر / فئة محددة.",
-    "cmdHelp": "مساعدة للأمر {{cmd}}",
-    "cmds": "استخدم الأسهم ⏪⏩",
-    "bot-help": "مساعدة Welcome-Bot",
+    "cmdDesc": "List all commands or get info for a specific command/category.",
+    "cmdHelp": "Help for {{cmd}} command",
+    "cmds": "Use arrows ⏪⏩",
+    "bot-help": "Welcome-Bot help",
     "in-cat": "Commands in this category"
   },
   "perms": {
@@ -76,40 +76,40 @@
     "cmdDesc": "Bot information"
   },
   "stats": {
-    "cmdDesc": "إحصائيات الخادم الخاص بك"
+    "cmdDesc": "Your server statistics"
   },
   "user": {
-    "cmdDesc": "الحصول على معلومات حول المستخدم. سوف تظهر معلوماتك إذا لم يتم ذكر أي مستخدم"
+    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
   },
   "version": {
     "cmdDesc": "Get information on a version or latest version"
   },
   "qrcode": {
-    "cmdDesc": "إنشاء/قراءة رمز Qrcode"
+    "cmdDesc": "Generate or Read a QR code"
   },
   "test": {
     "cmdDesc": "Test by sending welcome message"
   },
   "ban": {
-    "cmdDesc": "حظر المستخدم."
+    "cmdDesc": "Ban a user."
   },
   "kick": {
-    "cmdDesc": "طرد المستخدم."
+    "cmdDesc": "Kick a user."
   },
   "prune": {
-    "cmdDesc": "إحباط الرسائل."
+    "cmdDesc": "Prune Messages."
   },
   "unban": {
-    "cmdDesc": "فك حظر مستخدم."
+    "cmdDesc": "Unban a user."
   },
   "eval": {
-    "cmdDesc": "تنفيذ بيان."
+    "cmdDesc": "Execute a JS statement."
   },
   "reload": {
-    "cmdDesc": "إعادة تحميل أمر"
+    "cmdDesc": "Reloads a command"
   },
   "restart": {
-    "cmdDesc": "إعادة تشغيل البوت"
+    "cmdDesc": "Restart the bot"
   },
   "servers-list": {
     "cmdDesc": "Show the list of servers the bot is in."
@@ -127,10 +127,10 @@
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
   },
   "lang": {
-    "cmdDesc": "تغيير اللغة",
-    "invalid": "لغة غير صالحة، أرسل {{cmd}} للحصول على قائمة بلديات متاحة.",
-    "success": "تم تحديد اللغة إلى {{lang}}",
-    "show": "Language successfully set to {{lang}}"
+    "cmdDesc": "भाषा बदले",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
+    "success": "Language set to {{lang}}",
+    "show": "भाषा {{lang}} हो गयी है।"
   },
   "message": {
     "cmdDesc": "Manage welcome message for this server"

@@ -15,7 +15,7 @@
   "invalidImageLink": "You have to give me a valid image link.",
   "invalidChannel": "You forgot to mention a channel or I couldn't find it.",
   "youDontHavePermission": "أنت تفتقد الإذن التالي في تلك القناة: {{permission}}",
-  "youDontHavePermShort": "You don't have permission to do this!",
+  "youDontHavePermShort": "ليس لديك الإذن للقيام بذلك!",
   "iDontHavePermission": "لقد فقدت الإذن التالي في تلك القناة: {{permission}}",
   "channelDoesntExist": "هذه القناة غير موجودة أو لم أستطع العثور عليها.",
   "userNotFound": "حدث خطأ أثناء محاولة العثور على هذا المستخدم."
