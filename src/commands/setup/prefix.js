@@ -8,7 +8,7 @@ module.exports = {
     name: "prefix",
     aliases: ["getprefix"],
     //description: "Manage perfix for this server",
-    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
     subcommand: false,
     subcommands: [
         { name: "set", desc: "Set Custom prefix" },

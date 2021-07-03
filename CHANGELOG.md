@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.10.1]
+
+> *Released:** `TBA`
+
+### Bug fixes
+
+- All commands in setup category was not working, fix those all
+
 ## [v1.10.0]
 
-> **Released:** `TBA`
+> **Released:** `03-07-2021`
 
 ### New features
 
@@ -323,6 +331,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.10.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.1
 [v1.10.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.0
 [v1.9.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.3
 [v1.9.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.9.2

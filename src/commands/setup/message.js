@@ -8,7 +8,7 @@ module.exports = {
     name: "message",
     aliases: ["msg"],
     //description: "Manage welcome message for this server",
-    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
     subcommand: false,
     subcommands: [
         { name: "set", desc: "Set Welcome message" },

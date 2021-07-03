@@ -9,7 +9,7 @@ module.exports = {
     aliases: ["getnews"],
     //description:
     //"Get news and version updates to this bot sent to a specific channel.",
-    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
     bot_perms: [Permissions.FLAGS.MANAGE_WEBHOOKS],
     guildOnly: true,
     args: true,

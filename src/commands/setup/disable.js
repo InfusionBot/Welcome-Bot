@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "disable",
     //description: "Disable welcome / goodbye logs.",
-    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
     subcommand: true,
     subcommands: [
         { name: "welcome", desc: "Disable welcome logs" },

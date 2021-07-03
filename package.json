@@ -2,16 +2,8 @@
   "name": "welcome-bot",
   "version": "1.10.0",
   "changelog": [
-    "**New features**",
-    "New command `avatar` - Get avatar of a user",
-    "New translations",
-    "New command `slap`",
-    "New command `8ball`",
     "**Bug fixes**",
-    "Fix prune command",
-    "**Changes**",
-    "From this version, if user does not have a required permission, the bot says that instead of saying `Send w/botperms to get a list of permissions you have given...`",
-    "Docs updater takes command description from en-US locales folder itself now."
+    "All commands in setup category was not working, fix those all"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
