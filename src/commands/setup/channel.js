@@ -9,7 +9,7 @@ module.exports = {
     aliases: ["chan"],
     //description:
     //"Manage channel settings for this server\nNot providing any arguments will display the current settings.",
-    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
     subcommand: false,
     subcommands: [
         { name: "set", desc: "Set Welcome channel" },

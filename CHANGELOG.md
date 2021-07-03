@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.10.1]
+
+> *Released:** `TBA`
+
+### Bug fixes
+
+- All commands in setup category was not working, fix those all
+
 ## [v1.10.0]
 
-> **Released:** `TBA`
+> **Released:** `03-07-2021`
 
 ### New features
 
