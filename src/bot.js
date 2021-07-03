@@ -27,7 +27,7 @@ const dbAuditor = require("./db/functions/dbAuditor");
 process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
 process.on("unhandledRejection", (error) => {
     if (
-        error.message.indexOf("No guild with guild ID") !== -1 &&
+        error.toString().indexOf("No guild with guild ID") !== -1 &&
         client &&
         dbAuditor
     ) {

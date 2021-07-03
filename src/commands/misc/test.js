@@ -8,7 +8,7 @@ module.exports = {
     name: "test",
     //aliases: [],
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
-    description: "Test welcome message",
+    //description: "Test welcome message",
     args: false,
     guildOnly: true,
     category: "Miscellaneous",

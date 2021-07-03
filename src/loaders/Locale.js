@@ -21,7 +21,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 preload: dir,
                 fallbackLng: "en-US",
                 whitelist: Object.keys(
-                    require(__dirname + `/../locales/en-US/languages.json`)
+                    require(dirPath + `/en-US/languages.json`)
                 ),
                 backend: {
                     loadPath: `${dirPath}/{{lng}}/{{ns}}.json`,
@@ -29,7 +29,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                 interpolation: {
                     escapeValue: false,
                 },
-                debug: client.debug,
+                //debug: client.debug,
                 returnEmptyString: false,
             },
             () => {

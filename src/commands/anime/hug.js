@@ -7,11 +7,11 @@ const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "hug",
-    description: "Give a hug to a user",
+    //description: "Give a hug to a user",
     args: true,
     usage: "[mention / user id]",
     cooldown: 3,
-    category: "Fun",
+    category: "Anime",
     async execute(message, args, guildDB, t) {
         let res = await fetch("https://nekos.life/api/v2/img/hug");
         res = await res.json();

@@ -6,7 +6,7 @@
 module.exports = {
     name: "coinflip",
     aliases: ["cf"],
-    description: "Flips a coin.",
+    //description: "Flips a coin.",
     cooldown: 10,
     category: "Games",
     execute(message, args, guildDB) {

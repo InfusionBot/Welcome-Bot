@@ -2,8 +2,11 @@
   "name": "welcome-bot",
   "version": "1.9.4",
   "changelog": [
-    "**Changes**",
-    "debug in translations"
+    "**New features**",
+    "New command `avatar` - Get avatar of a user",
+    "New translations",
+    "**Bug fixes**",
+    "Fix prune command"
   ],
   "description": "Welcome users when they join your discord server",
   "main": "src/bot.js",
@@ -42,7 +45,9 @@
     "pokemon": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.27.0",
-    "prettier": "^2.3.0"
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2"
   }
 }

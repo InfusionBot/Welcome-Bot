@@ -7,7 +7,7 @@ const fs = require("fs");
 
 module.exports = {
     name: "reload",
-    description: "Reloads a command",
+    //description: "Reloads a command",
     args: true,
     usage: "[command]",
     cooldown: 30,

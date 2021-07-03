@@ -10,6 +10,7 @@ module.exports = (client) => {
     const commands = client.commands.enabled;
     let text = fs.readFileSync(__dirname + "/cmdTemplate.md", "utf8");
     let toc = "# Table of contents\n\n"; //Table of contents
+    const t = client.i18next.getFixedT("en-US");
     categories.forEach((cat) => {
         const cmds = commands
             .filter((cmd) => cmd.category === cat.name)
@@ -33,7 +34,7 @@ module.exports = (client) => {
                 `##### Subcommands:\n\n- ${
                     subcommands ? subcommands.join("\n- ") : "None"
                 }\n\n##### Cmd info\n\n` +
-                `- Description: ${cmd.description}\n` +
+                `- Description: ${t(`cmds:${cmd.name}.cmdDesc`)}\n` +
                 `- Usage: ${cmd.usage ? cmd.usage : "None"}\n` +
                 `- Aliases: ${
                     cmd.aliases ? `\`${cmd.aliases.join("`, `")}\`` : "None"

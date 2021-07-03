@@ -7,7 +7,7 @@ const { MessageEmbed, Permissions } = require("discord.js");
 module.exports = {
     name: "unban",
     //aliases: [],
-    description: "Unban a user.",
+    //description: "Unban a user.",
     permissions: [Permissions.FLAGS.BAN_MEMBERS],
     bot_perms: [Permissions.FLAGS.BAN_MEMBERS],
     args: true,

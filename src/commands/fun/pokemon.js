@@ -6,7 +6,7 @@
 module.exports = {
     name: "pokemon",
     aliases: ["pokémon"],
-    description: "Get a pokemon image",
+    //description: "Get a pokemon image",
     cooldown: 10,
     args: true,
     usage: "[pokemon character]",

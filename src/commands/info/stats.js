@@ -6,7 +6,7 @@
 module.exports = {
     name: "stats",
     aliases: ["server"],
-    description: "Your server statistics",
+    //description: "Your server statistics",
     usage: "(--dm)",
     cooldown: 10,
     guildOnly: true,

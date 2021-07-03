@@ -5,8 +5,8 @@
  */
 module.exports = {
     name: "botinfo",
-    aliases: ["botstats"],
-    description: "Bot information",
+    aliases: ["botstats", "info"],
+    //description: "Bot information",
     usage: "(--dm)",
     cooldown: 10,
     category: "Information",
@@ -18,6 +18,7 @@ module.exports = {
             .setThumbnail("https://i.imgur.com/2BF9mxi.png")
             .addField("Servers joined:", `${message.client.guilds.cache.size}`)
             .addField("Version:", `${message.client.botVersion}`)
+            .addField("Node.js version:", process.version)
             .addField(
                 "No of Commands:",
                 `${message.client.commands.enabled.size}`
@@ -40,10 +41,11 @@ module.exports = {
                 "Bot lists:",
                 "[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
                     "[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
-                    "[dblist.xyz](https://dblist.xyz/bot/848459799783669790)"
+                    "[dblist.xyz](https://dblist.xyz/bot/848459799783669790)" +
+                    "[discordservices.net](https://discordservices.net/bot/848459799783669790)"
             )
             .addField(
-                "Other links:",
+                "🔗 Other links:",
                 "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
                     "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                     "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
@@ -55,7 +57,7 @@ module.exports = {
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
-                message.channel.send(`Check out your DMs ${message.author}`);
+                message.channel.send(`Check out your DMs, ${message.author}`);
                 break;
             default:
                 message.channel.send({ embeds: [embed] });

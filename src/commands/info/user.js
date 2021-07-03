@@ -3,18 +3,17 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { MessageEmbed } = require("discord.js");
+const { userFromMention } = require("../../functions/get.js");
 module.exports = {
     name: "user",
     aliases: ["whois"],
-    description:
-        "Get information about a user. It will show your info if no user was mentioned",
+    //description:
+    //"Get information about a user. It will show your info if no user was mentioned",
     args: false,
     usage: "(@mention / user_id)",
     category: "Information",
     async execute(message, args, guildDB, t) {
-        const { MessageEmbed } = require("discord.js");
-        const { userFromMention } = require("../../functions/get.js");
-        //const getUserFlags = require("../../functions/getUserFlags.js");
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {

@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["commands", "cmd"],
-    description: "List all of my commands or info about a specific command.",
+    //description: "List all of my commands or info about a specific command.",
     usage: "(command name / category)",
     //bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
     cooldown: 5,
@@ -87,12 +87,12 @@ module.exports = {
             for (var key in emojiList) {
                 await curPage.react(emojiList[key]);
             }
-            const reactionCollector = curPage.createReactionCollector(
-                (reaction, user) =>
+            const reactionCollector = curPage.createReactionCollector({
+                filter: (reaction, user) =>
                     Object.values(emojiList).includes(reaction.emoji.name) &&
                     user.id === message.author.id,
-                { time: timeout }
-            );
+                time: timeout,
+            });
             reactionCollector.on("collect", (reaction) => {
                 // Remove the reaction when the user react to the message
                 reaction.users.remove(message.author);
@@ -194,7 +194,7 @@ module.exports = {
                 pages[0].addField(
                     "Usage:",
                     `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                        `\n[] = Required argument\n() = Optional argument\n/ = Any One of these`
+                        `\n**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.`
                 );
             if (command.ownerOnly)
                 pages[0].addField(

@@ -6,8 +6,8 @@
 module.exports = {
     name: "perms",
     aliases: ["permissions"],
-    description:
-        "Get permissions given to a specific user. Not providing any mention will show your permissions",
+    //description:
+    //"Get permissions given to a specific user. Not providing any mention will show your permissions",
     args: false,
     guildOnly: true,
     usage: "(@mention / user_id)",

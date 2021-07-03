@@ -7,8 +7,8 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "channel",
     aliases: ["chan"],
-    description:
-        "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
+    //description:
+    //"Manage channel settings for this server\nNot providing any arguments will display the current settings.",
     permissions: [Permissions.FLAGS.MANAGE_SERVER],
     subcommand: false,
     subcommands: [

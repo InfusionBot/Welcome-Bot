@@ -6,7 +6,7 @@
 module.exports = {
     name: "website",
     aliases: ["site"],
-    description: "Link to Welcome-Bot's website",
+    //description: "Link to Welcome-Bot's website",
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {

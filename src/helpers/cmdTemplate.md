@@ -1,5 +1,10 @@
 Welcome-Bot contains more than **{commandsRoundToTen} commands** in **{categoriesSize} categories**!
 
+### **Usage Key!**
+
+- The `[` and `]` around the argument mean it’s required.  
+- The `(` and `)` around the argument mean it’s optional.
+
 #### Contents in a command
 
 **Name**: The name of the command  

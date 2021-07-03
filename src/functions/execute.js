@@ -4,27 +4,33 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("../db/connection");
-const { Collection, MessageEmbed } = require("discord.js");
+const { Collection, MessageEmbed, Permissions } = require("discord.js");
 const updateGuild = require("../db/functions/guild/updateGuild");
 const getGuild = require("../db/functions/guild/getGuild");
+const beautifyPerms = require("../functions/beautifyPerms");
 
 module.exports = async (message, guildDB) => {
     const client = message.client;
+    const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        message.client.defaultPrefix,
-        guildDB.prefix,
-        `<@!?${message.client.user.id}> `,
+        escapeRegex(client.defaultPrefix),
+        escapeRegex(guildDB.prefix),
     ];
-    const translate = message.client.i18next.getFixedT(guildDB.lang || "en-US");
-    const prefixRegex = new RegExp(`^(${prefixes.join("|")})`);
-    const prefix = message.content.match(prefixRegex);
+    const prefixRegex = new RegExp(
+        `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
+    );
+    let prefix;
+    try {
+        [, prefix] = message.content.match(prefixRegex);
+    } catch (e) {}
+    const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
     let embed = new MessageEmbed();
     embed.setColor("#ff0000");
-    if (prefix && prefix[0]) {
+    if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
-        let args = message.content.slice(prefix[0].length).trim().split(/ +/);
+        let args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
             message.client.commands.enabled.get(commandName) ||
@@ -69,8 +75,24 @@ module.exports = async (message, guildDB) => {
 
         if (command.permissions) {
             const authorPerms = message.channel.permissionsFor(message.author);
-            if (!authorPerms || !authorPerms.has(command.permissions)) {
-                return message.reply("You don't have permission to do this!");
+            if (!authorPerms) {
+                return message.reply(t("errors:youDontHavePermShort"));
+            }
+            for (var i = 0; i < command.permissions.length; i++) {
+                if (!authorPerms.has(command.permissions[i])) {
+                    return message.reply(
+                        t("errors:youDontHavePermission", {
+                            permission: t(
+                                `permissions:${new Permissions(
+                                    command.permissions[i]
+                                )
+                                    .toArray()
+                                    .join("")
+                                    .toUpperCase()}`
+                            ),
+                        })
+                    );
+                }
             }
         }
 
@@ -85,7 +107,7 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.args && !args.length) {
-            let reply = `Arguments are required for this command.`;
+            let reply = t("errors:missingArgs");
 
             if (command.usage) {
                 reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
@@ -145,7 +167,7 @@ module.exports = async (message, guildDB) => {
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
-                    translate(`errors:cooldown`, {
+                    t(`errors:cooldown`, {
                         seconds: timeLeft.toFixed(1),
                         command: command.name,
                     })
@@ -165,12 +187,12 @@ module.exports = async (message, guildDB) => {
         if (command.catchError) {
             try {
                 message.channel.startTyping();
-                command.execute(message, args, guildDB, translate);
+                command.execute(message, args, guildDB, t);
                 message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);
                 embed
-                    .setTitle(translate("errors:generic"))
+                    .setTitle(t("errors:generic"))
                     .addField(
                         `Please report this to ${message.client.ownersTags.join(
                             " OR "
@@ -181,7 +203,7 @@ module.exports = async (message, guildDB) => {
                 return;
             }
         } else {
-            command.execute(message, args, guildDB, translate);
+            command.execute(message, args, guildDB, t);
         }
         message.channel.stopTyping(true);
         if (client.debug)
@@ -191,6 +213,6 @@ module.exports = async (message, guildDB) => {
             );
     } else if (client.debug) {
         client.logger.log("prefix did not match", "debug");
-        console.log("PREFIX match:", prefix);
+        console.log("PREFIX match:", message.content.match(prefixRegex));
     }
 };

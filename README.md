@@ -8,12 +8,21 @@ Welcome-bot is a bot built for you, to welcome new users to your servers mainly.
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
-[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord)](https://dsc.gg/welcome-bot-guild)
+[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)](https://dsc.gg/welcome-bot-guild)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 [![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 
+Feel free to add a star ⭐ to the repository to promote the project!
+
 ## Features
+
+### Complete bot
+
+Welcome-Bot offers:
+- 🇫🇷 Support for translations (limited languages)
+- ✉️ Support for commands in direct messages
+- 🥳 35+ commands
 
 ### Customizable Settings
 
@@ -46,48 +55,8 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 ![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)
 
 ## Commands
-These are the commands currently available:
 
-### Setup
-
-- [`channel` - Manage channel settings for this server](https://welcome-bot.github.io/docs/commands.html#channel)
-    - `set` - Set welcome channel, channel to send message
-    - `setMod` - Set moderation logs channel
-    - `reset` - Reset welcome channel back to default value
-    - `resetMod` - Reset moderation logs channel back to default value
-- [`enable` - Enable/Disable welcome and goodbye logs.](https://welcome-bot.github.io/docs/commands.html#enable)
-- [`follow` - Get news and version updates to this bot sent to a specific channel.](https://welcome-bot.github.io/docs/commands.html#follow)
-- [`message` - Manage welcome message for this server](https://welcome-bot.github.io/docs/commands.html#message)
-    - `set` - Set welcome message
-    - `reset` - Reset message back to default value
-- [`prefix` - Manage perfix for this server](https://welcome-bot.github.io/docs/commands.html#prefix)
-    - `set` - Set bot prefix
-    - `reset` - Reset prefix back to default value
-
-### General
-
-- [`invite` - Get the invite link to invite the bot to your server](https://welcome-bot.github.io/docs/commands.html#invite)
-- [`ping` - Ping the bot.](https://welcome-bot.github.io/docs/commands.html#ping)
-- [`help` - Get help](https://welcome-bot.github.io/docs/commands.html#help)
-
-### Information
-
-- [`botinfo` - Information about the bot.](https://welcome-bot.github.io/docs/commands.html#botinfo)
-- [`stats` - Server statistics.](https://welcome-bot.github.io/docs/commands.html#stats)
-- [`user` - Information on a user.](https://welcome-bot.github.io/docs/commands.html#user)
-- [`version` - The changelog of bot on a specific version](https://welcome-bot.github.io/docs/commands.html#version)
-
-### Moderation
-
-- [`ban` - Ban a user](https://welcome-bot.github.io/docs/commands.html#ban)
-- [`unban` - Unban a user](https://welcome-bot.github.io/docs/commands.html#unban)
-- [`kick` - Kick a user](https://welcome-bot.github.io/docs/commands.html#kick)
-
-### Miscellaneous
-
-- [`test` - Test by sending welcome message](https://welcome-bot.github.io/docs/commands.html#test)
-
-These commands may not be up to date, [visit our site](https://welcome-bot.github.io/docs/commands.html) for up to date commands
+Welcome-Bot has more than 35+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands
 
 ## Default values
 
@@ -154,11 +123,15 @@ Feel free to upvote him to show your support.
 
 > Find the best Discord bots for your server with our discord bot list. Browse information on each bot and vote for your favourites.
 
+### [discordservices.net](https://discordservices.net/bot/848459799783669790)
+
+> A brand new botlist that aims to deliver the best experience for its users and bot developers.
+
 ### [discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
 
-[![widget](https://discord.boats/api/widget/848459799783669790/)](https://discord.boats/bot/848459799783669790)
+[![widget](https://discord.boats/api/widget/848459799783669790)](https://discord.boats/bot/848459799783669790)
 
 ### [discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
@@ -166,7 +139,21 @@ Feel free to upvote him to show your support.
 
 ## Self hosting
 
-[Click here to see self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html)
+[Self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html) are available on our website.
+
+## Supporters
+
+👏 A big thank you goes to all the supporters of this project!
+
+You prove that the Discord Welcome-Bot has some value for you!
+
+### Stargazers
+
+[![stargazers image](https://reporoster.com/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
+
+### Contributors
+
+[![contributors image](https://contrib.rocks/image?repo=Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/contributors)
 
 ## Questions?
 
@@ -174,7 +161,7 @@ Do you have question? Don't hesitate to join our [discord server](https://discor
 
 ## Roadmap
 
-Here's the [link to roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1). Roadmap is a `TO DO` list.
+Visit our [Roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1) for planned and upcoming features.
 
 ## Contributing
 

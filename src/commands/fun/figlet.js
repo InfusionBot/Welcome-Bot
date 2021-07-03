@@ -6,7 +6,7 @@
 module.exports = {
     name: "figlet",
     aliases: ["asciify", "bigtext"],
-    description: "Implement the FIGfont spec in JS",
+    //description: "Implement the FIGfont spec in JS",
     args: true,
     usage: "[string]",
     cooldown: 10,
