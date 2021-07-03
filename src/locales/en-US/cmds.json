@@ -70,7 +70,7 @@
   },
   "avatar": {
     "cmdDesc": "Get a user's avatar",
-    "dp": "Avatar of {{user}}"
+    "profile": "Avatar of {{user}}"
   },
   "botinfo": {
     "cmdDesc": "Bot information"
