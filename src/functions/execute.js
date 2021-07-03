@@ -19,7 +19,10 @@ module.exports = async (message, guildDB) => {
     const prefixRegex = new RegExp(
         `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
     );
-    const [, prefix] = message.content.match(prefixRegex).catch(e => {return;});
+    let prefix;
+    try {
+        [, prefix] = message.content.match(prefixRegex);
+    } catch(e) {}
     const translate = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
