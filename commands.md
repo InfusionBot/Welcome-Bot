@@ -323,7 +323,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Generate or Read a QR code
 - Usage: [subcommand] [data / image_url]
-- Aliases: None
+- Aliases: `qr`
 - Cooldown: 10
 
 ### `test`
