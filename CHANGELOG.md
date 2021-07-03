@@ -16,6 +16,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 - New command `avatar` - Get avatar of a user
 - New translations
+- New command `slap`
 - New command `8ball`
 
 ### Bug fixes
