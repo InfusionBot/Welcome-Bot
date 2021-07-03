@@ -1,6 +1,6 @@
 {
   "name": "welcome-bot",
-  "version": "1.9.4",
+  "version": "1.10.0",
   "changelog": [
     "**New features**",
     "New command `avatar` - Get avatar of a user",
