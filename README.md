@@ -22,7 +22,7 @@ Feel free to add a star ⭐ to the repository to promote the project!
 Welcome-Bot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 35+ commands
+- 🥳 40+ commands
 
 ### Customizable Settings
 
