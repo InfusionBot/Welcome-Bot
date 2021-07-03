@@ -22,7 +22,7 @@ module.exports = async (message, guildDB) => {
     let prefix;
     try {
         [, prefix] = message.content.match(prefixRegex);
-    } catch(e) {}
+    } catch (e) {}
     const translate = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
