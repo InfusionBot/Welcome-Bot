@@ -155,6 +155,10 @@ You prove that the Discord Welcome-Bot has some value for you!
 
 [![contributors image](https://contrib.rocks/image?repo=Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/contributors)
 
+### Translators
+
+A list of people who helped us in translation is available in [TRANSLATORS.md file](https://github.com/Welcome-Bot/welcome-bot/blob/main/TRANSLATORS.md)
+
 ## Questions?
 
 Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
