@@ -40,6 +40,11 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
+client.player.on("trackStart", (message, track) => {
+    let embed = new MessageEmbed().setTitle("Starting to play").setDescription(track.title).addField("Source:", track.source).addField(`[Link/URL](${track.url})`).addField("Views:", track.views);
+    message.channel.send({embeds: [embed]});
+});
+
 client.on("ready", async () => {
     // We logged in
     client.logger.log(
