@@ -36,7 +36,7 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "Good Bye {mention}!\nWe are sad to see you go!",
     },
-    modLogChan: {
+    modChannel: {
         type: String,
         required: true,
         trim: true,

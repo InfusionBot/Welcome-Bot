@@ -35,9 +35,9 @@ module.exports = {
             return message.channel.send(`Failed to unban **${id}**`);
         }
 
-        if (guildDB.modLogChan) {
+        if (guildDB.modChannel) {
             channel = message.guild.channels.cache.find(
-                (ch) => ch.name === guildDB.modLogChan
+                (ch) => ch.name === guildDB.modChannel
             );
             if (channel) {
                 embed = new MessageEmbed();

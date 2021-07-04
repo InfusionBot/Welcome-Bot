@@ -8,6 +8,14 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.11.0]
+
+> **Released:** `TBA`
+
+### Changes
+
+- Change `modLogChan` to `modChannel` in db
+
 ## [v1.10.1]
 
 > *Released:** `TBA`

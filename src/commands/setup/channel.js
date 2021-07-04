@@ -20,7 +20,7 @@ module.exports = {
     cooldown: 10,
     guildOnly: true,
     category: "Setup",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
         const { channelIdFromMention } = require("../../functions/get.js");
@@ -62,7 +62,7 @@ module.exports = {
                     //Set mod channel
                     updateGuild(
                         message.guild.id,
-                        "modLogChan",
+                        "modChannel",
                         args
                             .join(" ")
                             .replace(`${args[0]} `, "")
@@ -90,26 +90,10 @@ module.exports = {
                 break;
             case "resetmod":
                 //Reset mod channel
-                updateGuild(message.guild.id, "modLogChan", "mod-log");
+                updateGuild(message.guild.id, "modChannel", "mod-log");
                 guildDB = await getGuild(message.guild.id);
                 message.reply(
-                    "Mod Channel reset to `" + guildDB.modLogChan + "`"
-                );
-                break;
-            case "get":
-                //Get channel
-                message.reply(
-                    "Welcome Channel currently is set to `" +
-                        guildDB.channel +
-                        "`"
-                );
-                break;
-            case "getmod":
-                //Get mod channel
-                message.reply(
-                    "Mod Channel currently is set to `" +
-                        guildDB.modLogChan +
-                        "`"
+                    "Mod Channel reset to `" + guildDB.modChannel + "`"
                 );
                 break;
             default:
@@ -122,7 +106,7 @@ module.exports = {
                 //Get mod channel
                 message.reply(
                     "Mod Channel currently is set to `" +
-                        guildDB.modLogChan +
+                        guildDB.modChannel +
                         "`"
                 );
                 break;
