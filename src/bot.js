@@ -40,26 +40,29 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
-client.player.on("searchCancel", (message, queue, tracks) => {
-    let embed = new MessageEmbed().setTitle("❌ Search failed");
-    message.channel.send({ embeds: [embed] });
-}).on("trackAdd", (message, queue, track) => {
-    let embed = new MessageEmbed()
-        .setTitle("✅ Added to queue")
-        .setDescription(track.title)
-        .addField("Source:", track.source)
-        .addField(`🔗 [Link/URL](${track.url})`)
-        .addField("👀 Views:", track.views);
-    message.channel.send({ embeds: [embed] });
-}).on("trackStart", (message, queue, track) => {
-    let embed = new MessageEmbed()
-        .setTitle("🥁 Starting to play")
-        .setDescription(track.title)
-        .addField("Source:", track.source)
-        .addField(`🔗 [Link/URL](${track.url})`)
-        .addField("👀 Views:", track.views);
-    message.channel.send({ embeds: [embed] });
-});
+client.player
+    .on("searchCancel", (message, queue, tracks) => {
+        let embed = new MessageEmbed().setTitle("❌ Search failed");
+        message.channel.send({ embeds: [embed] });
+    })
+    .on("trackAdd", (message, queue, track) => {
+        let embed = new MessageEmbed()
+            .setTitle("✅ Added to queue")
+            .setDescription(track.title)
+            .addField("Source:", track.source)
+            .addField(`🔗 [Link/URL](${track.url})`)
+            .addField("👀 Views:", track.views);
+        message.channel.send({ embeds: [embed] });
+    })
+    .on("trackStart", (message, queue, track) => {
+        let embed = new MessageEmbed()
+            .setTitle("🥁 Starting to play")
+            .setDescription(track.title)
+            .addField("Source:", track.source)
+            .addField(`🔗 [Link/URL](${track.url})`)
+            .addField("👀 Views:", track.views);
+        message.channel.send({ embeds: [embed] });
+    });
 
 client.on("ready", async () => {
     // We logged in
