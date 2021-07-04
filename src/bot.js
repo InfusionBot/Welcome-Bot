@@ -42,7 +42,7 @@ process.on("exit", (code) => {
 
 client.player
     .on("searchCancel", (message, queue, tracks) => {
-        let embed = new MessageEmbed().setTitle("❌ Search failed");
+        let embed = new MessageEmbed().setTitle("❌ Search timed out");
         message.channel.send({ embeds: [embed] });
     })
     .on("trackAdd", (message, queue, track) => {
