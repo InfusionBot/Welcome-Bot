@@ -154,11 +154,11 @@ class WelcomeBot extends Client {
         }
     }
 
-    login (token = process.env.DISCORD_TOKEN) {
+    login(token = process.env.DISCORD_TOKEN) {
         return super.login(token);
     }
 
-    async initializeLoader (loader, name) {
+    async initializeLoader(loader, name) {
         let success = false;
         if (this.debug) this.logger.log("Loading " + name + " loader", "debug");
         try {
