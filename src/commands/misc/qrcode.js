@@ -15,7 +15,7 @@ module.exports = {
     ],
     cooldown: 10,
     category: "Miscellaneous",
-    async execute(message, args, guildDB) {
+    async execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         const fetch = require("node-fetch");
         let embed = new MessageEmbed();
@@ -37,15 +37,8 @@ module.exports = {
                 });
                 break;
             case "read":
-                if (
-                    !(
-                        args[1].startsWith("http://") |
-                        args[1].startsWith("https://")
-                    )
-                )
-                    return message.reply(
-                        "Invalid Image url, check whether your url includes protocol"
-                    );
+                if (!args[1].startsWith("http"))
+                    return message.reply(t("errors:invalidURL"));
                 const body = await fetch(
                     `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
                         args[1]
