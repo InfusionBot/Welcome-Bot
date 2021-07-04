@@ -41,8 +41,7 @@ process.on("exit", (code) => {
 });
 
 client.player.on("searchCancel", (message, queue, tracks) => {
-    let embed = new MessageEmbed()
-        .setTitle("❌ Search failed");
+    let embed = new MessageEmbed().setTitle("❌ Search failed");
     message.channel.send({ embeds: [embed] });
 });
 
