@@ -43,9 +43,7 @@ process.on("exit", (code) => {
 client.player.on("searchCancel", (message, queue, tracks) => {
     let embed = new MessageEmbed().setTitle("❌ Search failed");
     message.channel.send({ embeds: [embed] });
-});
-
-client.player.on("trackAdd", (message, queue, track) => {
+}).on("trackAdd", (message, queue, track) => {
     let embed = new MessageEmbed()
         .setTitle("✅ Added to queue")
         .setDescription(track.title)
@@ -53,9 +51,7 @@ client.player.on("trackAdd", (message, queue, track) => {
         .addField(`🔗 [Link/URL](${track.url})`)
         .addField("👀 Views:", track.views);
     message.channel.send({ embeds: [embed] });
-});
-
-client.player.on("trackStart", (message, queue, track) => {
+}).on("trackStart", (message, queue, track) => {
     let embed = new MessageEmbed()
         .setTitle("🥁 Starting to play")
         .setDescription(track.title)
