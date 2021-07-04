@@ -13,15 +13,15 @@ module.exports = async (message, guildDB) => {
     const client = message.client;
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        escapeRegex(client.defaultPrefix),
-        escapeRegex(guildDB.prefix),
+        escapeRegex(client.defaultPrefix.toLowerCase()),
+        escapeRegex(guildDB.prefix.toLowerCase()),
     ];
     const prefixRegex = new RegExp(
         `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
     );
     let prefix;
     try {
-        [, prefix] = message.content.match(prefixRegex);
+        [, prefix] = message.content.toLowerCase().match(prefixRegex);
     } catch (e) {}
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
