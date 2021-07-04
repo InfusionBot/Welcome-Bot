@@ -18,6 +18,7 @@ module.exports = {
         embed.setDescription(`Statistics for ${message.guild.name} server`);
         //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
         embed.setThumbnail(message.guild.iconURL());
+        message.guild.members.fetch();
         embed.addField(
             "Members in this server:",
             `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
