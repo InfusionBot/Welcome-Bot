@@ -35,7 +35,11 @@ module.exports = {
                         })
                     );
                 updateGuild(message.guild.id, "lang", args[1]);
-                return message.reply(t("cmds:lang.success", { lang: `${list[args[1]]} (${args[1]})` }));
+                return message.reply(
+                    t("cmds:lang.success", {
+                        lang: `${list[args[1]]} (${args[1]})`,
+                    })
+                );
                 break;
             case "list":
                 return message.reply(str);
