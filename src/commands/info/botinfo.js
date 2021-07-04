@@ -16,7 +16,7 @@ module.exports = {
             .setTitle("Welcome-Bot")
             .setDescription("Information and Support for Welcome-Bot")
             .setThumbnail("https://i.imgur.com/2BF9mxi.png")
-            .addField("Servers joined:", `${message.client.guilds.cache.size}`)
+            .addField("Serving:", `${message.client.guilds.cache.size} servers`)
             .addField("Version:", `${message.client.botVersion}`)
             .addField("Node.js version:", process.version)
             .addField(
@@ -38,10 +38,10 @@ module.exports = {
                 "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
             )
             .addField(
-                "Bot lists:",
+                "🧾 Bot lists:",
                 "[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
                     "[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
-                    "[dblist.xyz](https://dblist.xyz/bot/848459799783669790)" +
+                    "[dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
                     "[discordservices.net](https://discordservices.net/bot/848459799783669790)"
             )
             .addField(
