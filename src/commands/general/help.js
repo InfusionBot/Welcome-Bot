@@ -165,14 +165,9 @@ module.exports = {
         const category = categories.find((c) => c.name.toLowerCase() === name);
 
         if (!command && !category) {
-            if (!command)
-                return message.channel.send(
-                    `${t("errors:commandNotFound")}, ${message.author}`
-                );
-            if (!category)
-                return message.channel.send(
-                    `${t("errors:categoryNotFound")}, ${message.author}`
-                );
+            return message.channel.send(
+                `${t("errors:cmdOrCatNotFound")}, ${message.author}`
+            );
         }
 
         if (command) {
