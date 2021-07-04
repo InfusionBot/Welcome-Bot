@@ -19,24 +19,25 @@ module.exports = {
         //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
         embed.setThumbnail(message.guild.iconURL());
         message.guild.members.fetch();
-        embed.addField(
-            "Members in this server:",
-            `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
-        )
-        .addField(
-            "Bots in this server:",
-            `${message.guild.members.cache.filter((m) => m.user.bot).size}`
-        )
-        .addField("Total users and bots", `${message.guild.memberCount}`)
-        .addField(
-            "Online users in your server:",
-            `${
-                message.guild.members.cache.filter(
-                    (m) => m.presence.status === "online"
-                ).size
-            }`
-        )
-        .addField("Server was created at:", `${message.guild.createdAt}`);
+        embed
+            .addField(
+                "Members in this server:",
+                `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
+            )
+            .addField(
+                "Bots in this server:",
+                `${message.guild.members.cache.filter((m) => m.user.bot).size}`
+            )
+            .addField("Total users and bots", `${message.guild.memberCount}`)
+            .addField(
+                "Online users in your server:",
+                `${
+                    message.guild.members.cache.filter(
+                        (m) => m.presence.status === "online"
+                    ).size
+                }`
+            )
+            .addField("Server was created at:", `${message.guild.createdAt}`);
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
