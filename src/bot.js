@@ -118,7 +118,7 @@ client.on("guildDelete", (guild) => {
         .send({ embeds: [embed] });
 });
 
-client.on("message", async function (message) {
+client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
     if (client.debug) client.logger.log("message event triggered", "debug");
     let guildDB;
