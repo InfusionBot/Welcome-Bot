@@ -143,7 +143,10 @@ class WelcomeBot extends Client {
         ];
         this.debug = opts.debug || process.env.NODE_ENV === "development";
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
-        this.player = new Player(this, {leaveOnEmpty: false,enableLive: true});
+        this.player = new Player(this, {
+            leaveOnEmpty: false,
+            enableLive: true,
+        });
     }
 
     loadCommand(commandPath, commandName) {
