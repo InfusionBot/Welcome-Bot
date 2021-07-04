@@ -212,7 +212,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Bot information
 - Usage: (--dm)
-- Aliases: `botstats`, `info`
+- Aliases: `bi`, `binfo`, `info`
 - Cooldown: 10
 
 ### `stats`
@@ -380,7 +380,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## Anime (5 commands)
+## Anime (6 commands)
 
 ### `cuddle`
 
@@ -417,6 +417,19 @@ Not providing any arguments will display the current settings.
 ##### Cmd info
 
 - Description: Kiss a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
+### `pat`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Pats someone
 - Usage: [mention / user id]
 - Aliases: None
 - Cooldown: 3
@@ -459,7 +472,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Get your fortune by asking your question
 - Usage: [question]
-- Aliases: `eightball`
+- Aliases: `eightball`, `8b`, `8-ball`
 - Cooldown: 3
 
 ### `coinflip`
