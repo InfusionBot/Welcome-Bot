@@ -56,7 +56,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 ## Commands
 
-Welcome-Bot has more than 35+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands
+Welcome-Bot has more than 40+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands
 
 ## Default values
 
@@ -104,7 +104,7 @@ You can change this channel name, by using the `channel set` command, more info 
 
 By default the bot will check for a channel named `mod-log`.
 
-You can change this channel name, by using the `channel setMod` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+You can change this channel name, by using the `channel setmod` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
 
 ## Botlists
 
