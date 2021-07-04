@@ -9,6 +9,7 @@ const Command = require("./classes/Command");
 const util = require("util");
 const packageJson = require("../package.json");
 const Logger = require("colors-logger");
+const { Player } = require("discord-player");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -142,6 +143,7 @@ class WelcomeBot extends Client {
         ];
         this.debug = opts.debug || process.env.NODE_ENV === "development";
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
+        this.player = new Player(client);
     }
 
     loadCommand(commandPath, commandName) {
