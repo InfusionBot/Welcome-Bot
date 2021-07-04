@@ -22,33 +22,30 @@ module.exports = {
         embed.addField(
             "Members in this server:",
             `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
-        );
-        embed.addField(
+        )
+        .addField(
             "Bots in this server:",
             `${message.guild.members.cache.filter((m) => m.user.bot).size}`
-        );
-        embed.addField("Total users and bots", `${message.guild.memberCount}`);
-        embed.addField(
+        )
+        .addField("Total users and bots", `${message.guild.memberCount}`)
+        .addField(
             "Online users in your server:",
             `${
                 message.guild.members.cache.filter(
                     (m) => m.presence.status === "online"
                 ).size
             }`
-        );
-        embed.addField("Server was created at:", `${message.guild.createdAt}`);
-        embed.addField(
-            "Maximum amount of members allowed in this server",
-            `${message.guild.maximumMembers}`
-        );
+        )
+        .addField("Server was created at:", `${message.guild.createdAt}`);
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
-                message.channel.send(`Check out your DMs ${message.author}`);
+                message.channel.send(`Check out your DMs, ${message.author}`);
                 break;
             default:
                 message.channel.send({ embeds: [embed] });
                 break;
         }
+        message.guild.members.cache.clear();
     },
 };
