@@ -40,7 +40,7 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
-client.player.on("trackStart", (message, track) => {
+client.player.on("trackStart", (message, queue, track) => {
     let embed = new MessageEmbed()
         .setTitle("Starting to play")
         .setDescription(track.title)
