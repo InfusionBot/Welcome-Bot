@@ -18,15 +18,20 @@ module.exports = {
         if (message.channel.type !== "dm" && !args.length) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
-                message.reply(
-                    `${t("errors:note")}: ${t("errors:iDontHavePermission", {
-                        permission: t("permissions:MANAGE_MESSAGES"),
-                    })}, ${t("errors:pagination")}`
-                ).then(msg => {
-                    setTimeout(() => {
-                        msg.delete();
-                    }, 5000);
-                });
+                message
+                    .reply(
+                        `${t("errors:note")}: ${t(
+                            "errors:iDontHavePermission",
+                            {
+                                permission: t("permissions:MANAGE_MESSAGES"),
+                            }
+                        )}, ${t("errors:pagination")}`
+                    )
+                    .then((msg) => {
+                        setTimeout(() => {
+                            msg.delete();
+                        }, 5000);
+                    });
         }
         const commands = message.client.commands.enabled;
         const { categories } = message.client;
@@ -98,11 +103,19 @@ module.exports = {
                 time: timeout,
             });
             reactionCollector.on("collect", (reaction) => {
-                const botPerms = message.guild.me.permissionsIn(message.channel);
+                const botPerms = message.guild.me.permissionsIn(
+                    message.channel
+                );
                 // Remove the reaction when the user react to the message if the bot has perm
-                if (message.channel.type !== "dm" && botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
+                if (
+                    message.channel.type !== "dm" &&
+                    botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES)
+                )
                     reaction.users.remove(message.author);
-                else if (message.client.debug) client.logger.log("silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission");
+                else if (message.client.debug)
+                    client.logger.log(
+                        "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission"
+                    );
                 switch (reaction.emoji.name) {
                     case emojiList["back"]:
                         page = page > 0 ? --page : pages.length - 1;
