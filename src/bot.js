@@ -12,11 +12,12 @@ const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
 });
 
+const Loaders = require("./loaders");
+
 const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const sayGoodBye = require("./functions/sayGoodBye");
 const serverCount = require("./functions/serverCount");
-const execute = require("./functions/execute");
 
 require("./db/connection");
 const addGuild = require("./db/functions/guild/addGuild");
@@ -117,48 +118,3 @@ client.on("guildDelete", (guild) => {
         .get(client.loggingChannelId)
         .send({ embeds: [embed] });
 });
-
-client.on("message", async function (message) {
-    if (message.author.bot) return;
-    if (client.debug) client.logger.log("message event triggered", "debug");
-    let guildDB;
-    if (message.guild && message.channel.type !== "dm") {
-        guildDB = await getGuild(message.guild.id);
-    } else {
-        guildDB = { prefix: client.defaultPrefix };
-    }
-    if (client.debug) client.logger.log("running execute func", "debug");
-    execute(message, guildDB);
-    if (client.debug)
-        client.logger.log("finished running execute func", "debug");
-
-    const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
-    if (!mentionRegex.test(message.content)) return;
-    let reply = `Hi there, ${message.author}\nI am Welcome-Bot\nMy prefix is "${
-        guildDB.prefix
-    }"${message.guild ? " in this server." : ""}\nSend \`${
-        guildDB.prefix
-    }help\` to get help`;
-    if (message.guild) {
-        reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
-    }
-    if (!message.reference) {
-        message.channel.startTyping();
-        message.channel.send(reply);
-        message.channel.stopTyping();
-    } else {
-        message.channel.messages
-            .fetch(message.reference.messageID)
-            .then((msg) => {
-                if (msg.author.id != client.user.id) {
-                    message.channel.startTyping();
-                    message.channel.send(reply);
-                    message.channel.stopTyping();
-                }
-            })
-            .catch(console.error);
-    }
-});
-
-// Login
-client.login(process.env.DISCORD_TOKEN);

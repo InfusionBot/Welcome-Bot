@@ -46,7 +46,7 @@ module.exports = {
             );
             message.reply(`Command \`${newCommand.name}\` was reloaded!`);
         } catch (err) {
-            message.client.logger.log(JSON.stringify(err, null, 4), "err");
+            message.client.logger.log(e.toString(), "err");
             message.reply(
                 `There was an error while reloading a command \`${command.name}\``
             );

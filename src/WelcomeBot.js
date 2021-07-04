@@ -27,11 +27,6 @@ class WelcomeBot extends Client {
             partials: ["CHANNEL"],
             messageCacheMaxSize: 100,
         });
-        this.commands = {
-            enabled: new Collection(),
-            disabled: new Collection(),
-            cooldowns: new Collection(),
-        };
         this.logger = new Logger();
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
@@ -142,6 +137,37 @@ class WelcomeBot extends Client {
         ];
         this.debug = opts.debug || process.env.NODE_ENV === "development";
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
+        await this.initialize();
+    }
+
+    async initialize() {
+        const Loaders = require("./loaders");
+        this.commands = {
+            enabled: new Collection(),
+            disabled: new Collection(),
+            cooldowns: new Collection(),
+        };
+        //Login
+        await this.login();
+        for (const l of Object.keys(Loaders)) {
+            await this.initializeLoader(Loaders[l], l);
+        }
+    }
+
+    login (token = process.env.DISCORD_TOKEN) {
+        return super.login(token);
+    }
+
+    async initializeLoader (loader, name) {
+        let success = false;
+        if (this.debug) this.logger.log("Loading " + name + " loader", "debug");
+        try {
+            success = Boolean(await loader(this));
+        } catch (e) {
+            this.logger.log(e.toString(), "error");
+        } finally {
+            if (!success) process.exit(1);
+        }
     }
 
     loadCommand(commandPath, commandName) {
