@@ -17,17 +17,19 @@ module.exports = {
             .setTitle(`${client.user.username} v${client.botVersion}`)
             .setDescription("Information and Support for Welcome-Bot")
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
-            .addField(":pencil: General",
+            .addField(
+                ":pencil: General",
                 `> Servers: ${message.client.guilds.cache.size} servers\n` +
-                `> Users: ${message.client.users.cache.size} users\n` +
-                `> Channels: ${message.client.channels.cache.size} channels\n` +
-                `> Version: ${message.client.botVersion}\n` +
-                `> Commands: ${message.client.commands.enabled.size} commands\n` +
-                "> Invite URL: [Invite it right now to your server](https://dsc.gg/welcome-bot)"
+                    `> Users: ${message.client.users.cache.size} users\n` +
+                    `> Channels: ${message.client.channels.cache.size} channels\n` +
+                    `> Version: ${message.client.botVersion}\n` +
+                    `> Commands: ${message.client.commands.enabled.size} commands\n` +
+                    "> Invite URL: [Invite it right now to your server](https://dsc.gg/welcome-bot)"
             )
-            .addField(":pencil: System",
+            .addField(
+                ":pencil: System",
                 `> :gear: Node.js version: ${process.version}\n` +
-                `> :satellite: Discord.js version:${version}`
+                    `> :satellite: Discord.js version:${version}`
             )
             .addField(
                 "👑 Bot owners",

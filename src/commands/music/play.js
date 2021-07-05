@@ -16,28 +16,41 @@ module.exports = {
     async execute(message, args, guildDB, t) {
         const name = args.join(" ");
         const client = message.client;
-        if (!name)
-            return message.reply(t("cmds:play.missingSongName"));
+        if (!name) return message.reply(t("cmds:play.missingSongName"));
         const voice = message.member.voice.channel;
-        if (!voice)
-            return message.reply(t("cmds:play.voiceNotJoined"));
+        if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id)
+        if (
+            message.guild.me.voice.channel &&
+            message.member.voice.channel.id !==
+                message.guild.me.voice.channel.id
+        )
             return message.reply(t("cmds:play.voiceChanDiff"));
 
         const botPerms = voice.permissionsFor(message.client.user);
-        if (!botPerms.has(Permissions.FLAGS.CONNECT) || !botPerms.has(Permissions.FLAGS.SPEAK))
-            return message.reply(t("errors:musicNoPerms", {permissions:`${t("permissions:CONNECT")}, ${t("permissions:SPEAK")}`}));
+        if (
+            !botPerms.has(Permissions.FLAGS.CONNECT) ||
+            !botPerms.has(Permissions.FLAGS.SPEAK)
+        )
+            return message.reply(
+                t("errors:musicNoPerms", {
+                    permissions: `${t("permissions:CONNECT")}, ${t(
+                        "permissions:SPEAK"
+                    )}`,
+                })
+            );
 
         const queue = client.player.createQueue(message.guild, {
-            metadata: message
+            metadata: message,
         });
         const song = await client.player.search(name, {
-            requestedBy: message.author
+            requestedBy: message.author,
         });
         try {
             await queue.connect(message.member.voice.channel);
-        } catch(e) {return;}
+        } catch (e) {
+            return;
+        }
         queue.addTrack(song.tracks[0]);
         queue.play();
     },

@@ -47,7 +47,10 @@ client.player
             .setTitle("✅ Added to queue")
             .setDescription(track.title)
             .addField("Source:", track.source)
-            .addField("🔗 Link:", `[${track.url.slice(0, 35)}...](${track.url})`)
+            .addField(
+                "🔗 Link:",
+                `[${track.url.slice(0, 35)}...](${track.url})`
+            )
             .addField("👀 Views:", `${track.views}`);
         queue.metadata.channel.send({ embeds: [embed] });
     })
@@ -56,7 +59,10 @@ client.player
             .setTitle("🥁 Starting to play")
             .setDescription(track.title)
             .addField("Source:", track.source)
-            .addField("🔗 Link:", `[${track.url.slice(0, 35)}...](${track.url})`)
+            .addField(
+                "🔗 Link:",
+                `[${track.url.slice(0, 35)}...](${track.url})`
+            )
             .addField("👀 Views:", `${track.views}`);
         queue.metadata.channel.send({ embeds: [embed] });
     })
@@ -65,10 +71,12 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistStart", (queue, playlist, track) => {
-        embed.setTitle(t("cmds.play.playlistStart", {
-            playlistTitle: playlist.title,
-            songName: track.title
-        }));
+        embed.setTitle(
+            t("cmds.play.playlistStart", {
+                playlistTitle: playlist.title,
+                songName: track.title,
+            })
+        );
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchResults", async (query, tracks) => {
@@ -76,7 +84,9 @@ client.player
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (tracks.length > 10) tracks = tracks.slice(0, 10);
         embed
-            .setDescription(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n"))
+            .setDescription(
+                tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")
+            )
             .setFooter(t("cmds:play.results"));
         queue.metadata.channel.send({ embeds: [embed] });
     })
@@ -89,14 +99,17 @@ client.player
         }
         queue.metadata.reply("errors:invalidNumRange", {
             min: 1,
-            max: tracks.length
+            max: tracks.length,
         });
     })
     .on("debug", (queue, message) => {
         if (client.debug) client.logger.log(message, "debug");
     })
     .on("error", (queue, error) => {
-        client.logger.log(`An error occurred, when playing queue (${queue.id}) in ${queue.guild.name} (${queue.guild.id})`, "error");
+        client.logger.log(
+            `An error occurred, when playing queue (${queue.id}) in ${queue.guild.name} (${queue.guild.id})`,
+            "error"
+        );
     });
 
 client.on("ready", async () => {
