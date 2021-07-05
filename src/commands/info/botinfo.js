@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { version } = require("discord.js");
 module.exports = {
     name: "botinfo",
     aliases: ["bi", "binfo", "info"],
@@ -15,18 +16,13 @@ module.exports = {
         let embed = new MessageEmbed()
             .setTitle("Welcome-Bot")
             .setDescription("Information and Support for Welcome-Bot")
-            .setThumbnail("https://i.imgur.com/2BF9mxi.png")
-            .addField("Serving:", `${message.client.guilds.cache.size} servers`)
-            .addField("Version:", `${message.client.botVersion}`)
-            .addField("Node.js version:", process.version)
-            .addField(
-                "No of Commands:",
-                `${message.client.commands.enabled.size}`
-            )
-            .addField(
-                "The no of channels bot is currently handling:",
-                `${message.client.channels.cache.size}`
-            )
+            .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
+            .addField(":pencil: General", `Servers: ${message.client.guilds.cache.size} servers\n` +
+            `Users: ${message.client.users.cache.size} users\n` +
+            `Channels: ${message.client.channels.cache.size} channels\n` +
+            `Version: ${message.client.botVersion}\n` + `Commands: ${message.client.commands.enabled.size} commands`)
+            .addField(":pencil: System", `:gear: Node.js version: ${process.version}\n` +
+            `:satellite: Discord.js version:${version}`)
             .addField(
                 "👑 Bot owners",
                 `Welcome-Bot was created by ${message.client.ownersTags.join(
