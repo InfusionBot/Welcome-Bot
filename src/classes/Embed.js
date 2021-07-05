@@ -7,6 +7,7 @@
 const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
     constructor({tag, avatarURL, color, timestamp}) {
+        super();
         switch (color.toLowerCase()) {
             case "error":
                 color = "#ff0000";
