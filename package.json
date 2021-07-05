@@ -31,7 +31,7 @@
   "homepage": "https://github.com/Welcome-bot/welcome-bot#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "colors-logger": "^0.2.1",
+    "colors-logger": "^0.3.0",
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
     "figlet": "^1.5.0",
