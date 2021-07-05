@@ -64,7 +64,7 @@ module.exports = {
             tag: message.author.tag,
             avatarURL: message.author.displayAvatarURL(),
             color: "success",
-            timestamp: true
+            timestamp: true,
         });
         embed.setTitle(`${user.tag}`);
         embed.setDescription(`Information about ${args[0] || message.author}`);
