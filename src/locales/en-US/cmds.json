@@ -120,7 +120,8 @@
     "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "✅ Added to queue",
-    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}"
+    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}",
+    "timeout": "❌ Search timed out"
   },
   "eval": {
     "cmdDesc": "Execute a JS statement."

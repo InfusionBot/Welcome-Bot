@@ -72,7 +72,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchCancel", (queue, tracks) => {
-        embed.setTitle("❌ Search timed out");
+        embed.setTitle(t("cmds:play.timeout")).setColor("#ff0000");
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistStart", async (queue, playlist, track) => {
