@@ -26,8 +26,7 @@ module.exports = async (message, guildDB) => {
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
-    let embed = new MessageEmbed();
-    embed.setColor("#ff0000");
+    let embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
         let args = message.content.slice(prefix.length).trim().split(/ +/);

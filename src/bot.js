@@ -7,6 +7,7 @@ const fs = require("fs");
 const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
 const { MessageEmbed } = require("discord.js");
+const { Embed } = require("./classes");
 
 const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
