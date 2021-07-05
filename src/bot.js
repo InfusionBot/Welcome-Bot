@@ -40,37 +40,43 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
+const getT = async (guildId) => {
+    const guildDB = await getGuild(guildId);
+    return client.i18next.getFixedT(guildDB.lang || "en-US");
+};
+
 let embed = new MessageEmbed();
 client.player
-    .on("trackAdd", (queue, track) => {
+    .on("trackAdd", async (queue, track) => {
+        const t = await getT(queue.metadata.guild.id);
         embed
-            .setTitle("✅ Added to queue")
+            .setTitle(t("cmds:play.queueAdded"))
             .setDescription(track.title)
-            .addField("Source:", track.source)
-            .addField(
-                "🔗 Link:",
-                `[${track.url.slice(0, 35)}...](${track.url})`
-            )
-            .addField("👀 Views:", `${track.views}`);
+            .addField("Details", t("cmds:play.details", {
+                source: track.source,
+                link: `[${track.url.slice(0, 35)}...](${track.url})`,
+                views: `${track.views}`
+            }).split("\n").join("\n> "));
         queue.metadata.channel.send({ embeds: [embed] });
     })
-    .on("trackStart", (queue, track) => {
+    .on("trackStart", async (queue, track) => {
+        const t = await getT(queue.metadata.guild.id);
         embed
             .setTitle("🥁 Starting to play")
             .setDescription(track.title)
-            .addField("Source:", track.source)
-            .addField(
-                "🔗 Link:",
-                `[${track.url.slice(0, 35)}...](${track.url})`
-            )
-            .addField("👀 Views:", `${track.views}`);
+            .addField("Details", t("cmds:play.details", {
+                source: track.source,
+                link: `[${track.url.slice(0, 35)}...](${track.url})`,
+                views: `${track.views}`
+            }).split("\n").join("\n> "));
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchCancel", (queue, tracks) => {
         embed.setTitle("❌ Search timed out");
         queue.metadata.channel.send({ embeds: [embed] });
     })
-    .on("playlistStart", (queue, playlist, track) => {
+    .on("playlistStart", async (queue, playlist, track) => {
+        const t = await getT(queue.metadata.guild.id);
         embed.setTitle(
             t("cmds.play.playlistStart", {
                 playlistTitle: playlist.title,
@@ -79,9 +85,17 @@ client.player
         );
         queue.metadata.channel.send({ embeds: [embed] });
     })
+    .on("playlistAdd", async (queue, playlist) => {
+        const t = await getT(queue.metadata.guild.id);
+        embed.setTitle(
+            t("cmds.play.queueAddCount", {
+                songCount: playlist.items.length,
+            })
+        );
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
     .on("searchResults", async (query, tracks) => {
-        const guildDB = await getGuild(queue.metadata.guild.id);
-        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        const t = await getT(queue.metadata.guild.id);
         if (tracks.length > 10) tracks = tracks.slice(0, 10);
         embed
             .setDescription(
@@ -91,8 +105,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchInvalidResponse", async (query, tracks, content, collector) => {
-        const guildDB = await getGuild(queue.metadata.guild.id);
-        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        const t = await getT(queue.metadata.guild.id);
         if (content === "cancel") {
             collector.stop();
             return queue.metadata.reply(t("cmds:play.resultsCancel"));
@@ -104,6 +117,18 @@ client.player
     })
     .on("debug", (queue, message) => {
         if (client.debug) client.logger.log(message, "debug");
+    })
+    .on("botDisconnect", async (queue) => {
+        const t = await getT(queue.metadata.guild.id);
+        queue.metadata.channel.send(t("cmds:play.botDisconnected"));
+    })
+    .on("noResults", async (queue) => {
+        const t = await getT(queue.metadata.guild.id);
+        queue.metadata.channel.send(t("cmds:play.noResults"));
+    })
+    .on("queueEnd", async (queue) => {
+        const t = await getT(queue.metadata.guild.id);
+        queue.metadata.channel.send(t("cmds:play.queueEnd"));
     })
     .on("error", (queue, error) => {
         client.logger.log(

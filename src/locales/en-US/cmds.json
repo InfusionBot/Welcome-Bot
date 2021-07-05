@@ -114,7 +114,13 @@
     "voiceChanDiff": "Please join the same voice channel the bot is in",
     "playlistStart": "Starting playlist **{{playlistTitle}}**.\nPlaying the first song, **{{songName}}**! :musical_note:",
     "results": "Please select a song by sending a number between 1 and 10.",
-    "resultsCancel": "Search cancelled!"
+    "resultsCancel": "Search cancelled!",
+    "botDisconnected": "Music has been stopped as I have been disconnected from the voice channel.",
+    "noResults": "The bot can't find any song like that :cry:",
+    "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
+    "queueAddCount": "{{songCount}} songs added to the queue!",
+    "queueAdded": "✅ Added to queue",
+    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}"
   },
   "eval": {
     "cmdDesc": "Execute a JS statement."
