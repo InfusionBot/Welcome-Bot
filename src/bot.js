@@ -40,28 +40,76 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
+let embed = new MessageEmbed();
 client.player
-    .on("searchCancel", (message, queue, tracks) => {
-        let embed = new MessageEmbed().setTitle("❌ Search timed out");
-        message.channel.send({ embeds: [embed] });
-    })
-    .on("trackAdd", (message, queue, track) => {
-        let embed = new MessageEmbed()
+    .on("trackAdd", (queue, track) => {
+        embed
             .setTitle("✅ Added to queue")
             .setDescription(track.title)
             .addField("Source:", track.source)
-            .addField(`🔗 [Link/URL](${track.url})`)
-            .addField("👀 Views:", track.views);
-        message.channel.send({ embeds: [embed] });
+            .addField(
+                "🔗 Link:",
+                `[${track.url.slice(0, 35)}...](${track.url})`
+            )
+            .addField("👀 Views:", `${track.views}`);
+        queue.metadata.channel.send({ embeds: [embed] });
     })
-    .on("trackStart", (message, queue, track) => {
-        let embed = new MessageEmbed()
+    .on("trackStart", (queue, track) => {
+        embed
             .setTitle("🥁 Starting to play")
             .setDescription(track.title)
             .addField("Source:", track.source)
-            .addField(`🔗 [Link/URL](${track.url})`)
-            .addField("👀 Views:", track.views);
-        message.channel.send({ embeds: [embed] });
+            .addField(
+                "🔗 Link:",
+                `[${track.url.slice(0, 35)}...](${track.url})`
+            )
+            .addField("👀 Views:", `${track.views}`);
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("searchCancel", (queue, tracks) => {
+        embed.setTitle("❌ Search timed out");
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("playlistStart", (queue, playlist, track) => {
+        embed.setTitle(
+            t("cmds.play.playlistStart", {
+                playlistTitle: playlist.title,
+                songName: track.title,
+            })
+        );
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("searchResults", async (query, tracks) => {
+        const guildDB = await getGuild(queue.metadata.guild.id);
+        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        if (tracks.length > 10) tracks = tracks.slice(0, 10);
+        embed
+            .setDescription(
+                tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")
+            )
+            .setFooter(t("cmds:play.results"));
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("searchInvalidResponse", async (query, tracks, content, collector) => {
+        const guildDB = await getGuild(queue.metadata.guild.id);
+        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        if (content === "cancel") {
+            collector.stop();
+            return queue.metadata.reply(t("cmds:play.resultsCancel"));
+        }
+        queue.metadata.reply("errors:invalidNumRange", {
+            min: 1,
+            max: tracks.length,
+        });
+    })
+    .on("debug", (queue, message) => {
+        if (client.debug) client.logger.log(message, "debug");
+    })
+    .on("error", (queue, error) => {
+        client.logger.log(
+            `An error occurred, when playing queue (${queue.id}) in ${queue.guild.name} (${queue.guild.id})`,
+            "error"
+        );
     });
 
 client.on("ready", async () => {
@@ -145,6 +193,7 @@ client.on("guildDelete", (guild) => {
 client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
     if (client.debug) client.logger.log("message event triggered", "debug");
+    if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);

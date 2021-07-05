@@ -14,15 +14,17 @@ module.exports = {
     execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         let embed = new MessageEmbed()
-            .setTitle("Welcome-Bot")
+            .setTitle(`${client.user.username} v${client.botVersion}`)
             .setDescription("Information and Support for Welcome-Bot")
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
-            .addField(":pencil: General", `Servers: ${message.client.guilds.cache.size} servers\n` +
-            `Users: ${message.client.users.cache.size} users\n` +
-            `Channels: ${message.client.channels.cache.size} channels\n` +
-            `Version: ${message.client.botVersion}\n` + `Commands: ${message.client.commands.enabled.size} commands`)
-            .addField(":pencil: System", `:gear: Node.js version: ${process.version}\n` +
-            `:satellite: Discord.js version:${version}`)
+            .addField(":pencil: General",
+            `> Servers: ${message.client.guilds.cache.size} servers\n` +
+            `> Users: ${message.client.users.cache.size} users\n` +
+            `> Channels: ${message.client.channels.cache.size} channels\n` +
+            `> Version: ${message.client.botVersion}\n` + `Commands: ${message.client.commands.enabled.size} commands`)
+            .addField(":pencil: System",
+            `> :gear: Node.js version: ${process.version}\n` +
+            `> :satellite: Discord.js version:${version}`)
             .addField(
                 "👑 Bot owners",
                 `Welcome-Bot was created by ${message.client.ownersTags.join(
@@ -30,26 +32,23 @@ module.exports = {
                 )}`
             )
             .addField(
-                "Invite URL:",
-                "[Without moderation feature](https://dsc.gg/welcome-bot2) OR [With moderation feature](https://dsc.gg/welcome-bot)"
-            )
-            .addField(
                 "🧾 Bot lists:",
-                "[discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
-                    "[disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
-                    "[dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
-                    "[discordservices.net](https://discordservices.net/bot/848459799783669790)"
+                "> [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
+                    "> [disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
+                    "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
+                    "> [discordservices.net](https://discordservices.net/bot/848459799783669790)"
             )
             .addField(
                 "🔗 Other links:",
-                "[Support server](https://dsc.gg/welcome-bot-guild)\n" +
-                    "[GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-                    "[Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
-                    "[Documentation](https://welcome-bot.github.io/docs)"
+                "> [Support server](https://dsc.gg/welcome-bot-guild)\n" +
+                    "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
+                    "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
+                    "> [Documentation](https://welcome-bot.github.io/docs)"
             )
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
-            );
+            )
+            .setColor("#33ddff");
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });

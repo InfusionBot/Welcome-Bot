@@ -43,7 +43,7 @@ module.exports = {
                 message.channel.send("```js\n" + clean(output) + "\n```");
             })
             .catch((err) => {
-                err = JSON.strigify(err, null, 4);
+                err = err.toString();
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }
