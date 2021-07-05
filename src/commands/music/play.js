@@ -43,14 +43,15 @@ module.exports = {
         const queue = client.player.createQueue(message.guild, {
             metadata: message,
         });
+        try {
+            if (!queue.connection) await queue.connect(message.member.voice.channel);
+        } catch (e) {
+            queue.destroy();
+            return void message.reply(t("cmds:play.cantJoin"));
+        }
         const song = await client.player.search(name, {
             requestedBy: message.author,
         });
-        try {
-            await queue.connect(message.member.voice.channel);
-        } catch (e) {
-            return;
-        }
         queue.addTrack(song.tracks[0]);
         queue.play();
     },

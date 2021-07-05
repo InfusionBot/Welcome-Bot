@@ -109,6 +109,7 @@
   },
   "play": {
     "cmdDesc": "Play music on channel.\nYou must join a voice channel before using this command.",
+    "cantJoin": "Could not join your voice channel!",
     "voiceNotJoined": "Please join a voice channel before using this command",
     "missingSongName": "You didn't provide me the song name to start playing",
     "voiceChanDiff": "Please join the same voice channel the bot is in",
