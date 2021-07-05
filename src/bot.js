@@ -52,11 +52,16 @@ client.player
         embed
             .setTitle(t("cmds:play.queueAdded"))
             .setDescription(track.title)
-            .addField("Details", t("cmds:play.details", {
-                source: track.source,
-                link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                views: `${track.views}`
-            }).split("\n").join("\n> "));
+            .addField(
+                "Details",
+                t("cmds:play.details", {
+                    source: track.source,
+                    link: `[${track.url.slice(0, 35)}...](${track.url})`,
+                    views: `${track.views}`,
+                })
+                    .split("\n")
+                    .join("\n> ")
+            );
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("trackStart", async (queue, track) => {
@@ -64,11 +69,16 @@ client.player
         embed
             .setTitle("🥁 Starting to play")
             .setDescription(track.title)
-            .addField("Details", t("cmds:play.details", {
-                source: track.source,
-                link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                views: `${track.views}`
-            }).split("\n").join("\n> "));
+            .addField(
+                "Details",
+                t("cmds:play.details", {
+                    source: track.source,
+                    link: `[${track.url.slice(0, 35)}...](${track.url})`,
+                    views: `${track.views}`,
+                })
+                    .split("\n")
+                    .join("\n> ")
+            );
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchCancel", (queue, tracks) => {

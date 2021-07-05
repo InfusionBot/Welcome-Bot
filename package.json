@@ -32,7 +32,7 @@
   "dependencies": {
     "@discordjs/builders": "^0.2.0",
     "axios": "^0.21.1",
-    "colors-logger": "^0.2.1",
+    "colors-logger": "^0.3.0",
     "discord-player": "^5.0.0-dev.39f503a.1625470163",
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
