@@ -19,5 +19,7 @@
   "youDontHavePermShort": "You don't have permission to do this!",
   "iDontHavePermission": "I'm missing the following permission in that channel: {{permission}}",
   "channelDoesntExist": "That channel doesn't exist or I couldn't find it.",
-  "userNotFound": "An error occurred while trying to find that user."
+  "userNotFound": "An error occurred while trying to find that user.",
+  "invalidNumRange": "Please specify a valid number between **{{min}}** and **{{max}}**!",
+  "musicNoPerms": "You have not given {{permissions}} permissions to the bot for playing music."
 }

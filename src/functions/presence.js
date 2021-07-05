@@ -26,6 +26,12 @@ module.exports = function (client) {
             }help`,
             type: "WATCHING",
         },
+        {
+            name: `${client.user.username} v${client.botVersion} | ${
+                client.defaultPrefix
+            }help`,
+            type: "PLAYING",
+        },
     ];
     client.user.setPresence({
         activities: [presences[Math.floor(Math.random() * presences.length)]],

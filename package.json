@@ -5,7 +5,7 @@
     "**Bug fixes**",
     "All commands in setup category was not working, fix those all"
   ],
-  "description": "Welcome users when they join your discord server",
+  "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/bot.js",
   "scripts": {
     "start": "node src/bot.js",
@@ -30,9 +30,10 @@
   },
   "homepage": "https://github.com/Welcome-bot/welcome-bot#readme",
   "dependencies": {
+    "@discordjs/builders": "^0.2.0",
     "axios": "^0.21.1",
     "colors-logger": "^0.2.1",
-    "discord-player": "^4.1.4",
+    "discord-player": "^5.0.0-dev.39f503a.1625470163",
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
     "figlet": "^1.5.0",
@@ -40,12 +41,12 @@
     "i18next-node-fs-backend": "^2.1.3",
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
+    "opusscript": "^0.0.8",
     "pokemon": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
-    "nodemon": "^2.0.9",
     "prettier": "^2.3.2"
   }
 }
