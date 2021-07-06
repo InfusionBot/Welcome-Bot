@@ -97,6 +97,7 @@ module.exports = {
                 );
                 break;
             default:
+                if (!args.length) {
                 //Get channel
                 message.reply(
                     "Welcome Channel currently is set to `" +
@@ -109,6 +110,9 @@ module.exports = {
                         guildDB.modChannel +
                         "`"
                 );
+                } else {
+                    message.reply(t("cmds:channel.invaidArgs") + `${guildDB.prefix}help channel`);
+                }
                 break;
         }
     },
