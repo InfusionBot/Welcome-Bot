@@ -47,14 +47,6 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
-## Bot status
-
-![tag](https://botlist.space/bot/848459799783669790/badge?property=tag)
-![support](https://botlist.space/bot/848459799783669790/badge?property=support)
-![library](https://botlist.space/bot/848459799783669790/badge?property=library)
-![prefix](https://botlist.space/bot/848459799783669790/badge?property=prefix)
-![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)
-
 ## Commands
 
 Welcome-Bot has more than 40+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands
