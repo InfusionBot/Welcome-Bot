@@ -17,17 +17,20 @@ module.exports = {
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
         if (!queue) return message.reply(t("cmds:play.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
-        let embed = new Embed({color: "blue", timestamp: true});
+        let embed = new Embed({ color: "blue", timestamp: true });
         const msg = await message.channel.send({ embeds: [embed] });
-        if (members.size > 1) {//More than half members in that voice channel should vote with 👍 to stop the music.
+        if (members.size > 1) {
+            //More than half members in that voice channel should vote with 👍 to stop the music.
             msg.react("👍");
-            const moreVotes = Math.floor(members.size/2+1);//If there are 10 members, at least 5 + 1 members should vote
+            const moreVotes = Math.floor(members.size / 2 + 1); //If there are 10 members, at least 5 + 1 members should vote
             msg.edit({
                 embeds: [
-                    embed.setDesc(t("cmds:stop.pleaseVote", {
-                        count: moreVotes,
-                    }))
-                ]
+                    embed.setDesc(
+                        t("cmds:stop.pleaseVote", {
+                            count: moreVotes,
+                        })
+                    ),
+                ],
             });
             const collector = await msg.createReactionCollector({
                 filter: (reaction, user) => {
@@ -45,18 +48,18 @@ module.exports = {
                 if (haveVoted >= moreVotes) {
                     message.client.player.deleteQueue(message.guild);
                     msg.edit({
-                        embeds: [
-                            embed.setDesc(t("cmds:stop.stopped"))
-                        ]
+                        embeds: [embed.setDesc(t("cmds:stop.stopped"))],
                     });
                     collector.stop();
                 } else {
                     msg.edit({
                         embeds: [
-                            embed.setDesc(t("cmds:stop.pleaseVote", {
-                                count: moreVotes,
-                            }))
-                        ]
+                            embed.setDesc(
+                                t("cmds:stop.pleaseVote", {
+                                    count: moreVotes,
+                                })
+                            ),
+                        ],
                     });
                 }
             });
@@ -68,9 +71,7 @@ module.exports = {
         } else {
             message.client.player.deleteQueue(message.guild);
             msg.edit({
-                embeds: [
-                    embed.setDesc(t("cmds:stop.stopped"))
-                ]
+                embeds: [embed.setDesc(t("cmds:stop.stopped"))],
             });
         }
     },
