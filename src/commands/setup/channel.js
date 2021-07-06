@@ -111,7 +111,7 @@ module.exports = {
                         "`"
                 );
                 } else {
-                    message.reply(t("cmds:channel.invaidArgs") + `${guildDB.prefix}help channel`);
+                    message.reply(t("cmds:channel.invalidArgs") + `${guildDB.prefix}help channel`);
                 }
                 break;
         }
