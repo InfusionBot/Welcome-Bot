@@ -23,12 +23,9 @@ module.exports = class Embed extends MessageEmbed {
                 break;
         }
         this.setColor(color);
-        if (tag && avatarURL)
-            this.setFooter(`${tag}`, `${avatarURL}`);
-        else if (tag)
-            this.setFooter(`${tag}`);
-        else if (footer)
-            this.setFooter(`${footer}`);
+        if (tag && avatarURL) this.setFooter(`${tag}`, `${avatarURL}`);
+        else if (tag) this.setFooter(`${tag}`);
+        else if (footer) this.setFooter(`${footer}`);
         if (timestamp) this.setTimestamp();
     }
 
