@@ -56,13 +56,14 @@ client.player
             .setDescription(track.title)
             .addField(
                 "Details",
-                "> " + t("cmds:play.details", {
-                    source: track.source,
-                    link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                    views: `${track.views}`,
-                })
-                    .split("\n")
-                    .join("\n> ")
+                "> " +
+                    t("cmds:play.details", {
+                        source: track.source,
+                        link: `[${track.url.slice(0, 35)}...](${track.url})`,
+                        views: `${track.views}`,
+                    })
+                        .split("\n")
+                        .join("\n> ")
             );
         queue.metadata.channel.send({ embeds: [embed] });
     })
@@ -74,13 +75,14 @@ client.player
             .setDescription(track.title)
             .addField(
                 "Details",
-                "> " + t("cmds:play.details", {
-                    source: track.source,
-                    link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                    views: `${track.views}`,
-                })
-                    .split("\n")
-                    .join("\n> ")
+                "> " +
+                    t("cmds:play.details", {
+                        source: track.source,
+                        link: `[${track.url.slice(0, 35)}...](${track.url})`,
+                        views: `${track.views}`,
+                    })
+                        .split("\n")
+                        .join("\n> ")
             );
         queue.metadata.channel.send({ embeds: [embed] });
     })
