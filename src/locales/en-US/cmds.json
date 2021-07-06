@@ -122,7 +122,8 @@
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "✅ Added to queue",
     "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}",
-    "timeout": "❌ Search timed out"
+    "timeout": "❌ Search timed out",
+    "starting": "Starting to play"
   },
   "stop": {
     "cmdDesc": "Stop the music",

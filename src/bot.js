@@ -71,7 +71,7 @@ client.player
         embed = new Embed({ color: "success" });
         const t = await getT(queue.metadata.guild.id);
         embed
-            .setTitle("🥁 Starting to play")
+            .setTitle(`🥁 ${t("cmds:play.starting")}`)
             .setDescription(track.title)
             .addField(
                 "Details",
@@ -87,12 +87,12 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchCancel", (queue, tracks) => {
-        embed = new Embed({ color: "success" });
+        embed = new Embed({ color: "error" });
         embed.setTitle(t("cmds:play.timeout")).setColor("#ff0000");
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistStart", async (queue, playlist, track) => {
-        embed = new Embed({ color: "success" });
+        embed = new Embed({ color: "blue" });
         const t = await getT(queue.metadata.guild.id);
         embed.setTitle(
             t("cmds.play.playlistStart", {
@@ -103,7 +103,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistAdd", async (queue, playlist) => {
-        embed = new Embed({ color: "success" });
+        embed = new Embed({ color: "blue" });
         const t = await getT(queue.metadata.guild.id);
         embed.setTitle(
             t("cmds.play.queueAddCount", {
@@ -113,7 +113,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchResults", async (query, tracks) => {
-        embed = new Embed({ color: "success" });
+        embed = new Embed({ color: "blue" });
         const t = await getT(queue.metadata.guild.id);
         if (tracks.length > 10) tracks = tracks.slice(0, 10);
         embed
@@ -186,7 +186,7 @@ client.on("ready", async () => {
 
 client.on("debug", (info) => {
     if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug)
-        client.logger.log(info, "debug");
+        client.logger.log(info, "debug", ["DISCORD"]);
 });
 
 client.on("rateLimit", (info) => {
@@ -215,7 +215,7 @@ client.on("guildCreate", (guild) => {
                 "Thank you for choosing this bot! To get started, type `w/help`"
             );
     }
-    let embed = new MessageEmbed()
+    embed = new Embed({color: "success", timestamp: true})
         .setTitle(`Added to "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
@@ -226,7 +226,7 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
-    let embed = new MessageEmbed()
+    embed = new Embed({color: "error", timestamp: true})
         .setTitle(`Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
