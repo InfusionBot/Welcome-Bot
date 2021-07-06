@@ -19,7 +19,7 @@ module.exports = {
         const minutes = Math.floor(totalSeconds / 60); //total seconds divided by 60 to get minutes
         const seconds = Math.floor(totalSeconds % 60); //total seconds divided by 60 to get seconds
         return message.channel.send(
-            `Uptime of the bot: ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
+            `<:online:860920786382880809> Uptime of the bot: ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
         );
     },
 };
