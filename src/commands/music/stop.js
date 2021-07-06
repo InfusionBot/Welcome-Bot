@@ -17,8 +17,9 @@ module.exports = {
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
         if (!queue) return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
-        let embed = new Embed({ color: "blue", timestamp: true })
-            .setTitle(t("cmds:stop.cmdDesc"));
+        let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
+            t("cmds:stop.cmdDesc")
+        );
         const msg = await message.channel.send({ embeds: [embed] });
         if (members.size > 1) {
             //More than half members in that voice channel should vote with 👍 to stop the music.
