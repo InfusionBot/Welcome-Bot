@@ -215,7 +215,7 @@ client.on("guildCreate", (guild) => {
                 "Thank you for choosing this bot! To get started, type `w/help`"
             );
     }
-    embed = new Embed({color: "success", timestamp: true})
+    embed = new Embed({ color: "success", timestamp: true })
         .setTitle(`Added to "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
@@ -226,7 +226,7 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
-    embed = new Embed({color: "error", timestamp: true})
+    embed = new Embed({ color: "error", timestamp: true })
         .setTitle(`Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
