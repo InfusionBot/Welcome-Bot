@@ -38,34 +38,7 @@ class WelcomeBot extends Client {
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
-        this.categories = [
-            {
-                name: "Setup",
-                key: "setup",
-                emoji: "<:setup:854316242097537034>",
-            },
-            {
-                name: "General",
-                key: "general",
-                emoji: "<:pikachu2:852569608259239936>",
-            },
-            { name: "Information", key: "info", emoji: "ℹ️" },
-            { name: "Moderation", key: "mod", emoji: ":scales:" },
-            { name: "Miscellaneous", key: "misc", emoji: ":tada:" },
-            { name: "Fun", key: "fun", emoji: "<:fun:854002049095303188>" },
-            { name: "Anime", key: "anime", emoji: "📷" },
-            {
-                name: "Games",
-                key: "games",
-                emoji: "<:games:856910189490864140>",
-            },
-            {
-                name: "Owner Only",
-                key: "owner",
-                emoji: "<:owner:854009566572183572>",
-            },
-            { name: "Core", key: "core", emoji: ":robot:" },
-        ];
+        this.categories = require("./data/categories.json");
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
             {
@@ -139,7 +112,7 @@ class WelcomeBot extends Client {
         this.newsChannelId = "847459283876577360";
         this.loggingChannelId = "855331801635749888";
         this.ownerIDs = [
-            "815204465937481749" /*PuneetGopinath#6300*/,
+            "815204465937481749" /*PuneetGopinath#0001*/,
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
         this.debug = opts.debug || process.env.NODE_ENV === "development";
