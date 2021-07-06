@@ -98,20 +98,23 @@ module.exports = {
                 break;
             default:
                 if (!args.length) {
-                //Get channel
-                message.reply(
-                    "Welcome Channel currently is set to `" +
-                        guildDB.channel +
-                        "`"
-                );
-                //Get mod channel
-                message.reply(
-                    "Mod Channel currently is set to `" +
-                        guildDB.modChannel +
-                        "`"
-                );
+                    //Get channel
+                    message.reply(
+                        "Welcome Channel currently is set to `" +
+                            guildDB.channel +
+                            "`"
+                    );
+                    //Get mod channel
+                    message.reply(
+                        "Mod Channel currently is set to `" +
+                            guildDB.modChannel +
+                            "`"
+                    );
                 } else {
-                    message.reply(t("cmds:channel.invaidArgs") + `${guildDB.prefix}help channel`);
+                    message.reply(
+                        t("cmds:channel.invaidArgs") +
+                            `${guildDB.prefix}help channel`
+                    );
                 }
                 break;
         }
