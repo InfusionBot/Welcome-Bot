@@ -56,7 +56,7 @@ client.player
             .setDescription(track.title)
             .addField(
                 "Details",
-                t("cmds:play.details", {
+                "> " + t("cmds:play.details", {
                     source: track.source,
                     link: `[${track.url.slice(0, 35)}...](${track.url})`,
                     views: `${track.views}`,
@@ -74,7 +74,7 @@ client.player
             .setDescription(track.title)
             .addField(
                 "Details",
-                t("cmds:play.details", {
+                "> " + t("cmds:play.details", {
                     source: track.source,
                     link: `[${track.url.slice(0, 35)}...](${track.url})`,
                     views: `${track.views}`,
@@ -133,7 +133,7 @@ client.player
         });
     })
     .on("debug", (queue, message) => {
-        if (client.debug) client.logger.log(message, "debug");
+        if (client.debug) client.logger.log(message, "debug", "VOICE");
     })
     .on("botDisconnect", async (queue) => {
         const t = await getT(queue.metadata.guild.id);
