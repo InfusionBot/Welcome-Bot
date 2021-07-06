@@ -36,6 +36,7 @@
     "discord-player": "^5.0.0-dev.8ce04b3.1625486509",
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
+    "ffmpeg": "^0.0.4",
     "figlet": "^1.5.0",
     "i18next": "^20.0.0",
     "i18next-node-fs-backend": "^2.1.3",
