@@ -43,7 +43,7 @@ module.exports = {
             stop: "⏹",
         };
         let page = 0;
-        let pages = [new Embed({color: "blue", timestamp: true})];
+        let pages = [new Embed({ color: "blue", timestamp: true })];
         let timeout = 200000; //20 secs timeout
 
         for (var i = 0; i < pages.length; i++) {
@@ -54,7 +54,7 @@ module.exports = {
             categories.forEach((cat) => {
                 p = pages.length;
                 let commandsCat = [];
-                pages[p] = new Embed({color: "blue", timestamp: true});
+                pages[p] = new Embed({ color: "blue", timestamp: true });
                 pages[p].setTitle(
                     `${t("cmds:help.bot-help")} - ${t(
                         `categories:${cat.key}`
