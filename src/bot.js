@@ -135,7 +135,7 @@ client.player
         });
     })
     .on("debug", (queue, message) => {
-        if (client.debug) client.logger.log(message, "debug", "VOICE");
+        if (client.debug) client.logger.log(message, "debug", ["VOICE"]);
     })
     .on("botDisconnect", async (queue) => {
         const t = await getT(queue.metadata.guild.id);
