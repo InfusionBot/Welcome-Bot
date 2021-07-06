@@ -33,7 +33,6 @@ module.exports = class Command {
         }
         this.name = command.name;
         this.aliases = command.aliases || [];
-        this.description = command.description;
         this.permissions = command.permissions || [];
         this.bot_perms = command.bot_perms || [
             Permissions.FLAGS.VIEW_CHANNEL,

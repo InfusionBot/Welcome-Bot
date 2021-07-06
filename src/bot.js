@@ -46,9 +46,10 @@ const getT = async (guildId) => {
     return client.i18next.getFixedT(guildDB.lang || "en-US");
 };
 
-let embed = new MessageEmbed();
+let embed = new Embed({color:"success"});
 client.player
     .on("trackAdd", async (queue, track) => {
+        embed = new Embed({color:"success"});
         const t = await getT(queue.metadata.guild.id);
         embed
             .setTitle(t("cmds:play.queueAdded"))
@@ -66,6 +67,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("trackStart", async (queue, track) => {
+        embed = new Embed({color:"success"});
         const t = await getT(queue.metadata.guild.id);
         embed
             .setTitle("🥁 Starting to play")
@@ -83,10 +85,12 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchCancel", (queue, tracks) => {
+        embed = new Embed({color:"success"});
         embed.setTitle(t("cmds:play.timeout")).setColor("#ff0000");
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistStart", async (queue, playlist, track) => {
+        embed = new Embed({color:"success"});
         const t = await getT(queue.metadata.guild.id);
         embed.setTitle(
             t("cmds.play.playlistStart", {
@@ -97,6 +101,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistAdd", async (queue, playlist) => {
+        embed = new Embed({color:"success"});
         const t = await getT(queue.metadata.guild.id);
         embed.setTitle(
             t("cmds.play.queueAddCount", {
@@ -106,6 +111,7 @@ client.player
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchResults", async (query, tracks) => {
+        embed = new Embed({color:"success"});
         const t = await getT(queue.metadata.guild.id);
         if (tracks.length > 10) tracks = tracks.slice(0, 10);
         embed

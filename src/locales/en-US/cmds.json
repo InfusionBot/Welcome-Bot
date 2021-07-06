@@ -124,6 +124,12 @@
     "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}",
     "timeout": "❌ Search timed out"
   },
+  "stop": {
+    "cmdDesc": "Stop the music",
+    "notPlaying": "No songs are currently playing in this server.",
+    "stopped": "Music stopped!",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to stop the music! {{count}} more votes are required."
+  },
   "eval": {
     "cmdDesc": "Execute a JS statement."
   },

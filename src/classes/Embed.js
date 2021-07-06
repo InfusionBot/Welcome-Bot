@@ -6,8 +6,8 @@
 
 const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
-    constructor({ tag, avatarURL, color, timestamp }) {
-        super();
+    constructor({ tag, avatarURL, color, timestamp, footer }, data = {}) {
+        super(data);
         switch (color.toLowerCase()) {
             case "error":
                 color = "#ff0000";
@@ -15,13 +15,24 @@ module.exports = class Embed extends MessageEmbed {
             case "success":
                 color = "#33ddff";
                 break;
+            case "blue"
+                color = "#0091fc";
+                break;
             default:
                 if (!color) color = "RANDOM";
                 break;
         }
         this.setColor(color);
-        if (timestamp) this.setTimestamp();
         if (tag && avatarURL)
-            this.setFooter(`Requested by ${tag}`, `${avatarURL}`);
+            this.setFooter(`${tag}`, `${avatarURL}`);
+        else if (tag)
+            this.setFooter(`${tag}`);
+        else if (footer)
+            this.setFooter(`${footer}`);
+        if (timestamp) this.setTimestamp();
+    }
+
+    setDesc(description) {
+        return this.setDescription(description);
     }
 };
