@@ -77,9 +77,9 @@ module.exports = {
             });
         } else {
             if (queue.skip()) {
-            msg.edit({
-                embeds: [embed.setDesc(t("cmds:stop.stopped"))],
-            });
+                msg.edit({
+                    embeds: [embed.setDesc(t("cmds:stop.stopped"))],
+                });
             } else {
                 msg.edit({
                     embeds: [embed.setDesc(t("cmds:skip.failure"))],
