@@ -111,6 +111,10 @@
   "unban": {
     "cmdDesc": "Unban a user."
   },
+  "np": {
+    "cmdDesc": "The details of song you are currently playing",
+    "playing": "Currently playing"
+  },
   "play": {
     "cmdDesc": "Play music on channel.\nYou must join a voice channel before using this command.",
     "cantJoin": "Could not join your voice channel!",
@@ -125,7 +129,7 @@
     "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "✅ Added to queue",
-    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}",
+    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}",
     "timeout": "❌ Search timed out",
     "starting": "Starting to play"
   },
