@@ -92,17 +92,6 @@ client.player
         );
         queue.metadata.channel.send({ embeds: [embed] });
     })
-    .on("searchResults", async (query, tracks) => {
-        embed = new Embed({ color: "blue" });
-        const t = await getT(queue.metadata.guild.id);
-        if (tracks.length > 10) tracks = tracks.slice(0, 10);
-        embed
-            .setDescription(
-                tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")
-            )
-            .setFooter(t("cmds:play.results"));
-        queue.metadata.channel.send({ embeds: [embed] });
-    })
     .on("searchInvalidResponse", async (query, tracks, content, collector) => {
         const t = await getT(queue.metadata.guild.id);
         if (content === "cancel") {

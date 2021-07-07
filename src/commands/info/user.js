@@ -88,7 +88,6 @@ module.exports = {
                     ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
                     : "")
         );
-        embed.addField("Locale:", `${user.locale}`);
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence

@@ -15,7 +15,6 @@ module.exports = {
     category: "Music",
     async execute(message, args, guildDB, t) {
         const name = args.join(" ");
-        const client = message.client;
         if (!name) return message.reply(t("cmds:play.missingSongName"));
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
@@ -40,7 +39,7 @@ module.exports = {
                 })
             );
 
-        const queue = client.player.createQueue(message.guild, {
+        const queue = message.client.player.createQueue(message.guild, {
             metadata: message,
         });
         try {
@@ -50,7 +49,7 @@ module.exports = {
             queue.destroy();
             return void message.reply(t("cmds:play.cantJoin"));
         }
-        const song = await client.player.search(name, {
+        const song = await message.client.player.search(name, {
             requestedBy: message.author,
         });
         queue.addTrack(song.tracks[0]);
