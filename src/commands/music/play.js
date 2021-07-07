@@ -6,7 +6,7 @@
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "play",
-    aliases: ["joue"],
+    aliases: ["joue"], //joue in french means play
     //description: "Play music",
     args: true,
     guildOnly: true,
