@@ -61,7 +61,7 @@ client.player
                         source: track.source,
                         link: `[${track.url.slice(0, 35)}...](${track.url})`,
                         views: `${track.views}`,
-                        duration: t("misc:duration", {duration: Date.now()+track.durationMS, "to", true})
+                        duration: t("misc:duration", {duration: track.duration})
                     })
                         .split("\n")
                         .join("\n> ")
@@ -81,7 +81,7 @@ client.player
                         source: track.source,
                         link: `[${track.url.slice(0, 35)}...](${track.url})`,
                         views: `${track.views}`,
-                        duration: t("misc:duration", {duration: Date.now()+track.durationMS, "to", true})
+                        duration: t("misc:duration", {duration: track.duration})
                     })
                         .split("\n")
                         .join("\n> ")
