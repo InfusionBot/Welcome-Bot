@@ -131,7 +131,7 @@ client.player
                 queue.metadata.reply(t("cmds:stop.notPlaying"));
                 break;
             default:
-                queue.metadata.reply(t("cmds:play.errorOccurred", {error}));
+                queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
                 break;
         }
     });
