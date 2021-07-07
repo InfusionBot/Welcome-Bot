@@ -92,7 +92,7 @@ module.exports = {
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
-        embed.addField("Presence:", `${user.presence.status}`);
+        embed.addField("Presence:", `${member.presence.status}`);
         message.channel.send({ embeds: [embed] });
     },
 };
