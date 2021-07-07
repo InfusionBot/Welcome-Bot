@@ -131,7 +131,7 @@ client.player
                 queue.metadata.reply(t("cmds:stop.notPlaying"));
                 break;
             default:
-                if (error.indexOf("429"))
+                if (error.toString().indexOf("429"))
                     return queue.metadata.reply(t("cmds:play.rateLimited"));
                 queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
                 break;
