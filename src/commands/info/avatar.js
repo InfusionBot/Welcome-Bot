@@ -17,7 +17,7 @@ module.exports = {
         let embed = new MessageEmbed();
         let user;
         if (args[0]) {
-            user = userFromMention(args[0]);
+            user = userFromMention(args[0], message.client);
         } else {
             user = message.author;
         }
