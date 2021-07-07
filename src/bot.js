@@ -54,19 +54,7 @@ client.player
         embed
             .setTitle(t("cmds:play.queueAdded"))
             .setDescription(track.title)
-            .setThumbnail(track.thumbnail)
-            .addField(
-                "Details",
-                "> " +
-                    t("cmds:play.details", {
-                        source: track.source,
-                        link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                        views: `${track.views}`,
-                        duration: track.duration,
-                    })
-                        .split("\n")
-                        .join("\n> ")
-            );
+            .setImage(track.thumbnail);
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("trackStart", async (queue, track) => {
@@ -75,19 +63,7 @@ client.player
         embed
             .setTitle(`🥁 ${t("cmds:play.starting")}`)
             .setDescription(track.title)
-            .setThumbnail(track.thumbnail)
-            .addField(
-                "Details",
-                "> " +
-                    t("cmds:play.details", {
-                        source: track.source,
-                        link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                        views: `${track.views}`,
-                        duration: track.duration,
-                    })
-                        .split("\n")
-                        .join("\n> ")
-            );
+            .setImage(track.thumbnail);
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("searchCancel", (queue, tracks) => {

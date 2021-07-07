@@ -20,7 +20,7 @@ module.exports = {
         let embed = new Embed({ color: "blue", timestamp: true })
             .setTitle(t("cmds:np.playing"))
             .setDescription(track.title)
-            .setThumbnail(track.thumbnail)
+            .setImage(track.thumbnail)
             .addField(
                 "Details",
                 "> " +
