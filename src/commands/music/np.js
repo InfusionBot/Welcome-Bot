@@ -27,7 +27,9 @@ module.exports = {
                         source: track.source,
                         link: `[${track.url.slice(0, 35)}...](${track.url})`,
                         views: `${track.views}`,
-                        duration: t("misc:duration", {duration: track.duration})
+                        duration: t("misc:duration", {
+                            duration: track.duration,
+                        }),
                     })
                         .split("\n")
                         .join("\n> ")
