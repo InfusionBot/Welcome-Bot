@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **40 commands** in **10 categories**!
+Welcome-Bot contains more than **40 commands** in **11 categories**!
 
 ### **Usage Key!**
 
@@ -22,6 +22,7 @@ Welcome-Bot contains more than **40 commands** in **10 categories**!
 - [Moderation](#moderation)
 - [Miscellaneous](#miscellaneous)
 - [Fun](#fun)
+- [Music](#music)
 - [Anime](#anime)
 - [Games](#games)
 - [Owner Only](#owner-only)
@@ -380,6 +381,35 @@ Not providing any arguments will display the current settings.
 - Aliases: `pokémon`
 - Cooldown: 10
 
+## Music (2 commands)
+
+### `play`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Play music on channel.
+You must join a voice channel before using this command.
+- Usage: [name]
+- Aliases: `joue`
+- Cooldown: 5
+
+### `stop`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Stop the music
+- Usage: None
+- Aliases: `leave`
+- Cooldown: 5
+
 ## Anime (6 commands)
 
 ### `cuddle`
@@ -542,7 +572,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `slist`, `serverslist`
 - Cooldown: 10
 
-## Core (5 commands)
+## Core (6 commands)
 
 ### `botperms`
 
@@ -568,6 +598,19 @@ Not providing any arguments will display the current settings.
 - Description: Library used to build Welcome-Bot
 - Usage: None
 - Aliases: `library`
+- Cooldown: 10
+
+### `suggest`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Give your suggestion
+- Usage: [suggestion]
+- Aliases: None
 - Cooldown: 10
 
 ### `support`
