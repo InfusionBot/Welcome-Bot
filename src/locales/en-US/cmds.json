@@ -11,6 +11,10 @@
   "lib": {
     "cmdDesc": "Library used to build Welcome-Bot"
   },
+  "suggest": {
+    "cmdDesc": "Give your suggestion",
+    "done": "Your suggestion has been added, Thank You"
+  },
   "ping": {
     "cmdDesc": "Ping the bot"
   },

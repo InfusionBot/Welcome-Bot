@@ -12,6 +12,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 > **Released:** `TBA`
 
+### New features
+
+- New command `suggest` - Give your suggestion
+
 ### Changes
 
 - Change `modLogChan` to `modChannel` in db
