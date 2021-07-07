@@ -12,19 +12,24 @@ module.exports = {
     category: "Core",
     execute(message, args, guildDB, t) {
         const text = args.join(" ");
-        let embed = new Embed({footer: `Suggestion given by ${message.author.tag}`, color: "success", timestamp: true })
+        let embed = new Embed({
+            footer: `Suggestion given by ${message.author.tag}`,
+            color: "success",
+            timestamp: true,
+        })
             .setTitle("New suggestion 🤔")
             .setDesc(text);
         try {
             message.client.channels.cache
                 .get(message.client.suggestionLogsChannelId)
-                .send({ embeds: [embed] }).then(msg => {
+                .send({ embeds: [embed] })
+                .then((msg) => {
                     await msg.react("👍");
                     await msg.react("👎");
                 });
             message.react("👍");
             message.reply(t("cmds:suggest.done"));
-        } catch(e) {
+        } catch (e) {
             throw e;
         }
     },
