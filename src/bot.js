@@ -119,10 +119,21 @@ client.player
         queue.metadata.channel.send(t("cmds:play.queueEnd"));
     })
     .on("error", (queue, error) => {
-        client.logger.log(
-            `An error occurred, when playing queue (${queue.id}) in ${queue.guild.name} (${queue.guild.id})`,
-            "error"
-        );
+        const t = await getT(queue.metadata.guild.id);
+        switch (error) {
+            case "NotConnected":
+                queue.metadata.reply(t("cmds:play.voiceNotJoined"));
+                break;
+            case "UnableToJoin":
+                queue.metadata.reply(t("cmds:play.cantJoin"));
+                break;
+            case "NotPlaying":
+                queue.metadata.reply(t("cmds:stop.notPlaying"));
+                break;
+            default:
+                queue.metadata.reply(t("cmds:play.errorOccurred", {error}));
+                break;
+        }
     });
 
 client.on("ready", async () => {
