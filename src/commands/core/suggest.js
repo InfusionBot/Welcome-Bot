@@ -14,7 +14,7 @@ module.exports = {
     execute(message, args, guildDB, t) {
         const text = args.join(" ");
         let embed = new Embed({
-            footer: `Suggestion given by ${message.author.tag}`,
+            footer: `Suggestion given by ${message.author.tag} (${message.author.id})`,
             color: "success",
             timestamp: true,
         })

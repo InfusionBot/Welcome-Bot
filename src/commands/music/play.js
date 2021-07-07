@@ -53,6 +53,7 @@ module.exports = {
             requestedBy: message.author,
         });
         queue.addTrack(song.tracks[0]);
+        if (!queue.nowPlaying()) return;
         queue.play();
     },
 };
