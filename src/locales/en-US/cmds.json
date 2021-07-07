@@ -131,8 +131,9 @@
     "queueAdded": "✅ Added to queue",
     "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}",
     "timeout": "❌ Search timed out",
-    "errorOccurred": "An error occurred... Code: `{{error}}",
-    "starting": "Starting to play"
+    "errorOccurred": "An error occurred... Code: `{{error}}`",
+    "starting": "Starting to play",
+    "rateLimited": "Sorry, I can't play the song as I am rate limited"
   },
   "skip": {
     "cmdDesc": "Skip the current song",
