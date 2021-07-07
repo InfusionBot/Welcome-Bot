@@ -18,7 +18,7 @@ module.exports = {
         try {
             message.client.channels.cache
                 .get(message.client.suggestionLogsChannelId)
-                .send({ embeds: [embed] }).then(msg => {
+                .send({ embeds: [embed] }).then(async (msg) => {
                     await msg.react("👍");
                     await msg.react("👎");
                 });
