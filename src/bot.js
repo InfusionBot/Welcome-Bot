@@ -54,6 +54,7 @@ client.player
         embed
             .setTitle(t("cmds:play.queueAdded"))
             .setDescription(track.title)
+            .setThumbnail(track.thumbnail)
             .addField(
                 "Details",
                 "> " +
@@ -74,6 +75,7 @@ client.player
         embed
             .setTitle(`🥁 ${t("cmds:play.starting")}`)
             .setDescription(track.title)
+            .setThumbnail(track.thumbnail)
             .addField(
                 "Details",
                 "> " +
