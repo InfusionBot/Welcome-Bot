@@ -5,9 +5,9 @@
  */
 const { Embed } = require("../../classes");
 module.exports = {
-    name: "skip",
-    aliases: ["nextmusic"],
-    //description: "Skip the current song",
+    name: "back",
+    aliases: ["prevoius"],
+    //description: "Play prevoius music",
     guildOnly: true,
     cooldown: 5,
     category: "Music",
@@ -18,7 +18,7 @@ module.exports = {
         if (!queue) return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
         let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
-            t("cmds:skip.cmdDesc")
+            t("cmds:back.cmdDesc")
         );
         const msg = await message.channel.send({ embeds: [embed] });
         if (members.size > 1) {
@@ -28,7 +28,7 @@ module.exports = {
             msg.edit({
                 embeds: [
                     embed.setDesc(
-                        t("cmds:skip.pleaseVote", {
+                        t("cmds:back.pleaseVote", {
                             count: moreVotes,
                         })
                     ),
@@ -48,13 +48,13 @@ module.exports = {
             collector.on("collect", (reaction) => {
                 const haveVoted = reaction.count - 1;
                 if (haveVoted >= moreVotes) {
-                    if (queue.skip()) {
+                    if (queue.back()) {
                         msg.edit({
-                            embeds: [embed.setDesc(t("cmds:skip.success"))],
+                            embeds: [embed.setDesc(t("cmds:back.success"))],
                         });
                     } else {
                         msg.edit({
-                            embeds: [embed.setDesc(t("cmds:skip.failure"))],
+                            embeds: [embed.setDesc(t("cmds:back.failure"))],
                         });
                     }
                     collector.stop();
@@ -62,7 +62,7 @@ module.exports = {
                     msg.edit({
                         embeds: [
                             embed.setDesc(
-                                t("cmds:skip.pleaseVote", {
+                                t("cmds:back.pleaseVote", {
                                     count: moreVotes,
                                 })
                             ),
@@ -76,13 +76,13 @@ module.exports = {
                 }
             });
         } else {
-            if (queue.skip()) {
+            if (queue.back()) {
                 msg.edit({
-                    embeds: [embed.setDesc(t("cmds:skip.success"))],
+                    embeds: [embed.setDesc(t("cmds:back.success"))],
                 });
             } else {
                 msg.edit({
-                    embeds: [embed.setDesc(t("cmds:skip.failure"))],
+                    embeds: [embed.setDesc(t("cmds:back.failure"))],
                 });
             }
         }

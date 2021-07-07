@@ -7,7 +7,7 @@ const { Embed } = require("../../classes");
 module.exports = {
     name: "np",
     aliases: ["now-playing"],
-    //description: "The details of song you are currently playing",
+    //description: "The details of song which is being played now",
     guildOnly: true,
     cooldown: 5,
     category: "Music",

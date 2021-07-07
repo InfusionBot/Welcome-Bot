@@ -111,8 +111,14 @@
   "unban": {
     "cmdDesc": "Unban a user."
   },
+  "back": {
+    "cmdDesc": "Play prevoius music",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to go to the prevoius music! {{count}} more votes are required.",
+    "success": "Went back to the prevoius song",
+    "failure": "An error occurred, When going back to the prevoius song."
+  },
   "np": {
-    "cmdDesc": "The details of song you are currently playing",
+    "cmdDesc": "The details of song which is being played now",
     "playing": "Currently playing"
   },
   "play": {
