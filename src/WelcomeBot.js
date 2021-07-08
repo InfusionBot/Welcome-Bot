@@ -151,10 +151,7 @@ class WelcomeBot extends Client {
             ];
         }
         if (command.metadata) {
-            command.metadata = [
-                ...defaultOpts.metadata,
-                ...command.metadata,
-            ];
+            command.metadata = [...defaultOpts.metadata, ...command.metadata];
         }
         command = {
             ...defaultOpts,
