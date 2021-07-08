@@ -239,7 +239,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Get information about a user. It will show your info if no user was mentioned
 - Usage: (@mention / user_id)
-- Aliases: `whois`
+- Aliases: `whois`, `ui`, `uinfo`
 - Cooldown: 3
 
 ### `version`
@@ -381,7 +381,33 @@ Not providing any arguments will display the current settings.
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## Music (2 commands)
+## Music (5 commands)
+
+### `back`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Play prevoius music
+- Usage: None
+- Aliases: `prevoius`
+- Cooldown: 5
+
+### `np`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: The details of song which is being played now
+- Usage: None
+- Aliases: `now-playing`
+- Cooldown: 5
 
 ### `play`
 
@@ -395,6 +421,19 @@ Not providing any arguments will display the current settings.
 You must join a voice channel before using this command.
 - Usage: [name]
 - Aliases: `joue`
+- Cooldown: 5
+
+### `skip`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Skip the current song
+- Usage: None
+- Aliases: `nextmusic`
 - Cooldown: 5
 
 ### `stop`
