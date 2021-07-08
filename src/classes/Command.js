@@ -29,8 +29,11 @@ module.exports = class Command {
         }
         if (command.aliases) {
             for (const alias of command.aliases) {
-                if (alias.includes("-"))
-                    command.aliases.push(alias.replace(/-/g, ""));
+                if (alias.includes("-")) {
+                    const alias2 = alias.replace(/-/g, "");
+                    if (command.name !== alias2)
+                        command.aliases.push(alias2);
+                }
             }
         }
         this.name = command.name;
