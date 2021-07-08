@@ -56,12 +56,6 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
-        if (command.metadata.guildOnly && message.channel.type === "dm") {
-            return message.reply(
-                `I can't execute that command inside DMs, ${message.author}`
-            );
-        }
-
         if (
             command.ownerOnly &&
             !(
@@ -70,6 +64,12 @@ module.exports = async (message, guildDB) => {
             )
         ) {
             return message.reply(t("errors:developerOnly"));
+        }
+
+        if (command.guildOnly && message.channel.type === "dm") {
+            return message.reply(
+                `I can't execute that command inside DMs, ${message.author}`
+            );
         }
 
         if (command.permissions) {
