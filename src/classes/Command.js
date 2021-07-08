@@ -54,6 +54,10 @@ module.exports = class Command {
         this.cooldown = command.cooldown;
         this.ownerOnly = command.ownerOnly;
         this.category = command.category;
+        this.metadata = {
+            guildOnly: command.guildOnly || false,
+            cooldown: command.cooldown,
+        };
         this.execute = command.execute;
         return command;
     }

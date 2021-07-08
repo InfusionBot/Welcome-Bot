@@ -39,7 +39,7 @@ module.exports = (client) => {
                 `- Aliases: ${
                     cmd.aliases ? `\`${cmd.aliases.join("`, `")}\`` : "None"
                 }\n` +
-                `- Cooldown: ${cmd.cooldown}\n`;
+                `- Cooldown: ${cmd.metadata.cooldown}\n`;
         });
     });
     text = text

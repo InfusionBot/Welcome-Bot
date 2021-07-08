@@ -56,7 +56,7 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
-        if (command.guildOnly && message.channel.type === "dm") {
+        if (command.metadata.guildOnly && message.channel.type === "dm") {
             return message.reply(
                 `I can't execute that command inside DMs, ${message.author}`
             );
@@ -155,15 +155,15 @@ module.exports = async (message, guildDB) => {
             cooldowns.set(command.name, new Collection());
         }
 
-        const now = Date.now();
+        const now = Date.now();//number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
         const timestamps = cooldowns.get(command.name);
-        const cooldownAmount = (command.cooldown || 3) * 1000;
+        const cooldownAmount = (command.metadata.cooldown || 3) * 1000;
 
         if (timestamps.has(message.author.id)) {
             const expirationTime =
                 timestamps.get(message.author.id) + cooldownAmount;
 
-            if (now < expirationTime) {
+            if (now < expirationTime) {//Still this cooldown didn't expire.
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
                     t(`errors:cooldown`, {
@@ -174,8 +174,8 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        timestamps.set(message.author.id, now);
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+        timestamps.set(message.author.id, now); //Set a timestamp for author with time now.
+        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
 
         if (client.debug)
             client.logger.log(
@@ -185,11 +185,9 @@ module.exports = async (message, guildDB) => {
         message.channel.startTyping();
         if (command.catchError) {
             try {
-                message.channel.startTyping();
                 command.execute(message, args, guildDB, t);
-                message.channel.stopTyping(true);
             } catch (err) {
-                console.error(err);
+                client.logger.log(err, "error", ["COMMANDS"]);
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(

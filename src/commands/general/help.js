@@ -219,7 +219,7 @@ module.exports = {
 
             pages[0].addField(
                 "Cooldown:",
-                `${command.cooldown || 3} second(s)`
+                `${command.metadata.cooldown || 3} second(s)`
             );
         } else if (category) {
             let commandsInCat = [];
