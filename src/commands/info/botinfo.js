@@ -41,7 +41,9 @@ module.exports = {
                 "> [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
                     "> [disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
                     "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
-                    "> [discordservices.net](https://discordservices.net/bot/848459799783669790)"
+                    "> [discordservices.net](https://discordservices.net/bot/848459799783669790)\n" +
+                    "> [discordlist.space](https://discordlist.space/bot/848459799783669790)\n" +
+                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n"
             )
             .addField(
                 "🔗 Other links:",
