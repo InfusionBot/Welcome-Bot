@@ -541,7 +541,7 @@ You must join a voice channel before using this command.
 
 - Description: Get your fortune by asking your question
 - Usage: [question]
-- Aliases: `eightball`, `8b`, `8-ball`, `8ball`
+- Aliases: `eightball`, `8b`, `8-ball`
 - Cooldown: 3
 
 ### `coinflip`
