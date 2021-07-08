@@ -365,7 +365,7 @@ Not providing any arguments will display the current settings.
 
 - Description: Generate a random pokemon image
 - Usage: None
-- Aliases: `random-image`
+- Aliases: `random-image`, `randomimage`
 - Cooldown: 10
 
 ### `pokemon`
@@ -406,7 +406,7 @@ Not providing any arguments will display the current settings.
 
 - Description: The details of song which is being played now
 - Usage: None
-- Aliases: `now-playing`
+- Aliases: `now-playing`, `nowplaying`
 - Cooldown: 5
 
 ### `play`
@@ -541,7 +541,7 @@ You must join a voice channel before using this command.
 
 - Description: Get your fortune by asking your question
 - Usage: [question]
-- Aliases: `eightball`, `8b`, `8-ball`
+- Aliases: `eightball`, `8b`, `8-ball`, `8ball`
 - Cooldown: 3
 
 ### `coinflip`
