@@ -14,7 +14,7 @@ module.exports = {
     execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         let embed = new MessageEmbed()
-            .setTitle(`${client.user.username} v${client.botVersion}`)
+            .setTitle(`${message.client.user.username} v${message.client.botVersion}`)
             .setDescription("Information and Support for Welcome-Bot")
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
             .addField(
