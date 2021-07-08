@@ -135,7 +135,7 @@ class WelcomeBot extends Client {
             args: false,
             catchError: true,
             disabled: false,
-            metadata: {cooldown: 3,},
+            metadata: { cooldown: 3 },
             ownerOnly: false,
             category: "General",
         };
