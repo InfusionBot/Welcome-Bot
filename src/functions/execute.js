@@ -157,7 +157,7 @@ module.exports = async (message, guildDB) => {
 
         const now = Date.now(); //number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
         const timestamps = cooldowns.get(command.name);
-        const cooldownAmount = (command.metadata.cooldown || 3) * 1000;
+        const cooldownAmount = (command.cooldown || 3) * 1000;
 
         if (timestamps.has(message.author.id)) {
             const expirationTime =
