@@ -155,7 +155,7 @@ module.exports = async (message, guildDB) => {
             cooldowns.set(command.name, new Collection());
         }
 
-        const now = Date.now();//number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
+        const now = Date.now(); //number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
         const timestamps = cooldowns.get(command.name);
         const cooldownAmount = (command.metadata.cooldown || 3) * 1000;
 
@@ -163,7 +163,8 @@ module.exports = async (message, guildDB) => {
             const expirationTime =
                 timestamps.get(message.author.id) + cooldownAmount;
 
-            if (now < expirationTime) {//Still this cooldown didn't expire.
+            if (now < expirationTime) {
+                //Still this cooldown didn't expire.
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
                     t(`errors:cooldown`, {
