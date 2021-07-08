@@ -135,7 +135,7 @@ class WelcomeBot extends Client {
             args: false,
             catchError: true,
             disabled: false,
-            metadata: { cooldown: 3 },
+            cooldown: 3,
             ownerOnly: false,
             category: "General",
         };
@@ -148,12 +148,6 @@ class WelcomeBot extends Client {
             defaultOpts.bot_perms = [
                 ...defaultOpts.bot_perms,
                 ...command.bot_perms,
-            ];
-        }
-        if (command.metadata) {
-            defaultOpts.metadata = [
-                ...defaultOpts.metadata,
-                ...command.metadata,
             ];
         }
         command = {
