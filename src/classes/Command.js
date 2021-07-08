@@ -26,10 +26,10 @@ module.exports = class Command {
         }
         if (command.name.includes("-")) {
             command.aliases.push(command.name.replace(/-/g, ""));
-            for (const alias of command.aliases) {
-                if (alias.includes("-"))
-                    command.aliases.push(alias.replace(/-/g, ""));
-            }
+        }
+        for (const alias of command.aliases) {
+            if (alias.includes("-"))
+                command.aliases.push(alias.replace(/-/g, ""));
         }
         this.name = command.name;
         this.aliases = command.aliases || [];
