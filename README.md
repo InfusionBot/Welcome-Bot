@@ -13,6 +13,7 @@ Welcome-bot is a bot built for you, to welcome new users to your servers mainly.
 [![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 ![Views](https://visitor-badge.laobi.icu/badge?page_id=Welcome-Bot.welcome-bot&title=Views)
+![Codelines](https://img.shields.io/tokei/lines/github/Welcome-Bot/welcome-bot)
 
 Feel free to add a star ⭐ to the repository to promote the project!
 
