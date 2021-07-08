@@ -7,7 +7,7 @@ const { userFromMention } = require("../../functions/get.js");
 const { Embed } = require("../../classes");
 module.exports = {
     name: "user",
-    aliases: ["whois"],
+    aliases: ["whois", "ui", "uinfo"],
     //description:
     //"Get information about a user. It will show your info if no user was mentioned",
     args: false,
