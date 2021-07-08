@@ -45,7 +45,10 @@ module.exports = {
             queue = message.client.player.createQueue(message.guild, {
                 metadata: message,
             });
-            if (message.client.debug) message.client.logger.log("Creating new queue", "debug", ["VOICE"]);
+            if (message.client.debug)
+                message.client.logger.log("Creating new queue", "debug", [
+                    "VOICE",
+                ]);
         }
         try {
             if (!queue.connection)
