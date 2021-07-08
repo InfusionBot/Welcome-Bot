@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Queue } = require("discord-player");
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "play",
@@ -40,10 +41,11 @@ module.exports = {
             );
 
         let queue = message.client.player.getQueue(message.guild);
-        if (!queue) {
+        if (!(queue instanceof Queue)) {
             queue = message.client.player.createQueue(message.guild, {
                 metadata: message,
             });
+            if (message.client.debug) message.client.logger.log("Creating new queue", "debug", ["VOICE"]);
         }
         try {
             if (!queue.connection)
