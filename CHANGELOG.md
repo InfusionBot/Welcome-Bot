@@ -1,6 +1,6 @@
 # Changelog v1
 
-The Changelog of the major version 1 of Discord welcome bot.
+The Changelog of the major version 1 of Discord Welcome-Bot.
 
 Note that the displayed date is in the format `dd-mm-yyyy`
 
@@ -14,7 +14,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### New features
 
+- New command `pat` - Pats someone
 - New command `suggest` - Give your suggestion
+- New cmd category `Music` - Welcome-Bot now has Music commands.
+- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`
 
 ### Changes
 

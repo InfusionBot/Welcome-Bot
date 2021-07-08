@@ -150,6 +150,12 @@ class WelcomeBot extends Client {
                 ...command.bot_perms,
             ];
         }
+        if (command.metadata) {
+            command.metadata = [
+                ...defaultOpts.metadata,
+                ...command.metadata,
+            ];
+        }
         command = {
             ...defaultOpts,
             ...command,
