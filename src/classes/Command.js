@@ -3,7 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-
+const { Permissions } = require("discord.js");
 module.exports = class Command {
     constructor(client, command) {
         if (command.name !== command.name.toLowerCase()) {
@@ -54,7 +54,7 @@ module.exports = class Command {
         this.ownerOnly = command.ownerOnly;
         this.category = command.category;
         this.metadata = {
-            guildOnly: command.guildOnly || false,
+            guildOnly: (command.guildOnly || false),
             cooldown: command.cooldown,
         };
         this.execute = command.execute;

@@ -135,7 +135,7 @@ class WelcomeBot extends Client {
             args: false,
             catchError: true,
             disabled: false,
-            cooldown: 3,
+            metadata: {cooldown: 3,},
             ownerOnly: false,
             category: "General",
         };
@@ -143,6 +143,7 @@ class WelcomeBot extends Client {
             ".js",
             ""
         )}`);
+        command = new Command(this, command);
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
@@ -153,7 +154,6 @@ class WelcomeBot extends Client {
             ...defaultOpts,
             ...command,
         };
-        command = new Command(this, command);
         if (!command.disabled) {
             this.commands.enabled.set(command.name, command);
         } else {
