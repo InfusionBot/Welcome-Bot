@@ -121,6 +121,12 @@ Feel free to upvote him to show your support.
 
 > A brand new botlist that aims to deliver the best experience for its users and bot developers.
 
+### [discordlist.space](https://discordlist.space/bot/848459799783669790)
+
+> Discover our large collection of unique Discord bots and servers.
+
+[![widget](https://api.discordlist.space/v2/bots/848459799783669790/widget?background=7289DA&radius=6)](https://discordlist.space/bot/848459799783669790)
+
 ### [discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
