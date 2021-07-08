@@ -41,9 +41,9 @@ module.exports = {
 
         let queue = message.client.player.getQueue(message.guild);
         if (!queue) {
-        queue = message.client.player.createQueue(message.guild, {
-            metadata: message,
-        });
+            queue = message.client.player.createQueue(message.guild, {
+                metadata: message,
+            });
         }
         try {
             if (!queue.connection)
