@@ -39,9 +39,12 @@ module.exports = {
                 })
             );
 
-        const queue = message.client.player.createQueue(message.guild, {
+        let queue = message.client.player.getQueue(message.guild);
+        if (!queue) {
+        queue = message.client.player.createQueue(message.guild, {
             metadata: message,
         });
+        }
         try {
             if (!queue.connection)
                 await queue.connect(message.member.voice.channel);
