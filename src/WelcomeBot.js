@@ -145,13 +145,13 @@ class WelcomeBot extends Client {
         )}`);
         command = new Command(this, command);
         if (command.bot_perms) {
-            command.bot_perms = [
+            defaultOpts.bot_perms = [
                 ...defaultOpts.bot_perms,
                 ...command.bot_perms,
             ];
         }
         if (command.metadata) {
-            command.metadata = [
+            defaultOpts.metadata = [
                 ...defaultOpts.metadata,
                 ...command.metadata,
             ];
