@@ -18,6 +18,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `suggest` - Give your suggestion
 - New cmd category `Music` - Welcome-Bot now has Music commands.
 - `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`
+- New command `addemoji` - Add a emoji from a image url, no need to download it.
 
 ### Changes
 
