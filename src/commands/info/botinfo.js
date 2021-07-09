@@ -51,7 +51,7 @@ module.exports = {
                 "🔗 Other links:",
                 "> [Support server](https://dsc.gg/welcome-bot-guild)\n" +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-                    "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.md) and [Terms of service](https://welcome-bot.github.io/docs/terms.md)\n" +
+                    "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.html) and [Terms of service](https://welcome-bot.github.io/docs/terms.html)\n" +
                     "> [Documentation](https://welcome-bot.github.io/docs)"
             )
             .setImage(
