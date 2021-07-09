@@ -17,8 +17,9 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `pat` - Pats someone
 - New command `suggest` - Give your suggestion
 - New cmd category `Music` - Welcome-Bot now has Music commands.
-- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`
+- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`
 - New command `addemoji` - Add a emoji from a image url, no need to download it.
+- With this release, Welcome-Bot reaches 50 commands!!
 
 ### Changes
 
