@@ -25,7 +25,7 @@ module.exports = {
                     `> Users: ${message.client.users.cache.size} users\n` +
                     `> Channels: ${message.client.channels.cache.size} channels\n` +
                     `> Version: ${message.client.botVersion}\n` +
-                    `Commands: ${message.client.commands.enabled.size} commands`
+                    `> Commands: ${message.client.commands.enabled.size} commands`
             )
             .addField(
                 ":pencil: System",
