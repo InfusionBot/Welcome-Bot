@@ -22,35 +22,45 @@ module.exports = {
         const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
         const embed = new Embed({ color: "success", timestamp: true });
         if (!name) {
-            return message.reply(t("cmds:addemoji.nameMissing", {
-                cmd: `${guildDB.prefix}help addemoji`
-            }));
+            return message.reply(
+                t("cmds:addemoji.nameMissing", {
+                    cmd: `${guildDB.prefix}help addemoji`,
+                })
+            );
         }
         if (name.length < 2 || name.length > 32) {
             return message.reply(t("cmds:addemoji.invalidName"));
         }
         message.guild.emojis
             .create(args[0], name)
-            .then(emoji => {
+            .then((emoji) => {
                 message.channel.send({
                     embeds: [
-                        embed.setTitle(t("cmds:addemoji.success", {
-                            emojiId: emoji.id,
-                            emojiName: emoji.name
-                        }).split("\n")[1]).setDesc(t("cmds:addemoji.success", {
-                            emojiId: emoji.id,
-                            emojiName: emoji.name
-                        }).split("\n")[0])
-                    ]
+                        embed
+                            .setTitle(
+                                t("cmds:addemoji.success", {
+                                    emojiId: emoji.id,
+                                    emojiName: emoji.name,
+                                }).split("\n")[1]
+                            )
+                            .setDesc(
+                                t("cmds:addemoji.success", {
+                                    emojiId: emoji.id,
+                                    emojiName: emoji.name,
+                                }).split("\n")[0]
+                            ),
+                    ],
                 });
             })
             .catch(() => {
                 message.channel.send({
                     embeds: [
-                        embed.setTitle(t("cmds:addemoji.error", {
-                            emojiName: name
-                        }).split("\n")[1])
-                    ]
+                        embed.setTitle(
+                            t("cmds:addemoji.error", {
+                                emojiName: name,
+                            }).split("\n")[1]
+                        ),
+                    ],
                 });
             });
     },
