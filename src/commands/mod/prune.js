@@ -26,7 +26,7 @@ module.exports = {
     ],
     cooldown: 5,
     category: "Moderation",
-    execute(message, args, guildDB) {
+    execute(message, args, guildDB, t) {
         let messages;
         let errMsg =
             "An error occurred when trying to prune messages in this channel";
@@ -53,9 +53,10 @@ module.exports = {
                     "The provided number of messages to delete doesn't seem to be a valid number."
                 );
             } else if (amount < 1 || amount > 100) {
-                return message.reply(
-                    "Please input a number between 1 and 100 only."
-                );
+                return message.reply(t("errors:invalidNumRange", {
+                    min: 1,
+                    max: 100
+                }));
             }
 
             message.channel.bulkDelete(amount, true).catch((err) => {

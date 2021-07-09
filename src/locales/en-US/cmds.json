@@ -153,6 +153,10 @@
     "stopped": "Music stopped!",
     "pleaseVote": "More than half members in the voice channel must react with 👍 to stop the music! {{count}} more votes are required."
   },
+  "volume": {
+    "cmdDesc": "Adjust the volume of the music",
+    "success": "Volume adjusted to {{volume}}"
+  },
   "eval": {
     "cmdDesc": "Execute a JS statement."
   },

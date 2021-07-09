@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **40 commands** in **11 categories**!
+Welcome-Bot contains more than **50 commands** in **11 categories**!
 
 ### **Usage Key!**
 
@@ -394,7 +394,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## Music (5 commands)
+## Music (6 commands)
 
 ### `back`
 
@@ -460,6 +460,19 @@ You must join a voice channel before using this command.
 - Description: Stop the music
 - Usage: None
 - Aliases: `leave`
+- Cooldown: 5
+
+### `volume`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Adjust the volume of the music
+- Usage: None
+- Aliases: `sound-level`, `soundlevel`
 - Cooldown: 5
 
 ## Anime (6 commands)
