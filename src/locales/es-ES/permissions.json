@@ -15,9 +15,9 @@
   "MANAGE_MESSAGES": "Gestionar Mensajes",
   "EMBED_LINKS": "Insertar Enlaces",
   "ATTACH_FILES": "Adjuntar Archivos",
-  "READ_MESSAGE_HISTORY": "Read Message History",
-  "MENTION_EVERYONE": "Mention Everyone",
-  "USE_EXTERNAL_EMOJIS": "Use External Emojis",
+  "READ_MESSAGE_HISTORY": "Leer el historial de mensajes",
+  "MENTION_EVERYONE": "Mencionar a todos",
+  "USE_EXTERNAL_EMOJIS": "Usar Emojis Externos",
   "CONNECT": "Conectar",
   "SPEAK": "Hablar",
   "MUTE_MEMBERS": "Mute Members",
@@ -29,6 +29,6 @@
   "MANAGE_ROLES": "Manage Roles",
   "MANAGE_WEBHOOKS": "Manage Webhooks",
   "MANAGE_EMOJIS": "Manage Emojis",
-  "USE_APPLICATION_COMMANDS": "Use Slash commands",
-  "REQUEST_TO_SPEAK": "Request to Speak"
+  "USE_APPLICATION_COMMANDS": "Usar comandos Slash",
+  "REQUEST_TO_SPEAK": "Solicitud para hablar"
 }
