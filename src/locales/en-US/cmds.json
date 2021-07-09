@@ -165,6 +165,13 @@
   "servers-list": {
     "cmdDesc": "Show the list of servers the bot is in."
   },
+  "addemoji": {
+    "cmdDesc": "Add emoji from a image link",
+    "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
+    "invalidName": "The length of the emoji name must be between 2 and 32!",
+    "success": "Preview: <:{{emojiName}}:{{emojiId}}>\n:{{emojiName}}: added!",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
+  },
   "channel": {
     "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
     "invalidArgs": "Invalid args, please use proper subcommands, see "

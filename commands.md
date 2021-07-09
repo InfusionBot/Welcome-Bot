@@ -30,7 +30,20 @@ Welcome-Bot contains more than **40 commands** in **11 categories**!
 
 
 
-## Setup (7 commands)
+## Setup (8 commands)
+
+### `addemoji`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Add emoji from a image link
+- Usage: [link] [emoji name]
+- Aliases: `emoji`
+- Cooldown: 5
 
 ### `channel`
 
