@@ -21,6 +21,14 @@ Reporting bugs and Requesting features should be done using the issue tracker.
 
 Please use the [bug report][bug] template for reporting bugs and [feature request][feature] template for requesting new features or changes to existing features.
 
+## Ideas and discussion
+
+Have an awesome idea for a new command?
+We'd love to hear about it, no matter how useful it is.
+Go for it, and please open an [feature request][feature] describing what you have in mind.
+We'll discuss it and, quite possibly, add it to the bot!
+You can also help by giving your opinion on one of the many existing ideas we have on our issues list.
+
 ## Pull request
 
 Before submitting a pull request should you make sure that there isn't an existing pull request with the changes you want to provide.
