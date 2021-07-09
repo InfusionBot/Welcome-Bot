@@ -48,26 +48,26 @@ module.exports = {
         }
         if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]) + 1;
-            /*if (isNaN(amount)) {
+            if (isNaN(amount)) {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
                 );
-            } else*/ if (amount <= 1 || amount > 99) {
+            } else if (amount < 1 || amount > 100) {
                 return message.reply(
-                    "Please input a number between 1 and 99 only."
+                    "Please input a number between 1 and 100 only."
                 );
             }
 
             message.channel.bulkDelete(amount, true).catch((err) => {
-                console.error(err);
-                message.channel.send(errMsg);
+                message.client.logger.log(err, "error", ["PRUNING"]);
+                return message.channel.send(errMsg);
             });
         } else {
             if (messages) {
                 message.delete();
                 message.channel.bulkDelete(messages, true).catch((err) => {
-                    console.error(err);
-                    message.channel.send(errMsg);
+                    message.client.logger.log(err, "error", ["PRUNING"]);
+                    return message.channel.send(errMsg);
                 });
             } else {
                 return message.channel.send(errMsg);
