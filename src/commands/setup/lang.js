@@ -22,8 +22,8 @@ module.exports = {
     execute(message, args, guildDB, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
-        const keys = Object.keys(list).join("\n").toLowerCase().split("\n");
-        const vals = Object.values(list).join("\n").toLowerCase().split("\n");
+        const keys = Object.keys(list);
+        const vals = Object.values(list);
         let str = "";
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
