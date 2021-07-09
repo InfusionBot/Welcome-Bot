@@ -18,14 +18,18 @@ module.exports = {
         if (!queue) return message.reply(t("cmds:stop.notPlaying"));
         const amount = parseInt(args[0]);
         if (amount < 0 || amount > 200) {
-            return message.reply(t("errors:invalidNumRange", {
-                min: 0,
-                max: 200
-            }));
+            return message.reply(
+                t("errors:invalidNumRange", {
+                    min: 0,
+                    max: 200,
+                })
+            );
         }
         queue.setVolume(amount);
-        message.reply(t("cmds:volume.success", {
-            volume: amount
-        }));
+        message.reply(
+            t("cmds:volume.success", {
+                volume: amount,
+            })
+        );
     },
 };

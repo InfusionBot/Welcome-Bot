@@ -53,10 +53,12 @@ module.exports = {
                     "The provided number of messages to delete doesn't seem to be a valid number."
                 );
             } else if (amount < 1 || amount > 100) {
-                return message.reply(t("errors:invalidNumRange", {
-                    min: 1,
-                    max: 100
-                }));
+                return message.reply(
+                    t("errors:invalidNumRange", {
+                        min: 1,
+                        max: 100,
+                    })
+                );
             }
 
             message.channel.bulkDelete(amount, true).catch((err) => {
