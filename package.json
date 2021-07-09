@@ -1,9 +1,14 @@
 {
   "name": "welcome-bot",
-  "version": "1.10.2",
+  "version": "1.11.0-dev",
   "changelog": [
-    "**Bug fixes**",
-    "Fix avatar command"
+    "**New features**",
+    "New command `pat` - Pats someone",
+    "New command `suggest` - Give your suggestion",
+    "New cmd category `Music` - Welcome-Bot now has Music commands.",
+    "`Music` category has commands: `back`, `np`, `play`, `skip`, `stop`",
+    "**Changes**",
+    "Change `modLogChan` to `modChannel` in db"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/bot.js",
