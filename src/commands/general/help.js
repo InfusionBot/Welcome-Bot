@@ -50,9 +50,8 @@ module.exports = {
             pages[i].setTitle(t("cmds:help.bot-help"));
         }
         if (!args.length) {
-            let p;
             categories.forEach((cat) => {
-                p = pages.length;
+                const p = pages.length;
                 let commandsCat = [];
                 pages[p] = new Embed({ color: "blue", timestamp: true });
                 pages[p].setTitle(
