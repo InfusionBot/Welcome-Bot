@@ -41,7 +41,7 @@ module.exports = {
                         })
                     );
                 if (vals.includes(args[1])) {
-                    keys.find(key => list[key] === args[1]);
+                    keys.find((key) => list[key] === args[1]);
                 }
                 updateGuild(message.guild.id, "lang", args[1]);
                 return message.reply(
