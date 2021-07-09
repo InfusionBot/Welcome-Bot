@@ -121,6 +121,7 @@ class WelcomeBot extends Client {
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
         this.player = new Player(this, {
             leaveOnEmpty: false,
+            leaveOnStop: true,
             enableLive: true,
         });
     }

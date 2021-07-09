@@ -118,6 +118,9 @@ client.player
         const t = await getT(queue.metadata.guild.id);
         queue.metadata.channel.send(t("cmds:play.queueEnd"));
     })
+    .on("channelEmpty", () => {
+        // do nothing, leaveOnEmpty is not enabled
+    })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
         switch (error) {

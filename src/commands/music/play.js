@@ -46,9 +46,7 @@ module.exports = {
                 metadata: message,
             });
             if (message.client.debug)
-                message.client.logger.log("Creating new queue", "debug", [
-                    "VOICE",
-                ]);
+                message.client.logger.log("Creating new queue", "debug", ["VOICE"]);
         }
         try {
             if (!queue.connection)

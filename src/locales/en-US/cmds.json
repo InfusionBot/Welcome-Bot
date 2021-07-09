@@ -193,7 +193,8 @@
     "cmdDesc": "Change language",
     "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
     "success": "Language set to {{lang}}",
-    "show": "Language successfully set to {{lang}}"
+    "show": "Language successfully set to {{lang}}",
+    "langNotProvided": "You have not provided lang argument"
   },
   "message": {
     "cmdDesc": "Manage welcome message for this server"
