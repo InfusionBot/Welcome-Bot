@@ -33,7 +33,7 @@ module.exports = {
                 if (!args[1]) {
                     return message.reply(t("cmds:lang.langNotProvided"));
                 }
-                if (!keys.includes(args[1]) || !vals.includes(args[1]))
+                if (!keys.includes(args[1]) && !vals.includes(args[1]))
                     return message.reply(
                         t("cmds:lang.invalid", {
                             cmd: `\`${guildDB.prefix}lang list\``,
