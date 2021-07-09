@@ -33,7 +33,6 @@ module.exports = {
                 if (!args[1]) {
                     return message.reply(t("cmds:lang.langNotProvided"));
                 }
-                args[1] = args[1].toLowerCase();
                 if (!keys.includes(args[1]) || !vals.includes(args[1]))
                     return message.reply(
                         t("cmds:lang.invalid", {
@@ -41,7 +40,7 @@ module.exports = {
                         })
                     );
                 if (vals.includes(args[1])) {
-                    keys.find((key) => list[key] === args[1]);
+                    args[1] = keys.find((key) => list[key] === args[1]);
                 }
                 updateGuild(message.guild.id, "lang", args[1]);
                 return message.reply(
