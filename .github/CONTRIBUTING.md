@@ -15,11 +15,19 @@ If you're unsure about a specific part of the Guidelines, use your best judgemen
 This project and everyone participating in it is governed by the [Code of Conduct][coc].
 By participating, you are expected to uphold this code. Please report unacceptable behavior through e-mail to baalkrshna@gmail.com.
 
-## Using the Issue tracker
+## Ideas and discussion
 
-Reporting bugs and Requesting features should be done using the issue tracker.
+Have an awesome idea for a new command?
+We'd love to hear about it, no matter how useful it is.
+Go for it, and please open an [feature request][feature] describing what you have in mind.
+We'll discuss it and, quite possibly, add it to the bot!
+You can also help by giving your opinion on one of the many existing ideas we have on our issues list.
 
-Please use the [bug report][bug] template for reporting bugs and [feature request][feature] template for requesting new features or changes to existing features.
+## Reporting bugs
+
+Found something not working in the bot?
+Please let us know! Don't hesitate to [write a bug report][bug].
+Please give us as much information as you can, preferably filling all of the fields provided on the template.
 
 ## Pull request
 

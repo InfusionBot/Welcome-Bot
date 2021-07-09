@@ -7,7 +7,7 @@ const { Permissions } = require("discord.js");
 module.exports = {
     name: "test",
     //aliases: [],
-    permissions: [Permissions.FLAGS.MANAGE_SERVER],
+    permissions: [Permissions.FLAGS.MANAGE_GUILD],
     //description: "Test welcome message",
     args: false,
     guildOnly: true,
