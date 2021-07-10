@@ -56,7 +56,12 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
-        if (message.guild && !message.guild.me.permissionsIn(message.channel).has(Permissions.FLAGS.SEND_MESSAGES)) {
+        if (
+            message.guild &&
+            !message.guild.me
+                .permissionsIn(message.channel)
+                .has(Permissions.FLAGS.SEND_MESSAGES)
+        ) {
             return message.author.send(t("errors:noSendMsgPerm"));
         }
 
@@ -76,7 +81,11 @@ module.exports = async (message, guildDB) => {
             );
         }
 
-        if (command.permissions && message.channel.type !== "dm" && message.guild) {
+        if (
+            command.permissions &&
+            message.channel.type !== "dm" &&
+            message.guild
+        ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
                 return message.reply(t("errors:youDontHavePermShort"));
@@ -99,7 +108,11 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        if (command.bot_perms && message.channel.type !== "dm" && message.guild) {
+        if (
+            command.bot_perms &&
+            message.channel.type !== "dm" &&
+            message.guild
+        ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
 
             if (!botPerms || !botPerms.has(command.bot_perms)) {
