@@ -147,33 +147,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `getprefix`
 - Cooldown: 10
 
-## General (4 commands)
-
-### `invite`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Get Invite link for the bot
-- Usage: None
-- Aliases: None
-- Cooldown: 20
-
-### `ping`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Ping the bot
-- Usage: None
-- Aliases: `latency`
-- Cooldown: 5
+## General (2 commands)
 
 ### `help`
 
@@ -201,7 +175,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `permissions`
 - Cooldown: 5
 
-## Information (5 commands)
+## Information (4 commands)
 
 ### `avatar`
 
@@ -215,19 +189,6 @@ Not providing any arguments will display the current settings.
 - Usage: (mention / user id)
 - Aliases: `dp`, `profile`
 - Cooldown: 5
-
-### `botinfo`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Bot information
-- Usage: (--dm)
-- Aliases: `bi`, `binfo`, `info`
-- Cooldown: 10
 
 ### `stats`
 
@@ -663,7 +624,20 @@ You must join a voice channel before using this command.
 - Aliases: `slist`, `serverslist`
 - Cooldown: 10
 
-## Core (6 commands)
+## Core (9 commands)
+
+### `botinfo`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Bot information
+- Usage: (--dm)
+- Aliases: `bi`, `binfo`, `info`
+- Cooldown: 10
 
 ### `botperms`
 
@@ -678,6 +652,19 @@ You must join a voice channel before using this command.
 - Aliases: None
 - Cooldown: 10
 
+### `invite`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get Invite link for the bot
+- Usage: None
+- Aliases: None
+- Cooldown: 20
+
 ### `lib`
 
 ##### Subcommands:
@@ -690,6 +677,19 @@ You must join a voice channel before using this command.
 - Usage: None
 - Aliases: `library`
 - Cooldown: 10
+
+### `ping`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Ping the bot
+- Usage: None
+- Aliases: `latency`
+- Cooldown: 5
 
 ### `suggest`
 
