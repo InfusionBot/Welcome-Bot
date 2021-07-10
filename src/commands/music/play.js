@@ -55,7 +55,7 @@ module.exports = {
                 await queue.connect(message.member.voice.channel);
         } catch (e) {
             queue.destroy();
-            client.logger.log(e, "error");
+            message.client.logger.log(e, "error");
             return void message.reply(t("cmds:play.cantJoin"));
         }
         const song = await message.client.player.search(name, {
