@@ -17,7 +17,8 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "node src/bot.js",
-    "startDev": "npx pm2 start src/bot.js --watch",
+    "startDev": "npx pm2 start src/bot.js --watch --name WelcomeBot",
+    "stopDev": "npx pm2 stop WelcomeBot",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js"
