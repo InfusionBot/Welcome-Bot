@@ -17,11 +17,14 @@ module.exports = {
             ownersMentions += `<@${message.client.ownerIDs[i]}> `;
         }
         ownersMentions = ownersMentions.trim();
-        let embed = new Embed({color: "success"})
+        let embed = new Embed({ color: "success" })
             .setTitle("Get Support for Welcome-Bot")
             .addField("Bot owners:", ownersMentions)
             .addField("Bot owners IDs:", message.client.ownerIDs.join(", "))
-            .addField("\u200b", `Join the support server: ${message.client.supportGuildInvite}`);
+            .addField(
+                "\u200b",
+                `Join the support server: ${message.client.supportGuildInvite}`
+            );
         let button = new MessageButton()
             .setLabel("Join the support server")
             .setURL(message.client.supportGuildInvite)
