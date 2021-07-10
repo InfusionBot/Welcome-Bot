@@ -13,7 +13,11 @@ module.exports = {
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB, t) {
-        let embed = new Embed({ color: "success", timestamp: true, footer: t("cmds:botinfo.footer") })
+        let embed = new Embed({
+            color: "success",
+            timestamp: true,
+            footer: t("cmds:botinfo.footer"),
+        })
             .setTitle(
                 `${message.client.user.username} v${message.client.botVersion}`
             )
