@@ -268,7 +268,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `ver`
 - Cooldown: 10
 
-## Moderation (4 commands)
+## Moderation (6 commands)
 
 ### `ban`
 
@@ -295,6 +295,19 @@ Not providing any arguments will display the current settings.
 - Usage: [@mention] (reason)
 - Aliases: None
 - Cooldown: 5
+
+### `mute`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Mute a member
+- Usage: [@mention / user_id] (reason)
+- Aliases: None
+- Cooldown: 10
 
 ### `prune`
 
@@ -323,6 +336,19 @@ Not providing any arguments will display the current settings.
 - Usage: [user_id]
 - Aliases: None
 - Cooldown: 5
+
+### `unmute`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Unmute a member
+- Usage: [@mention / user_id] (reason)
+- Aliases: None
+- Cooldown: 10
 
 ## Miscellaneous (2 commands)
 

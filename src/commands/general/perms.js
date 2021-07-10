@@ -3,6 +3,9 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
+const { userFromMention } = require("../../functions/get.js");
+const beautifyPerms = require("../../functions/beautifyPerms");
 module.exports = {
     name: "perms",
     aliases: ["permissions"],
@@ -14,9 +17,6 @@ module.exports = {
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB, t) {
-        const { Permissions } = require("discord.js");
-        const { userFromMention } = require("../../functions/get.js");
-        const beautifyPerms = require("../../functions/beautifyPerms");
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -37,15 +37,14 @@ module.exports = {
         }
 
         if (!user) {
-            message.reply("An error occurred when trying to find the user");
-            return false;
+            return message.reply(t("errors:userNotFound"));
         }
         let member;
         member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
             if (!member)
-                return message.reply("That user was not found in this server");
+                return message.reply(t("errors:userNotInGuild"));
         }
         let text =
             `Permissions for **${user.tag}** in *${message.channel.name}* channel` +

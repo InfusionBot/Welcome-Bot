@@ -100,10 +100,27 @@
     "cmdDesc": "Test by sending welcome message"
   },
   "ban": {
-    "cmdDesc": "Ban a user."
+    "cmdDesc": "Ban a user.",
+    "success": "Successfully banned **{{tag}}** from the server!"
   },
   "kick": {
     "cmdDesc": "Kick a user."
+  },
+  "mute": {
+    "cmdDesc": "Mute a member",
+    "errorYourself": "Woah... Wait. Can you mute yourself?",
+    "memberHasPerm": "The member you are trying to mute has {{permission}} permission. So, I won't mute that member",
+    "reason": "Muted by {{tag}} for \"{{reason}}\" reason",
+    "DMtext": "You have been muted by {{tag}}.\nFor reason: {{reason}}",
+    "success": "Successfully muted **{{tag}}**!"
+  },
+  "unmute": {
+    "cmdDesc": "Unmute a member",
+    "errorYourself": "Woah... Wait. Are you muted?",
+    "notMuted": "That member is currently not muted",
+    "reason": "Unmuted by {{tag}} for \"{{reason}}\" reason",
+    "DMtext": "You have been unmuted by {{tag}}.\nFor reason: {{reason}}",
+    "success": "Successfully unmuted **{{tag}}**!"
   },
   "prune": {
     "cmdDesc": "Prune Messages."

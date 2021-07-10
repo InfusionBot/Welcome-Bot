@@ -65,7 +65,7 @@ module.exports = {
                 embed = new MessageEmbed();
                 embed.setTitle(`User banned: ${user.tag} (${user.id})`);
                 embed.addField(
-                    "Responsible moderator:",
+                    t("misc:resMod"),
                     `${message.author.tag} (${message.author.id})`
                 );
                 embed.addField("Reason:", reason);
@@ -73,8 +73,6 @@ module.exports = {
             }
         }
 
-        return message.channel.send(
-            `Successfully banned **${user.tag}** from the server!`
-        );
+        message.reply(t("cmds:ban.success", {tag:user.tag}));
     },
 };

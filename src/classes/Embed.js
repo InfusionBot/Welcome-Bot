@@ -9,6 +9,7 @@ module.exports = class Embed extends MessageEmbed {
         super(data);
         switch (color.toLowerCase()) {
             case "error":
+            case "error":
                 color = "#ff0000";
                 break;
             case "success":
