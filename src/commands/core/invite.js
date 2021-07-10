@@ -15,10 +15,10 @@ module.exports = {
             .setTitle("Invite Welcome-Bot to Your server")
             .addField(
                 "\u200b",
-                `Invite Welcome-Bot right now to your server: https://dsc.gg/welcome-bot`
+                `Invite Welcome-Bot to your server: https://dsc.gg/welcome-bot`
             );
         let button = new MessageButton()
-            .setLabel("Invite Welcome-Bot right now to your server")
+            .setLabel("Invite Welcome-Bot to your server")
             .setURL("https://dsc.gg/welcome-bot")
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
