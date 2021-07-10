@@ -106,6 +106,7 @@ class WelcomeBot extends Client {
             },
         ];
         this.site = "https://welcome-bot.github.io/";
+        this.supportGuildInvite = "https://dsc.gg/welcome-bot-guild";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
         this.changelog = packageJson.changelog;
