@@ -48,21 +48,37 @@ module.exports = {
         member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply(t("errors:userNotInGuild"));
+            if (!member) return message.reply(t("errors:userNotInGuild"));
         }
-        let muteRole = message.guild.roles.cache.find(r => r.name === "Muted");
-        if (!muteRole || !member.roles.cache.has(muteRole.id)) return message.reply(t("cmds:unmute.notMuted"));
+        let muteRole = message.guild.roles.cache.find(
+            (r) => r.name === "Muted"
+        );
+        if (!muteRole || !member.roles.cache.has(muteRole.id))
+            return message.reply(t("cmds:unmute.notMuted"));
         const embed = new Embed({ color: "error", timestamp: true });
-        member.roles.remove(muteRole, t("cmds:unmute.reason", {tag:message.author.tag, reason: reason}))
-            .then(m => {
-                m.user.send(t("cmds:unmute.DMtext", {tag: message.author.tag, reason: reason}));
+        member.roles
+            .remove(
+                muteRole,
+                t("cmds:unmute.reason", {
+                    tag: message.author.tag,
+                    reason: reason,
+                })
+            )
+            .then((m) => {
+                m.user.send(
+                    t("cmds:unmute.DMtext", {
+                        tag: message.author.tag,
+                        reason: reason,
+                    })
+                );
                 if (guildDB.modChannel) {
                     channel = message.guild.channels.cache.find(
                         (ch) => ch.name === guildDB.modChannel
                     );
                     if (channel) {
-                        embed.setTitle(`User unmuted: ${user.tag} (${user.id})`);
+                        embed.setTitle(
+                            `User unmuted: ${user.tag} (${user.id})`
+                        );
                         embed.addField(
                             t("misc:resMod"),
                             `${message.author.tag} (${message.author.id})`
@@ -71,9 +87,9 @@ module.exports = {
                         channel.send({ embeds: [embed] });
                     }
                 }
-                message.reply(t("cmds:unmute.success", {tag:user.tag}));
+                message.reply(t("cmds:unmute.success", { tag: user.tag }));
             })
-            .catch(e => {
+            .catch((e) => {
                 throw e;
             });
     },

@@ -43,8 +43,7 @@ module.exports = {
         member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply(t("errors:userNotInGuild"));
+            if (!member) return message.reply(t("errors:userNotInGuild"));
         }
         let text =
             `Permissions for **${user.tag}** in *${message.channel.name}* channel` +

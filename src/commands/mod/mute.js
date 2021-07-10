@@ -48,13 +48,14 @@ module.exports = {
         member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply(t("errors:userNotInGuild"));
+            if (!member) return message.reply(t("errors:userNotInGuild"));
         }
         if (member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) {
             return message.reply(t("cmds:mute.memberHasPerm"));
         }
-        let muteRole = message.guild.roles.cache.find(r => r.name === "Muted");
+        let muteRole = message.guild.roles.cache.find(
+            (r) => r.name === "Muted"
+        );
         if (!muteRole) {
             try {
                 muteRole = await message.guild.roles.create({
@@ -62,24 +63,35 @@ module.exports = {
                     color: "#ff0000",
                     permissions: [],
                 });
-                message.guild.channels.fetch()
-                    .then(channels => {
-                        channels.forEach(async (channel, id) => {
+                message.guild.channels.fetch().then((channels) => {
+                    channels.forEach(async (channel, id) => {
                         await channel.permissionOverwrites.create(muteRole, {
                             VIEW_CHANNEL: true,
                             SEND_MESSAGES: false,
                             ADD_REACTIONS: false,
                         });
                     });
-                    });
+                });
             } catch (e) {
                 throw e;
             }
         }
         const embed = new Embed({ color: "error", timestamp: true });
-        member.roles.add(muteRole, t("cmds:mute.reason", {tag:message.author.tag, reason: reason}))
-            .then(m => {
-                m.user.send(t("cmds:mute.DMtext", {tag: message.author.tag, reason: reason}));
+        member.roles
+            .add(
+                muteRole,
+                t("cmds:mute.reason", {
+                    tag: message.author.tag,
+                    reason: reason,
+                })
+            )
+            .then((m) => {
+                m.user.send(
+                    t("cmds:mute.DMtext", {
+                        tag: message.author.tag,
+                        reason: reason,
+                    })
+                );
                 if (guildDB.modChannel) {
                     channel = message.guild.channels.cache.find(
                         (ch) => ch.name === guildDB.modChannel
@@ -94,9 +106,9 @@ module.exports = {
                         channel.send({ embeds: [embed] });
                     }
                 }
-                message.reply(t("cmds:mute.success", {tag:user.tag}));
+                message.reply(t("cmds:mute.success", { tag: user.tag }));
             })
-            .catch(e => {
+            .catch((e) => {
                 throw e;
             });
     },

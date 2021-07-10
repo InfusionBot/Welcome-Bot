@@ -73,6 +73,6 @@ module.exports = {
             }
         }
 
-        message.reply(t("cmds:ban.success", {tag:user.tag}));
+        message.reply(t("cmds:ban.success", { tag: user.tag }));
     },
 };
