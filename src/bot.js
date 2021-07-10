@@ -143,9 +143,10 @@ client.player
 
 client.on("ready", async () => {
     // We logged in
-    client.logger.log(
-        `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
-    );
+    if (client.debug)
+        client.logger.log(
+            `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
+        );
     await require("./loaders/Locale.js")(client);
     client.loadCommands(__dirname + "/commands");
     process.env.BOT_ID = client.user.id;
@@ -165,8 +166,7 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
-    if (client.debug)
-        client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
+    client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
 });
 
 client.on("debug", (info) => {
