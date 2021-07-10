@@ -17,8 +17,11 @@ module.exports = {
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
         if (!queue) return message.reply(t("cmds:stop.notPlaying"));
         const amount = parseInt(args[0]);
+        if (isNaN(amount)) {
+            return message.reply("🎧 | " + t("cmds:volume.current", {volume: queue.volume}))
+        }
         if (amount < 0 || amount > 200) {
-            return message.reply(
+            return message.reply("❌ | " +
                 t("errors:invalidNumRange", {
                     min: 0,
                     max: 200,
@@ -26,7 +29,7 @@ module.exports = {
             );
         }
         queue.setVolume(amount);
-        message.reply(
+        message.reply("✅ | " +
             t("cmds:volume.success", {
                 volume: amount,
             })
