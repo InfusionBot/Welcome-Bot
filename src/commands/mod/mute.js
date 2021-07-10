@@ -18,7 +18,7 @@ module.exports = {
     category: "Moderation",
     async execute(message, args, guildDB, t) {
         let user;
-        let reason = args[1];
+        let reason = args.join(" ").replace(args[0], "");
         if (!reason) {
             reason = "Not specified";
         }
