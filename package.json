@@ -17,8 +17,6 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "node src/bot.js",
-    "startDev": "npx pm2 start src/bot.js --watch --name WelcomeBot",
-    "stopDev": "npx pm2 stop WelcomeBot",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js"
@@ -58,7 +56,6 @@
   "devDependencies": {
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
-    "pm2": "^5.1.0",
     "prettier": "^2.3.2"
   }
 }
