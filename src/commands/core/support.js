@@ -12,18 +12,16 @@ module.exports = {
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {
-        let ownersMentions = "";
-        for (var i = 0; i < message.client.ownerIDs.length; i++) {
-            ownersMentions += `<@${message.client.ownerIDs[i]}> `;
-        }
-        ownersMentions = ownersMentions.trim();
-        let embed = new Embed({ color: "success" })
+        const embed = new Embed({ color: "green", timestamp: true, footer: "Official Support Discord for Welcome-Bot" })
             .setTitle("Get Support for Welcome-Bot")
-            .addField("Bot owners:", ownersMentions)
-            .addField("Bot owners IDs:", message.client.ownerIDs.join(", "))
             .addField(
                 "\u200b",
                 `Join the support server: ${message.client.supportGuildInvite}`
+            )
+            .addField(
+                "🔗 Links:",
+                "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
+                "> [Documentation](https://welcome-bot.github.io/docs)"
             );
         let button = new MessageButton()
             .setLabel("Join the support server")
@@ -32,7 +30,7 @@ module.exports = {
         const row = new MessageActionRow().addComponents(button);
         message.channel.send({
             embeds: [embed],
-            ephemeral: true,
+            //ephemeral: true,
             components: [row],
         });
     },

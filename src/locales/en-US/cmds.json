@@ -1,6 +1,35 @@
 {
+  "cuddle": {
+    "cmdDesc": "Cuddle with a user",
+    "success": "{{author}} just cuddled to {{user}}",
+    "errorYourself": "You can't cuddle yourself."
+  },
+  "hug": {
+    "cmdDesc": "Give a hug to a user",
+    "success": "{{author}} has hugged {{user}}",
+    "errorYourself": "You can't hug yourself."
+  },
+  "kiss": {
+    "cmdDesc": "Kiss a user",
+    "success": "{{author}} has kissed {{user}}",
+    "errorYourself": "You can't kiss yourself!"
+  },
+  "pat": {
+    "cmdDesc": "Pats someone",
+    "success": "{{author}} pats {{user}}",
+    "errorYourself": "You can't pat yourself!"
+  },
+  "slap": {
+    "cmdDesc": "Slap a user",
+    "success": "{{author}} slapped {{user}}",
+    "errorYourself": "You can't slap yourself!"
+  },
   "waifu": {
     "cmdDesc": "Fetches a random waifu (lewd if the channel is NSFW) and displays it."
+  },
+  "botinfo": {
+    "cmdDesc": "Bot information",
+    "footer": "Information & Stats of Welcome-Bot"
   },
   "botperms": {
     "cmdDesc": "List of permissions given to bot"
@@ -30,31 +59,6 @@
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS"
   },
-  "hug": {
-    "cmdDesc": "Give a hug to a user",
-    "success": "{{author}} has hugged {{user}}",
-    "errorYourself": "You can't hug yourself."
-  },
-  "cuddle": {
-    "cmdDesc": "Cuddle with a user",
-    "success": "{{author}} just cuddled to {{user}}",
-    "errorYourself": "You can't cuddle yourself."
-  },
-  "kiss": {
-    "cmdDesc": "Kiss a user",
-    "success": "{{author}} has kissed {{user}}",
-    "errorYourself": "You can't kiss yourself!"
-  },
-  "pat": {
-    "cmdDesc": "Pats someone",
-    "success": "{{author}} pats {{user}}",
-    "errorYourself": "You can't pat yourself!"
-  },
-  "slap": {
-    "cmdDesc": "Slap a user",
-    "success": "{{author}} slapped {{user}}",
-    "errorYourself": "You can't slap yourself!"
-  },
   "image": {
     "cmdDesc": "Generate a random pokemon image"
   },
@@ -80,9 +84,6 @@
   "avatar": {
     "cmdDesc": "Get a user's avatar",
     "profile": "Avatar of {{user}}"
-  },
-  "botinfo": {
-    "cmdDesc": "Bot information"
   },
   "stats": {
     "cmdDesc": "Your server statistics"

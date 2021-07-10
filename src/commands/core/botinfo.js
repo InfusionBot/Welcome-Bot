@@ -4,16 +4,16 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { version } = require("discord.js");
+const { Embed } = require("../../classes");
 module.exports = {
     name: "botinfo",
     aliases: ["bi", "binfo", "info"],
     //description: "Bot information",
     usage: "(--dm)",
     cooldown: 10,
-    category: "Information",
-    execute(message, args, guildDB) {
-        const { MessageEmbed } = require("discord.js");
-        let embed = new MessageEmbed()
+    category: "Core",
+    execute(message, args, guildDB, t) {
+        let embed = new Embed({ color: "success", timestamp: true, footer: t("cmds:botinfo.footer") })
             .setTitle(
                 `${message.client.user.username} v${message.client.botVersion}`
             )
@@ -49,15 +49,14 @@ module.exports = {
             )
             .addField(
                 "🔗 Other links:",
-                "> [Support server](https://dsc.gg/welcome-bot-guild)\n" +
+                `> [Support server](${message.client.supportGuildInvite})\n` +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                     "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.html) and [Terms of service](https://welcome-bot.github.io/docs/terms.html)\n" +
                     "> [Documentation](https://welcome-bot.github.io/docs)"
             )
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
-            )
-            .setColor("#33ddff");
+            );
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });

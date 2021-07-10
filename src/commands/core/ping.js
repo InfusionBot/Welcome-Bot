@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["latency"],
     //description: "Ping the bot",
     cooldown: 5,
-    category: "General",
+    category: "Core",
     execute(message, args) {
         let msg = `Pong ${message.author}\nWebsocket heartbeat: ${message.client.ws.ping}ms.`;
         message.channel
