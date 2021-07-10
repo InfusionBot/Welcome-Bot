@@ -12,8 +12,11 @@ module.exports = {
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {
-        const embed = new Embed({ color: "green", timestamp: true, footer: "Official Website of Welcome-Bot" })
-        .addField(
+        const embed = new Embed({
+            color: "green",
+            timestamp: true,
+            footer: "Official Website of Welcome-Bot",
+        }).addField(
             "Wanna get link to Welcome-Bot's website?",
             `Here's it: ${message.client.site}`
         );

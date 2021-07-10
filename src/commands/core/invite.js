@@ -11,7 +11,11 @@ module.exports = {
     cooldown: 20,
     category: "Core",
     execute(message, args) {
-        const embed = new Embed({ color: "green", timestamp: true, footer: "Invite link for Welcome-Bot" })
+        const embed = new Embed({
+            color: "green",
+            timestamp: true,
+            footer: "Invite link for Welcome-Bot",
+        })
             .setTitle("Invite Welcome-Bot to Your server")
             .addField(
                 "\u200b",

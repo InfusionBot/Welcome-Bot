@@ -12,7 +12,11 @@ module.exports = {
     cooldown: 10,
     category: "Core",
     execute(message, args, guildDB) {
-        const embed = new Embed({ color: "green", timestamp: true, footer: "Official Support Discord for Welcome-Bot" })
+        const embed = new Embed({
+            color: "green",
+            timestamp: true,
+            footer: "Official Support Discord for Welcome-Bot",
+        })
             .setTitle("Get Support for Welcome-Bot")
             .addField(
                 "\u200b",
@@ -21,7 +25,7 @@ module.exports = {
             .addField(
                 "🔗 Links:",
                 "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
-                "> [Documentation](https://welcome-bot.github.io/docs)"
+                    "> [Documentation](https://welcome-bot.github.io/docs)"
             );
         let button = new MessageButton()
             .setLabel("Join the support server")
