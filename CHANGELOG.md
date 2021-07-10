@@ -20,6 +20,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`
 - New command `addemoji` - Add a emoji from a image url, no need to download it.
 - With this release, Welcome-Bot reaches 50 commands!!
+- New command `mute` - Mute a member
+- New command `unmute` - Unmute a member
 
 ### Changes
 

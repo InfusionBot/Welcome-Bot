@@ -8,6 +8,8 @@
     "New cmd category `Music` - Welcome-Bot now has Music commands.",
     "`Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`",
     "New command `addemoji` - Add a emoji from a image url, no need to download it.",
+    "New command `mute` - Mute a member",
+    "New command `unmute` - Unmute a member",
     "**Changes**",
     "Change `modLogChan` to `modChannel` in db"
   ],
