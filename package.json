@@ -41,7 +41,7 @@
     "@discordjs/builders": "^0.2.0",
     "axios": "^0.21.1",
     "colors-logger": "^0.3.1",
-    "discord-player": "^5.0.0-dev.92a3409.1625911440",
+    "discord-player": "^5.0.0-dev.92a3409.1625961740",
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
     "ffmpeg": "^0.0.4",
