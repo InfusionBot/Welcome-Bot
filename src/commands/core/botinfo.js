@@ -7,10 +7,10 @@ const { version } = require("discord.js");
 const { Embed } = require("../../classes");
 module.exports = {
     name: "botinfo",
-    aliases: ["bi", "binfo", "info"],
+    aliases: ["bi", "binfo", "info", "stats"],
     //description: "Bot information",
     usage: "(--dm)",
-    cooldown: 10,
+    cooldown: 5,
     category: "Core",
     execute(message, args, guildDB, t) {
         let embed = new Embed({
@@ -61,7 +61,7 @@ module.exports = {
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );
-        switch (args[0]) {
+        switch (args[0].toLowerCase()) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);

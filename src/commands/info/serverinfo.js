@@ -4,14 +4,14 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 module.exports = {
-    name: "stats",
-    aliases: ["server"],
+    name: "serverinfo",
+    aliases: ["si"],
     //description: "Your server statistics",
     usage: "(--dm)",
     cooldown: 10,
     guildOnly: true,
     category: "Information",
-    execute(message, args) {
+    execute(message, args, guildDB, t) {
         const { MessageEmbed } = require("discord.js");
         let embed = new MessageEmbed();
         embed.setTitle("Statistics");
@@ -27,10 +27,12 @@ module.exports = {
                 `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
             )
             .addField(
-                "Bots in this server:",
-                `${message.guild.members.cache.filter((m) => m.user.bot).size}`
+                t("categories:general"),
+                `> ${t("misc:channels")}: ${message.guild.channels.cache.size}\n` +
+                `> ${t("misc:bots")}: ${message.guild.members.cache.filter((m) => m.user.bot).size}\n` +
+                `> ${t("misc:members")}: ${message.guild.members.cache.filter((m) => !m.user.bot).size}\n` +
+                `> ${t("misc:total")} ${t("misc:members")}: ${message.guild.memberCount}`
             )
-            .addField("Total users and bots", `${message.guild.memberCount}`)
             .addField(
                 "Online users in your server:",
                 `${
@@ -40,7 +42,7 @@ module.exports = {
                 }`
             )
             .addField("Server was created at:", `${message.guild.createdAt}`);
-        switch (args[0]) {
+        switch (args[0].toLowerCase()) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);
