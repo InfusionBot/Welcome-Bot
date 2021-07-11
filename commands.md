@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **50 commands** in **11 categories**!
+Welcome-Bot contains more than **50 commands** in **10 categories**!
 
 ### **Usage Key!**
 
@@ -24,7 +24,6 @@ Welcome-Bot contains more than **50 commands** in **11 categories**!
 - [Fun](#fun)
 - [Music](#music)
 - [Anime](#anime)
-- [Games](#games)
 - [Owner Only](#owner-only)
 - [Core](#core)
 
@@ -327,7 +326,33 @@ Not providing any arguments will display the current settings.
 - Aliases: None
 - Cooldown: 3
 
-## Fun (3 commands)
+## Fun (5 commands)
+
+### `8ball`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get your fortune by asking your question
+- Usage: [question]
+- Aliases: `eightball`, `8b`, `8-ball`
+- Cooldown: 3
+
+### `coinflip`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Flip a coin.
+- Usage: None
+- Aliases: `cf`, `filpcoin`
+- Cooldown: 10
 
 ### `figlet`
 
@@ -527,34 +552,6 @@ You must join a voice channel before using this command.
 - Description: Fetches a random waifu (lewd if the channel is NSFW) and displays it.
 - Usage: None
 - Aliases: None
-- Cooldown: 10
-
-## Games (2 commands)
-
-### `8ball`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Get your fortune by asking your question
-- Usage: [question]
-- Aliases: `eightball`, `8b`, `8-ball`
-- Cooldown: 3
-
-### `coinflip`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Flip a coin.
-- Usage: None
-- Aliases: `cf`
 - Cooldown: 10
 
 ## Owner Only (4 commands)
