@@ -40,11 +40,6 @@
     "emoji": "📷"
   },
   {
-    "name": "Games",
-    "key": "games",
-    "emoji": "<:games:856910189490864140>"
-  },
-  {
     "name": "Owner Only",
     "key": "owner",
     "emoji": "<:owner:854009566572183572>"
