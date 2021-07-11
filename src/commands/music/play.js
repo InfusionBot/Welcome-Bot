@@ -54,7 +54,7 @@ module.exports = {
             if (!queue.connection)
                 await queue.connect(message.member.voice.channel);
         } catch (e) {
-            queue.destroy();
+            message.client.player.deleteQueue(message.guild);
             message.client.logger.log(e, "error", ["VOICE"]);
             return void message.reply(t("cmds:play.cantJoin"));
         }
