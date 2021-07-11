@@ -28,10 +28,20 @@ module.exports = {
             )
             .addField(
                 t("categories:general"),
-                `> ${t("misc:channels")}: ${message.guild.channels.cache.size}\n` +
-                `> ${t("misc:bots")}: ${message.guild.members.cache.filter((m) => m.user.bot).size}\n` +
-                `> ${t("misc:members")}: ${message.guild.members.cache.filter((m) => !m.user.bot).size}\n` +
-                `> ${t("misc:total")} ${t("misc:members")}: ${message.guild.memberCount}`
+                `> ${t("misc:channels")}: ${
+                    message.guild.channels.cache.size
+                }\n` +
+                    `> ${t("misc:bots")}: ${
+                        message.guild.members.cache.filter((m) => m.user.bot)
+                            .size
+                    }\n` +
+                    `> ${t("misc:members")}: ${
+                        message.guild.members.cache.filter((m) => !m.user.bot)
+                            .size
+                    }\n` +
+                    `> ${t("misc:total")} ${t("misc:members")}: ${
+                        message.guild.memberCount
+                    }`
             )
             .addField("Server was created at:", `${message.guild.createdAt}`);
         switch (args[0].toLowerCase()) {
