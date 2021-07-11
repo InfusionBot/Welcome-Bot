@@ -9,6 +9,7 @@ const Command = require("./classes/Command");
 const util = require("util");
 const packageJson = require("../package.json");
 const Logger = require("colors-logger");
+const { Player } = require("discord-player");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -23,6 +24,8 @@ class WelcomeBot extends Client {
                 Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
                 Intents.FLAGS.DIRECT_MESSAGES,
                 Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+                Intents.FLAGS.GUILD_VOICE_STATES,
+                Intents.FLAGS.GUILD_PRESENCES,
             ],
             partials: ["CHANNEL"],
             messageCacheMaxSize: 100,
@@ -36,34 +39,7 @@ class WelcomeBot extends Client {
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
-        this.categories = [
-            {
-                name: "Setup",
-                key: "setup",
-                emoji: "<:setup:854316242097537034>",
-            },
-            {
-                name: "General",
-                key: "general",
-                emoji: "<:pikachu2:852569608259239936>",
-            },
-            { name: "Information", key: "info", emoji: "ℹ️" },
-            { name: "Moderation", key: "mod", emoji: "" },
-            { name: "Miscellaneous", key: "misc", emoji: "" },
-            { name: "Fun", key: "fun", emoji: "<:fun:854002049095303188>" },
-            { name: "Anime", key: "anime", emoji: "📷" },
-            {
-                name: "Games",
-                key: "games",
-                emoji: "<:games:856910189490864140>",
-            },
-            {
-                name: "Owner Only",
-                key: "owner",
-                emoji: "<:owner:854009566572183572>",
-            },
-            { name: "Core", key: "core", emoji: "" },
-        ];
+        this.categories = require("./data/categories.json");
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
             {
@@ -130,18 +106,26 @@ class WelcomeBot extends Client {
             },
         ];
         this.site = "https://welcome-bot.github.io/";
+        this.supportGuildInvite = "https://dsc.gg/welcome-bot-guild";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.botVersion = packageJson.version;
         this.changelog = packageJson.changelog;
         this.botServerId = "836854115526770708";
         this.newsChannelId = "847459283876577360";
         this.loggingChannelId = "855331801635749888";
+        this.suggestionLogsChannelId = "862126837110800414";
         this.ownerIDs = [
-            "815204465937481749" /*PuneetGopinath#6300*/,
+            "815204465937481749" /*PuneetGopinath#0001*/,
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
         this.debug = opts.debug || process.env.NODE_ENV === "development";
+        this.debugLevel = opts.debugLevel || process.env.DEBUG_LEVEL;
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
+        this.player = new Player(this, {
+            leaveOnEmpty: false,
+            leaveOnStop: true,
+            enableLive: true,
+        });
     }
 
     loadCommand(commandPath, commandName) {
@@ -162,6 +146,7 @@ class WelcomeBot extends Client {
             ".js",
             ""
         )}`);
+        command = new Command(this, command);
         if (command.bot_perms) {
             command.bot_perms = [
                 ...defaultOpts.bot_perms,
@@ -172,7 +157,6 @@ class WelcomeBot extends Client {
             ...defaultOpts,
             ...command,
         };
-        command = new Command(this, command);
         if (!command.disabled) {
             this.commands.enabled.set(command.name, command);
         } else {

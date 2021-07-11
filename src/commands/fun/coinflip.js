@@ -5,10 +5,10 @@
  */
 module.exports = {
     name: "coinflip",
-    aliases: ["cf"],
+    aliases: ["cf", "filpcoin"],
     //description: "Flips a coin.",
     cooldown: 10,
-    category: "Games",
+    category: "Fun",
     execute(message, args, guildDB) {
         const { MessageEmbed } = require("discord.js");
         const coins = {

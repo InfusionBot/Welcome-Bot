@@ -13,21 +13,20 @@ module.exports = async (message, guildDB) => {
     const client = message.client;
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        escapeRegex(client.defaultPrefix),
-        escapeRegex(guildDB.prefix),
+        escapeRegex(client.defaultPrefix.toLowerCase()),
+        escapeRegex(guildDB.prefix.toLowerCase()),
     ];
     const prefixRegex = new RegExp(
         `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
     );
     let prefix;
     try {
-        [, prefix] = message.content.match(prefixRegex);
+        [, prefix] = message.content.toLowerCase().match(prefixRegex);
     } catch (e) {}
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
-    let embed = new MessageEmbed();
-    embed.setColor("#ff0000");
+    let embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
         let args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -57,10 +56,13 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
-        if (command.guildOnly && message.channel.type === "dm") {
-            return message.reply(
-                `I can't execute that command inside DMs, ${message.author}`
-            );
+        if (
+            message.guild &&
+            !message.guild.me
+                .permissionsIn(message.channel)
+                .has(Permissions.FLAGS.SEND_MESSAGES)
+        ) {
+            return message.author.send(t("errors:noSendMsgPerm"));
         }
 
         if (
@@ -73,7 +75,17 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
-        if (command.permissions) {
+        if (command.guildOnly && message.channel.type === "dm") {
+            return message.reply(
+                `I can't execute that command inside DMs, ${message.author}`
+            );
+        }
+
+        if (
+            command?.permissions &&
+            message.channel.type !== "dm" &&
+            message?.guild
+        ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
                 return message.reply(t("errors:youDontHavePermShort"));
@@ -96,7 +108,11 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        if (command.bot_perms && message.channel.type !== "dm") {
+        if (
+            command?.bot_perms &&
+            message.channel.type !== "dm" &&
+            message?.guild
+        ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
 
             if (!botPerms || !botPerms.has(command.bot_perms)) {
@@ -106,7 +122,7 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        if (command.args && !args.length) {
+        if (command?.args && !args.length) {
             let reply = t("errors:missingArgs");
 
             if (command.usage) {
@@ -125,7 +141,7 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
-        if (command.subcommand && !args.length) {
+        if (command?.subcommand && !args.length) {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
@@ -156,7 +172,7 @@ module.exports = async (message, guildDB) => {
             cooldowns.set(command.name, new Collection());
         }
 
-        const now = Date.now();
+        const now = Date.now(); //number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
         const timestamps = cooldowns.get(command.name);
         const cooldownAmount = (command.cooldown || 3) * 1000;
 
@@ -165,6 +181,7 @@ module.exports = async (message, guildDB) => {
                 timestamps.get(message.author.id) + cooldownAmount;
 
             if (now < expirationTime) {
+                //Still this cooldown didn't expire.
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(
                     t(`errors:cooldown`, {
@@ -175,8 +192,8 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        timestamps.set(message.author.id, now);
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+        timestamps.set(message.author.id, now); //Set a timestamp for author with time now.
+        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
 
         if (client.debug)
             client.logger.log(
@@ -184,13 +201,11 @@ module.exports = async (message, guildDB) => {
                 "debug"
             );
         message.channel.startTyping();
-        if (command.catchError) {
+        if (command?.catchError) {
             try {
-                message.channel.startTyping();
                 command.execute(message, args, guildDB, t);
-                message.channel.stopTyping(true);
             } catch (err) {
-                console.error(err);
+                client.logger.log(err, "error", ["COMMANDS"]);
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(

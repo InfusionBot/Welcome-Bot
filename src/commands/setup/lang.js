@@ -22,20 +22,32 @@ module.exports = {
     execute(message, args, guildDB, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
+        const keys = Object.keys(list);
+        const vals = Object.values(list);
         let str = "";
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
         }
         switch (args[0]) {
             case "set":
-                if (!Object.keys(list).includes(args[1]))
+                if (!args[1]) {
+                    return message.reply(t("cmds:lang.langNotProvided"));
+                }
+                if (!keys.includes(args[1]) && !vals.includes(args[1]))
                     return message.reply(
                         t("cmds:lang.invalid", {
                             cmd: `\`${guildDB.prefix}lang list\``,
                         })
                     );
+                if (vals.includes(args[1])) {
+                    args[1] = keys.find((key) => list[key] === args[1]);
+                }
                 updateGuild(message.guild.id, "lang", args[1]);
-                return message.reply(t("cmds:lang.success", { lang: args[1] }));
+                return message.reply(
+                    t("cmds:lang.success", {
+                        lang: `${list[args[1]]} (${args[1]})`,
+                    })
+                );
                 break;
             case "list":
                 return message.reply(str);

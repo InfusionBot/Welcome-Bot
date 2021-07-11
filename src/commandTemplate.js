@@ -6,7 +6,7 @@
 module.exports = {
     name: "sample",
     aliases: ["example"],
-    description: "desc",
+    //description: "desc",
     permissions: [],
     bot_perms: [],
     args: false,

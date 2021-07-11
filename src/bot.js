@@ -7,6 +7,7 @@ const fs = require("fs");
 const WelcomeBot = require("./WelcomeBot");
 const dotenv = require("dotenv").config();
 const { MessageEmbed } = require("discord.js");
+const { Embed } = require("./classes");
 
 const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
@@ -40,11 +41,105 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
+const getT = async (guildId) => {
+    const guildDB = await getGuild(guildId);
+    return client.i18next.getFixedT(guildDB.lang || "en-US");
+};
+
+let embed = new Embed({ color: "success" });
+client.player
+    .on("trackAdd", async (queue, track) => {
+        embed = new Embed({ color: "success" });
+        const t = await getT(queue.metadata.guild.id);
+        embed
+            .setTitle(`🎶 | ${t("cmds:play.queueAdded")}`)
+            .setDescription(track.title)
+            .setImage(track.thumbnail);
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("trackStart", async (queue, track) => {
+        embed = new Embed({ color: "success" });
+        const t = await getT(queue.metadata.guild.id);
+        embed
+            .setTitle(`🥁 ${t("cmds:play.starting")}`)
+            .setDescription(track.title)
+            .setImage(track.thumbnail);
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("playlistStart", async (queue, playlist, track) => {
+        embed = new Embed({ color: "blue" });
+        const t = await getT(queue.metadata.guild.id);
+        embed.setTitle(
+            t("cmds.play.playlistStart", {
+                playlistTitle: playlist.title,
+                songName: track.title,
+            })
+        );
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("playlistAdd", async (queue, playlist) => {
+        embed = new Embed({ color: "blue" });
+        const t = await getT(queue.metadata.guild.id);
+        embed.setTitle(
+            t("cmds.play.queueAddCount", {
+                songCount: playlist.items.length,
+            })
+        );
+        queue.metadata.channel.send({ embeds: [embed] });
+    })
+    .on("debug", (queue, message) => {
+        if (client.debug) client.logger.log(message, "debug", ["VOICE"]);
+    })
+    .on("botDisconnect", async (queue) => {
+        const t = await getT(queue.metadata.guild.id);
+        queue.metadata.channel.send(t("cmds:play.botDisconnected"));
+    })
+    .on("noResults", async (queue) => {
+        const t = await getT(queue.metadata.guild.id);
+        queue.metadata.channel.send(t("cmds:play.noResults"));
+    })
+    .on("queueEnd", async (queue) => {
+        const t = await getT(queue.metadata.guild.id);
+        queue.metadata.channel.send(t("cmds:play.queueEnd"));
+    })
+    .on("channelEmpty", () => {
+        // do nothing, leaveOnEmpty is not enabled
+    })
+    .on("connectionCreate", (queue, connection) => {
+        if (client.debug)
+            client.logger.log("Joined voice channel", "debug", ["VOICE"]);
+    })
+    .on("connectionError", (queue, error) => {
+        client.logger.log(err, "error", ["VOICE"]);
+    })
+    .on("error", async (queue, error) => {
+        const t = await getT(queue.metadata.guild.id);
+        switch (error.message) {
+            case "NotConnected":
+                queue.metadata.reply(t("cmds:play.voiceNotJoined"));
+                break;
+            case "UnableToJoin":
+                queue.metadata.reply(t("cmds:play.cantJoin"));
+                break;
+            case "NotPlaying":
+                queue.metadata.reply(t("cmds:stop.notPlaying"));
+                break;
+            case "Cannot use destroyed queue":
+                queue.metadata.reply(t("cmds:play.destroyedQueue"));
+            default:
+                if (error.toString().indexOf("429"))
+                    return queue.metadata.reply(t("cmds:play.rateLimited"));
+                queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
+                break;
+        }
+    });
+
 client.on("ready", async () => {
     // We logged in
-    client.logger.log(
-        `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
-    );
+    if (client.debug)
+        client.logger.log(
+            `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
+        );
     await require("./loaders/Locale.js")(client);
     client.loadCommands(__dirname + "/commands");
     process.env.BOT_ID = client.user.id;
@@ -64,13 +159,12 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
-    if (client.debug)
-        client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
+    client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
 });
 
 client.on("debug", (info) => {
     if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug)
-        client.logger.log(info, "debug");
+        client.logger.log(info, "debug", ["DISCORD"]);
 });
 
 client.on("rateLimit", (info) => {
@@ -99,7 +193,7 @@ client.on("guildCreate", (guild) => {
                 "Thank you for choosing this bot! To get started, type `w/help`"
             );
     }
-    let embed = new MessageEmbed()
+    embed = new Embed({ color: "success", timestamp: true })
         .setTitle(`Added to "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
@@ -110,7 +204,7 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
-    let embed = new MessageEmbed()
+    embed = new Embed({ color: "error", timestamp: true })
         .setTitle(`Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`);
     client.channels.cache
@@ -118,9 +212,11 @@ client.on("guildDelete", (guild) => {
         .send({ embeds: [embed] });
 });
 
-client.on("message", async function (message) {
+client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
     if (client.debug) client.logger.log("message event triggered", "debug");
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
+    if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
         guildDB = await getGuild(message.guild.id);

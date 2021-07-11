@@ -3,17 +3,20 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { MessageEmbed } = require("discord.js");
 const { userFromMention } = require("../../functions/get.js");
+const { Embed } = require("../../classes");
 module.exports = {
     name: "user",
-    aliases: ["whois"],
+    aliases: ["whois", "ui", "uinfo"],
     //description:
     //"Get information about a user. It will show your info if no user was mentioned",
     args: false,
-    usage: "(@mention / user_id)",
+    usage: "(@mention / user_id) (--dm)",
     category: "Information",
     async execute(message, args, guildDB, t) {
+        if (args[1]) {
+            args[1] = args[1].toLowerCase();
+        }
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -60,7 +63,12 @@ module.exports = {
                 (emoji) => emoji.id === badges[i].emoji
             )}`;
         }*/
-        let embed = new MessageEmbed();
+        let embed = new Embed({
+            tag: message.author.tag,
+            avatarURL: message.author.displayAvatarURL(),
+            color: "success",
+            timestamp: true,
+        });
         embed.setTitle(`${user.tag}`);
         embed.setDescription(`Information about ${args[0] || message.author}`);
         embed.setThumbnail(`${user.displayAvatarURL()}`);
@@ -83,17 +91,18 @@ module.exports = {
                     ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
                     : "")
         );
-        embed.addField("Locale:", `${user.locale}`);
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
-        embed.addField("Presence:", `${user.presence.status}`);
-        embed.setFooter(
-            `Requested by ${message.author.tag}`,
-            `${message.author.displayAvatarURL()}`
-        );
-        embed.setColor("#33ddff");
-        embed.setTimestamp();
-        message.channel.send({ embeds: [embed] });
+        embed.addField("Presence:", `${member.presence.status}`);
+        switch (args[1]) {
+            case "--dm":
+                message.author.send({ embeds: [embed] });
+                message.channel.send(`Check out your DMs, ${message.author}`);
+                break;
+            default:
+                message.channel.send({ embeds: [embed] });
+                break;
+        }
     },
 };

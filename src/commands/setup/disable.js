@@ -31,13 +31,20 @@ module.exports = {
                 message.react("👍");
                 break;
             default:
-                return message.channel.send(
-                    `Welcome logs are ${
-                        guildDB.enableWelcome ? "enabled" : "disabled"
-                    }\nAnd goodBye logs are ${
-                        guildDB.enableGoodbye ? "enabled" : "disabled"
-                    }`
-                );
+                if (!args.length) {
+                    return message.channel.send(
+                        `Welcome logs are ${
+                            guildDB.enableWelcome ? "enabled" : "disabled"
+                        }\nAnd goodBye logs are ${
+                            guildDB.enableGoodbye ? "enabled" : "disabled"
+                        }`
+                    );
+                } else {
+                    message.reply(
+                        t("cmds:channel.invalidArgs") +
+                            `${guildDB.prefix}help disable`
+                    );
+                }
                 break;
         }
         return;

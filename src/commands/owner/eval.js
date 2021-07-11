@@ -8,6 +8,7 @@ const getGuild = require("../../db/functions/guild/getGuild");
 const versionSender = require("../../functions/versionSender.js");
 const presence = require("../../functions/presence.js");
 const serverCount = require("../../functions/serverCount.js");
+const { inspect } = require("util");
 
 module.exports = {
     name: "eval",
@@ -34,7 +35,7 @@ module.exports = {
         return result
             .then((output) => {
                 if (typeof output !== "string") {
-                    output = require("util").inspect(output, { depth: 0 }); //depth should be 0 as it will give contents of object in a property, in this object. That makes the message too long.
+                    output = inspect(output, { depth: 0 }); //depth should be 0 as it will give contents of object in a property, in this object. That makes the message too long.
                 }
 
                 if (output.includes(message.client.token)) {
@@ -43,7 +44,7 @@ module.exports = {
                 message.channel.send("```js\n" + clean(output) + "\n```");
             })
             .catch((err) => {
-                err = JSON.strigify(err, null, 4);
+                err = err.toString();
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }

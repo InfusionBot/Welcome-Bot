@@ -118,4 +118,24 @@ module.exports = function (client) {
     } else {
         client.logger.log("DISSERVNET_token is not set", "warn");
     }
+
+    if (process.env.DISBOTLIST_token) {
+        data = JSON.stringify({
+            ServerCount: servers,
+            ShardCount: 0,
+        });
+        options = {
+            hostname: "disbotlist.xyz",
+            path: "/api/bots/stats",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: process.env.DISBOTLIST_token,
+                "User-Agent": process.env.userAgent,
+            },
+        };
+        sendReq(data, options);
+    } else {
+        client.logger.log("DISBOTLIST_token is not set", "warn");
+    }
 };

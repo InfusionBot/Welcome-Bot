@@ -7,12 +7,12 @@ const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "8ball",
-    aliases: ["eightball"],
+    aliases: ["eightball", "8b", "8-ball"],
     //description: "Get your fortune by asking your question",
     args: true,
     usage: "[question]",
     cooldown: 3,
-    category: "Games",
+    category: "Fun",
     async execute(message, args, guildDB, t) {
         let res = await fetch("https://nekos.life/api/v2/8ball");
         res = await res.json();

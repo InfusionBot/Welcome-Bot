@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
 module.exports = {
     name: "help",
@@ -13,16 +14,24 @@ module.exports = {
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB, t) {
-        const { MessageEmbed } = require("discord.js");
         const beautifyPerms = require("../../functions/beautifyPerms");
         if (message.channel.type !== "dm" && !args.length) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
-                message.reply(
-                    `${t("errors:note")}: ${t("errors:iDontHavePermission", {
-                        permission: t("permissions:MANAGE_MESSAGES"),
-                    })}, ${t("errors:pagination")}`
-                );
+                message
+                    .reply(
+                        `${t("errors:note")}: ${t(
+                            "errors:iDontHavePermission",
+                            {
+                                permission: t("permissions:MANAGE_MESSAGES"),
+                            }
+                        )}, ${t("errors:pagination")}`
+                    )
+                    .then((msg) => {
+                        setTimeout(() => {
+                            msg.delete();
+                        }, 5000);
+                    });
         }
         const commands = message.client.commands.enabled;
         const { categories } = message.client;
@@ -34,18 +43,17 @@ module.exports = {
             stop: "⏹",
         };
         let page = 0;
-        let pages = [new MessageEmbed()];
+        let pages = [new Embed({ color: "blue", timestamp: true })];
         let timeout = 200000; //20 secs timeout
 
         for (var i = 0; i < pages.length; i++) {
             pages[i].setTitle(t("cmds:help.bot-help"));
         }
         if (!args.length) {
-            let p;
             categories.forEach((cat) => {
-                p = pages.length;
+                const p = pages.length;
                 let commandsCat = [];
-                pages[p] = new MessageEmbed();
+                pages[p] = new Embed({ color: "blue", timestamp: true });
                 pages[p].setTitle(
                     `${t("cmds:help.bot-help")} - ${t(
                         `categories:${cat.key}`
@@ -94,8 +102,19 @@ module.exports = {
                 time: timeout,
             });
             reactionCollector.on("collect", (reaction) => {
-                // Remove the reaction when the user react to the message
-                reaction.users.remove(message.author);
+                const botPerms = message.guild.me.permissionsIn(
+                    message.channel
+                );
+                // Remove the reaction when the user react to the message if the bot has perm
+                if (
+                    message.channel.type !== "dm" &&
+                    botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES)
+                )
+                    reaction.users.remove(message.author);
+                else if (message.client.debug)
+                    client.logger.log(
+                        "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission"
+                    );
                 switch (reaction.emoji.name) {
                     case emojiList["back"]:
                         page = page > 0 ? --page : pages.length - 1;
@@ -145,14 +164,9 @@ module.exports = {
         const category = categories.find((c) => c.name.toLowerCase() === name);
 
         if (!command && !category) {
-            if (!command)
-                return message.channel.send(
-                    `${t("errors:commandNotFound")}, ${message.author}`
-                );
-            if (!category)
-                return message.channel.send(
-                    `${t("errors:categoryNotFound")}, ${message.author}`
-                );
+            return message.channel.send(
+                `${t("errors:cmdOrCatNotFound")}, ${message.author}`
+            );
         }
 
         if (command) {

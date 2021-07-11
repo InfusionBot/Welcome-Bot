@@ -1,17 +1,18 @@
-# Discord welcome bot
+# Discord Welcome-Bot
 
 > A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...
 
-Welcome-bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
+Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
 [![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)](https://dsc.gg/welcome-bot-guild)
-![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Welcome-Bot/welcome-bot/latest)
 [![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
+![Views](https://visitor-badge.laobi.icu/badge?page_id=Welcome-Bot.welcome-bot&title=Views)
+![Codelines](https://img.shields.io/tokei/lines/github/Welcome-Bot/welcome-bot)
 
 Feel free to add a star ⭐ to the repository to promote the project!
 
@@ -22,7 +23,7 @@ Feel free to add a star ⭐ to the repository to promote the project!
 Welcome-Bot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 40+ commands
+- 🥳 50+ commands
 
 ### Customizable Settings
 
@@ -46,17 +47,9 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
-## Bot status
-
-![tag](https://botlist.space/bot/848459799783669790/badge?property=tag)
-![support](https://botlist.space/bot/848459799783669790/badge?property=support)
-![library](https://botlist.space/bot/848459799783669790/badge?property=library)
-![prefix](https://botlist.space/bot/848459799783669790/badge?property=prefix)
-![servers](https://botlist.space/bot/848459799783669790/badge?property=servers)
-
 ## Commands
 
-Welcome-Bot has more than 40+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands
+Welcome-Bot has more than 50+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
 
 ## Default values
 
@@ -127,6 +120,12 @@ Feel free to upvote him to show your support.
 
 > A brand new botlist that aims to deliver the best experience for its users and bot developers.
 
+### [discordlist.space](https://discordlist.space/bot/848459799783669790)
+
+> Discover our large collection of unique Discord bots and servers.
+
+[![widget](https://api.discordlist.space/v2/bots/848459799783669790/widget?background=7289DA&radius=6)](https://discordlist.space/bot/848459799783669790)
+
 ### [discord.boats](https://discord.boats/bot/848459799783669790)
 
 > Discord Boats is a growing directory of Discord bots to enhance your server - Find the perfect bot for your needs and add it to your server easily, quickly and for free.
@@ -154,6 +153,10 @@ You prove that the Discord Welcome-Bot has some value for you!
 ### Contributors
 
 [![contributors image](https://contrib.rocks/image?repo=Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/contributors)
+
+### Translators
+
+A list of people who helped us in translation is available in [TRANSLATORS.md file](https://github.com/Welcome-Bot/welcome-bot/blob/main/TRANSLATORS.md)
 
 ## Questions?
 

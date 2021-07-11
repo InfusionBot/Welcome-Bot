@@ -1,6 +1,6 @@
 # Changelog v1
 
-The Changelog of the major version 1 of Discord welcome bot.
+The Changelog of the major version 1 of Discord Welcome-Bot.
 
 Note that the displayed date is in the format `dd-mm-yyyy`
 
@@ -8,9 +8,28 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.10.3]
+## [v1.11.0]
 
 > **Released:** `TBA`
+
+### New features
+
+- New command `pat` - Pats someone
+- New command `suggest` - Give your suggestion
+- New cmd category `Music` - Welcome-Bot now has Music commands.
+- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`
+- New command `addemoji` - Add a emoji from a image url, no need to download it.
+- With this release, Welcome-Bot reaches 50 commands!!
+- New command `mute` - Mute a member
+- New command `unmute` - Unmute a member
+
+### Changes
+
+- Change `modLogChan` to `modChannel` in db
+
+## [v1.10.3]
+
+> **Released:** `09-07-2021`
 
 ### Bug fixes
 
