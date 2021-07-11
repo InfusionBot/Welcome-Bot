@@ -119,6 +119,7 @@ class WelcomeBot extends Client {
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
         this.debug = opts.debug || process.env.NODE_ENV === "development";
+        this.debugLevel = opts.debugLevel || process.env.DEBUG_LEVEL;
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
         this.player = new Player(this, {
             leaveOnEmpty: false,
