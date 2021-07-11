@@ -82,9 +82,9 @@ module.exports = async (message, guildDB) => {
         }
 
         if (
-            command.permissions &&
+            command?.permissions &&
             message.channel.type !== "dm" &&
-            message.guild
+            message?.guild
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
@@ -109,9 +109,9 @@ module.exports = async (message, guildDB) => {
         }
 
         if (
-            command.bot_perms &&
+            command?.bot_perms &&
             message.channel.type !== "dm" &&
-            message.guild
+            message?.guild
         ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
 
@@ -122,7 +122,7 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        if (command.args && !args.length) {
+        if (command?.args && !args.length) {
             let reply = t("errors:missingArgs");
 
             if (command.usage) {
@@ -141,7 +141,7 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
-        if (command.subcommand && !args.length) {
+        if (command?.subcommand && !args.length) {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
@@ -201,7 +201,7 @@ module.exports = async (message, guildDB) => {
                 "debug"
             );
         message.channel.startTyping();
-        if (command.catchError) {
+        if (command?.catchError) {
             try {
                 command.execute(message, args, guildDB, t);
             } catch (err) {
