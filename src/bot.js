@@ -52,7 +52,7 @@ client.player
         embed = new Embed({ color: "success" });
         const t = await getT(queue.metadata.guild.id);
         embed
-            .setTitle(t("cmds:play.queueAdded"))
+            .setTitle(`🎶 | ${t("cmds:play.queueAdded")}`)
             .setDescription(track.title)
             .setImage(track.thumbnail);
         queue.metadata.channel.send({ embeds: [embed] });
@@ -64,11 +64,6 @@ client.player
             .setTitle(`🥁 ${t("cmds:play.starting")}`)
             .setDescription(track.title)
             .setImage(track.thumbnail);
-        queue.metadata.channel.send({ embeds: [embed] });
-    })
-    .on("searchCancel", (queue, tracks) => {
-        embed = new Embed({ color: "error" });
-        embed.setTitle(t("cmds:play.timeout")).setColor("#ff0000");
         queue.metadata.channel.send({ embeds: [embed] });
     })
     .on("playlistStart", async (queue, playlist, track) => {
@@ -91,17 +86,6 @@ client.player
             })
         );
         queue.metadata.channel.send({ embeds: [embed] });
-    })
-    .on("searchInvalidResponse", async (query, tracks, content, collector) => {
-        const t = await getT(queue.metadata.guild.id);
-        if (content === "cancel") {
-            collector.stop();
-            return queue.metadata.reply(t("cmds:play.resultsCancel"));
-        }
-        queue.metadata.reply("errors:invalidNumRange", {
-            min: 1,
-            max: tracks.length,
-        });
     })
     .on("debug", (queue, message) => {
         if (client.debug) client.logger.log(message, "debug", ["VOICE"]);

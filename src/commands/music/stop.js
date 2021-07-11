@@ -73,7 +73,7 @@ module.exports = {
         } else {
             message.client.player.deleteQueue(message.guild);
             msg.edit({
-                embeds: [embed.setDesc(t("cmds:stop.stopped"))],
+                embeds: [embed.setDesc(`🛑 | ${t("cmds:stop.stopped")}`)],
             });
         }
     },

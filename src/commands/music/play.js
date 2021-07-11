@@ -61,8 +61,10 @@ module.exports = {
         const song = await message.client.player.search(name, {
             requestedBy: message.author,
         });
-        queue.addTrack(song.tracks[0]);
-        if (!queue.nowPlaying()) return;
-        queue.play();
+        if (!song) {
+            return message.channel.send(t("cmds:play.noResults"));
+        }
+        queue.playlist ? queue.addTracks(song.tracks) : queue.addTrack(song.tracks[0]);
+        if (!queue.playing) await queue.play();
     },
 };
