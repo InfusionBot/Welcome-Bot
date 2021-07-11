@@ -173,6 +173,7 @@
   },
   "volume": {
     "cmdDesc": "Adjust the volume of the music",
+    "current": "Current volume is **{{volume}}**%!",
     "success": "Volume adjusted to {{volume}}"
   },
   "eval": {
