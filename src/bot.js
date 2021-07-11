@@ -215,6 +215,7 @@ client.on("guildDelete", (guild) => {
 client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
     if (client.debug) client.logger.log("message event triggered", "debug");
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
     if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
     if (message.guild && message.channel.type !== "dm") {
