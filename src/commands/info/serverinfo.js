@@ -33,14 +33,6 @@ module.exports = {
                 `> ${t("misc:members")}: ${message.guild.members.cache.filter((m) => !m.user.bot).size}\n` +
                 `> ${t("misc:total")} ${t("misc:members")}: ${message.guild.memberCount}`
             )
-            .addField(
-                "Online users in your server:",
-                `${
-                    message.guild.members.cache.filter(
-                        (m) => m.presence.status === "online"
-                    ).size
-                }`
-            )
             .addField("Server was created at:", `${message.guild.createdAt}`);
         switch (args[0].toLowerCase()) {
             case "--dm":
