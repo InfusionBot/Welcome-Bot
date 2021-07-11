@@ -191,7 +191,7 @@
     "cmdDesc": "Add emoji from a image link",
     "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
     "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "Preview: <:{{emojiName}}:{{emojiId}}>\n:{{emojiName}}: added!",
+    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "channel": {

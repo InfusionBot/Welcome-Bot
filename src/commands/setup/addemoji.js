@@ -39,13 +39,13 @@ module.exports = {
                         embed
                             .setTitle(
                                 t("cmds:addemoji.success", {
-                                    emojiId: emoji.id,
+                                    emoji: `${emoji}`,
                                     emojiName: emoji.name,
                                 }).split("\n")[1]
                             )
                             .setDesc(
                                 t("cmds:addemoji.success", {
-                                    emojiId: emoji.id,
+                                    emoji: `${emoji}`,
                                     emojiName: emoji.name,
                                 }).split("\n")[0]
                             ),
