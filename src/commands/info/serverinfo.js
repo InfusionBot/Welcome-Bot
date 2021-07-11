@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "serverinfo",
     aliases: ["si"],
@@ -12,7 +13,9 @@ module.exports = {
     guildOnly: true,
     category: "Information",
     execute(message, args, guildDB, t) {
-        const { MessageEmbed } = require("discord.js");
+        if (args[1]) {
+            args[1] = args[1].toLowerCase();
+        }
         let embed = new MessageEmbed();
         embed.setTitle("Statistics");
         embed.setDescription(`Statistics for ${message.guild.name} server`);
@@ -44,7 +47,7 @@ module.exports = {
                     }`
             )
             .addField("Server was created at:", `${message.guild.createdAt}`);
-        switch (args[0].toLowerCase()) {
+        switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);

@@ -14,6 +14,9 @@ module.exports = {
     usage: "(@mention / user_id) (--dm)",
     category: "Information",
     async execute(message, args, guildDB, t) {
+        if (args[1]) {
+            args[1] = args[1].toLowerCase();
+        }
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -92,7 +95,7 @@ module.exports = {
             embed.addField("Nickname:", `${member.nickname}`);
         //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
         embed.addField("Presence:", `${member.presence.status}`);
-        switch (args[1].toLowerCase()) {
+        switch (args[1]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);

@@ -13,6 +13,9 @@ module.exports = {
     cooldown: 5,
     category: "Core",
     execute(message, args, guildDB, t) {
+        if (args[1]) {
+            args[1] = args[1].toLowerCase();
+        }
         let embed = new Embed({
             color: "success",
             timestamp: true,
@@ -61,7 +64,7 @@ module.exports = {
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );
-        switch (args[0].toLowerCase()) {
+        switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);
