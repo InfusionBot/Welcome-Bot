@@ -30,7 +30,7 @@ module.exports = {
                         link: `[${track.url.slice(0, 35)}...](${track.url})`,
                         views: `${track.views}`,
                         duration: track.duration,
-                        progress: `${progress[0]} | ${progress[2]}\n${progress[1]}`,
+                        progress: `${progress[0]} ┃ ${progress[2]}\n${progress[1]}`,
                     })
                         .split("\n")
                         .join("\n> ")
