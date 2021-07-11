@@ -54,7 +54,7 @@ module.exports = {
             if (!queue.connection)
                 await queue.connect(message.member.voice.channel);
         } catch (e) {
-            queue.destroy();
+            message.client.player.deleteQueue(message.guild);
             message.client.logger.log(e, "error", ["VOICE"]);
             return void message.reply(t("cmds:play.cantJoin"));
         }
@@ -64,7 +64,9 @@ module.exports = {
         if (!song) {
             return message.channel.send(t("cmds:play.noResults"));
         }
-        queue.playlist ? queue.addTracks(song.tracks) : queue.addTrack(song.tracks[0]);
+        queue.playlist
+            ? queue.addTracks(song.tracks)
+            : queue.addTrack(song.tracks[0]);
         if (!queue.playing) await queue.play();
     },
 };
