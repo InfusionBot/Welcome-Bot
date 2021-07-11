@@ -15,7 +15,7 @@ module.exports = {
     guildOnly: true,
     usage: "[link] [emoji name]",
     cooldown: 5,
-    category: "Setup",
+    category: "Gerneral",
     execute(message, args, guildDB, t) {
         if (!args[0].startsWith("http"))
             return message.reply(t("errors:invalidURL"));
