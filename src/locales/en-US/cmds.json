@@ -151,7 +151,7 @@
     "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "Added to queue",
-    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}\nProgress: {{progress}}%",
+    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}\nProgress: {{progress}}",
     "errorOccurred": "An error occurred... Code: `{{error}}`",
     "starting": "Starting to play",
     "rateLimited": "Sorry, I can't play the song as I am rate limited"
