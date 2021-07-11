@@ -106,7 +106,8 @@ client.player
         // do nothing, leaveOnEmpty is not enabled
     })
     .on("connectionCreate", (queue, connection) => {
-        if (client.debug) client.logger.log("Joined voice channel", "debug", ["VOICE"]);
+        if (client.debug)
+            client.logger.log("Joined voice channel", "debug", ["VOICE"]);
     })
     .on("connectionError", (queue, error) => {
         client.logger.log(err, "error", ["VOICE"]);
