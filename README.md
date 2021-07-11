@@ -8,7 +8,7 @@ Welcome-Bot is a bot built for you, to welcome new users to your servers mainly.
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
-[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)](https://dsc.gg/welcome-bot-guild)
+[![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)][discord]
 [![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 ![Views](https://visitor-badge.laobi.icu/badge?page_id=Welcome-Bot.welcome-bot&title=Views)
@@ -138,7 +138,14 @@ Feel free to upvote him to show your support.
 
 ## Self hosting
 
-[Self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html) are available on our website.
+**We ask you to please not host your own instance of Welcome-Bot.**
+Even though our license allows it, self-hosted instances of the bot have brought us a lot of headache in the past.
+If you're considering self-hosting, please [try the official instance of the bot first][botinvite].
+If you have any concerns about the security of our instance, please contact us.
+We'd love to talk and answer any questions you have.
+
+> If you're really really really going to self-host the bot, please [read our license][license] first, and be aware that we don't provide any self-hosting support which is up to date. You'll be on your own.
+> We have archived our [old self-hosting docs](https://welcome-bot.github.io/docs/self-hosting.html), they are available on our website.
 
 ## Supporters
 
@@ -160,7 +167,7 @@ A list of people who helped us in translation is available in [TRANSLATORS.md fi
 
 ## Questions?
 
-Do you have question? Don't hesitate to join our [discord server](https://discord.gg/xxU7akJNbC) and ask for help.
+Do you have question? Don't hesitate to join our [discord] and ask for help.
 
 ## Roadmap
 
@@ -169,3 +176,7 @@ Visit our [Roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1) for p
 ## Contributing
 
 You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)
+
+[botinvite]: https://dsc.gg/welcome-bot
+[discord]: https://dsc.gg/welcome-bot-guild
+[license]: https://github.com/Welcome-Bot/welcome-bot/blob/main/LICENSE
