@@ -7,6 +7,7 @@ module.exports = function (client) {
     const servers = client.guilds.cache.size;
     const commands = client.commands.enabled.size;
     const users = client.users.cache.size;
+    const channels = client.channels.cache.size;
     const presences = [
         {
             name: `${servers} server${servers > 1 ? "s" : ""} | ${
@@ -19,6 +20,12 @@ module.exports = function (client) {
                 client.defaultPrefix
             }help`,
             type: "PLAYING",
+        },
+        {
+            name: `${channels} channel${channels > 1 ? "s" : ""} | ${
+                client.defaultPrefix
+            }help`,
+            type: "LISTENING",
         },
         {
             name: `${users} user${users > 1 ? "s" : ""} | ${

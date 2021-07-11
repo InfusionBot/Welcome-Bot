@@ -5,7 +5,7 @@
  */
 module.exports = {
     name: "coinflip",
-    aliases: ["cf"],
+    aliases: ["cf", "filpcoin"],
     //description: "Flips a coin.",
     cooldown: 10,
     category: "Fun",
