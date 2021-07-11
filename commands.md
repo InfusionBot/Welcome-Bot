@@ -177,7 +177,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `dp`, `profile`
 - Cooldown: 5
 
-### `stats`
+### `serverinfo`
 
 ##### Subcommands:
 
@@ -185,9 +185,9 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: Your server statistics
+- Description: serverinfo.cmdDesc
 - Usage: (--dm)
-- Aliases: `server`
+- Aliases: `si`
 - Cooldown: 10
 
 ### `user`
@@ -199,7 +199,7 @@ Not providing any arguments will display the current settings.
 ##### Cmd info
 
 - Description: Get information about a user. It will show your info if no user was mentioned
-- Usage: (@mention / user_id)
+- Usage: (@mention / user_id) (--dm)
 - Aliases: `whois`, `ui`, `uinfo`
 - Cooldown: 3
 
@@ -623,8 +623,8 @@ You must join a voice channel before using this command.
 
 - Description: Bot information
 - Usage: (--dm)
-- Aliases: `bi`, `binfo`, `info`
-- Cooldown: 10
+- Aliases: `bi`, `binfo`, `info`, `stats`
+- Cooldown: 5
 
 ### `botperms`
 
