@@ -17,7 +17,7 @@ module.exports = {
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
         if (!queue) return message.reply(t("cmds:stop.notPlaying"));
         const track = queue.nowPlaying();
-        const progress = queue.createProgressBar();
+        const progress = queue.createProgressBar().split(" ┃ ");
         let embed = new Embed({ color: "blue", timestamp: true })
             .setTitle(t("cmds:np.playing"))
             .setDescription(track.title)
@@ -30,7 +30,7 @@ module.exports = {
                         link: `[${track.url.slice(0, 35)}...](${track.url})`,
                         views: `${track.views}`,
                         duration: track.duration,
-                        progress: progress,
+                        progress: `${progress[0]} ┃ ${progress[2]}\n${progress[1]}`,
                     })
                         .split("\n")
                         .join("\n> ")

@@ -105,9 +105,16 @@ client.player
     .on("channelEmpty", () => {
         // do nothing, leaveOnEmpty is not enabled
     })
+    .on("connectionCreate", (queue, connection) => {
+        if (client.debug)
+            client.logger.log("Joined voice channel", "debug", ["VOICE"]);
+    })
+    .on("connectionError", (queue, error) => {
+        client.logger.log(err, "error", ["VOICE"]);
+    })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
-        switch (error) {
+        switch (error.message) {
             case "NotConnected":
                 queue.metadata.reply(t("cmds:play.voiceNotJoined"));
                 break;
@@ -117,6 +124,8 @@ client.player
             case "NotPlaying":
                 queue.metadata.reply(t("cmds:stop.notPlaying"));
                 break;
+            case "Cannot use destroyed queue":
+                queue.metadata.reply(t("cmds:play.destroyedQueue"));
             default:
                 if (error.toString().indexOf("429"))
                     return queue.metadata.reply(t("cmds:play.rateLimited"));
