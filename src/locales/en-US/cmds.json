@@ -154,7 +154,9 @@
     "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}\nProgress: {{progress}}",
     "errorOccurred": "An error occurred... Code: `{{error}}`",
     "starting": "Starting to play",
-    "rateLimited": "Sorry, I can't play the song as I am rate limited"
+    "rateLimited": "Sorry, I can't play the song as I am rate limited",
+    "destroyedQueue": "The queue was destroyed, abd I can't play music using that queue. Please create a new queue from play command",
+    "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)"
   },
   "skip": {
     "cmdDesc": "Skip the current song",

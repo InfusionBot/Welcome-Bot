@@ -64,9 +64,15 @@ module.exports = {
         if (!song) {
             return message.channel.send(t("cmds:play.noResults"));
         }
-        queue.playlist
+        song.playlist
             ? queue.addTracks(song.tracks)
             : queue.addTrack(song.tracks[0]);
+        if (song.playlist) {
+            message.channel.send(t("cmds:play.playlistAdded", {
+                playlist: song.playlist.title,
+                songs: song.tracks.length
+            }));
+        }
         if (!queue.playing) await queue.play();
     },
 };
