@@ -37,12 +37,11 @@ module.exports = {
                 message.channel.send({
                     embeds: [
                         embed
-                            .setTitle(
-                                t("cmds:addemoji.success", {
+                            .setTitle(`
+                                ${t("cmds:addemoji.success", {
                                     emoji: `${emoji}`,
                                     emojiName: emoji.name,
-                                }).split("\n")[1]
-                            )
+                                }).split("\n")[1]} (${emoji.id})`)
                             .setDesc(
                                 t("cmds:addemoji.success", {
                                     emoji: `${emoji}`,
