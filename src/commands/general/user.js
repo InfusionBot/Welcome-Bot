@@ -12,7 +12,7 @@ module.exports = {
     //"Get information about a user. It will show your info if no user was mentioned",
     args: false,
     usage: "(@mention / user_id) (--dm)",
-    category: "Information",
+    category: "General",
     async execute(message, args, guildDB, t) {
         if (args[1]) {
             args[1] = args[1].toLowerCase();

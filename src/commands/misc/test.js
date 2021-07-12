@@ -14,7 +14,13 @@ module.exports = {
     category: "Miscellaneous",
     execute(message, args) {
         const greetUser = require("../../functions/greetUser");
-        greetUser(message.member);
+        const result = greetUser(message.member);
+        if (
+            typeof result === "string" &&
+            result.indexOf("find channel") !== -1
+        ) {
+            message.reply(result);
+        }
         message.react("👍");
     },
 };

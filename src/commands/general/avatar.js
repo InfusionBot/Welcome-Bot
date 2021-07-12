@@ -12,7 +12,7 @@ module.exports = {
     args: false,
     usage: "(mention / user id)",
     cooldown: 5,
-    category: "Information",
+    category: "General",
     execute(message, args, guildDB, t) {
         let embed = new MessageEmbed();
         let user;
