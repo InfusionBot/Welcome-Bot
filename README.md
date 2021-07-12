@@ -4,7 +4,7 @@
 
 Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
-[![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)][stargazers]
 [![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
@@ -101,7 +101,7 @@ You can change this channel name, by using the `channel setmod` command, more in
 
 ## Botlists
 
-Discord welcome bot can be found on different Botlist sites.
+Discord welcome bot can be found on different Botlist sites.  
 Feel free to upvote him to show your support.
 
 ### [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
@@ -138,10 +138,10 @@ Feel free to upvote him to show your support.
 
 ## Self hosting
 
-**We ask you to please not host your own instance of Welcome-Bot.**
-Even though our license allows it, self-hosted instances of the bot have brought us a lot of headache in the past.
+**We ask you to please not host your own instance of Welcome-Bot.**  
+Even though our license allows it, self-hosted instances of the bot have brought us a lot of headache in the past.  
 If you're considering self-hosting, please [try the official instance of the bot first][botinvite].
-If you have any concerns about the security of our instance, please contact us.
+If you have any concerns about the security of our instance, please contact us.  
 We'd love to talk and answer any questions you have.
 
 > If you're really really really going to self-host the bot, please [read our license][license] first, and be aware that we don't provide any self-hosting support which is up to date. You'll be on your own.
@@ -155,7 +155,7 @@ You prove that the Discord Welcome-Bot has some value for you!
 
 ### Stargazers
 
-[![stargazers image](https://reporoster.com/stars/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/stargazers)
+[![stargazers image](https://reporoster.com/stars/Welcome-Bot/welcome-bot)][stargazers]
 
 ### Contributors
 
@@ -171,12 +171,14 @@ Do you have question? Don't hesitate to join our [discord] and ask for help.
 
 ## Roadmap
 
-Visit our [Roadmap](https://github.com/Welcome-Bot/welcome-bot/projects/1) for planned and upcoming features.
+Visit our [Roadmap] for planned and upcoming features.
 
 ## Contributing
 
 You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)
 
+[stargazers]: https://github.com/Welcome-Bot/welcome-bot/stargazers
 [botinvite]: https://dsc.gg/welcome-bot
 [discord]: https://dsc.gg/welcome-bot-guild
 [license]: https://github.com/Welcome-Bot/welcome-bot/blob/main/LICENSE
+[Roadmap]: https://github.com/Welcome-Bot/welcome-bot/projects/1
