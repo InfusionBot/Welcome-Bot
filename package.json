@@ -51,6 +51,7 @@
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
     "opusscript": "^0.0.8",
+    "express": "^4.17.1",
     "pokemon": "^2.2.0"
   },
   "devDependencies": {
