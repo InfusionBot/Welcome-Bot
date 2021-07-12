@@ -21,7 +21,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       #- name: Run Tests
         #run: npm run test
 
