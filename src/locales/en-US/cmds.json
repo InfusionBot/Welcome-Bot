@@ -42,7 +42,8 @@
   },
   "suggest": {
     "cmdDesc": "Give your suggestion",
-    "done": "Your suggestion has been added, Thank You"
+    "done": "Your suggestion has been added, Thank You.",
+    "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
   },
   "ping": {
     "cmdDesc": "Ping the bot"
