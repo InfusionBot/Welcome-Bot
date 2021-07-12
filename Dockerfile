@@ -5,4 +5,4 @@ COPY . .
 RUN npm install
 RUN apt-get update && apt-get install -y ffmpeg
 EXPOSE 8080
-CMD ["npm", "start" ]
+CMD ["node", "webserver.js" ]
