@@ -20,8 +20,14 @@ module.exports = {
         })
             .setTitle("New suggestion 🤔")
             .setAuthor(message.guild.name, message.guild.iconURL())
-            .addField("From guild", `${message.guild.name} (${message.guild.id})`)
-            .addField("**Suggester:**", `<@${message.author.id}> (${message.author.id})`)
+            .addField(
+                "From guild",
+                `${message.guild.name} (${message.guild.id})`
+            )
+            .addField(
+                "**Suggester:**",
+                `<@${message.author.id}> (${message.author.id})`
+            )
             .setDesc(text);
         try {
             message.client.channels.cache
@@ -32,9 +38,14 @@ module.exports = {
                     await msg.react("👎");
                 });
             message.react("👍");
-            embed = new Embed({ color: "green", footer: t("cmds:suggest.done")})
-                .addField(`[Welcome-Bot server](${message.client.supportGuildInvite})`, t("cmds:suggest.view"));
-            message.channel.send({embeds: [embed]});
+            embed = new Embed({
+                color: "green",
+                footer: t("cmds:suggest.done"),
+            }).addField(
+                `[Welcome-Bot server](${message.client.supportGuildInvite})`,
+                t("cmds:suggest.view")
+            );
+            message.channel.send({ embeds: [embed] });
         } catch (e) {
             throw e;
         }

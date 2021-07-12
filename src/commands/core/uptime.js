@@ -14,7 +14,9 @@ module.exports = {
     category: "Core",
     execute(message, args, guildDB, t) {
         moment.locale(guildDB.lang.toLowerCase());
-        const duration = moment.duration(message.client.uptime).format(" D [days], H [hours], m [minutes], s [seconds]");
+        const duration = moment
+            .duration(message.client.uptime)
+            .format(" D [days], H [hours], m [minutes], s [seconds]");
         const date = new Date();
         const timestamp = date.getTime() - Math.floor(message.client.uptime);
         const embed = new Embed({
@@ -23,10 +25,16 @@ module.exports = {
             footer: t("cmds:uptime.cmdDesc"),
         })
             .setTitle(`:hourglass_flowing_sand: ${t("misc:uptime")}`)
-            .addField(`<:online:860920786382880809> ${t("misc:uptime")}`, `\`\`\`${duration}\`\`\``)
-            .addField(t("misc:date-launched"), `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``);
+            .addField(
+                `<:online:860920786382880809> ${t("misc:uptime")}`,
+                `\`\`\`${duration}\`\`\``
+            )
+            .addField(
+                t("misc:date-launched"),
+                `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``
+            );
         message.channel.send({
-            embeds: [embed]
+            embeds: [embed],
         });
     },
 };
