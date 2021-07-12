@@ -3,7 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { MessageEmbed } = require("discord.js");
+const { Embed } = require("../../classes");
 module.exports = {
     name: "serverinfo",
     aliases: ["si"],
@@ -11,16 +11,15 @@ module.exports = {
     usage: "(--dm)",
     cooldown: 10,
     guildOnly: true,
-    category: "Information",
+    category: "General",
     execute(message, args, guildDB, t) {
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }
-        let embed = new MessageEmbed();
-        embed.setTitle("Statistics");
-        embed.setDescription(`Statistics for ${message.guild.name} server`);
-        //https://discord.js.org/#/docs/main/v12/class/Guild?scrollTo=iconURL
-        embed.setThumbnail(message.guild.iconURL());
+        let embed = new Embed({ color: "green", timestamp: true })
+            .setTitle("Statistics")
+            .setDescription(`Statistics for ${message.guild.name} server`)
+            .setThumbnail(message.guild.iconURL());
         let iconURL = message.guild.iconURL().slice(0, 35) + "...";
         message.guild.members.fetch();
         embed
