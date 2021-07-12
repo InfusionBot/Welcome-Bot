@@ -30,7 +30,7 @@ module.exports = {
                 `\`\`\`${duration}\`\`\``
             )
             .addField(
-                t("misc:date-launched"),
+                t("misc:datelaunched"),
                 `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``
             );
         message.channel.send({
