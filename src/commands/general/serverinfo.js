@@ -17,9 +17,9 @@ module.exports = {
             args[1] = args[1].toLowerCase();
         }
         let embed = new Embed({ color: "green", timestamp: true })
-        .setTitle("Statistics")
-        .setDescription(`Statistics for ${message.guild.name} server`)
-        .setThumbnail(message.guild.iconURL());
+            .setTitle("Statistics")
+            .setDescription(`Statistics for ${message.guild.name} server`)
+            .setThumbnail(message.guild.iconURL());
         let iconURL = message.guild.iconURL().slice(0, 35) + "...";
         message.guild.members.fetch();
         embed
