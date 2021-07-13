@@ -29,10 +29,12 @@ module.exports = {
                 },
             });
             const json = await res.json();
+            let url;
             if (json.key) {
-                const url = `https://hastebin.com/${json.key}.js`;
+                url = `https://hastebin.com/${json.key}.js`;
             } else {
                 throw new Error("Can't upload text to hastebin");
+                return;
             }
             const embed = new Embed({
                 color: "lightblue",
