@@ -41,11 +41,15 @@ module.exports = {
             embed = new Embed({
                 color: "green",
                 footer: t("cmds:suggest.done"),
-            }).setTitle(
-                `[Welcome-Bot server](${message.client.supportGuildInvite})`
-            ).setDesc(
-                t("cmds:suggest.view", {chanid:message.client.suggestionLogsChannelId})
-            );
+            })
+                .setTitle(
+                    `[Welcome-Bot server](${message.client.supportGuildInvite})`
+                )
+                .setDesc(
+                    t("cmds:suggest.view", {
+                        chanid: message.client.suggestionLogsChannelId,
+                    })
+                );
             message.channel.send({ embeds: [embed] });
         } catch (e) {
             throw e;
