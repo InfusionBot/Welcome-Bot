@@ -45,13 +45,13 @@
   "lib": {
     "cmdDesc": "Library used to build Welcome-Bot"
   },
+  "ping": {
+    "cmdDesc": "Ping the bot"
+  },
   "suggest": {
     "cmdDesc": "Give your suggestion",
     "done": "Your suggestion has been added, Thank You.",
     "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
-  },
-  "ping": {
-    "cmdDesc": "Ping the bot"
   },
   "support": {
     "cmdDesc": "Get Support for Welcome-Bot"
@@ -62,6 +62,12 @@
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
+  "8ball": {
+    "cmdDesc": "Get your fortune by asking your question"
+  },
+  "coinflip": {
+    "cmdDesc": "Flip a coin."
+  },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS"
   },
@@ -71,11 +77,22 @@
   "pokemon": {
     "cmdDesc": "Get a pokemon image"
   },
-  "8ball": {
-    "cmdDesc": "Get your fortune by asking your question"
+  "addemoji": {
+    "cmdDesc": "Add emoji from a image link",
+    "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
+    "invalidName": "The length of the emoji name must be between 2 and 32!",
+    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
-  "coinflip": {
-    "cmdDesc": "Flip a coin."
+  "avatar": {
+    "cmdDesc": "Get a user's avatar",
+    "profile": "Avatar of {{user}}"
+  },
+  "hastebin": {
+    "cmdDesc": "Upload your text on hastebin!",
+    "missingText": "Please enter a valid text!",
+    "title": "Upload complete!",
+    "success": "Here's your link: {{link}}"
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command/category.",
@@ -87,11 +104,7 @@
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
   },
-  "avatar": {
-    "cmdDesc": "Get a user's avatar",
-    "profile": "Avatar of {{user}}"
-  },
-  "stats": {
+  "serverinfo": {
     "cmdDesc": "Your server statistics"
   },
   "user": {
@@ -192,13 +205,6 @@
   },
   "servers-list": {
     "cmdDesc": "Show the list of servers the bot is in."
-  },
-  "addemoji": {
-    "cmdDesc": "Add emoji from a image link",
-    "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
-    "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
-    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "channel": {
     "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
