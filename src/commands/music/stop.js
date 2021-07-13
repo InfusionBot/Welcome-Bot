@@ -15,7 +15,7 @@ module.exports = {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue) return message.reply(t("cmds:stop.notPlaying"));
+        if (!queue || !queue.playing) return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
         let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:stop.cmdDesc")
@@ -50,7 +50,7 @@ module.exports = {
                 if (haveVoted >= moreVotes) {
                     message.client.player.deleteQueue(message.guild);
                     msg.edit({
-                        embeds: [embed.setDesc(t("cmds:stop.stopped"))],
+                        embeds: [embed.setDesc(t("cmds:stop.success"))],
                     });
                     collector.stop();
                 } else {
@@ -73,7 +73,7 @@ module.exports = {
         } else {
             message.client.player.deleteQueue(message.guild);
             msg.edit({
-                embeds: [embed.setDesc(`🛑 | ${t("cmds:stop.stopped")}`)],
+                embeds: [embed.setDesc(`🛑 | ${t("cmds:stop.success")}`)],
             });
         }
     },
