@@ -6,14 +6,14 @@
 const fetch = require("node-fetch");
 const { Embed } = require("../../classes");
 module.exports = {
-    name: "kiss",
-    //description: "Kiss a user",
+    name: "tickle",
+    //description: "Tickle a user",
     args: true,
     usage: "[mention / user id]",
     cooldown: 3,
     category: "Anime",
     async execute(message, args, guildDB, t) {
-        let res = await fetch("https://nekos.life/api/v2/img/kiss");
+        let res = await fetch("https://nekos.life/api/v2/img/tickle");
         res = await res.json();
         const { userFromMention } = require("../../functions/get.js");
         let user;
@@ -35,16 +35,17 @@ module.exports = {
             return false;
         }
         if (user.id === message.author.id) {
-            return message.reply(t("cmds:kiss.errorYourself"));
+            return message.reply(t("cmds:tickle.errorYourself"));
         }
         let embed = new Embed()
             .setTitle(
-                t("cmds:kiss.success", {
+                t("cmds:tickle.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })
             )
-            .setImage(res.url);
+            .setImage(res.url)
+            .setColor("RANDOM");
         message.reply({ embeds: [embed] });
     },
 };

@@ -14,11 +14,20 @@ module.exports = {
     execute(message, args, guildDB, t) {
         const text = args.join(" ");
         let embed = new Embed({
-            footer: `Suggestion given by ${message.author.tag} (${message.author.id})`,
+            footer: `${message.author.tag} gave new suggestion!`,
             color: "success",
             timestamp: true,
         })
             .setTitle("New suggestion 🤔")
+            .setAuthor(message.guild.name, message.guild.iconURL())
+            .addField(
+                "From guild",
+                `${message.guild.name} (${message.guild.id})`
+            )
+            .addField(
+                "**Suggester:**",
+                `<@${message.author.id}> (${message.author.id})`
+            )
             .setDesc(text);
         try {
             message.client.channels.cache
@@ -29,7 +38,19 @@ module.exports = {
                     await msg.react("👎");
                 });
             message.react("👍");
-            message.reply(t("cmds:suggest.done"));
+            embed = new Embed({
+                color: "green",
+                footer: t("cmds:suggest.done"),
+            })
+                .setTitle(
+                    `[Welcome-Bot server](${message.client.supportGuildInvite})`
+                )
+                .setDesc(
+                    t("cmds:suggest.view", {
+                        chanid: message.client.suggestionLogsChannelId,
+                    })
+                );
+            message.channel.send({ embeds: [embed] });
         } catch (e) {
             throw e;
         }
