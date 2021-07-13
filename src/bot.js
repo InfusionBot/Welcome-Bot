@@ -109,7 +109,7 @@ client.player
         if (client.debug)
             client.logger.log("Joined voice channel", "debug", ["VOICE"]);
     })
-    .on("connectionError", (queue, error) => {
+    .on("connectionError", (queue, err) => {
         client.logger.log(err, "error", ["VOICE"]);
     })
     .on("error", async (queue, error) => {
