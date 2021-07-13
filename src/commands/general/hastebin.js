@@ -26,7 +26,7 @@ module.exports = {
                 headers: {
                     "Content-Type": "text/plain",
                     "User-Agent": process.env.userAgent,
-                }
+                },
             });
             const json = await res.json();
             if (json.key) {
@@ -34,10 +34,13 @@ module.exports = {
             } else {
                 throw new Error("Can't upload text to hastebin");
             }
-            const embed = new Embed({color: "lightblue", tag: message.author.tag})
+            const embed = new Embed({
+                color: "lightblue",
+                tag: message.author.tag,
+            })
                 .setTitle(t("cmds:hastebin.title"))
-                .setDesc(t("cmds:hastebin.success", {link: url}));
-            return message.reply({embeds: [embed]});
+                .setDesc(t("cmds:hastebin.success", { link: url }));
+            return message.reply({ embeds: [embed] });
         } catch (e) {
             throw e;
         }

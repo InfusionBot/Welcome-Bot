@@ -18,7 +18,10 @@ module.exports = {
         if (args[0].startsWith("v")) {
             args[0] = args[0].replace("v", "");
         }
-        const embed = new Embed({color: "lightblue", tag: message.author.tag});
+        const embed = new Embed({
+            color: "lightblue",
+            tag: message.author.tag,
+        });
         let log = await getVersion(args[0].trim() || message.client.botVersion);
         let reply;
         if (log) {
@@ -33,9 +36,7 @@ module.exports = {
         } else {
             reply = `Version \`${args[0]}\` does not exist or is very old! Latest version is: \`v${message.client.botVersion}\``;
         }
-        embed
-            .setTitle(t("cmds:version.cmdDesc"))
-            .setDesc(reply);
-        message.reply({embeds: [embed]});
+        embed.setTitle(t("cmds:version.cmdDesc")).setDesc(reply);
+        message.reply({ embeds: [embed] });
     },
 };
