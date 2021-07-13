@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fetch = require("node-fetch");
-const { MessageEmbed } = require("discord.js");
+const { Embed } = require("../../classes");
 module.exports = {
     name: "slap",
     //description: "Slap a user",
@@ -37,15 +37,14 @@ module.exports = {
         if (user.id === message.author.id) {
             return message.reply(t("cmds:slap.errorYourself"));
         }
-        let embed = new MessageEmbed()
+        let embed = new Embed()
             .setTitle(
                 t("cmds:slap.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })
             )
-            .setImage(res.url)
-            .setColor("RANDOM");
+            .setImage(res.url);
         message.reply({ embeds: [embed] });
     },
 };

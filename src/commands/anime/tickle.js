@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fetch = require("node-fetch");
-const { MessageEmbed } = require("discord.js");
+const { Embed } = require("../../classes");
 module.exports = {
     name: "tickle",
     //description: "Tickle a user",
@@ -37,7 +37,7 @@ module.exports = {
         if (user.id === message.author.id) {
             return message.reply(t("cmds:tickle.errorYourself"));
         }
-        let embed = new MessageEmbed()
+        let embed = new Embed()
             .setTitle(
                 t("cmds:tickle.success", {
                     author: message.author.tag,
