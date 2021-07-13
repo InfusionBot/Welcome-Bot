@@ -5,7 +5,7 @@
  */
 const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
-    constructor({ tag, avatarURL, color, timestamp, footer }, data = {}) {
+    constructor({ tag:null, avatarURL:null, color:null, timestamp:null, footer:null }, data = {}) {
         super(data);
         switch (color.toLowerCase()) {
             case "error":

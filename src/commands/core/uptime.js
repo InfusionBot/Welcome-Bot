@@ -24,7 +24,7 @@ module.exports = {
             timestamp: true,
             footer: t("cmds:uptime.cmdDesc"),
         })
-            .setTitle(`:hourglass_flowing_sand: ${t("misc:uptime")}`)
+            .setTitle(`:hourglass_flowing_sand`)
             .addField(
                 `<:online:860920786382880809> ${t("misc:uptime")}`,
                 `\`\`\`${duration}\`\`\``
