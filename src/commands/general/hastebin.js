@@ -13,7 +13,7 @@ module.exports = {
     usage: "[text]",
     cooldown: 5,
     category: "General",
-    execute(message, args, guildDB, t) {
+    async execute(message, args, guildDB, t) {
         const text = args.join(" ");
         if (!text) {
             return message.reply(t("cmds:hastebin.missingText"));
