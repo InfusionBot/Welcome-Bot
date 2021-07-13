@@ -14,7 +14,7 @@ module.exports = class Embed extends MessageEmbed {
             timestamp = true,
             footer = null,
         } = opts;
-        switch (color.toLowerCase()) {
+        switch (color?.toLowerCase?.()) {
             case "error":
                 color = "#ff3333";
                 break;
