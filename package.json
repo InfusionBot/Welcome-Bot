@@ -44,6 +44,7 @@
     "discord-player": "^5.0.0-dev.92a3409.1625961740",
     "discord.js": "discordjs/discord.js",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "ffmpeg": "^0.0.4",
     "figlet": "^1.5.0",
     "i18next": "^20.0.0",
