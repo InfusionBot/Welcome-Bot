@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **50 commands** in **10 categories**!
+Welcome-Bot contains more than **50 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -18,7 +18,6 @@ Welcome-Bot contains more than **50 commands** in **10 categories**!
 
 - [Setup](#setup)
 - [General](#general)
-- [Information](#information)
 - [Moderation](#moderation)
 - [Miscellaneous](#miscellaneous)
 - [Fun](#fun)
@@ -133,7 +132,33 @@ Not providing any arguments will display the current settings.
 - Aliases: `getprefix`
 - Cooldown: 10
 
-## General (2 commands)
+## General (7 commands)
+
+### `avatar`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get a user's avatar
+- Usage: (mention / user id)
+- Aliases: `dp`, `profile`
+- Cooldown: 5
+
+### `hastebin`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Upload your text on hastebin!
+- Usage: [text]
+- Aliases: `pastebin`
+- Cooldown: 5
 
 ### `help`
 
@@ -161,21 +186,6 @@ Not providing any arguments will display the current settings.
 - Aliases: `permissions`
 - Cooldown: 5
 
-## Information (4 commands)
-
-### `avatar`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Get a user's avatar
-- Usage: (mention / user id)
-- Aliases: `dp`, `profile`
-- Cooldown: 5
-
 ### `serverinfo`
 
 ##### Subcommands:
@@ -184,7 +194,7 @@ Not providing any arguments will display the current settings.
 
 ##### Cmd info
 
-- Description: serverinfo.cmdDesc
+- Description: Your server statistics
 - Usage: (--dm)
 - Aliases: `si`
 - Cooldown: 10
@@ -474,7 +484,7 @@ You must join a voice channel before using this command.
 - Aliases: `sound-level`, `soundlevel`
 - Cooldown: 5
 
-## Anime (6 commands)
+## Anime (7 commands)
 
 ### `cuddle`
 
@@ -537,6 +547,19 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Slap a user
+- Usage: [mention / user id]
+- Aliases: None
+- Cooldown: 3
+
+### `tickle`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Tickle a user
 - Usage: [mention / user id]
 - Aliases: None
 - Cooldown: 3
@@ -711,7 +734,7 @@ You must join a voice channel before using this command.
 
 - Description: Get uptime of the bot
 - Usage: None
-- Aliases: `getuptime`
+- Aliases: `botuptime`
 - Cooldown: 10
 
 ### `website`
