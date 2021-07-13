@@ -7,10 +7,11 @@ const WelcomeBot = require("../WelcomeBot");
 const client = new WelcomeBot();
 const commands = client.commands.enabled;
 //findArrDups is took from https://flexiple.com/find-duplicates-javascript-array/
-const findArrDups = (array) => {//find duplicates in an array
+const findArrDups = (array) => {
+    //find duplicates in an array
     return array.filter((val, index) => {
         return array.indexOf(val) !== index;
-    })
+    });
 };
 describe("Commands", () => {
     it("should have no duplicate names or aliases", (done) => {
@@ -23,7 +24,13 @@ describe("Commands", () => {
         if (!duplicates.length) {
             done();
         } else {
-            done(new Error(`Some of them have duplicate names or aliases, they are: ${duplicates.join(", ")}`));
+            done(
+                new Error(
+                    `Some of them have duplicate names or aliases, they are: ${duplicates.join(
+                        ", "
+                    )}`
+                )
+            );
         }
-    })
+    });
 });
