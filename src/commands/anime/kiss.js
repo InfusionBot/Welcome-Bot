@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fetch = require("node-fetch");
-const { Embed } = require("../../classes");
+const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "kiss",
     //description: "Kiss a user",
@@ -37,14 +37,15 @@ module.exports = {
         if (user.id === message.author.id) {
             return message.reply(t("cmds:kiss.errorYourself"));
         }
-        let embed = new Embed()
+        let embed = new MessageEmbed()
             .setTitle(
                 t("cmds:kiss.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })
             )
-            .setImage(res.url);
+            .setImage(res.url)
+            .setColor("RANDOM");
         message.reply({ embeds: [embed] });
     },
 };
