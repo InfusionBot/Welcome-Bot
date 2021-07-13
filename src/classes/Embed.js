@@ -7,7 +7,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
     constructor(opts = {}, data = {}) {
         super(data);
-        const {
+        let {
             tag = null,
             avatarURL = null,
             color = null,
