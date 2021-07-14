@@ -217,7 +217,7 @@ client.on("messageCreate", async function (message) {
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
     if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
-    if (message.guild && message.channel.type !== "dm") {
+    if (message.guild && message.channel.type !== "DM") {
         guildDB = await getGuild(message.guild.id);
     } else {
         guildDB = { prefix: client.defaultPrefix };
