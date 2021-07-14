@@ -68,7 +68,8 @@
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
     "opusscript": "^0.0.8",
-    "pokemon": "^2.2.0"
+    "pokemon": "^2.2.0",
+    "bufferutil": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
