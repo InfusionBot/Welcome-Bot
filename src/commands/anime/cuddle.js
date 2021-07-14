@@ -5,6 +5,7 @@
  */
 const fetch = require("node-fetch");
 const { Embed } = require("../../classes");
+const { userFromMention } = require("../../helpers/Util.js");
 module.exports = {
     name: "cuddle",
     //description: "Cuddle a user",
@@ -15,7 +16,6 @@ module.exports = {
     async execute(message, args, guildDB, t) {
         let res = await fetch("https://nekos.life/api/v2/img/cuddle");
         res = await res.json();
-        const { userFromMention } = require("../../functions/get.js");
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {

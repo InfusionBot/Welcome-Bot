@@ -4,6 +4,9 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
+const updateGuild = require("../../db/functions/guild/updateGuild");
+const getGuild = require("../../db/functions/guild/getGuild");
+const { userFromMention } = require("../../helpers/Util.js");
 module.exports = {
     name: "channel",
     aliases: ["chan"],
@@ -21,9 +24,6 @@ module.exports = {
     guildOnly: true,
     category: "Setup",
     async execute(message, args, guildDB, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
-        const getGuild = require("../../db/functions/guild/getGuild");
-        const { channelIdFromMention } = require("../../functions/get.js");
         let subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":

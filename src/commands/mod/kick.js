@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { MessageEmbed, Permissions } = require("discord.js");
+const { userFromMention } = require("../../helpers/Util.js");
 module.exports = {
     name: "kick",
     //aliases: [],
@@ -17,7 +18,6 @@ module.exports = {
     usage: "[@mention] (reason)",
     category: "Moderation",
     async execute(message, args, guildDB) {
-        const { userFromMention } = require("../../functions/get.js");
         if (args.length < 1) {
             return message.reply(
                 "Please mention the user you want to kick and specify a kick reason (optional)."

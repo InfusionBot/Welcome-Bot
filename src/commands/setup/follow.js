@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
+const { channelIdFromMention } = require("../../helpers/Util.js");
 module.exports = {
     name: "follow",
     aliases: ["getnews"],
@@ -17,7 +18,6 @@ module.exports = {
     cooldown: 10,
     category: "Setup",
     execute(message, args, guildDB) {
-        const { channelIdFromMention } = require("../../functions/get.js");
         let channelId;
         if (args[0].startsWith("<#")) {
             channelId = channelIdFromMention(args[0]);

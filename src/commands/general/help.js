@@ -5,6 +5,7 @@
  */
 const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
+const beautifyPerms = require("../../functions/beautifyPerms");
 module.exports = {
     name: "help",
     aliases: ["commands", "cmd"],
@@ -14,7 +15,6 @@ module.exports = {
     cooldown: 5,
     category: "General",
     async execute(message, args, guildDB, t) {
-        const beautifyPerms = require("../../functions/beautifyPerms");
         if (message.channel.type !== "DM" && !args.length) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
