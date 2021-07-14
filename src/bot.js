@@ -127,7 +127,7 @@ client.player
             case "Cannot use destroyed queue":
                 queue.metadata.reply(t("cmds:play.destroyedQueue"));
             default:
-                if (error.toString().indexOf("429"))
+                if (error.toString().indexOf("429") !== -1)
                     return queue.metadata.reply(t("cmds:play.rateLimited"));
                 queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
                 break;
