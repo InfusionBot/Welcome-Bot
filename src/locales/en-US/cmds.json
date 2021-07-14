@@ -101,6 +101,9 @@
     "bot-help": "Welcome-Bot help",
     "in-cat": "Commands in this category"
   },
+  "listemojis": {
+    "cmdDesc": "List of all custom emojis in this server, with there IDs."
+  },
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
   },
