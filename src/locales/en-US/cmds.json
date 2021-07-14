@@ -154,6 +154,13 @@
     "success": "Went back to the prevoius song",
     "failure": "An error occurred, When going back to the prevoius song."
   },
+  "loop": {
+    "cmdDesc": "Manage loop settings for music",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to set loop mode! {{count}} more votes are required.",
+    "invalidMode": "Invalid loop mode provided, type `{{prefix}}help loop` for help. You have provided {{mode}}",
+    "success": "Loop mode set to {{mode}}.",
+    "failure": "An error occurred, When setting loop mode."
+  },
   "np": {
     "cmdDesc": "The details of song which is being played now",
     "playing": "Currently playing"
@@ -186,7 +193,7 @@
   "stop": {
     "cmdDesc": "Stop the music",
     "notPlaying": "No songs are currently playing in this server.",
-    "stopped": "Music stopped!",
+    "success": "Music stopped!",
     "pleaseVote": "More than half members in the voice channel must react with 👍 to stop the music! {{count}} more votes are required."
   },
   "volume": {

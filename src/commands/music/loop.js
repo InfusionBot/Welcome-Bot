@@ -3,13 +3,26 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { QueueRepeatMode } = require("discord-player");
 const { Embed } = require("../../classes");
 module.exports = {
-    name: "stop",
-    aliases: ["leave"],
-    //description: "Stop the music",
+    name: "loop",
+    aliases: ["setloop"],
+    //description: "Manage loop settings for music",
+    args: false,
     guildOnly: true,
-    cooldown: 5,
+    usage: "[subcommand]",
+    subcommand: true,
+    subcommands: [
+        { name: "off", desc: "Turn off loop mode and don't autoplay also" },
+        { name: "track", desc: "Enable loop of current track" },
+        { name: "queue", desc: "Enable loop of current queue" },
+        {
+            name: "autoplay",
+            desc: "Just keep playing next songs in queue and end when queue finishes",
+        },
+    ],
+    cooldown: 10,
     category: "Music",
     async execute(message, args, guildDB, t) {
         const queue = message.client.player.getQueue(message.guild);
@@ -17,9 +30,38 @@ module.exports = {
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
         if (!queue || !queue.playing)
             return message.reply(t("cmds:stop.notPlaying"));
+        let loopMode = args[0].toLowerCase();
+        switch (loopMode) {
+            case "off":
+                loopMode = QueueRepeatMode.OFF;
+                break;
+            case "track":
+                loopMode = QueueRepeatMode.TRACK;
+                break;
+            case "queue":
+                loopMode = QueueRepeatMode.QUEUE;
+                break;
+            case "autoplay":
+                loopMode = QueueRepeatMode.AUTOPLAY;
+                break;
+            default:
+                return message.reply(
+                    t("cmds:loop.invalidMode", {
+                        prefix: guildDB.prefix,
+                        mode: loopMode,
+                    })
+                );
+                break;
+        }
+        const emoji =
+            loopMode === QueueRepeatMode.TRACK
+                ? "🔂"
+                : loopMode === QueueRepeatMode.QUEUE
+                ? "🔁"
+                : "▶";
         const members = voice.members.filter((m) => !m.user.bot);
         let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
-            t("cmds:stop.cmdDesc")
+            t("cmds:loop.cmdDesc")
         );
         const msg = await message.channel.send({ embeds: [embed] });
         if (members.size > 1) {
@@ -29,7 +71,7 @@ module.exports = {
             msg.edit({
                 embeds: [
                     embed.setDesc(
-                        t("cmds:stop.pleaseVote", {
+                        t("cmds:loop.pleaseVote", {
                             count: moreVotes,
                         })
                     ),
@@ -49,9 +91,13 @@ module.exports = {
             collector.on("collect", (reaction) => {
                 const haveVoted = reaction.count - 1;
                 if (haveVoted >= moreVotes) {
-                    message.client.player.deleteQueue(message.guild);
+                    queue.setRepeatMode(loopMode);
                     msg.edit({
-                        embeds: [embed.setDesc(t("cmds:stop.success"))],
+                        embeds: [
+                            embed.setDesc(
+                                `${emoji} | ${t("cmds:loop.success")}`
+                            ),
+                        ],
                     });
                     collector.stop();
                 } else {
@@ -72,9 +118,15 @@ module.exports = {
                 }
             });
         } else {
-            message.client.player.deleteQueue(message.guild);
+            queue.setRepeatMode(loopMode);
             msg.edit({
-                embeds: [embed.setDesc(`🛑 | ${t("cmds:stop.success")}`)],
+                embeds: [
+                    embed.setDesc(
+                        `${emoji} | ${t("cmds:loop.success", {
+                            mode: args[0],
+                        })}`
+                    ),
+                ],
             });
         }
     },

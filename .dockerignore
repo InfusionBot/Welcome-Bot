@@ -4,5 +4,5 @@
 node_modules
 .gitignore
 .gitmodules
-README.md
-CHANGELOG.md
+*.md
+.tokeignore

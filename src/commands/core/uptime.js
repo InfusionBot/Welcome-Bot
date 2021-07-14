@@ -22,9 +22,8 @@ module.exports = {
         const embed = new Embed({
             color: "green",
             timestamp: true,
-            footer: t("cmds:uptime.cmdDesc"),
         })
-            .setTitle(`:hourglass_flowing_sand`)
+            .setTitle(`:hourglass_flowing_sand:`)
             .addField(
                 `<:online:860920786382880809> ${t("misc:uptime")}`,
                 `\`\`\`${duration}\`\`\``

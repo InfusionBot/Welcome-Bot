@@ -18,7 +18,7 @@ module.exports = {
     cooldown: 20,
     ownerOnly: true,
     category: "Owner Only",
-    execute(message, args, guildDB) {
+    execute(message, args, guildDB, t) {
         const client = message.client;
         const content = args.join(" ");
         const result = new Promise((resolve) => resolve(eval(content)));

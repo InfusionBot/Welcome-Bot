@@ -27,6 +27,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### Changes
 
+- sort(cmd categories): Remove Information category and move those commands to general category
+- Change emoji for General category to ℹ️
 - Change `modLogChan` to `modChannel` in db
 - Improve contributing guidelines
 - Add test script
@@ -34,6 +36,10 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - Add Dockerfile
 - Removed `Games` and `Infomation` category
 - Rename `stats` cmd to `serverinfo` cmd
+
+### Bug fixes
+
+- fix(test cmd): test cmd will now reply if channel is not found out
 
 ## [v1.10.3]
 
@@ -374,6 +380,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.11.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.0
 [v1.10.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.3
 [v1.10.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.2
 [v1.10.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.1

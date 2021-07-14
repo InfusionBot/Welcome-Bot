@@ -127,7 +127,7 @@ client.player
             case "Cannot use destroyed queue":
                 queue.metadata.reply(t("cmds:play.destroyedQueue"));
             default:
-                if (error.toString().indexOf("429"))
+                if (error.toString().indexOf("429") !== -1)
                     return queue.metadata.reply(t("cmds:play.rateLimited"));
                 queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
                 break;
@@ -141,7 +141,6 @@ client.on("ready", async () => {
             `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
     await require("./loaders/Locale.js")(client);
-    client.loadCommands(__dirname + "/commands");
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);

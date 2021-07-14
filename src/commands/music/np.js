@@ -15,7 +15,8 @@ module.exports = {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue) return message.reply(t("cmds:stop.notPlaying"));
+        if (!queue || !queue.playing)
+            return message.reply(t("cmds:stop.notPlaying"));
         const track = queue.nowPlaying();
         const progress = queue.createProgressBar().split(" ┃ ");
         let embed = new Embed({ color: "blue", timestamp: true })
