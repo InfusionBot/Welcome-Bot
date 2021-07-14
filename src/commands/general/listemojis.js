@@ -52,11 +52,13 @@ module.exports = {
                 .slice(i0, i1)
                 .join("\n");
         };
-        const curPage = await message.reply({ embeds: [embed
-                        .setDescription(`Emojis: ${emojis}\n\n${getList()}`)
-                        .setFooter(
-                            `Page ${page + 1} / ${Math.ceil(emojis / 10)}`
-                        ),] });
+        const curPage = await message.reply({
+            embeds: [
+                embed
+                    .setDescription(`Emojis: ${emojis}\n\n${getList()}`)
+                    .setFooter(`Page ${page + 1} / ${Math.ceil(emojis / 10)}`),
+            ],
+        });
         for (var key in emojiList) {
             await curPage.react(emojiList[key]);
         }
