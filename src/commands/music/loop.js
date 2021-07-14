@@ -20,7 +20,7 @@ module.exports = {
     ],
     cooldown: 10,
     category: "Music",
-    execute(message, args, guildDB, t) {
+    async execute(message, args, guildDB, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
