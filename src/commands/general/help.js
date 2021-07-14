@@ -15,7 +15,7 @@ module.exports = {
     category: "General",
     async execute(message, args, guildDB, t) {
         const beautifyPerms = require("../../functions/beautifyPerms");
-        if (message.channel.type !== "dm" && !args.length) {
+        if (message.channel.type !== "DM" && !args.length) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
                 message
@@ -107,7 +107,7 @@ module.exports = {
                 );
                 // Remove the reaction when the user react to the message if the bot has perm
                 if (
-                    message.channel.type !== "dm" &&
+                    message.channel.type !== "DM" &&
                     botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES)
                 )
                     reaction.users.remove(message.author);
