@@ -21,7 +21,10 @@
     "Add CI workflow & publish images to docker hub",
     "Add Dockerfile",
     "Removed `Games` and `Infomation` category",
-    "Rename `stats` cmd to `serverinfo` cmd"
+    "Rename `stats` cmd to `serverinfo` cmd",
+    "To reduce caching, sweep out messages older than 14 days",
+    "**Bug fixes**",
+    "fix(test cmd): test cmd will now reply if channel is not found out"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/bot.js",

@@ -37,6 +37,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - Add Dockerfile
 - Removed `Games` and `Infomation` category
 - Rename `stats` cmd to `serverinfo` cmd
+- To reduce caching, sweep out messages older than 14 days
 
 ### Bug fixes
 
