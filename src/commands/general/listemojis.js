@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Embed } = require("../../classes");
+const { Permissions } = require("discord.js");
 module.exports = {
     name: "listemojis",
     aliases: ["list-emojis"],
@@ -11,7 +12,7 @@ module.exports = {
     guildOnly: true,
     cooldown: 10,
     category: "General",
-    execute(message, args, guildDB, t) {
+    async execute(message, args, guildDB, t) {
         if (message.channel.type !== "DM") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
@@ -51,7 +52,11 @@ module.exports = {
                 .slice(i0, i1)
                 .join("\n");
         };
-        const curPage = message.reply({ embeds: [embed] });
+        const curPage = await message.reply({ embeds: [embed
+                        .setDescription(`Emojis: ${emojis}\n\n${getList()}`)
+                        .setFooter(
+                            `Page ${page + 1} / ${Math.ceil(emojis / 10)}`
+                        ),] });
         for (var key in emojiList) {
             await curPage.react(emojiList[key]);
         }
@@ -100,7 +105,7 @@ module.exports = {
                 embeds: [
                     embed
                         .setDescription(`Emojis: ${emojis}\n\n${getList()}`)
-                        .setTitle(
+                        .setFooter(
                             `Page ${page + 1} / ${Math.ceil(emojis / 10)}`
                         ),
                 ],
