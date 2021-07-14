@@ -403,7 +403,7 @@ Not providing any arguments will display the current settings.
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## Music (6 commands)
+## Music (7 commands)
 
 ### `back`
 
@@ -417,6 +417,22 @@ Not providing any arguments will display the current settings.
 - Usage: None
 - Aliases: `prevoius`
 - Cooldown: 5
+
+### `loop`
+
+##### Subcommands:
+
+- `off` - Turn off loop mode and don't autoplay also
+- `track` - Enable loop of current track
+- `queue` - Enable loop of current queue
+- `autoplay` - Just keep playing next songs in queue and end when queue finishes
+
+##### Cmd info
+
+- Description: Manage loop settings for music
+- Usage: [subcommand]
+- Aliases: `setloop`
+- Cooldown: 10
 
 ### `np`
 
