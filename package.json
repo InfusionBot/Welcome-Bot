@@ -12,6 +12,7 @@
     "New command `mute` - Mute a member",
     "New command `unmute` - Unmute a member",
     "New command `hastebin` - Upload your text on hastebin",
+    "New command `listemojis` - List all emojis in that server",
     "With this release, Welcome-Bot reaches 50 commands!!",
     "**Changes**",
     "Change `modLogChan` to `modChannel` in db",
