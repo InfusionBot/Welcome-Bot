@@ -24,7 +24,7 @@ module.exports = {
             .setTitle(
                 `${message.client.user.username} v${message.client.botVersion}`
             )
-            .setDescription("Information and Support for Welcome-Bot")
+            .setDescription(t("cmds:botinfo.footer"))
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
             .addField(
                 ":pencil: General",
@@ -35,12 +35,12 @@ module.exports = {
                     `> Commands: ${message.client.commands.enabled.size} commands`
             )
             .addField(
-                ":pencil: System",
-                `> :gear: Node.js version: ${process.version}\n` +
-                    `> :satellite: Discord.js version:${version}`
+                ":gear: System",
+                `> ${message.client.customEmojis.nodejs} Node.js version: ${process.version}\n` +
+                    `> ${message.client.customEmojis.djs} Discord.js version: ${version}`
             )
             .addField(
-                "👑 Bot owners",
+                `${message.client.customEmojis.owner} Bot owners`,
                 `Welcome-Bot was created by ${message.client.ownersTags.join(
                     ", "
                 )}`
