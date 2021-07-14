@@ -118,14 +118,15 @@ class WelcomeBot extends Client {
             "815204465937481749" /*PuneetGopinath#0001*/,
             "693754859014324295" /*abhijoshi2k#6842*/,
         ];
-        this.debug = opts.debug || process.env.NODE_ENV === "development";
-        this.debugLevel = opts.debugLevel || process.env.DEBUG_LEVEL;
+        this.debug = opts?.debug || process.env.NODE_ENV === "development";
+        this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
         this.player = new Player(this, {
             leaveOnEmpty: false,
             leaveOnStop: true,
             enableLive: true,
         });
+        this.loadCommands(__dirname + "/commands");
     }
 
     loadCommand(commandPath, commandName) {
