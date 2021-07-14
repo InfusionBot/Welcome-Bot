@@ -120,7 +120,13 @@ module.exports = {
         } else {
             queue.setRepeatMode(loopMode);
             msg.edit({
-                embeds: [embed.setDesc(`${emoji} | ${t("cmds:loop.success", {mode:args[0]})}`)],
+                embeds: [
+                    embed.setDesc(
+                        `${emoji} | ${t("cmds:loop.success", {
+                            mode: args[0],
+                        })}`
+                    ),
+                ],
             });
         }
     },
