@@ -8,6 +8,7 @@
 [crowdin]: https://crowdin.com/project/welcome-bot
 [TRANSLATORS.md]: https://github.com/Welcome-Bot/welcome-bot/blob/main/TRANSLATORS.md
 [Discord]: https://dsc.gg/welcome-bot-guild
+[fork]: https://github.com/Welcome-Bot/welcome-bot/fork
 
 # Contributing to Welcome-Bot
 
@@ -45,6 +46,16 @@ Please give us as much information as you can, preferably filling all of the fie
 
 ## Writing code
 
-If you know how to code in JavaScript, then feel free to give [one of the existent ideas][featureReqs] a try. [Fork this repository](https://github.com/Welcome-Bot/welcome-bot/fork), make some changes and then open a pull request!
+If you know how to code in JavaScript, then feel free to give [one of the existent ideas][featureReqs] a try.
+[Fork this repository][fork], make some changes and then open a pull request!
 
-> ⚠ Please don't open Pull Requests with features that haven't been discussed as issues yet. We don't want you to waste time writing a feature that might get denied. If you have an idea and want it to be in the bot, check the [Ideas and discussion](#ideas-and-dicussion) paragraph above.
+Also note, we recommend to use descriptive commit names to prepare the Changelog easily.
+Some commit names we use are
+- `refactor(<optional title>): <description>` - Used when we rewrite the code or make big changes to the code (excluding new features).
+- `fix(<optional title>): <description>` - Used when bugs are fixed.
+- `feat(<optional title>): <description>` - Used when new features are added.
+- `docs(<optional title>): <description>` - Used when docs or changelog is updated 
+
+> ⚠ Please don't open Pull Requests with features that haven't been discussed as [issues][featureReqs] yet.
+> We don't want you to waste time writing a feature that might get denied.
+> If you have an idea and want it to be in the bot, check the [Ideas and discussion](#ideas-and-dicussion) paragraph above.
