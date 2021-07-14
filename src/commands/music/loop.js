@@ -16,7 +16,7 @@ module.exports = {
         { name: "off", desc: "Turn off loop mode and don't autoplay also" },
         { name: "track", desc: "Enable loop of current track" },
         { name: "queue", desc: "Enable loop of current queue" },
-        { name: "autoplay", "Just keep playing next songs in queue and end when queue finishes" },
+        { name: "autoplay", desc: "Just keep playing next songs in queue and end when queue finishes" },
     ],
     cooldown: 10,
     category: "Music",
