@@ -14,18 +14,26 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### New features
 
+- New command `tickle` - Tickle a user
 - New command `pat` - Pats someone
 - New command `suggest` - Give your suggestion
 - New cmd category `Music` - Welcome-Bot now has Music commands.
-- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`
+- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`, `loop`
 - New command `addemoji` - Add a emoji from a image url, no need to download it.
-- With this release, Welcome-Bot reaches 50 commands!!
 - New command `mute` - Mute a member
 - New command `unmute` - Unmute a member
+- New command `hastebin` - Upload your text on hastebin
+- With this release, Welcome-Bot reaches 50 commands!!
 
 ### Changes
 
 - Change `modLogChan` to `modChannel` in db
+- Improve contributing guidelines
+- Add test script
+- Add CI workflow & publish images to docker hub
+- Add Dockerfile
+- Removed `Games` and `Infomation` category
+- Rename `stats` cmd to `serverinfo` cmd
 
 ## [v1.10.3]
 
