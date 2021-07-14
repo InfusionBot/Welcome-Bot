@@ -42,6 +42,7 @@ class WelcomeBot extends Client {
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.categories = require("./data/categories.json");
+        this.customEmojis = require("./data/customEmojis.json");
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
             {

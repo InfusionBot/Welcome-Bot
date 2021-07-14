@@ -51,10 +51,13 @@ If you know how to code in JavaScript, then feel free to give [one of the existe
 
 Also note, we recommend to use descriptive commit names to prepare the Changelog easily.
 Some commit names we use are
-- `refactor(<optional title>): <description>` - Used when we restructure the code or make big changes to the code (excluding new features).
-- `fix(<optional title>): <description>` - Used when bugs are fixed.
-- `feat(<optional title>): <description>` - Used when new features are added.
-- `docs(<optional title>): <description>` - Used when docs or changelog is updated 
+- `refactor(<title>): <description>` - Used when we restructure the code or make big changes to the code (excluding new features).
+- `fix(<title>): <description>` - Used when bugs are fixed.
+- `feat(<title>): <description>` - Used when new features are added.
+- `change(<title>): <description>` - Used when minor changes
+- `docs(<title>): <description>` - Used when docs or changelog is updated.
+
+Here, you should either provide `<title>` or `<description>` which are title or description of what changes you have made respectively.
 
 > ⚠ Please don't open Pull Requests with features that haven't been discussed as [issues][featureReqs] yet.
 > We don't want you to waste time writing a feature that might get denied.

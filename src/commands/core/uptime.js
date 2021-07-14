@@ -25,7 +25,7 @@ module.exports = {
         })
             .setTitle(`:hourglass_flowing_sand:`)
             .addField(
-                `<:online:860920786382880809> ${t("misc:uptime")}`,
+                `${message.client.customEmojis.online} ${t("misc:uptime")}`,
                 `\`\`\`${duration}\`\`\``
             )
             .addField(
