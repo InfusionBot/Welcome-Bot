@@ -16,7 +16,10 @@ module.exports = {
         { name: "off", desc: "Turn off loop mode and don't autoplay also" },
         { name: "track", desc: "Enable loop of current track" },
         { name: "queue", desc: "Enable loop of current queue" },
-        { name: "autoplay", desc: "Just keep playing next songs in queue and end when queue finishes" },
+        {
+            name: "autoplay",
+            desc: "Just keep playing next songs in queue and end when queue finishes",
+        },
     ],
     cooldown: 10,
     category: "Music",
@@ -24,26 +27,37 @@ module.exports = {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue || !queue.playing) return message.reply(t("cmds:stop.notPlaying"));
+        if (!queue || !queue.playing)
+            return message.reply(t("cmds:stop.notPlaying"));
         let loopMode = args[0].toLowerCase();
         switch (loopMode) {
-          case "off":
-            loopMode = QueueRepeatMode.OFF;
-            break;
-          case "track":
-            loopMode = QueueRepeatMode.TRACK;
-            break;
-          case "queue":
-            loopMode = QueueRepeatMode.QUEUE;
-            break;
-          case "autoplay":
-            loopMode = QueueRepeatMode.AUTOPLAY;
-            break;
-          default:
-            return message.reply(t("cmds:loop.invalidMode", {prefix:guildDB.prefix, mode:loopMode}));
-            break;
+            case "off":
+                loopMode = QueueRepeatMode.OFF;
+                break;
+            case "track":
+                loopMode = QueueRepeatMode.TRACK;
+                break;
+            case "queue":
+                loopMode = QueueRepeatMode.QUEUE;
+                break;
+            case "autoplay":
+                loopMode = QueueRepeatMode.AUTOPLAY;
+                break;
+            default:
+                return message.reply(
+                    t("cmds:loop.invalidMode", {
+                        prefix: guildDB.prefix,
+                        mode: loopMode,
+                    })
+                );
+                break;
         }
-        const emoji = loopMode === QueueRepeatMode.TRACK ? "🔂" : loopMode === QueueRepeatMode.QUEUE ? "🔁" : "▶";
+        const emoji =
+            loopMode === QueueRepeatMode.TRACK
+                ? "🔂"
+                : loopMode === QueueRepeatMode.QUEUE
+                ? "🔁"
+                : "▶";
         const members = voice.members.filter((m) => !m.user.bot);
         let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:loop.cmdDesc")
@@ -78,7 +92,11 @@ module.exports = {
                 if (haveVoted >= moreVotes) {
                     queue.setRepeatMode(loopMode);
                     msg.edit({
-                        embeds: [embed.setDesc(`${emoji} | ${t("cmds:loop.success")}`)],
+                        embeds: [
+                            embed.setDesc(
+                                `${emoji} | ${t("cmds:loop.success")}`
+                            ),
+                        ],
                     });
                     collector.stop();
                 } else {
