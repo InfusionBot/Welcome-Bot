@@ -9,6 +9,7 @@ module.exports = {
     aliases: ["sound-level"],
     //description: "Adjust the volume of the music",
     guildOnly: true,
+    usage: "(0-200)",
     cooldown: 5,
     category: "Music",
     async execute(message, args, guildDB, t) {
