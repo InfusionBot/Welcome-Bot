@@ -223,7 +223,11 @@ client.on("messageCreate", async function (message) {
         guildDB = { prefix: client.defaultPrefix };
     }
     if (client.debug) client.logger.log("running execute func", "debug");
-    execute(message, guildDB);
+    try {
+        execute(message, guildDB);
+    } catch (e) {
+        client.logger.log(e, "error");
+    }
     if (client.debug)
         client.logger.log("finished running execute func", "debug");
 
