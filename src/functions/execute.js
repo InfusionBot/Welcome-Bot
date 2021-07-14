@@ -75,7 +75,7 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
-        if (command.guildOnly && message.channel.type === "dm") {
+        if (command.guildOnly && message.channel.type === "DM") {
             return message.reply(
                 `I can't execute that command inside DMs, ${message.author}`
             );
@@ -83,7 +83,7 @@ module.exports = async (message, guildDB) => {
 
         if (
             command?.permissions &&
-            message.channel.type !== "dm" &&
+            message.channel.type !== "DM" &&
             message?.guild
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
@@ -110,7 +110,7 @@ module.exports = async (message, guildDB) => {
 
         if (
             command?.bot_perms &&
-            message.channel.type !== "dm" &&
+            message.channel.type !== "DM" &&
             message?.guild
         ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
