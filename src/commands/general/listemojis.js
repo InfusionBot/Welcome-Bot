@@ -40,8 +40,9 @@ module.exports = {
         let page = 0;
         let i0 = 0; //From
         let i1 = 10; //To
-        let embed = new Embed({ color: "green", timestamp: true })
-            .setTitle(t("cmds:listemojis.cmdDesc"));
+        let embed = new Embed({ color: "green", timestamp: true }).setTitle(
+            t("cmds:listemojis.cmdDesc")
+        );
         let timeout = 200000; //20 secs timeout
         const emojis = message.guild.emojis.cache.size;
         const getList = () => {
@@ -50,7 +51,7 @@ module.exports = {
                 .slice(i0, i1)
                 .join("\n");
         };
-        const curPage = message.reply({embeds: [embed]});
+        const curPage = message.reply({ embeds: [embed] });
         for (var key in emojiList) {
             await curPage.react(emojiList[key]);
         }
@@ -71,7 +72,7 @@ module.exports = {
                     break;
                 case emojiList["last"]:
                     i0 = Math.floor(emojis / 10);
-                    i1 = (Math.floor(emojis / 10)) + 10;
+                    i1 = Math.floor(emojis / 10) + 10;
                     page = emojis;
                     break;
                 case emojiList["back"]:
