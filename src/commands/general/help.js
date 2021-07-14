@@ -113,7 +113,8 @@ module.exports = {
                     reaction.users.remove(message.author);
                 else if (message.client.debug)
                     client.logger.log(
-                        "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission"
+                        "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission",
+                        "debug"
                     );
                 switch (reaction.emoji.name) {
                     case emojiList["back"]:
