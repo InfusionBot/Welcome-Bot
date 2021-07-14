@@ -72,7 +72,7 @@ module.exports = {
                     break;
             }
             // If there is no guild to display, delete the message
-            if (i1 > message.client.guilds.cache.size + 10) {
+            if (i1 > servers + 10) {
                 return curPage.delete();
             }
             if (!i0 || !i1) {
