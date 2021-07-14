@@ -56,6 +56,7 @@ Some commit names we use are
 - `feat(<title>): <description>` - Used when new features are added.
 - `change(<title>): <description>` - Used when minor changes
 - `docs(<title>): <description>` - Used when docs or changelog is updated.
+- `deps(<title>): <description>` - Used when changes ro dependencies
 
 Here, you should either provide `<title>` or `<description>` which are title or description of what changes you have made respectively.
 
