@@ -29,6 +29,8 @@ class WelcomeBot extends Client {
             ],
             partials: ["CHANNEL"],
             messageCacheMaxSize: 100,
+            messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
+            messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
         });
         this.commands = {
             enabled: new Collection(),
