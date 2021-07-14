@@ -56,6 +56,8 @@ Read that below in [Commit names](#commit-names)
 > We don't want you to waste time writing a feature that might get denied.
 > If you have an idea and want it to be in the bot, check the [Ideas and discussion](#ideas-and-dicussion) paragraph above.
 
+<!--Below lines took from https://github.com/angular/material/blob/master/.github/CONTRIBUTING.md#-commit-message-format-->
+
 ## Commit names
 
 Each commit message consists of a **header**, a **body** and a **footer**. The header has a special
