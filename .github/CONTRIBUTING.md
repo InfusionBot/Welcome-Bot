@@ -51,7 +51,7 @@ If you know how to code in JavaScript, then feel free to give [one of the existe
 
 Also note, we recommend to use descriptive commit names to prepare the Changelog easily.
 Some commit names we use are
-- `refactor(<optional title>): <description>` - Used when we rewrite the code or make big changes to the code (excluding new features).
+- `refactor(<optional title>): <description>` - Used when we restructure the code or make big changes to the code (excluding new features).
 - `fix(<optional title>): <description>` - Used when bugs are fixed.
 - `feat(<optional title>): <description>` - Used when new features are added.
 - `docs(<optional title>): <description>` - Used when docs or changelog is updated 
