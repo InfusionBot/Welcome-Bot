@@ -125,7 +125,7 @@ client.player
                 queue.metadata.reply(t("cmds:play.destroyedQueue"));
                 break;
             default:
-                queue.metadata.reply(t("cmds:play.errorOccurred", { error.message }));
+                queue.metadata.reply(t("cmds:play.errorOccurred", { error: error.message }));
                 break;
         }
     });
