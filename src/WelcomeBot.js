@@ -187,6 +187,7 @@ class WelcomeBot extends Client {
     setDebug(debug=true, level=0) {
         this.debug = debug;
         this.debugLevel = level;
+        return true;
     }
 }
 
