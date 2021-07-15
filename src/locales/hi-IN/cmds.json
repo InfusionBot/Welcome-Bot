@@ -83,7 +83,7 @@
   },
   "avatar": {
     "cmdDesc": "उपयोगकर्ता का अवतार चित्र प्राप्त करें।",
-    "profile": "Avatar of {{user}}"
+    "profile": "यह {{user}} का अवतार चित्र है"
   },
   "stats": {
     "cmdDesc": "Your server statistics"
