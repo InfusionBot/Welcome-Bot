@@ -170,7 +170,8 @@ class WelcomeBot extends Client {
     }
 
     loadCommands(commandFolder) {
-        if (this.debug && this.debugLevel >= 2) this.logger.log("Loading commands", "debug", ["CORE", "CMDS"]);
+        if (this.debug && this.debugLevel >= 2)
+            this.logger.log("Loading commands", "debug", ["CORE", "CMDS"]);
         const commandFolders = fs.readdirSync(commandFolder);
 
         for (const folder of commandFolders) {
@@ -181,10 +182,14 @@ class WelcomeBot extends Client {
                 this.loadCommand(`${commandFolder}/${folder}`, file);
             }
         }
-        if (this.debug && this.debugLevel >= 2) this.logger.log("Finished loading commands", "debug", ["CORE", "CMDS"]);
+        if (this.debug && this.debugLevel >= 2)
+            this.logger.log("Finished loading commands", "debug", [
+                "CORE",
+                "CMDS",
+            ]);
     }
 
-    setDebug(debug=true, level=0) {
+    setDebug(debug = true, level = 0) {
         this.debug = debug;
         this.debugLevel = level;
     }
