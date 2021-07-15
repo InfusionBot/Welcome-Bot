@@ -114,22 +114,18 @@ client.player
     })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
-        switch (error.message) {
-            case "NotConnected":
-                queue.metadata.reply(t("cmds:play.voiceNotJoined"));
+        switch (error.message.replace("Error:", "").trim()) {
+            case "Status Code: 429":
+                queue.metadata.reply(t("cmds:play.rateLimited"));
                 break;
-            case "UnableToJoin":
-                queue.metadata.reply(t("cmds:play.cantJoin"));
-                break;
-            case "NotPlaying":
-                queue.metadata.reply(t("cmds:stop.notPlaying"));
+            case "Status Code: 403":
+                queue.metadata.reply(t("cmds:play.forbidden"));
                 break;
             case "Cannot use destroyed queue":
                 queue.metadata.reply(t("cmds:play.destroyedQueue"));
+                break;
             default:
-                if (error.toString().indexOf("429") !== -1)
-                    return queue.metadata.reply(t("cmds:play.rateLimited"));
-                queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
+                queue.metadata.reply(t("cmds:play.errorOccurred", { error.message }));
                 break;
         }
     });
