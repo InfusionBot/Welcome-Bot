@@ -22,10 +22,15 @@ module.exports = {
     execute(message, args, guildDB, t) {
         const client = message.client;
         const content = args.join(" ");
-        const embed = new Embed({ color: "success" }).setTitle(content);
+        const embed = new Embed({ color: "success" })
+            .setTitle(t("cmds:eval.cmdDesc"))
+            .addField("**Input**", content);
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
             if (typeof text === "string") {
+                if (text.includes(message.client.token)) {
+                    text = text.replace(message.client.token, "T0K3N");
+                }
                 return text
                     .replace(/`/g, "`" + String.fromCharCode(8203))
                     .replace(/@/g, "@" + String.fromCharCode(8203));
@@ -36,16 +41,16 @@ module.exports = {
 
         return result
             .then((output) => {
+                const type = typeof output;
                 if (typeof output !== "string") {
                     output = inspect(output, { depth: 0 }); //depth should be 0 as it will give contents of object in a property, in this object. That makes the message too long.
                 }
 
-                if (output.includes(message.client.token)) {
-                    output = output.replace(message.client.token, "T0K3N");
-                }
                 message.reply({
                     embeds: [
-                        embed.setDesc("```js\n" + clean(output) + "\n```"),
+                        embed
+                        .setDesc("```js\n" + clean(output) + "\n```")
+                        .addField("**Type**", type),
                     ],
                 });
             })
@@ -53,9 +58,7 @@ module.exports = {
                 if (typeof err !== "string") {
                     err = inspect(err, { depth: 0 });
                 }
-                if (err.includes(message.client.token)) {
-                    err = err.replace(message.client.token, "T0K3N");
-                }
+
                 message.reply({
                     embeds: [
                         embed.setDesc("ERROR:\n```js\n" + clean(err) + "\n```"),
