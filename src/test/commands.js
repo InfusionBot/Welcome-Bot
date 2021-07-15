@@ -70,7 +70,7 @@ describe("Commands", () => {
         }, []);
         let errors = [];
         for (var i = 0; i < cmdCats.length; i++) {
-            if (!categoryNames.has(cmdCats[i])) {
+            if (!categoryNames.includes(cmdCats[i])) {
                 errors.push(cmdCats[i]);
             }
         }
