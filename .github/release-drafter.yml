@@ -4,7 +4,7 @@ commitish: main
 publish: false
 prerelease: false
 exclude-labels:
-  - "No changelog"
+  - "No-changelog"
   - "Type: invalid"
 
 category-template: "### $TITLE"
