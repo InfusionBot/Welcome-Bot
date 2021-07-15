@@ -43,9 +43,11 @@ module.exports = {
                 if (output.includes(message.client.token)) {
                     output = output.replace(message.client.token, "T0K3N");
                 }
-                message.reply({embeds: [
-                    embed.setDesc("```js\n" + clean(output) + "\n```")
-                ]});
+                message.reply({
+                    embeds: [
+                        embed.setDesc("```js\n" + clean(output) + "\n```"),
+                    ],
+                });
             })
             .catch((err) => {
                 if (typeof err !== "string") {
@@ -54,9 +56,11 @@ module.exports = {
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }
-                message.reply({embeds: [
-                    embed.setDesc("ERROR:\n```js\n" + clean(err) + "\n```")
-                ]});
+                message.reply({
+                    embeds: [
+                        embed.setDesc("ERROR:\n```js\n" + clean(err) + "\n```"),
+                    ],
+                });
             });
     },
 };
