@@ -27,6 +27,7 @@ categories:
   - title: "🔧 Chores"
     labels:
       - "Updates: dependencies"
+      - "Updates: npm deps"
 
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 version-resolver:
