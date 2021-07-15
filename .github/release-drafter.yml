@@ -4,7 +4,7 @@ commitish: main
 publish: false
 prerelease: false
 exclude-labels:
-  - "No changelog"
+  - "No-changelog"
   - "Type: invalid"
 
 category-template: "### $TITLE"
@@ -21,9 +21,13 @@ categories:
   - title: "📖 Docs"
     labels:
       - "Updates: documentation"
+  - title: "⚙️ Tests"
+    labels:
+      - "Type: tests"
   - title: "🔧 Chores"
     labels:
       - "Updates: dependencies"
+      - "Updates: npm deps"
 
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 version-resolver:
