@@ -6,7 +6,9 @@
 const WelcomeBot = require("../WelcomeBot");
 const client = new WelcomeBot();
 const commands = client.commands.enabled;
-require("../loaders/Locale.js")(client).then(success => console.log("Locales are " + (success ? "loaded" : "not loaded")));
+require("../loaders/Locale.js")(client).then((success) =>
+    console.log("Locales are " + (success ? "loaded" : "not loaded"))
+);
 //findArrDups is took from https://flexiple.com/find-duplicates-javascript-array/
 const findArrDups = (array) => {
     //find duplicates in an array
@@ -52,7 +54,9 @@ describe("Commands", () => {
         } else {
             done(
                 new Error(
-                    `Some of the cmds are not defined in cmds.json, they are ${errors.join(", ")}`
+                    `Some of the cmds are not defined in cmds.json, they are ${errors.join(
+                        ", "
+                    )}`
                 )
             );
         }
@@ -79,7 +83,9 @@ describe("Commands", () => {
         } else {
             done(
                 new Error(
-                    `Some of the cmds have wrong category name, they are ${errors.join(", ")}`
+                    `Some of the cmds have wrong category name, they are ${errors.join(
+                        ", "
+                    )}`
                 )
             );
         }
