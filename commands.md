@@ -132,7 +132,20 @@ Not providing any arguments will display the current settings.
 - Aliases: `getprefix`
 - Cooldown: 10
 
-## General (7 commands)
+## General (9 commands)
+
+### `addemoji`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Add emoji from a image link
+- Usage: [link] [emoji name]
+- Aliases: `emoji`
+- Cooldown: 5
 
 ### `avatar`
 
@@ -172,6 +185,19 @@ Not providing any arguments will display the current settings.
 - Usage: (command name / category)
 - Aliases: `commands`, `cmd`
 - Cooldown: 5
+
+### `listemojis`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: List of all custom emojis in this server, with there IDs.
+- Usage: None
+- Aliases: `list-emojis`
+- Cooldown: 10
 
 ### `perms`
 
@@ -496,7 +522,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Adjust the volume of the music
-- Usage: None
+- Usage: (0-200)
 - Aliases: `sound-level`, `soundlevel`
 - Cooldown: 5
 

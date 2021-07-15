@@ -114,22 +114,20 @@ client.player
     })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
-        switch (error.message) {
-            case "NotConnected":
-                queue.metadata.reply(t("cmds:play.voiceNotJoined"));
+        switch (error.message.replace("Error:", "").trim()) {
+            case "Status Code: 429":
+                queue.metadata.reply(t("cmds:play.rateLimited"));
                 break;
-            case "UnableToJoin":
-                queue.metadata.reply(t("cmds:play.cantJoin"));
-                break;
-            case "NotPlaying":
-                queue.metadata.reply(t("cmds:stop.notPlaying"));
+            case "Status Code: 403":
+                queue.metadata.reply(t("cmds:play.forbidden"));
                 break;
             case "Cannot use destroyed queue":
                 queue.metadata.reply(t("cmds:play.destroyedQueue"));
+                break;
             default:
-                if (error.toString().indexOf("429") !== -1)
-                    return queue.metadata.reply(t("cmds:play.rateLimited"));
-                queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
+                queue.metadata.reply(
+                    t("cmds:play.errorOccurred", { error: error.message })
+                );
                 break;
         }
     });
@@ -213,7 +211,8 @@ client.on("guildDelete", (guild) => {
 
 client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
-    if (client.debug) client.logger.log("message event triggered", "debug");
+    if (client.debug && client.debugLevel >= 1)
+        client.logger.log("message event triggered", "debug");
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
     if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
@@ -222,9 +221,14 @@ client.on("messageCreate", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
-    if (client.debug) client.logger.log("running execute func", "debug");
-    execute(message, guildDB);
-    if (client.debug)
+    if (client.debug && client.debugLevel >= 1)
+        client.logger.log("running execute func", "debug");
+    try {
+        execute(message, guildDB);
+    } catch (e) {
+        client.logger.log(e, "error");
+    }
+    if (client.debug && client.debugLevel >= 1)
         client.logger.log("finished running execute func", "debug");
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);

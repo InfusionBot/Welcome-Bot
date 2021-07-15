@@ -23,6 +23,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 - New command `mute` - Mute a member
 - New command `unmute` - Unmute a member
 - New command `hastebin` - Upload your text on hastebin
+- New command `listemojis` - List all emojis in that server
 - With this release, Welcome-Bot reaches 50 commands!!
 
 ### Changes

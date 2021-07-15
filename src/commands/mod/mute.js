@@ -5,7 +5,7 @@
  */
 const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
-const { userFromMention } = require("../../functions/get.js");
+const { userFromMention } = require("../../helpers/Util.js");
 module.exports = {
     name: "mute",
     //description: "Mute a member",

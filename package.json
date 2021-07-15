@@ -12,6 +12,7 @@
     "New command `mute` - Mute a member",
     "New command `unmute` - Unmute a member",
     "New command `hastebin` - Upload your text on hastebin",
+    "New command `listemojis` - List all emojis in that server",
     "With this release, Welcome-Bot reaches 50 commands!!",
     "**Changes**",
     "Change `modLogChan` to `modChannel` in db",
@@ -32,7 +33,7 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js",
-    "test": "npx mocha src/test --recursive"
+    "test": "npx mocha src/test --recursive --exit"
   },
   "repository": {
     "type": "git",
@@ -67,7 +68,8 @@
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
     "opusscript": "^0.0.8",
-    "pokemon": "^2.2.0"
+    "pokemon": "^2.2.0",
+    "bufferutil": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
