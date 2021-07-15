@@ -9,6 +9,7 @@ const versionSender = require("../../functions/versionSender.js");
 const presence = require("../../functions/presence.js");
 const serverCount = require("../../functions/serverCount.js");
 const { inspect } = require("util");
+const { Embed } = require("../../classes");
 
 module.exports = {
     name: "eval",
@@ -21,6 +22,7 @@ module.exports = {
     execute(message, args, guildDB, t) {
         const client = message.client;
         const content = args.join(" ");
+        const embed = new Embed({ color: "success" }).setTitle(content);
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
             if (typeof text === "string") {
@@ -41,14 +43,24 @@ module.exports = {
                 if (output.includes(message.client.token)) {
                     output = output.replace(message.client.token, "T0K3N");
                 }
-                message.channel.send("```js\n" + clean(output) + "\n```");
+                message.reply({
+                    embeds: [
+                        embed.setDesc("```js\n" + clean(output) + "\n```"),
+                    ],
+                });
             })
             .catch((err) => {
-                err = err.toString();
+                if (typeof err !== "string") {
+                    err = inspect(err, { depth: 0 });
+                }
                 if (err.includes(message.client.token)) {
                     err = err.replace(message.client.token, "T0K3N");
                 }
-                message.channel.send("`ERROR`\n```js\n" + clean(err) + "\n```");
+                message.reply({
+                    embeds: [
+                        embed.setDesc("ERROR:\n```js\n" + clean(err) + "\n```"),
+                    ],
+                });
             });
     },
 };
