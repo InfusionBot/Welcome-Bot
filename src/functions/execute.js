@@ -50,7 +50,7 @@ module.exports = async (message, guildDB) => {
         }
 
         if (!command || typeof command === "undefined") {
-            if (client.debug)
+            if (client.debug && client.debugLevel >= 1)
                 client.logger.log(`Can't find command: ${commandName}`);
             //message.reply(errMsg);
             return;
@@ -195,7 +195,7 @@ module.exports = async (message, guildDB) => {
         timestamps.set(message.author.id, now); //Set a timestamp for author with time now.
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
 
-        if (client.debug)
+        if (client.debug && client.debugLevel >= 2)
             client.logger.log(
                 `Starting to execute cmd: ${command.name}`,
                 "debug"
@@ -205,7 +205,7 @@ module.exports = async (message, guildDB) => {
             try {
                 command.execute(message, args, guildDB, t);
             } catch (err) {
-                client.logger.log(err, "error", ["COMMANDS"]);
+                client.logger.log(err, "error", ["CMDS"]);
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(
@@ -221,12 +221,12 @@ module.exports = async (message, guildDB) => {
             command.execute(message, args, guildDB, t);
         }
         message.channel.stopTyping(true);
-        if (client.debug)
+        if (client.debug && client.debugLevel >= 2)
             client.logger.log(
                 `Finished executing cmd: ${command.name}`,
                 "debug"
             );
-    } else if (client.debug) {
+    } else if (client.debug && client.debugLevel >= 1) {
         client.logger.log("prefix did not match", "debug");
         console.log("PREFIX match:", message.content.match(prefixRegex));
     }

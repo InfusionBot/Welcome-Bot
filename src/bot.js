@@ -209,7 +209,7 @@ client.on("guildDelete", (guild) => {
 
 client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
-    if (client.debug) client.logger.log("message event triggered", "debug");
+    if (client.debug && client.debugLevel >= 1) client.logger.log("message event triggered", "debug");
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
     if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
@@ -218,13 +218,13 @@ client.on("messageCreate", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
-    if (client.debug) client.logger.log("running execute func", "debug");
+    if (client.debug && client.debugLevel >= 1) client.logger.log("running execute func", "debug");
     try {
         execute(message, guildDB);
     } catch (e) {
         client.logger.log(e, "error");
     }
-    if (client.debug)
+    if (client.debug && client.debugLevel >= 1)
         client.logger.log("finished running execute func", "debug");
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
