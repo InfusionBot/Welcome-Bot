@@ -21,6 +21,9 @@ categories:
   - title: "📖 Docs"
     labels:
       - "Updates: documentation"
+  - title: "⚙️ Tests"
+    labels:
+      - "Type: tests"
   - title: "🔧 Chores"
     labels:
       - "Updates: dependencies"
