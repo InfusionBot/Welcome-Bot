@@ -37,7 +37,7 @@ describe("Commands", () => {
         }
     });
 
-    it("should have oy lowercase names and aliases", (done) => {
+    it("should have only lowercase names and aliases", (done) => {
         const aliases = commands.reduce((arr, command) => {
             const { name } = command;
             const aliases = command?.aliases || [];
