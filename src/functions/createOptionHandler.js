@@ -15,11 +15,6 @@ module.exports = (className, opts) => {
                     ...defaultVal,
                     ...val,
                 };
-            } else if (typeof val === "array" && typeof defaultVal === "array") {
-                opts[key] = [
-                    ...defaultVal,
-                    ...val,
-                ];
             } else if (typeof val === "undefined") {
                 return defaultVal;
             }
