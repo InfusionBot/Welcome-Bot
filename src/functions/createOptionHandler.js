@@ -3,7 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-modules.exports = (className, opts) => {
+module.exports = (className, opts) => {
     if (typeof opts === "undefined") {
         throw new Error("createOptionHandler: expected opts arg to not be undefined, but received undefined");
     }
