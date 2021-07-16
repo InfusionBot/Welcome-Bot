@@ -5,7 +5,9 @@
  */
 modules.exports = (className, opts) => {
     if (typeof opts === "undefined") {
-        throw new Error("createOptionHandler: expected opts arg to not be undefined, but received undefined");
+        throw new Error(
+            "createOptionHandler: expected opts arg to not be undefined, but received undefined"
+        );
     }
     return {
         optional: (key, defaultVal) => {
@@ -15,11 +17,11 @@ modules.exports = (className, opts) => {
                     ...defaultVal,
                     ...val,
                 };
-            } else if (typeof val === "array" && typeof defaultVal === "array") {
-                opts[key] = [
-                    ...defaultVal,
-                    ...val,
-                ];
+            } else if (
+                typeof val === "array" &&
+                typeof defaultVal === "array"
+            ) {
+                opts[key] = [...defaultVal, ...val];
             } else if (typeof val === "undefined") {
                 return defaultVal;
             }
@@ -28,10 +30,12 @@ modules.exports = (className, opts) => {
 
         required: (key) => {
             if (typeof opts?.[key] === "undefined") {
-                throw new Error(`${key} key in opts of ${className} class is required.`);
+                throw new Error(
+                    `${key} key in opts of ${className} class is required.`
+                );
             } else {
                 return opts[key];
             }
-        }
+        },
     };
 };

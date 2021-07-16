@@ -49,8 +49,8 @@ module.exports = {
                 message.reply({
                     embeds: [
                         embed
-                        .setDesc("```js\n" + clean(output) + "\n```")
-                        .addField("**Type**", type),
+                            .setDesc("```js\n" + clean(output) + "\n```")
+                            .addField("**Type**", type),
                     ],
                 });
             })

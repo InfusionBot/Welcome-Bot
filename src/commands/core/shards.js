@@ -6,20 +6,25 @@
 const { Embed, Command } = require("../../classes");
 const AsciiTable = require("ascii-table");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "shards",
-            aliases: ["shard"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: true,
-            cooldown: 10,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "shards",
+                aliases: ["shard"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: true,
+                cooldown: 10,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    async execute ({message, args}, t) {
-        const embed = new Embed({color: "success"}).setTitle(t("cmds:shards.cmdDesc"));
+    async execute({ message, args }, t) {
+        const embed = new Embed({ color: "success" }).setTitle(
+            t("cmds:shards.cmdDesc")
+        );
         const table = new AsciiTable()
             .setHeading("Shard", "Servers", "Cached Users", "Ping")
             .setAlign(0, AsciiTable.CENTER)
@@ -27,16 +32,23 @@ module.exports = class CMD extends Command {
             .setAlign(2, AsciiTable.CENTER)
             .setAlign(3, AsciiTable.CENTER)
             .removeBorder();
-        const guildCount = await this.client.shard.fetchClientValues("guilds.cache.size");
-        const users = await this.client.shard.fetchClientValues("users.cache.size");
+        const guildCount = await this.client.shard.fetchClientValues(
+            "guilds.cache.size"
+        );
+        const users = await this.client.shard.fetchClientValues(
+            "users.cache.size"
+        );
         const ping = await this.client.shard.fetchClientValues("ws.ping");
         guildCount.forEach((count, shardId) => {
-            table.addRow(`${shardId}`, `${count}`, `${users[shardId]}`, `${ping[shardId]}ms`);
+            table.addRow(
+                `${shardId}`,
+                `${count}`,
+                `${users[shardId]}`,
+                `${ping[shardId]}ms`
+            );
         });
         message.channel.send({
-            embeds: [
-                embed.setDesc(`\`\`\`${table.toString()}\`\`\``)
-            ]
+            embeds: [embed.setDesc(`\`\`\`${table.toString()}\`\`\``)],
         });
     }
 };
