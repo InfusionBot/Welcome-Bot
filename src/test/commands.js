@@ -37,6 +37,31 @@ describe("Commands", () => {
         }
     });
 
+    it("should have oy lowercase names and aliases", (done) => {
+        const aliases = commands.reduce((arr, command) => {
+            const { name } = command;
+            const aliases = command?.aliases || [];
+            return [...arr, name, ...aliases];
+        }, []);
+        let errors = [];
+        for (var i = 0; i < aliases.length; i++) {
+            if (aliases[i] !== aliases[i].toLowerCase()) {
+                errors.push(aliases[i]);
+            }
+        }
+        if (!errors.length) {
+            done();
+        } else {
+            done(
+                new Error(
+                    `Some of them don't have lowercase names and aliases, they are: ${errors.join(
+                        ", "
+                    )}`
+                )
+            );
+        }
+    });
+
     it("should be defined in cmds.json", (done) => {
         const t = client.i18next.getFixedT("en-US");
         const cmds = commands.reduce((arr, command) => {
