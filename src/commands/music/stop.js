@@ -5,22 +5,25 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "stop",
-            aliases: ["leave"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "stop",
+                aliases: ["leave"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                },
+                disabled: false,
+                cooldown: 10,
+                category: "Music",
             },
-            disabled: false,
-            cooldown: 10,
-            category: "Music",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));

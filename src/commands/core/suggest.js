@@ -5,23 +5,26 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "suggest",
-            aliases: ["suggestion"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
+    constructor(client) {
+        super(
+            {
+                name: "suggest",
+                aliases: ["suggestion"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[suggestion]",
+                disabled: false,
+                cooldown: 10,
+                category: "Core",
             },
-            usage: "[suggestion]",
-            disabled: false,
-            cooldown: 10,
-            category: "Core",
-        }, client);
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         const text = args.join(" ");
         let embed = new Embed({
             footer: `${message.author.tag} gave new suggestion!`,

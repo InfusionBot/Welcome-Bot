@@ -6,18 +6,21 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "botperms",
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 10,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "botperms",
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 10,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         const beautifyPerms = require("../../functions/beautifyPerms");
         let permsGiven = message.guild.me
             .permissionsIn(message.channel)

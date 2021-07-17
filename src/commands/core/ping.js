@@ -5,19 +5,22 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "ping",
-            aliases: ["latency", "pong"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 5,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "ping",
+                aliases: ["latency", "pong"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 5,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         //TODO: Add translation
         let msg = `Pong ${message.author}\nWebsocket heartbeat: ${message.client.ws.ping}ms.`;
         message.channel

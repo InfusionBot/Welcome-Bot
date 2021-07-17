@@ -6,28 +6,31 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "disable",
-            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
-            botPerms: [],
-            requirements: {
-                subcommand: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "disable",
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: true,
+                    guildOnly: true,
+                },
+                usage: "[subcommand]",
+                subcommands: [
+                    { name: "welcome", desc: "Disable welcome logs" },
+                    { name: "goodbye", desc: "Disable goodBye logs" },
+                    { name: "show", desc: "Show current settings" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
             },
-            usage: "[subcommand]",
-            subcommands: [
-        { name: "welcome", desc: "Disable welcome logs" },
-        { name: "goodbye", desc: "Disable goodBye logs" },
-        { name: "show", desc: "Show current settings" },
-    ],
-            disabled: false,
-            cooldown: 10,
-            category: "Setup",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         args[0] = args[0] ? args[0] : "";
         switch (args[0].toLowerCase()) {

@@ -7,24 +7,27 @@ const { Permissions } = require("discord.js");
 const { channelIdFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "follow",
-            aliases: ["getnews"],
-            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
-            botPerms: [Permissions.FLAGS.MANAGE_WEBHOOKS],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "follow",
+                aliases: ["getnews"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [Permissions.FLAGS.MANAGE_WEBHOOKS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[channel / channel id]",
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
             },
-            usage: "[channel / channel id]",
-            disabled: false,
-            cooldown: 10,
-            category: "Setup",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         let channelId;
         if (args[0].startsWith("<#")) {
             channelId = channelIdFromMention(args[0]);

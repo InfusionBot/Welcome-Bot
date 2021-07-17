@@ -5,22 +5,24 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "lib",
-            aliases: ["library"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 10,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "lib",
+                aliases: ["library"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 10,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         //TODO: Add translation
-        let embed = new Embed()
-        .addField(
+        let embed = new Embed().addField(
             "Discord.js v13 (master branch)",
             "We are opensource, you can check out source code at [GitHub](https://github.com/Welcome-Bot/welcome-bot)"
         );

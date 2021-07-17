@@ -6,20 +6,23 @@
 const getVersion = require("../../db/functions/version/getVersion.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "version",
-            aliases: ["vinfo", "ver"],
-            memberPerms: [],
-            botPerms: [],
-            usage: "(version)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "version",
+                aliases: ["vinfo", "ver"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "(version)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         if (!args[0]) args[0] = message.client.botVersion;
         if (args[0].startsWith("v")) {
             args[0] = args[0].replace("v", "");

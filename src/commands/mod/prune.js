@@ -6,35 +6,38 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "prune",
-            aliases: ["purge"],
-            memberPerms: [Permissions.FLAGS.KICK_MEMBERS],
-            botPerms: [Permissions.FLAGS.KICK_MEMBERS],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "prune",
+                aliases: ["purge"],
+                memberPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                botPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[no of msg / subcommand]",
+                subcommands: [
+                    { name: "all", desc: "Delete 100 messages" },
+                    {
+                        name: "bots",
+                        desc: "Delete all messages sent by a bot in this channel",
+                    },
+                    {
+                        name: "*[string]",
+                        desc: '`*Text` will delete any message containing "Text"',
+                    },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
             },
-            usage: "[no of msg / subcommand]",
-            subcommands: [
-        { name: "all", desc: "Delete 100 messages" },
-        {
-            name: "bots",
-            desc: "Delete all messages sent by a bot in this channel",
-        },
-        {
-            name: "*[string]",
-            desc: '`*Text` will delete any message containing "Text"',
-        },
-    ],
-            disabled: false,
-            cooldown: 10,
-            category: "Moderation",
-        }, client);
+            client
+        );
     }
 
-    execute({message, args, guildDB}, t) {
+    execute({ message, args, guildDB }, t) {
         let messages;
         const errMsg =
             "An error occurred when trying to prune messages in this channel";

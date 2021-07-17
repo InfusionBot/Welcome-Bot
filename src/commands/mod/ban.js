@@ -7,23 +7,26 @@ const { Permissions } = require("discord.js");
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "ban",
-            memberPerms: [Permissions.FLAGS.BAN_MEMBERS],
-            botPerms: [Permissions.FLAGS.BAN_MEMBERS],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "ban",
+                memberPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                botPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[@mention] (reason)",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
             },
-            usage: "[@mention] (reason)",
-            disabled: false,
-            cooldown: 10,
-            category: "Moderation",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         let channel;
         if (args.length < 1) {
             return message.reply(
@@ -68,7 +71,7 @@ module.exports = class CMD extends Command {
                 (ch) => ch.name === guildDB.modChannel
             );
             if (channel) {
-                embed = new Embed({color: "red"});
+                embed = new Embed({ color: "red" });
                 embed.setTitle(`User banned: ${user.tag} (${user.id})`);
                 embed.addField(
                     t("misc:resMod"),

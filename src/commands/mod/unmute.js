@@ -7,23 +7,26 @@ const { Permissions } = require("discord.js");
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "unmute",
-            memberPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
-            botPerms: [Permissions.FLAGS.MANAGE_ROLES],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "unmute",
+                memberPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                botPerms: [Permissions.FLAGS.MANAGE_ROLES],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[@mention / user id] (reason)",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
             },
-            usage: "[@mention / user id] (reason)",
-            disabled: false,
-            cooldown: 10,
-            category: "Moderation",
-        }, client);
+            client
+        );
     }
 
-    async execute ({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         let user;
         let reason = args.join(" ").replace(args[0], "");
         if (!reason) {

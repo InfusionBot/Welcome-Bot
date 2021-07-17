@@ -6,23 +6,26 @@
 const fetch = require("node-fetch");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "hastebin",
-            aliases: ["pastebin"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
+    constructor(client) {
+        super(
+            {
+                name: "hastebin",
+                aliases: ["pastebin"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[text]",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            usage: "[text]",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         const text = args.join(" ");
         if (!text) {
             return message.reply(t("cmds:hastebin.missingText"));

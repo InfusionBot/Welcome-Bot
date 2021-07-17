@@ -6,20 +6,23 @@
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "avatar",
-            aliases: ["dp", "profile"],
-            memberPerms: [],
-            botPerms: [],
-            usage: "(@mention / user id)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "avatar",
+                aliases: ["dp", "profile"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "(@mention / user id)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         const embed = new Embed();
         let user;
         if (args[0]) {

@@ -6,19 +6,22 @@
 const { MessageActionRow, MessageButton } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "support",
-            aliases: ["support-server"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 20,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "support",
+                aliases: ["support-server"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 20,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         //TODO: Add translation
         const embed = new Embed({
             color: "green",

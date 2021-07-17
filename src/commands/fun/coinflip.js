@@ -5,19 +5,22 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "coinflip",
-            aliases: ["cf", "filpcoin"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 10,
-            category: "Fun",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "coinflip",
+                aliases: ["cf", "filpcoin"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 10,
+                category: "Fun",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         const coins = {
             heads: "https://i.imgur.com/yStXPCV.png",
             tails: "https://i.imgur.com/kSteyPc.png",

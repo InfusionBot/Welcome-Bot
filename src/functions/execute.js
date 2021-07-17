@@ -189,31 +189,31 @@ module.exports = async (message, guildDB) => {
             );
         if (command.prerun(message, t)) {
             if (client.debug && client.debugLevel >= 2)
-            client.logger.log(
-                `Starting to execute cmd: ${command.name}`,
-                "debug"
-            );
-        message.channel.sendTyping();
-        try {
-            command.execute({message, args, guildDB}, t);
-        } catch (err) {
-            client.logger.log(err, "error", ["CMDS"]);
-            embed
-                .setTitle(t("errors:generic"))
-                .addField(
-                    `Please report this to ${message.client.ownersTags.join(
-                        " OR "
-                    )}`,
-                    "\u200b"
+                client.logger.log(
+                    `Starting to execute cmd: ${command.name}`,
+                    "debug"
                 );
-            message.reply({ embeds: [embed] });
-            return;
-        }
-        if (client.debug && client.debugLevel >= 2)
-            client.logger.log(
-                `Finished executing cmd: ${command.name}`,
-                "debug"
-            );
+            message.channel.sendTyping();
+            try {
+                command.execute({ message, args, guildDB }, t);
+            } catch (err) {
+                client.logger.log(err, "error", ["CMDS"]);
+                embed
+                    .setTitle(t("errors:generic"))
+                    .addField(
+                        `Please report this to ${message.client.ownersTags.join(
+                            " OR "
+                        )}`,
+                        "\u200b"
+                    );
+                message.reply({ embeds: [embed] });
+                return;
+            }
+            if (client.debug && client.debugLevel >= 2)
+                client.logger.log(
+                    `Finished executing cmd: ${command.name}`,
+                    "debug"
+                );
         }
         if (client.debug && client.debugLevel >= 3)
             client.logger.log(

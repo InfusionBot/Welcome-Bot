@@ -7,19 +7,22 @@ const moment = require("moment");
 require("moment-duration-format");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "uptime",
-            aliases: ["bot-uptime"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 10,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "uptime",
+                aliases: ["bot-uptime"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 10,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         moment.locale(guildDB.lang.toLowerCase());
         const duration = moment
             .duration(message.client.uptime)

@@ -6,24 +6,27 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "addemoji",
-            aliases: ["emoji"],
-            memberPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
-            botPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "addemoji",
+                aliases: ["emoji"],
+                memberPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
+                botPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[link] [emoji name]",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            usage: "[link] [emoji name]",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         if (!args[0].startsWith("http"))
             return message.reply(t("errors:invalidURL"));
         const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;

@@ -6,23 +6,26 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "listemojis",
-            aliases: ["list-emojis"],
-            memberPerms: [],
-            //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
-            requirements: {
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "listemojis",
+                aliases: ["list-emojis"],
+                memberPerms: [],
+                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                requirements: {
+                    guildOnly: true,
+                },
+                usage: "(command name / category)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            usage: "(command name / category)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         if (message.channel.type !== "DM") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))

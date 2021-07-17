@@ -5,23 +5,26 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "figlet",
-            aliases: ["asciify", "bigtext"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
+    constructor(client) {
+        super(
+            {
+                name: "figlet",
+                aliases: ["asciify", "bigtext"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[string]",
+                disabled: false,
+                cooldown: 10,
+                category: "Fun",
             },
-            usage: "[string]",
-            disabled: false,
-            cooldown: 10,
-            category: "Fun",
-        }, client);
+            client
+        );
     }
 
-    async execute ({message, args}, t) {
+    async execute({ message, args }, t) {
         const figlet = require("figlet");
         const figletAsync = require("util").promisify(figlet);
         let text = args.join(" ");

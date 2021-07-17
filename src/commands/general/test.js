@@ -6,21 +6,24 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "test",
-            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
-            botPerms: [],
-            requirements: {
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "test",
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                },
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    execute({message, args}, t) {
+    execute({ message, args }, t) {
         const greetUser = require("../../functions/greetUser");
         const result = greetUser(message.member);
         if (

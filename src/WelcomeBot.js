@@ -133,10 +133,7 @@ class WelcomeBot extends Client {
     }
 
     loadCommand(commandPath, commandName) {
-        const CMD = require(`${commandPath}/${commandName.replace(
-            ".js",
-            ""
-        )}`);
+        const CMD = require(`${commandPath}/${commandName.replace(".js", "")}`);
         //command = new Command(this, command);
         const command = new CMD(this);
         if (!command.disabled) {

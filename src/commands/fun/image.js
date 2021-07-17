@@ -5,27 +5,29 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "image",
-            aliases: ["random-image"],
-            memberPerms: [],
-            botPerms: [],
-            disabled: false,
-            cooldown: 10,
-            category: "Fun",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "image",
+                aliases: ["random-image"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 10,
+                category: "Fun",
+            },
+            client
+        );
     }
 
-    async execute ({message, args}, t) {
+    async execute({ message, args }, t) {
         const randomImage = require("../../functions/randomImage.js");
         const url = await randomImage().catch((err) => {
             console.error(err);
             message.reply(t("errors:generic"));
         });
         if (url.startsWith("http")) {
-            let image = new Embed()
-                .setImage(url);
+            let image = new Embed().setImage(url);
             message.channel.send({ embeds: [image] });
             return;
         }
