@@ -113,6 +113,7 @@ module.exports = async (message, guildDB) => {
             message?.guild
         ) {
             const bot_perms = message.guild.me.permissionsIn(message.channel);
+            const botG_perms = message.guild.me.permissions;
 
             if (!bot_perms) {
                 return message.reply(
@@ -120,7 +121,7 @@ module.exports = async (message, guildDB) => {
                 );
             }
             for (var i = 0; i < command.botPerms.length; i++) {
-                if (!bot_perms.has(command.botPerms[i])) {
+                if (!bot_perms.has(command.botPerms[i]) || !botG_perms.has(command.botPerms[i])) {
                     return message.reply(
                         t("errors:iDontHavePermission", {
                             permission: t(
