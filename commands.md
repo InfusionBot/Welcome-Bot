@@ -194,7 +194,7 @@ Not providing any arguments will display the current settings.
 ##### Cmd info
 
 - Description: List of all custom emojis in this server, with there IDs.
-- Usage: (command name / category)
+- Usage: None
 - Aliases: `list-emojis`
 - Cooldown: 10
 
@@ -342,7 +342,7 @@ Not providing any arguments will display the current settings.
 ##### Cmd info
 
 - Description: Unban a user.
-- Usage: [user id] (reason)
+- Usage: [user id]
 - Aliases: None
 - Cooldown: 10
 
