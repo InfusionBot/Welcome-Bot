@@ -1,10 +1,10 @@
 name: Release notes
 
 on:
-#  push:
-#    branches: [ main ]
-  pull_request:
+  push:
     branches: [ main ]
+  pull_request:
+    branches: [ development ]
 
 jobs:
   update_release_draft:

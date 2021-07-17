@@ -4,18 +4,30 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fetch = require("node-fetch");
-const { MessageEmbed } = require("discord.js");
-module.exports = {
-    name: "cuddle",
-    //description: "Cuddle a user",
-    args: true,
-    usage: "[mention / user id]",
-    cooldown: 3,
-    category: "Anime",
-    async execute(message, args, guildDB, t) {
+const { userFromMention } = require("../../helpers/Util.js");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "cuddle",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[@mention / user id]",
+                disabled: false,
+                cooldown: 5,
+                category: "Anime",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         let res = await fetch("https://nekos.life/api/v2/img/cuddle");
         res = await res.json();
-        const { userFromMention } = require("../../functions/get.js");
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -37,15 +49,14 @@ module.exports = {
         if (user.id === message.author.id) {
             return message.reply(t("cmds:cuddle.errorYourself"));
         }
-        let embed = new MessageEmbed()
+        let embed = new Embed()
             .setTitle(
                 t("cmds:cuddle.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })
             )
-            .setImage(res.url)
-            .setColor("RANDOM");
+            .setImage(res.url);
         message.reply({ embeds: [embed] });
-    },
+    }
 };

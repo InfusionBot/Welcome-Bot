@@ -4,21 +4,33 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "enable",
-    //description: "Enable welcome / goodbye logs.",
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    subcommand: true,
-    subcommands: [
-        { name: "welcome", desc: "Enable welcome logs" },
-        { name: "goodbye", desc: "Enable goodBye logs" },
-        { name: "show", desc: "Show current settings" },
-    ],
-    guildOnly: true,
-    usage: "[subcommand]",
-    cooldown: 10,
-    category: "Setup",
-    execute(message, args, guildDB) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "enable",
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: true,
+                    guildOnly: true,
+                },
+                usage: "[subcommand]",
+                subcommands: [
+                    { name: "welcome", desc: "Enable welcome logs" },
+                    { name: "goodbye", desc: "Enable goodBye logs" },
+                    { name: "show", desc: "Show current settings" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         args[0] = args[0] ? args[0] : "";
         switch (args[0].toLowerCase()) {
@@ -48,5 +60,5 @@ module.exports = {
                 break;
         }
         return;
-    },
+    }
 };

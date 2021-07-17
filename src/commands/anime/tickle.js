@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        let res = await fetch("https://nekos.life/api/v2/img/pat");
+        let res = await fetch("https://nekos.life/api/v2/img/tickle");
         res = await res.json();
         let user;
         if (args[0]) {
@@ -47,16 +47,17 @@ module.exports = class CMD extends Command {
             return false;
         }
         if (user.id === message.author.id) {
-            return message.reply(t("cmds:pat.errorYourself"));
+            return message.reply(t("cmds:tickle.errorYourself"));
         }
         let embed = new Embed()
             .setTitle(
-                t("cmds:pat.success", {
+                t("cmds:tickle.success", {
                     author: message.author.tag,
                     user: user.tag,
                 })
             )
-            .setImage(res.url);
+            .setImage(res.url)
+            .setColor("RANDOM");
         message.reply({ embeds: [embed] });
     }
 };

@@ -3,17 +3,26 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { userFromMention } = require("../../functions/get.js");
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "user",
-    aliases: ["whois", "ui", "uinfo"],
-    //description:
-    //"Get information about a user. It will show your info if no user was mentioned",
-    args: false,
-    usage: "(@mention / user_id) (--dm)",
-    category: "General",
-    async execute(message, args, guildDB, t) {
+const { userFromMention } = require("../../helpers/Util.js");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "user",
+                aliases: ["whois", "ui", "uinfo"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "(@mention / user id) (--dm)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }
@@ -104,5 +113,5 @@ module.exports = {
                 message.channel.send({ embeds: [embed] });
                 break;
         }
-    },
+    }
 };

@@ -5,16 +5,29 @@
  */
 const { Queue } = require("discord-player");
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "play",
-    aliases: ["joue"], //joue in french means play
-    //description: "Play music",
-    args: true,
-    guildOnly: true,
-    usage: "[name]",
-    cooldown: 5,
-    category: "Music",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "play",
+                aliases: ["joue"], //joue in french means play
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[name]",
+                disabled: false,
+                cooldown: 10,
+                category: "Music",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         const name = args.join(" ");
         if (!name) return message.reply(t("cmds:play.missingSongName"));
         const voice = message.member.voice.channel;
@@ -76,5 +89,5 @@ module.exports = {
             );
         }
         if (!queue.playing) await queue.play();
-    },
+    }
 };

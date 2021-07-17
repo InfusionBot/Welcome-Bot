@@ -4,20 +4,33 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "prefix",
-    aliases: ["getprefix"],
-    //description: "Manage perfix for this server",
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    subcommand: false,
-    subcommands: [
-        { name: "set", desc: "Set Custom prefix" },
-        { name: "reset", desc: "Reset Custom prefix" },
-    ],
-    cooldown: 10,
-    guildOnly: true,
-    category: "Setup",
-    async execute(message, args, guildDB) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "prefix",
+                aliases: ["getprefix"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    guildOnly: true,
+                },
+                usage: "(subcommand)",
+                subcommands: [
+                    { name: "set", desc: "Set Custom prefix" },
+                    { name: "reset", desc: "Reset Custom prefix" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
         let subcommand = args[0] ? args[0].toLowerCase() : "";
@@ -65,5 +78,5 @@ module.exports = {
                 );
                 break;
         }
-    },
+    }
 };

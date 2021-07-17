@@ -4,26 +4,38 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "channel",
-    aliases: ["chan"],
-    //description:
-    //"Manage channel settings for this server\nNot providing any arguments will display the current settings.",
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    subcommand: false,
-    subcommands: [
-        { name: "set", desc: "Set Welcome channel" },
-        { name: "setMod", desc: "Set Moderation channel" },
-        { name: "reset", desc: "Reset Welcome channel" },
-        { name: "resetMod", desc: "Reset Moderation channel" },
-    ],
-    cooldown: 10,
-    guildOnly: true,
-    category: "Setup",
-    async execute(message, args, guildDB, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
-        const getGuild = require("../../db/functions/guild/getGuild");
-        const { channelIdFromMention } = require("../../functions/get.js");
+const updateGuild = require("../../db/functions/guild/updateGuild");
+const getGuild = require("../../db/functions/guild/getGuild");
+const { userFromMention } = require("../../helpers/Util.js");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "channel",
+                aliases: ["chan"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    guildOnly: true,
+                },
+                usage: "(subcommand)",
+                subcommands: [
+                    { name: "set", desc: "Set Welcome channel" },
+                    { name: "setMod", desc: "Set Moderation channel" },
+                    { name: "reset", desc: "Reset Welcome channel" },
+                    { name: "resetMod", desc: "Reset Moderation channel" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         let subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
@@ -118,5 +130,5 @@ module.exports = {
                 }
                 break;
         }
-    },
+    }
 };

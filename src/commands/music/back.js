@@ -3,19 +3,32 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "back",
-    aliases: ["prevoius"],
-    //description: "Play prevoius music",
-    guildOnly: true,
-    cooldown: 5,
-    category: "Music",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "back",
+                aliases: ["prevoius"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                },
+                disabled: false,
+                cooldown: 10,
+                category: "Music",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue) return message.reply(t("cmds:stop.notPlaying"));
+        if (!queue || !queue.playing)
+            return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
         let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:back.cmdDesc")
@@ -86,5 +99,5 @@ module.exports = {
                 });
             }
         }
-    },
+    }
 };

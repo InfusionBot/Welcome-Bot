@@ -14,18 +14,35 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### New features
 
-- New command `pat` - Pats someone
-- New command `suggest` - Give your suggestion
-- New cmd category `Music` - Welcome-Bot now has Music commands.
-- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`
-- New command `addemoji` - Add a emoji from a image url, no need to download it.
-- With this release, Welcome-Bot reaches 50 commands!!
-- New command `mute` - Mute a member
-- New command `unmute` - Unmute a member
+- feat: New command `tickle`
+- feat: New command `pat`
+- feat: New command `suggest`
+- feat: New cmd category `Music` - Welcome-Bot now has Music commands.
+- feat: `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`, `loop`
+- feat: New command `addemoji`
+- feat: New command `mute`
+- feat: New command `unmute`
+- feat: New command `hastebin`
+- feat: New command `listemojis`
 
 ### Changes
 
-- Change `modLogChan` to `modChannel` in db
+- refactor(categories): Remove `Information` category & move those cmds to `General` category
+- refactor: Change emoji for General category to ℹ️
+- refactor(db): Change `modLogChan` to `modChannel`
+- docs: Improve contributing guidelines
+- Publish images to docker hub
+- tests: Add test script
+- ci: Add CI workflow
+- build(Dockerfile): Add Dockerfile
+- refactor(categories): Remove `Games` category & move those cmds to `Fun` category
+- refactor(cmds): Rename `stats` cmd to `serverinfo` cmd
+- To reduce caching, sweep out messages older than 14 days
+- refactor(categories): Remove `Miscellaneous` category and moved those cmds to `General` category
+
+### Bug fixes
+
+- fix(test cmd): test cmd will now reply if channel is not found out
 
 ## [v1.10.3]
 
@@ -366,6 +383,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.11.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.0
 [v1.10.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.3
 [v1.10.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.2
 [v1.10.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.1

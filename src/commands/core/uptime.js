@@ -3,23 +3,47 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-module.exports = {
-    name: "uptime",
-    aliases: ["getuptime"],
-    //description: "Get uptime of the bot",
-    cooldown: 10,
-    category: "Core",
-    execute(message, args) {
-        //https://discord.js.org/#/docs/main/v12/class/Client?scrollTo=uptime
-        let totalSeconds = message.client.uptime / 1000; //1000 ms = 1 sec
-        const days = Math.floor(totalSeconds / 86400); //total seconds divided by 86400 to get days
-        totalSeconds %= 86400; //Get remainder of totalSeconds and 86400 (by division) and stores result in totalSeconds
-        const hours = Math.floor(totalSeconds / 3600); //total seconds divided by 3600 to get hours
-        totalSeconds %= 3600; //Get remainder of totalSeconds and 3600 (by division) and stores result in totalSeconds
-        const minutes = Math.floor(totalSeconds / 60); //total seconds divided by 60 to get minutes
-        const seconds = Math.floor(totalSeconds % 60); //total seconds divided by 60 to get seconds
-        return message.channel.send(
-            `<:online:860920786382880809> Uptime of the bot: ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
+const moment = require("moment");
+require("moment-duration-format");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "uptime",
+                aliases: ["bot-uptime"],
+                memberPerms: [],
+                botPerms: [],
+                disabled: false,
+                cooldown: 10,
+                category: "Core",
+            },
+            client
         );
-    },
+    }
+
+    execute({ message, args }, t) {
+        moment.locale(guildDB.lang.toLowerCase());
+        const duration = moment
+            .duration(message.client.uptime)
+            .format(" D [days], H [hours], m [minutes], s [seconds]");
+        const date = new Date();
+        const timestamp = date.getTime() - Math.floor(message.client.uptime);
+        const embed = new Embed({
+            color: "green",
+            timestamp: true,
+        })
+            .setTitle(`:hourglass_flowing_sand:`)
+            .addField(
+                `${message.client.customEmojis.online} ${t("misc:uptime")}`,
+                `\`\`\`${duration}\`\`\``
+            )
+            .addField(
+                t("misc:datelaunched"),
+                `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``
+            );
+        message.channel.send({
+            embeds: [embed],
+        });
+    }
 };

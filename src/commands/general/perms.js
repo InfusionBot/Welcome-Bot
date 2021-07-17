@@ -4,19 +4,30 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-const { userFromMention } = require("../../functions/get.js");
+const { userFromMention } = require("../../helpers/Util.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
-module.exports = {
-    name: "perms",
-    aliases: ["permissions"],
-    //description:
-    //"Get permissions given to a specific user. Not providing any mention will show your permissions",
-    args: false,
-    guildOnly: true,
-    usage: "(@mention / user_id)",
-    cooldown: 5,
-    category: "General",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "perms",
+                aliases: ["permissions"],
+                memberPerms: [],
+                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                requirements: {
+                    guildOnly: true,
+                },
+                usage: "(@mention / user id)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -71,5 +82,5 @@ module.exports = {
         });
         text += "\n" + `${allowed} ✅ | ${denied} ❌` + "```";
         message.reply(text);
-    },
+    }
 };

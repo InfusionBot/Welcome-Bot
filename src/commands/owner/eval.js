@@ -9,21 +9,39 @@ const versionSender = require("../../functions/versionSender.js");
 const presence = require("../../functions/presence.js");
 const serverCount = require("../../functions/serverCount.js");
 const { inspect } = require("util");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "eval",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                    ownerOnly: true,
+                },
+                usage: "[statement]",
+                disabled: false,
+                cooldown: 20,
+                category: "Owner Only",
+            },
+            client
+        );
+    }
 
-module.exports = {
-    name: "eval",
-    //description: "Execute a statement",
-    args: true,
-    usage: "[statement]",
-    cooldown: 20,
-    ownerOnly: true,
-    category: "Owner Only",
-    execute(message, args, guildDB) {
+    execute({ message, args, guildDB }, t) {
         const client = message.client;
         const content = args.join(" ");
+        const embed = new Embed({ color: "success" })
+            .setTitle(t("cmds:eval.cmdDesc"))
+            .addField("**Input**", "```js\n" + content + "\n```");
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
             if (typeof text === "string") {
+                if (text.includes(message.client.token)) {
+                    text = text.replace(message.client.token, "T0K3N");
+                }
                 return text
                     .replace(/`/g, "`" + String.fromCharCode(8203))
                     .replace(/@/g, "@" + String.fromCharCode(8203));
@@ -34,21 +52,29 @@ module.exports = {
 
         return result
             .then((output) => {
+                const type = typeof output;
                 if (typeof output !== "string") {
                     output = inspect(output, { depth: 0 }); //depth should be 0 as it will give contents of object in a property, in this object. That makes the message too long.
                 }
 
-                if (output.includes(message.client.token)) {
-                    output = output.replace(message.client.token, "T0K3N");
-                }
-                message.channel.send("```js\n" + clean(output) + "\n```");
+                message.reply({
+                    embeds: [
+                        embed
+                            .setDesc("```js\n" + clean(output) + "\n```")
+                            .addField("**Type**", type),
+                    ],
+                });
             })
             .catch((err) => {
-                err = err.toString();
-                if (err.includes(message.client.token)) {
-                    err = err.replace(message.client.token, "T0K3N");
+                if (typeof err !== "string") {
+                    err = inspect(err, { depth: 0 });
                 }
-                message.channel.send("`ERROR`\n```js\n" + clean(err) + "\n```");
+
+                message.reply({
+                    embeds: [
+                        embed.setDesc("ERROR:\n```js\n" + clean(err) + "\n```"),
+                    ],
+                });
             });
-    },
+    }
 };

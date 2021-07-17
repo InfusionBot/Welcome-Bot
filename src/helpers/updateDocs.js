@@ -29,6 +29,10 @@ module.exports = (client) => {
                     );
                 }
             }
+            let aliases = "None";
+            if (cmd.aliases?.length !== undefined) {
+                aliases = `\`${cmd.aliases.join("`, `")}\``;
+            }
             text +=
                 `\n### \`${cmd.name}\`\n\n` +
                 `##### Subcommands:\n\n- ${
@@ -36,9 +40,7 @@ module.exports = (client) => {
                 }\n\n##### Cmd info\n\n` +
                 `- Description: ${t(`cmds:${cmd.name}.cmdDesc`)}\n` +
                 `- Usage: ${cmd.usage ? cmd.usage : "None"}\n` +
-                `- Aliases: ${
-                    cmd.aliases ? `\`${cmd.aliases.join("`, `")}\`` : "None"
-                }\n` +
+                `- Aliases: ${aliases}\n` +
                 `- Cooldown: ${cmd.cooldown}\n`;
         });
     });
@@ -47,5 +49,5 @@ module.exports = (client) => {
         .replace("{categoriesSize}", categories.length)
         .replace("{toc}", toc);
     fs.writeFileSync("./commands.md", `${text}`);
-    client.logger.log("Docs updated!", "debug");
+    if (client.debug) client.logger.log("Docs updated!", "debug");
 };

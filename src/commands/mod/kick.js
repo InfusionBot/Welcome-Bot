@@ -3,21 +3,30 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { MessageEmbed, Permissions } = require("discord.js");
-module.exports = {
-    name: "kick",
-    //aliases: [],
-    //description: "Kick a user.",
-    permissions: [Permissions.FLAGS.KICK_MEMBERS],
-    bot_perms: [Permissions.FLAGS.KICK_MEMBERS],
-    args: true,
-    guildOnly: true,
-    catchError: true,
-    cooldown: 5,
-    usage: "[@mention] (reason)",
-    category: "Moderation",
-    async execute(message, args, guildDB) {
-        const { userFromMention } = require("../../functions/get.js");
+const { Permissions } = require("discord.js");
+const { userFromMention } = require("../../helpers/Util.js");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "kick",
+                memberPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                botPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[@mention] (reason)",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         if (args.length < 1) {
             return message.reply(
                 "Please mention the user you want to kick and specify a kick reason (optional)."
@@ -62,7 +71,7 @@ module.exports = {
                 (ch) => ch.name === guildDB.modChannel
             );
             if (channel) {
-                embed = new MessageEmbed();
+                embed = new Embed({ color: "red" });
                 embed.setTitle(`User kicked: ${user.tag} (${user.id})`);
                 embed.addField(
                     "Responsible moderator:",
@@ -76,5 +85,5 @@ module.exports = {
         return message.channel.send(
             `Successfully kicked **${user.tag}** from the server!`
         );
-    },
+    }
 };

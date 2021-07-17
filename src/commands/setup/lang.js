@@ -4,22 +4,33 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "lang",
-    aliases: ["language", "changelang", "getlang"],
-    //description: "Change language",
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    args: false,
-    guildOnly: true,
-    usage: "(subcommand) (lang)",
-    subcommand: false,
-    subcommands: [
-        { name: "list", desc: "List of all languages available" },
-        { name: "set", desc: "Set language" },
-    ],
-    cooldown: 5,
-    category: "Setup",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "lang",
+                aliases: ["language", "changelang", "getlang"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    guildOnly: true,
+                },
+                usage: "(subcommand) (lang)",
+                subcommands: [
+                    { name: "list", desc: "List of all languages available" },
+                    { name: "set", desc: "Set language" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
         const keys = Object.keys(list);
@@ -56,5 +67,5 @@ module.exports = {
                 message.reply(t("cmds:lang.show", { lang: guildDB.lang }));
                 break;
         }
-    },
+    }
 };

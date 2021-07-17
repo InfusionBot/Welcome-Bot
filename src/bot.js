@@ -109,27 +109,25 @@ client.player
         if (client.debug)
             client.logger.log("Joined voice channel", "debug", ["VOICE"]);
     })
-    .on("connectionError", (queue, error) => {
+    .on("connectionError", (queue, err) => {
         client.logger.log(err, "error", ["VOICE"]);
     })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
-        switch (error.message) {
-            case "NotConnected":
-                queue.metadata.reply(t("cmds:play.voiceNotJoined"));
+        switch (error.message.replace("Error:", "").trim()) {
+            case "Status Code: 429":
+                queue.metadata.reply(t("cmds:play.rateLimited"));
                 break;
-            case "UnableToJoin":
-                queue.metadata.reply(t("cmds:play.cantJoin"));
-                break;
-            case "NotPlaying":
-                queue.metadata.reply(t("cmds:stop.notPlaying"));
+            case "Status Code: 403":
+                queue.metadata.reply(t("cmds:play.forbidden"));
                 break;
             case "Cannot use destroyed queue":
                 queue.metadata.reply(t("cmds:play.destroyedQueue"));
+                break;
             default:
-                if (error.toString().indexOf("429"))
-                    return queue.metadata.reply(t("cmds:play.rateLimited"));
-                queue.metadata.reply(t("cmds:play.errorOccurred", { error }));
+                queue.metadata.reply(
+                    t("cmds:play.errorOccurred", { error: error.message })
+                );
                 break;
         }
     });
@@ -162,7 +160,11 @@ client.on("ready", async () => {
 });
 
 client.on("debug", (info) => {
-    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug)
+    if (
+        !info.match(/\b(?:heartbeat|token|connect)\b/gi) &&
+        client.debug &&
+        client.debugLevel > 0
+    )
         client.logger.log(info, "debug", ["DISCORD"]);
 });
 
@@ -193,8 +195,9 @@ client.on("guildCreate", (guild) => {
             );
     }
     embed = new Embed({ color: "success", timestamp: true })
-        .setTitle(`Added to "${guild.name}"`)
-        .setDescription(`${guild.id}`);
+        .setTitle(`:white_check_mark: Added to "${guild.name}"`)
+        .setDescription(`${guild.id}`)
+        .addField("In shard: ", guild.shardId);
     client.channels.cache
         .get(client.loggingChannelId)
         .send({ embeds: [embed] });
@@ -203,9 +206,10 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
-    embed = new Embed({ color: "error", timestamp: true })
-        .setTitle(`Removed from "${guild.name}"`)
-        .setDescription(`${guild.id}`);
+    embed = new Embed({ color: "red", timestamp: true })
+        .setTitle(`:x: Removed from "${guild.name}"`)
+        .setDescription(`${guild.id}`)
+        .addField("In shard: ", guild.shardId);
     client.channels.cache
         .get(client.loggingChannelId)
         .send({ embeds: [embed] });
@@ -213,19 +217,26 @@ client.on("guildDelete", (guild) => {
 
 client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
-    if (client.debug) client.logger.log("message event triggered", "debug");
+    if (client.debug && client.debugLevel > 0)
+        client.logger.log("message event triggered", "debug");
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
     if (!client.application?.owner) await client.application?.fetch();
     let guildDB;
-    if (message.guild && message.channel.type !== "dm") {
+    if (message.guild && message.channel.type !== "DM") {
         guildDB = await getGuild(message.guild.id);
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
-    if (client.debug) client.logger.log("running execute func", "debug");
-    execute(message, guildDB);
-    if (client.debug)
+    if (client.debug && client.debugLevel > 0)
+        client.logger.log("running execute func", "debug");
+    try {
+        execute(message, guildDB);
+    } catch (e) {
+        client.logger.log(e, "error");
+    }
+    if (client.debug && client.debugLevel > 0)
         client.logger.log("finished running execute func", "debug");
+    if (message.content.split(" ").length > 1) return;
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
     if (!mentionRegex.test(message.content)) return;
@@ -238,17 +249,15 @@ client.on("messageCreate", async function (message) {
         reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
     }
     if (!message.reference) {
-        message.channel.startTyping();
+        message.channel.sendTyping();
         message.channel.send(reply);
-        message.channel.stopTyping();
     } else {
         message.channel.messages
             .fetch(message.reference.messageID)
             .then((msg) => {
                 if (msg.author.id != client.user.id) {
-                    message.channel.startTyping();
+                    message.channel.sendTyping();
                     message.channel.send(reply);
-                    message.channel.stopTyping();
                 }
             })
             .catch(console.error);

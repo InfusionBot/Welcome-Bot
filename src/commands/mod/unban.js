@@ -4,19 +4,28 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { MessageEmbed, Permissions } = require("discord.js");
-module.exports = {
-    name: "unban",
-    //aliases: [],
-    //description: "Unban a user.",
-    permissions: [Permissions.FLAGS.BAN_MEMBERS],
-    bot_perms: [Permissions.FLAGS.BAN_MEMBERS],
-    args: true,
-    guildOnly: true,
-    catchError: false,
-    cooldown: 5,
-    usage: "[user_id]",
-    category: "Moderation",
-    async execute(message, args, guildDB) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "unban",
+                memberPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                botPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[user id]",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         const id = args[0];
         if (!id || isNaN(parseInt(id))) {
             return message.reply(
@@ -55,5 +64,5 @@ module.exports = {
         return message.channel.send(
             `Successfully unbanned **${user.tag}** from the server!`
         );
-    },
+    }
 };
