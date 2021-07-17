@@ -22,9 +22,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    async execute({ message, args }, t) {
         const embed = new Embed();
-        let user;
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
