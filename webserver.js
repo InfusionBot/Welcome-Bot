@@ -13,4 +13,4 @@ app.listen(port, () => {
     console.log(`Running on port ${port}`);
 });
 
-process.env?.SHARDS === "undefined" ? require("./src/bot") : require("./src/shard");
+require("./src/bot");
