@@ -16,7 +16,7 @@ module.exports = class CMD extends Command {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[user id] (reason)",
+                usage: "[user id]",
                 disabled: false,
                 cooldown: 10,
                 category: "Moderation",
