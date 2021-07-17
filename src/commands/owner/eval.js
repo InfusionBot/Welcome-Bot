@@ -35,7 +35,7 @@ module.exports = class CMD extends Command {
         const content = args.join(" ");
         const embed = new Embed({ color: "success" })
             .setTitle(t("cmds:eval.cmdDesc"))
-            .addField("**Input**", content);
+            .addField("**Input**", "```js\n" + content + "\n```");
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
             if (typeof text === "string") {

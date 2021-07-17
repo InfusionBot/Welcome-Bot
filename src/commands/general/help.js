@@ -189,7 +189,6 @@ module.exports = class CMD extends Command {
             (c) => c.aliases && c.aliases.includes(name)
         );
         const command = commands.get(name) || alias;
-        console.log(command, alias, name);
         const category = categories.find((c) => c.name.toLowerCase() === name);
 
         if (!command && !category) {
