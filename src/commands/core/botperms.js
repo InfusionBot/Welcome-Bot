@@ -4,13 +4,20 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "botperms",
-    //description: "List of permissions given to bot",
-    guildOnly: true,
-    cooldown: 10,
-    category: "Core",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "botperms",
+            memberPerms: [],
+            botPerms: [],
+            disabled: false,
+            cooldown: 10,
+            category: "Core",
+        }, client);
+    }
+
+    execute ({message, args}, t) {
         const beautifyPerms = require("../../functions/beautifyPerms");
         let permsGiven = message.guild.me
             .permissionsIn(message.channel)
@@ -25,5 +32,5 @@ module.exports = {
                 t
             ).join(", ")}`
         );
-    },
+    }
 };

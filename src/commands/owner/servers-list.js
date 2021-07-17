@@ -3,14 +3,24 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-module.exports = {
-    name: "servers-list",
-    aliases: ["slist"],
-    //description: "Show the servers list!",
-    cooldown: 10,
-    ownerOnly: true,
-    category: "Owner Only",
-    async execute(message, args, guildDB) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "servers-list",
+            aliases: ["slist"],
+            memberPerms: [],
+            botPerms: [],
+            requirements: {
+                ownerOnly: true,
+            },
+            disabled: false,
+            cooldown: 20,
+            category: "Owner Only",
+        }, client);
+    }
+
+    async execute({message, args, guildDB}, t) {
         const { MessageEmbed } = require("discord.js");
         const servers = message.client.guilds.cache.size;
         const emojiList = {
@@ -102,5 +112,5 @@ module.exports = {
                 ],
             });
         });
-    },
+    }
 };

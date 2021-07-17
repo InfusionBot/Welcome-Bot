@@ -4,20 +4,30 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "message",
-    aliases: ["msg"],
-    //description: "Manage welcome message for this server",
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    subcommand: false,
-    subcommands: [
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "message",
+            aliases: ["msg"],
+            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+            botPerms: [],
+            requirements: {
+                subcommand: false,
+                guildOnly: true,
+            },
+            usage: "(subcommand) (lang)",
+            subcommands: [
         { name: "set", desc: "Set Welcome message" },
         { name: "reset", desc: "Reset Welcome message" },
     ],
-    cooldown: 10,
-    guildOnly: true,
-    category: "Setup",
-    async execute(message, args, guildDB) {
+            disabled: false,
+            cooldown: 10,
+            category: "Setup",
+        }, client);
+    }
+
+    async execute({message, args, guildDB}, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
         let subcommand = args[0] ? args[0].toLowerCase() : "";

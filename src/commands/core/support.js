@@ -4,14 +4,22 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { MessageActionRow, MessageButton } = require("discord.js");
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "support",
-    aliases: ["getsupport"],
-    //description: "Get Support for Welcome-Bot",
-    cooldown: 10,
-    category: "Core",
-    execute(message, args, guildDB) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "support",
+            aliases: ["support-server"],
+            memberPerms: [],
+            botPerms: [],
+            disabled: false,
+            cooldown: 20,
+            category: "Core",
+        }, client);
+    }
+
+    execute ({message, args}, t) {
+        //TODO: Add translation
         const embed = new Embed({
             color: "green",
             timestamp: true,
@@ -37,5 +45,5 @@ module.exports = {
             //ephemeral: true,
             components: [row],
         });
-    },
+    }
 };

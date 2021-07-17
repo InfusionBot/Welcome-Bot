@@ -4,16 +4,25 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "reload",
+            memberPerms: [],
+            botPerms: [],
+            requirements: {
+                args: true,
+                ownerOnly: true,
+            },
+            usage: "[command]",
+            disabled: false,
+            cooldown: 30,
+            category: "Owner Only",
+        }, client);
+    }
 
-module.exports = {
-    name: "reload",
-    //description: "Reloads a command",
-    args: true,
-    usage: "[command]",
-    cooldown: 30,
-    ownerOnly: true,
-    category: "Owner Only",
-    execute(message, args, guildDB, t) {
+    execute({message, args, guildDB}, t) {
         const commandName = args[0].toLowerCase();
         const command =
             message.client.commands.enabled.get(commandName) ||
@@ -51,5 +60,5 @@ module.exports = {
                 `There was an error while reloading a command \`${command.name}\``
             );
         }
-    },
+    }
 };

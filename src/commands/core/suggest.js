@@ -3,15 +3,25 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "suggest",
-    //description: "Give your suggestion",
-    args: true,
-    usage: "[suggestion]",
-    cooldown: 10,
-    category: "Core",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "suggest",
+            aliases: ["suggestion"],
+            memberPerms: [],
+            botPerms: [],
+            requirements: {
+                args: true,
+            },
+            usage: "[suggestion]",
+            disabled: false,
+            cooldown: 10,
+            category: "Core",
+        }, client);
+    }
+
+    execute ({message, args}, t) {
         const text = args.join(" ");
         let embed = new Embed({
             footer: `${message.author.tag} gave new suggestion!`,
@@ -54,5 +64,5 @@ module.exports = {
         } catch (e) {
             throw e;
         }
-    },
+    }
 };

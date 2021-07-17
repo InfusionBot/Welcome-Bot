@@ -4,18 +4,27 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { version } = require("discord.js");
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "botinfo",
-    aliases: ["bi", "binfo", "info", "stats"],
-    //description: "Bot information",
-    usage: "(--dm)",
-    cooldown: 5,
-    category: "Core",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "botinfo",
+            aliases: ["bi", "binfo", "info", "stats"],
+            memberPerms: [],
+            botPerms: [],
+            usage: "(--dm)",
+            disabled: false,
+            cooldown: 5,
+            category: "Core",
+        }, client);
+    }
+
+    execute ({message, args}, t) {
+        //TODO: Add translation
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }
+        const inline = true;
         let embed = new Embed({
             color: "success",
             timestamp: true,
@@ -52,14 +61,16 @@ module.exports = {
                     "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
                     "> [discordservices.net](https://discordservices.net/bot/848459799783669790)\n" +
                     "> [discordlist.space](https://discordlist.space/bot/848459799783669790)\n" +
-                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n"
+                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n",
+                inline
             )
             .addField(
-                "🔗 Other links:",
+                "🔗 Useful links:",
                 `> [Support server](${message.client.supportGuildInvite})\n` +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                     "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.html) and [Terms of service](https://welcome-bot.github.io/docs/terms.html)\n" +
-                    "> [Documentation](https://welcome-bot.github.io/docs)"
+                    "> [Documentation](https://welcome-bot.github.io/docs)",
+                inline
             )
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
@@ -67,11 +78,11 @@ module.exports = {
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
-                message.channel.send(`Check out your DMs, ${message.author}`);
+                message.reply(`Check out your DMs, ${message.author}`);
                 break;
             default:
-                message.channel.send({ embeds: [embed] });
+                message.reply({ embeds: [embed] });
                 break;
         }
-    },
+    }
 };

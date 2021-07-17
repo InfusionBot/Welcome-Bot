@@ -3,16 +3,25 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "serverinfo",
-    aliases: ["si"],
-    //description: "Your server statistics",
-    usage: "(--dm)",
-    cooldown: 10,
-    guildOnly: true,
-    category: "General",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "serverinfo",
+            aliases: ["si"],
+            memberPerms: [],
+            botPerms: [],
+            requirements: {
+                guildOnly: true,
+            },
+            usage: "(--dm)",
+            disabled: false,
+            cooldown: 10,
+            category: "General",
+        }, client);
+    }
+
+    async execute({message, args}, t) {
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }
@@ -46,6 +55,7 @@ module.exports = {
                     }`
             )
             .addField("Server was created at:", `${message.guild.createdAt}`);
+        message.guild.members.cache.clear();
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
@@ -55,6 +65,5 @@ module.exports = {
                 message.channel.send({ embeds: [embed] });
                 break;
         }
-        message.guild.members.cache.clear();
-    },
+    }
 };

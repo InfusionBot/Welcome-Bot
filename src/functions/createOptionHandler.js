@@ -10,12 +10,7 @@ module.exports = (className, opts) => {
     return {
         optional: (key, defaultVal) => {
             const val = opts?.[key];
-            if (typeof val === "object" && typeof defaultVal === "object") {
-                opts[key] = {
-                    ...defaultVal,
-                    ...val,
-                };
-            } else if (typeof val === "undefined") {
+            if (typeof val === "undefined") {
                 return defaultVal;
             }
             return opts[key];

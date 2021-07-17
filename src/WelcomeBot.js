@@ -5,7 +5,7 @@
  */
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
-const Command = require("./classes/Command");
+//const Command = require("./classes/Command");
 const util = require("util");
 const packageJson = require("../package.json");
 const Logger = require("colors-logger");
@@ -133,34 +133,12 @@ class WelcomeBot extends Client {
     }
 
     loadCommand(commandPath, commandName) {
-        let defaultOpts = {
-            bot_perms: [
-                Permissions.FLAGS.VIEW_CHANNEL,
-                Permissions.FLAGS.SEND_MESSAGES,
-                Permissions.FLAGS.READ_MESSAGE_HISTORY,
-            ],
-            args: false,
-            catchError: true,
-            disabled: false,
-            cooldown: 3,
-            ownerOnly: false,
-            category: "General",
-        };
-        let command = require(`${commandPath}/${commandName.replace(
+        const CMD = require(`${commandPath}/${commandName.replace(
             ".js",
             ""
         )}`);
-        command = new Command(this, command);
-        if (command.bot_perms) {
-            command.bot_perms = [
-                ...defaultOpts.bot_perms,
-                ...command.bot_perms,
-            ];
-        }
-        command = {
-            ...defaultOpts,
-            ...command,
-        };
+        //command = new Command(this, command);
+        const command = new CMD(this);
         if (!command.disabled) {
             this.commands.enabled.set(command.name, command);
         } else {
@@ -170,7 +148,7 @@ class WelcomeBot extends Client {
     }
 
     loadCommands(commandFolder) {
-        if (this.debug && this.debugLevel >= 2)
+        if (this.debug && this.debugLevel > 1)
             this.logger.log("Loading commands", "debug", ["CORE", "CMDS"]);
         const commandFolders = fs.readdirSync(commandFolder);
 
@@ -179,10 +157,16 @@ class WelcomeBot extends Client {
                 .readdirSync(`${commandFolder}/${folder}`)
                 .filter((file) => file.endsWith(".js"));
             for (const file of commandFiles) {
-                this.loadCommand(`${commandFolder}/${folder}`, file);
+                try {
+                    this.loadCommand(`${commandFolder}/${folder}`, file);
+                } catch (e) {
+                    this.logger.log(`Error occurred when loading ${file}`);
+                    console.error(e);
+                    process.exit();
+                }
             }
         }
-        if (this.debug && this.debugLevel >= 2)
+        if (this.debug && this.debugLevel > 1)
             this.logger.log("Finished loading commands", "debug", [
                 "CORE",
                 "CMDS",

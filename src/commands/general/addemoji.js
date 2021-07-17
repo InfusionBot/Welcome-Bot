@@ -3,20 +3,27 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "addemoji",
-    aliases: ["emoji"],
-    //description: "Add emoji from a image link",
-    permissions: ["MANAGE_EMOJIS"],
-    bot_perms: ["MANAGE_EMOJIS"],
-    args: true,
-    guildOnly: true,
-    usage: "[link] [emoji name]",
-    cooldown: 5,
-    category: "General",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor (client) {
+        super({
+            name: "addemoji",
+            aliases: ["emoji"],
+            memberPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
+            botPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
+            requirements: {
+                args: true,
+                guildOnly: true,
+            },
+            usage: "[link] [emoji name]",
+            disabled: false,
+            cooldown: 10,
+            category: "General",
+        }, client);
+    }
+
+    execute ({message, args}, t) {
         if (!args[0].startsWith("http"))
             return message.reply(t("errors:invalidURL"));
         const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
@@ -66,5 +73,5 @@ module.exports = {
                     ],
                 });
             });
-    },
+    }
 };

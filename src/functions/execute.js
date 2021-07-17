@@ -4,9 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("../db/connection");
-const { Collection, MessageEmbed, Permissions } = require("discord.js");
-const updateGuild = require("../db/functions/guild/updateGuild");
-const getGuild = require("../db/functions/guild/getGuild");
+const { MessageEmbed, Permissions } = require("discord.js");
 const beautifyPerms = require("../functions/beautifyPerms");
 
 module.exports = async (message, guildDB) => {
@@ -37,20 +35,20 @@ module.exports = async (message, guildDB) => {
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
-        if (
+        /*if (
             message.client.disabled &&
             (message.client.disabled.get(commandName) ||
                 message.client.disabled.find(
-                    (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
+                    (cmd) => cmd.aliases.length && cmd.aliases.includes(commandName)
                 ))
         ) {
             return message.channel.send(
                 `That command was disabled, ${message.author}`
             );
-        }
+        }*/
 
         if (!command || typeof command === "undefined") {
-            if (client.debug && client.debugLevel >= 1)
+            if (client.debug && client.debugLevel > 0)
                 client.logger.log(`Can't find command: ${commandName}`);
             //message.reply(errMsg);
             return;
@@ -62,11 +60,12 @@ module.exports = async (message, guildDB) => {
                 .permissionsIn(message.channel)
                 .has(Permissions.FLAGS.SEND_MESSAGES)
         ) {
-            return message.author.send(t("errors:noSendMsgPerm"));
+            //return message.author.send(t("errors:noSendMsgPerm"));
+            return;
         }
 
         if (
-            command.ownerOnly &&
+            command.requirements?.ownerOnly &&
             !(
                 message.client.ownerIDs.includes(message.author.id) ||
                 message.author.id === client.application?.owner.id
@@ -75,14 +74,14 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
-        if (command.guildOnly && message.channel.type === "DM") {
+        if (command.requirements?.guildOnly && message.channel.type === "DM") {
             return message.reply(
                 `I can't execute that command inside DMs, ${message.author}`
             );
         }
 
         if (
-            command?.permissions &&
+            command?.memberPerms &&
             message.channel.type !== "DM" &&
             message?.guild
         ) {
@@ -90,13 +89,13 @@ module.exports = async (message, guildDB) => {
             if (!authorPerms) {
                 return message.reply(t("errors:youDontHavePermShort"));
             }
-            for (var i = 0; i < command.permissions.length; i++) {
-                if (!authorPerms.has(command.permissions[i])) {
+            for (var i = 0; i < command.memberPerms.length; i++) {
+                if (!authorPerms.has(command.memberPerms[i])) {
                     return message.reply(
                         t("errors:youDontHavePermission", {
                             permission: t(
                                 `permissions:${new Permissions(
-                                    command.permissions[i]
+                                    command.memberPerms[i]
                                 )
                                     .toArray()
                                     .join("")
@@ -109,20 +108,36 @@ module.exports = async (message, guildDB) => {
         }
 
         if (
-            command?.bot_perms &&
+            command?.botPerms &&
             message.channel.type !== "DM" &&
             message?.guild
         ) {
-            const botPerms = message.guild.me.permissionsIn(message.channel);
+            const bot_perms = message.guild.me.permissionsIn(message.channel);
 
-            if (!botPerms || !botPerms.has(command.bot_perms)) {
+            if (!bot_perms) {
                 return message.reply(
                     `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
                 );
             }
+            for (var i = 0; i < command.botPerms.length; i++) {
+                if (!bot_perms.has(command.botPerms[i])) {
+                    return message.reply(
+                        t("errors:iDontHavePermission", {
+                            permission: t(
+                                `permissions:${new Permissions(
+                                    command.botPerms[i]
+                                )
+                                    .toArray()
+                                    .join("")
+                                    .toUpperCase()}`
+                            ),
+                        })
+                    );
+                }
+            }
         }
 
-        if (command?.args && !args.length) {
+        if (command.requirements?.args && !args.length) {
             let reply = t("errors:missingArgs");
 
             if (command.usage) {
@@ -141,7 +156,7 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
-        if (command?.subcommand && !args.length) {
+        if (command.requirements?.subcommand && !args.length) {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
@@ -166,64 +181,42 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
-        const { cooldowns } = message.client.commands;
-
-        if (!cooldowns.has(command.name)) {
-            cooldowns.set(command.name, new Collection());
-        }
-
-        const now = Date.now(); //number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
-        const timestamps = cooldowns.get(command.name);
-        const cooldownAmount = (command.cooldown || 3) * 1000;
-
-        if (timestamps.has(message.author.id)) {
-            const expirationTime =
-                timestamps.get(message.author.id) + cooldownAmount;
-
-            if (now < expirationTime) {
-                //Still this cooldown didn't expire.
-                const timeLeft = (expirationTime - now) / 1000;
-                return message.reply(
-                    t(`errors:cooldown`, {
-                        seconds: timeLeft.toFixed(1),
-                        command: command.name,
-                    })
-                );
-            }
-        }
-
-        timestamps.set(message.author.id, now); //Set a timestamp for author with time now.
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
-
-        if (client.debug && client.debugLevel >= 2)
+        if (client.debug && client.debugLevel >= 3)
+            client.logger.log(
+                `Starting to prerun cmd: ${command.name}`,
+                "debug"
+            );
+        if (command.prerun(message, t)) {
+            if (client.debug && client.debugLevel >= 2)
             client.logger.log(
                 `Starting to execute cmd: ${command.name}`,
                 "debug"
             );
-        message.channel.startTyping();
-        if (command?.catchError) {
-            try {
-                command.execute(message, args, guildDB, t);
-            } catch (err) {
-                client.logger.log(err, "error", ["CMDS"]);
-                embed
-                    .setTitle(t("errors:generic"))
-                    .addField(
-                        `Please report this to ${message.client.ownersTags.join(
-                            " OR "
-                        )}`,
-                        "\u200b"
-                    );
-                message.reply({ embeds: [embed] });
-                return;
-            }
-        } else {
-            command.execute(message, args, guildDB, t);
+        message.channel.sendTyping();
+        try {
+            command.execute({message, args, guildDB}, t);
+        } catch (err) {
+            client.logger.log(err, "error", ["CMDS"]);
+            embed
+                .setTitle(t("errors:generic"))
+                .addField(
+                    `Please report this to ${message.client.ownersTags.join(
+                        " OR "
+                    )}`,
+                    "\u200b"
+                );
+            message.reply({ embeds: [embed] });
+            return;
         }
-        message.channel.stopTyping(true);
         if (client.debug && client.debugLevel >= 2)
             client.logger.log(
                 `Finished executing cmd: ${command.name}`,
+                "debug"
+            );
+        }
+        if (client.debug && client.debugLevel >= 3)
+            client.logger.log(
+                `Finished prerunning cmd: ${command.name}`,
                 "debug"
             );
     } else if (client.debug && client.debugLevel >= 1) {
