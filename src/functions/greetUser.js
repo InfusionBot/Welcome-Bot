@@ -21,7 +21,7 @@ module.exports = async (member) => {
     if (!channel) {
         return;
     }
-    channel.startTyping(1);
+    channel.sendTyping();
     let msg = guildDB.welcomeMessage;
     //Replace Placeholders with their values
     msg = msg
@@ -43,5 +43,4 @@ module.exports = async (member) => {
         .setThumbnail(`${member.user.displayAvatarURL()}`)
         .setFooter(`Total members: ${member.guild.memberCount}`);
     channel.send({ embeds: [embed] });
-    channel.stopTyping();
 };

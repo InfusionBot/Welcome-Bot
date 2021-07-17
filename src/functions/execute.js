@@ -183,12 +183,10 @@ module.exports = async (message, guildDB) => {
                 `Starting to execute cmd: ${command.name}`,
                 "debug"
             );
-        message.channel.startTyping();
+        message.channel.sendTyping();
         if (command.catchError) {
             try {
-                message.channel.startTyping();
                 command.execute(message, args, guildDB, t);
-                message.channel.stopTyping(true);
             } catch (err) {
                 console.error(err);
                 embed
@@ -205,7 +203,6 @@ module.exports = async (message, guildDB) => {
         } else {
             command.execute(message, args, guildDB, t);
         }
-        message.channel.stopTyping(true);
         if (client.debug)
             client.logger.log(
                 `Finished executing cmd: ${command.name}`,
