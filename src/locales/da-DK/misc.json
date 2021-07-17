@@ -4,5 +4,7 @@
   "channels": "Channels",
   "bots": "Bots",
   "members": "Members",
-  "total": "Total"
+  "total": "Total",
+  "uptime": "Uptime",
+  "datelaunched": "Date Launched"
 }
