@@ -204,7 +204,7 @@ module.exports = class CMD extends Command {
             pages[0].addField("Command Name:", command.name);
 
             let desc = t(`cmds:${command.name}.cmdDesc`);
-            if (command.botPerms && command.botPerms?.length) {
+            if (command.botPerms && command.botPerms.length > 0) {
                 desc += `\nThe bot needs ${beautifyPerms(
                     command.botPerms,
                     message.client.allPerms,
@@ -214,9 +214,9 @@ module.exports = class CMD extends Command {
             pages[0].addField("Description:", desc);
             if (command.aliases && command.aliases?.length)
                 pages[0].addField("Aliases: ", command.aliases.join(", "));
-            if (command.permissions && command.permissions?.length)
+            if (command.memberPerms && command.memberPerms.length > 0)
                 pages[0].addField(
-                    "Permissions:",
+                    "Member Permissions:",
                     `You need ${beautifyPerms(
                         command.permissions,
                         message.client.allPerms,
