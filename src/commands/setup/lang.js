@@ -64,5 +64,5 @@ module.exports = class CMD extends Command {
                 message.reply(t("cmds:lang.show", { lang: guildDB.lang }));
                 break;
         }
-    },
+    }
 };

@@ -16,7 +16,7 @@ module.exports = class CMD extends Command {
                 subcommand: false,
                 guildOnly: true,
             },
-            usage: "(subcommand) (lang)",
+            usage: "(subcommand)",
             subcommands: [
         { name: "set", desc: "Set Welcome message" },
         { name: "reset", desc: "Reset Welcome message" },
@@ -73,5 +73,5 @@ module.exports = class CMD extends Command {
                 );
                 break;
         }
-    },
+    }
 };

@@ -16,7 +16,7 @@ module.exports = class CMD extends Command {
                 subcommand: false,
                 guildOnly: true,
             },
-            usage: "(subcommand) (lang)",
+            usage: "(subcommand)",
             subcommands: [
         { name: "set", desc: "Set Custom prefix" },
         { name: "reset", desc: "Reset Custom prefix" },
@@ -75,5 +75,5 @@ module.exports = class CMD extends Command {
                 );
                 break;
         }
-    },
+    }
 };
