@@ -25,11 +25,25 @@ module.exports = class CMD extends Command {
     execute({ message, args }, t) {
         const embed = new Embed();
         let user;
+        let user;
         if (args[0]) {
-            user = userFromMention(args[0], message.client);
+            if (args[0].startsWith("<@")) {
+                user = userFromMention(
+                    args[0] || `${message.author}`,
+                    message.client
+                );
+            }
+            if (
+                !isNaN(parseInt(args[0])) &&
+                args[0] !== message.client.user.id
+            ) {
+                user = message.client.users.cache.get(args[0]);
+                if (!user) user = await message.client.users.fetch(args[0]);
+            }
         } else {
             user = message.author;
         }
+
         if (!user) {
             return message.reply(t("errors:invalidUser"));
         }
