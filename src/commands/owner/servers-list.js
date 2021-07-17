@@ -5,22 +5,25 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "servers-list",
-            aliases: ["slist"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                ownerOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "servers-list",
+                aliases: ["slist"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    ownerOnly: true,
+                },
+                disabled: false,
+                cooldown: 20,
+                category: "Owner Only",
             },
-            disabled: false,
-            cooldown: 20,
-            category: "Owner Only",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         const { MessageEmbed } = require("discord.js");
         const servers = message.client.guilds.cache.size;
         const emojiList = {

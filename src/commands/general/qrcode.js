@@ -5,27 +5,30 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "qrcode",
-            aliases: ["qr"],
-            memberPerms: [],
-            botPerms: [],
-            usage: "[subcommand] [data / image_url]",
-            requirements: {
-                args: true,
+    constructor(client) {
+        super(
+            {
+                name: "qrcode",
+                aliases: ["qr"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "[subcommand] [data / image_url]",
+                requirements: {
+                    args: true,
+                },
+                disabled: false,
+                subcommands: [
+                    { name: "generate", desc: "Generate a qrcode" },
+                    { name: "read", desc: "Read a qrcode" },
+                ],
+                cooldown: 10,
+                category: "General",
             },
-            disabled: false,
-            subcommands: [
-                { name: "generate", desc: "Generate a qrcode" },
-                { name: "read", desc: "Read a qrcode" },
-            ],
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         const fetch = require("node-fetch");
         let embed = new Embed();
         const baseURL = "http://api.qrserver.com/v1";

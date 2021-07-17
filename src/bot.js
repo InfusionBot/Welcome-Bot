@@ -160,7 +160,11 @@ client.on("ready", async () => {
 });
 
 client.on("debug", (info) => {
-    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug && client.debugLevel > 0)
+    if (
+        !info.match(/\b(?:heartbeat|token|connect)\b/gi) &&
+        client.debug &&
+        client.debugLevel > 0
+    )
         client.logger.log(info, "debug", ["DISCORD"]);
 });
 

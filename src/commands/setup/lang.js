@@ -6,28 +6,31 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "lang",
-            aliases: ["language", "changelang", "getlang"],
-            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
-            botPerms: [],
-            requirements: {
-                subcommand: false,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "lang",
+                aliases: ["language", "changelang", "getlang"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    guildOnly: true,
+                },
+                usage: "(subcommand) (lang)",
+                subcommands: [
+                    { name: "list", desc: "List of all languages available" },
+                    { name: "set", desc: "Set language" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
             },
-            usage: "(subcommand) (lang)",
-            subcommands: [
-        { name: "list", desc: "List of all languages available" },
-        { name: "set", desc: "Set language" },
-    ],
-            disabled: false,
-            cooldown: 10,
-            category: "Setup",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
         const keys = Object.keys(list);

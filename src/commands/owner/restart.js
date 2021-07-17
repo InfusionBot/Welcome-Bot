@@ -5,21 +5,24 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "restart",
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                ownerOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "restart",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    ownerOnly: true,
+                },
+                disabled: false,
+                cooldown: 30,
+                category: "Owner Only",
             },
-            disabled: false,
-            cooldown: 30,
-            category: "Owner Only",
-        }, client);
+            client
+        );
     }
 
-    execute({message, args, guildDB}, t) {
+    execute({ message, args, guildDB }, t) {
         let sentMsg;
         message
             .reply("Restarting...")

@@ -9,30 +9,33 @@ const getGuild = require("../../db/functions/guild/getGuild");
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "channel",
-            aliases: ["chan"],
-            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
-            botPerms: [],
-            requirements: {
-                subcommand: false,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "channel",
+                aliases: ["chan"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    guildOnly: true,
+                },
+                usage: "(subcommand)",
+                subcommands: [
+                    { name: "set", desc: "Set Welcome channel" },
+                    { name: "setMod", desc: "Set Moderation channel" },
+                    { name: "reset", desc: "Reset Welcome channel" },
+                    { name: "resetMod", desc: "Reset Moderation channel" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
             },
-            usage: "(subcommand)",
-            subcommands: [
-        { name: "set", desc: "Set Welcome channel" },
-        { name: "setMod", desc: "Set Moderation channel" },
-        { name: "reset", desc: "Reset Welcome channel" },
-        { name: "resetMod", desc: "Reset Moderation channel" },
-    ],
-            disabled: false,
-            cooldown: 10,
-            category: "Setup",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         let subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":

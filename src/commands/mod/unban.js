@@ -6,23 +6,26 @@
 const { MessageEmbed, Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "unban",
-            memberPerms: [Permissions.FLAGS.BAN_MEMBERS],
-            botPerms: [Permissions.FLAGS.BAN_MEMBERS],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "unban",
+                memberPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                botPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[user id] (reason)",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
             },
-            usage: "[user id] (reason)",
-            disabled: false,
-            cooldown: 10,
-            category: "Moderation",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         const id = args[0];
         if (!id || isNaN(parseInt(id))) {
             return message.reply(

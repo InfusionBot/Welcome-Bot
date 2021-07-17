@@ -6,28 +6,31 @@
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "message",
-            aliases: ["msg"],
-            memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
-            botPerms: [],
-            requirements: {
-                subcommand: false,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "message",
+                aliases: ["msg"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    guildOnly: true,
+                },
+                usage: "(subcommand)",
+                subcommands: [
+                    { name: "set", desc: "Set Welcome message" },
+                    { name: "reset", desc: "Reset Welcome message" },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
             },
-            usage: "(subcommand)",
-            subcommands: [
-        { name: "set", desc: "Set Welcome message" },
-        { name: "reset", desc: "Reset Welcome message" },
-    ],
-            disabled: false,
-            cooldown: 10,
-            category: "Setup",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
         let subcommand = args[0] ? args[0].toLowerCase() : "";

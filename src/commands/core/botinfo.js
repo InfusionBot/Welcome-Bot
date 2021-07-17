@@ -6,20 +6,23 @@
 const { version } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "botinfo",
-            aliases: ["bi", "binfo", "info", "stats"],
-            memberPerms: [],
-            botPerms: [],
-            usage: "(--dm)",
-            disabled: false,
-            cooldown: 5,
-            category: "Core",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "botinfo",
+                aliases: ["bi", "binfo", "info", "stats"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "(--dm)",
+                disabled: false,
+                cooldown: 5,
+                category: "Core",
+            },
+            client
+        );
     }
 
-    execute ({message, args}, t) {
+    execute({ message, args }, t) {
         //TODO: Add translation
         if (args[1]) {
             args[1] = args[1].toLowerCase();

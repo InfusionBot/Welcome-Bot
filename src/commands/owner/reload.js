@@ -6,23 +6,26 @@
 const fs = require("fs");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "reload",
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
-                ownerOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "reload",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                    ownerOnly: true,
+                },
+                usage: "[command]",
+                disabled: false,
+                cooldown: 30,
+                category: "Owner Only",
             },
-            usage: "[command]",
-            disabled: false,
-            cooldown: 30,
-            category: "Owner Only",
-        }, client);
+            client
+        );
     }
 
-    execute({message, args, guildDB}, t) {
+    execute({ message, args, guildDB }, t) {
         const commandName = args[0].toLowerCase();
         const command =
             message.client.commands.enabled.get(commandName) ||

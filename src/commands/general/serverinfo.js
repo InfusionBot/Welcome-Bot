@@ -5,23 +5,26 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "serverinfo",
-            aliases: ["si"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "serverinfo",
+                aliases: ["si"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                },
+                usage: "(--dm)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            usage: "(--dm)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }

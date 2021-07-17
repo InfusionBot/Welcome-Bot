@@ -5,23 +5,26 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "pokemon",
-            aliases: ["pokémon"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
+    constructor(client) {
+        super(
+            {
+                name: "pokemon",
+                aliases: ["pokémon"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[pokemon character]",
+                disabled: false,
+                cooldown: 10,
+                category: "Fun",
             },
-            usage: "[pokemon character]",
-            disabled: false,
-            cooldown: 10,
-            category: "Fun",
-        }, client);
+            client
+        );
     }
 
-    async execute ({message, args}, t) {
+    async execute({ message, args }, t) {
         const randomImage = require("../../functions/randomImage.js");
         const url = await randomImage(args[0]).catch((err) => {
             console.error(err);

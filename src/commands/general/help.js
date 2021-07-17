@@ -7,23 +7,26 @@ const { Permissions } = require("discord.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "help",
-            aliases: ["commands", "cmds", "ajuda"], //ajuda means help in portuguese and some other langs
-            memberPerms: [],
-            //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
-            requirements: {
-                args: false,
+    constructor(client) {
+        super(
+            {
+                name: "help",
+                aliases: ["commands", "cmds", "ajuda"], //ajuda means help in portuguese and some other langs
+                memberPerms: [],
+                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                requirements: {
+                    args: false,
+                },
+                usage: "(command name / category / --list-categories)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            usage: "(command name / category / --list-categories)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args, guildDB}, t) {
+    async execute({ message, args, guildDB }, t) {
         if (message.channel.type !== "DM" && !args.length) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
@@ -172,13 +175,19 @@ module.exports = class CMD extends Command {
             });
             return message.reply({
                 embeds: [
-                    pages[0].setDesc(`${t("cmds:help.listcats")}\`\`\`\n• ${cats.join("\n• ")}\n\`\`\``)
-                ]
+                    pages[0].setDesc(
+                        `${t("cmds:help.listcats")}\`\`\`\n• ${cats.join(
+                            "\n• "
+                        )}\n\`\`\``
+                    ),
+                ],
             });
         }
 
         const name = args[0].toLowerCase();
-        const alias = commands.find((c) => c.aliases && c.aliases.includes(name));
+        const alias = commands.find(
+            (c) => c.aliases && c.aliases.includes(name)
+        );
         const command = commands.get(name) || alias;
         console.log(command, alias, name);
         const category = categories.find((c) => c.name.toLowerCase() === name);

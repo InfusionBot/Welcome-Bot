@@ -6,20 +6,23 @@
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "user",
-            aliases: ["whois", "ui", "uinfo"],
-            memberPerms: [],
-            botPerms: [],
-            usage: "(@mention / user id) (--dm)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+    constructor(client) {
+        super(
+            {
+                name: "user",
+                aliases: ["whois", "ui", "uinfo"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "(@mention / user id) (--dm)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }

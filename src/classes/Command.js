@@ -26,10 +26,7 @@ module.exports = class Command {
         this.category = options.optional("category", "General");
         if (this.subcommands) {
             for (var i = 0; i < this.subcommands.length; i++) {
-                if (
-                    this.subcommands[i].name &&
-                    !this.subcommands[i].desc
-                ) {
+                if (this.subcommands[i].name && !this.subcommands[i].desc) {
                     throw new TypeError(
                         "If subcommands are provided then their description should also be provided\nDescription not provided for " +
                             this.subcommands[i].name
@@ -52,7 +49,7 @@ module.exports = class Command {
         }
     }
 
-    prerun (message, t) {
+    prerun(message, t) {
         const basicPerms = [
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,
@@ -70,9 +67,7 @@ module.exports = class Command {
                 return message.reply(
                     t("errors:iDontHavePermission", {
                         permission: t(
-                            `permissions:${new Permissions(
-                                basicPerms[i]
-                                )
+                            `permissions:${new Permissions(basicPerms[i])
                                 .toArray()
                                 .join("")
                                 .toUpperCase()}`

@@ -5,30 +5,33 @@
  */
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "sample",
-            aliases: ["example"],
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                subcommand: false,
-                args: false,
-                guildOnly: true,
-                ownerOnly: false,
+    constructor(client) {
+        super(
+            {
+                name: "sample",
+                aliases: ["example"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    subcommand: false,
+                    args: false,
+                    guildOnly: true,
+                    ownerOnly: false,
+                },
+                usage: "[arg1] (arg2)",
+                disabled: false,
+                subcommands: [
+                    { name: "set", desc: "Set this" },
+                    { name: "reset", desc: "Reset that" },
+                ],
+                cooldown: 10,
+                category: "General",
             },
-            usage: "[arg1] (arg2)",
-            disabled: false,
-            subcommands: [
-                { name: "set", desc: "Set this" },
-                { name: "reset", desc: "Reset that" },
-            ],
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    execute ({message, args, guildDB}, t) {
+    execute({ message, args, guildDB }, t) {
         return;
     }
 };

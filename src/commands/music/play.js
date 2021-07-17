@@ -7,24 +7,27 @@ const { Queue } = require("discord-player");
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "play",
-            aliases: ["joue"], //joue in french means play
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "play",
+                aliases: ["joue"], //joue in french means play
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[name]",
+                disabled: false,
+                cooldown: 10,
+                category: "Music",
             },
-            usage: "[name]",
-            disabled: false,
-            cooldown: 10,
-            category: "Music",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         const name = args.join(" ");
         if (!name) return message.reply(t("cmds:play.missingSongName"));
         const voice = message.member.voice.channel;

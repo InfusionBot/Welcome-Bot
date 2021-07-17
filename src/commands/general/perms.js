@@ -8,23 +8,26 @@ const { userFromMention } = require("../../helpers/Util.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "perms",
-            aliases: ["permissions"],
-            memberPerms: [],
-            //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
-            requirements: {
-                guildOnly: true,
+    constructor(client) {
+        super(
+            {
+                name: "perms",
+                aliases: ["permissions"],
+                memberPerms: [],
+                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                requirements: {
+                    guildOnly: true,
+                },
+                usage: "(@mention / user id)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
             },
-            usage: "(@mention / user id)",
-            disabled: false,
-            cooldown: 10,
-            category: "General",
-        }, client);
+            client
+        );
     }
 
-    async execute({message, args}, t) {
+    async execute({ message, args }, t) {
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {

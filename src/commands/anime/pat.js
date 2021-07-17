@@ -7,22 +7,25 @@ const fetch = require("node-fetch");
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
-    constructor (client) {
-        super({
-            name: "pat",
-            memberPerms: [],
-            botPerms: [],
-            requirements: {
-                args: true,
+    constructor(client) {
+        super(
+            {
+                name: "pat",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[@mention / user id]",
+                disabled: false,
+                cooldown: 5,
+                category: "Anime",
             },
-            usage: "[@mention / user id]",
-            disabled: false,
-            cooldown: 5,
-            category: "Anime",
-        }, client);
+            client
+        );
     }
 
-    async execute ({message, args}, t) {
+    async execute({ message, args }, t) {
         let res = await fetch("https://nekos.life/api/v2/img/pat");
         res = await res.json();
         let user;
