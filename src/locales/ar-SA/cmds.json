@@ -24,8 +24,13 @@
     "success": "{{author}} slapped {{user}}",
     "errorYourself": "You can't slap yourself!"
   },
+  "tickle": {
+    "cmdDesc": "Tickle a user",
+    "success": "{{author}} tickles {{user}}",
+    "errorYourself": "You can't tickle yourself."
+  },
   "waifu": {
-    "cmdDesc": "يجلب تنازلا عشوائيا (يسهل إذا كانت القناة NSFW) ويعرضه."
+    "cmdDesc": "Fetches a random waifu and displays it."
   },
   "botinfo": {
     "cmdDesc": "Bot information",
@@ -40,12 +45,16 @@
   "lib": {
     "cmdDesc": "المكتبة المستخدمة لبناء Welcome-Bot"
   },
-  "suggest": {
-    "cmdDesc": "Give your suggestion",
-    "done": "Your suggestion has been added, Thank You"
-  },
   "ping": {
     "cmdDesc": "ربط البوت"
+  },
+  "shards": {
+    "cmdDesc": "Information about the bot's shards"
+  },
+  "suggest": {
+    "cmdDesc": "Give your suggestion",
+    "done": "Your suggestion has been added, Thank You.",
+    "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
   },
   "support": {
     "cmdDesc": "احصل على دعم لـ Welcome-Bot"
@@ -56,6 +65,12 @@
   "website": {
     "cmdDesc": "رابط إلى موقع Welcome-Bot"
   },
+  "8ball": {
+    "cmdDesc": "Get your fortune by asking your question"
+  },
+  "coinflip": {
+    "cmdDesc": "قلب عملة معدنية."
+  },
   "figlet": {
     "cmdDesc": "تنفيذ سرعة FIGfont في JS"
   },
@@ -65,40 +80,51 @@
   "pokemon": {
     "cmdDesc": "Get a pokemon image"
   },
-  "8ball": {
-    "cmdDesc": "Get your fortune by asking your question"
-  },
-  "coinflip": {
-    "cmdDesc": "قلب عملة معدنية."
-  },
-  "help": {
-    "cmdDesc": "قائمة جميع الأوامر أو الحصول على معلومات لأوامر / فئة محددة.",
-    "cmdHelp": "مساعدة للأمر {{cmd}}",
-    "cmds": "استخدم الأسهم ⏪⏩",
-    "bot-help": "مساعدة Welcome-Bot",
-    "in-cat": "Commands in this category"
-  },
-  "perms": {
-    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
+  "addemoji": {
+    "cmdDesc": "Add emoji from a image link",
+    "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
+    "invalidName": "The length of the emoji name must be between 2 and 32!",
+    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {
     "cmdDesc": "Get a user's avatar",
     "profile": "Avatar of {{user}}"
   },
-  "stats": {
-    "cmdDesc": "إحصائيات الخادم الخاص بك"
+  "hastebin": {
+    "cmdDesc": "Upload your text on hastebin!",
+    "missingText": "Please enter a valid text!",
+    "title": "Upload complete!",
+    "success": "Here's your link: {{link}}"
   },
-  "user": {
-    "cmdDesc": "الحصول على معلومات حول المستخدم. سوف تظهر معلوماتك إذا لم يتم ذكر أي مستخدم"
+  "help": {
+    "cmdDesc": "قائمة جميع الأوامر أو الحصول على معلومات لأوامر / فئة محددة.",
+    "cmdHelp": "مساعدة للأمر {{cmd}}",
+    "cmds": "استخدم الأسهم ⏪⏩",
+    "listcats": "List of categories",
+    "bot-help": "مساعدة Welcome-Bot",
+    "in-cat": "Commands in this category"
   },
-  "version": {
-    "cmdDesc": "Get information on a version or latest version"
+  "listemojis": {
+    "cmdDesc": "List of all custom emojis in this server, with there IDs."
+  },
+  "perms": {
+    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
   },
   "qrcode": {
     "cmdDesc": "إنشاء/قراءة رمز Qrcode"
   },
+  "serverinfo": {
+    "cmdDesc": "Your server statistics"
+  },
+  "user": {
+    "cmdDesc": "الحصول على معلومات حول المستخدم. سوف تظهر معلوماتك إذا لم يتم ذكر أي مستخدم"
+  },
   "test": {
     "cmdDesc": "Test by sending welcome message"
+  },
+  "version": {
+    "cmdDesc": "Get information on a version or latest version"
   },
   "ban": {
     "cmdDesc": "حظر المستخدم.",
@@ -135,6 +161,13 @@
     "success": "Went back to the prevoius song",
     "failure": "An error occurred, When going back to the prevoius song."
   },
+  "loop": {
+    "cmdDesc": "Manage loop settings for music",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to set loop mode! {{count}} more votes are required.",
+    "invalidMode": "Invalid loop mode provided, type `{{prefix}}help loop` for help. You have provided {{mode}}",
+    "success": "Loop mode set to {{mode}}.",
+    "failure": "An error occurred, When setting loop mode."
+  },
   "np": {
     "cmdDesc": "The details of song which is being played now",
     "playing": "Currently playing"
@@ -156,7 +189,8 @@
     "starting": "Starting to play",
     "rateLimited": "Sorry, I can't play the song as I am rate limited",
     "destroyedQueue": "The queue was destroyed, abd I can't play music using that queue. Please create a new queue from play command",
-    "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)"
+    "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)",
+    "forbidden": "I am forbidden to play that song, will try to play some other song that matches"
   },
   "skip": {
     "cmdDesc": "Skip the current song",
@@ -167,7 +201,7 @@
   "stop": {
     "cmdDesc": "Stop the music",
     "notPlaying": "No songs are currently playing in this server.",
-    "stopped": "Music stopped!",
+    "success": "Music stopped!",
     "pleaseVote": "More than half members in the voice channel must react with 👍 to stop the music! {{count}} more votes are required."
   },
   "volume": {
@@ -186,13 +220,6 @@
   },
   "servers-list": {
     "cmdDesc": "Show the list of servers the bot is in."
-  },
-  "addemoji": {
-    "cmdDesc": "Add emoji from a image link",
-    "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
-    "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
-    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "channel": {
     "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
