@@ -195,8 +195,9 @@ client.on("guildCreate", (guild) => {
             );
     }
     embed = new Embed({ color: "success", timestamp: true })
-        .setTitle(`Added to "${guild.name}"`)
-        .setDescription(`${guild.id}`);
+        .setTitle(`:white_check_mark: Added to "${guild.name}"`)
+        .setDescription(`${guild.id}`)
+        .addField("In shard: ", guild.shardId);
     client.channels.cache
         .get(client.loggingChannelId)
         .send({ embeds: [embed] });
@@ -205,9 +206,10 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
-    embed = new Embed({ color: "error", timestamp: true })
-        .setTitle(`Removed from "${guild.name}"`)
-        .setDescription(`${guild.id}`);
+    embed = new Embed({ color: "red", timestamp: true })
+        .setTitle(`:x: Removed from "${guild.name}"`)
+        .setDescription(`${guild.id}`)
+        .addField("In shard: ", guild.shardId);
     client.channels.cache
         .get(client.loggingChannelId)
         .send({ embeds: [embed] });
