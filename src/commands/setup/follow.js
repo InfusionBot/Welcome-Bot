@@ -5,19 +5,29 @@
  */
 const { Permissions } = require("discord.js");
 const { channelIdFromMention } = require("../../helpers/Util.js");
-module.exports = {
-    name: "follow",
-    aliases: ["getnews"],
-    //description:
-    //"Get news and version updates to this bot sent to a specific channel.",
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    bot_perms: [Permissions.FLAGS.MANAGE_WEBHOOKS],
-    guildOnly: true,
-    args: true,
-    usage: "[channel / channel id]",
-    cooldown: 10,
-    category: "Setup",
-    execute(message, args, guildDB) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "follow",
+                aliases: ["getnews"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [Permissions.FLAGS.MANAGE_WEBHOOKS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[channel / channel id]",
+                disabled: false,
+                cooldown: 10,
+                category: "Setup",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         let channelId;
         if (args[0].startsWith("<#")) {
             channelId = channelIdFromMention(args[0]);
@@ -32,8 +42,8 @@ module.exports = {
             .addFollower(channelId)
             .catch((err) => {
                 console.error(err);
-                message.reply("An error occurred");
+                message.reply(t("errors:generic"));
             });
         message.channel.send("Successfully followed");
-    },
+    }
 };

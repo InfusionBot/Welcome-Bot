@@ -4,31 +4,42 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "prune",
-    //description: "Prune messages.",
-    aliases: ["purge"],
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
-    args: true,
-    guildOnly: true,
-    usage: "[no of msg to prune / subcommand]",
-    subcommands: [
-        { name: "all", desc: "Delete 100 messages" },
-        {
-            name: "bots",
-            desc: "Delete all messages sent by a bot in this channel",
-        },
-        {
-            name: "*[string]",
-            desc: '`*Text` will delete any message containing "Text"',
-        },
-    ],
-    cooldown: 5,
-    category: "Moderation",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "prune",
+                aliases: ["purge"],
+                memberPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                botPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[no of msg / subcommand]",
+                subcommands: [
+                    { name: "all", desc: "Delete 100 messages" },
+                    {
+                        name: "bots",
+                        desc: "Delete all messages sent by a bot in this channel",
+                    },
+                    {
+                        name: "*[string]",
+                        desc: '`*Text` will delete any message containing "Text"',
+                    },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
+            },
+            client
+        );
+    }
+
+    execute({ message, args, guildDB }, t) {
         let messages;
-        let errMsg =
+        const errMsg =
             "An error occurred when trying to prune messages in this channel";
         switch (args[0]) {
             case "all":
@@ -83,5 +94,5 @@ module.exports = {
                     msg.delete();
                 }, 5000);
             });
-    },
+    }
 };

@@ -3,21 +3,30 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { MessageEmbed, Permissions } = require("discord.js");
+const { Permissions } = require("discord.js");
 const { userFromMention } = require("../../helpers/Util.js");
-module.exports = {
-    name: "ban",
-    //aliases: [],
-    //description: "Ban a user.",
-    permissions: [Permissions.FLAGS.BAN_MEMBERS],
-    bot_perms: [Permissions.FLAGS.BAN_MEMBERS],
-    args: true,
-    guildOnly: true,
-    catchError: false,
-    cooldown: 5,
-    usage: "[@user] (reason)",
-    category: "Moderation",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "ban",
+                memberPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                botPerms: [Permissions.FLAGS.BAN_MEMBERS],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[@mention] (reason)",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         let channel;
         if (args.length < 1) {
             return message.reply(
@@ -62,7 +71,7 @@ module.exports = {
                 (ch) => ch.name === guildDB.modChannel
             );
             if (channel) {
-                embed = new MessageEmbed();
+                embed = new Embed({ color: "red" });
                 embed.setTitle(`User banned: ${user.tag} (${user.id})`);
                 embed.addField(
                     t("misc:resMod"),
@@ -74,5 +83,5 @@ module.exports = {
         }
 
         message.reply(t("cmds:ban.success", { tag: user.tag }));
-    },
+    }
 };

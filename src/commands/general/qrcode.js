@@ -3,22 +3,34 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-module.exports = {
-    name: "qrcode",
-    aliases: ["qr"],
-    //description: "Generate/Read a qrcode",
-    usage: "[subcommand] [data / image_url]",
-    subcommand: true,
-    subcommands: [
-        { name: "generate", desc: "Generate a qrcode" },
-        { name: "read", desc: "Read a qrcode" },
-    ],
-    cooldown: 10,
-    category: "Miscellaneous",
-    async execute(message, args, guildDB, t) {
-        const { MessageEmbed } = require("discord.js");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "qrcode",
+                aliases: ["qr"],
+                memberPerms: [],
+                botPerms: [],
+                usage: "[subcommand] [data / image_url]",
+                requirements: {
+                    args: true,
+                },
+                disabled: false,
+                subcommands: [
+                    { name: "generate", desc: "Generate a qrcode" },
+                    { name: "read", desc: "Read a qrcode" },
+                ],
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         const fetch = require("node-fetch");
-        let embed = new MessageEmbed();
+        let embed = new Embed();
         const baseURL = "http://api.qrserver.com/v1";
         if (!args[1])
             return message.reply(
@@ -54,5 +66,5 @@ module.exports = {
                 message.reply("Please provide a valid subcommand");
                 break;
         }
-    },
+    }
 };

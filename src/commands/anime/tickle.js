@@ -4,16 +4,28 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fetch = require("node-fetch");
-const { Embed } = require("../../classes");
 const { userFromMention } = require("../../helpers/Util.js");
-module.exports = {
-    name: "tickle",
-    //description: "Tickle a user",
-    args: true,
-    usage: "[mention / user id]",
-    cooldown: 3,
-    category: "Anime",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "pat",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[@mention / user id]",
+                disabled: false,
+                cooldown: 5,
+                category: "Anime",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         let res = await fetch("https://nekos.life/api/v2/img/tickle");
         res = await res.json();
         let user;
@@ -47,5 +59,5 @@ module.exports = {
             .setImage(res.url)
             .setColor("RANDOM");
         message.reply({ embeds: [embed] });
-    },
+    }
 };

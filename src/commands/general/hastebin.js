@@ -4,16 +4,28 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fetch = require("node-fetch");
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "hastebin",
-    aliases: ["pastebin"],
-    //description: "Upload your text on hastebin!",
-    args: true,
-    usage: "[text]",
-    cooldown: 5,
-    category: "General",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "hastebin",
+                aliases: ["pastebin"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                },
+                usage: "[text]",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         const text = args.join(" ");
         if (!text) {
             return message.reply(t("cmds:hastebin.missingText"));
@@ -46,5 +58,5 @@ module.exports = {
         } catch (e) {
             throw e;
         }
-    },
+    }
 };

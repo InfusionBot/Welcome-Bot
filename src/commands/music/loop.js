@@ -4,27 +4,41 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { QueueRepeatMode } = require("discord-player");
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "loop",
-    aliases: ["setloop"],
-    //description: "Manage loop settings for music",
-    args: false,
-    guildOnly: true,
-    usage: "[subcommand]",
-    subcommand: true,
-    subcommands: [
-        { name: "off", desc: "Turn off loop mode and don't autoplay also" },
-        { name: "track", desc: "Enable loop of current track" },
-        { name: "queue", desc: "Enable loop of current queue" },
-        {
-            name: "autoplay",
-            desc: "Just keep playing next songs in queue and end when queue finishes",
-        },
-    ],
-    cooldown: 10,
-    category: "Music",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "loop",
+                aliases: ["setloop"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                    subcommand: true,
+                },
+                usage: "[subcommand]",
+                subcommands: [
+                    {
+                        name: "off",
+                        desc: "Turn off loop mode and don't autoplay also",
+                    },
+                    { name: "track", desc: "Enable loop of current track" },
+                    { name: "queue", desc: "Enable loop of current queue" },
+                    {
+                        name: "autoplay",
+                        desc: "Just keep playing next songs in queue and end when queue finishes",
+                    },
+                ],
+                disabled: false,
+                cooldown: 10,
+                category: "Music",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
@@ -129,5 +143,5 @@ module.exports = {
                 ],
             });
         }
-    },
+    }
 };

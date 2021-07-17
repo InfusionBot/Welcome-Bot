@@ -3,20 +3,30 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
 const { userFromMention } = require("../../helpers/Util.js");
-module.exports = {
-    name: "unmute",
-    //description: "Unmute a member",
-    permissions: [Permissions.FLAGS.MANAGE_MESSAGES],
-    bot_perms: [Permissions.FLAGS.MANAGE_ROLES],
-    args: true,
-    guildOnly: true,
-    usage: "[@mention / user_id] (reason)",
-    cooldown: 10,
-    category: "Moderation",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "unmute",
+                memberPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                botPerms: [Permissions.FLAGS.MANAGE_ROLES],
+                requirements: {
+                    args: true,
+                    guildOnly: true,
+                },
+                usage: "[@mention / user id] (reason)",
+                disabled: false,
+                cooldown: 10,
+                category: "Moderation",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         let user;
         let reason = args.join(" ").replace(args[0], "");
         if (!reason) {
@@ -92,5 +102,5 @@ module.exports = {
             .catch((e) => {
                 throw e;
             });
-    },
+    }
 };

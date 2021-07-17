@@ -3,15 +3,27 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
-module.exports = {
-    name: "np",
-    aliases: ["now-playing"],
-    //description: "The details of song which is being played now",
-    guildOnly: true,
-    cooldown: 5,
-    category: "Music",
-    execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "np",
+                aliases: ["now-playing"],
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                },
+                disabled: false,
+                cooldown: 10,
+                category: "Music",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
@@ -37,5 +49,5 @@ module.exports = {
                         .join("\n> ")
             );
         message.channel.send({ embeds: [embed] });
-    },
+    }
 };

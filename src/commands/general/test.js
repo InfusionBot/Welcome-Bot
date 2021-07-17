@@ -4,15 +4,26 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "test",
-    //aliases: [],
-    permissions: [Permissions.FLAGS.MANAGE_GUILD],
-    //description: "Test welcome message",
-    args: false,
-    guildOnly: true,
-    category: "Miscellaneous",
-    execute(message, args) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "test",
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [],
+                requirements: {
+                    guildOnly: true,
+                },
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    execute({ message, args }, t) {
         const greetUser = require("../../functions/greetUser");
         const result = greetUser(message.member);
         if (
@@ -22,5 +33,5 @@ module.exports = {
             message.reply(result);
         }
         message.react("👍");
-    },
+    }
 };

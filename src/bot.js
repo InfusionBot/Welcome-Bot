@@ -160,7 +160,11 @@ client.on("ready", async () => {
 });
 
 client.on("debug", (info) => {
-    if (!info.match(/\b(?:heartbeat|token|connect)\b/gi) && client.debug)
+    if (
+        !info.match(/\b(?:heartbeat|token|connect)\b/gi) &&
+        client.debug &&
+        client.debugLevel > 0
+    )
         client.logger.log(info, "debug", ["DISCORD"]);
 });
 
@@ -211,7 +215,7 @@ client.on("guildDelete", (guild) => {
 
 client.on("messageCreate", async function (message) {
     if (message.author.bot) return;
-    if (client.debug && client.debugLevel >= 1)
+    if (client.debug && client.debugLevel > 0)
         client.logger.log("message event triggered", "debug");
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
     if (!client.application?.owner) await client.application?.fetch();
@@ -221,15 +225,16 @@ client.on("messageCreate", async function (message) {
     } else {
         guildDB = { prefix: client.defaultPrefix };
     }
-    if (client.debug && client.debugLevel >= 1)
+    if (client.debug && client.debugLevel > 0)
         client.logger.log("running execute func", "debug");
     try {
         execute(message, guildDB);
     } catch (e) {
         client.logger.log(e, "error");
     }
-    if (client.debug && client.debugLevel >= 1)
+    if (client.debug && client.debugLevel > 0)
         client.logger.log("finished running execute func", "debug");
+    if (message.content.split(" ").length > 1) return;
 
     const mentionRegex = new RegExp(`^(<@!?${message.client.user.id}>)\\s*`);
     if (!mentionRegex.test(message.content)) return;
@@ -242,17 +247,15 @@ client.on("messageCreate", async function (message) {
         reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
     }
     if (!message.reference) {
-        message.channel.startTyping();
+        message.channel.sendTyping();
         message.channel.send(reply);
-        message.channel.stopTyping();
     } else {
         message.channel.messages
             .fetch(message.reference.messageID)
             .then((msg) => {
                 if (msg.author.id != client.user.id) {
-                    message.channel.startTyping();
+                    message.channel.sendTyping();
                     message.channel.send(reply);
-                    message.channel.stopTyping();
                 }
             })
             .catch(console.error);

@@ -9,22 +9,33 @@ const versionSender = require("../../functions/versionSender.js");
 const presence = require("../../functions/presence.js");
 const serverCount = require("../../functions/serverCount.js");
 const { inspect } = require("util");
-const { Embed } = require("../../classes");
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "eval",
+                memberPerms: [],
+                botPerms: [],
+                requirements: {
+                    args: true,
+                    ownerOnly: true,
+                },
+                usage: "[statement]",
+                disabled: false,
+                cooldown: 20,
+                category: "Owner Only",
+            },
+            client
+        );
+    }
 
-module.exports = {
-    name: "eval",
-    //description: "Execute a statement",
-    args: true,
-    usage: "[statement]",
-    cooldown: 20,
-    ownerOnly: true,
-    category: "Owner Only",
-    execute(message, args, guildDB, t) {
+    execute({ message, args, guildDB }, t) {
         const client = message.client;
         const content = args.join(" ");
         const embed = new Embed({ color: "success" })
             .setTitle(t("cmds:eval.cmdDesc"))
-            .addField("**Input**", content);
+            .addField("**Input**", "```js\n" + content + "\n```");
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
             if (typeof text === "string") {
@@ -49,8 +60,8 @@ module.exports = {
                 message.reply({
                     embeds: [
                         embed
-                        .setDesc("```js\n" + clean(output) + "\n```")
-                        .addField("**Type**", type),
+                            .setDesc("```js\n" + clean(output) + "\n```")
+                            .addField("**Type**", type),
                     ],
                 });
             })
@@ -65,5 +76,5 @@ module.exports = {
                     ],
                 });
             });
-    },
+    }
 };

@@ -14,30 +14,31 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### New features
 
-- New command `tickle` - Tickle a user
-- New command `pat` - Pats someone
-- New command `suggest` - Give your suggestion
-- New cmd category `Music` - Welcome-Bot now has Music commands.
-- `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`, `loop`
-- New command `addemoji` - Add a emoji from a image url, no need to download it.
-- New command `mute` - Mute a member
-- New command `unmute` - Unmute a member
-- New command `hastebin` - Upload your text on hastebin
-- New command `listemojis` - List all emojis in that server
-- With this release, Welcome-Bot reaches 50 commands!!
+- feat: New command `tickle`
+- feat: New command `pat`
+- feat: New command `suggest`
+- feat: New cmd category `Music` - Welcome-Bot now has Music commands.
+- feat: `Music` category has commands: `back`, `np`, `play`, `skip`, `stop`, `volume`, `loop`
+- feat: New command `addemoji`
+- feat: New command `mute`
+- feat: New command `unmute`
+- feat: New command `hastebin`
+- feat: New command `listemojis`
 
 ### Changes
 
-- sort(cmd categories): Remove Information category and move those commands to general category
-- Change emoji for General category to ℹ️
-- Change `modLogChan` to `modChannel` in db
-- Improve contributing guidelines
-- Add test script
-- Add CI workflow & publish images to docker hub
-- Add Dockerfile
-- Removed `Games` and `Infomation` category
-- Rename `stats` cmd to `serverinfo` cmd
+- refactor(categories): Remove `Information` category & move those cmds to `General` category
+- refactor: Change emoji for General category to ℹ️
+- refactor(db): Change `modLogChan` to `modChannel`
+- docs: Improve contributing guidelines
+- Publish images to docker hub
+- tests: Add test script
+- ci: Add CI workflow
+- build(Dockerfile): Add Dockerfile
+- refactor(categories): Remove `Games` category & move those cmds to `Fun` category
+- refactor(cmds): Rename `stats` cmd to `serverinfo` cmd
 - To reduce caching, sweep out messages older than 14 days
+- refactor(categories): Remove `Miscellaneous` category and moved those cmds to `General` category
 
 ### Bug fixes
 

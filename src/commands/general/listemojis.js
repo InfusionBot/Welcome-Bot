@@ -3,16 +3,28 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
-module.exports = {
-    name: "listemojis",
-    aliases: ["list-emojis"],
-    //description: "List of all custom emojis in this server, with there IDs.",
-    guildOnly: true,
-    cooldown: 10,
-    category: "General",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "listemojis",
+                aliases: ["list-emojis"],
+                memberPerms: [],
+                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                requirements: {
+                    guildOnly: true,
+                },
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args }, t) {
         if (message.channel.type !== "DM") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
@@ -127,5 +139,5 @@ module.exports = {
                 ],
             });
         });
-    },
+    }
 };

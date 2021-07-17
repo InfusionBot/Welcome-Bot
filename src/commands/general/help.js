@@ -3,18 +3,30 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../../classes");
 const { Permissions } = require("discord.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
-module.exports = {
-    name: "help",
-    aliases: ["commands", "cmd"],
-    //description: "List all of my commands or info about a specific command.",
-    usage: "(command name / category)",
-    //bot_perms: [Permissions.FLAGS.MANAGE_MESSAGES],
-    cooldown: 5,
-    category: "General",
-    async execute(message, args, guildDB, t) {
+const { Embed, Command } = require("../../classes");
+module.exports = class CMD extends Command {
+    constructor(client) {
+        super(
+            {
+                name: "help",
+                aliases: ["commands", "cmds", "ajuda"], //ajuda means help in portuguese and some other langs
+                memberPerms: [],
+                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                requirements: {
+                    args: false,
+                },
+                usage: "(command name / category / --list-categories)",
+                disabled: false,
+                cooldown: 10,
+                category: "General",
+            },
+            client
+        );
+    }
+
+    async execute({ message, args, guildDB }, t) {
         if (message.channel.type !== "DM" && !args.length) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
@@ -156,12 +168,27 @@ module.exports = {
                 });
             });
             return;
+        } else if (args[0] === "--list-categories") {
+            let cats = [];
+            categories.forEach((cat) => {
+                cats.push(`${t(`categories:${cat.key}`)}`);
+            });
+            return message.reply({
+                embeds: [
+                    pages[0].setDesc(
+                        `${t("cmds:help.listcats")}\`\`\`\n• ${cats.join(
+                            "\n• "
+                        )}\n\`\`\``
+                    ),
+                ],
+            });
         }
 
         const name = args[0].toLowerCase();
-        const command =
-            commands.get(name) ||
-            commands.find((c) => c.aliases && c.aliases.includes(name));
+        const alias = commands.find(
+            (c) => c.aliases && c.aliases.includes(name)
+        );
+        const command = commands.get(name) || alias;
         const category = categories.find((c) => c.name.toLowerCase() === name);
 
         if (!command && !category) {
@@ -177,17 +204,17 @@ module.exports = {
             pages[0].addField("Command Name:", command.name);
 
             let desc = t(`cmds:${command.name}.cmdDesc`);
-            if (command.bot_perms) {
+            if (command.botPerms && command.botPerms?.length) {
                 desc += `\nThe bot needs ${beautifyPerms(
-                    command.bot_perms,
+                    command.botPerms,
                     message.client.allPerms,
                     t
                 ).join(", ")} permission(s) to execute this command.`;
             }
             pages[0].addField("Description:", desc);
-            if (command.aliases)
+            if (command.aliases && command.aliases?.length)
                 pages[0].addField("Aliases: ", command.aliases.join(", "));
-            if (command.permissions)
+            if (command.permissions && command.permissions?.length)
                 pages[0].addField(
                     "Permissions:",
                     `You need ${beautifyPerms(
@@ -236,5 +263,5 @@ module.exports = {
         }
 
         message.channel.send({ embeds: [pages[0]] });
-    },
+    }
 };
