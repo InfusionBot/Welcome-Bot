@@ -33,7 +33,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const embed = new Embed({color: "blue"});
+        const embed = new Embed({ color: "blue" });
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
         const keys = Object.keys(lowercaseKeys(list));
         const vals = Object.values(lowercaseVals(list));
@@ -66,16 +66,16 @@ module.exports = class CMD extends Command {
                 break;
             case "list":
                 return message.reply({
-                    embeds: [
-                        embed.setDesc(str)
-                    ]
+                    embeds: [embed.setDesc(str)],
                 });
                 break;
             default:
                 return message.reply({
                     embeds: [
-                        embed.setDesc(t("cmds:lang.show", { lang: guildDB.lang }))
-                    ]
+                        embed.setDesc(
+                            t("cmds:lang.show", { lang: guildDB.lang })
+                        ),
+                    ],
                 });
                 break;
         }
