@@ -12,7 +12,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### New features
 
-- feat: New translation from Turkish available, thanks to @Ulas
+- feat: New translation from Turkish available, thanks to @Ulas#0002
 
 ## [v1.11.3]
 
