@@ -55,7 +55,8 @@ module.exports = class Command {
             Permissions.FLAGS.SEND_MESSAGES,
             Permissions.FLAGS.READ_MESSAGE_HISTORY,
         ];
-        const bot_perms = message.guild.me.permissionsIn(message.channel);
+        if (message.channel.type !== "DM" && message.guild) {
+            const bot_perms = message.guild.me.permissionsIn(message.channel);
 
         if (!bot_perms) {
             return message.reply(
@@ -75,6 +76,7 @@ module.exports = class Command {
                     })
                 );
             }
+        }
         }
         const { cooldowns } = this.client.commands;
 
