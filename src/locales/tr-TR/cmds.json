@@ -1,33 +1,33 @@
 {
   "cuddle": {
-    "cmdDesc": "Cuddle with a user",
-    "success": "{{author}} just cuddled to {{user}}",
+    "cmdDesc": "Bir üye ile kucaklaş",
+    "success": "{{author}}, {{user}} adlı üyeyle kucaklaştı",
     "errorYourself": "You can't cuddle yourself."
   },
   "hug": {
-    "cmdDesc": "Give a hug to a user",
-    "success": "{{author}} has hugged {{user}}",
-    "errorYourself": "You can't hug yourself."
+    "cmdDesc": "Bir üyeye sarıl",
+    "success": "{{author}}, {{user}} adlı üyeye sarıldı",
+    "errorYourself": "Kendine sarılamazsın."
   },
   "kiss": {
-    "cmdDesc": "Kiss a user",
-    "success": "{{author}} has kissed {{user}}",
-    "errorYourself": "You can't kiss yourself!"
+    "cmdDesc": "Bir üyeyi öp",
+    "success": "{{author}}, {{user}} adlı üyeyi öptü",
+    "errorYourself": "Kendini öpemezsin!"
   },
   "pat": {
-    "cmdDesc": "Pats someone",
+    "cmdDesc": "Birini okşarsın",
     "success": "{{author}} pats {{user}}",
-    "errorYourself": "You can't pat yourself!"
+    "errorYourself": "Kendini okşayamazsın!"
   },
   "slap": {
-    "cmdDesc": "Slap a user",
-    "success": "{{author}} slapped {{user}}",
-    "errorYourself": "You can't slap yourself!"
+    "cmdDesc": "Birini tokatlarsın",
+    "success": "{{author}}, {{user}} adlı üyeyi tokatladı",
+    "errorYourself": "Kendini tokatlayamazsın!"
   },
   "tickle": {
-    "cmdDesc": "Tickle a user",
-    "success": "{{author}} tickles {{user}}",
-    "errorYourself": "You can't tickle yourself."
+    "cmdDesc": "Bir kullanıcıyı gıdıklarsın",
+    "success": "{{author}}, {{user}} adlı üyeyi gıdıkladı",
+    "errorYourself": "Kendini gıdıklayamazsın."
   },
   "waifu": {
     "cmdDesc": "Fetches a random waifu and displays it."

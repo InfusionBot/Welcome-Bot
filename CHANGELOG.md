@@ -8,7 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.12.0]
+
+> **Released:** `18-07-2021`
+
+### New features
+
+- feat: New translation from Turkish available, thanks to @Ulas#0002
+
 ## [v1.11.3]
+
+> **Released:** `18-07-2021`
 
 ### Bug fixes
 
@@ -17,13 +27,23 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.11.2]
 
+> **Released:** `18-07-2021`
+
 ### Bug fixes
 
 - Fix some problem related to djs
 
+## [v1.11.1]
+
+> **Released:** `17-07-2021`
+
+### Bug fixes
+
+- fix(Intents): Remove unwanted intent: GUILD_PRESENCES
+
 ## [v1.11.0]
 
-> **Released:** `TBA`
+> **Released:** `17-07-2021`
 
 ### New features
 
@@ -396,6 +416,9 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.12.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.12.0
+[v1.11.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.3
+[v1.11.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.2
 [v1.11.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.0
 [v1.10.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.3
 [v1.10.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.10.2
