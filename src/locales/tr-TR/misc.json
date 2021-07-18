@@ -1,10 +1,10 @@
 {
-  "timeout": "Time's up! Please send the command again!",
-  "resMod": "Responsible moderator:",
-  "channels": "Channels",
-  "bots": "Bots",
-  "members": "Members",
-  "total": "Total",
-  "uptime": "Uptime",
-  "datelaunched": "Date Launched"
+  "timeout": "Süre doldu! Lütfen komutu tekrar kullan!",
+  "resMod": "Sorumlu Moderator:",
+  "channels": "Kanallar",
+  "bots": "Botlar",
+  "members": "Üyeler",
+  "total": "Toplam",
+  "uptime": "Çalışma Süresi",
+  "datelaunched": "Çalışma Tarihi"
 }
