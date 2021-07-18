@@ -4,6 +4,8 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
+const updateGuild = require("../../db/functions/guild/updateGuild");
+const { lowercaseKeys, lowercaseVals } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -31,10 +33,10 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
+        const embed = new Embed({color: "blue"});
         const list = require(`../../locales/${guildDB.lang}/languages.json`);
-        const keys = Object.keys(list);
-        const vals = Object.values(list);
+        const keys = Object.keys(lowercaseKeys(list));
+        const vals = Object.values(lowercaseVals(list));
         let str = "";
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
@@ -43,6 +45,8 @@ module.exports = class CMD extends Command {
             case "set":
                 if (!args[1]) {
                     return message.reply(t("cmds:lang.langNotProvided"));
+                } else {
+                    args[1] = args[1].toLowerCase();
                 }
                 if (!keys.includes(args[1]) && !vals.includes(args[1]))
                     return message.reply(
@@ -61,10 +65,18 @@ module.exports = class CMD extends Command {
                 );
                 break;
             case "list":
-                return message.reply(str);
+                return message.reply({
+                    embeds: [
+                        embed.setDesc(str)
+                    ]
+                });
                 break;
             default:
-                message.reply(t("cmds:lang.show", { lang: guildDB.lang }));
+                return message.reply({
+                    embeds: [
+                        embed.setDesc(t("cmds:lang.show", { lang: guildDB.lang }))
+                    ]
+                });
                 break;
         }
     }

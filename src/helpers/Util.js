@@ -29,7 +29,23 @@ const channelIdFromMention = function (mention) {
     return matches[1];
 };
 
+const lowercaseKeys = (obj) => {
+    Object.keys(obj).reduce((acc, key) => {
+        obj[key.toLowerCase()] = obj[key];
+    });
+    return obj;
+};
+
+const lowercaseVals = (obj) => {
+    Object.keys(obj).reduce((acc, key) => {
+        obj[key] = obj[key].toLowerCase();
+    });
+    return obj;
+};
+
 module.exports = {
     userFromMention,
     channelIdFromMention,
+    lowercaseKeys,
+    lowercaseVals,
 };
