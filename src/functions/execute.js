@@ -200,7 +200,9 @@ module.exports = async (message, guildDB) => {
             try {
                 command.execute({ message, args, guildDB }, t);
             } catch (err) {
-                client.logger.log("Error when executing cmds", "error", ["CMDS"]);
+                client.logger.log("Error when executing cmds", "error", [
+                    "CMDS",
+                ]);
                 console.error(err);
                 embed
                     .setTitle(t("errors:generic"))
