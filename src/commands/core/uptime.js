@@ -22,8 +22,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
-        moment.locale(guildDB.lang.toLowerCase());
+    execute({ message, args, guildDB }, t) {
+        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
         const duration = moment
             .duration(message.client.uptime)
             .format(" D [days], H [hours], m [minutes], s [seconds]");

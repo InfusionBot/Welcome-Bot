@@ -55,25 +55,27 @@ module.exports = class Command {
             Permissions.FLAGS.SEND_MESSAGES,
             Permissions.FLAGS.READ_MESSAGE_HISTORY,
         ];
-        const bot_perms = message.guild.me.permissionsIn(message.channel);
+        if (message.channel.type !== "DM" && message.guild) {
+            const bot_perms = message.guild.me.permissionsIn(message.channel);
 
-        if (!bot_perms) {
-            return message.reply(
-                `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
-            );
-        }
-        for (var i = 0; i < basicPerms.length; i++) {
-            if (!bot_perms.has(basicPerms[i])) {
+            if (!bot_perms) {
                 return message.reply(
-                    t("errors:iDontHavePermission", {
-                        permission: t(
-                            `permissions:${new Permissions(basicPerms[i])
-                                .toArray()
-                                .join("")
-                                .toUpperCase()}`
-                        ),
-                    })
+                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
                 );
+            }
+            for (var i = 0; i < basicPerms.length; i++) {
+                if (!bot_perms.has(basicPerms[i])) {
+                    return message.reply(
+                        t("errors:iDontHavePermission", {
+                            permission: t(
+                                `permissions:${new Permissions(basicPerms[i])
+                                    .toArray()
+                                    .join("")
+                                    .toUpperCase()}`
+                            ),
+                        })
+                    );
+                }
             }
         }
         const { cooldowns } = this.client.commands;

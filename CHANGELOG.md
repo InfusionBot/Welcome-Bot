@@ -8,6 +8,19 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.11.3]
+
+### Bug fixes
+
+- fix(uptime): Bug in translation
+- fix: No cmd would work in DMs
+
+## [v1.11.2]
+
+### Bug fixes
+
+- Fix some problem related to djs
+
 ## [v1.11.0]
 
 > **Released:** `TBA`
