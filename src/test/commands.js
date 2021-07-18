@@ -7,7 +7,7 @@ const WelcomeBot = require("../WelcomeBot");
 const client = new WelcomeBot();
 const commands = client.commands.enabled;
 require("../loaders/Locale.js")(client).then((success) =>
-    console.log("Locales are " + (success ? "loaded" : "not loaded"));
+    console.log("Locales are " + (success ? "loaded" : "not loaded"))
 );
 //findArrDups is took from https://flexiple.com/find-duplicates-javascript-array/
 const findArrDups = (array) => {
