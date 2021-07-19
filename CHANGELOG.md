@@ -16,7 +16,6 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 - fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
-- refactor(locales): drop errors:userNotFound
 
 [v2.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.0
 
