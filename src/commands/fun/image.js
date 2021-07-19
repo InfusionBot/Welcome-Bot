@@ -28,8 +28,7 @@ module.exports = class CMD extends Command {
         });
         if (url.startsWith("http")) {
             let image = new Embed().setImage(url);
-            message.channel.send({ embeds: [image] });
-            return;
+            return message.channel.send({ embeds: [image] });
         }
         message.reply(t("errors:generic"));
     }
