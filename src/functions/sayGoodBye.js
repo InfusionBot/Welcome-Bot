@@ -23,7 +23,7 @@ module.exports = async (member) => {
         );
     }
     if (!channel) {
-        return "Can't find channel";
+        return "channelNotFound";
     }
     channel.sendTyping();
     let msg = guildDB.goodByeMessage;
