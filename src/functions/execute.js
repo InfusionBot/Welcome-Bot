@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -54,6 +54,8 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
+        if (guildDB.disabled.includes(command.name)) return;
+
         if (
             message.guild &&
             !message.guild.me
@@ -83,7 +85,7 @@ module.exports = async (message, guildDB) => {
         if (
             command?.memberPerms &&
             message.channel.type !== "DM" &&
-            message?.guild
+            message.guild
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
