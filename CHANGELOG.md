@@ -12,8 +12,13 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 > **Released:** `TBA`
 
+### New features
+
+- refactor(disable cmd): Disable commands using disable cmd now!
+
 ### Changes
 
+- fix(goodbye): They are disabled by default now!
 - fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
 - refactor(disable cmd): Disable commands using disable cmd now!
