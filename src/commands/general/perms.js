@@ -37,9 +37,7 @@ module.exports = class CMD extends Command {
                     message.client
                 );
             }
-            if (
-                !isNaN(parseInt(args[0]))
-            ) {
+            if (!isNaN(parseInt(args[0]))) {
                 user = message.client.users.cache.get(args[0]);
                 if (!user) user = await message.client.users.fetch(args[0]);
             }
