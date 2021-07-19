@@ -13,7 +13,7 @@ module.exports = async (member) => {
     if (!channel) {
         return;
     }
-    channel.startTyping(1);
+    channel.sendTyping();
     let msg = guildDB.goodByeMessage;
     //Replace Placeholders with their values
     msg = msg
@@ -21,5 +21,4 @@ module.exports = async (member) => {
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
     channel.send(msg);
-    channel.stopTyping();
 };
