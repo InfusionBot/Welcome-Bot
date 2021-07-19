@@ -69,16 +69,19 @@
     "cmdDesc": "Soru sorarak kaderini öğren"
   },
   "coinflip": {
-    "cmdDesc": "Yazı tura at."
+    "cmdDesc": "Yazı tura at.",
+    "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
   "figlet": {
-    "cmdDesc": "FIGfont belirtimini JS'de uygulayın"
+    "cmdDesc": "FIGfont belirtimini JS'de uygulayın",
+    "error": "Your text has to be smaller than 20 characters"
   },
   "image": {
     "cmdDesc": "Rastgele bir pokemon resmi oluştur"
   },
   "pokemon": {
-    "cmdDesc": "Bir pokemon resmi al"
+    "cmdDesc": "Bir pokemon resmi al",
+    "error": "Oh! Could not find that Pokemon"
   },
   "addemoji": {
     "cmdDesc": "Bir resim bağlantısından emoji ekle",
@@ -109,7 +112,8 @@
     "cmdDesc": "Bu sunucudaki tüm özel emojilerin ID'leriyle birlikte listesi."
   },
   "perms": {
-    "cmdDesc": "Belirli bir kullanıcıya verilen izinleri görüntüleyin. Herhangi bir kullanıcı belirtmemek kendi izinlerini gösterecektir"
+    "cmdDesc": "Belirli bir kullanıcıya verilen izinleri görüntüleyin. Herhangi bir kullanıcı belirtmemek kendi izinlerini gösterecektir",
+    "message": "Permissions for **{{tag}}** in *{{channel}}* channel"
   },
   "qrcode": {
     "cmdDesc": "Bir QR kodu oluşturur veya okur"
