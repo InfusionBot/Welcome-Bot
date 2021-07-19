@@ -16,6 +16,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 - fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
+- refactor(disable cmd): Disable commands using disable cmd now!
 
 [v2.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.0
 
