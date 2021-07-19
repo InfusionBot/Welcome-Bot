@@ -8,6 +8,14 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.12.1]
+
+> **Released:** `19-07-2021`
+
+### Bug fixes
+
+- fix(embed error): While sending logs (Error: `MessageEmbed field values must be non-empty strings.`)
+
 ## [v1.12.0]
 
 ### New features
