@@ -8,6 +8,14 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.13.0]
+
+> **Released:** `TBA`
+
+### Changes
+
+- refactor(categories): Delete categories.json & store datas in their respective folders
+
 ## [v1.12.0]
 
 > **Released:** `18-07-2021`
