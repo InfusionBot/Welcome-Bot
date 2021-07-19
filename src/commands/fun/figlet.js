@@ -30,9 +30,7 @@ module.exports = class CMD extends Command {
         let text = args.join(" ");
         let result;
         if (text.length > 20) {
-            return message.channel.send(
-                t("cmds:figlet.error")
-            );
+            return message.channel.send(t("cmds:figlet.error"));
         }
         result = await figletAsync(text);
         message.reply("```" + result + "```");
