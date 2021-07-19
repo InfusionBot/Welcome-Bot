@@ -8,6 +8,14 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.13.0]
+
+> **Released:** `TBA`
+
+### Changes
+
+- refactor(categories): Delete categories.json & store datas in their respective folders
+
 ## [v1.12.2]
 
 > **Released:** `19-07-2021`
@@ -26,11 +34,15 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.12.0]
 
+> **Released:** `18-07-2021`
+
 ### New features
 
 - feat: New translation from Turkish available, thanks to @Ulas#0002
 
 ## [v1.11.3]
+
+> **Released:** `18-07-2021`
 
 ### Bug fixes
 
@@ -39,13 +51,23 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ## [v1.11.2]
 
+> **Released:** `18-07-2021`
+
 ### Bug fixes
 
 - Fix some problem related to djs
 
+## [v1.11.1]
+
+> **Released:** `17-07-2021`
+
+### Bug fixes
+
+- fix(Intents): Remove unwanted intent: GUILD_PRESENCES
+
 ## [v1.11.0]
 
-> **Released:** `TBA`
+> **Released:** `17-07-2021`
 
 ### New features
 
