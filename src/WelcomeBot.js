@@ -194,15 +194,17 @@ class WelcomeBot extends Client {
         return true;
     }
 
-    findCMD(cmdName, enabled=false) {
+    findCMD(cmdName, enabled = false) {
         let cmd;
         let disabledCmd;
         try {
             cmd = this.commands.enabled.find(cmdName);
             disabledCmd = this.commands.disabled.find(cmdName);
-        } catch(e) {
+        } catch (e) {
             if (enabled && !cmd) {
-                throw new Error(`Tried to find ${cmdName}, but it wasn't in the enabled commands.`);
+                throw new Error(
+                    `Tried to find ${cmdName}, but it wasn't in the enabled commands.`
+                );
                 return;
             }
         }
