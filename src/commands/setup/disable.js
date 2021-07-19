@@ -31,14 +31,19 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const embed = new Embed({color: "red"})
-            .setTitle(t("cmds:disable.title"));
+        const embed = new Embed({ color: "red" }).setTitle(
+            t("cmds:disable.title")
+        );
         args[0] = args[0] ? args[0] : "";
         const { disabled } = guildDB;
         if (!args.length) {
-            return message.reply({embeds: [embed.setDesc(`• ${disabled.join("\n• ")}`)]});
+            return message.reply({
+                embeds: [embed.setDesc(`• ${disabled.join("\n• ")}`)],
+            });
         } else {
-            const cmd = this.client.commands.enabled.find(args[0].toLowerCase());
+            const cmd = this.client.commands.enabled.find(
+                args[0].toLowerCase()
+            );
             if (!cmd) {
                 return message.reply(t("errors:commandNotFound"));
             }
