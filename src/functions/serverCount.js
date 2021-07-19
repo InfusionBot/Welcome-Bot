@@ -7,7 +7,7 @@ const https = require("https");
 const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
-            console.log("statusCode: ", res.statusCode);
+            console.log(`Status Code for ${options.hostname}: `, res.statusCode);
         })
         .on("error", (err) => {
             console.error(err.message);
