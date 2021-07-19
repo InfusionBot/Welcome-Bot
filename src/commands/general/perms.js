@@ -57,8 +57,10 @@ module.exports = class CMD extends Command {
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
         let text =
-            t("cmds:perms.message", {tag: user.tag, channel: message.channel.name}) +
-            "\n```\n\n";
+            t("cmds:perms.message", {
+                tag: user.tag,
+                channel: message.channel.name,
+            }) + "\n```\n\n";
         const mPermissions = message.channel.permissionsFor(member);
         const permissions = Object.keys(Permissions.FLAGS);
         let allowed = 0;
