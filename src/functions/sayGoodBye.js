@@ -8,9 +8,16 @@ const { Embed } = require("../classes");
 module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
     if (guildDB.disabled.includes("goodbye") || guildDB.disabled.includes("goodbye-plugin")) return;
-    let channel = member.guild.channels.cache.find(
-        (ch) => ch.name === guildDB.channel
-    );
+    let channel;
+    if (isNaN(guildDB.channel)) {
+        channel = member.guild.channels.cache.find(
+            (ch) => ch.name === guildDB.channel
+        );
+    } else {
+        channel = member.guild.channels.cache.find(
+            (ch) => ch.id === guildDB.channel
+        );
+    }
     if (!channel) {
         return "Can't find channel";
     }

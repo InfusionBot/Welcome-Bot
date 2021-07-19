@@ -96,7 +96,7 @@ module.exports = class CMD extends Command {
                 break;
             case "reset":
                 //Reset channel
-                updateGuild(message.guild.id, "channel", "new-members");
+                updateGuild(message.guild.id, "channel", "member-log");
                 guildDB = await getGuild(message.guild.id);
                 message.reply("Channel reset to `" + guildDB.channel + "`");
                 break;

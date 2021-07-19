@@ -21,7 +21,7 @@ const guildSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        default: "new-members",
+        default: "member-log",
     },
     welcomeMessage: {
         type: String,

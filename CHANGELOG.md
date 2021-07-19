@@ -14,6 +14,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 ### Changes
 
+- fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
 - refactor(locales): drop errors:userNotFound
 
