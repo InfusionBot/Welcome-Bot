@@ -42,7 +42,7 @@ module.exports = class CMD extends Command {
             });
         } else {
             const cmd = this.client.commands.enabled.find(
-                args[0].toLowerCase()
+                cmd => cmd.name === args[0].toLowerCase()
             );
             if (!cmd) {
                 return message.reply(t("errors:commandNotFound"));
