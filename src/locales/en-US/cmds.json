@@ -73,7 +73,8 @@
     "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
   "figlet": {
-    "cmdDesc": "Implement the FIGfont spec in JS"
+    "cmdDesc": "Implement the FIGfont spec in JS",
+    "error": "Your text has to be smaller than 20 characters"
   },
   "image": {
     "cmdDesc": "Generate a random pokemon image"

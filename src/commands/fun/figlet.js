@@ -31,10 +31,10 @@ module.exports = class CMD extends Command {
         let result;
         if (text.length > 20) {
             return message.channel.send(
-                "Your text has to be smaller than 20 characters"
+                t("cmds:figlet.error")
             );
         }
         result = await figletAsync(text);
-        message.channel.send("```" + result + "```");
+        message.reply("```" + result + "```");
     }
 };
