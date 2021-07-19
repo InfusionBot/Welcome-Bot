@@ -41,7 +41,7 @@ class WelcomeBot extends Client {
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
-        this.categories = require("./data/categories.json");
+        this.categories = [];
         this.customEmojis = require("./data/customEmojis.json");
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
@@ -135,6 +135,10 @@ class WelcomeBot extends Client {
     loadCommand(commandPath, commandName) {
         const CMD = require(`${commandPath}/${commandName.replace(".js", "")}`);
         //command = new Command(this, command);
+        return this.setCmd(CMD);
+    }
+
+    setCmd(CMD) {
         const command = new CMD(this);
         if (!command.disabled) {
             this.commands.enabled.set(command.name, command);
@@ -150,7 +154,7 @@ class WelcomeBot extends Client {
         const commandFolders = fs.readdirSync(commandFolder);
 
         for (const folder of commandFolders) {
-            const commandFiles = fs
+            /*const commandFiles = fs
                 .readdirSync(`${commandFolder}/${folder}`)
                 .filter((file) => file.endsWith(".js"));
             for (const file of commandFiles) {
@@ -161,7 +165,18 @@ class WelcomeBot extends Client {
                     console.error(e);
                     process.exit();
                 }
+            }*/
+            const { commands, metadata } = require(`${commandFolder}/${folder}`);
+            for (const cmd of commands) {
+                try {
+                    this.setCmd(cmd);
+                } catch (e) {
+                    this.logger.log(`Error occurred when loading ${file}`);
+                    console.error(e);
+                    process.exit();
+                }
             }
+            this.categories.push(metadata);
         }
         if (this.debug && this.debugLevel > 1)
             this.logger.log("Finished loading commands", "debug", [
