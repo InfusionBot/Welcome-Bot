@@ -69,7 +69,8 @@
     "cmdDesc": "Get your fortune by asking your question"
   },
   "coinflip": {
-    "cmdDesc": "Flip a coin."
+    "cmdDesc": "Flip a coin.",
+    "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS"
