@@ -8,6 +8,14 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
+## [v1.12.2]
+
+> **Released:** `19-07-2021`
+
+### Bug fixes
+
+- fix: goodbye messages
+
 ## [v1.12.1]
 
 > **Released:** `19-07-2021`
