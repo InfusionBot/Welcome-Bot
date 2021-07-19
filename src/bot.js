@@ -61,7 +61,7 @@ client.player
         embed = new Embed({ color: "success" });
         const t = await getT(queue.metadata.guild.id);
         embed
-            .setTitle(`🥁 ${t("cmds:play.starting")}`)
+            .setTitle(`🥁 | ${t("cmds:play.starting")}`)
             .setDescription(track.title)
             .setImage(track.thumbnail);
         queue.metadata.channel.send({ embeds: [embed] });

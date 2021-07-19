@@ -28,6 +28,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
+        //Note for contributors: If you disable this cmd, update that in botperms cmd.
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
