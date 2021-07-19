@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
             typeof result === "string" &&
             result.indexOf("channelNotFound") !== -1
         ) {
-            message.reply(result);
+            message.reply(t("errors:channelDoesntExist"));
         }
         message.react("👍");
     }
