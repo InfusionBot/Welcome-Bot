@@ -107,40 +107,6 @@ module.exports = async (message, guildDB) => {
             }
         }
 
-        if (
-            command?.botPerms &&
-            message.channel.type !== "DM" &&
-            message?.guild
-        ) {
-            const bot_perms = message.guild.me.permissionsIn(message.channel);
-            const botG_perms = message.guild.me.permissions;
-
-            if (!bot_perms) {
-                return message.reply(
-                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
-                );
-            }
-            for (var i = 0; i < command.botPerms.length; i++) {
-                if (
-                    !bot_perms.has(command.botPerms[i]) ||
-                    !botG_perms.has(command.botPerms[i])
-                ) {
-                    return message.reply(
-                        t("errors:iDontHavePermission", {
-                            permission: t(
-                                `permissions:${new Permissions(
-                                    command.botPerms[i]
-                                )
-                                    .toArray()
-                                    .join("")
-                                    .toUpperCase()}`
-                            ),
-                        })
-                    );
-                }
-            }
-        }
-
         if (command.requirements?.args && !args.length) {
             let reply = t("errors:missingArgs");
 
@@ -190,7 +156,7 @@ module.exports = async (message, guildDB) => {
                 `Starting to prerun cmd: ${command.name}`,
                 "debug"
             );
-        if (command.prerun(message, t)) {
+        if (command.prerun(message, guildDB, t)) {
             if (client.debug && client.debugLevel >= 2)
                 client.logger.log(
                     `Starting to execute cmd: ${command.name}`,
