@@ -80,7 +80,8 @@
     "cmdDesc": "Generate a random pokemon image"
   },
   "pokemon": {
-    "cmdDesc": "Get a pokemon image"
+    "cmdDesc": "Get a pokemon image",
+    "error": "Oh! Could not find that Pokemon"
   },
   "addemoji": {
     "cmdDesc": "Add emoji from a image link",

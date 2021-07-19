@@ -28,13 +28,12 @@ module.exports = class CMD extends Command {
         const randomImage = require("../../functions/randomImage.js");
         const url = await randomImage(args[0]).catch((err) => {
             console.error(err);
-            message.reply("Oh! Could not find that Pokemon");
+            message.reply(t("cmds:pokemon.error"));
         });
         if (url && url.startsWith("http")) {
             let image = new Embed();
             image.setImage(url);
-            message.channel.send({ embeds: [image] });
-            return;
+            return message.channel.send({ embeds: [image] });
         }
         message.reply(t("errors:generic"));
     }
