@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -60,7 +60,13 @@ module.exports = class Command {
 
             if (!bot_perms) {
                 return message.reply(
-                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
+                    `${t("errors:iDontHavePermShort")}\nType \`${
+                        guildDB.prefix
+                    }help ${
+                        command.name
+                    }\` to get list of permissions required by this command.\nDon't know what you have given already? Type \`${
+                        guildDB.prefix
+                    }botperms\` in this channel itself.`
                 );
             }
             for (var i = 0; i < basicPerms.length; i++) {

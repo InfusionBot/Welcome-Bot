@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -61,7 +61,7 @@ client.player
         embed = new Embed({ color: "success" });
         const t = await getT(queue.metadata.guild.id);
         embed
-            .setTitle(`🥁 ${t("cmds:play.starting")}`)
+            .setTitle(`🥁 | ${t("cmds:play.starting")}`)
             .setDescription(track.title)
             .setImage(track.thumbnail);
         queue.metadata.channel.send({ embeds: [embed] });

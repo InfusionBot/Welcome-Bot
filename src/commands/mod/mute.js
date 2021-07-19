@@ -48,7 +48,7 @@ module.exports = class CMD extends Command {
             }
         }
         if (!user) {
-            return message.reply(t("errors:userNotFound"));
+            return message.reply(t("errors:invalidUser"));
         }
         if (message.author.id === user.id) {
             return message.reply(t("cmds:mute.errorYourself"));

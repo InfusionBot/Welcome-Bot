@@ -1,9 +1,10 @@
 {
   "name": "welcome-bot",
-  "version": "1.12.2",
+  "version": "1.13.0",
   "changelog": [
-    "**Bug fixes**",
-    "fix: goodbye messages"
+    "**Changes**",
+    "refactor(categories): Delete categories.json & store datas in their respective folders",
+    "New translations (Turkish)"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/shard.js",

@@ -18,6 +18,7 @@
   "youDontHavePermission": "You're missing the following permission in that channel: {{permission}}",
   "youDontHavePermShort": "You don't have permission to do this!",
   "iDontHavePermission": "I'm missing the following permission in that channel: {{permission}}",
+  "iDontHavePermShort": "You didn't give the bot permission(s) to do this!",
   "channelDoesntExist": "That channel doesn't exist or I couldn't find it.",
   "userNotInGuild": "That user was not found in this server",
   "userNotFound": "An error occurred while trying to find that user.",
