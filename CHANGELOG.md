@@ -15,6 +15,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 ### Changes
 
 - refactor(categories): Delete categories.json & store datas in their respective folders
+- New translations (Turkish)
 
 ## [v1.12.2]
 
@@ -440,6 +441,9 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.13.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.13.0
+[v1.12.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.12.2
+[v1.12.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.12.1
 [v1.12.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.12.0
 [v1.11.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.3
 [v1.11.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.11.2
