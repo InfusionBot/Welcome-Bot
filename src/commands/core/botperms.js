@@ -21,6 +21,6 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args }, t) {
-        this.client.commands.enabled.get("perms").execute({message, [this.client.user.id]}, t);
+        this.client.commands.enabled.get("perms").execute({message, args: [this.client.user.id]}, t);
     }
 };
