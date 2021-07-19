@@ -225,7 +225,7 @@ client.on("messageCreate", async function (message) {
     if (message.guild && message.channel.type !== "DM") {
         guildDB = await getGuild(message.guild.id);
     } else {
-        guildDB = { prefix: client.defaultPrefix };
+        guildDB = { prefix: client.defaultPrefix, disabled: [] };
     }
     if (client.debug && client.debugLevel > 0)
         client.logger.log("running execute func", "debug");
