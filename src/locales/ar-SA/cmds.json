@@ -69,16 +69,19 @@
     "cmdDesc": "Get your fortune by asking your question"
   },
   "coinflip": {
-    "cmdDesc": "قلب عملة معدنية."
+    "cmdDesc": "قلب عملة معدنية.",
+    "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
   "figlet": {
-    "cmdDesc": "تنفيذ سرعة FIGfont في JS"
+    "cmdDesc": "تنفيذ سرعة FIGfont في JS",
+    "error": "Your text has to be smaller than 20 characters"
   },
   "image": {
     "cmdDesc": "إنشاء صورة شعبية عشوائية"
   },
   "pokemon": {
-    "cmdDesc": "Get a pokemon image"
+    "cmdDesc": "Get a pokemon image",
+    "error": "Oh! Could not find that Pokemon"
   },
   "addemoji": {
     "cmdDesc": "Add emoji from a image link",
@@ -109,7 +112,8 @@
     "cmdDesc": "List of all custom emojis in this server, with there IDs."
   },
   "perms": {
-    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions"
+    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions",
+    "message": "Permissions for **{{tag}}** in *{{channel}}* channel"
   },
   "qrcode": {
     "cmdDesc": "إنشاء/قراءة رمز Qrcode"

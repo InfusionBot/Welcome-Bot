@@ -22,7 +22,7 @@
   "CONNECT": "Bağlan",
   "SPEAK": "Konuş",
   "MUTE_MEMBERS": "Üyeleri Sustur",
-  "DEAFEN_MEMBERS": "Deafen Members",
+  "DEAFEN_MEMBERS": "Üyeleri Sağırlaştır",
   "MOVE_MEMBERS": "Üyeleri Taşı",
   "USE_VAD": "Ses Etkinliğini Kullan",
   "CHANGE_NICKNAME": "Kullanıcı Adını Değiştir",
