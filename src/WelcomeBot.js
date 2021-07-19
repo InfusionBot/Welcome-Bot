@@ -166,7 +166,10 @@ class WelcomeBot extends Client {
                     process.exit();
                 }
             }*/
-            const { commands, metadata } = require(`${commandFolder}/${folder}`);
+            const {
+                commands,
+                metadata,
+            } = require(`${commandFolder}/${folder}`);
             for (const cmd of commands) {
                 try {
                     this.setCmd(cmd);
