@@ -7,7 +7,11 @@ const getGuild = require("../db/functions/guild/getGuild");
 const { Embed } = require("../classes");
 module.exports = async (member) => {
     let guildDB = await getGuild(member.guild.id);
-    if (guildDB.disabled.includes("welcome") || guildDB.disabled.includes("welcome-plugin")) return;
+    if (
+        guildDB.disabled.includes("welcome") ||
+        guildDB.disabled.includes("welcome-plugin")
+    )
+        return;
     let channel;
     if (isNaN(guildDB.channel)) {
         channel = member.guild.channels.cache.find(
@@ -29,7 +33,7 @@ module.exports = async (member) => {
         .replace("{tag}", `${member.user.tag}`)
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`);
-    const embed = new Embed({color:"blue"})
+    const embed = new Embed({ color: "blue" })
         .setAuthor(
             member.user.tag,
             member.user.displayAvatarURL({
