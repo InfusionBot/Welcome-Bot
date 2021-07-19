@@ -46,7 +46,7 @@ module.exports = class CMD extends Command {
         }
 
         if (!user) {
-            message.reply(t("errors:userNotFound"));
+            message.reply(t("errors:invalidUser"));
             return false;
         }
         let member;
