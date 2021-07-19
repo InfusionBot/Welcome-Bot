@@ -16,6 +16,22 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 - refactor(categories): Delete categories.json & store datas in their respective folders
 
+## [v1.12.2]
+
+> **Released:** `19-07-2021`
+
+### Bug fixes
+
+- fix: goodbye messages
+
+## [v1.12.1]
+
+> **Released:** `19-07-2021`
+
+### Bug fixes
+
+- fix(embed error): While sending logs (Error: `MessageEmbed field values must be non-empty strings.`)
+
 ## [v1.12.0]
 
 > **Released:** `18-07-2021`
