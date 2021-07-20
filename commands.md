@@ -214,7 +214,20 @@ Welcome-Bot contains more than **50 commands** in **9 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (1 commands)
+## Economy (4 commands)
+
+### `balance`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Check your wcoin balance, or someone else's. Shows wallect & bank
+- Usage: None
+- Aliases: `bal`, `wallet`
+- Cooldown: 5
 
 ### `daily`
 
@@ -228,6 +241,32 @@ Welcome-Bot contains more than **50 commands** in **9 categories**!
 - Usage: None
 - Aliases: None
 - Cooldown: 10
+
+### `deposit`
+
+##### Subcommands:
+
+- `all` - Deposit maximum money, aliases: `max`
+
+##### Cmd info
+
+- Description: Deposit money to your bank
+- Usage: None
+- Aliases: `dep`, `bankdep`
+- Cooldown: 10
+
+### `give`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Donate monry to another user
+- Usage: [@mention / user id] [amount]
+- Aliases: `donate`, `share`
+- Cooldown: 5
 
 ## Fun (5 commands)
 
