@@ -12,8 +12,7 @@ module.exports = (userId) => {
                 console.log(err);
                 return reject(err);
             } else if (user) {
-                //console.log("User already added.");
-                return resolve(false);
+                return resolve("User already added.");
             } else {
                 let user = new User({
                     userId,

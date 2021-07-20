@@ -190,7 +190,26 @@ module.exports = async (message, guildDB) => {
                 `Starting to prerun cmd: ${command.name}`,
                 "debug"
             );
-        if (command.prerun(message, t)) {
+        let prerunResult = false;
+        try {
+            prerunResult = await command.prerun(message, t);
+        } catch(e) {
+            client.logger.log("Error when prerunning cmd", "error", [
+                "CMDS",
+            ]);
+            console.error(err);
+            embed
+                .setTitle(t("errors:generic"))
+                .addField(
+                    `Please report this to ${message.client.ownersTags.join(
+                        " OR "
+                    )}`,
+                    "\u200b"
+                );
+            message.reply({ embeds: [embed] });
+            return;
+        }
+        if (prerunResult) {
             if (client.debug && client.debugLevel >= 2)
                 client.logger.log(
                     `Starting to execute cmd: ${command.name}`,

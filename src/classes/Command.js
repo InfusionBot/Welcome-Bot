@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const createOptionHandler = require("../functions/createOptionHandler");
+const addUser = require("../db/functions/user/addUser");
 const { Permissions, Collection } = require("discord.js");
 module.exports = class Command {
     constructor(opts, client) {
@@ -49,7 +50,18 @@ module.exports = class Command {
         }
     }
 
-    prerun(message, t) {
+    async prerun(message, t) {
+        try {
+            await addUser(message.author.id);
+        } catch(e) {
+            if (this.category.toLowerCase() === "economy") {
+                throw err;
+                return false;
+            } else {
+                this.client.logger.log("Can't add user:", "error", ["USER", "DB"]);
+                console.log(err);
+            }
+        }
         const basicPerms = [
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,
