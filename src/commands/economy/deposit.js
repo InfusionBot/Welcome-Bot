@@ -18,7 +18,10 @@ module.exports = class CMD extends Command {
                     args: true,
                 },
                 subcommands: [
-                    { name: "all", desc: "Deposit maximum money, aliases: `max`" }
+                    {
+                        name: "all",
+                        desc: "Deposit maximum money, aliases: `max`",
+                    },
                 ],
                 disabled: false,
                 cooldown: 10,
@@ -35,24 +38,40 @@ module.exports = class CMD extends Command {
             if (wcoins > userDB.wallet) {
                 return message.reply(t("cmds:deposit.notAvailable"));
             }
-        } else if (args[0].toLowerCase() === "all" || args[0].toLowerCase() === "max") {
+        } else if (
+            args[0].toLowerCase() === "all" ||
+            args[0].toLowerCase() === "max"
+        ) {
             const freeSpace = userDB.bankLimit - userDB.bank;
             if (freeSpace > 0) {
                 wcoins = userDB.wallet;
-                if (wcoins < 0) { //wcoins is a negetive integer
+                if (wcoins < 0) {
+                    //wcoins is a negetive integer
                     return message.reply(t("cmds:deposit.notAvailable"));
                 } else if (wcoins > freeSpace) {
                     wcoins = wcoins - freeSpace;
                 }
-            } else if (freeSpace < 0) { //no free space
+            } else if (freeSpace < 0) {
+                //no free space
                 return message.reply(t("cmds:deposit.noSpace"));
             }
         }
         try {
-            await updateUser(message.author.id, "bank", parseInt(userDB.bank) + wcoins);
-            await updateUser(message.author.id, "wallet", userDB.wallet - wcoins);
-        } catch(e) {
-            message.client.logger.log("Error occurred when depositing user's wcoins", "error");
+            await updateUser(
+                message.author.id,
+                "bank",
+                parseInt(userDB.bank) + wcoins
+            );
+            await updateUser(
+                message.author.id,
+                "wallet",
+                userDB.wallet - wcoins
+            );
+        } catch (e) {
+            message.client.logger.log(
+                "Error occurred when depositing user's wcoins",
+                "error"
+            );
             throw e;
         }
         const embed = new Embed({ color: "lightblue", timestamp: true })
