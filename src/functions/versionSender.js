@@ -24,7 +24,7 @@ module.exports = async (client) => {
                     if (newsChannel) newsChannel.send(reply);
                     else
                         client.logger.log(
-                            "NODE_ENV is in production and bot can't find newsChannel to send version updates"
+                            "NODE_ENV is in production and bot can't find newsChannel to send version updates",
                             "error"
                         );
                 }

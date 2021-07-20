@@ -15,6 +15,8 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 ### Changes
 
 - refactor(categories): Delete categories.json & store datas in their respective folders
+- feat: Add config & Store whole package.json file in client.package
+- New cmd testgoodbye, testwelcome. Cmd testwelcome replaces test cmd
 
 ## [v1.12.2]
 
