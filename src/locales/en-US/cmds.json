@@ -77,10 +77,16 @@
   },
   "deposit": {
     "cmdDesc": "Deposit money to your bank",
-    "notAvailable": "Woah... You don't have that much money in your wallet to deposit!",
+    "notAvailable": "Woah... You don't have that much money in your wallet!",
     "noSpace": "Woah... You don't have space to deposit that money!",
     "title": "Money deposited",
     "success": "Deposited {{wcoins}} wcoins"
+  },
+  "give": {
+    "cmdDesc": "Donate monry to another user",
+    "title": "Donated money!",
+    "success": "{{mention}} You gave {{user}} {{amount}}, now you have {{yourWallet}} and they've got {{userWallet}}",
+    "errorYourself": "Woah, can you donate yourself?"
   },
   "8ball": {
     "cmdDesc": "Get your fortune by asking your question"
