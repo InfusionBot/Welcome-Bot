@@ -22,7 +22,6 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        let { wallet, bank, bankLimit } = userDB;
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -47,11 +46,11 @@ module.exports = class CMD extends Command {
             return false;
         }
         try {
-            const userDB2 = await getUser(user.id);
-            { wallet, bank, bankLimit } = userDB2;
+            userDB2 = await getUser(user.id);
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
+        const { wallet, bank, bankLimit } = userDB2;
         const embed = new Embed({ color: "lightblue", timestamp: true })
             .setTitle(t("cmds:balance.balance", { user: user.username }))
             .setDesc(
