@@ -2,7 +2,7 @@
 
 The Changelog of the major version 2 of Discord Welcome-Bot.
 
-Note that the displayed date is in the format `dd-mm-yyyy`
+The displayed date is in the format `DD-MM-YYYY`
 
 [Older changelogs](#older-changelogs)
 
