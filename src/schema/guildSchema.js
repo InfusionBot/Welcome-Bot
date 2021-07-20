@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -21,7 +21,7 @@ const guildSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        default: "new-members",
+        default: "member-log",
     },
     welcomeMessage: {
         type: String,
@@ -42,20 +42,13 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "mod-log",
     },
-    enableWelcome: {
-        type: Boolean,
-        default: true,
-    },
-    enableGoodbye: {
-        type: Boolean,
-        default: true,
-    },
     lang: {
         type: String,
         required: true,
         trim: true,
         default: "en-US",
     },
+    disabled: [String],
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);
