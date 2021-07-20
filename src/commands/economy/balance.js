@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const getUser = require("../../db/functions/user/getUser");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -21,7 +22,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const { wallet, bank, bankLimit } = userDB;
+        let { wallet, bank, bankLimit } = userDB;
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -41,9 +42,14 @@ module.exports = class CMD extends Command {
             user = message.author;
         }
 
-        if (!user) {
+        if (!user || user.bot) {
             message.reply(t("errors:invalidUser"));
             return false;
+        }
+        try {
+            { wallet, bank, bankLimit } = await getUser(user.id);
+        } catch (e) {
+            return message.reply(t("errors:noAcc"));
         }
         const embed = new Embed({ color: "lightblue", timestamp: true })
             .setTitle(t("cmds:balance.balance", { user: user.username }))
