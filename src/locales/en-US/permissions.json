@@ -31,5 +31,8 @@
   "MANAGE_WEBHOOKS": "Manage Webhooks",
   "MANAGE_EMOJIS": "Manage Emojis",
   "USE_APPLICATION_COMMANDS": "Use Slash commands",
-  "REQUEST_TO_SPEAK": "Request to Speak"
+  "REQUEST_TO_SPEAK": "Request to Speak",
+  "MANAGE_THREADS": "Manage Threads",
+  "USE_PUBLIC_THREADS": "Use Public Threads",
+  "USE_PRIVATE_THREADS": "Use Private Threads"
 }
