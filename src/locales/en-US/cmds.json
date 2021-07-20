@@ -72,6 +72,9 @@
     "cmdDesc": "Flip a coin.",
     "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
+  "emojify": {
+    "cmdDesc": "Emojify a text."
+  },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS",
     "error": "Your text has to be smaller than 20 characters"
