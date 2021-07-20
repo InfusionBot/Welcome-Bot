@@ -30,13 +30,13 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const dailyCoins = 100;
         const time = new Date().getTime();
-        const dailyClaimed = new Date().setTime(
+        const nextDaily = new Date().setTime(
             parseInt(userDB.dailyClaimed) - 24 * 60 * 60 * 1000
         );
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
-        const momentTime = moment(dailyClaimed);
+        const momentTime = moment(nextDaily);
         const duration = moment
-            .duration(moment(time).diff(dailyClaimed))
+            .duration(moment(time).diff(nextDaily))
             .format(" D [days], H [hours]");
         if (time - parseInt(userDB.dailyClaimed) < 24 * 60 * 60 * 1000) {
             return message.reply(t("cmds:daily.dailyClaimed", { duration }));

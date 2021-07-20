@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    wcoins: {
+    bank: {
         type: Number,
         trim: true,
         required: true,
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 25,
     },
-    banksize: {
+    bankLimit: {
         type: Number,
         trim: true,
         required: true,

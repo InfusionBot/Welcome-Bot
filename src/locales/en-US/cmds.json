@@ -70,6 +70,11 @@
     "success": "{{wcoins}} wcoins were placed in your wallet!",
     "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
   },
+  "balance": {
+    "cmdDesc": "Check your wcoin balance, or someone else's. Shows wallect & bank",
+    "balance": "{{user}}'s balance",
+    "bal": "Wallet: {{wallet}}\nBank: {{bank}}/{{bankLimit}} ({{percentage}}% used)"
+  },
   "8ball": {
     "cmdDesc": "Get your fortune by asking your question"
   },
