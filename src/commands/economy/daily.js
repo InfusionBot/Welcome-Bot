@@ -6,8 +6,7 @@
 const updateUser = require("../../db/functions/user/updateUser");
 const getUser = require("../../db/functions/user/getUser");
 const moment = require("moment");
-const countdown = require("countdown");
-require("moment-countdown");
+require("moment-duration-format");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -31,16 +30,15 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const dailyCoins = 100;
         const time = new Date().getTime();
-        const dailyClaimed = new Date().setTime(userDB.dailyClaimed);
+        const dailyClaimed = new Date().setTime(parseInt(userDB.dailyClaimed) - 24 * 60 * 60 * 1000);
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
         const momentTime = moment(dailyClaimed);
         const duration = moment
-            .countdown(
-                moment(dailyClaimed).diff(time),
-                countdown.DAYS | countdown.HOURS
+            .duration(
+                moment(time).diff(dailyClaimed)
             )
             .format(" D [days], H [hours]");
-        if (time - userDB.dailyClaimed < 24 * 60 * 60 * 1000) {
+        if (time - parseInt(userDB.dailyClaimed) < 24 * 60 * 60 * 1000) {
             return message.reply(t("cmds:daily.dailyClaimed", { duration }));
         }
 
