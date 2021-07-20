@@ -7,15 +7,12 @@ const User = require("../../../schema/userSchema");
 
 module.exports = (userId, property, value) => {
     return new Promise((resolve, reject) => {
-        User.where({ userId }).updateOne(
-            { [property]: value },
-            (err) => {
-                if (err) {
-                    return reject("Could not update user");
-                } else {
-                    return resolve("User Updated");
-                }
+        User.where({ userId }).updateOne({ [property]: value }, (err) => {
+            if (err) {
+                return reject("Could not update user");
+            } else {
+                return resolve("User Updated");
             }
-        );
+        });
     });
 };
