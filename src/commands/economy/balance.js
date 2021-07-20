@@ -47,7 +47,8 @@ module.exports = class CMD extends Command {
             return false;
         }
         try {
-            { wallet, bank, bankLimit } = await getUser(user.id);
+            const userDB2 = await getUser(user.id);
+            { wallet, bank, bankLimit } = userDB2;
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
