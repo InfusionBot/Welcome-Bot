@@ -1,10 +1,10 @@
 {
-  "timeout": "Time's up! Please send the command again!",
-  "resMod": "Responsible moderator:",
-  "channels": "Channels",
+  "timeout": "समय हो गया! कमेंट को फिर किस सेंड कीजिए",
+  "resMod": "जिम्मेदार मॉडरेटर:",
+  "channels": "चैनल्स",
   "bots": "Bots",
   "members": "Members",
   "total": "Total",
-  "uptime": "Uptime",
+  "uptime": "अपटाइम",
   "datelaunched": "Date Launched"
 }
