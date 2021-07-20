@@ -45,14 +45,16 @@ module.exports = class CMD extends Command {
             message.reply(t("errors:invalidUser"));
             return false;
         }
-        const embed = new Embed({color: "lightblue", timestamp: true})
-            .setTitle(t("cmds:balance.balance", {user: user.username}))
-            .setDesc(t("cmds:balance.bal", {
-                wallet,
-                bank,
-                bankLimit,
-                percentage: ((bankLimit - bank) / 100),
-            }));
-        message.reply({embeds: [embed]});
+        const embed = new Embed({ color: "lightblue", timestamp: true })
+            .setTitle(t("cmds:balance.balance", { user: user.username }))
+            .setDesc(
+                t("cmds:balance.bal", {
+                    wallet,
+                    bank,
+                    bankLimit,
+                    percentage: (bankLimit - bank) / 100,
+                })
+            );
+        message.reply({ embeds: [embed] });
     }
 };
