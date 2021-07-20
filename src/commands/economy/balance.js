@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const getUser = require("../../db/functions/user/getUser");
+const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -45,6 +46,7 @@ module.exports = class CMD extends Command {
             message.reply(t("errors:invalidUser"));
             return false;
         }
+        let userDB2;
         try {
             userDB2 = await getUser(user.id);
         } catch (e) {
