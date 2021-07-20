@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
+    registeredAt: {
+        type: Number,
+        default: Date.now(),
+    },
 });
 
 const User = new mongoose.model("User", userSchema);
