@@ -2,7 +2,10 @@ const addVersion = require("../db/functions/version/addVersion");
 const getGuild = require("../db/functions/guild/getGuild");
 
 module.exports = async (client) => {
-    const newVersion = await addVersion(client.package.version, client.package.changelog);
+    const newVersion = await addVersion(
+        client.package.version,
+        client.package.changelog
+    );
     const Guild = client.guildSchema;
     if (newVersion) {
         Guild.where({}).find((err, guilds) => {
