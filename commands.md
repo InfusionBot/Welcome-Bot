@@ -249,7 +249,7 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: emojify.cmdDesc
+- Description: Emojify a text.
 - Usage: [text]
 - Aliases: None
 - Cooldown: 8
