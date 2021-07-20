@@ -73,7 +73,7 @@
   "balance": {
     "cmdDesc": "Check your wcoin balance, or someone else's. Shows wallect & bank",
     "balance": "{{user}}'s balance",
-    "bal": "Wallet: {{wallet}}\nBank: {{bank}}/{{bankLimit}} ({{percentage}}% used)"
+    "bal": "Wallet: {{wallet}}\nBank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
   },
   "8ball": {
     "cmdDesc": "Get your fortune by asking your question"

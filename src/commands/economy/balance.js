@@ -51,7 +51,7 @@ module.exports = class CMD extends Command {
                 wallet,
                 bank,
                 bankLimit,
-                percentage: ((bank + bankLimit) / 100),
+                percentage: ((bankLimit - bank) / 100),
             }));
         message.reply({embeds: [embed]});
     }
