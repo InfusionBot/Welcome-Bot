@@ -65,6 +65,11 @@
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
+  "daily": {
+    "cmdDesc": "Get your daily wcoins!",
+    "success": "{{wcoins}} wcoins were placed in your wallet!",
+    "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
+  },
   "8ball": {
     "cmdDesc": "Get your fortune by asking your question"
   },

@@ -6,9 +6,11 @@
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
 const beautifyPerms = require("../functions/beautifyPerms");
+const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {
     const client = message.client;
+    const userDB = await getUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
         escapeRegex(client.defaultPrefix.toLowerCase()),
@@ -197,7 +199,7 @@ module.exports = async (message, guildDB) => {
             client.logger.log("Error when prerunning cmd", "error", [
                 "CMDS",
             ]);
-            console.error(err);
+            console.error(e);
             embed
                 .setTitle(t("errors:generic"))
                 .addField(
@@ -217,7 +219,7 @@ module.exports = async (message, guildDB) => {
                 );
             message.channel.sendTyping();
             try {
-                command.execute({ message, args, guildDB }, t);
+                command.execute({ message, args, guildDB, userDB }, t);
             } catch (err) {
                 client.logger.log("Error when executing cmds", "error", [
                     "CMDS",

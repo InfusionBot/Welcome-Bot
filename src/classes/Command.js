@@ -109,7 +109,7 @@ module.exports = class Command {
                 const timeLeft = (expirationTime - now) / 1000;
                 message.reply(
                     t(`errors:cooldown`, {
-                        seconds: timeLeft.toFixed(1),
+                        seconds: timeLeft.toFixed(),
                         command: this.name,
                     })
                 );

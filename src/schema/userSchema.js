@@ -15,7 +15,25 @@ const userSchema = new mongoose.Schema({
         type: Number,
         trim: true,
         required: true,
-        default: 10,
+        default: 25,
+    },
+    wallet: {
+        type: Number,
+        trim: true,
+        required: true,
+        default: 25,
+    },
+    banksize: {
+        type: Number,
+        trim: true,
+        required: true,
+        default: 10000, //10k
+    },
+    dailyClaimed: {
+        type: Number,
+        trim: true,
+        required: true,
+        default: 0,
     },
 });
 
