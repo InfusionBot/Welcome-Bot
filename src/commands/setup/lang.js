@@ -34,7 +34,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         const embed = new Embed({ color: "blue" });
-        const list = require(`../../locales/${guildDB.lang}/languages.json`);
+        const list = require(`${__dirname}/../../locales/${guildDB.lang}/languages.json`);
         const keys = Object.keys(lowercaseKeys(list));
         const vals = Object.values(lowercaseVals(list));
         let str = "";

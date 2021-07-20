@@ -25,7 +25,7 @@ const removeGuild = require("./db/functions/guild/removeGuild");
 const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
 
-process.env.userAgent = "Discord Welcome-Bot " + client.botVersion;
+process.env.userAgent = "Discord Welcome-Bot " + client.package.version;
 process.on("unhandledRejection", (error) => {
     if (
         error.toString().indexOf("No guild with guild ID") !== -1 &&
@@ -199,7 +199,7 @@ client.on("guildCreate", (guild) => {
         .setDescription(`${guild.id}`)
         .addField("In shard: ", `${guild.shardId}`);
     client.channels.cache
-        .get(client.loggingChannelId)
+        .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
 });
 
@@ -211,7 +211,7 @@ client.on("guildDelete", (guild) => {
         .setDescription(`${guild.id}`)
         .addField("In shard: ", `${guild.shardId}`);
     client.channels.cache
-        .get(client.loggingChannelId)
+        .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
 });
 

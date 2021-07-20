@@ -6,8 +6,9 @@
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
 //const Command = require("./classes/Command");
+const config = require(__dirname + "/config");
 const util = require("util");
-const packageJson = require("../package.json");
+const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const { Player } = require("discord-player");
 
@@ -111,16 +112,10 @@ class WelcomeBot extends Client {
         this.site = "https://welcome-bot.github.io/";
         this.supportGuildInvite = "https://dsc.gg/welcome-bot-guild";
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
-        this.botVersion = packageJson.version;
-        this.changelog = packageJson.changelog;
-        this.botServerId = "836854115526770708";
-        this.newsChannelId = "847459283876577360";
-        this.loggingChannelId = "855331801635749888";
-        this.suggestionLogsChannelId = "862126837110800414";
-        this.ownerIDs = [
-            "815204465937481749" /*PuneetGopinath#0001*/,
-            "693754859014324295" /*abhijoshi2k#6842*/,
-        ];
+        this.package = packageJson;
+        this.config = config;
+        this.botGuildId = config.botGuildId;
+        this.ownerIDs = config.ownerIDs;
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         this.ownersTags = ["PuneetGopinath#0001", "abhijoshi2k#6842"];
