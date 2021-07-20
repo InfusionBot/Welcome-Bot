@@ -53,12 +53,15 @@ module.exports = class Command {
     async prerun(message, t) {
         try {
             await addUser(message.author.id);
-        } catch(e) {
+        } catch (e) {
             if (this.category.toLowerCase() === "economy") {
                 throw err;
                 return false;
             } else {
-                this.client.logger.log("Can't add user:", "error", ["USER", "DB"]);
+                this.client.logger.log("Can't add user:", "error", [
+                    "USER",
+                    "DB",
+                ]);
                 console.log(err);
             }
         }

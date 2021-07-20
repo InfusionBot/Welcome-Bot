@@ -195,10 +195,8 @@ module.exports = async (message, guildDB) => {
         let prerunResult = false;
         try {
             prerunResult = await command.prerun(message, t);
-        } catch(e) {
-            client.logger.log("Error when prerunning cmd", "error", [
-                "CMDS",
-            ]);
+        } catch (e) {
+            client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
             console.error(e);
             embed
                 .setTitle(t("errors:generic"))

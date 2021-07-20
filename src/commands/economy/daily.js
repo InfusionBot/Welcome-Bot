@@ -34,20 +34,29 @@ module.exports = class CMD extends Command {
         const dailyClaimed = new Date().setTime(userDB.dailyClaimed);
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
         const momentTime = moment(dailyClaimed);
-        const duration = moment.countdown(moment(dailyClaimed).diff(time), countdown.DAYS|countdown.HOURS).format(" D [days], H [hours]");
+        const duration = moment
+            .countdown(
+                moment(dailyClaimed).diff(time),
+                countdown.DAYS | countdown.HOURS
+            )
+            .format(" D [days], H [hours]");
         if (time - userDB.dailyClaimed < 24 * 60 * 60 * 1000) {
-            return message.reply(t("cmds:daily.dailyClaimed", {duration}));
+            return message.reply(t("cmds:daily.dailyClaimed", { duration }));
         }
 
         try {
-            await updateUser(message.author.id, "wallet", parseInt(userDB.wallet) + dailyCoins);
+            await updateUser(
+                message.author.id,
+                "wallet",
+                parseInt(userDB.wallet) + dailyCoins
+            );
             await updateUser(message.author.id, "dailyClaimed", time);
-        } catch(e) {
+        } catch (e) {
             throw e;
         }
-        const embed = new Embed({color: "green"})
+        const embed = new Embed({ color: "green" })
             .setTitle(t("cmds:daily.cmdDesc"))
-            .setDesc(t("cmds:daily.success", {wcoins: `${dailyCoins}`}));
-        message.reply({embeds: [embed]});
+            .setDesc(t("cmds:daily.success", { wcoins: `${dailyCoins}` }));
+        message.reply({ embeds: [embed] });
     }
 };
