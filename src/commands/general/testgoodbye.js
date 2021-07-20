@@ -3,27 +3,20 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
+const sayGoodBye = require("../../functions/sayGoodBye");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "sample",
-                aliases: ["example"],
-                memberPerms: [],
+                name: "testgoodbye",
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
-                    subcommand: false,
-                    args: false,
                     guildOnly: true,
-                    ownerOnly: false,
                 },
-                usage: "[arg1] (arg2)",
                 disabled: false,
-                subcommands: [
-                    { name: "set", desc: "Set this" },
-                    { name: "reset", desc: "Reset that" },
-                ],
                 cooldown: 10,
                 category: "General",
             },
@@ -31,7 +24,14 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }, t) {
-        return;
+    execute({ message, args }, t) {
+        const result = sayGoodBye(message.member);
+        if (
+            typeof result === "string" &&
+            result.indexOf("channelNotFound") !== -1
+        ) {
+            message.reply(t("errors:channelDoesntExist"));
+        }
+        message.react("👍");
     }
 };

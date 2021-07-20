@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -192,6 +192,23 @@ class WelcomeBot extends Client {
         this.debug = debug;
         this.debugLevel = level;
         return true;
+    }
+
+    findCMD(cmdName, enabled = false) {
+        let cmd;
+        let disabledCmd;
+        try {
+            cmd = this.commands.enabled.find(cmdName);
+            disabledCmd = this.commands.disabled.find(cmdName);
+        } catch (e) {
+            if (enabled && !cmd) {
+                throw new Error(
+                    `Tried to find ${cmdName}, but it wasn't in the enabled commands.`
+                );
+                return;
+            }
+        }
+        return cmd.name ? cmd : disabledCmd;
     }
 }
 

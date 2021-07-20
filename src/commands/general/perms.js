@@ -28,6 +28,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
+        //Note for contributors: If you disable this cmd, update that in botperms cmd.
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -36,10 +37,7 @@ module.exports = class CMD extends Command {
                     message.client
                 );
             }
-            if (
-                !isNaN(parseInt(args[0])) &&
-                args[0] !== message.client.user.id
-            ) {
+            if (!isNaN(parseInt(args[0]))) {
                 user = message.client.users.cache.get(args[0]);
                 if (!user) user = await message.client.users.fetch(args[0]);
             }
