@@ -17,6 +17,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor(disable cmd): Disable commands using disable cmd now!
 - feat: New cmd `daily` and new category `Economy`
 - feat: New cmd `balance`
+- feat: New cmd `deposit`
+- feat: New cmd `give`
 
 ### Changes
 
