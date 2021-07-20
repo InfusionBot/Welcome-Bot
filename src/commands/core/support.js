@@ -26,9 +26,9 @@ module.exports = class CMD extends Command {
         const embed = new Embed({
             color: "green",
             timestamp: true,
-            footer: "Official Support Discord for Welcome-Bot",
+            footer: t("cmds:support.footer"),
         })
-            .setTitle("Get Support for Welcome-Bot")
+            .setTitle(t("cmds:support.cmdDesc"))
             .addField(
                 "\u200b",
                 `Join the support server: ${message.client.supportGuildInvite}`

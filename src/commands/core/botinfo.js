@@ -34,7 +34,7 @@ module.exports = class CMD extends Command {
             footer: t("cmds:botinfo.footer"),
         })
             .setTitle(
-                `${message.client.user.username} v${message.client.botVersion}`
+                `${message.client.user.username} v${message.client.package.version}`
             )
             .setDescription(t("cmds:botinfo.footer"))
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
                 `> Servers: ${message.client.guilds.cache.size} servers\n` +
                     `> Users: ${message.client.users.cache.size} users\n` +
                     `> Channels: ${message.client.channels.cache.size} channels\n` +
-                    `> Version: ${message.client.botVersion}\n` +
+                    `> Version: ${message.client.package.version}\n` +
                     `> Commands: ${message.client.commands.enabled.size} commands`
             )
             .addField(

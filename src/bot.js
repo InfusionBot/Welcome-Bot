@@ -199,7 +199,7 @@ client.on("guildCreate", (guild) => {
         .setDescription(`${guild.id}`)
         .addField("In shard: ", `${guild.shardId}`);
     client.channels.cache
-        .get(client.loggingChannelId)
+        .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
 });
 
@@ -211,7 +211,7 @@ client.on("guildDelete", (guild) => {
         .setDescription(`${guild.id}`)
         .addField("In shard: ", `${guild.shardId}`);
     client.channels.cache
-        .get(client.loggingChannelId)
+        .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
 });
 

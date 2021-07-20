@@ -44,7 +44,7 @@ module.exports = class CMD extends Command {
             .setDesc(text);
         try {
             message.client.channels.cache
-                .get(message.client.suggestionLogsChannelId)
+                .get(message.client.config.suggestionLogsChannelId)
                 .send({ embeds: [embed] })
                 .then(async (msg) => {
                     await msg.react("👍");
@@ -56,7 +56,7 @@ module.exports = class CMD extends Command {
                 footer: t("cmds:suggest.done"),
             })
                 .setTitle(
-                    `[Welcome-Bot server](${message.client.supportGuildInvite})`
+                    `Join the Welcome-Bot support server: ${message.client.supportGuildInvite}`
                 )
                 .setDesc(
                     t("cmds:suggest.view", {
