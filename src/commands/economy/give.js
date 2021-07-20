@@ -57,7 +57,7 @@ module.exports = class CMD extends Command {
         if (isNaN(amount)) {
             return message.reply(t("errors:invalidNumber"));
         }
-        if ((parseInt(userDB.wallet) - amount) < 0) {
+        if (parseInt(userDB.wallet) - amount < 0) {
             return message.reply(t("cmds:deposit.notAvailable"));
         }
         let userDB2;
@@ -70,10 +70,21 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:noAcc"));
         }
         try {
-            await updateUser(message.author.id, "wallet", parseInt(userDB.wallet) - amount);
-            await updateUser(user.id, "wallet", amount + parseInt(userDB2.wallet));
-        } catch(e) {
-            message.client.logger.log("Error occurred when donating wcoins", "error");
+            await updateUser(
+                message.author.id,
+                "wallet",
+                parseInt(userDB.wallet) - amount
+            );
+            await updateUser(
+                user.id,
+                "wallet",
+                amount + parseInt(userDB2.wallet)
+            );
+        } catch (e) {
+            message.client.logger.log(
+                "Error occurred when donating wcoins",
+                "error"
+            );
             throw e;
         }
         const embed = new Embed({ color: "lightblue", timestamp: true })
