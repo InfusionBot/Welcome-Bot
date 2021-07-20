@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **50 commands** in **8 categories**!
+Welcome-Bot contains more than **50 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -18,6 +18,7 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 
 - [Anime](#anime)
 - [Core](#core)
+- [Economy](#economy)
 - [Fun](#fun)
 - [General](#general)
 - [Moderation](#moderation)
@@ -211,6 +212,21 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 - Description: Link to Welcome-Bot's website
 - Usage: None
 - Aliases: `site`
+- Cooldown: 10
+
+## Economy (1 commands)
+
+### `daily`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get your daily wcoins!
+- Usage: None
+- Aliases: None
 - Cooldown: 10
 
 ## Fun (5 commands)
