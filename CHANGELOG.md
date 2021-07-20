@@ -2,7 +2,7 @@
 
 The Changelog of the major version 2 of Discord Welcome-Bot.
 
-Note that the displayed date is in the format `dd-mm-yyyy`
+The displayed date is in the format `DD-MM-YYYY`
 
 [Older changelogs](#older-changelogs)
 
@@ -12,10 +12,16 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 > **Released:** `TBA`
 
+### New features
+
+- refactor(disable cmd): Disable commands using disable cmd now!
+
 ### Changes
 
+- fix(goodbye): They are disabled by default now!
 - fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
+- refactor(disable cmd): Disable commands using disable cmd now!
 
 [v2.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.0
 

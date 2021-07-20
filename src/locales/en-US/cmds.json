@@ -235,7 +235,9 @@
     "invalidArgs": "Invalid args, please use proper subcommands, see "
   },
   "disable": {
-    "cmdDesc": "Disable welcome and goodbye logs."
+    "cmdDesc": "Disable commands.",
+    "title": "Currently disabled commands",
+    "done": "Successfully disabled!"
   },
   "enable": {
     "cmdDesc": "Enable welcome and goodbye logs."

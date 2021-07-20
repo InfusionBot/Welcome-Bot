@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -56,6 +56,8 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
+        if (guildDB.disabled.includes(command.name)) return;
+
         if (
             message.guild &&
             !message.guild.me
@@ -85,7 +87,7 @@ module.exports = async (message, guildDB) => {
         if (
             command?.memberPerms &&
             message.channel.type !== "DM" &&
-            message?.guild
+            message.guild
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
@@ -98,40 +100,6 @@ module.exports = async (message, guildDB) => {
                             permission: t(
                                 `permissions:${new Permissions(
                                     command.memberPerms[i]
-                                )
-                                    .toArray()
-                                    .join("")
-                                    .toUpperCase()}`
-                            ),
-                        })
-                    );
-                }
-            }
-        }
-
-        if (
-            command?.botPerms &&
-            message.channel.type !== "DM" &&
-            message?.guild
-        ) {
-            const bot_perms = message.guild.me.permissionsIn(message.channel);
-            const botG_perms = message.guild.me.permissions;
-
-            if (!bot_perms) {
-                return message.reply(
-                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
-                );
-            }
-            for (var i = 0; i < command.botPerms.length; i++) {
-                if (
-                    !bot_perms.has(command.botPerms[i]) ||
-                    !botG_perms.has(command.botPerms[i])
-                ) {
-                    return message.reply(
-                        t("errors:iDontHavePermission", {
-                            permission: t(
-                                `permissions:${new Permissions(
-                                    command.botPerms[i]
                                 )
                                     .toArray()
                                     .join("")
@@ -194,7 +162,7 @@ module.exports = async (message, guildDB) => {
             );
         let prerunResult = false;
         try {
-            prerunResult = await command.prerun(message, t);
+            prerunResult = await command.prerun(message, guildDB, t);
         } catch (e) {
             client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
             console.error(e);
