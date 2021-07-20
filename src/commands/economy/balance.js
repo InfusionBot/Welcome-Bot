@@ -15,7 +15,7 @@ module.exports = class CMD extends Command {
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Economy",
             },
             client
@@ -53,8 +53,11 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:noAcc"));
         }
         const { wallet, bank, bankLimit } = userDB2;
+        if (typeof bankLimit !== "number") {
+            return message.reply(t("errors:noAcc"));
+        }
         const embed = new Embed({ color: "lightblue", timestamp: true })
-            .setTitle(t("cmds:balance.balance", { user: user.username }))
+            .setTitle(t("cmds:balance.title", { user: user.username }))
             .setDesc(
                 t("cmds:balance.bal", {
                     wallet,

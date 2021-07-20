@@ -9,7 +9,7 @@ module.exports = (userId, property, value) => {
     return new Promise((resolve, reject) => {
         User.where({ userId }).updateOne({ [property]: value }, (err) => {
             if (err) {
-                return reject("Could not update user");
+                return reject(err);
             } else {
                 return resolve("User Updated");
             }
