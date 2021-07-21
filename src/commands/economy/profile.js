@@ -72,7 +72,7 @@ module.exports = class CMD extends Command {
                 })
             )
             .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr)
-            .addField(t("misc:bio"), `${userDB2.bio}`;
+            .addField(t("misc:bio"), `${userDB2.bio}`);
         message.reply({ embeds: [embed] });
     }
 };
