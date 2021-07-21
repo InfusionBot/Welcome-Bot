@@ -132,4 +132,10 @@ module.exports = class Command {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
         return true;
     }
+
+    removeCooldown(author) {
+        const timestamps = this.client.commands.cooldowns.get(this.name);
+        timestamps.delete(author.id);
+        return true;
+    }
 };

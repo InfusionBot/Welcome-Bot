@@ -71,6 +71,14 @@
     "title": "{{user}}'s balance",
     "bal": "Wallet: {{wallet}}\nBank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
   },
+  "beg": {
+    "cmdDesc": "Get money by begging!",
+    "chances": {
+      "failed": "Oh poor beggar, don't you feel ashame :question:",
+      "success": "Woah... Seems you have a way with people :people_hugging:, you got {{wcoins}} from begging",
+      "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
+    }
+  },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
     "success": "{{wcoins}} wcoins were placed in your wallet!",

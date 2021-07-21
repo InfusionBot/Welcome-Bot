@@ -10,6 +10,7 @@
   "main": "src/shard.js",
   "scripts": {
     "start": "node src/shard.js",
+    "startDev": "node src/bot.js",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js",
