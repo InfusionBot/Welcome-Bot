@@ -71,7 +71,8 @@ module.exports = class CMD extends Command {
                     percentage: (bankLimit - bank) / 100,
                 })
             )
-            .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr);
+            .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr)
+            .addField(t("misc:bio"), `${userDB2.bio}`;
         message.reply({ embeds: [embed] });
     }
 };
