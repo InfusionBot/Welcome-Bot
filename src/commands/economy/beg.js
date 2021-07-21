@@ -16,7 +16,7 @@ module.exports = class CMD extends Command {
                     guildOnly: false,
                 },
                 disabled: false,
-                cooldown: 30,
+                cooldown: 60,
                 category: "Economy",
             },
             client
@@ -42,9 +42,9 @@ module.exports = class CMD extends Command {
             wcoins = wcoins + Math.round(userDB.wallet - Math.random());
         }
 
-        if (wcoins > 500) {
+        if (wcoins > 500 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.success", { wcoins });
-        } else if (wcoins > 100) {
+        } else if (wcoins > 100 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.little", { wcoins });
         } else if (wcoins < 0 || wcoins === Infinity || wcoins === NaN) {
             result = t("cmds:beg.chances.failed");
