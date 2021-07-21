@@ -12,4 +12,9 @@ module.exports = {
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
     ],
+    dashboard: {
+        port: 8000,
+        secret: process.env.SESS_PASS,
+        enabled: process.env.SESS_PASS ? true : false,
+    },
 };

@@ -8,21 +8,18 @@ const fs = require("fs");
 const express = require("express");
 const session = require("express-session");
 
-module.exports = (client) => {
+module.exports.load = (client) => {
     const app = express();
-    app.use(express.urlencoded({ extended: true }))
+    app
+        .use(express.urlencoded({ extended: true }))
         .use(express.json())
         //Set engine to html for embedded js template
         .engine("html", require("ejs").renderFile)
         .set("view engine", "ejs")
         //Set express session
-        .use(
-            session({
-                secret: process.env.SESS_PASS,
-                resave: false,
-                saveUninitialized: false,
-            })
-        )
+        .use(session({secret: client.config.dashboard.secret, resave: false, saveUninitialized: false}))
+        //Set port
+        .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin
         .use(async (req, res, next) => {
             req.user = req.session.user;
@@ -39,12 +36,11 @@ module.exports = (client) => {
         else f = `/${f}`;
         try {
             app.use(f, require(`${routesFolder}/${f}`));
-        } catch (e) {
+        } catch(e) {
             console.error(e);
         }
     }
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-        console.log(`Running on port ${port}`);
+    app.listen(app.get("port"), () => {
+        console.log(`Dashboard running on port ${app.get("port")}`);
     });
 };

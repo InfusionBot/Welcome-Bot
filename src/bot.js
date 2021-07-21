@@ -139,6 +139,7 @@ client.on("ready", async () => {
             `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
     await require("./loaders/Locale.js")(client);
+    if (client.config.dashboard.enabled === "true") client.dashboard.load(client);
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);

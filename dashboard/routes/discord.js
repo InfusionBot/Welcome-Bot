@@ -5,6 +5,8 @@
  */
 const express = require("express");
 const router = express.Router();
+const btoa = require("btoa");
+const fetch = require("node-fetch");
 //GET /login
 router.get("/login", (req, res) => {
     if (req.user) res.redirect("/dasboard");
@@ -14,11 +16,27 @@ router.get("/login", (req, res) => {
                 req.client.user.id
             }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(
                 req.get("host") + "/discord/callback"
-            )}&state=${req.query.state || "no"}`
+            )}&redirectUrl=${req.query.redirectUrl || encodeURIComponent("/dashboard")}`
         );
 });
 //GET /callback
 router.get("/callback", (req, res) => {
-    res.send("Coming soon");
+    if (!req.query.code) return res.redirect("/");
+    const redirectUrl = req.query.redirectUrl || "/dashboard";
+    const params = new URLSearchParams();
+    params
+        .set("grant_type", "authorization_code")
+        .set("code", req.query.code)
+        .set("redirect_uri", "/discord/callback");
+    let tokens;
+    fetch("https://discord.com/api/oauth2/token", {
+        method: "POST",
+        body: params.toString(),
+        headers: {
+            Authorization: `Basic ${btoa(req.client.user.id)}`,
+            "User-Agent": process.env.userAgent,
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
 });
 module.exports = router;
