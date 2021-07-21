@@ -61,7 +61,7 @@ module.exports = class CMD extends Command {
         const accCreated = new Date(userDB2.registeredAt);
         const accCreatedStr = moment(accCreated).toString();
         const embed = new Embed({ color: "lightblue", timestamp: true })
-            .setTitle(t("cmds:profile.title", {tag: user.tag}))
+            .setTitle(t("cmds:profile.title", { tag: user.tag }))
             .addField(
                 t("cmds:balance.titleShort"),
                 t("cmds:balance.bal", {
@@ -71,10 +71,7 @@ module.exports = class CMD extends Command {
                     percentage: (bankLimit - bank) / 100,
                 })
             )
-            .addField(
-                `:date: ${t("misc:accCreated")}`,
-                accCreatedStr
-            );
+            .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr);
         message.reply({ embeds: [embed] });
     }
 };
