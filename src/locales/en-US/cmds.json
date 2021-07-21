@@ -69,7 +69,8 @@
   "balance": {
     "cmdDesc": "Check your wcoin balance, or someone else's. Shows wallect & bank",
     "title": "{{user}}'s balance",
-    "bal": "Wallet: {{wallet}}\nBank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+    "titleShort": "Balance",
+    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
   },
   "beg": {
     "cmdDesc": "Get money by begging!",
@@ -96,6 +97,10 @@
     "title": "Donated money!",
     "success": "{{mention}} You gave {{user}} {{amount}}, now you have {{yourWallet}} and they've got {{userWallet}}",
     "errorYourself": "Woah, can you donate yourself?"
+  },
+  "profile": {
+    "cmdDes": "Shows your ptofile or someone else's.",
+    "title": "Profile of {{tag}}"
   },
   "withdraw": {
     "cmdDesc": "Withdraw money from your bank",
@@ -165,8 +170,11 @@
   "user": {
     "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
   },
-  "test": {
+  "testwelcome": {
     "cmdDesc": "Test by sending welcome message"
+  },
+  "testgoodbye": {
+    "cmdDesc": "Test by sending goodbye message"
   },
   "version": {
     "cmdDesc": "Get information on a version or latest version"

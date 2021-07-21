@@ -30,7 +30,6 @@ module.exports = class CMD extends Command {
             Math.floor(Math.random() * begCoins) > 100
                 ? begCoins - 10
                 : begCoins + 10;
-        console.log(wcoins);
         let result;
         if (wcoins > 50) {
             wcoins = wcoins + Math.floor(Math.random());

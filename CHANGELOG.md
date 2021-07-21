@@ -22,6 +22,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `give`
 - feat: New cmd `beg`
 - feat: New cmd `withdraw`
+- feat: New cmd `profile`
 
 ### Changes
 
