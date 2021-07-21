@@ -44,8 +44,8 @@ const userSchema = new mongoose.Schema({
         default: "404 No bio set :-(",
     },
     logged: {
-         type: Boolean,
-         default: false
+        type: Boolean,
+        default: false,
     },
 });
 
