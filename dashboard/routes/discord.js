@@ -8,7 +8,14 @@ const router = express.Router();
 //GET /login
 router.get("/login", (req, res) => {
     if (req.user) res.redirect("/dasboard");
-    else req.redirect(`https://discord.com/api/oauth2/authorize?client_id=${req.client.user.id}&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(req.get("host")+"/discord/callback")}&state=${req.query.state || "no"}`);
+    else
+        req.redirect(
+            `https://discord.com/api/oauth2/authorize?client_id=${
+                req.client.user.id
+            }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(
+                req.get("host") + "/discord/callback"
+            )}&state=${req.query.state || "no"}`
+        );
 });
 //GET /callback
 router.get("/callback", (req, res) => {
