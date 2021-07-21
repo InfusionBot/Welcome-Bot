@@ -57,7 +57,8 @@
     "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
   },
   "support": {
-    "cmdDesc": "Get Support for Welcome-Bot"
+    "cmdDesc": "Get Support for Welcome-Bot",
+    "footer": "Official Support Discord for Welcome-Bot"
   },
   "uptime": {
     "cmdDesc": "Get uptime of the bot"
@@ -94,6 +95,9 @@
   "coinflip": {
     "cmdDesc": "Flip a coin.",
     "done": "I've flipped a coin and it landed {{chosenSide}}"
+  },
+  "emojify": {
+    "cmdDesc": "Emojify a text."
   },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS",

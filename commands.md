@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **50 commands** in **9 categories**!
+Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -268,7 +268,7 @@ Welcome-Bot contains more than **50 commands** in **9 categories**!
 - Aliases: `donate`, `share`
 - Cooldown: 5
 
-## Fun (5 commands)
+## Fun (6 commands)
 
 ### `8ball`
 
@@ -295,6 +295,19 @@ Welcome-Bot contains more than **50 commands** in **9 categories**!
 - Usage: None
 - Aliases: `cf`, `filpcoin`
 - Cooldown: 10
+
+### `emojify`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Emojify a text.
+- Usage: [text]
+- Aliases: None
+- Cooldown: 8
 
 ### `figlet`
 

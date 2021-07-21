@@ -34,7 +34,7 @@ module.exports = function (client) {
             type: "WATCHING",
         },
         {
-            name: `${client.user.username} v${client.botVersion} | ${client.defaultPrefix}help`,
+            name: `${client.user.username} v${client.package.version} | ${client.defaultPrefix}help`,
             type: "PLAYING",
         },
     ];
