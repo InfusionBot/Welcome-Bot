@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const begCoins = 20 * userDB.wallet / userDB.bank;
+        const begCoins = (20 * userDB.wallet) / userDB.bank;
 
         let wcoins =
             Math.floor(Math.random() * begCoins) > 1000
@@ -57,7 +57,9 @@ module.exports = class CMD extends Command {
             await updateUser(
                 message.author.id,
                 "wallet",
-                (parseInt(userDB.wallet) !== NaN ? parseInt(userDB.wallet) : 0) + wcoins
+                (parseInt(userDB.wallet) !== NaN
+                    ? parseInt(userDB.wallet)
+                    : 0) + wcoins
             );
         } catch (e) {
             throw e;
