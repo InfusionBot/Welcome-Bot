@@ -29,29 +29,23 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         const dailyCoins = 100;
-        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
+        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
 
         const diff =
             24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.dailyClaimed);
 
         if (diff > 0) {
-            let duration = Math.round(diff / (1000 * 60 * 60));
-            if (duration == 24) {
-                duration = "1 day";
-            } else if (duration == 0) {
-                duration = Math.ceil(diff / (1000 * 60));
-                let unit = "minutes";
-                if (duration == 1) {
-                    unit = "minute";
-                }
-                duration = `${duration} ${unit}`;
+            const hours = Math.round(diff / (1000 * 60 * 60));
+            let duration;
+            if (hours === 24) {
+                duration = moment.duration(hours, "hours");
+            } else if (hours === 0) {
+                let minutes = Math.ceil(diff / (1000 * 60));
+                duration = moment.duration(minutes, "minutes");
             } else {
-                let unit = "hours";
-                if (duration == 1) {
-                    unit = "hour";
-                }
-                duration = `${duration} ${unit}`;
+                duration = moment.duration(hours, "hours");
             }
+            duration = duration.humanize();
             return message.reply(t("cmds:daily.dailyClaimed", { duration }));
         }
 
