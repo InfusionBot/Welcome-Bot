@@ -37,9 +37,9 @@ module.exports = class CMD extends Command {
         if (diff > 0) {
             const hours = Math.round(diff / (1000 * 60 * 60));
             let duration;
-            if (hours === 24) {
+            if (hours == 24) {
                 duration = moment.duration(hours, "hours");
-            } else if (hours === 0) {
+            } else if (hours == 0) {
                 let minutes = Math.ceil(diff / (1000 * 60));
                 duration = moment.duration(minutes, "minutes");
             } else {
