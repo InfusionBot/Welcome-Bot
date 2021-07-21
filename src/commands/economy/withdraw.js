@@ -9,8 +9,8 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "deposit",
-                aliases: ["dep", "bankdep"],
+                name: "withdraw",
+                aliases: ["wd"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
@@ -19,7 +19,7 @@ module.exports = class CMD extends Command {
                 subcommands: [
                     {
                         name: "all",
-                        desc: "Deposit maximum money, aliases: `max`",
+                        desc: "Withdraw all amount from bank: `max`",
                     },
                 ],
                 disabled: false,
@@ -34,49 +34,37 @@ module.exports = class CMD extends Command {
         let wcoins = NaN;
         if (!isNaN(parseInt(args[0]))) {
             wcoins = parseInt(args[0]);
-            if (wcoins > userDB.wallet) {
-                return message.reply(t("cmds:deposit.notAvailable"));
+            if (wcoins > userDB.bank) {
+                return message.reply(t("cmds:withdraw.notAvailable"));
             }
         } else if (
             args[0].toLowerCase() === "all" ||
             args[0].toLowerCase() === "max"
         ) {
-            const freeSpace = userDB.bankLimit - userDB.bank;
-            if (freeSpace > 0) {
-                wcoins = userDB.wallet;
-                if (wcoins < 0) {
-                    //wcoins is a negetive integer
-                    return message.reply(t("cmds:deposit.notAvailable"));
-                } else if (wcoins > freeSpace) {
-                    wcoins = wcoins - freeSpace;
-                }
-            } else if (freeSpace < 0) {
-                //no free space
-                return message.reply(t("cmds:deposit.noSpace"));
-            }
+            wcoins = userDB.bank;
         }
         try {
             await updateUser(
                 message.author.id,
-                "bank",
-                parseInt(userDB.bank) + wcoins
+                "wallet",
+                parseInt(userDB.wallet) + wcoins
             );
             await updateUser(
                 message.author.id,
-                "wallet",
-                parseInt(userDB.wallet) - wcoins
+                "bank",
+                parseInt(userDB.bank) - wcoins
             );
         } catch (e) {
             message.client.logger.log(
-                "Error occurred when depositing user's wcoins",
+                "Error occurred when withdrawing user's wcoins",
                 "error"
             );
             throw e;
         }
         const embed = new Embed({ color: "lightblue", timestamp: true })
-            .setTitle(t("cmds:deposit.title"))
+            .setTitle(t("cmds:withdraw.title"))
             .setDesc(
-                t("cmds:deposit.success", {
+                t("cmds:withdraw.success", {
                     wcoins,
                 })
             );

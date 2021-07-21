@@ -1,10 +1,21 @@
 {
   "name": "welcome-bot",
-  "version": "1.13.0",
+  "version": "2.0.0-dev",
   "changelog": [
+    "**New features**",
+    "New cmd `emojify`",
+    "refactor(disable cmd): Disable commands using disable cmd now!",
+    "feat: New cmd `daily` and new category `Economy`",
+    "feat: New cmd `balance`",
+    "feat: New cmd `deposit`",
+    "feat: New cmd `give`",
+    "feat: New cmd `beg`",
+    "feat: New cmd `withdraw`",
     "**Changes**",
-    "refactor(categories): Delete categories.json & store datas in their respective folders",
-    "New translations (Turkish)"
+    "fix(goodbye): They are disabled by default now!",
+    "fix(goodbye): Sometimes, an error would occur to send goodbye logs",
+    "refactor(goodbye logs): Goodbye logs now use embeds!",
+    "refactor(disable cmd): Disable commands using disable cmd now!"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/shard.js",

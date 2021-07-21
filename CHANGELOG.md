@@ -20,6 +20,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `balance`
 - feat: New cmd `deposit`
 - feat: New cmd `give`
+- feat: New cmd `beg`
+- feat: New cmd `withdraw`
 
 ### Changes
 

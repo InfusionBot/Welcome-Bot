@@ -97,6 +97,12 @@
     "success": "{{mention}} You gave {{user}} {{amount}}, now you have {{yourWallet}} and they've got {{userWallet}}",
     "errorYourself": "Woah, can you donate yourself?"
   },
+  "withdraw": {
+    "cmdDesc": "Withdraw money from your bank",
+    "notAvailable": "Woah... You don't have that much money in your bank!",
+    "title": "Money withdrawed",
+    "success": "Withdrawed {{wcoins}} wcoins"
+  },
   "8ball": {
     "cmdDesc": "Get your fortune by asking your question"
   },
