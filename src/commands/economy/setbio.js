@@ -26,16 +26,13 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         try {
-            await updateUser(
-                message.author.id,
-                "bio",
-                args[0]
-            );
+            await updateUser(message.author.id, "bio", args[0]);
         } catch (e) {
             throw e;
         }
-        const embed = new Embed({ color: "green" })
-            .setDesc(t("cmds:setbio.success", { bio: args[0] }));
+        const embed = new Embed({ color: "green" }).setDesc(
+            t("cmds:setbio.success", { bio: args[0] })
+        );
         message.reply({ embeds: [embed] });
     }
 };

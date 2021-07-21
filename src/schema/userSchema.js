@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
     },
     bio: {
         type: String,
-        default: "404 No bio set :-("
+        default: "404 No bio set :-(",
     },
 });
 
