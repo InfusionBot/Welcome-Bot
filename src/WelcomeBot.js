@@ -209,7 +209,7 @@ class WelcomeBot extends Client {
     }
 
     addDbFuncs() {
-        const dbFolder = "./db/functions";
+        const dbFolder = __dirname + "/db/functions";
         const dbFuncs = fs.readdirSync(dbFolder);
 
         for (const folder of dbFuncs) {
