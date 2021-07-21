@@ -24,5 +24,6 @@
   "userNotFound": "An error occurred while trying to find that user.",
   "invalidNumRange": "Please specify a valid number between **{{min}}** and **{{max}}**!",
   "musicNoPerms": "You have not given {{permissions}} permissions to the bot for playing music.",
-  "noSendMsgPerm": "Woah... Wait, do you think I can message in that channel?? I even don't have \"Send Messages\" permission!!"
+  "noSendMsgPerm": "Woah... Wait, do you think I can message in that channel?? I even don't have \"Send Messages\" permission!!",
+  "msgBig": "The {{name}} message is longer than 2000 charcters, so I can't send it"
 }
