@@ -26,15 +26,18 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         let begCoins = 20;
 
-        let wcoins = Math.floor(Math.random() * begCoins) > 100 ? begCoins - 10 : begCoins + 10;
+        let wcoins =
+            Math.floor(Math.random() * begCoins) > 100
+                ? begCoins - 10
+                : begCoins + 10;
         console.log(wcoins);
         let result;
         if (wcoins > 50) {
             wcoins = wcoins + Math.floor(Math.random());
-            result = t("cmds:beg.chances.success", {wcoins});
+            result = t("cmds:beg.chances.success", { wcoins });
         } else if (wcoins > 10) {
             wcoins = wcoins - Math.floor(Math.random());
-            result = t("cmds:beg.chances.little", {wcoins});
+            result = t("cmds:beg.chances.little", { wcoins });
         } else {
             result = t("cmds:beg.chances.failed");
             wcoins = 0;
