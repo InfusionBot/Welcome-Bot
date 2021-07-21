@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "404 No bio set :-(",
     },
+    logged: {
+         type: Boolean,
+         default: false
+    },
 });
 
 const User = new mongoose.model("User", userSchema);
