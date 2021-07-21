@@ -39,6 +39,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: Date.now(),
     },
+    bio: {
+        type: String,
+        default: "404 No bio set :-("
+    },
 });
 
 const User = new mongoose.model("User", userSchema);

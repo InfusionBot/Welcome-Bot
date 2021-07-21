@@ -99,8 +99,12 @@
     "errorYourself": "Woah, can you donate yourself?"
   },
   "profile": {
-    "cmdDes": "Shows your ptofile or someone else's.",
+    "cmdDest": "Shows your profile or someone else's.",
     "title": "Profile of {{tag}}"
+  },
+  "setbio": {
+    "cmdDesc": "Set your Welcome-Bot account's bio!",
+    "success": "Successfully set bio to **{{bio}}**"
   },
   "withdraw": {
     "cmdDesc": "Withdraw money from your bank",
