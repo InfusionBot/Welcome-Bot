@@ -213,6 +213,7 @@ class WelcomeBot extends Client {
         const dbFuncs = fs.readdirSync(dbFolder);
 
         for (const folder of dbFuncs) {
+            if (!folder.endsWith(".js")) {
             const dbFiles = fs
                 .readdirSync(`${dbFolder}/${folder}`)
                 .filter((file) => file.endsWith(".js"));
@@ -230,6 +231,7 @@ class WelcomeBot extends Client {
                     console.error(e);
                     process.exit();
                 }
+            }
             }
         }
     }
