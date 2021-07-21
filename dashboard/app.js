@@ -5,6 +5,7 @@
  */
 require("dotenv").config();
 const fs = require("fs");
+const { CheckAuth } = require("./util");
 const express = require("express");
 const session = require("express-session");
 
@@ -16,6 +17,8 @@ module.exports.load = (client) => {
         //Set engine to html for embedded js template
         .engine("html", require("ejs").renderFile)
         .set("view engine", "ejs")
+        // Set the ejs templates to ./views
+        .set("views", path.join(__dirname, "/views"))
         //Set express session
         .use(session({secret: client.config.dashboard.secret, resave: false, saveUninitialized: false}))
         //Set port
@@ -24,6 +27,14 @@ module.exports.load = (client) => {
         .use(async (req, res, next) => {
             req.user = req.session.user;
             req.userDB = client.userDbFuncs.getUser(req.user.id);
+            req.currentURL = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
+        })
+        .use(CheckAuth, (req, res) => {
+            res.render("404", {
+                user: req.userDB,
+                translate: req.translate,
+                currentURL: req.currentURL
+            });
         });
 
     const routesFolder = "./routes";
