@@ -125,6 +125,7 @@ class WelcomeBot extends Client {
             enableLive: true,
         });
         this.loadCommands(__dirname + "/commands");
+        this.addDbFuncs();
     }
 
     loadCommand(commandPath, commandName) {
@@ -204,6 +205,27 @@ class WelcomeBot extends Client {
             }
         }
         return cmd.name ? cmd : disabledCmd;
+    }
+
+    addDbFuncs() {
+        const dbFolder = "./db/functions";
+        const dbFuncs = fs.readdirSync(dbFolder);
+
+        for (const folder of dbFuncs) {
+            const dbFiles = fs
+                .readdirSync(`${dbFolder}/${folder}`)
+                .filter((file) => file.endsWith(".js"));
+            this[`${folder}DbFuncs`] = {};
+            for (const file of dbFiles) {
+                try {
+                    this[`${folder}DbFuncs`][file] = require(`${dbFolder}/${folder}/${file.replace(".js", "")}`);
+                } catch (e) {
+                    this.logger.log(`Error occurred when loading ${file}`);
+                    console.error(e);
+                    process.exit();
+                }
+            }
+        }
     }
 }
 
