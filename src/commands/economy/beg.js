@@ -24,29 +24,40 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        let begCoins = 20;
+        const begCoins = 20 * userDB.wallet / userDB.bank;
 
         let wcoins =
-            Math.floor(Math.random() * begCoins) > 100
-                ? begCoins - 10
-                : begCoins + 10;
+            Math.floor(Math.random() * begCoins) > 1000
+                ? begCoins - 1000
+                : begCoins + 100;
+        wcoins = Math.round(wcoins);
         let result;
-        if (wcoins > 50) {
-            wcoins = wcoins + Math.floor(Math.random());
+        if (userDB.bank > 100) {
+            wcoins = Math.round(Math.random() / userDB.wallet) * userDB.bank;
+        }
+
+        if (wcoins > 500) {
+            wcoins = wcoins - Math.round(userDB.wallet - Math.random());
+        } else if (wcoins > 100) {
+            wcoins = wcoins + Math.round(userDB.wallet - Math.random());
+        }
+
+        if (wcoins > 500) {
             result = t("cmds:beg.chances.success", { wcoins });
-        } else if (wcoins > 10) {
-            wcoins = wcoins - Math.floor(Math.random());
+        } else if (wcoins > 100) {
             result = t("cmds:beg.chances.little", { wcoins });
-        } else {
+        } else if (wcoins < 0 || wcoins === Infinity || wcoins === NaN) {
             result = t("cmds:beg.chances.failed");
             wcoins = 0;
+        } else {
+            result = t("cmds:beg.chances.little", { wcoins });
         }
 
         try {
             await updateUser(
                 message.author.id,
                 "wallet",
-                parseInt(userDB.wallet) + wcoins
+                (parseInt(userDB.wallet) !== NaN ? parseInt(userDB.wallet) : 0) + wcoins
             );
         } catch (e) {
             throw e;
