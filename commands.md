@@ -214,7 +214,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (4 commands)
+## Economy (7 commands)
 
 ### `balance`
 
@@ -228,6 +228,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Usage: None
 - Aliases: `bal`, `wallet`
 - Cooldown: 5
+
+### `beg`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get money by begging!
+- Usage: None
+- Aliases: None
+- Cooldown: 60
 
 ### `daily`
 
@@ -267,6 +280,32 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Usage: [@mention / user id] [amount]
 - Aliases: `donate`, `share`
 - Cooldown: 5
+
+### `profile`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: profile.cmdDesc
+- Usage: None
+- Aliases: `user-profile`, `account`, `userprofile`
+- Cooldown: 5
+
+### `withdraw`
+
+##### Subcommands:
+
+- `all` - Withdraw all amount from bank: `max`
+
+##### Cmd info
+
+- Description: Withdraw money from your bank
+- Usage: None
+- Aliases: `wd`
+- Cooldown: 10
 
 ## Fun (6 commands)
 
@@ -463,7 +502,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: testwelcome.cmdDesc
+- Description: Test by sending welcome message
 - Usage: None
 - Aliases: None
 - Cooldown: 10
@@ -476,7 +515,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: testgoodbye.cmdDesc
+- Description: Test by sending goodbye message
 - Usage: None
 - Aliases: None
 - Cooldown: 10
