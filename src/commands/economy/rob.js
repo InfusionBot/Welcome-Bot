@@ -29,6 +29,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         if (userDB.wallet < 200) {
+            this.removeCooldown(message.author);
             return message.reply(t("cmds:rob.notEnoughMoney"));
         }
         let user;
@@ -59,6 +60,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:noAcc"));
         }
         if (typeof userDB2.bankLimit !== "number") {
+            this.removeCooldown(message.author);
             return message.reply(t("errors:noAcc"));
         }
         let stolenCoins = Math.round(Math.floor(Math.random() * 200));
