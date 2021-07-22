@@ -10,7 +10,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "withdraw",
-                aliases: ["wd"],
+                aliases: ["wd", "with"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
