@@ -6,7 +6,7 @@
 const CheckAuth = (req, res, next) => {
     if (!req.user || !req.session.user) {
         const redirectUrl = (req.originalUrl.includes("login") || req.originalUrl === "/") ? "/dashboard" : req.originalUrl;
-        return res.redirect(`/discord/login?redirectUrl=${encodeURIComponent(redirectUrl)}`)!
+        return res.redirect(`/discord/login?redirectUrl=${encodeURIComponent(redirectUrl)}`);
     }
     return next();
 };

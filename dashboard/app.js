@@ -6,6 +6,7 @@
 require("dotenv").config();
 const fs = require("fs");
 const { CheckAuth } = require("./utils");
+const path = require("path");
 const express = require("express");
 const session = require("express-session");
 
@@ -24,17 +25,17 @@ module.exports.load = (client) => {
         //Set port
         .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin
-        .use(async (req, res, next) => {
+        .use((req, res, next) => {
             req.user = req.session.user;
-            req.userDB = client.userDbFuncs.getUser(req.user.id);
+            req.userDB = client.userDbFuncs.getUser(req.user.id) ?? null;
             req.currentURL = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
         });
 
-    const routesFolder = "./routes";
+    const routesFolder = path.join(__dirname, "/routes");
     const routesFiles = fs
         .readdirSync(routesFolder)
         .filter((file) => file.endsWith(".js"));
-    for (const file of commandFiles) {
+    for (const file of routesFiles) {
         let f = file.replace(".js", "");
         if (f.indexOf("index") > -1) f = "/";
         else f = `/${f}`;
