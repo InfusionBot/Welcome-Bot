@@ -28,13 +28,6 @@ module.exports.load = (client) => {
             req.user = req.session.user;
             req.userDB = client.userDbFuncs.getUser(req.user.id);
             req.currentURL = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
-        })
-        .use(CheckAuth, (req, res) => {
-            res.render("404", {
-                user: req.userDB,
-                translate: req.translate,
-                currentURL: req.currentURL
-            });
         });
 
     const routesFolder = "./routes";
@@ -51,6 +44,43 @@ module.exports.load = (client) => {
             console.error(e);
         }
     }
+
+    app.
+        // Since this is the last non-error-handling we assume 404.
+        .use(CheckAuth, (req, res) => {
+            if (req.accepts("html")) {
+                res.render("404", {
+                    user: req.userDB,
+                    translate: req.translate,
+                    currentURL: req.currentURL
+                });
+            } else if (req.accepts("json")) {
+                res.json({ error: "Not found" });
+            } else {
+                return res.type("txt").sendStatus(404);
+            }
+            res.status(404);
+            res.end();
+        })
+        //Error handler
+        .use(CheckAuth, (err, req, res) => {
+            console.error(err);
+            if (!req.user) return res.redirect("/");
+            if (req.accepts("html")) {
+                res.render("500", {
+                    user: req.userDB,
+                    translate: req.translate,
+                    currentURL: req.currentURL
+                });
+            } else if (req.accepts("json")) {
+                res.json({ error: "Not found" });
+            } else {
+                return res.type("txt").sendStatus(500);
+            }
+            res.status(500);
+            red.end();
+        });
+
     app.listen(app.get("port"), () => {
         console.log(`Dashboard running on port ${app.get("port")}`);
     });
