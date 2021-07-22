@@ -23,6 +23,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `beg`
 - feat: New cmd `withdraw`
 - feat: New cmd `profile`
+- feat: New cmd `setbio`
+- feat: New cmd `rob`
 
 ### Changes
 
