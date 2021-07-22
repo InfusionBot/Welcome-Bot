@@ -214,7 +214,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (7 commands)
+## Economy (9 commands)
 
 ### `balance`
 
@@ -289,10 +289,36 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: profile.cmdDesc
+- Description: Shows your profile or someone else's.
 - Usage: None
 - Aliases: `user-profile`, `account`, `userprofile`
 - Cooldown: 5
+
+### `rob`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Steal another user's wallet! :dollar:
+- Usage: [@mention / user id]
+- Aliases: None
+- Cooldown: 60
+
+### `setbio`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Set your Welcome-Bot account's bio!
+- Usage: None
+- Aliases: `bio`
+- Cooldown: 10
 
 ### `withdraw`
 

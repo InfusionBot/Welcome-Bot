@@ -53,7 +53,7 @@
     "bufferutil": "^4.0.3",
     "colors-logger": "^0.3.1",
     "discord-player": "^5.0.0-dev.92a3409.1626480154",
-    "discord.js": "^13.0.0-dev.4d53d0f.1626566655",
+    "discord.js": "^13.0.0-dev.328501b.1626912223",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "ffmpeg": "^0.0.4",
