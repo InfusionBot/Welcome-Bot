@@ -17,7 +17,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
     try {
         await i18next.use(translationBackend).init(
             {
-                ns: ["categories", "cmds", "errors", "permissions", "misc"],
+                ns: ["categories", "cmds", "errors", "permissions", "misc", "dashboard"],
                 preload: dir,
                 fallbackLng: "en-US",
                 whitelist: Object.keys(

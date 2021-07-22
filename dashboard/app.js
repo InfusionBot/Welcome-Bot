@@ -55,7 +55,7 @@ module.exports.load = (client) => {
                     currentURL: req.currentURL
                 });
             } else if (req.accepts("json")) {
-                res.json({ error: "Not found" });
+                res.json({ error: "Page Not Found" });
             } else {
                 return res.type("txt").sendStatus(404);
             }
@@ -73,7 +73,7 @@ module.exports.load = (client) => {
                     currentURL: req.currentURL
                 });
             } else if (req.accepts("json")) {
-                res.json({ error: "Not found" });
+                res.json({ error: "Internal Server Error" });
             } else {
                 return res.type("txt").sendStatus(500);
             }
