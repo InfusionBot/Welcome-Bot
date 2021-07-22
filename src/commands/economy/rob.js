@@ -64,13 +64,13 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:noAcc"));
         }
         let stolenCoins = Math.round(Math.floor(Math.random() * 200));
-        let lostCoins = Math.round(Math.floor(Math.random() * 200));
+        let lostCoins = Math.round(Math.floor(Math.random() * 100));
         if (userDB2.wallet < 200) {
             return message.reply(
                 t("cmds:rob.userNotEnoughMoney", { tag: user.tag })
             );
         }
-        if (stolenCoins > 150 || lostCoins > 150) {
+        if (stolenCoins > 100 || lostCoins > 100) {
             stolenCoins = stolenCoins - 10;
             lostCoins = lostCoins + 10;
         } else if (stolenCoins >= 50 || lostCoins >= 50) {
@@ -78,7 +78,7 @@ module.exports = class CMD extends Command {
             lostCoins = 50;
         }
         let lost = false;
-        if (Math.random() < 0.5 || stolenCoins <= 0) {
+        if ((Math.random() * 20) < 10 || stolenCoins <= 0) {
             lost = true;
         }
         let result;
