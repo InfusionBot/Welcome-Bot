@@ -10,7 +10,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "avatar",
-                aliases: ["dp", "profile"],
+                aliases: ["dp"],
                 memberPerms: [],
                 botPerms: [],
                 usage: "(@mention / user id)",
