@@ -34,7 +34,6 @@ describe("Commands", () => {
                     )}`
                 )
             );
-            process.exit(5);
         }
     });
 
@@ -60,7 +59,6 @@ describe("Commands", () => {
                     )}`
                 )
             );
-            process.exit(5);
         }
     });
 
@@ -86,7 +84,6 @@ describe("Commands", () => {
                     )}`
                 )
             );
-            process.exit(5);
         }
     });
 
@@ -116,7 +113,6 @@ describe("Commands", () => {
                     )}`
                 )
             );
-            process.exit(5);
         }
     });
 });
