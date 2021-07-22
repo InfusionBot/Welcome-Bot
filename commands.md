@@ -330,7 +330,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 - Description: Withdraw money from your bank
 - Usage: None
-- Aliases: `wd`
+- Aliases: `wd`, `with`
 - Cooldown: 10
 
 ## Fun (6 commands)
