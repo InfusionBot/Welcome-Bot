@@ -45,7 +45,7 @@ module.exports.load = (client) => {
         }
     }
 
-    app.
+    app
         // Since this is the last non-error-handling we assume 404.
         .use(CheckAuth, (req, res) => {
             if (req.accepts("html")) {
