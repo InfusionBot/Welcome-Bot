@@ -15,13 +15,13 @@ const userSchema = new mongoose.Schema({
         type: Number,
         trim: true,
         required: true,
-        default: 25,
+        default: 100,
     },
     wallet: {
         type: Number,
         trim: true,
         required: true,
-        default: 25,
+        default: 0,
     },
     bankLimit: {
         type: Number,

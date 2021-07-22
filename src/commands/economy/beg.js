@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const begCoins = (20 * userDB.wallet) / userDB.bank;
+        const begCoins = (50 * userDB.wallet) / userDB.bank;
 
         let wcoins =
             Math.floor(Math.random() * begCoins) > 1000
