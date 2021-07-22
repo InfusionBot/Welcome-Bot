@@ -49,6 +49,7 @@ module.exports = class CMD extends Command {
 
         if (!user || user.bot) {
             message.reply(t("errors:invalidUser"));
+            this.removeCooldown(message.author);
             return false;
         }
         let userDB2;
