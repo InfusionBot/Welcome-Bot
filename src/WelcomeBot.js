@@ -6,7 +6,7 @@
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
 //const Command = require("./classes/Command");
-const config = require(__dirname + "/config");
+const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");

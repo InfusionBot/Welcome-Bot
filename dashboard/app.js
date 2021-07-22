@@ -11,6 +11,7 @@ const express = require("express");
 const session = require("express-session");
 
 module.exports.load = (client) => {
+    console.log("loading dashboard");
     const app = express();
     app
         .use(express.urlencoded({ extended: true }))
@@ -21,7 +22,7 @@ module.exports.load = (client) => {
         // Set the ejs templates to ./views
         .set("views", path.join(__dirname, "/views"))
         //Set express session
-        .use(session({secret: client.config.dashboard.secret, resave: false, saveUninitialized: false}))
+        .use(session({ secret: client.config.dashboard.secret, resave: false, saveUninitialized: false }))
         //Set port
         .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin

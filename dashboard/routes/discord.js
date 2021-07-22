@@ -14,8 +14,8 @@ router.get("/login", (req, res) => {
         req.redirect(
             `https://discord.com/api/oauth2/authorize?client_id=${
                 req.client.user.id
-            }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(`${req.protocol}://${req.get("host")}/discord/callback&redirectUrl=${req.query.redirectUrl || "/dashboard"}`}`)
-        );
+            }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(`${req.protocol}://${req.get("host")}/discord/callback&redirectUrl=${req.query.redirectUrl || "/dashboard"}`)}`
+        )
 });
 //GET /callback
 router.get("/callback", (req, res) => {
