@@ -78,7 +78,7 @@ module.exports = class CMD extends Command {
             lostCoins = 50;
         }
         let lost = false;
-        if ((Math.random() * 20) < 10 || stolenCoins <= 0) {
+        if (Math.random() * 20 < 10 || stolenCoins <= 0) {
             lost = true;
         }
         let result;
