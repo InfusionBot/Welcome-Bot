@@ -99,7 +99,7 @@
     "errorYourself": "Woah, can you donate yourself?"
   },
   "profile": {
-    "cmdDest": "Shows your profile or someone else's.",
+    "cmdDesc": "Shows your profile or someone else's.",
     "title": "Profile of {{tag}}"
   },
   "setbio": {
