@@ -75,7 +75,7 @@ module.exports = class CMD extends Command {
             stolenCoins = 0;
             lostCoins = 50;
         }
-        const lost = false;
+        let lost = false;
         if (Math.random() < 0.5) {
             lost = true;
         }
