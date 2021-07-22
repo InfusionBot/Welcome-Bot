@@ -78,7 +78,7 @@ module.exports = class CMD extends Command {
             lostCoins = 50;
         }
         let lost = false;
-        if (Math.random() * 20 < 10 || stolenCoins <= 0) {
+        if (Math.random() * 20 < 15 || stolenCoins <= 0) {
             lost = true;
         }
         let result;
@@ -117,6 +117,6 @@ module.exports = class CMD extends Command {
         const embed = new Embed({ color: lost ? "error" : "success" })
             .setTitle(t("cmds:rob.cmdDesc"))
             .setDesc(result);
-        message.reply({ embeds: [embed] });
+        message.reply({ content: `${user}`, embeds: [embed] });
     }
 };
