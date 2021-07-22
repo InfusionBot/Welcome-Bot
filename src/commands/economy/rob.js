@@ -82,7 +82,7 @@ module.exports = class CMD extends Command {
         let result;
         if (!lost)
             result = t("cmds:rob.success", { stolenCoins, tag: user.tag });
-        else result = t("cmds:rob.falied", { lostCoins });
+        else result = t("cmds:rob.failed", { lostCoins });
 
         try {
             if (lost) {
