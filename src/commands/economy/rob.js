@@ -61,19 +61,37 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:noAcc"));
         }
         let stolenCoins = Math.round(Math.floor(Math.random() * 200));
+        let lostCoins = Math.round(Math.floor(Math.random() * 200));
         if (userDB2.wallet < 200) {
             return message.reply(
                 t("cmds:rob.userNotEnoughMoney", { tag: user.tag })
             );
         }
-        if (stolenCoins > 150) {
+        if (stolenCoins > 150 || lostCoins > 150) {
             stolenCoins = stolenCoins - 10;
-        } else if (stolenCoins > 50) {
+            lostCoins = lostCoins + 10;
+        } else if (stolenCoins >= 50 || lostCoins >= 50) {
             stolenCoins = 0;
+            lostCoins = 50;
         }
-        const result = t("cmds:rob.success", { stolenCoins, tag: user.tag });
+        const lost = false;
+        if (Math.random() < 0.5) {
+            lost = true;
+        }
+        let result;
+        if (!lost) result = t("cmds:rob.success", { stolenCoins, tag: user.tag });
+        else result = t("cmds:rob.falied", { lostCoins });
 
         try {
+            if (lost) {
+                await updateUser(
+                    message.author.id,
+                    "wallet",
+                    (parseInt(userDB.wallet) !== NaN
+                        ? parseInt(userDB.wallet)
+                        : 0) - lostCoins
+                );
+            } else {
             await updateUser(
                 message.author.id,
                 "wallet",
@@ -88,10 +106,11 @@ module.exports = class CMD extends Command {
                     ? parseInt(userDB2.wallet)
                     : 0) - stolenCoins
             );
+            }
         } catch (e) {
             throw e;
         }
-        const embed = new Embed({ color: "success" })
+        const embed = new Embed({ color: (lost ? "error" : "success") })
             .setTitle(t("cmds:rob.cmdDesc"))
             .setDesc(result);
         message.reply({ embeds: [embed] });

@@ -80,12 +80,6 @@
       "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
     }
   },
-  "rob": {
-    "cmdDesc": "Steal another user's wallet! :dollar:",
-    "notEnoughMoney": "You must have at least 200 wcoins in your wallet to rob someone",
-    "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
-    "success": "You stole {{stolenCoins}} from {{tag}}! :tada:"
-  },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
     "success": "{{wcoins}} wcoins were placed in your wallet!",
@@ -107,6 +101,13 @@
   "profile": {
     "cmdDesc": "Shows your profile or someone else's.",
     "title": "Profile of {{tag}}"
+  },
+  "rob": {
+    "cmdDesc": "Steal another user's wallet! :dollar:",
+    "notEnoughMoney": "You must have at least 200 wcoins in your wallet to rob someone",
+    "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
+    "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
+    "failed": "You were caught by the police when stealing and you lost {{lostCoins}}"
   },
   "setbio": {
     "cmdDesc": "Set your Welcome-Bot account's bio!",
