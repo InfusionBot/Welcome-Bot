@@ -79,7 +79,8 @@ module.exports = class CMD extends Command {
             lost = true;
         }
         let result;
-        if (!lost) result = t("cmds:rob.success", { stolenCoins, tag: user.tag });
+        if (!lost)
+            result = t("cmds:rob.success", { stolenCoins, tag: user.tag });
         else result = t("cmds:rob.falied", { lostCoins });
 
         try {
@@ -92,25 +93,25 @@ module.exports = class CMD extends Command {
                         : 0) - lostCoins
                 );
             } else {
-            await updateUser(
-                message.author.id,
-                "wallet",
-                (parseInt(userDB.wallet) !== NaN
-                    ? parseInt(userDB.wallet)
-                    : 0) + stolenCoins
-            );
-            await updateUser(
-                user.id,
-                "wallet",
-                (parseInt(userDB2.wallet) !== NaN
-                    ? parseInt(userDB2.wallet)
-                    : 0) - stolenCoins
-            );
+                await updateUser(
+                    message.author.id,
+                    "wallet",
+                    (parseInt(userDB.wallet) !== NaN
+                        ? parseInt(userDB.wallet)
+                        : 0) + stolenCoins
+                );
+                await updateUser(
+                    user.id,
+                    "wallet",
+                    (parseInt(userDB2.wallet) !== NaN
+                        ? parseInt(userDB2.wallet)
+                        : 0) - stolenCoins
+                );
             }
         } catch (e) {
             throw e;
         }
-        const embed = new Embed({ color: (lost ? "error" : "success") })
+        const embed = new Embed({ color: lost ? "error" : "success" })
             .setTitle(t("cmds:rob.cmdDesc"))
             .setDesc(result);
         message.reply({ embeds: [embed] });
