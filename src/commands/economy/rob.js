@@ -29,7 +29,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         if (userDB.wallet < 200) {
-          return message.reply(t("cmds:rob.notEnoughMoney"));
+            return message.reply(t("cmds:rob.notEnoughMoney"));
         }
         let user;
         if (args[0]) {
@@ -39,9 +39,7 @@ module.exports = class CMD extends Command {
                     message.client
                 );
             }
-            if (
-                !isNaN(parseInt(args[0]))
-            ) {
+            if (!isNaN(parseInt(args[0]))) {
                 user = message.client.users.cache.get(args[0]);
                 if (!user) user = await message.client.users.fetch(args[0]);
             }
@@ -64,14 +62,16 @@ module.exports = class CMD extends Command {
         }
         let stolenCoins = Math.round(Math.floor(Math.random() * 200));
         if (userDB2.wallet < 200) {
-            return message.reply(t("cmds:rob.userNotEnoughMoney", {tag: user.tag}));
+            return message.reply(
+                t("cmds:rob.userNotEnoughMoney", { tag: user.tag })
+            );
         }
         if (stolenCoins > 150) {
             stolenCoins = stolenCoins - 10;
         } else if (stolenCoins > 50) {
             stolenCoins = 0;
         }
-        const result = t("cmds:rob.success", {stolenCoins, tag: user.tag});
+        const result = t("cmds:rob.success", { stolenCoins, tag: user.tag });
 
         try {
             await updateUser(
