@@ -5,7 +5,7 @@
  */
 require("dotenv").config();
 const fs = require("fs");
-const { CheckAuth } = require("./util");
+const { CheckAuth } = require("./utils");
 const express = require("express");
 const session = require("express-session");
 
