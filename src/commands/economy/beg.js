@@ -24,27 +24,24 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const begCoins = (50 * userDB.wallet) / userDB.bank;
+        const begCoins = 100;
 
-        let wcoins =
-            Math.floor(Math.random() * begCoins) > 1000
-                ? begCoins - 1000
-                : begCoins + 100;
+        let wcoins = Math.floor(Math.random() * begCoins);
         wcoins = Math.round(wcoins);
         let result;
         if (userDB.bank > 100) {
             wcoins = Math.round(Math.random() / userDB.wallet) * userDB.bank;
         }
 
-        if (wcoins > 500) {
+        if (wcoins > 100) {
             wcoins = wcoins - Math.round(userDB.wallet - Math.random());
-        } else if (wcoins > 100) {
+        } else if (wcoins > 50) {
             wcoins = wcoins + Math.round(userDB.wallet - Math.random());
         }
 
-        if (wcoins > 500 && wcoins !== Infinity) {
+        if (wcoins > 100 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.success", { wcoins });
-        } else if (wcoins > 100 && wcoins !== Infinity) {
+        } else if (wcoins > 50 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.little", { wcoins });
         } else if (wcoins < 0 || wcoins === Infinity || wcoins === NaN) {
             result = t("cmds:beg.chances.failed");
