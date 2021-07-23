@@ -6,9 +6,11 @@
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
 const beautifyPerms = require("../functions/beautifyPerms");
+const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {
     const client = message.client;
+    const userDB = await getUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
         escapeRegex(client.defaultPrefix.toLowerCase()),
@@ -158,7 +160,24 @@ module.exports = async (message, guildDB) => {
                 `Starting to prerun cmd: ${command.name}`,
                 "debug"
             );
-        if (command.prerun(message, guildDB, t)) {
+        let prerunResult = false;
+        try {
+            prerunResult = await command.prerun(message, guildDB, t);
+        } catch (e) {
+            client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
+            console.error(e);
+            embed
+                .setTitle(t("errors:generic"))
+                .addField(
+                    `Please report this to ${message.client.ownersTags.join(
+                        " OR "
+                    )}`,
+                    "\u200b"
+                );
+            message.reply({ embeds: [embed] });
+            return;
+        }
+        if (prerunResult) {
             if (client.debug && client.debugLevel >= 2)
                 client.logger.log(
                     `Starting to execute cmd: ${command.name}`,
@@ -166,7 +185,7 @@ module.exports = async (message, guildDB) => {
                 );
             message.channel.sendTyping();
             try {
-                command.execute({ message, args, guildDB }, t);
+                command.execute({ message, args, guildDB, userDB }, t);
             } catch (err) {
                 client.logger.log("Error when executing cmds", "error", [
                     "CMDS",

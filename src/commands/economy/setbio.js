@@ -3,36 +3,36 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const updateUser = require("../../db/functions/user/updateUser");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "figlet",
-                aliases: ["asciify", "bigtext"],
+                name: "setbio",
+                aliases: ["bio"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
                     args: true,
                 },
-                usage: "[string]",
                 disabled: false,
                 cooldown: 10,
-                category: "Fun",
+                category: "Economy",
             },
             client
         );
     }
 
-    async execute({ message, args }, t) {
-        const figlet = require("figlet");
-        const figletAsync = require("util").promisify(figlet);
-        let text = args.join(" ");
-        let result;
-        if (text.length > 20) {
-            return message.channel.send(t("cmds:figlet.error"));
+    async execute({ message, args, guildDB, userDB }, t) {
+        try {
+            await updateUser(message.author.id, "bio", args.join(" "));
+        } catch (e) {
+            throw e;
         }
-        result = await figletAsync(text);
-        message.reply("```" + result + "```");
+        const embed = new Embed({ color: "green" }).setDesc(
+            t("cmds:setbio.success", { bio: args.join(" ") })
+        );
+        message.reply({ embeds: [embed] });
     }
 };

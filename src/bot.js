@@ -156,7 +156,7 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
-    client.logger.log(`Welcome-Bot v${client.botVersion} started!`);
+    client.logger.log(`Welcome-Bot v${client.package.version} started!`);
 });
 
 client.on("debug", (info) => {

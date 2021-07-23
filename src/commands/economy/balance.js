@@ -1,29 +1,28 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const getUser = require("../../db/functions/user/getUser");
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "avatar",
-                aliases: ["dp"],
+                name: "balance",
+                aliases: ["bal", "wallet"],
                 memberPerms: [],
                 botPerms: [],
-                usage: "(@mention / user id)",
                 disabled: false,
-                cooldown: 10,
-                category: "General",
+                cooldown: 5,
+                category: "Economy",
             },
             client
         );
     }
 
-    async execute({ message, args }, t) {
-        const embed = new Embed();
+    async execute({ message, args, guildDB, userDB }, t) {
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -43,13 +42,30 @@ module.exports = class CMD extends Command {
             user = message.author;
         }
 
-        if (!user) {
-            return message.reply(t("errors:invalidUser"));
+        if (!user || user.bot) {
+            message.reply(t("errors:invalidUser"));
+            return false;
         }
-
-        embed
-            .setTitle(t("cmds:avatar.profile", { user: user.tag }))
-            .setImage(user.displayAvatarURL({ dynamic: true }));
-        message.channel.send({ embeds: [embed] });
+        let userDB2;
+        try {
+            userDB2 = await getUser(user.id);
+        } catch (e) {
+            return message.reply(t("errors:noAcc"));
+        }
+        const { wallet, bank, bankLimit } = userDB2;
+        if (typeof bankLimit !== "number") {
+            return message.reply(t("errors:noAcc"));
+        }
+        const embed = new Embed({ color: "lightblue", timestamp: true })
+            .setTitle(t("cmds:balance.title", { user: user.username }))
+            .setDesc(
+                t("cmds:balance.bal", {
+                    wallet,
+                    bank,
+                    bankLimit,
+                    percentage: (bankLimit - bank) / 100,
+                })
+            );
+        message.reply({ embeds: [embed] });
     }
 };
