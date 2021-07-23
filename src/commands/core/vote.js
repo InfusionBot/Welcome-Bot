@@ -20,9 +20,13 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args, guildDB, userDB }, t) {
-        const embed = new Embed({color: "success", timestamp: true})
+        const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.cmdDesc"))
-            .setDesc(t("cmds:vote.howToVote", {link: `https://top.gg/bot/${this.client.user.id}/vote`}));
-        message.reply({embeds: [embed]});
+            .setDesc(
+                t("cmds:vote.howToVote", {
+                    link: `https://top.gg/bot/${this.client.user.id}/vote`,
+                })
+            );
+        message.reply({ embeds: [embed] });
     }
 };
