@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const createOptionHandler = require("../functions/createOptionHandler");
+const addUser = require("../db/functions/user/addUser");
 const { Permissions, Collection } = require("discord.js");
 module.exports = class Command {
     constructor(opts, client) {
@@ -49,7 +50,21 @@ module.exports = class Command {
         }
     }
 
-    prerun(message, guildDB, t) {
+    async prerun(message, guildDB, t) {
+        try {
+            await addUser(message.author.id);
+        } catch (e) {
+            if (this.category.toLowerCase() === "economy") {
+                throw err;
+                return false;
+            } else {
+                this.client.logger.log("Can't add user:", "error", [
+                    "USER",
+                    "DB",
+                ]);
+                console.log(err);
+            }
+        }
         const basicPerms = [
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,
@@ -105,7 +120,7 @@ module.exports = class Command {
                 const timeLeft = (expirationTime - now) / 1000;
                 message.reply(
                     t(`errors:cooldown`, {
-                        seconds: timeLeft.toFixed(1),
+                        seconds: timeLeft.toFixed(),
                         command: this.name,
                     })
                 );
@@ -115,6 +130,12 @@ module.exports = class Command {
 
         timestamps.set(message.author.id, now); //Set a timestamp for author with time now.
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
+        return true;
+    }
+
+    removeCooldown(author) {
+        const timestamps = this.client.commands.cooldowns.get(this.name);
+        timestamps.delete(author.id);
         return true;
     }
 };

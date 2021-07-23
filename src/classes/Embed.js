@@ -33,6 +33,9 @@ module.exports = class Embed extends MessageEmbed {
             case "lightblue":
                 color = "#76b3fc";
                 break;
+            case "pink":
+                color = "#da70d6";
+                break;
             default:
                 if (!color) color = "RANDOM";
                 break;

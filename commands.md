@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **50 commands** in **8 categories**!
+Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -18,6 +18,7 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 
 - [Anime](#anime)
 - [Core](#core)
+- [Economy](#economy)
 - [Fun](#fun)
 - [General](#general)
 - [Moderation](#moderation)
@@ -213,6 +214,125 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
+## Economy (9 commands)
+
+### `balance`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Check your wcoin balance, or someone else's. Shows wallect & bank
+- Usage: None
+- Aliases: `bal`, `wallet`
+- Cooldown: 5
+
+### `beg`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get money by begging!
+- Usage: None
+- Aliases: None
+- Cooldown: 60
+
+### `daily`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get your daily wcoins!
+- Usage: None
+- Aliases: None
+- Cooldown: 10
+
+### `deposit`
+
+##### Subcommands:
+
+- `all` - Deposit maximum money, aliases: `max`
+
+##### Cmd info
+
+- Description: Deposit money to your bank
+- Usage: None
+- Aliases: `dep`, `bankdep`
+- Cooldown: 10
+
+### `give`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Donate monry to another user
+- Usage: [@mention / user id] [amount]
+- Aliases: `donate`, `share`
+- Cooldown: 5
+
+### `profile`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows your profile or someone else's.
+- Usage: None
+- Aliases: `user-profile`, `account`, `userprofile`
+- Cooldown: 5
+
+### `rob`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Steal another user's wallet! :dollar:
+- Usage: [@mention / user id]
+- Aliases: None
+- Cooldown: 60
+
+### `setbio`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Set your Welcome-Bot account's bio!
+- Usage: None
+- Aliases: `bio`
+- Cooldown: 10
+
+### `withdraw`
+
+##### Subcommands:
+
+- `all` - Withdraw all amount from bank: `max`
+
+##### Cmd info
+
+- Description: Withdraw money from your bank
+- Usage: None
+- Aliases: `wd`, `with`
+- Cooldown: 10
+
 ## Fun (6 commands)
 
 ### `8ball`
@@ -318,7 +438,7 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 
 - Description: Get a user's avatar
 - Usage: (@mention / user id)
-- Aliases: `dp`, `profile`
+- Aliases: `dp`
 - Cooldown: 10
 
 ### `hastebin`
@@ -400,19 +520,6 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 - Aliases: `si`
 - Cooldown: 10
 
-### `testwelcome`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: testwelcome.cmdDesc
-- Usage: None
-- Aliases: None
-- Cooldown: 10
-
 ### `testgoodbye`
 
 ##### Subcommands:
@@ -421,7 +528,20 @@ Welcome-Bot contains more than **50 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: testgoodbye.cmdDesc
+- Description: Test by sending goodbye message
+- Usage: None
+- Aliases: None
+- Cooldown: 10
+
+### `testwelcome`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Test by sending welcome message
 - Usage: None
 - Aliases: None
 - Cooldown: 10

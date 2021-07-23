@@ -23,7 +23,7 @@ Feel free to add a star ⭐ to the repository to promote the project!
 Welcome-Bot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 50+ commands
+- 🥳 60+ commands
 
 ### Customizable Settings
 
@@ -49,7 +49,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 ## Commands
 
-Welcome-Bot has more than 50+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
+Welcome-Bot has more than 60 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
 
 ## Default values
 
@@ -68,10 +68,10 @@ The default welcome channel is set to `new-members`, commonly used welcome chann
 
 The bot requires the following permissions:
 
-- Read messages (View channels)
-- Send messages
+- Read Messages (View channels)
+- Send Messages
 - Read Message History
-- Manage messages
+- Manage Messages
 - Embed links
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:

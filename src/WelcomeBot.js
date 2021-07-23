@@ -6,7 +6,7 @@
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
 //const Command = require("./classes/Command");
-const config = require(__dirname + "/config");
+const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
@@ -42,6 +42,7 @@ class WelcomeBot extends Client {
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
+        this.dashboard = require("../dashboard/app");
         this.categories = [];
         this.customEmojis = require("./data/customEmojis.json");
         this.allPerms = [
@@ -125,6 +126,7 @@ class WelcomeBot extends Client {
             enableLive: true,
         });
         this.loadCommands(__dirname + "/commands");
+        this.addDbFuncs();
     }
 
     loadCommand(commandPath, commandName) {
@@ -204,6 +206,30 @@ class WelcomeBot extends Client {
             }
         }
         return cmd.name ? cmd : disabledCmd;
+    }
+
+    addDbFuncs() {
+        const dbFolder = __dirname + "/db/functions";
+        const dbFuncs = fs.readdirSync(dbFolder);
+
+        for (const folder of dbFuncs) {
+            if (!folder.endsWith(".js")) {
+                const dbFiles = fs
+                    .readdirSync(`${dbFolder}/${folder}`)
+                    .filter((file) => file.endsWith(".js"));
+                this[`${folder}DbFuncs`] = {};
+                for (const file of dbFiles) {
+                    try {
+                        const f = file.replace(".js","");
+                        this[`${folder}DbFuncs`][f] = require(`${dbFolder}/${folder}/${f}`);
+                    } catch (e) {
+                        this.logger.log(`Error occurred when loading ${file}`);
+                        console.error(e);
+                        process.exit();
+                    }
+                }
+            }
+        }
     }
 }
 

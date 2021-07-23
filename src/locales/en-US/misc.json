@@ -1,10 +1,12 @@
 {
   "timeout": "Time's up! Please send the command again!",
-  "resMod": "Responsible moderator:",
+  "resMod": "**Responsible Moderator:**",
   "channels": "Channels",
   "bots": "Bots",
   "members": "Members",
   "total": "Total",
   "uptime": "Uptime",
-  "datelaunched": "Date Launched"
+  "datelaunched": "Date Launched",
+  "accCreated": "Account created at",
+  "bio": "User's Bio"
 }

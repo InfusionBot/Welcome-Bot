@@ -2,6 +2,7 @@
   "generic": "An error occurred!",
   "guildOnly": "This can only be done in servers.",
   "pagination": "Your reaction won't be removed automatically, as soon as you react.",
+  "noAcc": "That user doesn't have a Welcome-Bot account, they may create one by typing any command of Welcome-Bot",
   "note": "Please note that",
   "developerOnly": "Only the bot developers can execute that command.",
   "cooldown": "Woah! Slow down buddy! Wait for {{seconds}} more second(s) before reusing the {{command}} command.",
