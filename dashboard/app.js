@@ -34,6 +34,7 @@ module.exports.load = (client) => {
         .use((req, res, next) => {
             req.user = req.session.user;
             req.userDB = req.user ? client.userDbFuncs.getUser(req.user.id) : null;
+            req.translate = client.i18next.getFixedT("en-US"); //TODO: Support other langs
             req.currentURL = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
             req.client = client;
             next();
@@ -56,7 +57,7 @@ module.exports.load = (client) => {
 
     app
         // Since this is the last non-error-handling we assume 404.
-        .use(CheckAuth, (req, res) => {
+        .use((req, res) => {
             if (req.accepts("html")) {
                 res.render("404", {
                     user: req.userDB,

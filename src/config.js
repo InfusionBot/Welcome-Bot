@@ -17,5 +17,6 @@ module.exports = {
         port: 8000,
         secret: process.env.SESS_PASS ?? null,
         enabled: process.env.SESS_PASS ?? null ? true : false,
+        logs: "855331801635749888"
     },
 };
