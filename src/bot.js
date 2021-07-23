@@ -139,6 +139,7 @@ client.on("ready", async () => {
             `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
     await require("./loaders/Locale.js")(client);
+    await require("./loaders/VoteLogger.js")(client);
     if (client.config.dashboard.enabled) client.dashboard.load(client);
     else if (client.debug)
         client.logger.log(

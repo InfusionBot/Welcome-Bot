@@ -8,9 +8,9 @@ const fs = require("fs");
 const { CheckAuth } = require("./utils");
 const path = require("path");
 const express = require("express");
-const session = require("express-session");
 
 module.exports.load = (client) => {
+    const session = require("express-session");
     if (client.debug) client.logger.log("loading dashboard");
     const app = express();
     app.use(express.urlencoded({ extended: true }))
@@ -33,9 +33,13 @@ module.exports.load = (client) => {
         //Adding new shortcuts by extending like a plugin
         .use((req, res, next) => {
             req.user = req.session.user;
-            req.userDB = req.user ? client.userDbFuncs.getUser(req.user.id) : null;
+            req.userDB = req.user
+                ? client.userDbFuncs.getUser(req.user.id)
+                : null;
             req.translate = client.i18next.getFixedT("en-US"); //TODO: Support other langs
-            req.currentURL = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
+            req.currentURL = `${req.protocol}://${req.get("host")}${
+                req.originalUrl
+            }`;
             req.client = client;
             next();
         });

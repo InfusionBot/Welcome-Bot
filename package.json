@@ -14,6 +14,7 @@
     "feat: New cmd `profile`",
     "feat: New cmd `setbio`",
     "feat: New cmd `rob`",
+    "feat: New cmd `vote`",
     "**Changes**",
     "fix(goodbye): They are disabled by default now!",
     "fix(goodbye): Sometimes, an error would occur to send goodbye logs",
@@ -66,7 +67,8 @@
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.12",
     "opusscript": "^0.0.8",
-    "pokemon": "^2.2.0"
+    "pokemon": "^2.2.0",
+    "@top-gg/sdk": "^3.1.2"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
