@@ -7,6 +7,8 @@ module.exports = {
     botGuildId: "836854115526770708",
     newsChannelId: "847459283876577360",
     logsChannelId: "855331801635749888",
+    votesChannelId: "",
+    rewardUserOnVote: true,
     suggestionLogsChannelId: "862126837110800414",
     ownerIDs: [
         "815204465937481749" /*PuneetGopinath#0001*/,
