@@ -218,7 +218,7 @@ module.exports = class CMD extends Command {
                 pages[0].addField(
                     "Member Permissions:",
                     `You need ${beautifyPerms(
-                        command.permissions,
+                        command.memberPerms,
                         message.client.allPerms,
                         t
                     ).join(", ")} permission(s) to execute this command.`
