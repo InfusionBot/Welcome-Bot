@@ -438,7 +438,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 - Description: Get a user's avatar
 - Usage: (@mention / user id)
-- Aliases: `dp`, `profile`
+- Aliases: `dp`
 - Cooldown: 10
 
 ### `hastebin`
@@ -520,19 +520,6 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `si`
 - Cooldown: 10
 
-### `testwelcome`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Test by sending welcome message
-- Usage: None
-- Aliases: None
-- Cooldown: 10
-
 ### `testgoodbye`
 
 ##### Subcommands:
@@ -542,6 +529,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 ##### Cmd info
 
 - Description: Test by sending goodbye message
+- Usage: None
+- Aliases: None
+- Cooldown: 10
+
+### `testwelcome`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Test by sending welcome message
 - Usage: None
 - Aliases: None
 - Cooldown: 10
