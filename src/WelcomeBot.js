@@ -220,8 +220,10 @@ class WelcomeBot extends Client {
                 this[`${folder}DbFuncs`] = {};
                 for (const file of dbFiles) {
                     try {
-                        const f = file.replace(".js","");
-                        this[`${folder}DbFuncs`][f] = require(`${dbFolder}/${folder}/${f}`);
+                        const f = file.replace(".js", "");
+                        this[`${folder}DbFuncs`][
+                            f
+                        ] = require(`${dbFolder}/${folder}/${f}`);
                     } catch (e) {
                         this.logger.log(`Error occurred when loading ${file}`);
                         console.error(e);

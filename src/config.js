@@ -23,6 +23,6 @@ module.exports = {
         port: 8000,
         secret: process.env.SESS_SECRET ?? null,
         enabled: process.env.SESS_SECRET ?? null ? true : false,
-        logs: "855331801635749888"
+        logs: "855331801635749888",
     },
 };
