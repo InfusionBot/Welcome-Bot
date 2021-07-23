@@ -7,7 +7,7 @@ const Topgg = require("@top-gg/sdk");
 const express = require("express");
 module.exports = (client) => {
     const app = express();
-    const webhook = new Topgg.Webhook(process.env.DBL_token);
+    const webhook = new Topgg.Webhook(client.config.dbl.token);
     app.post("/dblwebhook", webhook.listener(async (vote) => {
         const dUser = await client.users.fetch(vote.user);
         let coins = false;
@@ -30,5 +30,5 @@ module.exports = (client) => {
                 );
         }
     }));
-    app.listen(8000);
+    app.listen(client.config.dbl.port);
 };

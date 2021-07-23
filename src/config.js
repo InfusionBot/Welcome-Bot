@@ -14,4 +14,8 @@ module.exports = {
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
     ],
+    dbl: {
+        port: process.env.DBL_port,
+        token: process.env.DBL_token,
+    },
 };
