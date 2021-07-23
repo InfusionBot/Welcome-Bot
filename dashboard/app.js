@@ -49,12 +49,7 @@ module.exports.load = (client) => {
         else f = `/${f}`;
         try {
             app.use(f, require(`${routesFolder}/${f}`));
-<<<<<<< HEAD
-            console.log(f);
-        } catch(e) {
-=======
         } catch (e) {
->>>>>>> ee1800f951196c27034584d3b06451c19d26fb6f
             console.error(e);
         }
     }

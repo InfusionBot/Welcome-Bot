@@ -24,15 +24,14 @@ router.get("/login", (req, res) => {
         );
 });
 //GET /callback
-router.get("/callback", (req, res) => {
+router.get("/callback", async (req, res) => {
     if (!req.query.code) return res.redirect("/");
     const redirectUrl = req.query.redirectUrl || "/dashboard";
     const params = new URLSearchParams();
     params.set("grant_type", "authorization_code");
     params.set("code", req.query.code);
     params.set("redirect_uri", "/discord/callback");
-    let tokens;
-    fetch("https://discord.com/api/oauth2/token", {
+    const tokensRes = await fetch("https://discord.com/api/oauth2/token", {
         method: "POST",
         body: params.toString(),
         headers: {
@@ -42,16 +41,15 @@ router.get("/callback", (req, res) => {
             "User-Agent": process.env.userAgent,
             "Content-Type": "application/x-www-form-urlencoded",
         },
-    })
-        .then(async (response) => {
-            tokens = await response.json();
-        })
-        .catch(console.error);
+    });
+    const tokens = await tokensRes.json();
     if (tokens.error || !tokens.access_token)
         return res.redirect(
-            `/discord/login&redirectUrl=${
-                req.query.redirectUrl || "/dashboard"
-            }`
+            `/discord/login&redirectUrl=${redirectUrl}`
         );
+    const user = {
+        infos: null, //Basic info like user id, tag, username, etc.
+        guilds: null,
+    };
 });
 module.exports = router;
