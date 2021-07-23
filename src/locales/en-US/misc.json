@@ -6,5 +6,7 @@
   "members": "Members",
   "total": "Total",
   "uptime": "Uptime",
-  "datelaunched": "Date Launched"
+  "datelaunched": "Date Launched",
+  "accCreated": "Account created at",
+  "bio": "User's Bio"
 }
