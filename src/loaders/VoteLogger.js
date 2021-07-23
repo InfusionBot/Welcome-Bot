@@ -35,5 +35,7 @@ module.exports = (client) => {
         })
     );
     app.listen(client.config.dbl.port);
-    console.log("Topgg vote logger listening on port " + client.config.dbl.port);
+    console.log(
+        "Topgg vote logger listening on port " + client.config.dbl.port
+    );
 };
