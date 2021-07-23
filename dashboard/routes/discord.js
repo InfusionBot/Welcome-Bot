@@ -14,11 +14,11 @@ router.get("/login", (req, res) => {
         res.redirect(
             `https://discord.com/api/oauth2/authorize?client_id=${
                 req.client.user.id
-            }&scope=identify%20guilds&response_type=code?redirect_uri=${encodeURIComponent(
+            }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(
                 `${req.protocol}://${req.get(
                     "host"
-                )}/discord/callback&redirectUrl=${
-                    req.query.redirectUrl || "/dashboard"
+                )}/discord/callback?redirectUrl=${
+                    encodeURIComponent(req.query.redirectUrl || "/dashboard")
                 }`
             )}`
         );
@@ -30,7 +30,7 @@ router.get("/callback", async (req, res) => {
     const params = new URLSearchParams();
     params.set("grant_type", "authorization_code");
     params.set("code", req.query.code);
-    params.set("redirect_uri", "/discord/callback");
+    params.set("redirect_uri", encodeURIComponent(`${req.protocol}://${req.get("host")}/discord/callback?redirectUrl=${encodeURIComponent(redirectUrl)}`));
     const tokensRes = await fetch("https://discord.com/api/oauth2/token", {
         method: "POST",
         body: params.toString(),
@@ -43,6 +43,7 @@ router.get("/callback", async (req, res) => {
         },
     });
     const tokens = await tokensRes.json();
+    console.log(tokens, tokensRes);
     if (tokens.error || !tokens.access_token)
         return res.redirect(
             `/discord/login&redirectUrl=${redirectUrl}`
