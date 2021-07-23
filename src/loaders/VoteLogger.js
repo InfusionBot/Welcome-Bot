@@ -3,13 +3,12 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const DBL = require("dblapi.js");
+const Topgg = require("@top-gg/sdk");
+const express = require("express");
 module.exports = (client) => {
-    const dbl = new DBL(process.env.DBL_token, {
-        webhookPort: process.env.DBL_port,
-        webhookAuth: process.env.DBL_webhook_pass,
-    });
-    dbl.webhook.on("vote", async (vote) => {
+    const app = express();
+    const webhook = new Topgg.Webhook(process.env.DBL_token);
+    app.post("/dblwebhook", webhook.listener(async (vote) => {
         const dUser = await client.users.fetch(vote.user);
         let coins = false;
         if (client.config.rewardUserOnVote) {
@@ -26,5 +25,6 @@ module.exports = (client) => {
                 }\`) voted for **${client.user.username}** on top.gg ${coins ? " and got 50 wcoins" : ""}🎉!`
             );
         }
-    });
+    }));
+    app.listen(8000);
 };
