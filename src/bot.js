@@ -140,7 +140,12 @@ client.on("ready", async () => {
         );
     await require("./loaders/Locale.js")(client);
     if (client.config.dashboard.enabled) client.dashboard.load(client);
-    else if (client.debug) client.logger.log("Not loading dashboard as it is not enabled", "debug", ["DASHBOARD"]);
+    else if (client.debug)
+        client.logger.log(
+            "Not loading dashboard as it is not enabled",
+            "debug",
+            ["DASHBOARD"]
+        );
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);

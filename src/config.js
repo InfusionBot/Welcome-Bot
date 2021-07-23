@@ -16,6 +16,6 @@ module.exports = {
     dashboard: {
         port: 8000,
         secret: process.env.SESS_PASS ?? null,
-        enabled: (process.env.SESS_PASS ?? null) ? true : false,
+        enabled: process.env.SESS_PASS ?? null ? true : false,
     },
 };

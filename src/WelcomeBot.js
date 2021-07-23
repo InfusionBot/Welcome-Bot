@@ -214,24 +214,24 @@ class WelcomeBot extends Client {
 
         for (const folder of dbFuncs) {
             if (!folder.endsWith(".js")) {
-            const dbFiles = fs
-                .readdirSync(`${dbFolder}/${folder}`)
-                .filter((file) => file.endsWith(".js"));
-            this[`${folder}DbFuncs`] = {};
-            for (const file of dbFiles) {
-                try {
-                    this[`${folder}DbFuncs`][
-                        file
-                    ] = require(`${dbFolder}/${folder}/${file.replace(
-                        ".js",
-                        ""
-                    )}`);
-                } catch (e) {
-                    this.logger.log(`Error occurred when loading ${file}`);
-                    console.error(e);
-                    process.exit();
+                const dbFiles = fs
+                    .readdirSync(`${dbFolder}/${folder}`)
+                    .filter((file) => file.endsWith(".js"));
+                this[`${folder}DbFuncs`] = {};
+                for (const file of dbFiles) {
+                    try {
+                        this[`${folder}DbFuncs`][
+                            file
+                        ] = require(`${dbFolder}/${folder}/${file.replace(
+                            ".js",
+                            ""
+                        )}`);
+                    } catch (e) {
+                        this.logger.log(`Error occurred when loading ${file}`);
+                        console.error(e);
+                        process.exit();
+                    }
                 }
-            }
             }
         }
     }
