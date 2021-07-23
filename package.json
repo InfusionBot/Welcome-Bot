@@ -68,7 +68,10 @@
     "nodemon": "^2.0.12",
     "opusscript": "^0.0.8",
     "pokemon": "^2.2.0",
-    "@top-gg/sdk": "^3.1.2"
+    "@top-gg/sdk": "^3.1.2",
+    "express-session": "^1.17.2",
+    "btoa": "^1.2.1",
+    "ejs": "^3.1.6"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
