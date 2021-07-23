@@ -11,10 +11,10 @@ const fetch = require("node-fetch");
 router.get("/login", (req, res) => {
     if (req.user) res.redirect("/dashboard");
     else
-        req.redirect(
+        res.redirect(
             `https://discord.com/api/oauth2/authorize?client_id=${
                 req.client.user.id
-            }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(
+            }&scope=identify%20guilds&response_type=code?redirect_uri=${encodeURIComponent(
                 `${req.protocol}://${req.get(
                     "host"
                 )}/discord/callback&redirectUrl=${
@@ -28,10 +28,9 @@ router.get("/callback", (req, res) => {
     if (!req.query.code) return res.redirect("/");
     const redirectUrl = req.query.redirectUrl || "/dashboard";
     const params = new URLSearchParams();
-    params
-        .set("grant_type", "authorization_code")
-        .set("code", req.query.code)
-        .set("redirect_uri", "/discord/callback");
+    params.set("grant_type", "authorization_code");
+    params.set("code", req.query.code);
+    params.set("redirect_uri", "/discord/callback");
     let tokens;
     fetch("https://discord.com/api/oauth2/token", {
         method: "POST",
@@ -44,8 +43,8 @@ router.get("/callback", (req, res) => {
             "Content-Type": "application/x-www-form-urlencoded",
         },
     })
-        .then(async (res) => {
-            tokens = await res.json();
+        .then(async (response) => {
+            tokens = await response.json();
         })
         .catch(console.error);
     if (tokens.error || !tokens.access_token)
