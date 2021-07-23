@@ -8,9 +8,9 @@ const fs = require("fs");
 const { CheckAuth } = require("./utils");
 const path = require("path");
 const express = require("express");
-const session = require("express-session");
 
 module.exports.load = (client) => {
+    const session = require("express-session");
     if (client.debug) client.logger.log("loading dashboard");
     const app = express();
     app.use(express.urlencoded({ extended: true }))

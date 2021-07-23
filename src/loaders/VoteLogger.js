@@ -14,6 +14,7 @@ module.exports = (client) => {
             const dUser = await client.users.fetch(vote.user);
             let coins = false;
             if (client.config.rewardUserOnVote) {
+                await client.userDbFuncs.addUser(dUser.id);
                 const userDB = await client.userDbFuncs.getUser(dUser.id);
                 await client.userDbFuncs.updateUser(
                     dUser.id,
@@ -34,4 +35,5 @@ module.exports = (client) => {
         })
     );
     app.listen(client.config.dbl.port);
+    console.log("Topgg vote logger listening on port " + client.config.dbl.port);
 };
