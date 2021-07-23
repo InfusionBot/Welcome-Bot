@@ -15,7 +15,7 @@ module.exports = {
         "693754859014324295" /*abhijoshi2k#6842*/,
     ],
     dashboard: {
-        port: 8000,
+        port: process.env.PORT || 8000,
         secret: process.env.SESS_SECRET ?? null,
         enabled: process.env.SESS_SECRET ?? null ? true : false,
         logs: "855331801635749888",
