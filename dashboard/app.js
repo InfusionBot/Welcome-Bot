@@ -13,8 +13,7 @@ const session = require("express-session");
 module.exports.load = (client) => {
     if (client.debug) client.logger.log("loading dashboard");
     const app = express();
-    app
-        .use(express.urlencoded({ extended: true }))
+    app.use(express.urlencoded({ extended: true }))
         .use(express.json())
         //Set engine to html for embedded js template
         .engine("html", require("ejs").renderFile)
@@ -22,7 +21,13 @@ module.exports.load = (client) => {
         // Set the ejs templates to ./views
         .set("views", path.join(__dirname, "/views"))
         //Set express session
-        .use(session({ secret: client.config.dashboard.secret, resave: false, saveUninitialized: false }))
+        .use(
+            session({
+                secret: client.config.dashboard.secret,
+                resave: false,
+                saveUninitialized: false,
+            })
+        )
         //Set port
         .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin
@@ -44,8 +49,12 @@ module.exports.load = (client) => {
         else f = `/${f}`;
         try {
             app.use(f, require(`${routesFolder}/${f}`));
+<<<<<<< HEAD
             console.log(f);
         } catch(e) {
+=======
+        } catch (e) {
+>>>>>>> ee1800f951196c27034584d3b06451c19d26fb6f
             console.error(e);
         }
     }
@@ -57,7 +66,7 @@ module.exports.load = (client) => {
                 res.render("404", {
                     user: req.userDB,
                     translate: req.translate,
-                    currentURL: req.currentURL
+                    currentURL: req.currentURL,
                 });
             } else if (req.accepts("json")) {
                 res.json({ error: "Page Not Found" });
@@ -75,7 +84,7 @@ module.exports.load = (client) => {
                 res.render("500", {
                     user: req.userDB,
                     translate: req.translate,
-                    currentURL: req.currentURL
+                    currentURL: req.currentURL,
                 });
             } else if (req.accepts("json")) {
                 res.json({ error: "Internal Server Error" });

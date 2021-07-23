@@ -10,7 +10,7 @@ router.get("/:userId", (req, res) => {
     let userDB;
     try {
         userDB = req.client.userDbFuncs.getUser(req.params.userId);
-    } catch(e) {
+    } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
     res.send("Coming soon");
