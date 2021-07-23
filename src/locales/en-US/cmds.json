@@ -63,6 +63,10 @@
   "uptime": {
     "cmdDesc": "Get uptime of the bot"
   },
+  "vote": {
+    "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins",
+    "howToVote": "**[Vote on Top.gg]({{link}})** to claim your bonus wcoins. 🎉"
+  },
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
