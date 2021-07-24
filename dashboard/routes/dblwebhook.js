@@ -9,7 +9,7 @@ const { webhook } = require("../../src/classes/Topgg");
 //POST /dblwebhook
 router.post(
     "/dblwebhook",
-    webhook.listener(async (vote) => {
+    webhook.listener(async (vote, req, res) => {
         const client = req.client;
         const dUser = await client.users.fetch(vote.user);
         await client.userDbFuncs.addUser(dUser.id);
@@ -26,6 +26,7 @@ router.post(
                     `⬆️ **${dUser.tag}** (\`${dUser.id}\`) voted for **${client.user.username}** on top.gg and got 50 wcoins 🎉!`
                 );
         }
+        res.sendStatus(200);
     })
 );
 module.exports = router;
