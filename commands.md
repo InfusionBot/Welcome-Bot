@@ -95,7 +95,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Core (9 commands)
+## Core (10 commands)
 
 ### `botinfo`
 
@@ -199,6 +199,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Description: Get uptime of the bot
 - Usage: None
 - Aliases: `bot-uptime`, `botuptime`
+- Cooldown: 10
+
+### `vote`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Vote for Welcome-Bot and claim your bonus wcoins
+- Usage: None
+- Aliases: None
 - Cooldown: 10
 
 ### `website`
