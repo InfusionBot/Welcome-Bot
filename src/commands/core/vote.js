@@ -29,7 +29,9 @@ module.exports = class CMD extends Command {
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.cmdDesc"))
             .setDesc(
-                userHasVoted ? `~~${howToVote}~~\n${t("cmds:vote.alreadyVoted")}` : howToVote
+                userHasVoted
+                    ? `~~${howToVote}~~\n${t("cmds:vote.alreadyVoted")}`
+                    : howToVote
             );
         message.reply({ embeds: [embed] });
     }
