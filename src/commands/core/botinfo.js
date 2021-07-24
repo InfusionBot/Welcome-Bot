@@ -55,7 +55,8 @@ module.exports = class CMD extends Command {
                 `${message.client.customEmojis.owner} Bot owners`,
                 `Welcome-Bot was created by ${message.client.ownersTags.join(
                     ", "
-                )}`
+                )}`,
+                inline
             )
             .addField(
                 "🧾 Bot lists:",
@@ -64,7 +65,8 @@ module.exports = class CMD extends Command {
                     "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
                     "> [discordservices.net](https://discordservices.net/bot/848459799783669790)\n" +
                     "> [discordlist.space](https://discordlist.space/bot/848459799783669790)\n" +
-                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n",
+                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n" +
+                    "> [top.gg](https://top.gg/bot/848459799783669790)\n",
                 inline
             )
             .addField(
