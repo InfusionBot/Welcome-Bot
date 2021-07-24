@@ -82,7 +82,7 @@ router.get("/callback", async (req, res) => {
         const embed = new Embed({ color: "pink" })
             .setAuthor(user.tag, user.displayAvatarURL())
             .setDesc(
-                `${user.tag} has logged in to the get dashboard first time ever! :tada:`
+                `${user.tag} has logged in to the dashboard first time ever! :tada:`
             );
         logsChannel.send({ embeds: [embed] });
         await req.client.userDbFuncs.updateUser(
