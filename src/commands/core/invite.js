@@ -32,6 +32,9 @@ module.exports = class CMD extends Command {
             .addField(
                 "\u200b",
                 `Invite Welcome-Bot: https://dsc.gg/welcome-bot`
+            )
+            .setImage(
+                "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );
         let button = new MessageButton()
             .setLabel("Invite Welcome-Bot")
