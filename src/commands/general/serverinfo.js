@@ -35,6 +35,7 @@ module.exports = class CMD extends Command {
         let iconURL = message.guild.iconURL().slice(0, 35) + "...";
         message.guild.members.fetch();
         embed
+            .addField(`${this.client.customEmojis.owner} ${t("misc:owner")}`, `<@${guild.ownerId}>`)
             .addField("Icon URL:", `[${iconURL}](${message.guild.iconURL()})`)
             .addField(
                 "Members in this server:",
