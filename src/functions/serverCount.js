@@ -147,7 +147,9 @@ module.exports = function (client) {
     api.postStats({
         serverCount: servers,
         shardCount: 0,
-    }).then(() => {
-        if (client.debug) console.log("Posted stats to Topgg");
-    }).catch(console.error);
+    })
+        .then(() => {
+            if (client.debug) console.log("Posted stats to Topgg");
+        })
+        .catch(console.error);
 };
