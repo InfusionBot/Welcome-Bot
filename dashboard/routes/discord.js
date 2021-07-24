@@ -12,7 +12,17 @@ const fetch = require("node-fetch");
 router.get("/login", (req, res) => {
     if (req.user) res.redirect("/dashboard");
     else
-        res.redirect(`https://discord.com/api/oauth2/authorize?client_id=${req.client.user.id}&redirect_uri=${encodeURIComponent(`${req.protocol}://${req.get("host")}/discord/callback?redirectUrl=${encodeURIComponent(req.query.redirectUrl || "/dashboard")}`)}&response_type=code&scope=identify%20guilds`);
+        res.redirect(
+            `https://discord.com/api/oauth2/authorize?client_id=${
+                req.client.user.id
+            }&redirect_uri=${encodeURIComponent(
+                `${req.protocol}://${req.get(
+                    "host"
+                )}/discord/callback?redirectUrl=${encodeURIComponent(
+                    req.query.redirectUrl || "/dashboard"
+                )}`
+            )}&response_type=code&scope=identify%20guilds`
+        );
 });
 //GET /callback
 router.get("/callback", async (req, res) => {
