@@ -65,7 +65,8 @@
   },
   "vote": {
     "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins",
-    "howToVote": "**[Vote on Top.gg]({{link}})** to claim your bonus wcoins. 🎉"
+    "howToVote": "**[Vote on Top.gg]({{link}})** to claim your bonus wcoins. 🎉",
+    "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
   },
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
