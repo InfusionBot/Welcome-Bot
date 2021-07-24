@@ -144,8 +144,10 @@ module.exports = function (client) {
     }
 
     //Top.gg stats
-    await api.postStats({
+    api.postStats({
         serverCount: servers,
         shardCount: 0,
-    });
+    }).then(() => {
+        if (client.debug) console.log("Posted stats to Topgg");
+    }).catch(console.error);
 };
