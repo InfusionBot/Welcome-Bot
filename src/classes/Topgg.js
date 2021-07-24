@@ -7,7 +7,7 @@ const Topgg = require("@top-gg/sdk");
 let api = null;
 let webhook = null;
 if (process.env.TOPGG_token) api = new Topgg.Api(process.env.TOPGG_token);
-if (process.env.TOPGG_token)
+if (process.env.TOPGG_Wtoken)
     webhook = new Topgg.Webhook(process.env.TOPGG_Wtoken);
 module.exports = {
     api,
