@@ -64,7 +64,7 @@
     "cmdDesc": "Get uptime of the bot"
   },
   "vote": {
-    "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins",
+    "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)",
     "howToVote": "**[Vote on Top.gg]({{link}})** to claim your bonus wcoins. 🎉",
     "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
   },
@@ -87,7 +87,7 @@
   },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
-    "success": "{{wcoins}} wcoins were placed in your wallet!",
+    "success": "{{wcoins}} wcoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
     "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
   },
   "deposit": {

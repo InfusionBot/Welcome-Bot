@@ -17,14 +17,16 @@ router.post(
         await client.userDbFuncs.updateUser(
             dUser.id,
             "wallet",
-            parseInt(userDB.wallet) + 50
-        ); //Give user 50 coins
+            parseInt(userDB.wallet) + 500
+        ); //Give user 500 coins
         if (client.config.votesChannelId) {
             client.channels.cache
                 .get(client.config.votesChannelId)
                 .send(
-                    `⬆️ **${dUser.tag}** (\`${dUser.id}\`) voted for **${client.user.username}** on top.gg and got 50 wcoins 🎉!`
+                    `⬆️ **${dUser.tag}** (\`${dUser.id}\`) voted for **${client.user.username}** on top.gg and got 500 wcoins 🎉!`
                 );
+        } else {
+            console.log("No votesChannelId in config");
         }
         res.sendStatus(200);
     })
