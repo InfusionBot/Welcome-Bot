@@ -295,7 +295,9 @@
     "done": "Successfully disabled!"
   },
   "enable": {
-    "cmdDesc": "Enable welcome and goodbye logs."
+    "cmdDesc": "Enable welcome and goodbye logs.",
+    "notDisabled": "That command was not disabled so not doing anything",
+    "done": "Successfully enabled!"
   },
   "follow": {
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."

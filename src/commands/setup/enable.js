@@ -1,9 +1,10 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
+const updateGuild = require("../../db/functions/guild/updateGuild");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -13,15 +14,10 @@ module.exports = class CMD extends Command {
                 memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
-                    subcommand: true,
+                    args: true,
                     guildOnly: true,
                 },
-                usage: "[subcommand]",
-                subcommands: [
-                    { name: "welcome", desc: "Enable welcome logs" },
-                    { name: "goodbye", desc: "Enable goodBye logs" },
-                    { name: "show", desc: "Show current settings" },
-                ],
+                usage: "[command name]",
                 disabled: false,
                 cooldown: 10,
                 category: "Setup",
@@ -31,34 +27,21 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
         args[0] = args[0] ? args[0] : "";
-        switch (args[0].toLowerCase()) {
-            case "welcome":
-                updateGuild(message.guild.id, "enableWelcome", true);
-                message.react("👍");
-                break;
-            case "goodbye":
-                updateGuild(message.guild.id, "enableGoodbye", true);
-                message.react("👍");
-                break;
-            default:
-                if (!args.length) {
-                    return message.channel.send(
-                        `Welcome logs are ${
-                            guildDB.enableWelcome ? "enabled" : "disabled"
-                        }\nAnd goodBye logs are ${
-                            guildDB.enableGoodbye ? "enabled" : "disabled"
-                        }`
-                    );
-                } else {
-                    message.reply(
-                        t("cmds:channel.invalidArgs") +
-                            `${guildDB.prefix}help enable`
-                    );
-                }
-                break;
+        let { disabled } = guildDB;
+        const cmd = this.client.commands.enabled.find(
+            (cmd) => cmd.name === args[0].toLowerCase()
+        );
+        if (!cmd) {
+            return message.reply(t("errors:commandNotFound"));
         }
-        return;
+        const index = disabled.indexOf(cmd.name);
+        if (index > -1) {
+            disabled.splice(index, 1);
+        } else {
+            return message.reply(t("cmds:enable.notDisabled"));
+        }
+        updateGuild(message.guild.id, "disabled", disabled);
+        return message.reply(t("cmds:enable.done"));
     }
 };
