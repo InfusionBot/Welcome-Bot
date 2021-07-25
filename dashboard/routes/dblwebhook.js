@@ -29,6 +29,6 @@ router.post(
             console.log("No votesChannelId in config");
         }
         res.send("OK");
-    });
+    })
 );
 module.exports = router;
