@@ -15,7 +15,6 @@ The displayed date is in the format `DD-MM-YYYY`
 ### New features
 
 - New cmd `emojify`
-- refactor(disable cmd): Disable commands using disable cmd now!
 - feat: New cmd `daily` and new category `Economy`
 - feat: New cmd `balance`
 - feat: New cmd `deposit`
@@ -31,7 +30,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - fix(goodbye): They are disabled by default now!
 - fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
-- refactor(disable cmd): Disable commands using disable cmd now!
+- refactor(disable cmd): disable commands using disable cmd!
+- refactor(enable): enable commands using enable cmd!
 
 [v2.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.0
 
