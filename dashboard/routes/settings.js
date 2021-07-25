@@ -5,8 +5,8 @@
  */
 const express = require("express");
 const router = express.Router();
-//GET /profile/:userId
-router.get("/:userId", (req, res) => {
+//GET /settings
+router.get("/", (req, res) => {
     let userDB;
     try {
         userDB = req.client.userDbFuncs.getUser(req.params.userId);
@@ -14,11 +14,10 @@ router.get("/:userId", (req, res) => {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
     res.send("Coming soon");
-    /*res.render("profile", {
+    /*res.render("settings", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
-        userDB2: userDB,
         translate: req.translate,
         currentURL: req.currentURL,
     });*/
