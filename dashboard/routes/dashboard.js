@@ -8,6 +8,11 @@ const express = require("express");
 const router = express.Router();
 //GET /dashboard
 router.get("/", CheckAuth, (req, res) => {
-    res.sendStatus(200);
+    res.render("dashboard", {
+        user: req.user,
+        userDB: req.userDB,
+        translate: req.translate,
+        currentURL: req.currentURL,
+    });
 });
 module.exports = router;
