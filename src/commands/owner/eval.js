@@ -39,8 +39,11 @@ module.exports = class CMD extends Command {
         const result = new Promise((resolve) => resolve(eval(content)));
         const clean = (text) => {
             if (typeof text === "string") {
-                if (text.includes(message.client.token)) {
+                if (text.includes(message.client.token)) { //Client token
                     text = text.replace(message.client.token, "T0K3N");
+                }
+                if (text.includes(message.client.config.dashboard.secret)) { //Client secret
+                    text = text.replace(message.client.config.dashboard.secret, "SECR3T");
                 }
                 return text
                     .replace(/`/g, "`" + String.fromCharCode(8203))
