@@ -32,7 +32,9 @@ module.exports.load = (client) => {
         .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin
         .use((req, res, next) => {
-            req.user = req.session.user;
+            req.userData = req.session.user ?? null;
+            req.user = req.userData ? client.users.cache.get(req.userData.id) : null;
+            if (!req.user) req.user = null;
             req.userDB = req.user
                 ? client.userDbFuncs.getUser(req.user.id)
                 : null;
@@ -65,6 +67,7 @@ module.exports.load = (client) => {
             if (req.accepts("html")) {
                 res.render("404", {
                     user: req.user,
+                    userData: req.userData,
                     userDB: req.userDB,
                     translate: req.translate,
                     currentURL: req.currentURL,
@@ -84,6 +87,7 @@ module.exports.load = (client) => {
             if (req.accepts("html")) {
                 res.render("500", {
                     user: req.user,
+                    userData: req.userData,
                     userDB: req.userDB,
                     translate: req.translate,
                     currentURL: req.currentURL,

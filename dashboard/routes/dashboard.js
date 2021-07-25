@@ -8,9 +8,9 @@ const express = require("express");
 const router = express.Router();
 //GET /dashboard
 router.get("/", CheckAuth, (req, res) => {
-    console.log(req.user);
     res.render("dashboard", {
         user: req.user,
+        userData: req.userData,
         userDB: req.userDB,
         translate: req.translate,
         currentURL: req.currentURL,
