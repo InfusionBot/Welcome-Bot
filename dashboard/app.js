@@ -64,7 +64,8 @@ module.exports.load = (client) => {
         .use((req, res) => {
             if (req.accepts("html")) {
                 res.render("404", {
-                    user: req.userDB,
+                    user: req.user,
+                    userDB: req.userDB,
                     translate: req.translate,
                     currentURL: req.currentURL,
                 });
@@ -82,7 +83,8 @@ module.exports.load = (client) => {
             if (!req.user) return res.redirect("/");
             if (req.accepts("html")) {
                 res.render("500", {
-                    user: req.userDB,
+                    user: req.user,
+                    userDB: req.userDB,
                     translate: req.translate,
                     currentURL: req.currentURL,
                 });
