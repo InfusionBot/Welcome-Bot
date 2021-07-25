@@ -136,6 +136,12 @@ Feel free to upvote him to show your support.
 
 > The original Discord bot list, find the right bot for your server today.
 
+### [top.gg](https://top.gg/bot/848459799783669790)
+
+> Spice up your Discord experience with our diverse range of Discord bots
+
+[![Top.gg](https://top.gg/api/widget/848459799783669790.svg)](https://top.gg/bot/848459799783669790)
+
 ## Self hosting
 
 **We ask you to please not host your own instance of Welcome-Bot.**  
