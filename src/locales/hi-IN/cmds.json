@@ -27,7 +27,7 @@
   "tickle": {
     "cmdDesc": "Tickle a user",
     "success": "{{author}} tickles {{user}}",
-    "errorYourself": "You can't tickle yourself."
+    "errorYourself": "You can't tickle yourself!"
   },
   "waifu": {
     "cmdDesc": "Fetches a random waifu and displays it."
@@ -49,10 +49,10 @@
     "cmdDesc": "Ping the bot"
   },
   "shards": {
-    "cmdDesc": "Information about the bot's shards"
+    "cmdDesc": "Shows information about the bot's shards"
   },
   "suggest": {
-    "cmdDesc": "Give your suggestion",
+    "cmdDesc": "Give suggestions",
     "done": "Your suggestion has been added, Thank You.",
     "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
   },
