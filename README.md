@@ -1,6 +1,6 @@
 # Discord Welcome-Bot
 
-> A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...
+> A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Welcome & Goodbye logs, Fun, Music
 
 Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
