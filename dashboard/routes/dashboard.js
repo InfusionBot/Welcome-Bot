@@ -15,5 +15,6 @@ router.get("/", CheckAuth, (req, res) => {
         translate: req.translate,
         currentURL: req.currentURL,
     });
+    res.end();
 });
 module.exports = router;
