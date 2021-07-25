@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.13.0]
+## [v1.13.1]
 
 > **Released:** `TBA`
+
+### Changes
+
+- New translations
+
+## [v1.13.0]
+
+> **Released:** `19-07-2021`
 
 ### Changes
 
@@ -441,6 +449,7 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 [#8]: https://github.com/Welcome-Bot/welcome-bot/pull/8
 [#3]: https://github.com/Welcome-Bot/welcome-bot/pull/3
 [#6]: https://github.com/Welcome-Bot/welcome-bot/pull/6
+[v1.13.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.13.1
 [v1.13.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.13.0
 [v1.12.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.12.2
 [v1.12.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v1.12.1
