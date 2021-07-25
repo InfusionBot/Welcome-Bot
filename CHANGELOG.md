@@ -43,5 +43,5 @@ The displayed date is in the format `DD-MM-YYYY`
 
 ## Older changelogs
 
-- [v1](https://github.com/Welcome-Bot/welcome-bot/blob/v1.13.0/CHANGELOG.md)
+- [v1](https://github.com/Welcome-Bot/welcome-bot/blob/v1.13.1/CHANGELOG.md)
 - [v0](https://github.com/Welcome-Bot/welcome-bot/blob/v0.1.0/CHANGELOG.md)

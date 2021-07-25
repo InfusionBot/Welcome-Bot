@@ -20,11 +20,11 @@
         <ul class="navbar-nav ml-auto">
             <% if (user) { %>
             <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle" data-widget="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="<%= user.displayAvatarURL({size: 32}) %>" class="rounded" alt="User Image">
                     <span><%= user.tag %></span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li style="min-width: auto !important;">
                         <div>
                             <a class="nav-link" href="/logout" class="btn btn-default btn-flat btn-block">Sign out</a>
