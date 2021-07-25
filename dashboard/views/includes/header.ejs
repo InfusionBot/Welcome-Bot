@@ -19,8 +19,8 @@
         <ul class="navbar-nav ml-auto">
             <% if (user) { %>
             <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
-                    <img src="<%= user.displayAvatarURL() %>" class="rounded" alt="User Image">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="<%= user.displayAvatarURL %>" class="rounded" alt="User Image">
                     <span><%= user.tag %></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
