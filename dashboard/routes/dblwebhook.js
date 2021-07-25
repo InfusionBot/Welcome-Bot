@@ -24,7 +24,8 @@ router.post(
                 .get(client.config.votesChannelId)
                 .send(
                     `⬆️ **${dUser.tag}** (\`${dUser.id}\`) voted for **${client.user.username}** on top.gg and got 500 wcoins 🎉!`
-                ).catch(console.log);
+                )
+                .catch(console.log);
         } else {
             console.log("No votesChannelId in config");
         }

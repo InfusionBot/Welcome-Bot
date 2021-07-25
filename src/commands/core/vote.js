@@ -22,19 +22,23 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         const userHasVoted = await TopggAPI.hasVoted(message.author.id);
-        const howToVote = t("cmds:vote.howToVote", {
-            //link: `https://top.gg/bot/${this.client.user.id}/vote`,
-            link: `https://top.gg/bot/848459799783669790/vote`,
-        }) + " 🎉";
-        const howToVoteServer = t("cmds:vote.howToVoteServer", {
-            link: `https://top.gg/servers/${this.client.config.botGuildId}/vote`,
-        }) + " 🎉";
+        const howToVote =
+            t("cmds:vote.howToVote", {
+                //link: `https://top.gg/bot/${this.client.user.id}/vote`,
+                link: `https://top.gg/bot/848459799783669790/vote`,
+            }) + " 🎉";
+        const howToVoteServer =
+            t("cmds:vote.howToVoteServer", {
+                link: `https://top.gg/servers/${this.client.config.botGuildId}/vote`,
+            }) + " 🎉";
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.cmdDesc"))
             .setDesc(
-                `${userHasVoted
-                    ? `~~${howToVote}~~\n${t("cmds:vote.alreadyVoted")}`
-                    : howToVote}${howToVoteServer}`
+                `${
+                    userHasVoted
+                        ? `~~${howToVote}~~\n${t("cmds:vote.alreadyVoted")}`
+                        : howToVote
+                }${howToVoteServer}`
             );
         message.reply({ embeds: [embed] });
     }

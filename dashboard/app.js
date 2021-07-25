@@ -33,7 +33,9 @@ module.exports.load = (client) => {
         //Adding new shortcuts by extending like a plugin
         .use((req, res, next) => {
             req.userData = req.session.user ?? null;
-            req.user = req.userData ? client.users.cache.get(req.userData.id) : null;
+            req.user = req.userData
+                ? client.users.cache.get(req.userData.id)
+                : null;
             if (!req.user) req.user = null;
             req.userDB = req.user
                 ? client.userDbFuncs.getUser(req.user.id)
