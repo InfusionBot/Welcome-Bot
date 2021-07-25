@@ -2,15 +2,18 @@
 <html>
     <%- include('includes/head') %>
     <!--TODO: Style this page-->
-    <body>
-        <div class="content-wrapper" >
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1><%= translate("misc:oops") %></h1>
-            </section>
-            <section class="content">
-                <h3><i class="fa fa-warning text-yellow"></i><%= translate("dashboard:404") %></h3>
-            </section>
+    <body class="dark-mode">
+        <div class="wrapper">
+            <%- include('includes/header') %>
+            <div class="content-wrapper" >
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1><%= translate("misc:oops") %></h1>
+                </section>
+                <section class="content">
+                    <h3><i class="fa fa-warning text-yellow"></i><%= translate("dashboard:404") %></h3>
+                </section>
+            </div>
         </div>
         <%- include('includes/footer') %>
     </body>
