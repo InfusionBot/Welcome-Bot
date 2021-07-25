@@ -9,4 +9,8 @@ const router = express.Router();
 router.get("/", (req, res) => {
     res.sendStatus(200);
 });
+//GET /login
+router.get("/login", (req, res) => {
+    res.redirect("/discord/login");
+});
 module.exports = router;
