@@ -38,7 +38,7 @@ module.exports = class CMD extends Command {
                     userHasVoted
                         ? `~~${howToVote}~~\n${t("cmds:vote.alreadyVoted")}`
                         : howToVote
-                }${howToVoteServer}`
+                }\n\n${howToVoteServer}`
             );
         message.reply({ embeds: [embed] });
     }
