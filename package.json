@@ -49,14 +49,18 @@
   "homepage": "https://welcome-bot.github.io/",
   "dependencies": {
     "@discordjs/builders": "^0.2.0",
+    "@top-gg/sdk": "^3.1.2",
     "ascii-table": "^0.0.9",
     "axios": "^0.21.1",
+    "btoa": "^1.2.1",
     "bufferutil": "^4.0.3",
     "colors-logger": "^0.3.1",
-    "discord-player": "^5.0.0-dev.92a3409.1626480154",
+    "discord-player": "^5.0.0-dev.399105e.1627171348",
     "discord.js": "^13.0.0-dev.328501b.1626912223",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "ffmpeg": "^0.0.4",
     "figlet": "^1.5.0",
     "i18next": "^20.0.0",
@@ -67,11 +71,7 @@
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.12",
     "opusscript": "^0.0.8",
-    "pokemon": "^2.2.0",
-    "@top-gg/sdk": "^3.1.2",
-    "express-session": "^1.17.2",
-    "btoa": "^1.2.1",
-    "ejs": "^3.1.6"
+    "pokemon": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
