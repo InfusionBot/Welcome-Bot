@@ -230,10 +230,10 @@
     "invalidArgs": "Invalid args, please use proper subcommands, see "
   },
   "disable": {
-    "cmdDesc": "Disable commands."
+    "cmdDesc": "Disable welcome and goodbye logs."
   },
   "enable": {
-    "cmdDesc": "Enable commands."
+    "cmdDesc": "Enable welcome and goodbye logs."
   },
   "follow": {
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
