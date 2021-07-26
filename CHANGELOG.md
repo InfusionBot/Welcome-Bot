@@ -24,6 +24,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `profile`
 - feat: New cmd `setbio`
 - feat: New cmd `rob`
+- feat(commands): New cmd `report`
 
 ### Changes
 
