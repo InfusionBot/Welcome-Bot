@@ -1,4 +1,4 @@
-<header>
+    <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center" style="height: 0px;">
         <img src="https://welcome-bot.github.io/assets/img/logo.png" height="60" widgth="60" style="display: none;">
     </div>
@@ -11,23 +11,6 @@
                 <a href="/dashboard" class="nav-link"><i class="nav-icon fas fa-tachometer-alt fa-w-18 nav-icon"></i>Dashboard</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <% if (user) { %>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="<%= user.displayAvatarURL({size: 32}) %>" class="rounded" alt="User Image">
-                    <span><%= user.tag %></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/logout" class="btn btn-danger btn-block">Sign out</a>
-                </div>
-            </li>
-            <% } else { %>
-            <li class="nav-item">
-                <a class="nav-link" href="/discord/login">Log in</a>
-            </li>
-            <% } %>
-        </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary">
         <a href="/" class="brand-link">
@@ -35,6 +18,26 @@
             <span class="brand-text font-weight-dark"><b>Welcome-Bot</b></span>
         </a>
         <div class="sidebar">
+            <% if (user) { %>
+            <!-- Sidebar user panel -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="<%= user.displayAvatarURL({size: 32}) %>" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block"><%= user.tag %></a>
+                </div>
+            </div>
+            <% } else { %>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="https://emoji.gg/assets/emoji/discord.png" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="/login" class="d-block">Login</a>
+                </div>
+            </div>
+            <% } %>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu">
                     <li class="nav-item">
@@ -51,4 +54,3 @@
             </nav>
         </div>
     </aside>
-</header>
