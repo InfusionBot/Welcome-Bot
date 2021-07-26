@@ -110,7 +110,8 @@ client.player
             client.logger.log("Joined voice channel", "debug", ["VOICE"]);
     })
     .on("connectionError", (queue, err) => {
-        client.logger.log(err, "error", ["VOICE"]);
+        client.logger.log("Connection Error:", "error", ["VOICE"]);
+        console.log(err);
     })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
