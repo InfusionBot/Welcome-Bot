@@ -10,6 +10,7 @@ const { webhook } = require("../../src/classes/Topgg");
 router.post(
     "/dblwebhook",
     webhook.listener(async (vote, req, res) => {
+        console.log("/dblwebhook");
         const client = req.client;
         const dUser = await client.users.fetch(vote.user);
         await client.userDbFuncs.addUser(dUser.id);
