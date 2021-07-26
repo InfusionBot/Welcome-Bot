@@ -25,6 +25,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `setbio`
 - feat: New cmd `rob`
 - feat: New cmd `vote`
+- feat(commands): New cmd `report`
 
 ### Changes
 

@@ -48,13 +48,18 @@
   "ping": {
     "cmdDesc": "Ping the bot"
   },
+  "report": {
+    "cmdDesc": "Report bugs",
+    "done": "Your bug has been reported, Thank You.",
+    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
+  },
   "shards": {
     "cmdDesc": "Shows information about the bot's shards"
   },
   "suggest": {
     "cmdDesc": "Give suggestions",
     "done": "Your suggestion has been added, Thank You.",
-    "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
+    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
   "support": {
     "cmdDesc": "Get Support for Welcome-Bot",
