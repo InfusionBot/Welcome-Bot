@@ -12,6 +12,11 @@ The displayed date is in the format `DD-MM-YYYY`
 
 > **Released:** `TBA`
 
+### Bug fixes
+
+- fix(channel): fix error `ReferenceError: channelIdFromMention is not defined`
+- fix(goodbye): Sometimes, an error would occur to send goodbye logs
+
 ### New features
 
 - feat: New cmd `emojify`
@@ -30,7 +35,6 @@ The displayed date is in the format `DD-MM-YYYY`
 ### Changes
 
 - fix(goodbye): They are disabled by default now!
-- fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - refactor(goodbye logs): Goodbye logs now use embeds!
 - refactor(disable cmd): disable commands using disable cmd!
 - refactor(enable): enable commands using enable cmd!

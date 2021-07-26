@@ -6,7 +6,7 @@
 const { Permissions } = require("discord.js");
 const updateGuild = require("../../db/functions/guild/updateGuild");
 const getGuild = require("../../db/functions/guild/getGuild");
-const { userFromMention } = require("../../helpers/Util.js");
+const { channelIdFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
