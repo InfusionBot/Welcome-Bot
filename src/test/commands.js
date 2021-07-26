@@ -88,6 +88,9 @@ describe("Commands", () => {
     });
 
     it("should have proper category name", (done) => {
+        if (!client.i18next) {//Wait 10 seconds if client.i18next is not defined
+            client.wait(10);
+        }
         const { categories } = client;
         let categoryNames = [];
         for (var i = 0; i < categories.length; i++) {
