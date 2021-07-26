@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "src/**.js"
+      - "dashboard/**.js"
   workflow_dispatch:
 
 jobs:
