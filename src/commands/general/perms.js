@@ -78,11 +78,17 @@ module.exports = class CMD extends Command {
             }
         });
         text += `\n\n${allowed} ✅ | ${denied} ❌`;
-        message.reply({embeds: [
-            embed.setTitle(t("cmds:perms.message", {
-                tag: user.tag,
-                channel: message.channel.name,
-            })).setDesc(text)
-        ]});
+        message.reply({
+            embeds: [
+                embed
+                    .setTitle(
+                        t("cmds:perms.message", {
+                            tag: user.tag,
+                            channel: message.channel.name,
+                        })
+                    )
+                    .setDesc(text),
+            ],
+        });
     }
 };

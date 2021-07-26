@@ -65,8 +65,10 @@ module.exports = class CMD extends Command {
             categories.forEach((cat) => {
                 const p = pages.length;
                 let commandsCat = [];
-                pages[p] = new Embed({ color: "blue", timestamp: true })
-                .setTitle(
+                pages[p] = new Embed({
+                    color: "blue",
+                    timestamp: true,
+                }).setTitle(
                     `${t("cmds:help.bot-help")} - ${t(
                         `categories:${cat.key}`
                     )} ${t("misc:category")}`
@@ -95,7 +97,10 @@ module.exports = class CMD extends Command {
                 "What is Cooldown:",
                 "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
             );*/
-            pages[0].addField("Commands", `${t("cmds:help.cmds", {prefix: guildDB.prefix})}`);
+            pages[0].addField(
+                "Commands",
+                `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
+            );
 
             const curPage = await message.channel.send({
                 embeds: [
