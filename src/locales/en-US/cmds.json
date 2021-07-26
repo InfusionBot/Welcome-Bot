@@ -306,7 +306,7 @@
     "done": "Successfully disabled!"
   },
   "enable": {
-    "cmdDesc": "Enable welcome and goodbye logs.",
+    "cmdDesc": "Enable commands.",
     "notDisabled": "That command was not disabled so not doing anything",
     "done": "Successfully enabled!"
   },
