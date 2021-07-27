@@ -35,7 +35,11 @@ module.exports.load = (client) => {
             req.client = client;
             req.userData = req.session.user ?? null;
             req.user = null;
-            if (req.userData) req.user = fetchUser(req.userData, req.client);
+            if (req.userData) {
+                const userInfos = fetchUser(req.userData, req.client);
+                req.user = userInfos.user;
+                req.userData = userInfos.userData;
+            }
             if (!req.user) req.user = null;
             req.userDB = req.user
                 ? client.userDbFuncs.getUser(req.user.id)
