@@ -6,31 +6,29 @@
 const express = require("express");
 const router = express.Router();
 //POST /blswebhook
-router.post(
-    "/",
-    async (req, res) => {
-        //console.log("/blswebhook");
-        const client = req.client;
-        const vUser = await client.users.fetch(req.body.user.id);
-        if (!vUser) return;
-        await client.userDbFuncs.addUser(vUser.id);
-        const userDB = await client.userDbFuncs.getUser(vUser.id);
-        await client.userDbFuncs.updateUser(
-            vUser.id,
-            "wallet",
-            parseInt(userDB.wallet) + 500
-        ); //Give user 500 coins
-        if (client.config.votesChannelId) {
-            client.channels.cache
-                .get(client.config.votesChannelId)
-                .send(
-                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.user.username}** on botlist.space and got 500 wcoins 🎉!`
-                )
-                .catch(console.log);
-        } else {
-            console.log("No votesChannelId in config");
-        }
-        res.send("OK");
-        res.end();
-    });
+router.post("/", async (req, res) => {
+    //console.log("/blswebhook");
+    const client = req.client;
+    const vUser = await client.users.fetch(req.body.user.id);
+    if (!vUser) return;
+    await client.userDbFuncs.addUser(vUser.id);
+    const userDB = await client.userDbFuncs.getUser(vUser.id);
+    await client.userDbFuncs.updateUser(
+        vUser.id,
+        "wallet",
+        parseInt(userDB.wallet) + 500
+    ); //Give user 500 coins
+    if (client.config.votesChannelId) {
+        client.channels.cache
+            .get(client.config.votesChannelId)
+            .send(
+                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.user.username}** on botlist.space and got 500 wcoins 🎉!`
+            )
+            .catch(console.log);
+    } else {
+        console.log("No votesChannelId in config");
+    }
+    res.send("OK");
+    res.end();
+});
 module.exports = router;
