@@ -81,7 +81,7 @@ module.exports.load = (client) => {
                     currentURL: req.currentURL,
                 });
             } else if (req.accepts("json")) {
-                res.json({ error: "Page Not Found" });
+                res.json({ error: "404", message: "Page Not Found" });
             } else {
                 return res.type("txt").sendStatus(404);
             }

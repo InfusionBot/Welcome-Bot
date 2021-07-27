@@ -5,14 +5,13 @@
  */
 const express = require("express");
 const router = express.Router();
-const { webhook } = require("../../src/classes/Topgg");
-//POST /dblwebhook
+//POST /blswebhook
 router.post(
     "/",
-    webhook.listener(async (vote, req, res) => {
-        //console.log("/dblwebhook");
+    async (req, res) => {
+        //console.log("/blswebhook");
         const client = req.client;
-        const vUser = await client.users.fetch(vote.user);
+        const vUser = await client.users.fetch(req.body.user.id);
         if (!vUser) return;
         await client.userDbFuncs.addUser(vUser.id);
         const userDB = await client.userDbFuncs.getUser(vUser.id);
@@ -25,7 +24,7 @@ router.post(
             client.channels.cache
                 .get(client.config.votesChannelId)
                 .send(
-                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.user.username}** on top.gg and got 500 wcoins 🎉!`
+                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.user.username}** on botlist.space and got 500 wcoins 🎉!`
                 )
                 .catch(console.log);
         } else {
@@ -33,6 +32,5 @@ router.post(
         }
         res.send("OK");
         res.end();
-    })
-);
+    });
 module.exports = router;
