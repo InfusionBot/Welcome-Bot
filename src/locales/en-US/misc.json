@@ -1,7 +1,7 @@
 {
   "timeout": "Time's up! Please send the command again!",
   "ptimeout": "Pagination timed out",
-  "resMod": "Responsible moderator:",
+  "resMod": "Responsible moderator",
   "channels": "Channels",
   "bots": "Bots",
   "members": "Members",
@@ -16,5 +16,7 @@
   "sinfo": "Server Info",
   "stats": "Statistics",
   "exiSince": "Exists since",
-  "lang": "Language"
+  "lang": "Language",
+  "not_spec": "Not specified",
+  "reason": "Reason"
 }

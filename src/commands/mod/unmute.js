@@ -28,10 +28,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         let user;
-        let reason = args.join(" ").replace(args[0], "");
-        if (!reason) {
-            reason = "Not specified";
-        }
+        const reason = args.slice(1).join(" ") || t("misc:not_spec");
         if (args[0]) {
             if (args[0].startsWith("<@")) {
                 user = userFromMention(
@@ -90,7 +87,7 @@ module.exports = class CMD extends Command {
                             t("misc:resMod"),
                             `${message.author.tag} (${message.author.id})`
                         );
-                        embed.addField("Reason:", reason);
+                        embed.addField(t("misc:reason"), reason);
                         channel.send({ embeds: [embed] });
                     }
                 }

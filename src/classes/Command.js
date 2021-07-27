@@ -69,11 +69,13 @@ module.exports = class Command {
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,
             Permissions.FLAGS.READ_MESSAGE_HISTORY,
+            Permissions.FLAGS.EMBED_LINKS,
         ];
+        //Checking basic perms
         if (message.channel.type !== "DM" && message.guild) {
-            const bot_perms = message.guild.me.permissionsIn(message.channel);
+            const botPerms = message.guild.me.permissionsIn(message.channel);
 
-            if (!bot_perms) {
+            if (!botPerms) {
                 message.reply(
                     `${t("errors:iDontHavePermShort")}\nType \`${
                         guildDB.prefix
@@ -86,7 +88,7 @@ module.exports = class Command {
                 return false;
             }
             for (var i = 0; i < basicPerms.length; i++) {
-                if (!bot_perms.has(basicPerms[i])) {
+                if (!botPerms.has(basicPerms[i])) {
                     message.reply(
                         t("errors:iDontHavePermission", {
                             permission: t(
@@ -128,8 +130,14 @@ module.exports = class Command {
             }
         }
 
-        timestamps.set(message.author.id, now); //Set a timestamp for author with time now.
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
+        this.applyCooldown(message.author, cooldownAmount);
+        return true;
+    }
+
+    applyCooldown(author, cooldownAmount) {
+        const timestamps = this.client.commands.cooldowns.get(this.name);
+        timestamps.set(author.id, Date.now());
+        setTimeout(() => timestamps.delete(author.id), cooldownAmount); //Delete cooldown for author after cooldownAmount is over.
         return true;
     }
 
