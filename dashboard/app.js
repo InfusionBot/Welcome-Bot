@@ -5,7 +5,7 @@
  */
 require("dotenv").config();
 const fs = require("fs");
-const { CheckAuth } = require("./utils");
+const { CheckAuth, fetchUser } = require("./utils");
 const path = require("path");
 const express = require("express");
 
@@ -33,14 +33,14 @@ module.exports.load = (client) => {
         //Adding new shortcuts by extending like a plugin
         .use((req, res, next) => {
             req.userData = req.session.user ?? null;
-            req.user = req.userData
-                ? client.users.cache.get(req.userData.id)
-                : null;
+            req.user = fetchUser(req.userData, req.client);
             if (!req.user) req.user = null;
             req.userDB = req.user
                 ? client.userDbFuncs.getUser(req.user.id)
                 : null;
-            req.translate = client.i18next.getFixedT("en-US"); //TODO: Support other langs
+            req.locale = "en-US";
+            if (req.userData && req.userData.locale) req.locale = req.userData.locale;
+            req.translate = client.i18next.getFixedT(req.locale); //TODO: Support other langs
             req.currentURL = `${req.protocol}://${req.get("host")}${
                 req.originalUrl
             }`;

@@ -81,7 +81,7 @@ router.get("/callback", async (req, res) => {
     for (const index in userData.guilds) guilds.push(userData.guilds[index]);
     req.session.user = {
         ...userData.infos,
-        ...{ guilds },
+        guilds,
     };
     const user = await req.client.users.fetch(req.session.user.id);
     const userDB = await req.client.userDbFuncs.getUser(req.session.user.id);

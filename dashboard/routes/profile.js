@@ -14,15 +14,14 @@ router.get("/:userId", (req, res) => {
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
-    res.send("Coming soon");
-    /*res.render("profile", {
+    res.render("profile", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
         userDB2: userDB,
         translate: req.translate,
         currentURL: req.currentURL,
-    });*/
+    });
 });
 router.get("/", CheckAuth, (req, res) => {
     res.redirect(`/profile/${req.user.id}`);

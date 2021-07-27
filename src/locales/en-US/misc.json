@@ -22,5 +22,6 @@
   "exiSince": "Exists since",
   "lang": "Language",
   "not_spec": "Not specified",
-  "reason": "Reason"
+  "reason": "Reason",
+  "profile": "Profile"
 }

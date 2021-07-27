@@ -17,7 +17,34 @@
                 </section>
                 <section class="content">
                     <div class="container-fluid">
-                        <h3>Coming soon</h3>
+                        <div class="row">
+                            <% if (userData?.displayedGuilds?.length > 0) { userData.displayedGuilds.forEach((guild) => { if (!guild.owner) return; %>
+                            <div class="col-md-3">
+                                <div class="card <% if (guild.botInvited) return "card-primary"; else return "card-warning"; %>">
+                                    <div class="card-header">
+                                        <h3 class="card-title"><% guild.name %></h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="<% guild.iconURL() %>">
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="<% guild.manageUrl %>"><% translate("dashboard:manageGuild") %></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } else { %>
+                            <div class="col-md-12">
+                                <div class="card card-danger">
+                                    <div class="card-header">
+                                        <h3 class="card-title"><% translate("dashboard:noGuild") %></h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <% translate("dashboard:noGuildBody") %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
                     </div>
                 </section>
             </div>
