@@ -35,7 +35,7 @@ module.exports = class CMD extends Command {
         embed
             .addField(
                 `${this.client.customEmojis.owner} ${t("misc:owner")}`,
-                `<@${guild.ownerId}>`
+                `<@${message.guild.ownerId}>`
             )
             .addField("Icon URL:", `[${iconURL}](${message.guild.iconURL()})`)
             .addField(
