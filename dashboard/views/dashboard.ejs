@@ -20,7 +20,7 @@
                         <div class="row">
                             <% if (userData?.displayedGuilds?.length > 0) { userData.displayedGuilds.forEach((guild) => { if (!guild.owner) return; %>
                             <div class="col-md-3">
-                                <div class="card <% if (guild.botInvited) return "card-primary"; else return "card-warning"; %>">
+                                <div class="card <%= () => {if (guild.botInvited) return "card-primary"; else return "card-warning";} %>">
                                     <div class="card-header">
                                         <h3 class="card-title"><% guild.name %></h3>
                                     </div>
@@ -28,7 +28,7 @@
                                         <img src="<% guild.iconURL() %>">
                                     </div>
                                     <div class="card-footer">
-                                        <a href="<% guild.manageUrl %>"><% translate("dashboard:manageGuild") %></a>
+                                        <a href="<% guild.manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
                                     </div>
                                 </div>
                             </div>
