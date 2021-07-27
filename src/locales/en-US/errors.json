@@ -10,6 +10,7 @@
   "notTrueOrFalse": "You have to give me a value that is true or false.",
   "invalidNumber": "You have to give me a valid number.",
   "invalidUser": "You have to give me a valid user mention or id.",
+  "invalidUserId": "You have to give me a valid user id.",
   "commandNotFound": "I couldn't find any command with that name.",
   "categoryNotFound": "I couldn't find any category with that name.",
   "cmdOrCatNotFound": "I couldn't find any command or category with that name.",

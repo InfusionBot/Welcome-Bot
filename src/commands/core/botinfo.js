@@ -39,7 +39,7 @@ module.exports = class CMD extends Command {
             .setDescription(t("cmds:botinfo.footer"))
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
             .addField(
-                ":pencil: General",
+                `:pencil: ${t("categories:general")}`,
                 `> Servers: ${message.client.guilds.cache.size} servers\n` +
                     `> Users: ${message.client.users.cache.size} users\n` +
                     `> Channels: ${message.client.channels.cache.size} channels\n` +

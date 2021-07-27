@@ -65,11 +65,13 @@ module.exports = class CMD extends Command {
             categories.forEach((cat) => {
                 const p = pages.length;
                 let commandsCat = [];
-                pages[p] = new Embed({ color: "blue", timestamp: true });
-                pages[p].setTitle(
+                pages[p] = new Embed({
+                    color: "blue",
+                    timestamp: true,
+                }).setTitle(
                     `${t("cmds:help.bot-help")} - ${t(
                         `categories:${cat.key}`
-                    )} Category`
+                    )} ${t("misc:category")}`
                 );
                 message.client.commands.enabled.forEach((command) => {
                     if (command.category === cat.name)
@@ -80,24 +82,25 @@ module.exports = class CMD extends Command {
                         );
                 });
                 pages[p].addField(
-                    `${cat.emoji} ${t("cmds:help.in-cat")}`,
+                    `${cat.emoji} ${t("cmds:help.in_cat")}`,
                     `\`\`\`\n${commandsCat.join("\n")}\n\`\`\``
                 );
             });
-            pages[0].setDescription(
-                "List of all commands available in the bot"
-            );
-            pages[0].addField("No of Commands:", `${commands.size}`);
-            pages[0].addField("No of categories:", `${categories.length}`);
+            pages[0].setDescription(t("cmds:help.all"));
+            pages[0].addField("No of Commands", `${commands.size}`);
+            pages[0].addField("No of categories", `${categories.length}`);
             pages[0].addField(
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
             );
-            pages[0].addField(
+            /*pages[0].addField(
                 "What is Cooldown:",
                 "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
+            );*/
+            pages[0].addField(
+                "Commands",
+                `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
-            pages[0].addField("Commands", `${t("cmds:help.cmds")}`);
 
             const curPage = await message.channel.send({
                 embeds: [
@@ -148,7 +151,7 @@ module.exports = class CMD extends Command {
                 curPage.edit({
                     embeds: [
                         pages[page].setFooter(
-                            `Page ${page + 1} / ${pages.length}`
+                            `${t("misc:page")} ${page + 1} / ${pages.length}`
                         ),
                     ],
                 });
@@ -160,15 +163,15 @@ module.exports = class CMD extends Command {
                 curPage.edit({
                     embeds: [
                         pages[page].setFooter(
-                            `Page ${page + 1} / ${
+                            `${t("misc:page")} ${page + 1} / ${
                                 pages.length
-                            } | Pagination timed out`
+                            } | ${t("misc:ptimeout")}`
                         ),
                     ],
                 });
             });
             return;
-        } else if (args[0] === "--list-categories") {
+        } else if (args[0] && args[0] === "--list-categories") {
             let cats = [];
             categories.forEach((cat) => {
                 cats.push(`${t(`categories:${cat.key}`)}`);
@@ -201,7 +204,7 @@ module.exports = class CMD extends Command {
             pages[0].setDescription(
                 t(`cmds:help.cmdHelp`, { cmd: command.name })
             );
-            pages[0].addField("Command Name:", command.name);
+            pages[0].addField(t("misc:cmd_name"), command.name);
 
             let desc = t(`cmds:${command.name}.cmdDesc`);
             if (command.botPerms && command.botPerms.length > 0) {

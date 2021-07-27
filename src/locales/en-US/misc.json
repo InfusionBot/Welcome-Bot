@@ -1,6 +1,7 @@
 {
   "timeout": "Time's up! Please send the command again!",
-  "resMod": "Responsible moderator:",
+  "ptimeout": "Pagination timed out",
+  "resMod": "Responsible moderator",
   "channels": "Channels",
   "bots": "Bots",
   "members": "Members",
@@ -8,5 +9,14 @@
   "uptime": "Uptime",
   "datelaunched": "Date Launched",
   "accCreated": "Account created at",
-  "bio": "User's Bio"
+  "bio": "User's Bio",
+  "category": "Category",
+  "cmd_name": "Command Name",
+  "page": "Page",
+  "sinfo": "Server Info",
+  "stats": "Statistics",
+  "exiSince": "Exists since",
+  "lang": "Language",
+  "not_spec": "Not specified",
+  "reason": "Reason"
 }

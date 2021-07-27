@@ -60,7 +60,7 @@ module.exports = class CMD extends Command {
                 )
                 .setDesc(
                     t("cmds:suggest.view", {
-                        chanid: message.client.suggestionLogsChannelId,
+                        chanid: message.client.config.suggestionLogsChannelId,
                     })
                 );
             message.channel.send({ embeds: [embed] });

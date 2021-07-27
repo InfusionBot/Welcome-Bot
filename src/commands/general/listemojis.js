@@ -68,7 +68,11 @@ module.exports = class CMD extends Command {
             embeds: [
                 embed
                     .setDescription(`Emojis: ${emojis}\n\n${getList()}`)
-                    .setFooter(`Page ${page + 1} / ${Math.ceil(emojis / 10)}`),
+                    .setFooter(
+                        `${t("misc:page")} ${page + 1} / ${Math.ceil(
+                            emojis / 10
+                        )}`
+                    ),
             ],
         });
         for (var key in emojiList) {
@@ -120,7 +124,9 @@ module.exports = class CMD extends Command {
                     embed
                         .setDescription(`Emojis: ${emojis}\n\n${getList()}`)
                         .setFooter(
-                            `Page ${page + 1} / ${Math.ceil(emojis / 10)}`
+                            `${t("misc:page")} ${page + 1} / ${Math.ceil(
+                                emojis / 10
+                            )}`
                         ),
                 ],
             });
@@ -132,9 +138,9 @@ module.exports = class CMD extends Command {
             curPage.edit({
                 embeds: [
                     embed.setFooter(
-                        `Page ${page + 1} / ${Math.ceil(
+                        `${t("misc:page")} ${page + 1} / ${Math.ceil(
                             emojis / 10
-                        )} | Pagination timed out`
+                        )} | ${t("misc:ptimeout")}`
                     ),
                 ],
             });

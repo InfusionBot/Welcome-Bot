@@ -28,12 +28,6 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         let channel;
-        if (args.length < 1) {
-            return message.reply(
-                "Please mention the user you want to ban and specify a ban reason (optional)."
-            );
-        }
-
         const user = userFromMention(args[0], message.client);
         if (!user) {
             return message.reply(t("errors:invalidUser"));
@@ -41,7 +35,7 @@ module.exports = class CMD extends Command {
         const member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
-            if (!member) return message.reply(t("errors:userNotFound"));
+            if (!member) return message.reply(t("errors:userNotInGuild"));
         }
         if (user.id === message.client.user.id)
             return message.reply(
@@ -56,7 +50,7 @@ module.exports = class CMD extends Command {
                 "You cannot ban someone with an equal or higher role!"
             );
 
-        const reason = args.slice(1).join(" ") || "Not specified";
+        const reason = args.slice(1).join(" ") || t("misc:not_spec");
         try {
             await message.guild.members.ban(user, { reason });
         } catch (err) {
@@ -75,7 +69,7 @@ module.exports = class CMD extends Command {
                     t("misc:resMod"),
                     `${message.author.tag} (${message.author.id})`
                 );
-                embed.addField("Reason:", reason);
+                embed.addField(t("misc:reason"), reason);
                 channel.send({ embeds: [embed] });
             }
         }

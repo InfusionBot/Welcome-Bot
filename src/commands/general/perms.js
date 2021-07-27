@@ -54,11 +54,8 @@ module.exports = class CMD extends Command {
             member = await message.guild.members.fetch(user.id);
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
-        let text =
-            t("cmds:perms.message", {
-                tag: user.tag,
-                channel: message.channel.name,
-            }) + "\n```\n\n";
+        const embed = new Embed();
+        let text = "";
         const mPermissions = message.channel.permissionsFor(member);
         const permissions = Object.keys(Permissions.FLAGS);
         let allowed = 0;
@@ -80,7 +77,18 @@ module.exports = class CMD extends Command {
                 allowed++;
             }
         });
-        text += "\n" + `${allowed} ✅ | ${denied} ❌` + "```";
-        message.reply(text);
+        text += `\n\n${allowed} ✅ | ${denied} ❌`;
+        message.reply({
+            embeds: [
+                embed
+                    .setTitle(
+                        t("cmds:perms.message", {
+                            tag: user.tag,
+                            channel: message.channel.name,
+                        })
+                    )
+                    .setDesc(text),
+            ],
+        });
     }
 };
