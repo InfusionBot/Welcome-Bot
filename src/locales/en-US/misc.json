@@ -12,5 +12,9 @@
   "bio": "User's Bio",
   "category": "Category",
   "cmd_name": "Command Name",
-  "page": "Page"
+  "page": "Page",
+  "sinfo": "Server Info",
+  "stats": "Statistics",
+  "exiSince": "Exists since",
+  "lang": "Language"
 }
