@@ -58,7 +58,9 @@ module.exports = class CMD extends Command {
             .addField(
                 t("misc:stats"),
                 `> ${t("misc:exiSince")}: ${message.guild.createdAt}\n` +
-                `> ${t("misc:lang")}: ${message.guild.preferredLocale ?? "none"}`
+                    `> ${t("misc:lang")}: ${
+                        message.guild.preferredLocale ?? "none"
+                    }`
             );
         message.guild.members.cache.clear();
         switch (args[0]) {
