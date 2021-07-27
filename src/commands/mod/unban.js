@@ -36,8 +36,7 @@ module.exports = class CMD extends Command {
             await message.guild.members.unban(id);
         } catch (err) {
             if (!err.toString().includes("Unknown Ban")) console.error(err);
-            else
-                return message.reply(t("errors:userNotInGuild"));
+            else return message.reply(t("errors:userNotInGuild"));
             return message.channel.send(`Failed to unban **${id}**`);
         }
 

@@ -34,8 +34,7 @@ module.exports = class CMD extends Command {
         const member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply(t("errors:userNotInGuild"));
+            if (!member) return message.reply(t("errors:userNotInGuild"));
         }
         if (user.id === message.client.user.id)
             return message.reply(
