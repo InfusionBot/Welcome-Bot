@@ -32,6 +32,7 @@ module.exports.load = (client) => {
         .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin
         .use((req, res, next) => {
+            req.client = client;
             req.userData = req.session.user ?? null;
             req.user = null;
             if (req.userData) req.user = fetchUser(req.userData, req.client);
@@ -46,7 +47,6 @@ module.exports.load = (client) => {
             req.currentURL = `${req.protocol}://${req.get("host")}${
                 req.originalUrl
             }`;
-            req.client = client;
             next();
         });
 
