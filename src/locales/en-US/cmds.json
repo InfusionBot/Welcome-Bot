@@ -170,11 +170,12 @@
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command/category.",
+    "all": "List of all commands available in the bot",
     "cmdHelp": "Help for {{cmd}} command",
-    "cmds": "Use arrows ⏪⏩",
+    "cmds": "Use arrows ⏪⏩ or `{{prefix}}help [category]`",
     "listcats": "List of categories",
     "bot-help": "Welcome-Bot help",
-    "in-cat": "Commands in this category"
+    "in_cat": "Commands in this category"
   },
   "listemojis": {
     "cmdDesc": "List of all custom emojis in this server, with there IDs."

@@ -38,6 +38,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor(goodbye logs): Goodbye logs now use embeds!
 - refactor(disable cmd): disable commands using disable cmd!
 - refactor(enable): enable commands using enable cmd!
+- refactor(translations): Lot more translations
 
 [v2.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.0
 

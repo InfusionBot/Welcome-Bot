@@ -9,7 +9,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "serverinfo",
-                aliases: ["si"],
+                aliases: ["si", "sinfo"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
@@ -25,12 +25,10 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        if (args[1]) {
-            args[1] = args[1].toLowerCase();
-        }
+        args[1] = args[1] ? args[1].toLowerCase() : "";
         let embed = new Embed({ color: "green", timestamp: true })
-            .setTitle("Statistics")
-            .setDescription(`Statistics for ${message.guild.name} server`)
+            .setTitle(t("misc:sinfo"))
+            .setDesc(`${message.guild.id}`)
             .setThumbnail(message.guild.iconURL());
         let iconURL = message.guild.iconURL().slice(0, 35) + "...";
         message.guild.members.fetch();
@@ -61,7 +59,13 @@ module.exports = class CMD extends Command {
                         message.guild.memberCount
                     }`
             )
-            .addField("Server was created at:", `${message.guild.createdAt}`);
+            .addField(
+                t("misc:stats"),
+                `> ${t("misc:exiSince")}: ${message.guild.createdAt}\n` +
+                    `> ${t("misc:lang")}: ${
+                        message.guild.preferredLocale ?? "none"
+                    }`
+            );
         message.guild.members.cache.clear();
         switch (args[0]) {
             case "--dm":
