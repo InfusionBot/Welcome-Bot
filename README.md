@@ -13,6 +13,7 @@ Welcome-Bot is a bot built for you, to welcome new users to your servers mainly.
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 [![CI](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml/badge.svg?branch=development&event=push)](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml)
 ![Codelines](https://img.shields.io/tokei/lines/github/Welcome-Bot/welcome-bot)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Welcome-Bot/welcome-bot)
 
 Feel free to add a star ⭐ to the repository to promote the project!
 
