@@ -19,10 +19,10 @@ const fetchUser = async (userData, client) => {
             guild.manageUrl = `/manage/${guild.id}`;
             guild.botInvited = true;
             const djsGuild = fetchGuild(guild.id, client);
-            if (djsGuild) guild = {...guild, ...djsGuild};
+            if (djsGuild) guild = { ...guild, ...djsGuild };
             else guild.botInvited = false;
         });
-        userData.displayedGuilds = userData.guilds.filter(g => g.admin);
+        userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
     }
     const user = await client.users.fetch(userData.id);
     return { ...user, ...userData };

@@ -39,7 +39,8 @@ module.exports.load = (client) => {
                 ? client.userDbFuncs.getUser(req.user.id)
                 : null;
             req.locale = "en-US";
-            if (req.userData && req.userData.locale) req.locale = req.userData.locale;
+            if (req.userData && req.userData.locale)
+                req.locale = req.userData.locale;
             req.translate = client.i18next.getFixedT(req.locale); //TODO: Support other langs
             req.currentURL = `${req.protocol}://${req.get("host")}${
                 req.originalUrl
