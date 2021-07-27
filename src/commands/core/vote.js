@@ -27,7 +27,8 @@ module.exports = class CMD extends Command {
                 //link: `https://top.gg/bot/${this.client.user.id}/vote`,
                 link: `https://top.gg/bot/848459799783669790/vote`,
             }) + " 🎉";
-        const voteBls = t("cmds:vote.howToVote.bls", {
+        const voteBls =
+            t("cmds:vote.howToVote.bls", {
                 //link: `https://botlist.space/bot/${this.client.user.id}/upvote`,
                 link: `https://discordlist.space/bot/848459799783669790/upvote`,
             }) + " 🎉";
