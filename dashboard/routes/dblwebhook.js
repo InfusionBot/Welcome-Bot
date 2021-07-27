@@ -10,7 +10,7 @@ const { webhook } = require("../../src/classes/Topgg");
 router.post(
     "/",
     webhook.listener(async (vote, req, res) => {
-        console.log("/dblwebhook");
+        //console.log("/dblwebhook");
         const client = req.client;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
@@ -25,7 +25,7 @@ router.post(
             client.channels.cache
                 .get(client.config.votesChannelId)
                 .send(
-                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.user.username}** on top.gg and got 500 wcoins 🎉!`
+                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on top.gg and got 500 wcoins 🎉!`
                 )
                 .catch(console.log);
         } else {

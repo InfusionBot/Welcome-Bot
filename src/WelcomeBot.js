@@ -33,6 +33,7 @@ class WelcomeBot extends Client {
             messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
             messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
         });
+        this.username = "Welcome-Bot";
         this.commands = {
             enabled: new Collection(),
             disabled: new Collection(),

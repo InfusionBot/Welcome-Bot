@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
         client.channels.cache
             .get(client.config.votesChannelId)
             .send(
-                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.user.username}** on botlist.space and got 500 wcoins 🎉!`
+                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on botlist.space and got 500 wcoins 🎉!`
             )
             .catch(console.log);
     } else {
