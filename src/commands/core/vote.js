@@ -22,10 +22,14 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         const userHasVoted = await TopggAPI.hasVoted(message.author.id);
-        const howToVote =
-            t("cmds:vote.howToVote", {
+        const voteDbl =
+            t("cmds:vote.howToVote.dbl", {
                 //link: `https://top.gg/bot/${this.client.user.id}/vote`,
                 link: `https://top.gg/bot/848459799783669790/vote`,
+            }) + " 🎉";
+        const voteBls = t("cmds:vote.howToVote.bls", {
+                //link: `https://botlist.space/bot/${this.client.user.id}/upvote`,
+                link: `https://discordlist.space/bot/848459799783669790/upvote`,
             }) + " 🎉";
         const howToVoteServer =
             t("cmds:vote.howToVoteServer", {
@@ -36,9 +40,9 @@ module.exports = class CMD extends Command {
             .setDesc(
                 `${
                     userHasVoted
-                        ? `~~${howToVote}~~\n${t("cmds:vote.alreadyVoted")}`
-                        : howToVote
-                }\n\n${howToVoteServer}`
+                        ? `~~${voteDbl}~~\n${t("cmds:vote.alreadyVoted")}`
+                        : voteDbl
+                }\n\n${voteBls}\n\n${howToVoteServer}`
             );
         message.reply({ embeds: [embed] });
     }

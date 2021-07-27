@@ -70,7 +70,10 @@
   },
   "vote": {
     "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)",
-    "howToVote": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
+    "howToVote": {
+        "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
+        "bls": "**[Vote on botlist.space]** to claim your bonus."
+    },
     "howToVoteServer": "**[Vote on Top.gg for Welcome-Bot server]({{link}})** to claim another bonus.",
     "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
   },

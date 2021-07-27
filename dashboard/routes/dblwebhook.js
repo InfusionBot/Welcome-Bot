@@ -10,7 +10,7 @@ const { webhook } = require("../../src/classes/Topgg");
 router.post(
     "/",
     webhook.listener(async (vote, req, res) => {
-        //console.log("/dblwebhook");
+        console.log("/dblwebhook");
         const client = req.client;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
