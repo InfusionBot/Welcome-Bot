@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const express = require("express");
+const { CheckAuth } = require("../utils");
 const router = express.Router();
 //GET /profile/:userId
 router.get("/:userId", (req, res) => {
@@ -22,5 +23,8 @@ router.get("/:userId", (req, res) => {
         translate: req.translate,
         currentURL: req.currentURL,
     });*/
+});
+router.get("/", CheckAuth, (req, res) => {
+    res.redirect(`/profile/${req.user.id}`);
 });
 module.exports = router;
