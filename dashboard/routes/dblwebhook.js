@@ -11,6 +11,7 @@ router.post(
     "/",
     webhook.listener(async (vote, req, res) => {
         //console.log("/dblwebhook");
+        if (vote.type.toLowerCase() === "test") return console.log("dblwebhook test success");
         const client = req.client;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
