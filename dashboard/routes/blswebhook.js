@@ -10,7 +10,7 @@ router.post(
     "/",
     async (req, res) => {
         if (!process.env.BLS_Wtoken || !req.headers.authorization) return;
-        if (req.headers.authorization !== process.env.BLS_Wtoken) return;
+        if (req.headers.authorization !== process.env.BLS_Wtoken) return res.sendStatus(401);
         //console.log("/blswebhook");
         const client = req.client;
         const vUser = await client.users.fetch(req.body.user.id);
