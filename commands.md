@@ -543,7 +543,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 - Description: Your server statistics
 - Usage: (--dm)
-- Aliases: `si`
+- Aliases: `si`, `sinfo`
 - Cooldown: 10
 
 ### `testgoodbye`
