@@ -25,7 +25,11 @@ router.post(
             client.channels.cache
                 .get(client.config.votesChannelId)
                 .send(
-                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}${vote.guild ? " Support server" : " itself"}** on top.gg and got 500 wcoins 🎉!`
+                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${
+                        client.username
+                    }${
+                        vote.guild ? " Support server" : " itself"
+                    }** on top.gg and got 500 wcoins 🎉!`
                 )
                 .catch(console.log);
         } else {
