@@ -8,7 +8,7 @@ const fetchGuild = async (guildId, client) => {
     let guild;
     try {
         guild = await client.guilds.fetch(guildId);
-    } catch(e) {
+    } catch (e) {
         guild = null;
     }
     return guild ?? null;
