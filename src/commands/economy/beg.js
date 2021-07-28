@@ -30,12 +30,6 @@ module.exports = class CMD extends Command {
         wcoins = Math.round(wcoins);
         let result;
 
-        if (wcoins > 100) {
-            wcoins = wcoins - Math.round(userDB.wallet - Math.random());
-        } else if (wcoins > 50) {
-            wcoins = wcoins + Math.round(userDB.wallet - Math.random());
-        }
-
         if (wcoins > 100 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.success", { wcoins });
         } else if (wcoins > 50 && wcoins !== Infinity) {
