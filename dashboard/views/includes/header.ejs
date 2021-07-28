@@ -10,7 +10,9 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item"> <!-- Adding "d-none d-sm-inline-block" will not show on phones -->
-                <a href="/dashboard" class="nav-link"><i class="nav-icon fas fa-tachometer-alt fa-w-18 nav-icon"></i>Dashboard</a>
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
             </li>
         </ul>
     </nav>
@@ -47,13 +49,25 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                     <li class="nav-item menu-open">
+                        <a href="/dashboard" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
                         <a href="/profile" class="nav-link">
                             <i class="fas fa-user"></i>
-                            <p>Profile</p>
+                            <p>
+                                Profile
+                                <span class="right badge badge-danger">NEW</span>
+                            </p>
                         </a>
                         <a href="/settings" class="nav-link">
                             <i class="fas fa-cog"></i>
-                            <p>Settings</p>
+                            <p>
+                                Settings
+                                <span class="right badge badge-warning">Coming Soon!</span>
+                            </p>
                         </a>
                     </li>
                 </ul>
