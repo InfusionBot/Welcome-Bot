@@ -18,7 +18,7 @@
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <% if (userData?.displayedGuilds?.length > 0) { for (let i = 0; i < userData.displayedGuilds.length; i++) {if (!userData.displayedGuilds[i].admin) return; %>
+                            <% if (userData?.displayedGuilds?.length > 0) { for (let i = 0; i < userData.displayedGuilds.length; i++) { %>
                             <div class="col-md-3">
                                 <div class="card <%= if (userData.displayedGuilds[i].botInvited) return "card-primary"; else return "card-warning"; %>">
                                     <div class="card-header">
