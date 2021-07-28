@@ -18,17 +18,17 @@
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <% if (userData?.displayedGuilds?.length > 0) { userData.displayedGuilds.forEach((guild) => { if (!guild.admin) return; %>
+                            <% if (userData?.displayedGuilds?.length > 0) { for (let i = 0; i < userData.displayedGuilds.length; i++) {if (!userData.displayedGuilds[i].admin) return; %>
                             <div class="col-md-3">
-                                <div class="card <%= () => {if (guild.botInvited) return "card-primary"; else return "card-warning";} %>">
+                                <div class="card <%= if (userData.displayedGuilds[i].botInvited) return "card-primary"; else return "card-warning"; %>">
                                     <div class="card-header">
-                                        <h3 class="card-title"><% guild.name %></h3>
+                                        <h3 class="card-title"><% userData.displayedGuilds[i].name %></h3>
                                     </div>
                                     <div class="card-body">
-                                        <img src="<% guild.iconURL %>">
+                                        <img src="<% userData.displayedGuilds[i].iconURL %>">
                                     </div>
                                     <div class="card-footer">
-                                        <a href="<% guild.manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
+                                        <a href="<% userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
                                     </div>
                                 </div>
                             </div>
