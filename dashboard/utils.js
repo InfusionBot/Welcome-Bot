@@ -5,20 +5,20 @@
  */
 const { Permissions } = require("discord.js");
 const fetchGuild = async (guildId, client) => {
-    const guild = await client.guilds.cache.get(guildId);
+    const guild = await client.guilds.fetch(guildId);
     return guild ?? null;
 };
 
 const fetchUser = async (userData, client) => {
     if (userData.guilds) {
-        userData.guilds.forEach((guild) => {
+        userData.guilds.forEach(async (guild) => {
             const perms = new Permissions(BigInt(guild.permissions));
             if (perms.has(Permissions.FLAGS.MANAGE_GUILD)) {
                 guild.admin = true;
             }
             guild.manageUrl = `/manage/${guild.id}`;
             guild.botInvited = true;
-            const djsGuild = fetchGuild(guild.id, client);
+            const djsGuild = await fetchGuild(guild.id, client);
             if (djsGuild && djsGuild.id) guild = { ...guild, ...djsGuild };
             else guild.botInvited = false;
         });

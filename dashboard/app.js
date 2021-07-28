@@ -39,7 +39,6 @@ module.exports.load = (client) => {
                 const userInfos = await fetchUser(req.userData, req.client);
                 req.user = userInfos.user;
                 req.userData = userInfos.userData;
-                console.log(userInfos.userData.displayedGuilds[0]);
             }
             if (!req.user) req.user = null;
             req.userDB = req.user
