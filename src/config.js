@@ -23,7 +23,7 @@ module.exports = {
         logs: "855331801635749888",
     },
     invite: "https://dsc.gg/welcome-bot",
-    inviteToGuild: (client, guildId, disableGuildSelect=true) => {
+    inviteToGuild: (client, guildId, disableGuildSelect = true) => {
         return client.generateInvite({
             scopes: ["bot"],
             permissions: [
