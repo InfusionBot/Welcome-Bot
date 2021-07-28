@@ -30,7 +30,9 @@ const fetchUser = async (userData, client) => {
             } else {
                 guild.botInvited = false;
             }
-            guild.iconURL = (guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : "https://emoji.gg/assets/emoji/discord.png");
+            guild.iconURL = guild.icon
+                ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`
+                : "https://emoji.gg/assets/emoji/discord.png";
             userData.guilds[i] = guild;
         }
         userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
