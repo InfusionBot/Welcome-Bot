@@ -29,6 +29,7 @@ const fetchUser = async (userData, client) => {
 };
 
 const CheckAuth = (req, res, next) => {
+    if (req.client.debug) console.log("Checking auth", "req.user", req?.user);
     if (!req.user || !req.session.user) {
         const redirectUrl =
             req.originalUrl.includes("login") || req.originalUrl === "/"
