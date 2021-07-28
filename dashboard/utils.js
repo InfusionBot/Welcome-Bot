@@ -16,7 +16,8 @@ const fetchGuild = async (guildId, client) => {
 
 const fetchUser = async (userData, client) => {
     if (userData.guilds) {
-        userData.guilds.forEach(async (guild) => {
+        for (var i = 0; i < userData.guilds.length; i++) {
+            let guild = userData.guilds[i];
             const perms = new Permissions(BigInt(guild.permissions));
             if (perms.has(Permissions.FLAGS.MANAGE_GUILD) || guild.owner) {
                 guild.admin = true;
@@ -26,7 +27,8 @@ const fetchUser = async (userData, client) => {
             const djsGuild = await fetchGuild(guild.id, client);
             if (djsGuild && djsGuild.id) guild = { ...guild, ...djsGuild };
             else guild.botInvited = false;
-        });
+            userData.guilds[i] = guild;
+        }
         userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
     }
     const user = await client.users.fetch(userData.id);

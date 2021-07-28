@@ -18,7 +18,7 @@
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <% if (userData?.displayedGuilds?.length > 0) { userData.displayedGuilds.forEach((guild) => { console.log(guild); if (!guild.admin) return; %>
+                            <% if (userData?.displayedGuilds?.length > 0) { userData.displayedGuilds.forEach((guild) => { if (!guild.admin) return; %>
                             <div class="col-md-3">
                                 <div class="card <%= () => {if (guild.botInvited) return "card-primary"; else return "card-warning";} %>">
                                     <div class="card-header">
