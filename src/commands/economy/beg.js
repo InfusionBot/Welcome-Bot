@@ -29,9 +29,6 @@ module.exports = class CMD extends Command {
         let wcoins = Math.floor(Math.random() * begCoins);
         wcoins = Math.round(wcoins);
         let result;
-        if (userDB.bank > 100) {
-            wcoins = Math.round(Math.random() / userDB.wallet) * userDB.bank;
-        }
 
         if (wcoins > 100) {
             wcoins = wcoins - Math.round(userDB.wallet - Math.random());
