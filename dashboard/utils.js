@@ -23,7 +23,6 @@ const fetchUser = async (userData, client) => {
             else guild.botInvited = false;
         });
         userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
-        console.log(userData.displayedGuilds);
     }
     const user = await client.users.fetch(userData.id);
     return { user, userData };
