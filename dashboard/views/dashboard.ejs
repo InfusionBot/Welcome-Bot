@@ -28,13 +28,9 @@
                                 <% } %>
                                     <div class="card-header text-center">
                                         <h3 class="card-title"><%= userData.displayedGuilds[i].name %></h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                        </div>
                                     </div>
                                     <div class="card-body">
-                                        <img src="<%= userData.displayedGuilds[i].iconURL %>" class="rounded mx-auto d-block" width="128" height="128">
+                                        <img src="<%= userData.displayedGuilds[i].iconURL %>" class="rounded mx-auto d-block" style="max-width: 250px; max-height: 250px">
                                     </div>
                                     <div class="card-footer">
                                         <% if (userData.displayedGuilds[i].botInvited) { %>
