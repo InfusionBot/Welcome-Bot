@@ -27,13 +27,13 @@
                                 <div class="card card-warning">
                                 <% } %>
                                     <div class="card-header">
-                                        <h3 class="card-title"><% userData.displayedGuilds[i].name %></h3>
+                                        <h3 class="card-title"><%= userData.displayedGuilds[i].name %></h3>
                                     </div>
                                     <div class="card-body">
-                                        <img src="<% userData.displayedGuilds[i].iconURL %>">
+                                        <img src="<%= userData.displayedGuilds[i].iconURL %>">
                                     </div>
                                     <div class="card-footer">
-                                        <a href="<% userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
+                                        <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
                                     </div>
                                 </div>
                             </div>
