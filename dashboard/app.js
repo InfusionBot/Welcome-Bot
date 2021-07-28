@@ -37,6 +37,7 @@ module.exports.load = (client) => {
             req.user = null;
             if (req.userData) {
                 const userInfos = fetchUser(req.userData, req.client);
+                console.log(userInfos);
                 req.user = userInfos.user;
                 req.userData = userInfos.userData;
             }
