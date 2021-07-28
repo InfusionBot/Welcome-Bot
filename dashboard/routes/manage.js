@@ -6,26 +6,27 @@
 const express = require("express");
 const { CheckAuth } = require("../utils");
 const router = express.Router();
-//GET /profile/:userId
-router.get("/:userId", (req, res) => {
-    let userDB;
+//GET /manage/:guildId
+router.get("/:guildId", CheckAuth, (req, res) => {
+    let guildDB;
     try {
-        userDB = req.client.userDbFuncs.getUser(req.params.userId);
+        guildDB = req.client.guildDbFuncs.getGuild(req.params.guildId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
-    res.render("profile", {
+    const guild = userData.displayedGuilds.find(g => g.id === guildId);
+    if (!guild) {
+        return res.send({error: "404", message: "Server/Guild not found"});
+    }
+    res.render("manage", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
-        userDB2: userDB,
+        guildDB,
+        guild,
         translate: req.translate,
         currentURL: req.currentURL,
     });
     res.end();
-});
-//GET /profile
-router.get("/", CheckAuth, (req, res) => {
-    res.redirect(`/profile/${req.user.id}`);
 });
 module.exports = router;

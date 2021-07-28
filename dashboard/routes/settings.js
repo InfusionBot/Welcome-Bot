@@ -21,5 +21,6 @@ router.get("/", (req, res) => {
         translate: req.translate,
         currentURL: req.currentURL,
     });*/
+    res.end();
 });
 module.exports = router;

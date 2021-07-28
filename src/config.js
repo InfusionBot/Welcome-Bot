@@ -21,4 +21,5 @@ module.exports = {
         enabled: process.env.SESS_SECRET ?? null ? true : false,
         logs: "855331801635749888",
     },
+    invite: "https://dsc.gg/welcome-bot",
 };

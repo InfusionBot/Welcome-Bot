@@ -26,9 +26,8 @@ module.exports = class CMD extends Command {
         const embed = new Embed({
             color: "green",
             timestamp: true,
-            footer: "Invite link for Welcome-Bot",
         })
-            .setTitle("Invite Welcome-Bot to Your server")
+            .setTitle(t("misc:invite"))
             .addField(
                 "\u200b",
                 `Invite Welcome-Bot: https://dsc.gg/welcome-bot`
@@ -37,7 +36,7 @@ module.exports = class CMD extends Command {
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );
         let button = new MessageButton()
-            .setLabel("Invite Welcome-Bot")
+            .setLabel(t("misc:invite"))
             .setURL("https://dsc.gg/welcome-bot")
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);

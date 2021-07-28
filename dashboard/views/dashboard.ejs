@@ -33,7 +33,11 @@
                                         <img src="<%= userData.displayedGuilds[i].iconURL %>">
                                     </div>
                                     <div class="card-footer">
+                                        <% if (userData.displayedGuilds[i].botInvited) { %>
                                         <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
+                                        <% } else { %>
+                                        <a href="<%= client.config.invite %>"><%= translate("misc:invite") %></a>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>
