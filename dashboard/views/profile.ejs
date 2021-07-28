@@ -27,11 +27,21 @@
                             </div>
                             <div class="card-footer">
                                 <%= `${translate("misc:accCreated")}: ${new Date(userDB2.registeredAt).toString()}` %><br>
-                                <%= `${translate("cmds:balance.titleShort")}<br>\n${translate("cmds:balance.balNoEmojis", {
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-content">
+                                <span class="info-box-text"><%= translate("cmds:balance.titleShort") %></span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" style="width: <%= `${(userDB2.bankLimit - userDB2.bank) / 100}%` %>"></div>
+                                </div>
+                                <span class="progress-description">
+                                    <%= translate("cmds:balance.balNoEmojis", {
                                 wallet: userDB2.wallet,
                                 bank: userDB2.bank,
                                 bankLimit: userDB2.bankLimit,
-                                percentage: (userDB2.bankLimit - userDB2.bank) / 100,}).split("\n").join("<br>\n")}` %>
+                                percentage: (userDB2.bankLimit - userDB2.bank) / 100,}).split("\n").join("<br>\n") %>
+                                </span>
                             </div>
                         </div>
                     </div>
