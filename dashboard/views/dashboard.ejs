@@ -28,13 +28,17 @@
                                 <% } %>
                                     <div class="card-header text-center">
                                         <h3 class="card-title"><%= userData.displayedGuilds[i].name %></h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <img src="<%= userData.displayedGuilds[i].iconURL %>" class="rounded mx-auto d-block" width="128" height="128">
                                     </div>
                                     <div class="card-footer">
                                         <% if (userData.displayedGuilds[i].botInvited) { %>
-                                        <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %><i class="fas fa-arrow-circle-right"></a>
+                                        <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
                                         <% } else { %>
                                         <a href="<%= dclient.config.inviteToGuild(dclient, userData.displayedGuilds[i].id) %>"><%= translate("misc:invite") %></a>
                                         <% } %>

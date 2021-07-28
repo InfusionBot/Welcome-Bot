@@ -24,15 +24,6 @@
                         <% } %>
                             <div class="card-header">
                                 <h3><%= guild.name %></h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                    <% if (guild.botInvited) { %>
-                                    <span class="badge badge-primary">Invited</span>
-                                    <% } else { %>
-                                    <span class="badge badge-warning">Not invited</span>
-                                    <% } %>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <img src="<%= guild.iconURL %>" class="rounded mx-auto d-block" width="128">
