@@ -27,7 +27,7 @@
   "tickle": {
     "cmdDesc": "Bir kullanıcıyı gıdıklarsın",
     "success": "{{author}}, {{user}} adlı üyeyi gıdıkladı",
-    "errorYourself": "You can't tickle yourself!"
+    "errorYourself": "Kendini gıdıklayamazsın!"
   },
   "waifu": {
     "cmdDesc": "Rastgele bir waifu gönderir."
@@ -49,10 +49,10 @@
     "cmdDesc": "Botu pingle"
   },
   "shards": {
-    "cmdDesc": "Shows information about the bot's shards"
+    "cmdDesc": "Botun shardları hakkında bilgi verir"
   },
   "suggest": {
-    "cmdDesc": "Give suggestions",
+    "cmdDesc": "Öneri yap",
     "done": "Teşekkürler, önerin gönderildi.",
     "view": "Welcome-Bot sunucusundaki <#{{chanid}}> kanalından önerini görüntüleyebilirsin."
   },

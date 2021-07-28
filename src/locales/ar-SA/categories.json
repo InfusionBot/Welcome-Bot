@@ -1,10 +1,10 @@
 {
   "setup": "إعداد",
   "general": "جنرال لواء",
-  "mod": "الإشراف",
+  "mod": "Moderation",
   "fun": "الترفيه",
   "music": "Music",
   "anime": "انمي",
   "owner": "مالك فقط",
-  "core": "النواة"
+  "core": "Core"
 }
