@@ -85,7 +85,8 @@
     "title": "{{user}}'s balance",
     "titleShort": "Balance",
     "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
-    "balNoEmojis": "Wallet: {{wallet}}\nBank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+    "walletOnly": "Wallet: {{wallet}}",
+    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
   },
   "beg": {
     "cmdDesc": "Get money by begging!",
