@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <% if (userData.displayedGuilds[i].botInvited) { %>
-                                        <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
+                                        <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %><i class="fas fa-arrow-circle-right"></a>
                                         <% } else { %>
                                         <a href="<%= dclient.config.inviteToGuild(dclient, userData.displayedGuilds[i].id) %>"><%= translate("misc:invite") %></a>
                                         <% } %>
