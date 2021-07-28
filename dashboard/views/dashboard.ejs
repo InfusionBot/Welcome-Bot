@@ -36,7 +36,7 @@
                                         <% if (userData.displayedGuilds[i].botInvited) { %>
                                         <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
                                         <% } else { %>
-                                        <a href="<%= client.config.invite %>"><%= translate("misc:invite") %></a>
+                                        <a href="<%= dclient.config.inviteToGuild(dclient, userData.displayedGuilds[i].id) %>"><%= translate("misc:invite") %></a>
                                         <% } %>
                                     </div>
                                 </div>

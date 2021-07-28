@@ -9,7 +9,7 @@ const router = express.Router();
 //GET /dashboard
 router.get("/", CheckAuth, (req, res) => {
     res.render("dashboard", {
-        client: req.client,
+        dclient: req.client,
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
