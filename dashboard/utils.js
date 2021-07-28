@@ -25,14 +25,18 @@ const fetchUser = async (userData, client) => {
             guild.manageUrl = `/manage/${guild.id}`;
             guild.botInvited = true;
             const djsGuild = await fetchGuild(guild.id, client);
-            if (djsGuild && djsGuild.id) guild = { ...guild, ...djsGuild };
-            else guild.botInvited = false;
+            if (djsGuild && djsGuild.id) {
+                guild = { ...guild, djsGuild };
+            } else {
+                guild.botInvited = false;
+            }
+            guild.iconURL = (guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : "https://emoji.gg/assets/emoji/discord.png");
             userData.guilds[i] = guild;
         }
         userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
     }
     const user = await client.users.fetch(userData.id);
-    return { user, userData };
+    return { user.toJSON(), userData };
 };
 
 const CheckAuth = (req, res, next) => {
