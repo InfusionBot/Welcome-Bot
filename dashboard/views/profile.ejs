@@ -31,16 +31,17 @@
                         </div>
                         <div class="info-box">
                             <div class="info-box-content">
-                                <span class="info-box-icon bg-info"><i class="fas fa-university"></i></span>
-                                <span class="info-box-text"><%= translate("cmds:balance.walletOnly", {wallet: userDB2.wallet,}) %></span>
+                                <span class="info-box-icon bg-info"><i class="far fa-university"></i></span>
+                                <span class="info-box-text right"><%= translate("cmds:balance.walletOnly", {wallet: userDB2.wallet,}) %></span>
                                 <div class="progress">
                                     <div class="progress-bar bg-info" style="width: <%= `${(userDB2.bankLimit - userDB2.bank) / 100}%` %>"></div>
                                 </div>
                                 <span class="progress-description">
                                     <%= translate("cmds:balance.bankOnly", {
-                                bank: userDB2.bank,
-                                bankLimit: userDB2.bankLimit,
-                                percentage: (userDB2.bankLimit - userDB2.bank) / 100,}) %>
+                                        bank: userDB2.bank,
+                                        bankLimit: userDB2.bankLimit,
+                                        percentage: (userDB2.bankLimit - userDB2.bank) / 100,
+                                    }) %>
                                 </span>
                             </div>
                         </div>
