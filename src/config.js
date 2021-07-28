@@ -38,7 +38,7 @@ module.exports = {
                 Permissions.FLAGS.MANAGE_WEBHOOKS,
                 Permissions.FLAGS.MANAGE_MESSAGES,
                 Permissions.FLAGS.ADD_REACTIONS,
-                Permissions.FLAGS.USE_EXTRENAL_EMOJIS,
+                Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
                 Permissions.FLAGS.CONNECT,
                 Permissions.FLAGS.SPEAK,
             ],
