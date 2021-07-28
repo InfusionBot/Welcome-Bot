@@ -21,7 +21,7 @@ router.get("/login", (req, res) => {
                 )}/discord/callback?redirectUrl=${encodeURIComponent(
                     req.query.redirectUrl || "/dashboard"
                 )}`
-            )}&response_type=code&scope=identify%20guilds`
+            )}&response_type=code&scope=identify%20guilds&prompt=none`
         );
 });
 //GET /callback
