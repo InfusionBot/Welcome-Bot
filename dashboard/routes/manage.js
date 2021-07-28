@@ -14,9 +14,9 @@ router.get("/:guildId", CheckAuth, (req, res) => {
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
-    const guild = userData.displayedGuilds.find(g => g.id === guildId);
+    const guild = userData.displayedGuilds.find((g) => g.id === guildId);
     if (!guild) {
-        return res.send({error: "404", message: "Server/Guild not found"});
+        return res.send({ error: "404", message: "Server/Guild not found" });
     }
     res.render("manage", {
         user: req.user,
