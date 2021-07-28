@@ -43,9 +43,16 @@ const lowercaseVals = (obj) => {
     return obj;
 };
 
+const lowercaseArray = (arr) => {
+    return arr.map((val) => {
+        return val.toLowerCase();
+    }).sort();
+};
+
 module.exports = {
     userFromMention,
     channelIdFromMention,
     lowercaseKeys,
     lowercaseVals,
+    lowercaseArray,
 };
