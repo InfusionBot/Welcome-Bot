@@ -19,7 +19,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <% if (userData?.displayedGuilds?.length > 0) { %>
-                            <%= for (let i = 0; i < userData.displayedGuilds.length; i++) { %>
+                            <% for (let i = 0; i < userData.displayedGuilds.length; i++) { %>
                             <div class="col-md-3">
                                 <% if (userData.displayedGuilds[i].botInvited) { %>
                                 <div class="card card-primary">
