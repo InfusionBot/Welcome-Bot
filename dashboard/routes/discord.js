@@ -49,6 +49,7 @@ router.get("/callback", async (req, res) => {
         },
     });
     const tokens = await tokensRes.json();
+    if (req.client.debug && process.env.NODE_ENV === "development") console.log("Tokens given by discord", tokens);
     if (tokens.error || !tokens.access_token)
         return res.redirect(`/discord/login?redirectUrl=${redirectUrl}`);
     const userData = {
