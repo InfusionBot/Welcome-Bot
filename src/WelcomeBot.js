@@ -101,7 +101,7 @@ class WelcomeBot extends Client {
             },
             { perm: Permissions.FLAGS.MANAGE_ROLES, val: "MANAGE_ROLES" },
             { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "MANAGE_WEBHOOKS" },
-            { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "MANAGE_EMOJIS" },
+            { perm: Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS, val: "MANAGE_EMOJIS_AND_STICKERS" },
             {
                 perm: Permissions.FLAGS.USE_APPLICATION_COMMANDS,
                 val: "USE_APPLICATION_COMMANDS",
@@ -109,6 +109,22 @@ class WelcomeBot extends Client {
             {
                 perm: Permissions.FLAGS.REQUEST_TO_SPEAK,
                 val: "REQUEST_TO_SPEAK",
+            },
+            {
+                perm: Permissions.FLAGS.MANAGE_THREADS,
+                val: "MANAGE_THREADS",
+            },
+            {
+                perm: Permissions.FLAGS.USE_PUBLIC_THREADS,
+                val: "USE_PUBLIC_THREADS",
+            },
+            {
+                perm: Permissions.FLAGS.USE_PRIVATE_THREADS,
+                val: "USE_PRIVATE_THREADS",
+            },
+            {
+                perm: Permissions.FLAGS.USE_EXTERNAL_STICKERS,
+                val: "USE_EXTERNAL_STICKERS",
             },
         ];
         this.site = "https://welcome-bot.github.io/";
