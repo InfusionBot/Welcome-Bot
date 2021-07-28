@@ -26,12 +26,12 @@
                                 <%= userDB2.bio %>
                             </div>
                             <div class="card-footer">
-                                <%= `${translate("misc:accCreated")}: ${new Date(userDB2.registeredAt).toString()}\n` %>
+                                <%= `${translate("misc:accCreated")}: ${new Date(userDB2.registeredAt).toString()}` %><br>
                                 <%= `${translate("cmds:balance.titleShort")}\n${translate("cmds:balance.bal", {
                                 wallet: userDB2.wallet,
                                 bank: userDB2.bank,
                                 bankLimit: userDB2.bankLimit,
-                                percentage: (userDB2.bankLimit - userDB2.bank) / 100,})}` %>
+                                percentage: (userDB2.bankLimit - userDB2.bank) / 100,}).split("\n").join("<br>")}` %>
                             </div>
                         </div>
                     </div>
