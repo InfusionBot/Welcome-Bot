@@ -10,7 +10,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1><%= translate("misc:manageGuild") %></h1>
+                                <h1><%= translate("dashboard:manageGuild") %></h1>
                             </div>
                         </div>
                     </div>
@@ -22,11 +22,11 @@
                         <% } else { %>
                         <div class="card card-warning">
                         <% } %>
-                            <div class="card-header">
+                            <div class="card-header text-center">
                                 <h3><%= guild.name %></h3>
                             </div>
                             <div class="card-body">
-                                <img src="<%= guild.iconURL %>">
+                                <img src="<%= guild.iconURL %>" class="rounded mx-auto d-block" width="128" height="128">
                             </div>
                         </div>
                     </div>
