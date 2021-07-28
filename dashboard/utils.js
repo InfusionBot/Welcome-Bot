@@ -20,6 +20,7 @@ const fetchUser = async (userData, client) => {
             guild.botInvited = true;
             const djsGuild = fetchGuild(guild.id, client);
             if (djsGuild) guild = { ...guild, ...djsGuild };
+            console.log(guild);
             else guild.botInvited = false;
         });
         userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
