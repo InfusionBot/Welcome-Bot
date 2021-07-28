@@ -29,6 +29,7 @@ router.get("/:userId", async (req, res) => {
     if (!user) {
         return res.send({ error: "404", message: "User not found in discord" });
     }
+    console.log(userDB);
     res.render("profile", {
         user: req.user,
         userData: req.userData,
