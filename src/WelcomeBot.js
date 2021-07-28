@@ -101,7 +101,10 @@ class WelcomeBot extends Client {
             },
             { perm: Permissions.FLAGS.MANAGE_ROLES, val: "MANAGE_ROLES" },
             { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "MANAGE_WEBHOOKS" },
-            { perm: Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS, val: "MANAGE_EMOJIS_AND_STICKERS" },
+            {
+                perm: Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS,
+                val: "MANAGE_EMOJIS_AND_STICKERS",
+            },
             {
                 perm: Permissions.FLAGS.USE_APPLICATION_COMMANDS,
                 val: "USE_APPLICATION_COMMANDS",
