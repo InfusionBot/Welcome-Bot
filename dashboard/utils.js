@@ -37,6 +37,7 @@ const fetchUser = async (userData, client) => {
         }
         userData.displayedGuilds = userData.guilds.filter((g) => g.admin);
     }
+    req.client.userDbFuncs.addUser(userData.id);
     const user = await client.users.fetch(userData.id);
     return { user, userData };
 };

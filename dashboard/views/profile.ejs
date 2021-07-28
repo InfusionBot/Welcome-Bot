@@ -17,7 +17,19 @@
                 </section>
                 <section class="content">
                     <div class="container-fluid">
-                        <h3>Coming soon</h3>
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title"><%= user2.tag %></h3>
+                            </div>
+                            <div class="card-body">
+                                <img src="<%= user2.displayAvatarURL() %>" class="rounded mx-auto d-block" style="max-width: 250px; max-height: 250px">
+                                <%= userDB2.bio %>
+                            </div>
+                            <div class="card-footer">
+                                <%= `${translate("misc:accCreated")}: ${new Date(userDB2.registeredAt).toString()}<br>\n` %>
+                                <%= `${translate("cmds:balance.titleShort")}<br>\n${translate("cmds:balance.bal", {wallet: userDB2.wallet,bank: userDB2.bank,userDB2.bankLimit,userDB2.percentage: (bankLimit - bank) / 100,}).split("\n").join("<br>\n")}` %>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>

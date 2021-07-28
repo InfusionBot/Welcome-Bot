@@ -13,14 +13,13 @@ router.get("/", (req, res) => {
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
-    res.send("Coming soon");
-    /*res.render("settings", {
+    res.render("settings", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
         translate: req.translate,
         currentURL: req.currentURL,
-    });*/
+    });
     res.end();
 });
 module.exports = router;
