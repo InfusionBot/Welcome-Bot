@@ -31,12 +31,12 @@ module.exports.load = (client) => {
         //Set port
         .set("port", client.config.dashboard.port || 3000)
         //Adding new shortcuts by extending like a plugin
-        .use((req, res, next) => {
+        .use(async (req, res, next) => {
             req.client = client;
             req.userData = req.session.user ?? null;
             req.user = null;
             if (req.userData) {
-                const userInfos = fetchUser(req.userData, req.client);
+                const userInfos = await fetchUser(req.userData, req.client);
                 console.log(userInfos);
                 req.user = userInfos.user;
                 req.userData = userInfos.userData;
