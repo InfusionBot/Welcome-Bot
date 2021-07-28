@@ -20,7 +20,11 @@
                         <div class="row">
                             <% if (userData?.displayedGuilds?.length > 0) { for (let i = 0; i < userData.displayedGuilds.length; i++) { %>
                             <div class="col-md-3">
-                                <div class="card <%= if (userData.displayedGuilds[i].botInvited) return "card-primary"; else return "card-warning"; %>">
+                                <% if (userData.displayedGuilds[i].botInvited) { %>
+                                <div class="card card-primary">
+                                <% } else { %>
+                                <div class="card card-warning">
+                                <% } %>
                                     <div class="card-header">
                                         <h3 class="card-title"><% userData.displayedGuilds[i].name %></h3>
                                     </div>
