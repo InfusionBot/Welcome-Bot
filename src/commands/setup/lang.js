@@ -67,7 +67,9 @@ module.exports = class CMD extends Command {
                         return list[key].toLowerCase() === args[1];
                     });
                 }
-                args[1] = keys3.find(l => l.toLowerCase() === args[1].toLowerCase());
+                args[1] = keys3.find(
+                    (l) => l.toLowerCase() === args[1].toLowerCase()
+                );
                 updateGuild(message.guild.id, "lang", args[1]);
                 return message.reply(
                     t("cmds:lang.success", {

@@ -44,9 +44,11 @@ const lowercaseVals = (obj) => {
 };
 
 const lowercaseArray = (arr) => {
-    return arr.map((val) => {
-        return val.toLowerCase();
-    }).sort();
+    return arr
+        .map((val) => {
+            return val.toLowerCase();
+        })
+        .sort();
 };
 
 module.exports = {
