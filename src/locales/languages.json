@@ -2,40 +2,40 @@
     {
         "name": "en-US",
         "aliases": [
-            "en",
             "english",
+            "en",
             "en_us"
         ]
     },
     {
         "name": "ar-SA",
         "aliases": [
-            "ar",
             "arabic",
+            "ar",
             "ar_sa"
         ]
     },
     {
         "name": "es-ES",
         "aliases": [
-            "es",
             "spanish",
+            "es",
             "es_es"
         ]
     },
     {
         "name": "hi-IN",
         "aliases": [
-            "hi",
             "hindi",
+            "hi",
             "hi_in"
         ]
     },
     {
         "name": "tr-TR",
         "aliases": [
-            "tr",
             "turkish",
+            "tr",
             "tr_tr"
         ]
     }

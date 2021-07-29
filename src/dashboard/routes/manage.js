@@ -39,6 +39,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
         guild: req.userData.displayedGuilds.find(
             (g) => g.id === req.params.guildId
         ),
+        dclient: req.client,
         djsGuild: guild,
         translate: req.translate,
         currentURL: req.currentURL,
