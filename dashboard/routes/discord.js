@@ -49,8 +49,10 @@ router.get("/callback", async (req, res) => {
         },
     });
     const tokens = await tokensRes.json();
-    if (tokens.error || !tokens.access_token)
+    if (tokens.error || !tokens.access_token) {
+        if (req.client.debug && process.env.NODE_ENV === "development") console.log(tokens);
         return res.redirect(`/discord/login?redirectUrl=${redirectUrl}`);
+    }
     const userData = {
         infos: null, //Basic info like user id, tag, username, etc.
         guilds: null,
