@@ -2,7 +2,7 @@
   "extends": ["prettier", "eslint:recommended"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "spaced-comment": "off",
     "no-console": "off",
     "consistent-return": "off",
