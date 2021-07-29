@@ -37,7 +37,9 @@ module.exports = class CMD extends Command {
                 "Please provide a data / image_url to generate / read a qrcode respectively"
             );
         const body = fetch(
-            `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(args[1]).replace(/\*/g, "%2A")}`
+            `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
+                args[1]
+            ).replace(/\*/g, "%2A")}`
         ).then((res) => res.json());
         switch (args[0]) {
             case "generate":
