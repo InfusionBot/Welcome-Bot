@@ -102,7 +102,7 @@ describe("Commands", () => {
             return [...arr, category];
         }, []);
         let errors = [];
-        for (var i = 0; i < cmdCats.length; i++) {
+        for (let i = 0; i < cmdCats.length; i++) {
             if (!categoryNames.includes(cmdCats[i])) {
                 errors.push(cmdCats[i]);
             }

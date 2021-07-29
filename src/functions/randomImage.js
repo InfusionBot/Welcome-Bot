@@ -15,8 +15,8 @@ module.exports = function (random = true) {
     if (random === true) random = pokemon.random();
     else random = toTitleCase(random);
     return new Promise(function (resolve, reject) {
-        let imageId = pokemon.getId(random);
-        let imageUrl = `https://pokeres.bastionbot.org/images/pokemon/${imageId}.png`;
+        const imageId = pokemon.getId(random);
+        const imageUrl = `https://pokeres.bastionbot.org/images/pokemon/${imageId}.png`;
         if (
             imageUrl &&
             imageUrl.startsWith("http") &&

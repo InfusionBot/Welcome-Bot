@@ -13,7 +13,7 @@ router.post(
         //console.log("/dblwebhook");
         if (vote.type.toLowerCase() === "test")
             return console.log("dblwebhook test success");
-        const client = req.client;
+        const { client } = req;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
         await client.userDbFuncs.addUser(vUser.id);

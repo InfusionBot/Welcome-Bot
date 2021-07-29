@@ -18,13 +18,13 @@
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|val" }],
-    "prefer-const": ["error"]
+    "prefer-const": ["warn"]
   },
-    "parserOptions": {
-      "ecmaVersion": 2021
-    },
-    "env": {
-      "es2021": true,
-      "node": true
-    }
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "env": {
+    "es2021": true,
+    "node": true
+  }
 }

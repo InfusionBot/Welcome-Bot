@@ -144,7 +144,7 @@ module.exports = function (client) {
     }
 
     //Top.gg stats
-    api.postStats({
+    TopggAPI.postStats({
         serverCount: servers,
         shardCount: 0,
     })

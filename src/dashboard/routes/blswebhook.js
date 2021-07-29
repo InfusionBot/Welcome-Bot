@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
         req.headers.authorization !== process.env.BLS_Wtoken
     )
         return res.sendStatus(401);
-    const client = req.client;
+    const { client } = req;
     const vUser = await client.users.fetch(req.body.user.id);
     if (!vUser) return;
     await client.userDbFuncs.addUser(vUser.id);
