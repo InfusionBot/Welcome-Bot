@@ -45,6 +45,7 @@ class WelcomeBot extends Client {
         this.dashboard = require("./dashboard/app");
         this.categories = [];
         this.customEmojis = require("./data/customEmojis.json");
+        this.languages = require("./locales/languages.json");
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
             {

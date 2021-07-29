@@ -72,8 +72,13 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     }
     const data = req.body;
     if (data.prefix.length >= 1 && data.prefix.length < 100) {
-        guildDB.prefix = data.prefix;
-        await guildDB.save();
+        guildDB.prefix = `${data.prefix}`;
+    }
+    if (data.language) {
+        const language = req.client.languages.find((l) => l.name === args[0] || l.aliases.includes(args[0]) || l.aliases.includes(args[0].toLowerCase())).name;
+        if (language) {
+            guildDB.lang = `${language}`;
+        }
     }
     await guildDB.save();
     res.redirect(303, "/manage/" + guild.id);
