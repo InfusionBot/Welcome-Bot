@@ -27,9 +27,9 @@ module.exports = class CMD extends Command {
             `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`,
             {
                 headers: {
-                    "Authorization": process.env.DISCORDLIST_token,
-                    "User-Agent": process.env.userAgent
-                }
+                    Authorization: process.env.DISCORDLIST_token,
+                    "User-Agent": process.env.userAgent,
+                },
             }
         ).then((json) => json.voted);
         const voteDbl =
