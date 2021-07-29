@@ -43,7 +43,7 @@ class WelcomeBot extends Client {
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
-        this.dashboard = require("../dashboard/app");
+        this.dashboard = require("./dashboard/app");
         this.categories = [];
         this.customEmojis = require("./data/customEmojis.json");
         this.allPerms = [
