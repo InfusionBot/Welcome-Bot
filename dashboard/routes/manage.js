@@ -14,21 +14,52 @@ router.get("/:guildId", CheckAuth, (req, res) => {
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
-    const guild = req.userData.displayedGuilds.find(
-        (g) => g.id === req.params.guildId
-    );
-    if (!guild) {
-        return res.send({ error: "404", message: "Server/Guild not found" });
+    const guild = req.client.guilds.cache.get(req.params.guildId);
+    if (!guild || !req.userData.displayedGuilds || !req.userData.displayedGuilds.find((g) => g.id === req.params.guildId) || !guildDB) {
+        return res.render("404", {
+            user: req.user,
+            userData: req.userData,
+            userDB: req.userDB,
+            translate: req.translate,
+            currentURL: req.currentURL,
+        });
     }
     res.render("manage", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
         guildDB,
-        guild,
+        guild: req.userData.displayedGuilds.find((g) => g.id === req.params.guildId),
+        djsGuild: guild,
         translate: req.translate,
         currentURL: req.currentURL,
     });
     res.end();
+});
+//POST /manage/:guildId
+router.post("/:guildId", CheckAuth, (req, res) => {
+    let guildDB;
+    try {
+        guildDB = req.client.guildDbFuncs.getGuild(req.params.guildId);
+    } catch (e) {
+        if (process.env.NODE_ENV === "development") console.error(e);
+    }
+    const guild = req.client.guilds.cache.get(req.params.guildId);
+    if (!guild || !req.userData.displayedGuilds || !req.userData.displayedGuilds.find((g) => g.id === req.params.guildId) || !guildDB) {
+        return res.render("404", {
+            user: req.user,
+            userData: req.userData,
+            userDB: req.userDB,
+            translate: req.translate,
+            currentURL: req.currentURL,
+        });
+    }
+    const data = req.body;
+    if (data.prefix.length >= 1 && data.prefix.length < 100) {
+        guildDB.prefix = data.prefix;
+        await guildDB.save();
+    }
+    await guildData.save();
+    res.redirect(303, "/manage/" + guild.id);
 });
 module.exports = router;

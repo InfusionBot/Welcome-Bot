@@ -24,5 +24,7 @@
   "not_spec": "Not specified",
   "reason": "Reason",
   "profile": "Profile",
-  "invite": "Invite Welcome-Bot"
+  "invite": "Invite Welcome-Bot",
+  "prefix": "Prefix",
+  "update": "Update"
 }

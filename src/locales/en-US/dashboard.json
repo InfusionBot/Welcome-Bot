@@ -4,5 +4,6 @@
   "noGuild": "No server found",
   "noGuildBody": "No server to daisplay, make sure your are logged in with the right discord account",
   "manageGuild": "Manage Server",
-  "settings": "Settings"
+  "settings": "Settings",
+  "basicconf": "📝 Basic configuration"
 }
