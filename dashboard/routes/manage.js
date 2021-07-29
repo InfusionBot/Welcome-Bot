@@ -75,7 +75,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         guildDB.prefix = data.prefix;
         await guildDB.save();
     }
-    await guildData.save();
+    await guildDB.save();
     res.redirect(303, "/manage/" + guild.id);
 });
 module.exports = router;
