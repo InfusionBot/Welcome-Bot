@@ -148,4 +148,10 @@ module.exports = class Command {
         timestamps.delete(author.id);
         return true;
     }
+
+    /* Simple utils */
+    async fetchJson(url) {
+        const res = await require("node-fetch")(url);
+        return res.json();
+    }
 };

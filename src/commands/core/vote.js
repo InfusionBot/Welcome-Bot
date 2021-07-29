@@ -21,16 +21,18 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const userHasVoted = await TopggAPI.hasVoted(message.author.id);
+        const id = "848459799783669790";
+        const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
+        const userVotedBls = this.fetchJson(`https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`).then(json => json.voted);
         const voteDbl =
             t("cmds:vote.howToVote.dbl", {
                 //link: `https://top.gg/bot/${this.client.user.id}/vote`,
-                link: `https://top.gg/bot/848459799783669790/vote`,
+                link: `https://top.gg/bot/${id}/vote`,
             }) + " 🎉";
         const voteBls =
             t("cmds:vote.howToVote.bls", {
                 //link: `https://botlist.space/bot/${this.client.user.id}/upvote`,
-                link: `https://discordlist.space/bot/848459799783669790/upvote`,
+                link: `https://discordlist.space/bot/${id}/upvote`,
             }) + " 🎉";
         const howToVoteServer =
             t("cmds:vote.howToVoteServer", {
@@ -40,10 +42,12 @@ module.exports = class CMD extends Command {
             .setTitle(t("cmds:vote.cmdDesc"))
             .setDesc(
                 `${
-                    userHasVoted
+                    userVotedDbl
                         ? `~~${voteDbl}~~\n${t("cmds:vote.alreadyVoted")}`
                         : voteDbl
-                }\n\n${voteBls}\n\n${howToVoteServer}`
+                }\n\n${userVotedBls
+                        ? `~~${voteBls}~~\n${t("cmds:vote.alreadyVoted")}`
+                        : voteBls}\n\n${howToVoteServer}`
             );
         message.reply({ embeds: [embed] });
     }
