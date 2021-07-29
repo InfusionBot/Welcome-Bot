@@ -15,7 +15,14 @@ router.get("/:guildId", CheckAuth, (req, res) => {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
     const guild = req.client.guilds.cache.get(req.params.guildId);
-    if (!guild || !req.userData.displayedGuilds || !req.userData.displayedGuilds.find((g) => g.id === req.params.guildId) || !guildDB) {
+    if (
+        !guild ||
+        !req.userData.displayedGuilds ||
+        !req.userData.displayedGuilds.find(
+            (g) => g.id === req.params.guildId
+        ) ||
+        !guildDB
+    ) {
         return res.render("404", {
             user: req.user,
             userData: req.userData,
@@ -29,7 +36,9 @@ router.get("/:guildId", CheckAuth, (req, res) => {
         userData: req.userData,
         userDB: req.userDB,
         guildDB,
-        guild: req.userData.displayedGuilds.find((g) => g.id === req.params.guildId),
+        guild: req.userData.displayedGuilds.find(
+            (g) => g.id === req.params.guildId
+        ),
         djsGuild: guild,
         translate: req.translate,
         currentURL: req.currentURL,
@@ -45,7 +54,14 @@ router.post("/:guildId", CheckAuth, (req, res) => {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
     const guild = req.client.guilds.cache.get(req.params.guildId);
-    if (!guild || !req.userData.displayedGuilds || !req.userData.displayedGuilds.find((g) => g.id === req.params.guildId) || !guildDB) {
+    if (
+        !guild ||
+        !req.userData.displayedGuilds ||
+        !req.userData.displayedGuilds.find(
+            (g) => g.id === req.params.guildId
+        ) ||
+        !guildDB
+    ) {
         return res.render("404", {
             user: req.user,
             userData: req.userData,
