@@ -4,7 +4,7 @@
   "rules": {
     "prettier/prettier": "error",
     "spaced-comment": "off",
-    "no-console": "warn",
+    "no-console": "off",
     "consistent-return": "off",
     "func-names": "off",
     "object-shorthand": "off",
@@ -13,11 +13,11 @@
     "no-return-await": "off",
     "no-await-in-loop": "warn",
     "no-invalid-this": "error",
-    "eol-last": "error",
+    "eol-last": "warn",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|val" }],
     "prefer-const": ["error"]
   },
     "parserOptions": {
