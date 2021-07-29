@@ -11,10 +11,20 @@
     "no-process-exit": "off",
     "no-param-reassign": "off",
     "no-return-await": "off",
+    "no-await-in-loop": "warn",
+    "no-invalid-this": "error",
+    "eol-last": "error",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }],
     "prefer-const": ["error"]
-  }
+  },
+    "parserOptions": {
+      "ecmaVersion": 2021
+    },
+    "env": {
+      "es2021": true,
+      "node": true
+    }
 }
