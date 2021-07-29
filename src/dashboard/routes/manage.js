@@ -75,7 +75,12 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         guildDB.prefix = `${data.prefix}`;
     }
     if (data.language) {
-        const language = req.client.languages.find((l) => l.name === args[0] || l.aliases.includes(args[0]) || l.aliases.includes(args[0].toLowerCase())).name;
+        const language = req.client.languages.find(
+            (l) =>
+                l.name === args[0] ||
+                l.aliases.includes(args[0]) ||
+                l.aliases.includes(args[0].toLowerCase())
+        ).name;
         if (language) {
             guildDB.lang = `${language}`;
         }

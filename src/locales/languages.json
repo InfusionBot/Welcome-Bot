@@ -1,42 +1,22 @@
 [
-    {
-        "name": "en-US",
-        "aliases": [
-            "en",
-            "english",
-            "en_us"
-        ]
-    },
-    {
-        "name": "ar-SA",
-        "aliases": [
-            "ar",
-            "arabic",
-            "ar_sa"
-        ]
-    },
-    {
-        "name": "es-ES",
-        "aliases": [
-            "es",
-            "spanish",
-            "es_es"
-        ]
-    },
-    {
-        "name": "hi-IN",
-        "aliases": [
-            "hi",
-            "hindi",
-            "hi_in"
-        ]
-    },
-    {
-        "name": "tr-TR",
-        "aliases": [
-            "tr",
-            "turkish",
-            "tr_tr"
-        ]
-    }
+  {
+    "name": "en-US",
+    "aliases": ["en", "english", "en_us"]
+  },
+  {
+    "name": "ar-SA",
+    "aliases": ["ar", "arabic", "ar_sa"]
+  },
+  {
+    "name": "es-ES",
+    "aliases": ["es", "spanish", "es_es"]
+  },
+  {
+    "name": "hi-IN",
+    "aliases": ["hi", "hindi", "hi_in"]
+  },
+  {
+    "name": "tr-TR",
+    "aliases": ["tr", "turkish", "tr_tr"]
+  }
 ]
