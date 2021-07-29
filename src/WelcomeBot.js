@@ -5,7 +5,6 @@
  */
 const fs = require("fs");
 const { Client, Collection, Intents, Permissions } = require("discord.js");
-//const Command = require("./classes/Command");
 const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
@@ -151,7 +150,6 @@ class WelcomeBot extends Client {
 
     loadCommand(commandPath, commandName) {
         const CMD = require(`${commandPath}/${commandName.replace(".js", "")}`);
-        //command = new Command(this, command);
         return this.setCmd(CMD);
     }
 
@@ -191,7 +189,7 @@ class WelcomeBot extends Client {
                 try {
                     this.setCmd(cmd);
                 } catch (e) {
-                    this.logger.log(`Error occurred when loading ${file}`);
+                    this.logger.log(`Error occurred when loading ${cmd.name}`);
                     console.error(e);
                     process.exit();
                 }
@@ -218,10 +216,11 @@ class WelcomeBot extends Client {
             cmd = this.commands.enabled.find(cmdName);
             disabledCmd = this.commands.disabled.find(cmdName);
         } catch (e) {
-            if (enabled && !cmd) {
+            if (!cmd && !disabledCmd) {
                 throw new Error(
-                    `Tried to find ${cmdName}, but it wasn't in the enabled commands.`
+                    `Tried to find ${cmdName}, but it wasn't there in the commands.`
                 );
+                // eslint-disable-next-line no-unreachable
                 return;
             }
         }

@@ -72,7 +72,7 @@ module.exports = class CMD extends Command {
                     permissions: [],
                 });
                 message.guild.channels.fetch().then((channels) => {
-                    channels.forEach(async (channel, id) => {
+                    channels.forEach(async (channel) => {
                         await channel.permissionOverwrites.create(muteRole, {
                             VIEW_CHANNEL: true,
                             SEND_MESSAGES: false,

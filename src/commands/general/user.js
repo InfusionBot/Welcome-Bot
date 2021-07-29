@@ -69,7 +69,7 @@ module.exports = class CMD extends Command {
                 (emoji) => emoji.id === badges[i].emoji
             )}`;
         }*/
-        let embed = new Embed({
+        const embed = new Embed({
             tag: message.author.tag,
             avatarURL: message.author.displayAvatarURL(),
             color: "success",
@@ -79,8 +79,7 @@ module.exports = class CMD extends Command {
         embed.setDescription(`Information about ${args[0] || message.author}`);
         embed.setThumbnail(`${user.displayAvatarURL()}`);
         embed.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        let avatarURL = user.displayAvatarURL().slice(0, 35);
-        avatarURL += "...";
+        const avatarURL = user.displayAvatarURL().slice(0, 35) + "...";
         embed.addField(
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`

@@ -49,7 +49,7 @@ module.exports = class CMD extends Command {
         if (user.id === message.author.id) {
             return message.reply(t("cmds:tickle.errorYourself"));
         }
-        let embed = new Embed()
+        const embed = new Embed()
             .setTitle(
                 t("cmds:tickle.success", {
                     author: message.author.tag,

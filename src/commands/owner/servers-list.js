@@ -24,7 +24,6 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const { MessageEmbed } = require("discord.js");
         const servers = message.client.guilds.cache.size;
         const emojiList = {
             back: "⏪",
@@ -34,7 +33,7 @@ module.exports = class CMD extends Command {
         let page = 0;
         let i0 = 0;
         let i1 = 10;
-        let timeout = 200000; //20 secs timeout
+        const timeout = 200000; //20 secs timeout
         const getList = () => {
             return message.client.guilds.cache
                 .sort((a, b) => b.memberCount - a.memberCount)
@@ -45,7 +44,7 @@ module.exports = class CMD extends Command {
                 .slice(i0, i1)
                 .join("\n");
         };
-        const embed = new MessageEmbed()
+        const embed = new Embed()
             .setAuthor(
                 message.author.tag,
                 message.author.displayAvatarURL({

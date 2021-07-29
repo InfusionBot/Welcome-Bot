@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
             color: "lightblue",
             tag: message.author.tag,
         });
-        let log = await getVersion(args[0].trim() || message.client.botVersion);
+        const log = await getVersion(args[0].trim() || message.client.botVersion);
         let reply;
         if (log) {
             reply = `Version: **${log.versionName}**`;

@@ -7,7 +7,7 @@ const Guild = require("../../../schema/guildSchema");
 
 module.exports = (guildId, lang = "en-US", disabled = ["goodbye"]) => {
     return new Promise((resolve, reject) => {
-        let guild = new Guild({
+        const guild = new Guild({
             guildId,
             lang,
             disabled,

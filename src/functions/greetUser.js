@@ -6,7 +6,7 @@
 const getGuild = require("../db/functions/guild/getGuild");
 const { Embed } = require("../classes");
 module.exports = async (member) => {
-    let guildDB = await getGuild(member.guild.id);
+    const guildDB = await getGuild(member.guild.id);
     if (
         guildDB.disabled.includes("welcome") ||
         guildDB.disabled.includes("welcome-plugin")

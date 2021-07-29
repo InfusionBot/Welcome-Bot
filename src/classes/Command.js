@@ -32,6 +32,7 @@ module.exports = class Command {
                         "If subcommands are provided then their description should also be provided\nDescription not provided for " +
                             this.subcommands[i].name
                     );
+                    // eslint-disable-next-line no-unreachable
                     process.exit();
                 }
             }
@@ -55,14 +56,15 @@ module.exports = class Command {
             await addUser(message.author.id);
         } catch (e) {
             if (this.category.toLowerCase() === "economy") {
-                throw err;
+                throw e;
+                // eslint-disable-next-line no-unreachable
                 return false;
             } else {
                 this.client.logger.log("Can't add user:", "error", [
                     "USER",
                     "DB",
                 ]);
-                console.log(err);
+                console.log(e);
             }
         }
         const basicPerms = [

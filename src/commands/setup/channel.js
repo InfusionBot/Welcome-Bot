@@ -36,7 +36,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        let subcommand = args[0] ? args[0].toLowerCase() : "";
+        const subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
                 if (args[1]) {

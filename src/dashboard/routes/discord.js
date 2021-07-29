@@ -37,7 +37,7 @@ router.get("/callback", async (req, res) => {
             "host"
         )}/discord/callback?redirectUrl=${encodeURIComponent(redirectUrl)}`
     );
-    const tokensRes = await fetch("https://discord.com/api/oauth2/token", {
+    let response = await fetch("https://discord.com/api/oauth2/token", {
         method: "POST",
         body: params.toString(),
         headers: {
@@ -48,7 +48,7 @@ router.get("/callback", async (req, res) => {
             "Content-Type": "application/x-www-form-urlencoded",
         },
     });
-    const tokens = await tokensRes.json();
+    const tokens = await response.json();
     if (tokens.error || !tokens.access_token) {
         if (req.client.debug && process.env.NODE_ENV === "development")
             console.log(tokens);

@@ -48,13 +48,12 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:unmute.errorYourself"));
         }
 
-        let member;
-        member = message.guild.members.cache.get(user.id);
+        let member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
-        let muteRole = message.guild.roles.cache.find(
+        const muteRole = message.guild.roles.cache.find(
             (r) => r.name === "Muted"
         );
         if (!muteRole || !member.roles.cache.has(muteRole.id))
@@ -76,11 +75,11 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.modChannel) {
-                    channel = message.guild.channels.cache.find(
+                    const channel = message.guild.channels.cache.find(
                         (ch) => ch.name === guildDB.modChannel
                     );
                     if (channel) {
-                        embed.setTitle(
+                        const embed.setTitle(
                             `User unmuted: ${user.tag} (${user.id})`
                         );
                         embed.addField(

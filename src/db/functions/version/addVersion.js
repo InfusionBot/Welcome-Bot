@@ -15,7 +15,7 @@ module.exports = (versionName, changelog) => {
                 console.log("Version already added.");
                 return resolve(false);
             } else {
-                let version = new Version({
+                const version = new Version({
                     versionName,
                     changelog,
                 });

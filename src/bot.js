@@ -3,10 +3,10 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const fs = require("fs");
+//const fs = require("fs");
 require("dotenv").config();
 const WelcomeBot = require("./WelcomeBot");
-const { MessageEmbed } = require("discord.js");
+//const { MessageEmbed } = require("discord.js");
 const { Embed } = require("./classes");
 
 const client = new WelcomeBot({

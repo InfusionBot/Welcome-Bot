@@ -106,7 +106,7 @@ module.exports.load = (client) => {
                 return res.type("txt").sendStatus(500);
             }
             res.status(500);
-            red.end();
+            res.end();
         });
 
     app.listen(app.get("port"), () => {

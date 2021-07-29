@@ -53,10 +53,10 @@ module.exports = class CMD extends Command {
         let page = 0;
         let i0 = 0; //From
         let i1 = 10; //To
-        let embed = new Embed({ color: "green", timestamp: true }).setTitle(
+        const embed = new Embed({ color: "green", timestamp: true }).setTitle(
             t("cmds:listemojis.cmdDesc")
         );
-        let timeout = 200000; //20 secs timeout
+        const timeout = 200000; //20 secs timeout
         const emojis = message.guild.emojis.cache.size;
         const getList = () => {
             return message.guild.emojis.cache

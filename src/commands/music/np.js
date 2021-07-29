@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:stop.notPlaying"));
         const track = queue.nowPlaying();
         const progress = queue.createProgressBar().split(" ┃ ");
-        let embed = new Embed({ color: "blue", timestamp: true })
+        const embed = new Embed({ color: "blue", timestamp: true })
             .setTitle(t("cmds:np.playing"))
             .setDescription(track.title)
             .setImage(track.thumbnail)

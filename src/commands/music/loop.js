@@ -74,7 +74,7 @@ module.exports = class CMD extends Command {
                 ? "🔁"
                 : "▶";
         const members = voice.members.filter((m) => !m.user.bot);
-        let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
+        const embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:loop.cmdDesc")
         );
         const msg = await message.channel.send({ embeds: [embed] });

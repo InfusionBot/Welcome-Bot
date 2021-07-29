@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
             "Wanna get link to Welcome-Bot's website?",
             `Here's it: ${message.client.site}`
         );
-        let button = new MessageButton()
+        const button = new MessageButton()
             .setLabel("Website")
             .setURL(message.client.site)
             .setStyle("LINK");

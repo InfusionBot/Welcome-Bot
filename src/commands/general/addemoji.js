@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    execute({ message, args, guildDB }, t) {
         if (!args[0].startsWith("http"))
             return message.reply(t("errors:invalidURL"));
         const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;

@@ -26,11 +26,11 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args }, t) {
         args[1] = args[1] ? args[1].toLowerCase() : "";
-        let embed = new Embed({ color: "green", timestamp: true })
+        const embed = new Embed({ color: "green", timestamp: true })
             .setTitle(t("misc:sinfo"))
             .setDesc(`${message.guild.id}`)
             .setThumbnail(message.guild.iconURL());
-        let iconURL = message.guild.iconURL().slice(0, 35) + "...";
+        const iconURL = message.guild.iconURL().slice(0, 35) + "...";
         message.guild.members.fetch();
         embed
             .addField(

@@ -35,7 +35,7 @@ module.exports = class CMD extends Command {
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );
-        let button = new MessageButton()
+        const button = new MessageButton()
             .setLabel(t("misc:invite"))
             .setURL("https://dsc.gg/welcome-bot")
             .setStyle("LINK");

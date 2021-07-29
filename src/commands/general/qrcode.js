@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args }, t) {
         const fetch = require("node-fetch");
-        let embed = new Embed();
+        const embed = new Embed();
         const baseURL = "http://api.qrserver.com/v1";
         if (!args[1])
             return message.reply(

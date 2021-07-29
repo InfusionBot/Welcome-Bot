@@ -41,11 +41,11 @@ module.exports = class CMD extends Command {
         }
 
         if (guildDB.modChannel) {
-            channel = message.guild.channels.cache.find(
+            const channel = message.guild.channels.cache.find(
                 (ch) => ch.name === guildDB.modChannel
             );
             if (channel) {
-                embed = new MessageEmbed();
+                const embed = new MessageEmbed();
                 embed.setTitle(`User unbanned: ${user.tag} (${user.id})`);
                 embed.addField(
                     t("misc:resMod"),

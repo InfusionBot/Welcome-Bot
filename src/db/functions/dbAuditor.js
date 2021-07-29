@@ -14,7 +14,7 @@ module.exports = (client) => {
         if (err) {
             console.log(err);
         } else {
-            guildIdArray = guilds.map((guild) => guild.guildId);
+            const guildIdArray = guilds.map((guild) => guild.guildId);
             guildIdArray.forEach((guildId) => {
                 if (!actualGuilds.includes(guildId)) {
                     removeGuild(guildId);

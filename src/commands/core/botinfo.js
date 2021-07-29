@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
             args[1] = args[1].toLowerCase();
         }
         const inline = true;
-        let embed = new Embed({
+        const embed = new Embed({
             color: "success",
             timestamp: true,
             footer: t("cmds:botinfo.footer"),
