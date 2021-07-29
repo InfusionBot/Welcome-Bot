@@ -44,7 +44,12 @@ module.exports = class CMD extends Command {
                 if (!args[1]) {
                     return message.reply(t("cmds:lang.langNotProvided"));
                 }
-                const language = this.client.languages.find((l) => l.name === args[0] || l.aliases.includes(args[0]) || l.aliases.includes(args[0].toLowerCase())).name;
+                const language = this.client.languages.find(
+                    (l) =>
+                        l.name === args[0] ||
+                        l.aliases.includes(args[0]) ||
+                        l.aliases.includes(args[0].toLowerCase())
+                ).name;
                 if (!language)
                     return message.reply(
                         t("cmds:lang.invalid", {
