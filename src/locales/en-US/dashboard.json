@@ -5,5 +5,6 @@
   "noGuildBody": "No server to daisplay, make sure your are logged in with the right discord account",
   "manageGuild": "Manage Server",
   "settings": "Settings",
-  "basicconf": "📝 Basic configuration"
+  "basicconf": "📝 Basic configuration",
+  "dashboard": "Dashboard"
 }
