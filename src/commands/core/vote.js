@@ -24,7 +24,13 @@ module.exports = class CMD extends Command {
         const id = "848459799783669790";
         const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
         const userVotedBls = this.fetchJson(
-            `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`
+            `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`,
+            {
+                headers: {
+                    "Authorization": process.env.DISCORDLIST_token,
+                    "User-Agent": process.env.userAgent
+                }
+            }
         ).then((json) => json.voted);
         const voteDbl =
             t("cmds:vote.howToVote.dbl", {
