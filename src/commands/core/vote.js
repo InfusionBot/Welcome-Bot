@@ -23,7 +23,9 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const id = "848459799783669790";
         const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
-        const userVotedBls = this.fetchJson(`https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`).then(json => json.voted);
+        const userVotedBls = this.fetchJson(
+            `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`
+        ).then((json) => json.voted);
         const voteDbl =
             t("cmds:vote.howToVote.dbl", {
                 //link: `https://top.gg/bot/${this.client.user.id}/vote`,
@@ -45,9 +47,11 @@ module.exports = class CMD extends Command {
                     userVotedDbl
                         ? `~~${voteDbl}~~\n${t("cmds:vote.alreadyVoted")}`
                         : voteDbl
-                }\n\n${userVotedBls
+                }\n\n${
+                    userVotedBls
                         ? `~~${voteBls}~~\n${t("cmds:vote.alreadyVoted")}`
-                        : voteBls}\n\n${howToVoteServer}`
+                        : voteBls
+                }\n\n${howToVoteServer}`
             );
         message.reply({ embeds: [embed] });
     }
