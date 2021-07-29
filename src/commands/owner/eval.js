@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args, guildDB, userDB }, t) {
-        const client = message.client;
+        const { client } = this;
         const content = args.join(" ");
         const embed = new Embed({ color: "success" })
             .setTitle(t("cmds:eval.cmdDesc"))

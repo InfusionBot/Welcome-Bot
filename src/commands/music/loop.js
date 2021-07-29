@@ -38,7 +38,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message, args, guildDB }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
