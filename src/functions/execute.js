@@ -9,7 +9,7 @@ const beautifyPerms = require("../functions/beautifyPerms");
 const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {
-    const client = message.client;
+    const { client } = message;
     let userDB = await getUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
@@ -22,7 +22,7 @@ module.exports = async (message, guildDB) => {
     let prefix;
     try {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
-    } catch (e) {}
+    } catch (e) {} //eslint-disable-line no-empty
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
