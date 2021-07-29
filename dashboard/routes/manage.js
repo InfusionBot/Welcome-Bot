@@ -7,10 +7,10 @@ const express = require("express");
 const { CheckAuth } = require("../utils");
 const router = express.Router();
 //GET /manage/:guildId
-router.get("/:guildId", CheckAuth, (req, res) => {
+router.get("/:guildId", CheckAuth, async (req, res) => {
     let guildDB;
     try {
-        guildDB = req.client.guildDbFuncs.getGuild(req.params.guildId);
+        guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
@@ -37,10 +37,10 @@ router.get("/:guildId", CheckAuth, (req, res) => {
     res.end();
 });
 //POST /manage/:guildId
-router.post("/:guildId", CheckAuth, (req, res) => {
+router.post("/:guildId", CheckAuth, async (req, res) => {
     let guildDB;
     try {
-        guildDB = req.client.guildDbFuncs.getGuild(req.params.guildId);
+        guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
