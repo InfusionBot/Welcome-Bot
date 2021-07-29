@@ -79,7 +79,7 @@ module.exports = class CMD extends Command {
                         (ch) => ch.name === guildDB.modChannel
                     );
                     if (channel) {
-                        const embed.setTitle(
+                        embed.setTitle(
                             `User unmuted: ${user.tag} (${user.id})`
                         );
                         embed.addField(
