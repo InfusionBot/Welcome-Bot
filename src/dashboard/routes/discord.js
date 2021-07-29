@@ -5,7 +5,7 @@
  */
 const express = require("express");
 const router = express.Router();
-const { Embed } = require("../src/classes");
+const { Embed } = require("../classes");
 const btoa = require("btoa");
 const fetch = require("node-fetch");
 //GET /login

@@ -5,7 +5,7 @@
  */
 const express = require("express");
 const router = express.Router();
-const { webhook } = require("../src/classes/Topgg");
+const { webhook } = require("../classes/Topgg");
 //POST /dblwebhook
 router.post(
     "/",

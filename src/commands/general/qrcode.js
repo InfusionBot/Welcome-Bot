@@ -51,7 +51,7 @@ module.exports = class CMD extends Command {
             case "read":
                 if (!args[1].startsWith("http"))
                     return message.reply(t("errors:invalidURL"));
-                const body = await fetch(
+                const body = fetch(
                     `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
                         args[1]
                     ).replace(/\*/g, "%2A")}`
