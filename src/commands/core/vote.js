@@ -42,12 +42,12 @@ module.exports = class CMD extends Command {
                 //link: `https://botlist.space/bot/${this.client.user.id}/upvote`,
                 link: `https://discordlist.space/bot/${id}/upvote`,
             }) + " 🎉";
-        const howToVoteServer =
+        const voteServer =
             t("cmds:vote.howToVoteServer", {
                 link: `https://top.gg/servers/${this.client.config.botGuildId}/vote`,
             }) + " 🎉";
         const embed = new Embed({ color: "success", timestamp: true })
-            .setTitle(t("cmds:vote.cmdDesc"))
+            .setTitle(t("cmds:vote.title"))
             .setDesc(
                 `${
                     userVotedDbl
@@ -57,7 +57,7 @@ module.exports = class CMD extends Command {
                     userVotedBls
                         ? `~~${voteBls}~~\n${t("cmds:vote.alreadyVoted")}`
                         : voteBls
-                }\n\n${howToVoteServer}`
+                }\n\n${howToVoteServer}\n\n${t("cmds:vote.rewards.index")}\n${t("cmds:vote.rewards.coins", {coins: 500})}`
             );
         message.reply({ embeds: [embed] });
     }
