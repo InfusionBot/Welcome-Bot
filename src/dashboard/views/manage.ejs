@@ -42,6 +42,7 @@
                                     <div class="form-group">
                                         <label><%= translate("misc:prefix") %></label>
                                         <input type="text" name="prefix" class="form-control" placeholder="<%= guildDB.prefix %>">
+                                        <label><%= translate("misc:lang") %></label>
                                         <select class="form-control" name="language">
                                             <% dclient.languages.forEach((language) => { %>
                                             <% if (guild.language === language.name) { %>
