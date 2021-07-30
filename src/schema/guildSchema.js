@@ -31,7 +31,7 @@ const guildSchema = new mongoose.Schema({
                 type: Boolean,
             },
             message: {
-                default: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member"
+                default: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
                 type: String,
             },
             channel: {
@@ -53,7 +53,10 @@ const guildSchema = new mongoose.Schema({
                 type: String,
             },
         },
-        modlogs: "mod-log",
+        modlogs: {
+            default: "mod-log",
+            type: String,
+        },
     },
 });
 
