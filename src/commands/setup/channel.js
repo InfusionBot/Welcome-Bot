@@ -36,7 +36,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         const subcommand = args[0] ? args[0].toLowerCase() : "";
-        const channel = args
+        let channel = args
             .join(" ")
             .replace(`${args[0] ?? ""} `, "")
             .replace(" ", ""); //replace empty space as there is no empty space in a channel name
