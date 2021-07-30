@@ -89,9 +89,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     if (data?.welcomeEnable || data?.welcomePlugin) {
         guildDB.plugins.welcome = {
             enabled: true,
-            message:
-                data.message ??
-                "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+            message: data.message,
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
@@ -99,8 +97,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     if (data?.welcomeDisable) {
         guildDB.plugins.welcome = {
             enabled: false,
-            message:
-                "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+            message: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
             channel: "new-members",
         };
     }
@@ -108,8 +105,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         guildDB.plugins.goodbye = {
             enabled: true,
             message:
-                data.message ??
-                "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+                data.message,
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
@@ -118,7 +114,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         guildDB.plugins.goodbye = {
             enabled: false,
             message:
-                "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+                "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
             channel: null,
         };
     }

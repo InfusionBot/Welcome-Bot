@@ -36,7 +36,7 @@ const guildSchema = new mongoose.Schema({
             goodbye: {
                 enabled: false,
                 message:
-                    "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+                    "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
                 channel: null,
             },
             modlogs: "mod-log",
