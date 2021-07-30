@@ -33,14 +33,14 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB }, t) {
         const getGuild = require("../../db/functions/guild/getGuild");
         const subcommand = args[0] ? args[0].toLowerCase() : "";
-        const message = args.join(" ").replace(`${args[0]} `, "");
+        const message2 = args.join(" ").replace(`${args[0]} `, "");
         switch (subcommand) {
             case "set":
                 //Set welcome message
                 if (args[1]) {
-                    guildDB.plugins.welcome.message = message;
+                    guildDB.plugins.welcome.message = message2;
                     message.reply(
-                        "Welcome message set to ```\n" + message + "\n```"
+                        "Welcome message set to ```\n" + message2 + "\n```"
                     );
                 } else {
                     message.reply(
