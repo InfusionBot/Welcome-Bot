@@ -72,8 +72,8 @@
     "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)",
     "title": "Vote for Welcome-Bot",
     "rewards": {
-        "index": "**Rewards**",
-        "coins": ":dollar: WCoins {{coins ?? 500}}"
+      "index": "**Rewards**",
+      "coins": ":dollar: WCoins {{coins ?? 500}}"
     },
     "howToVote": {
       "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
