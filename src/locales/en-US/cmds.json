@@ -131,6 +131,9 @@
     "cmdDesc": "Flip a coin.",
     "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
+  "duck": {
+    "cmdDesc": "Shows a random duck image"
+  },
   "emojify": {
     "cmdDesc": "Emojify a text."
   },
