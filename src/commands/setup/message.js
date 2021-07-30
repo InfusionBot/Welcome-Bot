@@ -40,9 +40,7 @@ module.exports = class CMD extends Command {
                 if (args[1]) {
                     guildDB.plugins.welcome.message = message;
                     message.reply(
-                        "Welcome message set to ```\n" +
-                            message +
-                            "\n```"
+                        "Welcome message set to ```\n" + message + "\n```"
                     );
                 } else {
                     message.reply(
@@ -51,9 +49,12 @@ module.exports = class CMD extends Command {
                 }
                 break;
             case "reset":
-                guildDB.plugins.welcome.message = "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member";
+                guildDB.plugins.welcome.message =
+                    "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member";
                 message.reply(
-                    "Message reset to ```\n" + guildDB.plugins.welcome.message + "\n```"
+                    "Message reset to ```\n" +
+                        guildDB.plugins.welcome.message +
+                        "\n```"
                 );
                 break;
             case "get":

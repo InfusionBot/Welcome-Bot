@@ -39,7 +39,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
         userData: req.userData,
         userDB: req.userDB,
         guildDB,
-        guild: {...guild2, ...guild},
+        guild: { ...guild2, ...guild },
         dclient: req.client,
         translate: req.translate,
         currentURL: req.currentURL,
@@ -89,28 +89,36 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     if (data?.welcomeEnable || data?.welcomePlugin) {
         guildDB.plugins.welcome = {
             enabled: true,
-            message: data.message ?? "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
-            channel: guild.channels.cache.find((ch) => ch.name === data.channel).id
+            message:
+                data.message ??
+                "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+            channel: guild.channels.cache.find((ch) => ch.name === data.channel)
+                .id,
         };
     }
     if (data?.welcomeDisable) {
         guildDB.plugins.welcome = {
             enabled: false,
-            message: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+            message:
+                "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
             channel: "new-members",
         };
     }
     if (data?.goodbyeEnable || data?.goodbyePlugin) {
         guildDB.plugins.goodbye = {
             enabled: true,
-            message: data.message ?? "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
-            channel: guild.channels.cache.find((ch) => ch.name === data.channel).id
+            message:
+                data.message ??
+                "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+            channel: guild.channels.cache.find((ch) => ch.name === data.channel)
+                .id,
         };
     }
     if (data?.goodbyeDisable) {
         guildDB.plugins.goodbye = {
             enabled: false,
-            message: "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+            message:
+                "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
             channel: null,
         };
     }
