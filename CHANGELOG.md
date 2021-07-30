@@ -8,9 +8,17 @@ Note that the displayed date is in the format `dd-mm-yyyy`
 
 [Legend](#legend)
 
-## [v1.13.1]
+## [v1.13.2]
 
 > **Released:** `TBA`
+
+### Bug fixes
+
+- fix(channel cmd): fix channelIdFromMention not defined
+
+## [v1.13.1]
+
+> **Released:** `25-07-2021`
 
 ### Changes
 
