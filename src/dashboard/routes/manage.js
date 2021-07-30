@@ -78,10 +78,10 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     if (data.language) {
         const language = req.client.languages.find(
             (l) =>
-                l.name === args[0] ||
-                l.aliases.includes(args[0]) ||
-                l.aliases.includes(args[0].toLowerCase())
-        ).name;
+                l.name === data.language ||
+                l.aliases.includes(data.language) ||
+                l.aliases.includes(data.language.toLowerCase())
+        )?.name;
         if (language) {
             guildDB.lang = `${language}`;
         }

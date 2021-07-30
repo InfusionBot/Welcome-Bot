@@ -39,17 +39,17 @@ module.exports = class CMD extends Command {
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
         }
+        const language = this.client.languages.find(
+            (l) =>
+                l.name === args[1] ||
+                l.aliases.includes(args[1]) ||
+                l.aliases.includes(args[1].toLowerCase())
+        )?.name;
         switch (args[0]) {
             case "set":
                 if (!args[1]) {
                     return message.reply(t("cmds:lang.langNotProvided"));
                 }
-                const language = this.client.languages.find(
-                    (l) =>
-                        l.name === args[0] ||
-                        l.aliases.includes(args[0]) ||
-                        l.aliases.includes(args[0].toLowerCase())
-                ).name;
                 if (!language)
                     return message.reply(
                         t("cmds:lang.invalid", {
