@@ -15,6 +15,7 @@
     "feat: New cmd `setbio`",
     "feat: New cmd `rob`",
     "feat: New cmd `vote`",
+    "feat: New cmd `duck`",
     "**Changes**",
     "fix(goodbye): They are disabled by default now!",
     "fix(goodbye): Sometimes, an error would occur to send goodbye logs",
