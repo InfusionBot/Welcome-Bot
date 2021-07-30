@@ -45,7 +45,7 @@
                                         <label><%= translate("misc:lang") %></label>
                                         <select class="form-control" name="language">
                                             <% dclient.languages.forEach((language) => { %>
-                                            <% if (guild.language === language.name) { %>
+                                            <% if (guildDB.lang === language.name) { %>
                                             <option selected="true"><%= language.aliases[0] %></option>
                                             <% } else { %>
                                             <option><%= language.aliases[0] %></options>

@@ -31,6 +31,11 @@ module.exports = class CMD extends Command {
             result.indexOf("channelNotFound") !== -1
         ) {
             message.reply(t("errors:channelDoesntExist"));
+        } else if (
+            typeof result === "string" &&
+            result.indexOf("disabled") !== -1
+        ) {
+            message.reply(t("cmds:testgoodbye.goodbyeDisabled"));
         }
         message.react("👍");
     }

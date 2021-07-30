@@ -12,7 +12,7 @@ module.exports = async (member) => {
         guildDB.disabled.includes("welcome") ||
         guildDB.disabled.includes("welcome-plugin")
     )
-        return;
+        return "disabled";
     let channel;
     if (isNaN(guildDB.channel)) {
         channel = member.guild.channels.cache.find(

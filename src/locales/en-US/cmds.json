@@ -207,10 +207,12 @@
     "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
   },
   "testwelcome": {
-    "cmdDesc": "Test by sending welcome message"
+    "cmdDesc": "Test by sending welcome message",
+    "welcomeDisabled": "Welcome logs are disabled and can't be tested right now."
   },
   "testgoodbye": {
-    "cmdDesc": "Test by sending goodbye message"
+    "cmdDesc": "Test by sending goodbye message",
+    "goodbyeDisabled": "Goodbye logs are disabled and can't be tested right now."
   },
   "version": {
     "cmdDesc": "Get information on a version or latest version"
