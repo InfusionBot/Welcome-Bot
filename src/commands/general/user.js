@@ -99,8 +99,8 @@ module.exports = class CMD extends Command {
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
         if (member?.presence)
-            embed.addField("Presence", `${member.presence.status}`);
-        else embed.addField("Presence", `Unknown`);
+            embed.addField(t("misc:presence"), `${member.presence.status}`);
+        else embed.addField(t("misc:presence"), `Unknown`);
         switch (args[1]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });

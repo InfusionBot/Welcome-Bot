@@ -26,5 +26,6 @@
   "profile": "Profile",
   "invite": "Invite Welcome-Bot",
   "prefix": "Prefix",
-  "update": "Update"
+  "update": "Update",
+  "presence": "Presence"
 }
