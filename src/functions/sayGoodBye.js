@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const getGuild = require("../db/functions/guild/getGuild");
+const { nth } = require("../helpers/Util.js");
 const { Embed } = require("../classes");
 module.exports = async (member) => {
     const guildDB = await getGuild(member.guild.id);
