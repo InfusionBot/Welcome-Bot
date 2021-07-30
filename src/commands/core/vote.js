@@ -57,7 +57,10 @@ module.exports = class CMD extends Command {
                     userVotedBls
                         ? `~~${voteBls}~~\n${t("cmds:vote.alreadyVoted")}`
                         : voteBls
-                }\n\n${howToVoteServer}\n\n${t("cmds:vote.rewards.index")}\n${t("cmds:vote.rewards.coins", {coins: 500})}`
+                }\n\n${howToVoteServer}\n\n${t("cmds:vote.rewards.index")}\n${t(
+                    "cmds:vote.rewards.coins",
+                    { coins: 500 }
+                )}`
             );
         message.reply({ embeds: [embed] });
     }
