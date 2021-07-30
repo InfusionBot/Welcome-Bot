@@ -46,10 +46,8 @@ module.exports = class CMD extends Command {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         channel = channelIdFromMention(args[1]);
                     }
-                    guildDB.plugins.welcome.channel = channel
-                    message.reply(
-                        `Welcome Channel set to \`${channel}\``
-                    );
+                    guildDB.plugins.welcome.channel = channel;
+                    message.reply(`Welcome Channel set to \`${channel}\``);
                 } else {
                     message.reply(
                         "Please supply valid value for setting channel."
@@ -62,9 +60,7 @@ module.exports = class CMD extends Command {
                         args[1] = channelIdFromMention(args[1]);
                     }
                     guildDB.plugins.modlogs = channel;
-                    message.reply(
-                        `ModLogs Channel set to \`${channel}\``
-                    );
+                    message.reply(`ModLogs Channel set to \`${channel}\``);
                 } else {
                     message.reply(
                         "Please supply valid value for setting mod channel."

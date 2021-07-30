@@ -34,7 +34,10 @@ module.exports = async (member) => {
         .replace("{username}", `${member.user.username}`)
         .replace("{server}", `${member.guild.name}`)
         .replace("{members}", `${member.guild.memberCount}`)
-        .replace("{members_formatted}", `${member.guild.memberCount}${nth(member.guild.memberCount)}`);
+        .replace(
+            "{members_formatted}",
+            `${member.guild.memberCount}${nth(member.guild.memberCount)}`
+        );
     const embed = new Embed({ color: "red" })
         .setAuthor(
             member.user.tag,

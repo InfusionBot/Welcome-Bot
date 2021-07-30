@@ -29,12 +29,14 @@ const guildSchema = new mongoose.Schema({
         default: {
             welcome: {
                 enabled: true,
-                message: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+                message:
+                    "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
                 channel: "member-log",
             },
             goodbye: {
                 enabled: false,
-                message: "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+                message:
+                    "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
                 channel: null,
             },
             modlogs: "mod-log",
