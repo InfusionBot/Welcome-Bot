@@ -59,12 +59,16 @@ module.exports = class CMD extends Command {
             await updateUser(
                 message.author.id,
                 "bank",
-                parseInt(userDB.bank) + wcoins
+                (!isNaN(parseInt(userDB.bank))
+                ? parseInt(userDB.bank)
+                : 0) + wcoins
             );
             await updateUser(
                 message.author.id,
                 "wallet",
-                parseInt(userDB.wallet) - wcoins
+                (!isNaN(parseInt(userDB.bank))
+                ? parseInt(userDB.bank)
+                : 0) - wcoins
             );
         } catch (e) {
             message.client.logger.log(
