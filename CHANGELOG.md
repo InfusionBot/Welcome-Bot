@@ -12,6 +12,12 @@ The displayed date is in the format `DD-MM-YYYY`
 
 > **Released:** `TBA`
 
+### Breaking Changes
+
+- fix(goodbye): They are disabled by default now!
+- Default welcome message is changed to `Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member`
+- Default goodbye message is changed to `Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members`
+
 ### Bug fixes
 
 - fix(channel): fix error `ReferenceError: channelIdFromMention is not defined`
@@ -33,10 +39,10 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `vote`
 - feat: New cmd `report`
 - feat: New cmd `duck`
+- feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages
 
 ### Changes
 
-- fix(goodbye): They are disabled by default now!
 - refactor(goodbye logs): Goodbye logs now use embeds!
 - refactor(disable cmd): disable commands using disable cmd!
 - refactor(enable): enable commands using enable cmd!

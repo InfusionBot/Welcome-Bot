@@ -6,5 +6,9 @@
   "manageGuild": "Manage Server",
   "settings": "Settings",
   "basicconf": "📝 Basic configuration",
-  "dashboard": "Dashboard"
+  "welcome": "👋 Welcome messages",
+  "goodbye": "😭 Goodbye messages",
+  "dashboard": "Dashboard",
+  "disable_messages": "Disable Messages",
+  "enable_messages": "Enable Messages"
 }

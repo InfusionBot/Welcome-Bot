@@ -31,16 +31,16 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
             currentURL: req.currentURL,
         });
     }
+    const guild2 = req.userData.displayedGuilds.find(
+        (g) => g.id === req.params.guildId
+    );
     res.render("manage", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
         guildDB,
-        guild: req.userData.displayedGuilds.find(
-            (g) => g.id === req.params.guildId
-        ),
+        guild: {...guild2, ...guild},
         dclient: req.client,
-        djsGuild: guild,
         translate: req.translate,
         currentURL: req.currentURL,
     });
@@ -72,10 +72,10 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         });
     }
     const data = req.body;
-    if (data.prefix.length >= 1 && data.prefix.length < 100) {
+    if (data?.prefix && data.prefix.length >= 1 && data.prefix.length < 100) {
         guildDB.prefix = `${data.prefix}`;
     }
-    if (data.language) {
+    if (data?.language) {
         const language = req.client.languages.find(
             (l) =>
                 l.name === data.language ||
@@ -85,6 +85,34 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         if (language) {
             guildDB.lang = `${language}`;
         }
+    }
+    if (data?.welcomeEnable || data?.welcomePlugin) {
+        guildDB.plugins.welcome = {
+            enabled: true,
+            message: data.message ?? "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+            channel: guild.channels.cache.find((ch) => ch.name === data.channel).id
+        };
+    }
+    if (data?.welcomeDisable) {
+        guildDB.plugins.welcome = {
+            enabled: false,
+            message: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+            channel: "new-members",
+        };
+    }
+    if (data?.goodbyeEnable || data?.goodbyePlugin) {
+        guildDB.plugins.goodbye = {
+            enabled: true,
+            message: data.message ?? "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+            channel: guild.channels.cache.find((ch) => ch.name === data.channel).id
+        };
+    }
+    if (data?.goodbyeDisable) {
+        guildDB.plugins.goodbye = {
+            enabled: false,
+            message: "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members",
+            channel: null,
+        };
     }
     await guildDB.save();
     res.redirect(303, "/manage/" + guild.id);

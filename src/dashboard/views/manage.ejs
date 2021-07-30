@@ -52,8 +52,72 @@
                                             <% } %>
                                             <% }) %>
                                         </select>
+                                        <button type="submit" class="btn btn-primary"><%= translate("misc:update") %></button>
                                     </div>
-                                    <button type="submit" class="btn btn-primary"><%= translate("misc:update") %></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title"><%= translate("dashboard:welcome") %></h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="/manage/<%= guild.id %>/" method="POST">
+                                    <div class="form-group">
+                                        <label><%= translate("misc:message") %></label>
+                                        <textarea rows="3" name="message" class="form-control" required="true"><%= guildDB.plugins.welcome.message %></textarea>
+                                        <label><%= translate("misc:channel") %></label>
+                                        <select class="form-control" name="channel">
+                                            <% if (guildDB.plugins.welcome.enabled && (guild.channels.cache.has(guildDB.plugins.welcome.channel) || guild.channels.cache.find(c => c.name === guildDB.plugins.welcome.channel))) { %>
+                                                <option selected="selected"><%= (guild.channels.cache.get(guildDB.plugins.welcome.channel)?.name ?? guildDB.plugins.welcome.channel) %></option>
+                                                <% guild.channels.cache.filter((ch) => ch.id !== guildDB.plugins.welcome.channel && ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                                <option><%= ch.name %></option>
+                                                <% }); } else { %>
+                                                <option selected="selected"><%= guild.channels.cache.filter((ch) => ch.type === "GUILD_TEXT").first().name %></option>
+                                                <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.cache.first().id && ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                                <option><%= ch.name %></option>
+                                                <% }); %>
+                                            <% } %>
+                                        </select>
+                                        <% if (guildDB.plugins.welcome.enabled) { %>
+                                        <button type="submit" name="welcomeDisable" class="btn btn-danger"><%= translate("dashboard:disable_messages") %></button>
+                                        <button type="submit" name="welcomePlugin" class="btn btn-primary pull-right"><%= translate("misc:update") %></button>
+                                        <% } else { %>
+                                        <button type="submit" name="welcomeEnable" class="btn btn-success"><%= translate("dashboard:enable_messages") %></button>
+                                        <% } %>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card card-danger">
+                            <div class="card-header">
+                                <h3 class="card-title"><%= translate("dashboard:goodbye") %></h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="/manage/<%= guild.id %>/" method="POST">
+                                    <div class="form-group">
+                                        <label><%= translate("misc:message") %></label>
+                                        <textarea rows="3" name="message" class="form-control" required="true"><%= guildDB.plugins.goodbye.message %></textarea>
+                                        <label><%= translate("misc:channel") %></label>
+                                        <select class="form-control" name="channel">
+                                        <% if (guildDB.plugins.goodbye.enabled && (guild.channels.cache.has(guildDB.plugins.goodbye.channel) || guild.channels.cache.find(c => c.name === guildDB.plugins.goodbye.channel))) { %>
+                                            <option selected="selected"><%= (guild.channels.cache.get(guildDB.plugins.goodbye.channel)?.name ?? guildDB.plugins.goodbye.channel) %></option>
+                                            <% guild.channels.cache.filter((ch) => ch.id !== guildDB.plugins.goodbye.channel && ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                            <option><%= ch.name %></option>
+                                            <% }); } else { %>
+                                            <option selected="selected"><%= guild.channels.cache.filter((ch) => ch.type === "GUILD_TEXT").first().name %></option>
+                                            <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.cache.first().id && ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                            <option><%= ch.name %></option>
+                                            <% }); %>
+                                        <% } %>
+                                        </select>
+                                        <% if (guildDB.plugins.goodbye.enabled) { %>
+                                        <button type="submit" name="goodbyeDisable" class="btn btn-danger"><%= translate("dashboard:disable_messages") %></button>
+                                        <button type="submit" name="goodbyePlugin" class="btn btn-primary pull-right"><%= translate("misc:update") %></button>
+                                        <% } else { %>
+                                        <button type="submit" name="goodbyeEnable" class="btn btn-success"><%= translate("dashboard:enable_messages") %></button>
+                                        <% } %>
+                                    </div>
                                 </form>
                             </div>
                         </div>

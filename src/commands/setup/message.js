@@ -31,21 +31,17 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
         const getGuild = require("../../db/functions/guild/getGuild");
         const subcommand = args[0] ? args[0].toLowerCase() : "";
+        const message = args.join(" ").replace(`${args[0]} `, "");
         switch (subcommand) {
             case "set":
                 //Set welcome message
                 if (args[1]) {
-                    updateGuild(
-                        message.guild.id,
-                        "welcomeMessage",
-                        args.join(" ").replace(`${args[0]} `, "")
-                    );
+                    guildDB.plugins.welcome.message = message;
                     message.reply(
                         "Welcome message set to ```\n" +
-                            args.join(" ").replace(`${args[0]} `, "") +
+                            message +
                             "\n```"
                     );
                 } else {
@@ -55,15 +51,9 @@ module.exports = class CMD extends Command {
                 }
                 break;
             case "reset":
-                //Reset welcome channel
-                updateGuild(
-                    message.guild.id,
-                    "welcomeMessage",
-                    "Welcome {mention} to the {server} server!\nYou are our #{members} member"
-                );
-                guildDB = await getGuild(message.guild.id);
+                guildDB.plugins.welcome.message = "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member";
                 message.reply(
-                    "Message reset to ```\n" + guildDB.welcomeMessage + "\n```"
+                    "Message reset to ```\n" + guildDB.plugins.welcome.message + "\n```"
                 );
                 break;
             case "get":
@@ -71,10 +61,11 @@ module.exports = class CMD extends Command {
                 //Get welcome channel
                 message.reply(
                     "Message currently is set to ```\n" +
-                        guildDB.welcomeMessage +
+                        guildDB.plugins.welcome.message +
                         "\n```"
                 );
                 break;
         }
+        await guildDB.save();
     }
 };

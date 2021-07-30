@@ -4,7 +4,6 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-const updateGuild = require("../../db/functions/guild/updateGuild");
 const getGuild = require("../../db/functions/guild/getGuild");
 const { channelIdFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
@@ -37,28 +36,19 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         const subcommand = args[0] ? args[0].toLowerCase() : "";
+        const channel = args
+            .join(" ")
+            .replace(`${args[0] ?? ""} `, "")
+            .replace(" ", ""); //replace empty space as there is no empty space in a channel name
         switch (subcommand) {
             case "set":
                 if (args[1]) {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                        args[1] = channelIdFromMention(args[1]);
+                        channel = channelIdFromMention(args[1]);
                     }
-                    //Set channel
-                    updateGuild(
-                        message.guild.id,
-                        "channel",
-                        args
-                            .join(" ")
-                            .replace(`${args[0]} `, "")
-                            .replace(" ", "")
-                    ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
+                    guildDB.plugins.welcome.channel = channel
                     message.reply(
-                        "Welcome Channel set to `" +
-                            args
-                                .join(" ")
-                                .replace(`${args[0]} `, "")
-                                .replace(" ", "") +
-                            "`"
+                        `Welcome Channel set to \`${channel}\``
                     );
                 } else {
                     message.reply(
@@ -71,22 +61,9 @@ module.exports = class CMD extends Command {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         args[1] = channelIdFromMention(args[1]);
                     }
-                    //Set mod channel
-                    updateGuild(
-                        message.guild.id,
-                        "modChannel",
-                        args
-                            .join(" ")
-                            .replace(`${args[0]} `, "")
-                            .replace(" ", "")
-                    ); //replace(" ", "") to replace empty space, there is no empty space in a channel name
+                    guildDB.plugins.modlogs = channel;
                     message.reply(
-                        "Mod Channel set to `" +
-                            args
-                                .join(" ")
-                                .replace(`${args[0]} `, "")
-                                .replace(" ", "") +
-                            "`"
+                        `ModLogs Channel set to \`${channel}\``
                     );
                 } else {
                     message.reply(
@@ -96,14 +73,12 @@ module.exports = class CMD extends Command {
                 break;
             case "reset":
                 //Reset channel
-                updateGuild(message.guild.id, "channel", "member-log");
-                guildDB = await getGuild(message.guild.id);
+                guildDB.plugins.welcome.channel = "member-log";
                 message.reply("Channel reset to `" + guildDB.channel + "`");
                 break;
             case "resetmod":
                 //Reset mod channel
-                updateGuild(message.guild.id, "modChannel", "mod-log");
-                guildDB = await getGuild(message.guild.id);
+                guildDB.plugins.modlogs = "mod-log";
                 message.reply(
                     "Mod Channel reset to `" + guildDB.modChannel + "`"
                 );
@@ -113,13 +88,13 @@ module.exports = class CMD extends Command {
                     //Get channel
                     message.reply(
                         "Welcome Channel currently is set to `" +
-                            guildDB.channel +
+                            guildDB.plugins.welcome.channel +
                             "`"
                     );
                     //Get mod channel
                     message.reply(
                         "Mod Channel currently is set to `" +
-                            guildDB.modChannel +
+                            guildDB.plugins.modlogs +
                             "`"
                     );
                 } else {
@@ -130,5 +105,6 @@ module.exports = class CMD extends Command {
                 }
                 break;
         }
+        await guildDB.save();
     }
 };

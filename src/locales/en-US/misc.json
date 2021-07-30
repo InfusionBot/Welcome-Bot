@@ -3,6 +3,7 @@
   "ptimeout": "Pagination timed out",
   "resMod": "**Responsible moderator**",
   "channels": "Channels",
+  "channel": "Channel",
   "bots": "Bots",
   "members": "Members",
   "total": "Total",
@@ -27,5 +28,6 @@
   "invite": "Invite Welcome-Bot",
   "prefix": "Prefix",
   "update": "Update",
-  "presence": "Presence"
+  "presence": "Presence",
+  "message": "Message"
 }

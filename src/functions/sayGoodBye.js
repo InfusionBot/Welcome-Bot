@@ -26,13 +26,15 @@ module.exports = async (member) => {
         return "channelNotFound";
     }
     channel.sendTyping();
-    let msg = guildDB.goodByeMessage;
+    let msg = guildDB.plugins.goodbye.message;
     //Replace Placeholders with their values
     msg = msg
         .replace("{mention}", `${member}`)
         .replace("{tag}", `${member.user.tag}`)
+        .replace("{username}", `${member.user.username}`)
         .replace("{server}", `${member.guild.name}`)
-        .replace("{members}", `${member.guild.memberCount}`);
+        .replace("{members}", `${member.guild.memberCount}`)
+        .replace("{members_formatted}", `${member.guild.memberCount}${nth(member.guild.memberCount)}`);
     const embed = new Embed({ color: "red" })
         .setAuthor(
             member.user.tag,
