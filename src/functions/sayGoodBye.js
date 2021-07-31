@@ -10,7 +10,7 @@ module.exports = async (member) => {
     const guildDB = await getGuild(member.guild.id);
     if (
         guildDB.disabled.includes("goodbye") ||
-        guildDB.disabled.includes("goodbye-plugin")
+        !guildDB.plugins.goodbye.enabled
     )
         return "disabled";
     let channel;
