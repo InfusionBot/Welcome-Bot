@@ -17,7 +17,20 @@
                 </section>
                 <section class="content">
                     <div class="container-fluid">
-                        <h3>Coming soon</h3>
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title"><%= translate("dashboard:bio") %></h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="/settings" method="POST">
+                                    <div class="form-group">
+                                        <label><%= translate("misc:bio2") %></label>
+                                        <textarea maxlength="50" rows="3" name="message" class="form-control" required="true"><%= userDB.bio %></textarea>
+                                        <button type="submit" class="btn btn-primary"><%= translate("misc:update") %></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>

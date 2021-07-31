@@ -65,7 +65,7 @@
                                 <form action="/manage/<%= guild.id %>/" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:message") %></label>
-                                        <textarea rows="3" name="message" class="form-control" required="true"><%= guildDB.plugins.welcome.message %></textarea>
+                                        <textarea maxlength="50" rows="3" name="message" class="form-control" required="true"><%= guildDB.plugins.welcome.message %></textarea>
                                         <label><%= translate("misc:channel") %></label>
                                         <select class="form-control" name="channel">
                                             <% if (guildDB.plugins.welcome.enabled && (guild.channels.cache.has(guildDB.plugins.welcome.channel) || guild.channels.cache.find(c => c.name === guildDB.plugins.welcome.channel))) { %>
@@ -97,7 +97,7 @@
                                 <form action="/manage/<%= guild.id %>/" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:message") %></label>
-                                        <textarea rows="3" name="message" class="form-control" required="true"><%= guildDB.plugins.goodbye.message %></textarea>
+                                        <textarea maxlength="50" rows="3" name="message" class="form-control" required="true"><%= guildDB.plugins.goodbye.message %></textarea>
                                         <label><%= translate("misc:channel") %></label>
                                         <select class="form-control" name="channel">
                                         <% if (guildDB.plugins.goodbye.enabled && (guild.channels.cache.has(guildDB.plugins.goodbye.channel) || guild.channels.cache.find(c => c.name === guildDB.plugins.goodbye.channel))) { %>

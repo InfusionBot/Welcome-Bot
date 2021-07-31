@@ -72,7 +72,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         });
     }
     const data = req.body;
-    if (data?.prefix && data.prefix.length >= 1 && data.prefix.length < 100) {
+    if (data?.prefix && data.prefix.length >= 1 && data.prefix.length < 50) {
         guildDB.prefix = `${data.prefix}`;
         guildDB.markModified("prefix");
     }
@@ -94,7 +94,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     ) {
         guildDB.plugins.welcome = {
             enabled: true,
-            message: data.message,
+            message: data.message.substring(0, req.client.config.plugins.welcome.msgLength),
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
@@ -115,7 +115,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     ) {
         guildDB.plugins.goodbye = {
             enabled: true,
-            message: data.message,
+            message: data.message.substring(0, req.client.config.plugins.goodbye.msgLength),
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };

@@ -37,4 +37,12 @@ module.exports = {
             disableGuildSelect,
         });
     },
+    plugins: {
+        welcome: {
+            msgLength: 50, //max welcome msg length
+        },
+        goodbye: {
+            msgLength: 50, //max goodbye msg length
+        },
+    },
 };
