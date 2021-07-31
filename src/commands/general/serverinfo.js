@@ -66,7 +66,6 @@ module.exports = class CMD extends Command {
                         message.guild.preferredLocale ?? "none"
                     }`
             );
-        message.guild.members.cache.clear();
         switch (args[0]) {
             case "--dm":
                 message.author.send({ embeds: [embed] });
