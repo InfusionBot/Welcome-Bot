@@ -48,7 +48,6 @@ router.post("/", CheckAuth, async (req, res) => {
         userDB.bio = `${data.bio}`;
         userDB.markModified("bio");
     }
-    console.log(userDB);
     await userDB.save();
     res.redirect(303, "/settings");
 });
