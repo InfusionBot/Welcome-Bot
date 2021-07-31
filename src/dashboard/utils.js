@@ -50,7 +50,7 @@ const CheckAuth = (req, res, next) => {
                 ? "/dashboard"
                 : req.originalUrl;
         const state = Math.random().toString(36).substring(5);
-        req.client.states[state] = redirectUrl;
+        req.client.dashboard.states[state] = redirectUrl;
         return res.redirect(
             `/discord/login?state=${encodeURIComponent(state)}`
         );
