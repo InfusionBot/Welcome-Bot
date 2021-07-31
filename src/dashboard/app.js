@@ -113,3 +113,4 @@ module.exports.load = (client) => {
         console.log(`Dashboard running on port ${app.get("port")}`);
     });
 };
+module.exports.states = {};

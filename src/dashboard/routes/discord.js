@@ -18,16 +18,14 @@ router.get("/login", (req, res) => {
             }&redirect_uri=${encodeURIComponent(
                 `${req.protocol}://${req.get(
                     "host"
-                )}/discord/callback?redirectUrl=${encodeURIComponent(
-                    req.query.redirectUrl || "/dashboard"
-                )}`
-            )}&response_type=code&scope=identify%20guilds`
+                )}/discord/callback`
+            )}&response_type=code&scope=identify%20guilds&state=${req.query?.state || "null"}`
         );
 });
 //GET /callback
 router.get("/callback", async (req, res) => {
     if (!req.query.code) return res.redirect("/");
-    const redirectUrl = req.query.redirectUrl || "/dashboard";
+    const redirectUrl = req.client.dashboard.states[req.query?.state] ?? "/dashboard";
     const params = new URLSearchParams();
     params.set("grant_type", "authorization_code");
     params.set("code", req.query.code);
@@ -35,7 +33,7 @@ router.get("/callback", async (req, res) => {
         "redirect_uri",
         `${req.protocol}://${req.get(
             "host"
-        )}/discord/callback?redirectUrl=${encodeURIComponent(redirectUrl)}`
+        )}/discord/callback`
     );
     let response = await fetch("https://discord.com/api/oauth2/token", {
         method: "POST",
@@ -52,7 +50,7 @@ router.get("/callback", async (req, res) => {
     if (tokens.error || !tokens.access_token) {
         if (req.client.debug && process.env.NODE_ENV === "development")
             console.log(tokens);
-        return res.redirect(`/discord/login?redirectUrl=${redirectUrl}`);
+        return res.redirect(`/discord/login?state=${req.query?.state}`);
     }
     const userData = {
         infos: null, //Basic info like user id, tag, username, etc.

@@ -74,6 +74,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     const data = req.body;
     if (data?.prefix && data.prefix.length >= 1 && data.prefix.length < 100) {
         guildDB.prefix = `${data.prefix}`;
+        guildDB.markModified("prefix");
     }
     if (data?.language) {
         const language = req.client.languages.find(
@@ -84,6 +85,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         )?.name;
         if (language) {
             guildDB.lang = `${language}`;
+            guildDB.markModified("lang");
         }
     }
     if (
@@ -96,6 +98,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
+        guildDB.markModified("plugins.welcome");
     }
     if (Object.prototype.hasOwnProperty.call(data, "welcomeDisable")) {
         guildDB.plugins.welcome = {
@@ -104,6 +107,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
                 "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
             channel: "new-members",
         };
+        guildDB.markModified("plugins.welcome");
     }
     if (
         Object.prototype.hasOwnProperty.call(data, "goodbyeEnable") ||
@@ -115,6 +119,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
+        guildDB.markModified("plugins.goodbye");
     }
     if (Object.prototype.hasOwnProperty.call(data, "goodbyeDisable")) {
         guildDB.plugins.goodbye = {
@@ -123,6 +128,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
                 "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
             channel: null,
         };
+        guildDB.markModified("plugins.goodbye");
     }
     await guildDB.save();
     res.redirect(303, "/manage/" + guild.id);
