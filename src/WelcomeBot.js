@@ -220,7 +220,7 @@ class WelcomeBot extends Client {
         return true;
     }
 
-    findCMD(cmdName, enabled = false) {
+    findCMD(cmdName) {
         let cmd;
         let disabledCmd;
         try {

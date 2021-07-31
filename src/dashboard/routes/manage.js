@@ -72,11 +72,11 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
         });
     }
     const data = req.body;
-    if (data?.prefix && data.prefix.length >= 1 && data.prefix.length < 50) {
+    if (Object.hasOwnProperty.call(data, "prefix") && data.prefix.length >= 1 && data.prefix.length < 50) {
         guildDB.prefix = `${data.prefix}`;
         guildDB.markModified("prefix");
     }
-    if (data?.language) {
+    if (Object.hasOwnProperty.call(data, "language")) {
         const language = req.client.languages.find(
             (l) =>
                 l.name === data.language ||
