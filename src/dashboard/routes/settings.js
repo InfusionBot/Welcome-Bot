@@ -8,10 +8,7 @@ const router = express.Router();
 //GET /settings
 router.get("/", (req, res) => {
     const userDB = req.userDB;
-    if (
-        !req.user ||
-        !userDB
-    ) {
+    if (!req.user || !userDB) {
         return res.render("404", {
             user: req.user,
             userData: req.userData,
@@ -32,10 +29,7 @@ router.get("/", (req, res) => {
 //POST /settings
 router.post("/", CheckAuth, async (req, res) => {
     const userDB = req.userDB;
-    if (
-        !req.user ||
-        !userDB
-    ) {
+    if (!req.user || !userDB) {
         return res.render("404", {
             user: req.user,
             userData: req.userData,
