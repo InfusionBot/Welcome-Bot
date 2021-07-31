@@ -177,6 +177,9 @@
   "listemojis": {
     "cmdDesc": "List of all custom emojis in this server, with there IDs."
   },
+  "membercount": {
+    "cmdDesc": "Shows the server member count"
+  },
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions",
     "message": "Permissions for **{{tag}}** in *{{channel}}* channel"

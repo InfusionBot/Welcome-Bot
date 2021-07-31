@@ -26,6 +26,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `rob`
 - feat: New cmd `report`
 - feat: New cmd `duck`
+- feat: New cmd `membercount`
 
 ### Changes
 
