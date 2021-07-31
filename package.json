@@ -16,8 +16,9 @@
     "feat: New cmd `rob`",
     "feat: New cmd `vote`",
     "feat: New cmd `duck`",
+    "feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages",
+    "feat: New cmd `membercount`",
     "**Changes**",
-    "fix(goodbye): They are disabled by default now!",
     "fix(goodbye): Sometimes, an error would occur to send goodbye logs",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): Disable commands using disable cmd now!"

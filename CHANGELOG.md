@@ -42,6 +42,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `report`
 - feat: New cmd `duck`
 - feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages
+- feat: New cmd `membercount`
 
 ### Changes
 
