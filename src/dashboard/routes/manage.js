@@ -94,7 +94,10 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     ) {
         guildDB.plugins.welcome = {
             enabled: true,
-            message: data.message.substring(0, req.client.config.plugins.welcome.msgLength),
+            message: data.message.substring(
+                0,
+                req.client.config.plugins.welcome.msgLength
+            ),
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
@@ -115,7 +118,10 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
     ) {
         guildDB.plugins.goodbye = {
             enabled: true,
-            message: data.message.substring(0, req.client.config.plugins.goodbye.msgLength),
+            message: data.message.substring(
+                0,
+                req.client.config.plugins.goodbye.msgLength
+            ),
             channel: guild.channels.cache.find((ch) => ch.name === data.channel)
                 .id,
         };
