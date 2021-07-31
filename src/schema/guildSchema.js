@@ -31,7 +31,8 @@ const guildSchema = new mongoose.Schema({
                 type: Boolean,
             },
             message: {
-                default: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+                default:
+                    "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
                 type: String,
             },
             channel: {
@@ -45,7 +46,8 @@ const guildSchema = new mongoose.Schema({
                 type: Boolean,
             },
             message: {
-                default: "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
+                default:
+                    "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
                 type: String,
             },
             channel: {
