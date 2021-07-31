@@ -23,7 +23,8 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const id = "848459799783669790";
         const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
-        const userVotedBls = this.fetchJson(
+        let userVotedBls = async () => {
+            const res = await this.fetchJson(
             `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`,
             {
                 headers: {
@@ -31,7 +32,11 @@ module.exports = class CMD extends Command {
                     "User-Agent": process.env.userAgent,
                 },
             }
-        ).then((json) => json.voted);
+        );
+            return res.voted;
+        };
+        userVotedBls = await userVotedBls();
+        //console.log(userVotedBls);
         const voteDbl =
             t("cmds:vote.howToVote.dbl", {
                 //link: `https://top.gg/bot/${this.client.user.id}/vote`,
