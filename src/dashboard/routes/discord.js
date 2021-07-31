@@ -16,24 +16,23 @@ router.get("/login", (req, res) => {
             `https://discord.com/api/oauth2/authorize?client_id=${
                 req.client.user.id
             }&redirect_uri=${encodeURIComponent(
-                `${req.protocol}://${req.get(
-                    "host"
-                )}/discord/callback`
-            )}&response_type=code&scope=identify%20guilds&state=${req.query?.state || "null"}`
+                `${req.protocol}://${req.get("host")}/discord/callback`
+            )}&response_type=code&scope=identify%20guilds&state=${
+                req.query?.state || "null"
+            }`
         );
 });
 //GET /callback
 router.get("/callback", async (req, res) => {
     if (!req.query.code) return res.redirect("/");
-    const redirectUrl = req.client.dashboard.states[req.query?.state] ?? "/dashboard";
+    const redirectUrl =
+        req.client.dashboard.states[req.query?.state] ?? "/dashboard";
     const params = new URLSearchParams();
     params.set("grant_type", "authorization_code");
     params.set("code", req.query.code);
     params.set(
         "redirect_uri",
-        `${req.protocol}://${req.get(
-            "host"
-        )}/discord/callback`
+        `${req.protocol}://${req.get("host")}/discord/callback`
     );
     let response = await fetch("https://discord.com/api/oauth2/token", {
         method: "POST",
