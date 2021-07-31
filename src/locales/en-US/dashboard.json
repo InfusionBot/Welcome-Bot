@@ -7,7 +7,7 @@
   "settings": "Settings",
   "basicconf": "📝 Basic configuration",
   "welcome": "👋 Welcome messages",
-  "goodbye": "😭 Goodbye messages",
+  "goodbye": "😢 Goodbye messages",
   "dashboard": "Dashboard",
   "disable_messages": "Disable Messages",
   "enable_messages": "Enable Messages",
