@@ -52,6 +52,7 @@ class WelcomeBot extends Client {
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
         this.dashboard = require("./dashboard/app");
+        this.dashboard.states = {};
         this.categories = [];
         this.customEmojis = require("./data/customEmojis.json");
         this.languages = require("./locales/languages.json");
