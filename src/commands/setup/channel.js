@@ -70,13 +70,13 @@ module.exports = class CMD extends Command {
             case "reset":
                 //Reset channel
                 guildDB.plugins.welcome.channel = "member-log";
-                message.reply("Channel reset to `" + guildDB.channel + "`");
+                message.reply("Welcome Channel reset to `" + guildDB.channel + "`");
                 break;
             case "resetmod":
                 //Reset mod channel
                 guildDB.plugins.modlogs = "mod-log";
                 message.reply(
-                    "Mod Channel reset to `" + guildDB.modChannel + "`"
+                    "ModLogs Channel reset to `" + guildDB.plugins.modlogs + "`"
                 );
                 break;
             default:
