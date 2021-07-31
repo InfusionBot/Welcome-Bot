@@ -12,9 +12,9 @@ module.exports = (client) => {
     let toc = "# Table of contents\n\n"; //Table of contents
     const t = client.i18next.getFixedT("en-US");
     categories.forEach((cat) => {
-        const cmds = commands
-            .filter((cmd) => cmd.category === cat.name)
-            .array();
+        let cmds = commands
+            .filter((cmd) => cmd.category === cat.name);
+        cmds = [...cmds.values()];
         toc += `- [${cat.name}](#${cat.name
             .toLowerCase()
             .replace(" ", "-")})\n`;
