@@ -29,10 +29,9 @@ module.exports = class CMD extends Command {
         embed
             .setTitle(t("misc:members"))
             .setDesc(
-                    `> ${t("misc:bots")}: ${
-                        message.guild.members.cache.filter((m) => m.user.bot)
-                            .size
-                    }\n` +
+                `> ${t("misc:bots")}: ${
+                    message.guild.members.cache.filter((m) => m.user.bot).size
+                }\n` +
                     `> ${t("misc:members")}: ${
                         message.guild.members.cache.filter((m) => !m.user.bot)
                             .size
