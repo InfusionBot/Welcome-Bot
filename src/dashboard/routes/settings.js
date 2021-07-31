@@ -7,11 +7,11 @@ const express = require("express");
 const router = express.Router();
 //GET /settings
 router.get("/", (req, res) => {
-    const userDB = req.userDB;
     if (
         !req.user ||
-        !userDB
+        !req.userDB
     ) {
+        console.log(req.user, req.userDB);
         return res.render("404", {
             user: req.user,
             userData: req.userData,
