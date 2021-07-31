@@ -4,9 +4,10 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const express = require("express");
+const { CheckAuth } = require("../utils");
 const router = express.Router();
 //GET /settings
-router.get("/", (req, res) => {
+router.get("/", CheckAuth, (req, res) => {
     if (!req.user || !req.userDB) {
         console.log(req.user, req.userDB);
         return res.render("404", {
