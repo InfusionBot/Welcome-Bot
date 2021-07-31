@@ -86,7 +86,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             guildDB.lang = `${language}`;
         }
     }
-    if (data?.welcomeEnable || data?.welcomePlugin) {
+    if (data.hasOwnProperty("welcomeEnable") || data.hasOwnProperty("welcomePlugin")) {
         guildDB.plugins.welcome = {
             enabled: true,
             message: data.message,
@@ -94,14 +94,14 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
                 .id,
         };
     }
-    if (data?.welcomeDisable) {
+    if (data.hasOwnProperty("welcomeDisable")) {
         guildDB.plugins.welcome = {
             enabled: false,
             message: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
             channel: "new-members",
         };
     }
-    if (data?.goodbyeEnable || data?.goodbyePlugin) {
+    if (data.hasOwnProperty("goodbyeEnable") || data.hasOwnProperty("goodbyePlugin")) {
         guildDB.plugins.goodbye = {
             enabled: true,
             message:
@@ -110,7 +110,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
                 .id,
         };
     }
-    if (data?.goodbyeDisable) {
+    if (data.hasOwnProperty("goodbyeDisable")) {
         guildDB.plugins.goodbye = {
             enabled: false,
             message:
