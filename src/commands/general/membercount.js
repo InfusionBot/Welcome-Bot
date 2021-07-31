@@ -40,7 +40,6 @@ module.exports = class CMD extends Command {
                         message.guild.memberCount
                     }`
             );
-        message.guild.members.cache.clear();
         message.channel.send({ embeds: [embed] });
     }
 };
