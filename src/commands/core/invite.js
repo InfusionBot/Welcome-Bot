@@ -27,10 +27,7 @@ module.exports = class CMD extends Command {
             timestamp: true,
         })
             .setTitle(t("misc:invite"))
-            .addField(
-                "\u200b",
-                `${message.client.config.invite(this.client)}`
-            )
+            .addField("\u200b", `${message.client.config.invite(this.client)}`)
             .setImage(
                 "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );

@@ -25,14 +25,14 @@ module.exports = class CMD extends Command {
         const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
         let userVotedBls = async () => {
             const res = await this.fetchJson(
-            `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`,
-            {
-                headers: {
-                    Authorization: process.env.DISCORDLIST_token,
-                    "User-Agent": process.env.userAgent,
-                },
-            }
-        );
+                `https://api.discordlist.space/v2/bots/${id}/status/${message.author.id}`,
+                {
+                    headers: {
+                        Authorization: process.env.DISCORDLIST_token,
+                        "User-Agent": process.env.userAgent,
+                    },
+                }
+            );
             return res.voted;
         };
         userVotedBls = await userVotedBls();
