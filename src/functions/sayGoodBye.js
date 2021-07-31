@@ -9,8 +9,8 @@ const { Embed } = require("../classes");
 module.exports = async (member) => {
     const guildDB = await getGuild(member.guild.id);
     if (
-        guildDB.disabled.includes("goodbye") ||
-        !guildDB.plugins.goodbye.enabled
+        !guildDB.plugins.goodbye.enabled ||
+        guildDB.disabled.includes("goodbye")
     )
         return "disabled";
     let channel;

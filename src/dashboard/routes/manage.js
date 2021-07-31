@@ -86,7 +86,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             guildDB.lang = `${language}`;
         }
     }
-    if (data.hasOwnProperty("welcomeEnable") || data.hasOwnProperty("welcomePlugin")) {
+    if (Object.prototype.hasOwnProperty.call(data, "welcomeEnable") || Object.prototype.hasOwnProperty.call(data, "welcomePlugin")) {
         guildDB.plugins.welcome = {
             enabled: true,
             message: data.message,
@@ -94,14 +94,14 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
                 .id,
         };
     }
-    if (data.hasOwnProperty("welcomeDisable")) {
+    if (Object.prototype.hasOwnProperty.call(data, "welcomeDisable")) {
         guildDB.plugins.welcome = {
             enabled: false,
             message: "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
             channel: "new-members",
         };
     }
-    if (data.hasOwnProperty("goodbyeEnable") || data.hasOwnProperty("goodbyePlugin")) {
+    if (Object.prototype.hasOwnProperty.call(data, "goodbyeEnable") || Object.prototype.hasOwnProperty.call(data, "goodbyePlugin")) {
         guildDB.plugins.goodbye = {
             enabled: true,
             message:
@@ -110,7 +110,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
                 .id,
         };
     }
-    if (data.hasOwnProperty("goodbyeDisable")) {
+    if (Object.prototype.hasOwnProperty.call(data, "goodbyeDisable")) {
         guildDB.plugins.goodbye = {
             enabled: false,
             message:
