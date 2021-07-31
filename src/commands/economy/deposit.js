@@ -31,6 +31,9 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
+        if (userDB.bank === userDB.bankLimit) {
+            return message.reply(t("cmds:deposit.noSpace"));
+        }
         let wcoins = NaN;
         if (!isNaN(parseInt(args[0]))) {
             wcoins = parseInt(args[0]);
