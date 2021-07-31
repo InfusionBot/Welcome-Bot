@@ -7,10 +7,7 @@ const express = require("express");
 const router = express.Router();
 //GET /settings
 router.get("/", (req, res) => {
-    if (
-        !req.user ||
-        !req.userDB
-    ) {
+    if (!req.user || !req.userDB) {
         console.log(req.user, req.userDB);
         return res.render("404", {
             user: req.user,
