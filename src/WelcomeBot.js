@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
-const { Client, Collection, Intents, Permissions } = require("discord.js");
+const { Client, Collection, Intents, Permissions, Options } = require("discord.js");
 const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
@@ -27,10 +27,13 @@ class WelcomeBot extends Client {
                 Intents.FLAGS.GUILD_VOICE_STATES,
                 Intents.FLAGS.GUILD_PRESENCES,
             ],
+            makeCache: Options.cacheWithLimits({
+                MessageManager: 200,
+            }),
             partials: ["CHANNEL"],
-            messageCacheMaxSize: 100,
-            messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
-            messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
+            //messageCacheMaxSize: 100,
+            //messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
+            //messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
         });
         this.username = "Welcome-Bot";
         this.commands = {
