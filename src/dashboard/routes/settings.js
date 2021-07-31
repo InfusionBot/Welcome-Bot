@@ -40,7 +40,11 @@ router.post("/", CheckAuth, async (req, res) => {
         });
     }
     const data = req.body;
-    if (Object.hasOwnProperty.call(data, "bio") && data.bio.length >= 1 && data.bio.length < 50) {
+    if (
+        Object.hasOwnProperty.call(data, "bio") &&
+        data.bio.length >= 1 &&
+        data.bio.length < 50
+    ) {
         userDB.bio = `${data.bio}`;
         userDB.markModified("bio");
     }
