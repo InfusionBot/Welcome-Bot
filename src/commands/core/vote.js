@@ -33,7 +33,7 @@ module.exports = class CMD extends Command {
                 },
             }
         );
-        //userVotedBls = userVotedBls.voted;
+        userVotedBls = userVotedBls.upvoted;
         console.log(userVotedBls);
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
