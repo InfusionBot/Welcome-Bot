@@ -26,7 +26,12 @@ module.exports = class CMD extends Command {
             t("cmds:shards.cmdDesc")
         );
         const table = new AsciiTable()
-            .setHeading(t("misc:shard"), t("misc:servers"), t("cached_users"), t("misc:ping"))
+            .setHeading(
+                t("misc:shard"),
+                t("misc:servers"),
+                t("cached_users"),
+                t("misc:ping")
+            )
             .setAlign(0, AsciiTable.CENTER)
             .setAlign(1, AsciiTable.CENTER)
             .setAlign(2, AsciiTable.CENTER)
