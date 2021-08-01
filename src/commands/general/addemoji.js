@@ -48,13 +48,11 @@ module.exports = class CMD extends Command {
                     embeds: [
                         embed
                             .setTitle(
-                                `
-                                ${
-                                    t("cmds:addemoji.success", {
+                                `${
+                                    `${t("cmds:addemoji.success", {
                                         emoji: `${emoji}`,
                                         emojiName: emoji.name,
-                                    }).split("\n")[1]
-                                } (${emoji.id})`
+                                    }).split("\n")[1]} (${emoji.id})`}`
                             )
                             .setDesc(
                                 t("cmds:addemoji.success", {
@@ -69,10 +67,10 @@ module.exports = class CMD extends Command {
                 message.channel.send({
                     embeds: [
                         embed.setTitle(
-                            t("cmds:addemoji.error", {
+                            `${t("cmds:addemoji.error", {
                                 emojiName: name,
                             }).split("\n")[1]
-                        ),
+                        }`),
                     ],
                 });
             });
