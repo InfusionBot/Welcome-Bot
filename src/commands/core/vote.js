@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const TopggAPI = require("../../classes/Topgg").api;
+const { MessageActionRow, MessageButton } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -37,36 +38,32 @@ module.exports = class CMD extends Command {
         };
         userVotedBls = await userVotedBls();
         //console.log(userVotedBls);
-        const voteDbl =
-            t("cmds:vote.howToVote.dbl", {
-                //link: `https://top.gg/bot/${this.client.user.id}/vote`,
-                link: `https://top.gg/bot/${id}/vote`,
-            }) + " 🎉";
-        const voteBls =
-            t("cmds:vote.howToVote.bls", {
-                //link: `https://botlist.space/bot/${this.client.user.id}/upvote`,
-                link: `https://discordlist.space/bot/${id}/upvote`,
-            }) + " 🎉";
-        const voteServer =
-            t("cmds:vote.howToVoteServer", {
-                link: `https://top.gg/servers/${this.client.config.botGuildId}/vote`,
-            }) + " 🎉";
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
             .setDesc(
-                `${
-                    userVotedDbl
-                        ? `~~${voteDbl}~~\n${t("cmds:vote.alreadyVoted")}`
-                        : voteDbl
-                }\n\n${
-                    userVotedBls
-                        ? `~~${voteBls}~~\n${t("cmds:vote.alreadyVoted")}`
-                        : voteBls
-                }\n\n${voteServer}\n\n${t("cmds:vote.rewards.index")}\n${t(
+                `${t("cmds:vote.rewards.index")}\n${t(
                     "cmds:vote.rewards.coins",
                     { coins: 500 }
                 )}`
             );
-        message.reply({ embeds: [embed] });
+        const buttonTopgg = new MessageButton()
+            .setLabel("top.gg")
+            .setURL(`https://top.gg/bot/${id}/vote`)
+            .setStyle("LINK");
+        if (userVotedDbl) buttonTopgg.setDisabled(true);
+        const buttonBls = new MessageButton()
+            .setLabel("botlist.space")
+            .setURL(`https://discordlist.space/bot/${id}/upvote`)
+            .setStyle("LINK");
+        if (userVotedBls) buttonBls.setDisabled(true);
+        const buttonGuild = new MessageButton()
+            .setLabel(`${this.client.username} Support Server`)
+            .setURL(`https://top.gg/servers/${this.client.config.botGuildId}/vote`)
+            .setStyle("LINK");
+        const row = new MessageActionRow().addComponents(buttonTopgg, buttonBls, buttonGuild);
+        message.reply({
+            embeds: [embed],
+            components: [row],
+        });
     }
 };
