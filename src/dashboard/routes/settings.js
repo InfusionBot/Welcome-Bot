@@ -43,7 +43,7 @@ router.post("/", CheckAuth, async (req, res) => {
     if (
         Object.hasOwnProperty.call(data, "bio") &&
         data.bio.length >= 1 &&
-        data.bio.length < 50
+        data.bio.length < 100
     ) {
         userDB.bio = `${data.bio}`;
         userDB.markModified("bio");

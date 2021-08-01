@@ -25,7 +25,7 @@
                                 <form action="/settings" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:bio2") %></label>
-                                        <textarea maxlength="50" rows="3" name="message" class="form-control" required="true"><%= userDB.bio %></textarea>
+                                        <textarea maxlength="100" rows="3" name="bio" class="form-control" required="true"><%= userDB.bio %></textarea>
                                         <button type="submit" class="btn btn-primary"><%= translate("misc:update") %></button>
                                     </div>
                                 </form>
