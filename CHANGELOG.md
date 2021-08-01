@@ -25,6 +25,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - fix(channel): fix error `ReferenceError: channelIdFromMention is not defined`
 - fix(goodbye): Sometimes, an error would occur to send goodbye logs
 - fix(lang): after switching another language, an error occures when you try to switch back to english
+- fix(addemoji): fix not responding after emoji is added.
 
 ### New features
 

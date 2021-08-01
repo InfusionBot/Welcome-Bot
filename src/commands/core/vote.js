@@ -37,10 +37,10 @@ module.exports = class CMD extends Command {
             .setURL(`https://top.gg/bot/${id}/vote`)
             .setStyle("LINK");
         if (userVotedTopgg) buttonTopgg.setDisabled(true);
-        const buttonDbl = new MessageButton()
+        /*const buttonDbl = new MessageButton()
             .setLabel("discordbotlist.com")
             .setURL(`https://discordbotlist.com/bots/welcome-bot-0914/upvote`)
-            .setStyle("LINK");
+            .setStyle("LINK");*/
         const buttonGuild = new MessageButton()
             .setLabel(`${this.client.username} ${t("misc:support")}`)
             .setURL(
@@ -49,7 +49,7 @@ module.exports = class CMD extends Command {
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(
             buttonTopgg,
-            buttonDbl,
+            //buttonDbl,
             buttonGuild
         );
         message.reply({
