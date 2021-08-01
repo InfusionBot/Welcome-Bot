@@ -57,6 +57,7 @@
     "btoa": "^1.2.1",
     "bufferutil": "^4.0.3",
     "colors-logger": "^0.3.1",
+    "csurf": "^1.11.0",
     "discord-player": "^5.0.0-dev.399105e.1627171348",
     "discord.js": "^13.0.0-dev.30a58dc.1627430624",
     "dotenv": "^10.0.0",
