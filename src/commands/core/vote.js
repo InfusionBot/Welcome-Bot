@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         const id = "848459799783669790";
-        const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
+        const userVotedTopgg = await TopggAPI.hasVoted(message.author.id);
         let userVotedBls = await this.fetchJson(
             `https://api.discordlist.space/v2/bots/${id}/upvotes/status/${message.author.id}`,
             {
@@ -33,7 +33,7 @@ module.exports = class CMD extends Command {
                 },
             }
         );
-        userVotedBls = userVotedBls.voted;
+        //userVotedBls = userVotedBls.voted;
         console.log(userVotedBls);
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
