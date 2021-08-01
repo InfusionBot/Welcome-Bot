@@ -62,7 +62,7 @@ module.exports = class CMD extends Command {
         const row = new MessageActionRow().addComponents(
             buttonTopgg,
             buttonBls,
-            buttonGuild,
+            buttonGuild
         );
         message.reply({
             embeds: [embed],
