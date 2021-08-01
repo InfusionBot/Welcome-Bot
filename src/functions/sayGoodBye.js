@@ -14,13 +14,13 @@ module.exports = async (member) => {
     )
         return "disabled";
     let channel;
-    if (isNaN(guildDB.channel)) {
+    if (isNaN(guildDB.plugins.goodbye.channel)) {
         channel = member.guild.channels.cache.find(
-            (ch) => ch.name === guildDB.channel
+            (ch) => ch.name === guildDB.plugins.goodbye.channel
         );
     } else {
         channel = member.guild.channels.cache.find(
-            (ch) => ch.id === guildDB.channel
+            (ch) => ch.id === guildDB.plugins.goodbye.channel
         );
     }
     if (!channel) {
