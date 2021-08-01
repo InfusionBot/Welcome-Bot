@@ -39,10 +39,6 @@ module.exports = class CMD extends Command {
             )
             .addField("Icon URL:", `[${iconURL}](${message.guild.iconURL()})`)
             .addField(
-                "Members in this server:",
-                `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
-            )
-            .addField(
                 t("categories:general"),
                 `> ${t("misc:channels")}: ${
                     message.guild.channels.cache.size
@@ -66,13 +62,14 @@ module.exports = class CMD extends Command {
                         message.guild.preferredLocale ?? "none"
                     }`
             );
+        const content = message.guild.id;
         switch (args[0]) {
             case "--dm":
-                message.author.send({ embeds: [embed] });
+                message.author.send({ content, embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);
                 break;
             default:
-                message.channel.send({ embeds: [embed] });
+                message.channel.send({ content, embeds: [embed] });
                 break;
         }
     }
