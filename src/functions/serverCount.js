@@ -22,6 +22,7 @@ const sendReq = function (data, options) {
 };
 module.exports = function (client) {
     const servers = client.guilds.cache.size;
+    const users = client.users.cache.size;
     client.logger.log(`Updating server count. Servers: ${servers}`, "debug");
 
     let data;
@@ -84,23 +85,24 @@ module.exports = function (client) {
         client.logger.log("DISCORD_BOTS_token is not set", "warn");
     }
 
-    if (process.env.DISCORDLIST_token) {
+    if (process.env.DBL_token) {
         data = JSON.stringify({
-            server_count: servers,
+            guilds: servers,
+            users,
         });
         options = {
-            hostname: "api.discordlist.space",
-            path: "/v1/bots/" + process.env.BOT_ID,
+            hostname: "discordbotlist.com",
+            path: "/v1/bots/" + process.env.BOT_ID + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: process.env.DISCORDLIST_token,
+                Authorization: process.env.DBL_token,
                 "User-Agent": process.env.userAgent,
             },
         };
         sendReq(data, options);
     } else {
-        client.logger.log("DISCORDLIST_token is not set", "warn");
+        client.logger.log("DBL_token is not set", "warn");
     }
 
     if (process.env.DISSERVNET_token) {

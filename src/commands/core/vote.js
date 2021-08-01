@@ -23,18 +23,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         const id = "848459799783669790";
-        const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
-        let userVotedBls = await this.fetchJson(
-            `https://api.discordlist.space/v2/bots/${id}/upvotes/status/${message.author.id}`,
-            {
-                headers: {
-                    Authorization: process.env.DISCORDLIST_token,
-                    "User-Agent": process.env.userAgent,
-                },
-            }
-        );
-        userVotedBls = userVotedBls.voted;
-        console.log(userVotedBls);
+        const userVotedTopgg = await TopggAPI.hasVoted(message.author.id);
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
             .setDesc(
@@ -47,12 +36,11 @@ module.exports = class CMD extends Command {
             .setLabel("top.gg")
             .setURL(`https://top.gg/bot/${id}/vote`)
             .setStyle("LINK");
-        if (userVotedDbl) buttonTopgg.setDisabled(true);
-        const buttonBls = new MessageButton()
-            .setLabel("botlist.space")
-            .setURL(`https://discordlist.space/bot/${id}/upvote`)
+        if (userVotedTopgg) buttonTopgg.setDisabled(true);
+        const buttonDbl = new MessageButton()
+            .setLabel("discordbotlist.com")
+            .setURL(`https://discordbotlist.com/bots/welcome-bot-0914/upvote`)
             .setStyle("LINK");
-        if (userVotedBls) buttonBls.setDisabled(true);
         const buttonGuild = new MessageButton()
             .setLabel(`${this.client.username} ${t("misc:support")}`)
             .setURL(
@@ -61,7 +49,7 @@ module.exports = class CMD extends Command {
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(
             buttonTopgg,
-            buttonBls,
+            buttonDbl,
             buttonGuild
         );
         message.reply({
