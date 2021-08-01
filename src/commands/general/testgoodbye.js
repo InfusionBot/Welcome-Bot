@@ -24,18 +24,16 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
-        const result = sayGoodBye(message.member);
+    async execute({ message, args }, t) {
+        const result = await sayGoodBye(message.member);
         if (
-            typeof result === "string" &&
-            result.indexOf("channelNotFound") !== -1
+            result === "channelNotFound"
         ) {
-            message.reply(t("errors:channelDoesntExist"));
+            return message.reply(t("errors:channelDoesntExist"));
         } else if (
-            typeof result === "string" &&
-            result.indexOf("disabled") !== -1
+            result === "disabled"
         ) {
-            message.reply(t("cmds:testgoodbye.goodbyeDisabled"));
+            return message.reply(t("cmds:testgoodbye.goodbyeDisabled"));
         }
         message.react("👍");
     }
