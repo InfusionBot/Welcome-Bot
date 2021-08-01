@@ -150,8 +150,8 @@ module.exports = class Command {
     }
 
     /* Simple utils */
-    async fetchJson(url) {
-        const res = await require("node-fetch")(url);
+    async fetchJson(url, options = {}) {
+        const res = await require("node-fetch")(url, options);
         return res.json();
     }
 };
