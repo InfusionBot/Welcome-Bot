@@ -43,7 +43,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
         dclient: req.client,
         translate: req.translate,
         currentURL: req.currentURL,
-        csrfToken: req.session.csrfSecret,
+        csrfToken: req.csrfToken(),
     });
     res.end();
 });
