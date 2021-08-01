@@ -26,13 +26,9 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args }, t) {
         const result = await greetUser(message.member);
-        if (
-            result === "channelNotFound"
-        ) {
+        if (result === "channelNotFound") {
             return message.reply(t("errors:channelDoesntExist"));
-        } else if (
-            result === "disabled"
-        ) {
+        } else if (result === "disabled") {
             return message.reply(t("cmds:testwelcome.welcomeDisabled"));
         }
         message.react("👍");
