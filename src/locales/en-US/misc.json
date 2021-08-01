@@ -30,5 +30,6 @@
   "prefix": "Prefix",
   "update": "Update",
   "presence": "Presence",
-  "message": "Message"
+  "message": "Message",
+  "support": "Support Server"
 }

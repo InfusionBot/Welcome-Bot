@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
         const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
         let userVotedBls = async () => {
             const res = await this.fetchJson(
-                `https://api.discordlist.space/v2/${id}/upvotes/status/${message.author.id}`,
+                `https://api.discordlist.space/v2/bots/${id}/upvotes/status/${message.author.id}`,
                 {
                     headers: {
                         Authorization: process.env.DISCORDLIST_token,
@@ -34,10 +34,10 @@ module.exports = class CMD extends Command {
                     },
                 }
             );
-            return res.voted;
+            return res;
         };
         userVotedBls = await userVotedBls();
-        //console.log(userVotedBls);
+        console.log(userVotedBls);
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
             .setDesc(
@@ -57,7 +57,7 @@ module.exports = class CMD extends Command {
             .setStyle("LINK");
         if (userVotedBls) buttonBls.setDisabled(true);
         const buttonGuild = new MessageButton()
-            .setLabel(`${this.client.username} Support Server`)
+            .setLabel(`${this.client.username} ${t("misc:support")}`)
             .setURL(`https://top.gg/servers/${this.client.config.botGuildId}/vote`)
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(buttonTopgg, buttonBls, buttonGuild);
