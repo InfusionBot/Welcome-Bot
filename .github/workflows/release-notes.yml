@@ -8,6 +8,7 @@ on:
     types:
     - labeled
     - unlabeled
+  workflow_dispatch:
 
 jobs:
   update_release_draft:
