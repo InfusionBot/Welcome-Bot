@@ -73,7 +73,7 @@
     "title": "Vote for Welcome-Bot",
     "rewards": {
       "index": "**Rewards**",
-      "coins": ":dollar: WCoins {{coins ?? 500}}"
+      "coins": ":dollar: WCoins {{coins}}"
     },
     "howToVote": {
       "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
