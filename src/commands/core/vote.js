@@ -25,14 +25,14 @@ module.exports = class CMD extends Command {
         const id = "848459799783669790";
         const userVotedDbl = await TopggAPI.hasVoted(message.author.id);
         let userVotedBls = await this.fetchJson(
-                `https://api.discordlist.space/v2/bots/${id}/upvotes/status/${message.author.id}`,
-                {
-                    headers: {
-                        Authorization: process.env.DISCORDLIST_token,
-                        "User-Agent": process.env.userAgent,
-                    },
-                }
-            );
+            `https://api.discordlist.space/v2/bots/${id}/upvotes/status/${message.author.id}`,
+            {
+                headers: {
+                    Authorization: process.env.DISCORDLIST_token,
+                    "User-Agent": process.env.userAgent,
+                },
+            }
+        );
         userVotedBls = userVotedBls.voted;
         console.log(userVotedBls);
         const embed = new Embed({ color: "success", timestamp: true })
