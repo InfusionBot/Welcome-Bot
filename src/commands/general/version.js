@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        if (!args[0]) args[0] = message.client.botVersion;
+        if (!args[0]) args[0] = message.client.package.version;
         if (args[0].startsWith("v")) {
             args[0] = args[0].replace("v", "");
         }
