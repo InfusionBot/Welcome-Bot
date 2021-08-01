@@ -101,7 +101,7 @@ module.exports = class CMD extends Command {
         if (member?.presence)
             embed.addField(t("misc:presence"), `${member.presence.status}`);
         else embed.addField(t("misc:presence"), `Unknown`);
-        condt content = user.id;
+        const content = user.id;
         switch (args[1]) {
             case "--dm":
                 message.author.send({ content, embeds: [embed] });

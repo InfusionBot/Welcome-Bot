@@ -31,5 +31,13 @@
   "update": "Update",
   "presence": "Presence",
   "message": "Message",
-  "support": "Support Server"
+  "support": "Support Server",
+  "djs": "Discord.js",
+  "djsv": "Discord.js v13",
+  "pong": "Pong",
+  "webheart": "Websocket heartbeat",
+  "shard": "Shard",
+  "servers": "Servers",
+  "cached_users": "Cached Users",
+  "ping": "Ping"
 }
