@@ -11,6 +11,7 @@ const express = require("express");
 
 module.exports.load = (client) => {
     const session = require("express-session");
+    const csurf = require("csurf");
     if (client.debug) client.logger.log("loading dashboard");
     const app = express();
     app.use(express.urlencoded({ extended: true }))
@@ -52,7 +53,8 @@ module.exports.load = (client) => {
                 req.originalUrl
             }`;
             next();
-        });
+        })
+        .use(csurf());
 
     const routesFolder = path.join(__dirname, "/routes");
     const routesFiles = fs

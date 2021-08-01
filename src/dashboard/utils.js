@@ -57,6 +57,7 @@ const CheckAuth = (req, res, next) => {
     }
     return next();
 };
+
 module.exports = {
     fetchGuild,
     fetchUser,

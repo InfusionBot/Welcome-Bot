@@ -39,6 +39,7 @@
                             </div>
                             <div class="card-body">
                                 <form action="/manage/<%= guild.id %>/" method="POST">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <div class="form-group">
                                         <label><%= translate("misc:prefix") %></label>
                                         <input type="text" name="prefix" class="form-control" placeholder="<%= guildDB.prefix %>">
@@ -62,6 +63,7 @@
                                 <h3 class="card-title"><%= translate("dashboard:welcome") %></h3>
                             </div>
                             <div class="card-body">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <form action="/manage/<%= guild.id %>/" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:message") %></label>
@@ -94,6 +96,7 @@
                                 <h3 class="card-title"><%= translate("dashboard:goodbye") %></h3>
                             </div>
                             <div class="card-body">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <form action="/manage/<%= guild.id %>/" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:message") %></label>
