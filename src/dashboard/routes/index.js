@@ -7,7 +7,7 @@ const express = require("express");
 const router = express.Router();
 //GET /
 router.get("/", (req, res) => {
-    res.sendStatus(200);
+    res.redirect("/login");
 });
 //GET /login
 router.get("/login", (req, res) => {

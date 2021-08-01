@@ -6,13 +6,12 @@
 const express = require("express");
 const router = express.Router();
 const { webhook } = require("../../classes/Topgg");
-//POST /dblwebhook
+//POST /topggwebhook
 router.post(
     "/",
     webhook.listener(async (vote, req, res) => {
-        //console.log("/dblwebhook");
         if (vote.type.toLowerCase() === "test")
-            return console.log("dblwebhook test success");
+            return console.log("topggwebhook test success");
         const { client } = req;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
@@ -37,7 +36,7 @@ router.post(
         } else {
             console.log("No votesChannelId in config");
         }
-        res.send("OK");
+        res.sendStatus(200);
         res.end();
     })
 );

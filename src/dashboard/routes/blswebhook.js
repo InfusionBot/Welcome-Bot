@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     } else {
         console.log("No votesChannelId in config");
     }
-    res.send("OK");
+    res.sendStatus(200);
     res.end();
 });
 module.exports = router;
