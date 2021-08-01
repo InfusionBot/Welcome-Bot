@@ -55,7 +55,9 @@ module.exports = class CMD extends Command {
         if (userVotedBls) buttonBls.setDisabled(true);
         const buttonGuild = new MessageButton()
             .setLabel(`${this.client.username} ${t("misc:support")}`)
-            .setURL(`https://top.gg/servers/${this.client.config.botGuildId}/vote`)
+            .setURL(
+                `https://top.gg/servers/${this.client.config.botGuildId}/vote`
+            )
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(
             buttonTopgg,
