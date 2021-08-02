@@ -23,6 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;

@@ -331,15 +331,15 @@
   "goodbye": {
     "cmdDesc": "Manage goodbye logs settings",
     "set": {
-        "channel": "Goodbye channel set to {{channel}}",
-        "message": "Goodbye message set to ```\n{{message}}\n```"
+      "channel": "Goodbye channel set to {{channel}}",
+      "message": "Goodbye message set to ```\n{{message}}\n```"
     },
     "current": {
-        "title": "Current settings for goodbye logs",
-        "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
+      "title": "Current settings for goodbye logs",
+      "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
     },
     "invalid": {
-        "channel": "The channel you provided is invalid"
+      "channel": "The channel you provided is invalid"
     },
     "disabled": "Successfully disabled goodbye logs",
     "enabled": "Successfully enabled goodbye logs"
@@ -358,8 +358,8 @@
     "cmdDesc": "Manage ModLogs settings",
     "channelSet": "ModLogs channel set to {{channel}}",
     "current": {
-        "title": "Current settings for ModLogs",
-        "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
+      "title": "Current settings for ModLogs",
+      "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
     }
   },
   "prefix": {
@@ -368,15 +368,15 @@
   "welcome": {
     "cmdDesc": "Manage welcome logs settings",
     "set": {
-        "channel": "Welcome channel set to {{channel}}",
-        "message": "Welcome message set to ```\n{{message}}\n```"
+      "channel": "Welcome channel set to {{channel}}",
+      "message": "Welcome message set to ```\n{{message}}\n```"
     },
     "current": {
-        "title": "Current settings for welcome logs",
-        "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
+      "title": "Current settings for welcome logs",
+      "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
     },
     "invalid": {
-        "channel": "The channel you provided is invalid"
+      "channel": "The channel you provided is invalid"
     },
     "disabled": "Successfully disabled welcome logs",
     "enabled": "Successfully enabled welcome logs"

@@ -34,8 +34,12 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
-        const missingArgs = t("errors:missingArgs", {prefix: guildDB.prefix, cmd: this.name});
+    //eslint-disable-next-line no-unused-vars
+    async execute({ message, args, guildDB }, t) {
+        const missingArgs = t("errors:missingArgs", {
+            prefix: guildDB.prefix,
+            cmd: this.name,
+        });
         const embed = new Embed();
         if (args[0]) args[0] = args[0].toLowerCase();
         switch (args[0]) {
@@ -46,23 +50,31 @@ module.exports = class CMD extends Command {
                     .replace(`${args[0] ?? ""} `, "")
                     .replace(" ", "");
                 if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                        channel = channelIdFromMention(args[1]);
-                    } else {
-                        channel = message.guild.channels.cache.find(ch => ch.name === channel).id;
-                    }
-                    channel = message.guild.channels.cache.get(channel);
-                    if (!channel) return message.reply(t("cmds:goodbye.invalid.channel"));
-                    guildDB.plugins.goodbye.channel = channel.id;
-                    guildDB.markModified("plugins.goodbye.channel");
-                    message.reply(t("cmds:goodbye.set.channel", {channel: `${channel}`}));
+                    channel = channelIdFromMention(args[1]);
+                } else {
+                    channel = message.guild.channels.cache.find(
+                        (ch => ch.name === channel)
+                    ).id;
+                }
+                channel = message.guild.channels.cache.get(channel);
+                if (!channel)
+                    return message.reply(t("cmds:goodbye.invalid.channel"));
+                guildDB.plugins.goodbye.channel = channel.id;
+                guildDB.markModified("plugins.goodbye.channel");
+                message.reply(
+                    t("cmds:goodbye.set.channel", { channel: `${channel}` })
+                );
                 break;
             case "message":
                 if (!args[1]) return message.reply(missingArgs);
-                const message2 = args.join(" ")
-                .replace(`${args[0] ?? ""} `, "");
+                const message2 = args
+                    .join(" ")
+                    .replace(`${args[0] ?? ""} `, "");
                 guildDB.plugins.goodbye.message = message2.trim();
                 guildDB.markModified("plugins.goodbye.message");
-                message.reply(t("cmds:goodbye.set.message", {message: message2}));
+                message.reply(
+                    t("cmds:goodbye.set.message", { message: message2 })
+                );
                 break;
             case "disable":
                 guildDB.plugins.goodbye.enabled = false;
@@ -76,15 +88,30 @@ module.exports = class CMD extends Command {
                 break;
             default:
                 if (!args.length) {
-                    const channel = message.guild.channels.cache.get(guildDB.plugins.goodbye.channel) ?? t("misc:not_set");
+                    const channel =
+                        message.guild.channels.cache.get(
+                            guildDB.plugins.goodbye.channel
+                        ) ?? t("misc:not_set");
                     embed
-                    .setTitle(t("cmds:goodbye.current.title"))
-                    .setDesc(t("cmds:goodbye.current.desc", {prefix: guildDB.prefix}))
-                    .addField(t("misc:channel"), `${channel}`)
-                    .addField(t("misc:message"), `\`\`\`\n${guildDB.plugins.goodbye.message}\n\`\`\``);
-                    message.channel.send({embeds: [embed]});
+                        .setTitle(t("cmds:goodbye.current.title"))
+                        .setDesc(
+                            t("cmds:goodbye.current.desc", {
+                                prefix: guildDB.prefix,
+                            })
+                        )
+                        .addField(t("misc:channel"), `${channel}`)
+                        .addField(
+                            t("misc:message"),
+                            `\`\`\`\n${guildDB.plugins.goodbye.message}\n\`\`\``
+                        );
+                    message.channel.send({ embeds: [embed] });
                 } else {
-                    return message.reply(t("errors:invalidSubcmd", {prefix: guildDB.prefix, cmd: this.name}));
+                    return message.reply(
+                        t("errors:invalidSubcmd", {
+                            prefix: guildDB.prefix,
+                            cmd: this.name,
+                        })
+                    );
                 }
                 this.removeCooldown(message.author);
                 break;

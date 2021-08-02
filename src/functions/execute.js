@@ -147,7 +147,10 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.requirements?.args && !args.length) {
-            let reply = t("errors:missingArgs", {prefix: guildDB.prefix, cmd: command.name});
+            let reply = t("errors:missingArgs", {
+                prefix: guildDB.prefix,
+                cmd: command.name,
+            });
 
             if (command.usage) {
                 reply += `\nUsage: \`${guildDB.prefix}${command.name} ${command.usage}\``;

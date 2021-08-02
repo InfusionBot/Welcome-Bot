@@ -26,7 +26,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
+    async execute({ message, args, guildDB }, t) {
         args[0] = args[0] ? args[0] : "";
         let { disabled } = guildDB;
         const cmd = this.client.commands.enabled.find(

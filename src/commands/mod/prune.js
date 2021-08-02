@@ -37,6 +37,7 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB }, t) {
         let messages;
         const errMsg =
@@ -79,7 +80,11 @@ module.exports = class CMD extends Command {
         } else if (messages) {
                 message.delete();
                 message.channel.bulkDelete(messages, true).catch((err) => {
-                    message.client.logger.log("Error when PRUNING messages", "error", ["CMDS"]);
+                    message.client.logger.log(
+                        "Error when PRUNING messages",
+                        "error",
+                        ["CMDS"]
+                    );
                     console.log(err);
                     return message.channel.send(errMsg);
                 });

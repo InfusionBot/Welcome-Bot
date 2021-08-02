@@ -25,7 +25,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {//eslint-disable-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
+    async execute({ message, args }, t) {
         const result = await greetUser(message.member);
         if (result === "channelNotFound") {
             return message.reply(t("errors:channelDoesntExist"));

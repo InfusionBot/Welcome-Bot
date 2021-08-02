@@ -19,7 +19,10 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|val|Embed" }],
+    "no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "req|res|next|val|Embed" }
+    ],
     "prefer-const": "warn",
     "no-lonely-if": "error",
     "no-multi-spaces": "error"
