@@ -16,7 +16,7 @@
     "**New features**",
     "feat: New cmd `emojify`",
     "feat: New cmd `daily` and new category `Economy`",
-    "feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`",
+    "feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`, `use`",
     "feat: New cmd `report`",
     "feat: New cmd `duck`",
     "feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages",

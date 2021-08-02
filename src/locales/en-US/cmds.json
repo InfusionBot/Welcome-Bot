@@ -135,6 +135,14 @@
     "cmdDesc": "Set your Welcome-Bot account's bio!",
     "success": "Successfully set bio to **{{bio}}**"
   },
+  "use": {
+    "cmdDesc": "Use your items",
+    "notAnItem": "What are you thinking, that is not at all an item",
+    "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
+    "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
+    "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",
+    "banknote": "Your bank space increased by {{added}}"
+  },
   "withdraw": {
     "cmdDesc": "Withdraw money from your bank",
     "notAvailable": "Woah... You don't have that much money in your bank!",
