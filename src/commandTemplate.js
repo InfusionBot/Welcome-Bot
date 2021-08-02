@@ -32,7 +32,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB, userDB }, t) { //eslint-disable-line no-unused-vars
+    execute({ message, args, guildDB, userDB }, t) {
+        //eslint-disable-line no-unused-vars
         return;
     }
 };

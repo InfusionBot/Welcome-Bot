@@ -30,7 +30,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
+    async execute({ message, args, guildDB }, t) {
+        //eslint-disable-line no-unused-vars
         const embed = new Embed({ color: "red" }).setTitle(
             t("cmds:disable.title")
         );

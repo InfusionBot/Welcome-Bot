@@ -20,9 +20,7 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                 },
                 usage: "(subcommand)",
-                subcommands: [
-                    { name: "set", desc: "Set ModLogs channel" },
-                ],
+                subcommands: [{ name: "set", desc: "Set ModLogs channel" }],
                 disabled: false,
                 cooldown: 10,
                 category: "Setup",
@@ -31,7 +29,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
+    async execute({ message, args, guildDB }, t) {
+        //eslint-disable-line no-unused-vars
         const subcommand = args[0] ? args[0].toLowerCase() : "";
         const embed = new Embed();
         let channel = args
@@ -41,26 +40,42 @@ module.exports = class CMD extends Command {
         switch (subcommand) {
             case "set":
                 if (!args[1]) return message.reply(missingArgs);
-                    if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                        channel = channelIdFromMention(args[1]);
-                    } else {
-                        channel = message.guild.channels.cache.find(ch = ch.name === channel).id;
-                    }
-                    channel = message.guild.channels.cache.get(channel);
-                    guildDB.plugins.modlogs = channel.id;
-                    guildDB.markModified("plugins.modlogs");
-                    message.reply(t("cmds:modlogs.channelSet", {channel: `${channel}`}));
+                if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
+                    channel = channelIdFromMention(args[1]);
+                } else {
+                    channel = message.guild.channels.cache.find(
+                        (ch = ch.name === channel)
+                    ).id;
+                }
+                channel = message.guild.channels.cache.get(channel);
+                guildDB.plugins.modlogs = channel.id;
+                guildDB.markModified("plugins.modlogs");
+                message.reply(
+                    t("cmds:modlogs.channelSet", { channel: `${channel}` })
+                );
                 break;
             default:
                 if (!args.length) {
-                    const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs) ?? t("misc:not_set");
+                    const channel =
+                        message.guild.channels.cache.get(
+                            guildDB.plugins.modlogs
+                        ) ?? t("misc:not_set");
                     embed
-                    .setTitle(t("cmds:modlogs.current.title"))
-                    .setDesc(t("cmds:modlogs.current.desc", {prefix: guildDB.prefix}))
-                    .addField(t("misc:channel"), `${channel}`)
-                    message.channel.send({embeds: [embed]});
+                        .setTitle(t("cmds:modlogs.current.title"))
+                        .setDesc(
+                            t("cmds:modlogs.current.desc", {
+                                prefix: guildDB.prefix,
+                            })
+                        )
+                        .addField(t("misc:channel"), `${channel}`);
+                    message.channel.send({ embeds: [embed] });
                 } else {
-                    return message.reply(t("errors:invalidSubcmd", {prefix: guildDB.prefix, cmd: this.name}));
+                    return message.reply(
+                        t("errors:invalidSubcmd", {
+                            prefix: guildDB.prefix,
+                            cmd: this.name,
+                        })
+                    );
                 }
                 break;
         }
