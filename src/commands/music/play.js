@@ -69,7 +69,7 @@ module.exports = class CMD extends Command {
         } catch (e) {
             message.client.player.deleteQueue(message.guild);
             message.client.logger.log(
-                "Error when connectioning to voice channel",
+                "Error when connecting to voice channel",
                 "error",
                 ["VOICE"]
             );
