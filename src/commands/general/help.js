@@ -87,8 +87,8 @@ module.exports = class CMD extends Command {
                 );
             });
             pages[0].setDescription(t("cmds:help.all"));
-            pages[0].addField("No of Commands", `${commands.size}`);
-            pages[0].addField("No of categories", `${categories.length}`);
+            pages[0].addField("No. of Commands", `${commands.size}`);
+            pages[0].addField("No. of categories", `${categories.length}`);
             pages[0].addField(
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`

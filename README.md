@@ -74,11 +74,14 @@ The bot requires the following permissions:
 - Read Message History
 - Manage Messages
 - Embed links
+- Manage Emojis and Stickers - addemoji command
+- Connect & Speak - music commands
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
-- Ban Members
-- Kick Members
+- Ban Members - ban & unban command
+- Kick Members - kick command
+- Manage Roles - mute command
 
 To include the `moderation` feature, use this invite link:
 > https://dsc.gg/welcome-bot
