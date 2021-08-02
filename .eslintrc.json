@@ -16,6 +16,7 @@
     "no-await-in-loop": "warn",
     "no-invalid-this": "error",
     "eol-last": "warn",
+    "end-of-line": "auto",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],

@@ -42,10 +42,13 @@ module.exports = class CMD extends Command {
         });
         const embed = new Embed();
         if (args[0]) args[0] = args[0].toLowerCase();
+
+        let channel, message2;
+
         switch (args[0]) {
             case "channel":
                 if (!args[1]) return message.reply(missingArgs);
-                let channel = args
+                channel = args
                     .join(" ")
                     .replace(`${args[0] ?? ""} `, "")
                     .replace(" ", "");
@@ -67,9 +70,7 @@ module.exports = class CMD extends Command {
                 break;
             case "message":
                 if (!args[1]) return message.reply(missingArgs);
-                const message2 = args
-                    .join(" ")
-                    .replace(`${args[0] ?? ""} `, "");
+                message2 = args.join(" ").replace(`${args[0] ?? ""} `, "");
                 guildDB.plugins.welcome.message = message2.trim();
                 guildDB.markModified("plugins.welcome.message");
                 message.reply(
