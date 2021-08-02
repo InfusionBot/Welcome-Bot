@@ -87,8 +87,8 @@ module.exports = class CMD extends Command {
                 );
             });
             pages[0].setDescription(t("cmds:help.all"));
-            pages[0].addField("No of Commands", `${commands.size}`);
-            pages[0].addField("No of categories", `${categories.length}`);
+            pages[0].addField("No. of Commands", `${commands.size}`);
+            pages[0].addField("No. of categories", `${categories.length}`);
             pages[0].addField(
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
@@ -214,12 +214,12 @@ module.exports = class CMD extends Command {
                     t
                 ).join(", ")} permission(s) to execute this command.`;
             }
-            pages[0].addField("Description:", desc);
+            pages[0].addField("Description", desc);
             if (command.aliases && command.aliases?.length)
                 pages[0].addField("Aliases: ", command.aliases.join(", "));
             if (command.memberPerms && command.memberPerms.length > 0)
                 pages[0].addField(
-                    "Member Permissions:",
+                    "Member Permissions",
                     `You need ${beautifyPerms(
                         command.memberPerms,
                         message.client.allPerms,
@@ -233,11 +233,11 @@ module.exports = class CMD extends Command {
                         `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
                     );
                 }
-                pages[0].addField("Subcommands:", subcommands.join(`\n`));
+                pages[0].addField("Subcommands", subcommands.join(`\n`));
             }
             if (command.usage)
                 pages[0].addField(
-                    "Usage:",
+                    "Usage",
                     `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
                         `\n**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.`
                 );

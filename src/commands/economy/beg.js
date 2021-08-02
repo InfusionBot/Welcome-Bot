@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message, args, userDB }, t) {
         const begCoins = 200;
 
         let wcoins = Math.floor(Math.random() * begCoins);

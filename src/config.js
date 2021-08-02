@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("dotenv").config();
-const { Permissions } = require("discord.js");
+//const { Permissions } = require("discord.js");
 const defaultPerms = require("./data/defaultPerms");
 module.exports = {
     botGuildId: "836854115526770708",

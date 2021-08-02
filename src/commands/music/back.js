@@ -23,6 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
@@ -88,16 +89,14 @@ module.exports = class CMD extends Command {
                     return message.reply(t("misc:timeout"));
                 }
             });
+        } else if (queue.back()) {
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:back.success"))],
+            });
         } else {
-            if (queue.back()) {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:back.success"))],
-                });
-            } else {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:back.failure"))],
-                });
-            }
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:back.failure"))],
+            });
         }
     }
 };

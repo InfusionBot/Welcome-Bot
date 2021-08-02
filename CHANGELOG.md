@@ -31,20 +31,15 @@ The displayed date is in the format `DD-MM-YYYY`
 
 - feat: New cmd `emojify`
 - feat: New cmd `daily` and new category `Economy`
-- feat: New cmd `balance`
-- feat: New cmd `deposit`
-- feat: New cmd `give`
-- feat: New cmd `beg`
-- feat: New cmd `withdraw`
-- feat: New cmd `profile`
-- feat: New cmd `setbio`
-- feat: New cmd `rob`
-- feat: New cmd `vote`
+- feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`
 - feat: New cmd `report`
 - feat: New cmd `duck`
 - feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages
 - feat: New cmd `membercount`
 - Dashboard
+- feat: New cmd `welcome`
+- feat: New cmd `goodbye`
+- feat: New cmd `modlogs`
 
 ### Changes
 

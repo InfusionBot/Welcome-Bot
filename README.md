@@ -24,7 +24,7 @@ Feel free to add a star ⭐ to the repository to promote the project!
 Welcome-Bot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 60+ commands
+- 🥳 70+ commands
 
 ### Customizable Settings
 
@@ -50,7 +50,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 ## Commands
 
-Welcome-Bot has more than 60 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
+Welcome-Bot has more than 70 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
 
 ## Default values
 
@@ -74,11 +74,14 @@ The bot requires the following permissions:
 - Read Message History
 - Manage Messages
 - Embed links
+- Manage Emojis and Stickers - addemoji command
+- Connect & Speak - music commands
 
 Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
 
-- Ban Members
-- Kick Members
+- Ban Members - ban & unban command
+- Kick Members - kick command
+- Manage Roles - mute command
 
 To include the `moderation` feature, use this invite link:
 > https://dsc.gg/welcome-bot

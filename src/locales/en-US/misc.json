@@ -39,5 +39,6 @@
   "shard": "Shard",
   "servers": "Servers",
   "cached_users": "Cached Users",
-  "ping": "Ping"
+  "ping": "Ping",
+  "not_set": "Not set"
 }

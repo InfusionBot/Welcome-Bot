@@ -50,10 +50,11 @@ module.exports = class CMD extends Command {
         }
         let userDB2;
         try {
-            userDB2 = await getUser(user.id);
+            if (message.author.id !== user.id) userDB2 = await getUser(user.id);
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
+        if (message.author.id === user.id) userDB2 = userDB;
         const { wallet, bank, bankLimit } = userDB2;
         if (typeof bankLimit !== "number") {
             return message.reply(t("errors:noAcc"));
