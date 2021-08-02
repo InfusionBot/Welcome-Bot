@@ -80,7 +80,8 @@ module.exports = class CMD extends Command {
             if (messages) {
                 message.delete();
                 message.channel.bulkDelete(messages, true).catch((err) => {
-                    message.client.logger.log(err, "error", ["PRUNING"]);
+                    message.client.logger.log("Error when PRUNING messages", "error", ["CMDS"]);
+                    console.log(err);
                     return message.channel.send(errMsg);
                 });
             } else {

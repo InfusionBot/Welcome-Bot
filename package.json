@@ -22,6 +22,8 @@
     "feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages",
     "feat: New cmd `membercount`",
     "Dashboard",
+    "feat: New cmd `welcome`",
+    "feat: New cmd `goodbye`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

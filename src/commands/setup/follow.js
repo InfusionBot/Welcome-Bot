@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) {
+    async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
         let channelId;
         if (args[0].startsWith("<#")) {
             channelId = channelIdFromMention(args[0]);

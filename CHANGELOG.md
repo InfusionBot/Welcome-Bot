@@ -37,6 +37,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages
 - feat: New cmd `membercount`
 - Dashboard
+- feat: New cmd `welcome`
+- feat: New cmd `goodbye`
 
 ### Changes
 

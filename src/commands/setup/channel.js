@@ -21,7 +21,6 @@ module.exports = class CMD extends Command {
                 },
                 usage: "(subcommand)",
                 subcommands: [
-                    { name: "set", desc: "Set Goodbye channel" },
                     { name: "setMod", desc: "Set Moderation channel" },
                     { name: "resetMod", desc: "Reset Moderation channel" },
                 ],
@@ -40,19 +39,6 @@ module.exports = class CMD extends Command {
             .replace(`${args[0] ?? ""} `, "")
             .replace(" ", ""); //replace empty space as there is no empty space in a channel name
         switch (subcommand) {
-            case "set":
-                if (args[1]) {
-                    if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                        channel = channelIdFromMention(args[1]);
-                    }
-                    guildDB.plugins.goodbye.channel = channel;
-                    message.reply(`Goodbye Channel set to \`${channel}\``);
-                } else {
-                    message.reply(
-                        "Please supply valid value for setting channel."
-                    );
-                }
-                break;
             case "setmod":
                 if (args[1]) {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
