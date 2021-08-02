@@ -90,13 +90,13 @@ module.exports = class CMD extends Command {
                 }
             });
         } else if (queue.back()) {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:back.success"))],
-                });
-            } else {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:back.failure"))],
-                });
-            }
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:back.success"))],
+            });
+        } else {
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:back.failure"))],
+            });
+        }
     }
 };

@@ -31,7 +31,10 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB }, t) {
-        const missingArgs = t("errors:missingArgs", {prefix: guildDB.prefix, cmd: this.name});
+        const missingArgs = t("errors:missingArgs", {
+            prefix: guildDB.prefix,
+            cmd: this.name,
+        });
         const subcommand = args[0] ? args[0].toLowerCase() : "";
         const embed = new Embed();
         let channel = args
@@ -45,7 +48,7 @@ module.exports = class CMD extends Command {
                     channel = channelIdFromMention(args[1]);
                 } else {
                     channel = message.guild.channels.cache.find(
-                        (ch => ch.name === channel)
+                        (ch) => ch.name === channel
                     ).id;
                 }
                 channel = message.guild.channels.cache.get(channel);

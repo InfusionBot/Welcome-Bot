@@ -89,13 +89,13 @@ module.exports = class CMD extends Command {
                 }
             });
         } else if (queue.skip()) {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:skip.success"))],
-                });
-            } else {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:skip.failure"))],
-                });
-            }
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:skip.success"))],
+            });
+        } else {
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:skip.failure"))],
+            });
+        }
     }
 };

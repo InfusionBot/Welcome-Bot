@@ -78,19 +78,19 @@ module.exports = class CMD extends Command {
                 return message.channel.send(errMsg);
             });
         } else if (messages) {
-                message.delete();
-                message.channel.bulkDelete(messages, true).catch((err) => {
-                    message.client.logger.log(
-                        "Error when PRUNING messages",
-                        "error",
-                        ["CMDS"]
-                    );
-                    console.log(err);
-                    return message.channel.send(errMsg);
-                });
-            } else {
+            message.delete();
+            message.channel.bulkDelete(messages, true).catch((err) => {
+                message.client.logger.log(
+                    "Error when PRUNING messages",
+                    "error",
+                    ["CMDS"]
+                );
+                console.log(err);
                 return message.channel.send(errMsg);
-            }
+            });
+        } else {
+            return message.channel.send(errMsg);
+        }
         message.channel
             .send("Pruning done 👍. This message will be deleted in 5 seconds")
             .then((msg) => {
