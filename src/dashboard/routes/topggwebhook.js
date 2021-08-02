@@ -15,7 +15,8 @@ router.post(
         const { client } = req;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
-        if (!await client.userDbFuncs.getUser(vUser.id)) await client.userDbFuncs.addUser(vUser.id);
+        if (!(await client.userDbFuncs.getUser(vUser.id)))
+            await client.userDbFuncs.addUser(vUser.id);
         let userDB = await client.userDbFuncs.getUser(vUser.id);
         userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
         userDB.markModified("wallet");
