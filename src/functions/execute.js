@@ -38,9 +38,9 @@ module.exports = async (message, guildDB) => {
             );
 
         /*if (
-            message.client.disabled &&
-            (message.client.disabled.get(commandName) ||
-                message.client.disabled.find(
+            message.client.commands.disabled &&
+            (message.client.commands.disabled.get(commandName) ||
+                message.client.commands.disabled.find(
                     (cmd) => cmd.aliases.length && cmd.aliases.includes(commandName)
                 ))
         ) {
@@ -56,7 +56,7 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
-        if (guildDB.disabled.includes(command.name)) return;
+        if (guildDB.disabled.includes(command.name)) return; //ignore disabled commands
 
         if (
             message.guild &&
@@ -147,20 +147,15 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.requirements?.args && !args.length) {
-            let reply = t("errors:missingArgs");
+            let reply = t("errors:missingArgs", {prefix: guildDB.prefix, cmd: command.name});
 
             if (command.usage) {
-                reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
+                reply += `\nUsage: \`${guildDB.prefix}${command.name} ${command.usage}\``;
             }
 
-            embed.setTitle("No args provided");
             embed.addField(
                 `You didn't provide any arguments, ${message.author.tag}!`,
                 reply
-            );
-            embed.addField(
-                "Want help?",
-                `Send \`${guildDB.prefix}help ${command.name}\``
             );
             return message.reply({ embeds: [embed] });
         }

@@ -21,9 +21,8 @@ module.exports = class CMD extends Command {
                 },
                 usage: "(subcommand)",
                 subcommands: [
-                    { name: "set", desc: "Set Welcome channel" },
+                    { name: "set", desc: "Set Goodbye channel" },
                     { name: "setMod", desc: "Set Moderation channel" },
-                    { name: "reset", desc: "Reset Welcome channel" },
                     { name: "resetMod", desc: "Reset Moderation channel" },
                 ],
                 disabled: false,
@@ -46,8 +45,8 @@ module.exports = class CMD extends Command {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         channel = channelIdFromMention(args[1]);
                     }
-                    guildDB.plugins.welcome.channel = channel;
-                    message.reply(`Welcome Channel set to \`${channel}\``);
+                    guildDB.plugins.goodbye.channel = channel;
+                    message.reply(`Goodbye Channel set to \`${channel}\``);
                 } else {
                     message.reply(
                         "Please supply valid value for setting channel."
@@ -67,26 +66,12 @@ module.exports = class CMD extends Command {
                     );
                 }
                 break;
-            case "reset":
-                //Reset channel
-                guildDB.plugins.welcome.channel = "member-log";
-                message.reply(
-                    "Welcome Channel reset to `" + guildDB.channel + "`"
-                );
-                break;
-            case "resetmod":
-                //Reset mod channel
-                guildDB.plugins.modlogs = "mod-log";
-                message.reply(
-                    "ModLogs Channel reset to `" + guildDB.plugins.modlogs + "`"
-                );
-                break;
             default:
                 if (!args.length) {
                     //Get channel
                     message.reply(
-                        "Welcome Channel currently is set to `" +
-                            guildDB.plugins.welcome.channel +
+                        "Goodbye Channel currently is set to `" +
+                            guildDB.plugins.goodbye.channel +
                             "`"
                     );
                     //Get mod channel

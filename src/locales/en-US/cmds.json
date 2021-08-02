@@ -344,5 +344,21 @@
   },
   "prefix": {
     "cmdDesc": "Manage prefix for this server"
+  },
+  "welcome": {
+    "cmdDesc": "Manage welcome logs settings",
+    "set": {
+        "channel": "Welcome channel set to `{{channel}}`",
+        "message": "Welcome message set to ```\n{{message}}\n```"
+    },
+    "current": {
+        "title": "Current settings for welcome logs",
+        "desc": "These are the current Welcome-settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
+    },
+    "invalid": {
+        "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled welcome logs",
+    "enabled": "Successfully enabled welcome logs"
   }
 }
