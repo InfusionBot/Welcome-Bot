@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message, args, userDB }, t) {
         let user;
         if (args[0]) {
             if (args[0].startsWith("<@")) {
@@ -48,10 +48,11 @@ module.exports = class CMD extends Command {
         }
         let userDB2;
         try {
-            userDB2 = await getUser(user.id);
+            if (message.author.id !== user.id) userDB2 = await getUser(user.id);
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
+        if (message.author.id === user.id) userDB2 = userDB;
         const { wallet, bank, bankLimit } = userDB2;
         if (typeof bankLimit !== "number") {
             return message.reply(t("errors:noAcc"));
