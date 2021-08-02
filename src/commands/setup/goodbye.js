@@ -5,13 +5,15 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const { channelIdFromMention } = require("../../helpers/Util.js");
+const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "goodbye",
                 aliases: ["goodbyelogs"],
-                memberPerms: [],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
@@ -32,7 +34,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) { //eslint-disable-line no-unused-vars
+    async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
         const missingArgs = t("errors:missingArgs", {prefix: guildDB.prefix, cmd: this.name});
         const embed = new Embed();
         if (args[0]) args[0] = args[0].toLowerCase();
@@ -74,7 +76,7 @@ module.exports = class CMD extends Command {
                 break;
             default:
                 if (!args.length) {
-                    const channel = message.guild.channels.cache.get(guildDB.plugins.goodbye.channel) ?? "Not set";
+                    const channel = message.guild.channels.cache.get(guildDB.plugins.goodbye.channel) ?? t("misc:not_set");
                     embed
                     .setTitle(t("cmds:goodbye.current.title"))
                     .setDesc(t("cmds:goodbye.current.desc", {prefix: guildDB.prefix}))

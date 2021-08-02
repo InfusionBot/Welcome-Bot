@@ -39,6 +39,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - Dashboard
 - feat: New cmd `welcome`
 - feat: New cmd `goodbye`
+- feat: New cmd `modlogs`
 
 ### Changes
 

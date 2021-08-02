@@ -24,6 +24,7 @@
     "Dashboard",
     "feat: New cmd `welcome`",
     "feat: New cmd `goodbye`",
+    "feat: New cmd `modlogs`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

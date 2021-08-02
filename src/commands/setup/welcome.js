@@ -6,13 +6,14 @@
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 const { channelIdFromMention } = require("../../helpers/Util.js");
+const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "welcome",
                 aliases: ["welcomelogs"],
-                memberPerms: [],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
@@ -75,7 +76,7 @@ module.exports = class CMD extends Command {
                 break;
             default:
                 if (!args.length) {
-                    const channel = message.guild.channels.cache.get(guildDB.plugins.welcome.channel) ?? "Not set";
+                    const channel = message.guild.channels.cache.get(guildDB.plugins.welcome.channel) ?? t("misc:not_set");
                     embed
                     .setTitle(t("cmds:welcome.current.title"))
                     .setDesc(t("cmds:welcome.current.desc", {prefix: guildDB.prefix}))

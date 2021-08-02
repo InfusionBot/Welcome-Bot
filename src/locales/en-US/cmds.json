@@ -315,10 +315,6 @@
   "servers-list": {
     "cmdDesc": "Show the list of servers the bot is in."
   },
-  "channel": {
-    "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
-    "invalidArgs": "Invalid args, please use proper subcommands, see "
-  },
   "disable": {
     "cmdDesc": "Disable commands.",
     "title": "Currently disabled commands",
@@ -332,39 +328,10 @@
   "follow": {
     "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
   },
-  "lang": {
-    "cmdDesc": "Change language",
-    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language set to {{lang}}",
-    "show": "Language successfully set to {{lang}}",
-    "langNotProvided": "You have not provided lang argument"
-  },
-  "message": {
-    "cmdDesc": "Manage welcome message for this server"
-  },
-  "prefix": {
-    "cmdDesc": "Manage prefix for this server"
-  },
-  "welcome": {
-    "cmdDesc": "Manage welcome logs settings",
-    "set": {
-        "channel": "Welcome channel set to `{{channel}}`",
-        "message": "Welcome message set to ```\n{{message}}\n```"
-    },
-    "current": {
-        "title": "Current settings for welcome logs",
-        "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
-    },
-    "invalid": {
-        "channel": "The channel you provided is invalid"
-    },
-    "disabled": "Successfully disabled welcome logs",
-    "enabled": "Successfully enabled welcome logs"
-  },
   "goodbye": {
     "cmdDesc": "Manage goodbye logs settings",
     "set": {
-        "channel": "Goodbye channel set to `{{channel}}`",
+        "channel": "Goodbye channel set to {{channel}}",
         "message": "Goodbye message set to ```\n{{message}}\n```"
     },
     "current": {
@@ -376,5 +343,42 @@
     },
     "disabled": "Successfully disabled goodbye logs",
     "enabled": "Successfully enabled goodbye logs"
+  },
+  "lang": {
+    "cmdDesc": "Change language",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
+    "success": "Language set to {{lang}}",
+    "show": "Language successfully set to {{lang}}",
+    "langNotProvided": "You have not provided lang argument"
+  },
+  "message": {
+    "cmdDesc": "Manage welcome message for this server"
+  },
+  "modlogs": {
+    "cmdDesc": "Manage ModLogs settings",
+    "channelSet": "ModLogs channel set to {{channel}}",
+    "current": {
+        "title": "Current settings for ModLogs",
+        "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
+    }
+  },
+  "prefix": {
+    "cmdDesc": "Manage prefix for this server"
+  },
+  "welcome": {
+    "cmdDesc": "Manage welcome logs settings",
+    "set": {
+        "channel": "Welcome channel set to {{channel}}",
+        "message": "Welcome message set to ```\n{{message}}\n```"
+    },
+    "current": {
+        "title": "Current settings for welcome logs",
+        "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
+    },
+    "invalid": {
+        "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled welcome logs",
+    "enabled": "Successfully enabled welcome logs"
   }
 }
