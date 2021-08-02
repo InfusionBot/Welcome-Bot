@@ -48,7 +48,7 @@ module.exports = class CMD extends Command {
                 if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         channel = channelIdFromMention(args[1]);
                     } else {
-                        channel = message.guild.channels.cache.find(ch = ch.name === channel).id;
+                        channel = message.guild.channels.cache.find(ch => ch.name === channel).id;
                     }
                     channel = message.guild.channels.cache.get(channel);
                     if (!channel) return message.reply(t("cmds:welcome.invalid.channel"));

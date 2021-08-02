@@ -88,8 +88,7 @@ module.exports = class CMD extends Command {
                     return message.reply(t("misc:timeout"));
                 }
             });
-        } else {
-            if (queue.skip()) {
+        } else if (queue.skip()) {
                 msg.edit({
                     embeds: [embed.setDesc(t("cmds:skip.success"))],
                 });
@@ -98,6 +97,5 @@ module.exports = class CMD extends Command {
                     embeds: [embed.setDesc(t("cmds:skip.failure"))],
                 });
             }
-        }
     }
 };

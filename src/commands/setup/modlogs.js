@@ -32,6 +32,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) { //eslint-disable-line no-unused-vars
+        const missingArgs = t("errors:missingArgs", {prefix: guildDB.prefix, cmd: this.name});
         const subcommand = args[0] ? args[0].toLowerCase() : "";
         const embed = new Embed();
         let channel = args
@@ -44,7 +45,7 @@ module.exports = class CMD extends Command {
                     if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                         channel = channelIdFromMention(args[1]);
                     } else {
-                        channel = message.guild.channels.cache.find(ch = ch.name === channel).id;
+                        channel = message.guild.channels.cache.find(ch => ch.name === channel).id;
                     }
                     channel = message.guild.channels.cache.get(channel);
                     guildDB.plugins.modlogs = channel.id;
