@@ -26,18 +26,18 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args }, t) {
         args[1] = args[1] ? args[1].toLowerCase() : "";
-        let embed = new Embed({ color: "green", timestamp: true })
+        const embed = new Embed({ color: "green", timestamp: true })
             .setTitle(t("misc:sinfo"))
             .setDesc(`${message.guild.id}`)
             .setThumbnail(message.guild.iconURL());
-        let iconURL = message.guild.iconURL().slice(0, 35) + "...";
+        const iconURL = message.guild.iconURL().slice(0, 35) + "...";
         message.guild.members.fetch();
         embed
-            .addField("Icon URL:", `[${iconURL}](${message.guild.iconURL()})`)
             .addField(
-                "Members in this server:",
-                `${message.guild.members.cache.filter((m) => !m.user.bot).size}`
+                `${this.client.customEmojis.owner} ${t("misc:owner")}`,
+                `<@${message.guild.ownerId}>`
             )
+            .addField("Icon URL:", `[${iconURL}](${message.guild.iconURL()})`)
             .addField(
                 t("categories:general"),
                 `> ${t("misc:channels")}: ${
@@ -62,14 +62,14 @@ module.exports = class CMD extends Command {
                         message.guild.preferredLocale ?? "none"
                     }`
             );
-        message.guild.members.cache.clear();
+        const content = message.guild.id;
         switch (args[0]) {
             case "--dm":
-                message.author.send({ embeds: [embed] });
+                message.author.send({ content, embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);
                 break;
             default:
-                message.channel.send({ embeds: [embed] });
+                message.channel.send({ content, embeds: [embed] });
                 break;
         }
     }

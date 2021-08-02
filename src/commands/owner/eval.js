@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args, guildDB, userDB }, t) {
-        const client = message.client;
+        const { client } = this;
         const content = args.join(" ");
         const embed = new Embed({ color: "success" })
             .setTitle(t("cmds:eval.cmdDesc"))
@@ -40,7 +40,15 @@ module.exports = class CMD extends Command {
         const clean = (text) => {
             if (typeof text === "string") {
                 if (text.includes(message.client.token)) {
+                    //Client token
                     text = text.replace(message.client.token, "T0K3N");
+                }
+                if (text.includes(message.client.config.dashboard.secret)) {
+                    //Client secret
+                    text = text.replace(
+                        message.client.config.dashboard.secret,
+                        "SECR3T"
+                    );
                 }
                 return text
                     .replace(/`/g, "`" + String.fromCharCode(8203))

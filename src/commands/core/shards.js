@@ -26,7 +26,12 @@ module.exports = class CMD extends Command {
             t("cmds:shards.cmdDesc")
         );
         const table = new AsciiTable()
-            .setHeading("Shard", "Servers", "Cached Users", "Ping")
+            .setHeading(
+                t("misc:shard"),
+                t("misc:servers"),
+                t("cached_users"),
+                t("misc:ping")
+            )
             .setAlign(0, AsciiTable.CENTER)
             .setAlign(1, AsciiTable.CENTER)
             .setAlign(2, AsciiTable.CENTER)
@@ -47,8 +52,9 @@ module.exports = class CMD extends Command {
                 `${ping[shardId]}ms`
             );
         });
+        embed.setDesc(`\`\`\`${table.toString()}\`\`\``);
         message.channel.send({
-            embeds: [embed.setDesc(`\`\`\`${table.toString()}\`\`\``)],
+            embeds: [embed],
         });
     }
 };

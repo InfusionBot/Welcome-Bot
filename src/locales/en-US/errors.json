@@ -27,5 +27,6 @@
   "invalidNumRange": "Please specify a valid number between **{{min}}** and **{{max}}**!",
   "musicNoPerms": "You have not given {{permissions}} permissions to the bot for playing music.",
   "noSendMsgPerm": "Woah... Wait, do you think I can message in that channel?? I even don't have \"Send Messages\" permission!!",
-  "msgBig": "The {{name}} message is longer than 2000 charcters, so I can't send it"
+  "msgBig": "The {{name}} message is longer than 2000 charcters, so I can't send it",
+  "tooLong": "The {{name}} you provided it too long."
 }

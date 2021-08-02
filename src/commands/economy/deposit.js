@@ -31,6 +31,9 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
+        if (userDB.bank === userDB.bankLimit) {
+            return message.reply(t("cmds:deposit.noSpace"));
+        }
         let wcoins = NaN;
         if (!isNaN(parseInt(args[0]))) {
             wcoins = parseInt(args[0]);
@@ -59,12 +62,14 @@ module.exports = class CMD extends Command {
             await updateUser(
                 message.author.id,
                 "bank",
-                parseInt(userDB.bank) + wcoins
+                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) +
+                    wcoins
             );
             await updateUser(
                 message.author.id,
                 "wallet",
-                parseInt(userDB.wallet) - wcoins
+                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) -
+                    wcoins
             );
         } catch (e) {
             message.client.logger.log(

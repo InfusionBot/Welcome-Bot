@@ -4,9 +4,14 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
-const { Client, Collection, Intents, Permissions } = require("discord.js");
-//const Command = require("./classes/Command");
-const config = require(__dirname + "/config");
+const {
+    Client,
+    Collection,
+    Intents,
+    Permissions,
+    Options,
+} = require("discord.js");
+const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
@@ -26,13 +31,17 @@ class WelcomeBot extends Client {
                 Intents.FLAGS.DIRECT_MESSAGES,
                 Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
                 Intents.FLAGS.GUILD_VOICE_STATES,
-                //Intents.FLAGS.GUILD_PRESENCES,
+                Intents.FLAGS.GUILD_PRESENCES,
             ],
+            makeCache: Options.cacheWithLimits({
+                MessageManager: 200,
+            }),
             partials: ["CHANNEL"],
-            messageCacheMaxSize: 100,
-            messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
-            messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
+            //messageCacheMaxSize: 100,
+            //messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
+            //messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
         });
+        this.username = "Welcome-Bot";
         this.commands = {
             enabled: new Collection(),
             disabled: new Collection(),
@@ -42,8 +51,11 @@ class WelcomeBot extends Client {
         this.defaultPrefix = process.env.BOT_PREFIX;
         this.guildSchema = require("./schema/guildSchema");
         this.versionSchema = require("./schema/versionSchema");
+        this.dashboard = require("./dashboard/app");
+        this.dashboard.states = {};
         this.categories = [];
         this.customEmojis = require("./data/customEmojis.json");
+        this.languages = require("./locales/languages.json");
         this.allPerms = [
             { perm: Permissions.FLAGS.ADMINISTRATOR, val: "ADMINISTRATOR" },
             {
@@ -99,7 +111,10 @@ class WelcomeBot extends Client {
             },
             { perm: Permissions.FLAGS.MANAGE_ROLES, val: "MANAGE_ROLES" },
             { perm: Permissions.FLAGS.MANAGE_WEBHOOKS, val: "MANAGE_WEBHOOKS" },
-            { perm: Permissions.FLAGS.MANAGE_EMOJIS, val: "MANAGE_EMOJIS" },
+            {
+                perm: Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS,
+                val: "MANAGE_EMOJIS_AND_STICKERS",
+            },
             {
                 perm: Permissions.FLAGS.USE_APPLICATION_COMMANDS,
                 val: "USE_APPLICATION_COMMANDS",
@@ -107,6 +122,22 @@ class WelcomeBot extends Client {
             {
                 perm: Permissions.FLAGS.REQUEST_TO_SPEAK,
                 val: "REQUEST_TO_SPEAK",
+            },
+            {
+                perm: Permissions.FLAGS.MANAGE_THREADS,
+                val: "MANAGE_THREADS",
+            },
+            {
+                perm: Permissions.FLAGS.USE_PUBLIC_THREADS,
+                val: "USE_PUBLIC_THREADS",
+            },
+            {
+                perm: Permissions.FLAGS.USE_PRIVATE_THREADS,
+                val: "USE_PRIVATE_THREADS",
+            },
+            {
+                perm: Permissions.FLAGS.USE_EXTERNAL_STICKERS,
+                val: "USE_EXTERNAL_STICKERS",
             },
         ];
         this.site = "https://welcome-bot.github.io/";
@@ -125,11 +156,11 @@ class WelcomeBot extends Client {
             enableLive: true,
         });
         this.loadCommands(__dirname + "/commands");
+        this.addDbFuncs();
     }
 
     loadCommand(commandPath, commandName) {
         const CMD = require(`${commandPath}/${commandName.replace(".js", "")}`);
-        //command = new Command(this, command);
         return this.setCmd(CMD);
     }
 
@@ -169,7 +200,7 @@ class WelcomeBot extends Client {
                 try {
                     this.setCmd(cmd);
                 } catch (e) {
-                    this.logger.log(`Error occurred when loading ${file}`);
+                    this.logger.log(`Error occurred when loading ${cmd.name}`);
                     console.error(e);
                     process.exit();
                 }
@@ -189,21 +220,48 @@ class WelcomeBot extends Client {
         return true;
     }
 
-    findCMD(cmdName, enabled = false) {
+    findCMD(cmdName) {
         let cmd;
         let disabledCmd;
         try {
             cmd = this.commands.enabled.find(cmdName);
             disabledCmd = this.commands.disabled.find(cmdName);
         } catch (e) {
-            if (enabled && !cmd) {
+            if (!cmd && !disabledCmd) {
                 throw new Error(
-                    `Tried to find ${cmdName}, but it wasn't in the enabled commands.`
+                    `Tried to find ${cmdName}, but it wasn't there in the commands.`
                 );
+                // eslint-disable-next-line no-unreachable
                 return;
             }
         }
         return cmd.name ? cmd : disabledCmd;
+    }
+
+    addDbFuncs() {
+        const dbFolder = __dirname + "/db/functions";
+        const dbFuncs = fs.readdirSync(dbFolder);
+
+        for (const folder of dbFuncs) {
+            if (!folder.endsWith(".js")) {
+                const dbFiles = fs
+                    .readdirSync(`${dbFolder}/${folder}`)
+                    .filter((file) => file.endsWith(".js"));
+                this[`${folder}DbFuncs`] = {};
+                for (const file of dbFiles) {
+                    try {
+                        const f = file.replace(".js", "");
+                        this[`${folder}DbFuncs`][
+                            f
+                        ] = require(`${dbFolder}/${folder}/${f}`);
+                    } catch (e) {
+                        this.logger.log(`Error occurred when loading ${file}`);
+                        console.error(e);
+                        process.exit();
+                    }
+                }
+            }
+        }
     }
 }
 

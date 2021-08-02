@@ -22,20 +22,18 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args }, t) {
-        //TODO: Add translation
         const embed = new Embed({
             color: "green",
             timestamp: true,
-            footer: "Invite link for Welcome-Bot",
         })
-            .setTitle("Invite Welcome-Bot to Your server")
-            .addField(
-                "\u200b",
-                `Invite Welcome-Bot: https://dsc.gg/welcome-bot`
+            .setTitle(t("misc:invite"))
+            .addField("\u200b", `${message.client.config.invite(this.client)}`)
+            .setImage(
+                "https://welcome-bot.github.io/assets/img/graphics3-standard.gif"
             );
-        let button = new MessageButton()
-            .setLabel("Invite Welcome-Bot")
-            .setURL("https://dsc.gg/welcome-bot")
+        const button = new MessageButton()
+            .setLabel(t("misc:invite"))
+            .setURL(`${message.client.config.invite(this.client)}`)
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
         message.reply({

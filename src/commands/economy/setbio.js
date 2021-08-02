@@ -25,6 +25,9 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
+        if (args.join(" ").length > 100) {
+            return message.reply(t("errors:tooLong", { name: t("misc:bio") }));
+        }
         try {
             await updateUser(message.author.id, "bio", args.join(" "));
         } catch (e) {

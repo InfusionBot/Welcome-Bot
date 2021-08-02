@@ -95,7 +95,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Core (9 commands)
+## Core (11 commands)
 
 ### `botinfo`
 
@@ -162,6 +162,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `latency`, `pong`
 - Cooldown: 5
 
+### `report`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Report bugs
+- Usage: [bug description]
+- Aliases: `report-bug`, `reportbug`
+- Cooldown: 10
+
 ### `suggest`
 
 ##### Subcommands:
@@ -170,7 +183,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: Give your suggestion
+- Description: Give suggestions
 - Usage: [suggestion]
 - Aliases: `suggestion`
 - Cooldown: 10
@@ -199,6 +212,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Description: Get uptime of the bot
 - Usage: None
 - Aliases: `bot-uptime`, `botuptime`
+- Cooldown: 10
+
+### `vote`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)
+- Usage: None
+- Aliases: None
 - Cooldown: 10
 
 ### `website`
@@ -438,7 +464,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 - Description: Get a user's avatar
 - Usage: (@mention / user id)
-- Aliases: `dp`, `profile`
+- Aliases: `dp`
 - Cooldown: 10
 
 ### `hastebin`
@@ -517,20 +543,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 - Description: Your server statistics
 - Usage: (--dm)
-- Aliases: `si`
-- Cooldown: 10
-
-### `testwelcome`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Test by sending welcome message
-- Usage: None
-- Aliases: None
+- Aliases: `si`, `sinfo`
 - Cooldown: 10
 
 ### `testgoodbye`
@@ -542,6 +555,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 ##### Cmd info
 
 - Description: Test by sending goodbye message
+- Usage: None
+- Aliases: None
+- Cooldown: 10
+
+### `testwelcome`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Test by sending welcome message
 - Usage: None
 - Aliases: None
 - Cooldown: 10
@@ -841,14 +867,12 @@ Not providing any arguments will display the current settings.
 
 ##### Subcommands:
 
-- `welcome` - Enable welcome logs
-- `goodbye` - Enable goodBye logs
-- `show` - Show current settings
+- None
 
 ##### Cmd info
 
-- Description: Enable welcome and goodbye logs.
-- Usage: [subcommand]
+- Description: Enable commands.
+- Usage: [command name]
 - Aliases: None
 - Cooldown: 10
 

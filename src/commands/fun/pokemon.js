@@ -31,8 +31,7 @@ module.exports = class CMD extends Command {
             message.reply(t("cmds:pokemon.error"));
         });
         if (url && url.startsWith("http")) {
-            let image = new Embed();
-            image.setImage(url);
+            const image = new Embed().setImage(url);
             return message.channel.send({ embeds: [image] });
         }
         message.reply(t("errors:generic"));

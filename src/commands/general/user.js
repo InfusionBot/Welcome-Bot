@@ -69,7 +69,7 @@ module.exports = class CMD extends Command {
                 (emoji) => emoji.id === badges[i].emoji
             )}`;
         }*/
-        let embed = new Embed({
+        const embed = new Embed({
             tag: message.author.tag,
             avatarURL: message.author.displayAvatarURL(),
             color: "success",
@@ -79,8 +79,7 @@ module.exports = class CMD extends Command {
         embed.setDescription(`Information about ${args[0] || message.author}`);
         embed.setThumbnail(`${user.displayAvatarURL()}`);
         embed.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        let avatarURL = user.displayAvatarURL().slice(0, 35);
-        avatarURL += "...";
+        const avatarURL = user.displayAvatarURL().slice(0, 35) + "...";
         embed.addField(
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`
@@ -99,15 +98,17 @@ module.exports = class CMD extends Command {
         );
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
-        //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
-        embed.addField("Presence:", `${member.presence.status}`);
+        if (member?.presence)
+            embed.addField(t("misc:presence"), `${member.presence.status}`);
+        else embed.addField(t("misc:presence"), `Unknown`);
+        const content = user.id;
         switch (args[1]) {
             case "--dm":
-                message.author.send({ embeds: [embed] });
+                message.author.send({ content, embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);
                 break;
             default:
-                message.channel.send({ embeds: [embed] });
+                message.channel.send({ content, embeds: [embed] });
                 break;
         }
     }

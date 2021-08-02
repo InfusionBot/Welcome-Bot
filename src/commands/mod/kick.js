@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
         if (!user) {
             return message.reply(t("errors:invalidUser"));
         }
-        const member = message.guild.members.cache.get(user.id);
+        let member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
             if (!member) return message.reply(t("errors:userNotInGuild"));
@@ -57,12 +57,12 @@ module.exports = class CMD extends Command {
             return message.channel.send(`Failed to kick **${user.tag}**`);
         }
 
-        if (guildDB.modChannel) {
-            channel = member.guild.channels.cache.find(
-                (ch) => ch.name === guildDB.modChannel
+        if (guildDB.plugins.modlogs) {
+            const channel = member.guild.channels.cache.find(
+                (ch) => ch.name === guildDB.plugins.modlogs
             );
             if (channel) {
-                embed = new Embed({ color: "red" });
+                const embed = new Embed({ color: "red" });
                 embed.setTitle(`User kicked: ${user.tag} (${user.id})`);
                 embed.addField(
                     t("misc:resMod"),

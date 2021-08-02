@@ -4,7 +4,6 @@ WORKDIR /src/user/app
 COPY . .
 RUN npm install -g npm
 RUN npm install  --production
-RUN npm update
 RUN apt-get update && apt-get install -y ffmpeg
 EXPOSE 8080
-CMD ["node", "webserver.js" ]
+CMD ["npm", "run", "startDev"]

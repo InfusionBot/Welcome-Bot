@@ -17,31 +17,6 @@ const guildSchema = new mongoose.Schema({
         trim: true,
         default: "w/",
     },
-    channel: {
-        type: String,
-        required: true,
-        trim: true,
-        default: "member-log",
-    },
-    welcomeMessage: {
-        type: String,
-        required: true,
-        trim: true,
-        default:
-            "Welcome {mention} to the {server} server!\nYou are our #{members} member",
-    },
-    goodByeMessage: {
-        type: String,
-        required: true,
-        trim: true,
-        default: "Good Bye {mention}!\nWe are sad to see you go!",
-    },
-    modChannel: {
-        type: String,
-        required: true,
-        trim: true,
-        default: "mod-log",
-    },
     lang: {
         type: String,
         required: true,
@@ -49,6 +24,42 @@ const guildSchema = new mongoose.Schema({
         default: "en-US",
     },
     disabled: [String],
+    plugins: {
+        welcome: {
+            enabled: {
+                default: true,
+                type: Boolean,
+            },
+            message: {
+                default:
+                    "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+                type: String,
+            },
+            channel: {
+                default: "member-log",
+                type: String,
+            },
+        },
+        goodbye: {
+            enabled: {
+                default: false,
+                type: Boolean,
+            },
+            message: {
+                default:
+                    "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
+                type: String,
+            },
+            channel: {
+                default: "",
+                type: String,
+            },
+        },
+        modlogs: {
+            default: "mod-log",
+            type: String,
+        },
+    },
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);

@@ -22,7 +22,9 @@ module.exports = class CMD extends Command {
 
     execute({ message, args }, t) {
         //TODO: Add translation
-        let msg = `Pong ${message.author}\nWebsocket heartbeat: ${message.client.ws.ping}ms.`;
+        const msg = `${t("misc:pong")} ${message.author}\n${t(
+            "misc:webheart"
+        )}: ${message.client.ws.ping}ms.`;
         message.channel
             .send(msg + `\nGetting roundtrip latency`)
             .then((sent) => {

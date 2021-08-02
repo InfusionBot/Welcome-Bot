@@ -7,10 +7,10 @@ const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
     constructor(opts = {}, data = {}) {
         super(data);
-        let {
+        let { color = null } = opts;
+        const {
             tag = null,
             avatarURL = null,
-            color = null,
             timestamp = true,
             footer = null,
         } = opts;
@@ -32,6 +32,9 @@ module.exports = class Embed extends MessageEmbed {
                 break;
             case "lightblue":
                 color = "#76b3fc";
+                break;
+            case "pink":
+                color = "#da70d6";
                 break;
             default:
                 if (!color) color = "RANDOM";

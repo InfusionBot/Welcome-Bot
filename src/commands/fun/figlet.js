@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
     async execute({ message, args }, t) {
         const figlet = require("figlet");
         const figletAsync = require("util").promisify(figlet);
-        let text = args.join(" ");
+        const text = args.join(" ");
         let result;
         if (text.length > 20) {
             return message.channel.send(t("cmds:figlet.error"));

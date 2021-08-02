@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
         };
         const sides = ["heads", "tails"];
         const chosenSide = sides[Math.floor(Math.random() * sides.length)];
-        let embed = new Embed()
+        const embed = new Embed()
             .setImage(coins[chosenSide])
             .setDescription(t("cmds:coinflip.done", chosenSide));
         message.channel.send({ embeds: [embed] });

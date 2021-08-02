@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const updateUser = require("../../db/functions/user/updateUser");
-const getUser = require("../../db/functions/user/getUser");
+//const getUser = require("../../db/functions/user/getUser");
 const moment = require("moment");
 require("moment-duration-format");
 const { Embed, Command } = require("../../classes");
@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const dailyCoins = 500;
+        const dailyCoins = 100;
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
 
         const diff =
@@ -40,7 +40,7 @@ module.exports = class CMD extends Command {
             if (hours == 24) {
                 duration = moment.duration(hours, "hours");
             } else if (hours == 0) {
-                let minutes = Math.ceil(diff / (1000 * 60));
+                const minutes = Math.ceil(diff / (1000 * 60));
                 duration = moment.duration(minutes, "minutes");
             } else {
                 duration = moment.duration(hours, "hours");

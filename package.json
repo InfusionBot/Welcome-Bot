@@ -14,9 +14,11 @@
     "feat: New cmd `profile`",
     "feat: New cmd `setbio`",
     "feat: New cmd `rob`",
+    "feat: New cmd `vote`",
     "feat: New cmd `duck`",
+    "feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages",
+    "feat: New cmd `membercount`",
     "**Changes**",
-    "fix(goodbye): They are disabled by default now!",
     "fix(goodbye): Sometimes, an error would occur to send goodbye logs",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): Disable commands using disable cmd now!"
@@ -25,7 +27,7 @@
   "main": "src/shard.js",
   "scripts": {
     "start": "node src/shard.js",
-    "startDev": "node src/bot.js",
+    "startDev": "node --trace-warnings src/bot.js",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js",
@@ -46,17 +48,22 @@
   "bugs": {
     "url": "https://github.com/Welcome-bot/welcome-bot/issues"
   },
-  "homepage": "https://github.com/Welcome-bot/welcome-bot#readme",
+  "homepage": "https://welcome-bot.github.io/",
   "dependencies": {
     "@discordjs/builders": "^0.2.0",
+    "@top-gg/sdk": "^3.1.2",
     "ascii-table": "^0.0.9",
     "axios": "^0.21.1",
+    "btoa": "^1.2.1",
     "bufferutil": "^4.0.3",
     "colors-logger": "^0.3.1",
-    "discord-player": "^5.0.0-dev.92a3409.1626480154",
-    "discord.js": "^13.0.0-dev.328501b.1626912223",
+    "csurf": "^1.11.0",
+    "discord-player": "^5.0.0-dev.399105e.1627171348",
+    "discord.js": "^13.0.0-dev.30a58dc.1627430624",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "ffmpeg": "^0.0.4",
     "figlet": "^1.5.0",
     "i18next": "^20.0.0",
@@ -72,6 +79,7 @@
   "devDependencies": {
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "mocha": "^9.0.2",
     "prettier": "^2.3.2"
   }

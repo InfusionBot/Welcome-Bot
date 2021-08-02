@@ -14,7 +14,7 @@ module.exports = (userId) => {
             } else if (user) {
                 return resolve("User already added.");
             } else {
-                let user = new User({
+                const user = new User({
                     userId,
                 });
                 user.save((err) => {

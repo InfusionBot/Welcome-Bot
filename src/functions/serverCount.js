@@ -1,9 +1,10 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const https = require("https");
+const TopggAPI = require("../classes/Topgg").api;
 const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
@@ -93,7 +94,7 @@ module.exports = function (client) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: process.env.DISCORDLIST_token,
+                Authorization: `Bot ${process.env.DISCORDLIST_token}`,
                 "User-Agent": process.env.userAgent,
             },
         };
@@ -141,4 +142,14 @@ module.exports = function (client) {
     } else {
         client.logger.log("DISBOTLIST_token is not set", "warn");
     }
+
+    //Top.gg stats
+    TopggAPI.postStats({
+        serverCount: servers,
+        shardCount: 0,
+    })
+        .then(() => {
+            if (client.debug) console.log("Posted stats to Topgg");
+        })
+        .catch(console.error);
 };

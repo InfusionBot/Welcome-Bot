@@ -27,7 +27,7 @@
   "tickle": {
     "cmdDesc": "Tickle a user",
     "success": "{{author}} tickles {{user}}",
-    "errorYourself": "You can't tickle yourself."
+    "errorYourself": "You can't tickle yourself!"
   },
   "waifu": {
     "cmdDesc": "Fetches a random waifu and displays it."
@@ -54,10 +54,10 @@
     "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
   "shards": {
-    "cmdDesc": "Information about the bot's shards"
+    "cmdDesc": "Shows information about the bot's shards"
   },
   "suggest": {
-    "cmdDesc": "Give your suggestion",
+    "cmdDesc": "Give suggestions",
     "done": "Your suggestion has been added, Thank You.",
     "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
@@ -68,6 +68,20 @@
   "uptime": {
     "cmdDesc": "Get uptime of the bot"
   },
+  "vote": {
+    "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)",
+    "title": "Vote for Welcome-Bot",
+    "rewards": {
+      "index": "**Rewards**",
+      "coins": ":dollar: WCoins {{coins}}"
+    },
+    "howToVote": {
+      "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
+      "bls": "**[Vote on botlist.space]({{link}})** to claim your bonus."
+    },
+    "howToVoteServer": "**[Vote on Top.gg for Welcome-Bot server]({{link}})** to claim another bonus.",
+    "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
+  },
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
@@ -75,7 +89,9 @@
     "cmdDesc": "Check your wcoin balance, or someone else's. Shows wallect & bank",
     "title": "{{user}}'s balance",
     "titleShort": "Balance",
-    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
+    "walletOnly": "Wallet: {{wallet}}",
+    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
   },
   "beg": {
     "cmdDesc": "Get money by begging!",
@@ -87,7 +103,7 @@
   },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
-    "success": "{{wcoins}} wcoins were placed in your wallet!",
+    "success": "{{wcoins}} wcoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
     "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
   },
   "deposit": {
@@ -194,10 +210,12 @@
     "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
   },
   "testwelcome": {
-    "cmdDesc": "Test by sending welcome message"
+    "cmdDesc": "Test by sending welcome message",
+    "welcomeDisabled": "Welcome logs are disabled and can't be tested right now."
   },
   "testgoodbye": {
-    "cmdDesc": "Test by sending goodbye message"
+    "cmdDesc": "Test by sending goodbye message",
+    "goodbyeDisabled": "Goodbye logs are disabled and can't be tested right now."
   },
   "version": {
     "cmdDesc": "Get information on a version or latest version"
@@ -307,7 +325,7 @@
     "done": "Successfully disabled!"
   },
   "enable": {
-    "cmdDesc": "Enable welcome and goodbye logs.",
+    "cmdDesc": "Enable commands.",
     "notDisabled": "That command was not disabled so not doing anything",
     "done": "Successfully enabled!"
   },

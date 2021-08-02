@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+/* eslint-disable no-undef */
 const WelcomeBot = require("../WelcomeBot");
 const client = new WelcomeBot();
 const commands = client.commands.enabled;
@@ -88,6 +89,10 @@ describe("Commands", () => {
     });
 
     it("should have proper category name", (done) => {
+        if (!client.i18next) {
+            //Wait 10 seconds if client.i18next is not defined
+            client.wait(10);
+        }
         const { categories } = client;
         let categoryNames = [];
         for (var i = 0; i < categories.length; i++) {
@@ -98,7 +103,7 @@ describe("Commands", () => {
             return [...arr, category];
         }, []);
         let errors = [];
-        for (var i = 0; i < cmdCats.length; i++) {
+        for (let i = 0; i < cmdCats.length; i++) {
             if (!categoryNames.includes(cmdCats[i])) {
                 errors.push(cmdCats[i]);
             }

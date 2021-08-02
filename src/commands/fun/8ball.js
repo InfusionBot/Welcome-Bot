@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         let res = await fetch("https://nekos.life/api/v2/8ball");
         res = await res.json();
         const text = args.join(" ");
-        let embed = new Embed()
+        const embed = new Embed()
             .setTitle(text)
             .setDescription(`**${res.response}**`)
             .setImage(res.url);

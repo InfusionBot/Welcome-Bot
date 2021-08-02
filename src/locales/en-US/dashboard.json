@@ -1,0 +1,15 @@
+{
+  "404": "404 Page Not Found :-(",
+  "500": "500 Internal Server Error",
+  "noGuild": "No server found",
+  "noGuildBody": "No server to daisplay, make sure your are logged in with the right discord account",
+  "manageGuild": "Manage Server",
+  "settings": "Settings",
+  "basicconf": "📝 Basic configuration",
+  "welcome": "👋 Welcome messages",
+  "goodbye": "😢 Goodbye messages",
+  "dashboard": "Dashboard",
+  "disable_messages": "Disable Messages",
+  "enable_messages": "Enable Messages",
+  "bio": "Your bio"
+}

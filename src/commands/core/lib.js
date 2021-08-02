@@ -22,8 +22,8 @@ module.exports = class CMD extends Command {
 
     execute({ message, args }, t) {
         //TODO: Add translation
-        let embed = new Embed().addField(
-            "Discord.js v13 (master branch)",
+        const embed = new Embed().addField(
+            t("misc:djsv"),
             "We are opensource, you can check out source code at [GitHub](https://github.com/Welcome-Bot/welcome-bot)"
         );
         return message.reply({ embeds: [embed] });

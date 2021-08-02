@@ -10,7 +10,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "botinfo",
-                aliases: ["bi", "binfo", "info", "stats"],
+                aliases: ["bi", "binfo", "info", "stats", "about"],
                 memberPerms: [],
                 botPerms: [],
                 usage: "(--dm)",
@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
             args[1] = args[1].toLowerCase();
         }
         const inline = true;
-        let embed = new Embed({
+        const embed = new Embed({
             color: "success",
             timestamp: true,
             footer: t("cmds:botinfo.footer"),
@@ -64,7 +64,8 @@ module.exports = class CMD extends Command {
                     "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
                     "> [discordservices.net](https://discordservices.net/bot/848459799783669790)\n" +
                     "> [discordlist.space](https://discordlist.space/bot/848459799783669790)\n" +
-                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n",
+                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n" +
+                    "> [top.gg](https://top.gg/bot/848459799783669790)\n",
                 inline
             )
             .addField(

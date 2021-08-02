@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -72,7 +72,7 @@ module.exports = class CMD extends Command {
                     permissions: [],
                 });
                 message.guild.channels.fetch().then((channels) => {
-                    channels.forEach(async (channel, id) => {
+                    channels.forEach(async (channel) => {
                         await channel.permissionOverwrites.create(muteRole, {
                             VIEW_CHANNEL: true,
                             SEND_MESSAGES: false,
@@ -100,9 +100,9 @@ module.exports = class CMD extends Command {
                         reason: reason,
                     })
                 );
-                if (guildDB.modChannel) {
+                if (guildDB.plugins.modlogs) {
                     const channel = message.guild.channels.cache.find(
-                        (ch) => ch.name === guildDB.modChannel
+                        (ch) => ch.name === guildDB.plugins.modlogs
                     );
                     if (channel) {
                         embed.setTitle(`User muted: ${user.tag} (${user.id})`);

@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -48,13 +48,12 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:unmute.errorYourself"));
         }
 
-        let member;
-        member = message.guild.members.cache.get(user.id);
+        let member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
-        let muteRole = message.guild.roles.cache.find(
+        const muteRole = message.guild.roles.cache.find(
             (r) => r.name === "Muted"
         );
         if (!muteRole || !member.roles.cache.has(muteRole.id))
@@ -75,9 +74,9 @@ module.exports = class CMD extends Command {
                         reason: reason,
                     })
                 );
-                if (guildDB.modChannel) {
-                    channel = message.guild.channels.cache.find(
-                        (ch) => ch.name === guildDB.modChannel
+                if (guildDB.plugins.modlogs) {
+                    const channel = message.guild.channels.cache.find(
+                        (ch) => ch.name === guildDB.plugins.modlogs
                     );
                     if (channel) {
                         embed.setTitle(

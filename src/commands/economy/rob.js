@@ -91,7 +91,7 @@ module.exports = class CMD extends Command {
                 await updateUser(
                     message.author.id,
                     "wallet",
-                    (parseInt(userDB.wallet) !== NaN
+                    (!isNaN(parseInt(userDB.wallet))
                         ? parseInt(userDB.wallet)
                         : 0) - lostCoins
                 );
@@ -99,14 +99,14 @@ module.exports = class CMD extends Command {
                 await updateUser(
                     message.author.id,
                     "wallet",
-                    (parseInt(userDB.wallet) !== NaN
+                    (!isNaN(parseInt(userDB.wallet))
                         ? parseInt(userDB.wallet)
                         : 0) + stolenCoins
                 );
                 await updateUser(
                     user.id,
                     "wallet",
-                    (parseInt(userDB2.wallet) !== NaN
+                    (!isNaN(parseInt(userDB.wallet))
                         ? parseInt(userDB2.wallet)
                         : 0) - stolenCoins
                 );

@@ -4,35 +4,41 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const getGuild = require("../db/functions/guild/getGuild");
+const { nth } = require("../helpers/Util.js");
 const { Embed } = require("../classes");
 module.exports = async (member) => {
-    let guildDB = await getGuild(member.guild.id);
+    const guildDB = await getGuild(member.guild.id);
     if (
-        guildDB.disabled.includes("goodbye") ||
-        guildDB.disabled.includes("goodbye-plugin")
+        !guildDB.plugins.goodbye.enabled ||
+        guildDB.disabled.includes("goodbye")
     )
-        return;
+        return "disabled";
     let channel;
-    if (isNaN(guildDB.channel)) {
+    if (isNaN(guildDB.plugins.goodbye.channel)) {
         channel = member.guild.channels.cache.find(
-            (ch) => ch.name === guildDB.channel
+            (ch) => ch.name === guildDB.plugins.goodbye.channel
         );
     } else {
         channel = member.guild.channels.cache.find(
-            (ch) => ch.id === guildDB.channel
+            (ch) => ch.id === guildDB.plugins.goodbye.channel
         );
     }
     if (!channel) {
         return "channelNotFound";
     }
     channel.sendTyping();
-    let msg = guildDB.goodByeMessage;
+    let msg = guildDB.plugins.goodbye.message;
     //Replace Placeholders with their values
     msg = msg
         .replace("{mention}", `${member}`)
         .replace("{tag}", `${member.user.tag}`)
+        .replace("{username}", `${member.user.username}`)
         .replace("{server}", `${member.guild.name}`)
-        .replace("{members}", `${member.guild.memberCount}`);
+        .replace("{members}", `${member.guild.memberCount}`)
+        .replace(
+            "{members_formatted}",
+            `${member.guild.memberCount}${nth(member.guild.memberCount)}`
+        );
     const embed = new Embed({ color: "red" })
         .setAuthor(
             member.user.tag,

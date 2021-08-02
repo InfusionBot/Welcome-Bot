@@ -1,6 +1,6 @@
 # Discord Welcome-Bot
 
-> A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...
+> A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Welcome & Goodbye logs, Fun, Music
 
 Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
@@ -13,6 +13,7 @@ Welcome-Bot is a bot built for you, to welcome new users to your servers mainly.
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 [![CI](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml/badge.svg?branch=development&event=push)](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml)
 ![Codelines](https://img.shields.io/tokei/lines/github/Welcome-Bot/welcome-bot)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Welcome-Bot/welcome-bot)
 
 Feel free to add a star ⭐ to the repository to promote the project!
 
@@ -135,6 +136,12 @@ Feel free to upvote him to show your support.
 ### [discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
 > The original Discord bot list, find the right bot for your server today.
+
+### [top.gg](https://top.gg/bot/848459799783669790)
+
+> Spice up your Discord experience with our diverse range of Discord bots
+
+[![Top.gg](https://top.gg/api/widget/848459799783669790.svg)](https://top.gg/bot/848459799783669790)
 
 ## Self hosting
 

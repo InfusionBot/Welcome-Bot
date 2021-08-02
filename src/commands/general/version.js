@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        if (!args[0]) args[0] = message.client.botVersion;
+        if (!args[0]) args[0] = message.client.package.version;
         if (args[0].startsWith("v")) {
             args[0] = args[0].replace("v", "");
         }
@@ -31,7 +31,9 @@ module.exports = class CMD extends Command {
             color: "lightblue",
             tag: message.author.tag,
         });
-        let log = await getVersion(args[0].trim() || message.client.botVersion);
+        const log = await getVersion(
+            args[0].trim() || message.client.botVersion
+        );
         let reply;
         if (log) {
             reply = `Version: **${log.versionName}**`;

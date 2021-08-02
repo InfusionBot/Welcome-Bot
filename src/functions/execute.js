@@ -9,8 +9,8 @@ const beautifyPerms = require("../functions/beautifyPerms");
 const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {
-    const client = message.client;
-    const userDB = await getUser(message.author.id);
+    const { client } = message;
+    let userDB = await getUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
         escapeRegex(client.defaultPrefix.toLowerCase()),
@@ -22,14 +22,14 @@ module.exports = async (message, guildDB) => {
     let prefix;
     try {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
-    } catch (e) {}
+    } catch (e) {} //eslint-disable-line no-empty
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!message.client.application?.owner)
         await message.client.application?.fetch();
-    let embed = new MessageEmbed().setColor("#ff0000");
+    const embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
-        let args = message.content.slice(prefix.length).trim().split(/ +/);
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
             message.client.commands.enabled.get(commandName) ||
@@ -128,7 +128,7 @@ module.exports = async (message, guildDB) => {
             if (!authorPerms) {
                 return message.reply(t("errors:youDontHavePermShort"));
             }
-            for (var i = 0; i < command.memberPerms.length; i++) {
+            for (let i = 0; i < command.memberPerms.length; i++) {
                 if (!authorPerms.has(command.memberPerms[i])) {
                     return message.reply(
                         t("errors:youDontHavePermission", {
@@ -170,7 +170,7 @@ module.exports = async (message, guildDB) => {
 
             if (command.subcommands) {
                 let subcmds = [];
-                for (var i = 0; i < command.subcommands.length; i++) {
+                for (let i = 0; i < command.subcommands.length; i++) {
                     subcmds.push(command.subcommands[i].name);
                 }
                 reply += `\nThe subcommand(s) available are: \`${subcmds.join(
@@ -218,6 +218,7 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
+            userDB = await getUser(message.author.id);
             message.channel.sendTyping();
             try {
                 command.execute({ message, args, guildDB, userDB }, t);

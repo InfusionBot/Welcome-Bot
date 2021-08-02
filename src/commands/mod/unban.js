@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -40,12 +40,12 @@ module.exports = class CMD extends Command {
             return message.channel.send(`Failed to unban **${id}**`);
         }
 
-        if (guildDB.modChannel) {
-            channel = message.guild.channels.cache.find(
-                (ch) => ch.name === guildDB.modChannel
+        if (guildDB.plugins.modlogs) {
+            const channel = message.guild.channels.cache.find(
+                (ch) => ch.name === guildDB.plugins.modlogs
             );
             if (channel) {
-                embed = new MessageEmbed();
+                const embed = new MessageEmbed();
                 embed.setTitle(`User unbanned: ${user.tag} (${user.id})`);
                 embed.addField(
                     t("misc:resMod"),

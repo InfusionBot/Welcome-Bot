@@ -24,13 +24,12 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
-        const result = greetUser(message.member);
-        if (
-            typeof result === "string" &&
-            result.indexOf("channelNotFound") !== -1
-        ) {
-            message.reply(t("errors:channelDoesntExist"));
+    async execute({ message, args }, t) {
+        const result = await greetUser(message.member);
+        if (result === "channelNotFound") {
+            return message.reply(t("errors:channelDoesntExist"));
+        } else if (result === "disabled") {
+            return message.reply(t("cmds:testwelcome.welcomeDisabled"));
         }
         message.react("👍");
     }

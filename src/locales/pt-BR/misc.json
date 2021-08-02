@@ -1,6 +1,6 @@
 {
   "timeout": "Time's up! Please send the command again!",
-  "resMod": "Responsible moderator:",
+  "resMod": "**Responsible Moderator:**",
   "channels": "Channels",
   "bots": "Bots",
   "members": "Members",

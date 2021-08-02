@@ -27,7 +27,7 @@
   "tickle": {
     "cmdDesc": "Bir kullanıcıyı gıdıklarsın",
     "success": "{{author}}, {{user}} adlı üyeyi gıdıkladı",
-    "errorYourself": "Kendini gıdıklayamazsın."
+    "errorYourself": "Kendini gıdıklayamazsın!"
   },
   "waifu": {
     "cmdDesc": "Rastgele bir waifu gönderir."
@@ -49,7 +49,7 @@
     "cmdDesc": "Botu pingle"
   },
   "shards": {
-    "cmdDesc": "Botun shard'ları hakında bilgi"
+    "cmdDesc": "Botun shardları hakkında bilgi verir"
   },
   "suggest": {
     "cmdDesc": "Öneri yap",
@@ -73,14 +73,14 @@
     "done": "Yazı Tura attım ve {{chosenSide}} geldi"
   },
   "figlet": {
-    "cmdDesc": "FIGfont belirtimini JS'de uygulayın",
+    "cmdDesc": "FIGfont belirtimini JS'de uygula",
     "error": "Metnin 20 karakterden küçük olmalı"
   },
   "image": {
     "cmdDesc": "Rastgele bir pokemon resmi oluştur"
   },
   "pokemon": {
-    "cmdDesc": "Bir pokemon resmi al",
+    "cmdDesc": "Bir pokemon resmi görüntüle",
     "error": "Olamaz! Bu Pokemonu bulunamadı"
   },
   "addemoji": {
@@ -240,7 +240,7 @@
   },
   "lang": {
     "cmdDesc": "Dili değiştir",
-    "invalid": "Geçersin dil. Kullanılabilir tüm dilleri görmek için {{cmd}} komutunu kullan.",
+    "invalid": "Geçersiz dil. Kullanılabilir tüm dilleri görmek için {{cmd}} komutunu kullan.",
     "success": "Dil {{lang}} olarak ayarlandı",
     "show": "Dil başarıyla {{lang}} olarak ayarlandı",
     "langNotProvided": "Dil argümanı belirtmedin"

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <%- include('includes/head') %>
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-closed sidebar-fixed sidebar-collapse">
+        <div class="wrapper">
+            <%- include('includes/header') %>
+            <div class="content-wrapper px-4 py-2" >
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1><%= translate("misc:oops") %></h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="container-fluid">
+                        <h3><i class="fas fa-exclamation-triangle text-warning"></i><%= translate("dashboard:404") %></h3>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <%- include('includes/footer') %>
+    </body>
+</html>

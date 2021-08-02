@@ -68,7 +68,12 @@ module.exports = class CMD extends Command {
                 await queue.connect(message.member.voice.channel);
         } catch (e) {
             message.client.player.deleteQueue(message.guild);
-            message.client.logger.log(e, "error", ["VOICE"]);
+            message.client.logger.log(
+                "Error when connectioning to voice channel",
+                "error",
+                ["VOICE"]
+            );
+            console.log(e);
             return void message.reply(t("cmds:play.cantJoin"));
         }
         const song = await message.client.player.search(name, {

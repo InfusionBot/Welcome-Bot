@@ -3,10 +3,11 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const fs = require("fs");
+/*eslint-disable no-unused-vars*/
+//const fs = require("fs");
+require("dotenv").config();
 const WelcomeBot = require("./WelcomeBot");
-const dotenv = require("dotenv").config();
-const { MessageEmbed } = require("discord.js");
+//const { MessageEmbed } = require("discord.js");
 const { Embed } = require("./classes");
 
 const client = new WelcomeBot({
@@ -110,7 +111,8 @@ client.player
             client.logger.log("Joined voice channel", "debug", ["VOICE"]);
     })
     .on("connectionError", (queue, err) => {
-        client.logger.log(err, "error", ["VOICE"]);
+        client.logger.log("Connection Error:", "error", ["VOICE"]);
+        console.log(err);
     })
     .on("error", async (queue, error) => {
         const t = await getT(queue.metadata.guild.id);
@@ -139,6 +141,13 @@ client.on("ready", async () => {
             `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
     await require("./loaders/Locale.js")(client);
+    if (client.config.dashboard.enabled) client.dashboard.load(client);
+    else if (client.debug)
+        client.logger.log(
+            "Not loading dashboard as it is not enabled",
+            "debug",
+            ["DASHBOARD"]
+        );
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);

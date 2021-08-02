@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         if (!queue || !queue.playing)
             return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
-        let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
+        const embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:stop.cmdDesc")
         );
         const msg = await message.channel.send({ embeds: [embed] });

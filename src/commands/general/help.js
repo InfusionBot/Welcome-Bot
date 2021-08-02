@@ -56,7 +56,7 @@ module.exports = class CMD extends Command {
         };
         let page = 0;
         let pages = [new Embed({ color: "blue", timestamp: true })];
-        let timeout = 200000; //20 secs timeout
+        const timeout = 200000; //20 secs timeout
 
         for (var i = 0; i < pages.length; i++) {
             pages[i].setTitle(t("cmds:help.bot-help"));
@@ -127,7 +127,7 @@ module.exports = class CMD extends Command {
                 )
                     reaction.users.remove(message.author);
                 else if (message.client.debug)
-                    client.logger.log(
+                    message.client.logger.log(
                         "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission",
                         "debug"
                     );
@@ -228,7 +228,7 @@ module.exports = class CMD extends Command {
                 );
             if (command.subcommands) {
                 let subcommands = [];
-                for (var i = 0; i < command.subcommands.length; i++) {
+                for (let i = 0; i < command.subcommands.length; i++) {
                     subcommands.push(
                         `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
                     );
