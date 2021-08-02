@@ -47,6 +47,12 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    inventory: {
+        banknote: {
+            type: Number,
+            default: 0,
+        },
+    },
 });
 
 const User = new mongoose.model("User", userSchema);

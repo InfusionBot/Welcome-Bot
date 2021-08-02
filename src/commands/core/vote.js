@@ -41,7 +41,7 @@ module.exports = class CMD extends Command {
                 `${t("cmds:vote.rewards.index")}\n${t(
                     "cmds:vote.rewards.coins",
                     { coins: 500 }
-                )}`
+                )}\n${t("cmds:vote.rewards.banknote")}`
             );
         const buttonTopgg = new MessageButton()
             .setLabel("top.gg")

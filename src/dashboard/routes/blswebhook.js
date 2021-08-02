@@ -17,18 +17,17 @@ router.post("/", async (req, res) => {
     const { client } = req;
     const vUser = await client.users.fetch(req.body.user.id);
     if (!vUser) return;
-    await client.userDbFuncs.addUser(vUser.id);
-    const userDB = await client.userDbFuncs.getUser(vUser.id);
-    await client.userDbFuncs.updateUser(
-        vUser.id,
-        "wallet",
-        parseInt(userDB.wallet) + 500
-    ); //Give user 500 coins
+    if (!await client.userDbFuncs.getUser(vUser.id)) await client.userDbFuncs.addUser(vUser.id);
+    let userDB = await client.userDbFuncs.getUser(vUser.id);
+        userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
+        userDB.markModified("wallet");
+        userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
+        userDB.markModified("inventory.banknote");
     if (client.config.votesChannelId) {
         client.channels.cache
             .get(client.config.votesChannelId)
             .send(
-                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on botlist.space and got 500 wcoins 🎉!`
+                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on botlist.space and got 500 wcoins with other rewards 🎉!`
             )
             .catch(console.log);
     } else {
