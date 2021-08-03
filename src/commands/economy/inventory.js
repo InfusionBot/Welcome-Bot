@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message, args, guildDB, userDB }, t) {
         if (message.channel.type !== "DM") {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
