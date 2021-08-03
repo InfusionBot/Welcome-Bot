@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) {
+    async execute({ message, args, guildDB }) {
         const servers = message.client.guilds.cache.size;
         const emojiList = {
             back: "⏪",

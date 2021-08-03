@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }, t) {
+    execute({ message, args, guildDB }) {
         let sentMsg;
         message
             .reply("Restarting...")

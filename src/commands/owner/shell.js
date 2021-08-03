@@ -32,7 +32,6 @@ module.exports = class CMD extends Command {
     execute({ message, args, guildDB, userDB }, t) {
         const command = args.join(" ");
         const embed = new Embed({ color: "success" })
-            .setTitle(t("cmds:eval.cmdDesc"))
             .addField("**Input**", "```js\n" + command + "\n```");
         const clean = (text) => {
             if (typeof text === "string") {
