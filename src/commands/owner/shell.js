@@ -31,8 +31,10 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB, userDB }, t) {
         const command = args.join(" ");
-        const embed = new Embed({ color: "success" })
-            .addField("**Input**", "```js\n" + command + "\n```");
+        const embed = new Embed({ color: "success" }).addField(
+            "**Input**",
+            "```js\n" + command + "\n```"
+        );
         const clean = (text) => {
             if (typeof text === "string") {
                 if (text.includes(message.client.token)) {
