@@ -312,18 +312,6 @@
     "current": "Current volume is **{{volume}}**%!",
     "success": "Volume adjusted to {{volume}}"
   },
-  "eval": {
-    "cmdDesc": "Execute a JS statement."
-  },
-  "reload": {
-    "cmdDesc": "Reloads a command"
-  },
-  "restart": {
-    "cmdDesc": "Restart the bot"
-  },
-  "servers-list": {
-    "cmdDesc": "Show the list of servers the bot is in."
-  },
   "disable": {
     "cmdDesc": "Disable commands.",
     "title": "Currently disabled commands",
