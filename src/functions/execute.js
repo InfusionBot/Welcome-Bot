@@ -167,7 +167,7 @@ module.exports = async (message, guildDB) => {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
-                let subcmds = [];
+                const subcmds = [];
                 for (let i = 0; i < command.subcommands.length; i++) {
                     subcmds.push(command.subcommands[i].name);
                 }

@@ -5,10 +5,9 @@
  */
 
 module.exports = function (perms, allPerms, t) {
-    let index;
-    let newPerms = [];
+    const newPerms = [];
     for (var i = 0; i < allPerms.length; i++) {
-        index = perms.indexOf(allPerms[i].perm);
+        const index = perms.indexOf(allPerms[i].perm);
         if (index !== -1) {
             newPerms[index] = t(`permissions:${allPerms[i].val}`);
         }

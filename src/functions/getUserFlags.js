@@ -5,8 +5,7 @@
  */
 module.exports = async (user) => {
     const flags = user.flags || (await user.fetchFlags());
-    let userFlags = [];
-    //https://discord.js.org/#/docs/main/v12/class/UserFlags?scrollTo=s-FLAGS
+    const userFlags = [];
     const allFlags = [
         {
             id: "DISCORD_EMPLOYEE",

@@ -17,7 +17,7 @@ router.post(
         if (!vUser) return;
         if (!(await client.userDbFuncs.getUser(vUser.id)))
             await client.userDbFuncs.addUser(vUser.id);
-        let userDB = await client.userDbFuncs.getUser(vUser.id);
+        const userDB = await client.userDbFuncs.getUser(vUser.id);
         userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
         userDB.markModified("wallet");
         userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
