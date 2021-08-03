@@ -64,7 +64,7 @@ module.exports = class CMD extends Command {
         if (!args.length) {
             categories.forEach((cat) => {
                 const p = pages.length;
-                let commandsCat = [];
+                const commandsCat = [];
                 pages[p] = new Embed({
                     color: "blue",
                     timestamp: true,
@@ -104,7 +104,7 @@ module.exports = class CMD extends Command {
 
             const curPage = await message.channel.send({
                 embeds: [
-                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`),
+                    pages[page].setFooter(`${t("misc:page")} ${page + 1} / ${pages.length}`),
                 ],
             });
             for (var key in emojiList) {
@@ -126,11 +126,6 @@ module.exports = class CMD extends Command {
                     botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES)
                 )
                     reaction.users.remove(message.author);
-                else if (message.client.debug)
-                    message.client.logger.log(
-                        "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission",
-                        "debug"
-                    );
                 switch (reaction.emoji.name) {
                     case emojiList["back"]:
                         page = page > 0 ? --page : pages.length - 1;
@@ -158,7 +153,7 @@ module.exports = class CMD extends Command {
             });
             reactionCollector.on("end", () => {
                 curPage.reactions.removeAll().catch((err) => {
-                    console.error(err);
+                    if (message.client.debug) console.error(err);
                 });
                 curPage.edit({
                     embeds: [

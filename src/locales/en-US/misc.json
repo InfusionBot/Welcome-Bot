@@ -40,5 +40,8 @@
   "servers": "Servers",
   "cached_users": "Cached Users",
   "ping": "Ping",
-  "not_set": "Not set"
+  "not_set": "Not set",
+  "items": {
+    "banknote": "banknote(s)"
+  },
 }

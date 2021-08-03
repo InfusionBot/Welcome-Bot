@@ -120,6 +120,10 @@
     "success": "{{mention}} You gave {{user}} {{amount}}, now you have {{yourWallet}} and they've got {{userWallet}}",
     "errorYourself": "Woah, can you donate yourself?"
   },
+  "inventory": {
+    "cmdDesc": "Shows your inventory",
+    "noItems": "You don't have anything in your inventory"
+  },
   "profile": {
     "cmdDesc": "Shows your profile or someone else's.",
     "title": "Profile of {{tag}}"
