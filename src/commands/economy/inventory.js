@@ -47,7 +47,8 @@ module.exports = class CMD extends Command {
         }
         const items = Object.keys(userDB.inventory);
         const itemsThatGuyHas = items.filter((i) => userDB.inventory[i] > 0);
-        if (!itemsThatGuyHas.length || itemsThatGuyHas.length <= 0) return message.reply(t("cmds:inventory.noItems"));
+        if (!itemsThatGuyHas.length || itemsThatGuyHas.length <= 0)
+            return message.reply(t("cmds:inventory.noItems"));
         const emojiList = {
             first: "⏮",
             back: "⏪",
@@ -61,11 +62,17 @@ module.exports = class CMD extends Command {
         itemsThatGuyHas.forEach((item) => {
             const p = pages.length;
             pages[p] = new Embed({ color: "blue", timestamp: true });
-            pages[p].addField(`${userDB.inventory[item]} ${t(`misc:items.${item.toLowerCase()}`)}`);
+            pages[p].addField(
+                `${userDB.inventory[item]} ${t(
+                    `misc:items.${item.toLowerCase()}`
+                )}`
+            );
         });
         const curPage = await message.channel.send({
             embeds: [
-                pages[page].setFooter(`${t("misc:page")} ${page + 1} / ${pages.length}`),
+                pages[page].setFooter(
+                    `${t("misc:page")} ${page + 1} / ${pages.length}`
+                ),
             ],
         });
         const reactionCollector = curPage.createReactionCollector({
@@ -114,9 +121,9 @@ module.exports = class CMD extends Command {
             curPage.edit({
                 embeds: [
                     pages[page].setFooter(
-                        `${t("misc:page")} ${page + 1} / ${
-                            pages.length
-                        } | ${t("misc:ptimeout")}`
+                        `${t("misc:page")} ${page + 1} / ${pages.length} | ${t(
+                            "misc:ptimeout"
+                        )}`
                     ),
                 ],
             });

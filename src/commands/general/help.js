@@ -104,7 +104,9 @@ module.exports = class CMD extends Command {
 
             const curPage = await message.channel.send({
                 embeds: [
-                    pages[page].setFooter(`${t("misc:page")} ${page + 1} / ${pages.length}`),
+                    pages[page].setFooter(
+                        `${t("misc:page")} ${page + 1} / ${pages.length}`
+                    ),
                 ],
             });
             for (var key in emojiList) {
