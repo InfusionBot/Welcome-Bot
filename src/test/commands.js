@@ -66,6 +66,7 @@ describe("Commands", () => {
     it("should be defined in cmds.json", (done) => {
         const t = client.i18next.getFixedT("en-US");
         const cmds = commands.reduce((arr, command) => {
+            if (command.category.indexOf("Owner") === -1) return [];
             const { name } = command;
             return [...arr, name];
         }, []);
@@ -99,6 +100,7 @@ describe("Commands", () => {
             categoryNames.push(categories[i].name);
         }
         const cmdCats = commands.reduce((arr, command) => {
+            if (command.category.indexOf("Owner") === -1) return [];
             const { category } = command;
             return [...arr, category];
         }, []);
