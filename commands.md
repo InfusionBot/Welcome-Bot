@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **60 commands** in **9 categories**!
+Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 ### **Usage Key!**
 
@@ -23,7 +23,6 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - [General](#general)
 - [Moderation](#moderation)
 - [Music](#music)
-- [Owner Only](#owner-only)
 - [Setup](#setup)
 
 
@@ -107,7 +106,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 
 - Description: Bot information
 - Usage: (--dm)
-- Aliases: `bi`, `binfo`, `info`, `stats`
+- Aliases: `bi`, `binfo`, `info`, `stats`, `about`
 - Cooldown: 5
 
 ### `botperms`
@@ -240,7 +239,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (9 commands)
+## Economy (10 commands)
 
 ### `balance`
 
@@ -346,6 +345,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `bio`
 - Cooldown: 10
 
+### `use`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Use your items
+- Usage: [item] (count)
+- Aliases: `use-items`, `useitems`
+- Cooldown: 10
+
 ### `withdraw`
 
 ##### Subcommands:
@@ -359,7 +371,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `wd`, `with`
 - Cooldown: 10
 
-## Fun (6 commands)
+## Fun (7 commands)
 
 ### `8ball`
 
@@ -386,6 +398,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Usage: None
 - Aliases: `cf`, `filpcoin`
 - Cooldown: 10
+
+### `duck`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows a random duck image
+- Usage: None
+- Aliases: None
+- Cooldown: 5
 
 ### `emojify`
 
@@ -439,7 +464,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## General (12 commands)
+## General (13 commands)
 
 ### `addemoji`
 
@@ -506,6 +531,19 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Aliases: `list-emojis`
 - Cooldown: 10
 
+### `membercount`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows the server member count
+- Usage: None
+- Aliases: `mc`, `members`
+- Cooldown: 5
+
 ### `perms`
 
 ##### Subcommands:
@@ -544,7 +582,7 @@ Welcome-Bot contains more than **60 commands** in **9 categories**!
 - Description: Your server statistics
 - Usage: (--dm)
 - Aliases: `si`, `sinfo`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `testgoodbye`
 
@@ -777,78 +815,7 @@ You must join a voice channel before using this command.
 - Aliases: `sound-level`, `soundlevel`
 - Cooldown: 10
 
-## Owner Only (4 commands)
-
-### `eval`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Execute a JS statement.
-- Usage: [statement]
-- Aliases: None
-- Cooldown: 20
-
-### `reload`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Reloads a command
-- Usage: [command]
-- Aliases: None
-- Cooldown: 30
-
-### `restart`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Restart the bot
-- Usage: None
-- Aliases: None
-- Cooldown: 30
-
-### `servers-list`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Show the list of servers the bot is in.
-- Usage: None
-- Aliases: `slist`, `serverslist`
-- Cooldown: 20
-
-## Setup (7 commands)
-
-### `channel`
-
-##### Subcommands:
-
-- `set` - Set Welcome channel
-- `setMod` - Set Moderation channel
-- `reset` - Reset Welcome channel
-- `resetMod` - Reset Moderation channel
-
-##### Cmd info
-
-- Description: Manage channel settings for this server
-Not providing any arguments will display the current settings.
-- Usage: (subcommand)
-- Aliases: `chan`
-- Cooldown: 10
+## Setup (8 commands)
 
 ### `disable`
 
@@ -889,6 +856,22 @@ Not providing any arguments will display the current settings.
 - Aliases: `getnews`
 - Cooldown: 10
 
+### `goodbye`
+
+##### Subcommands:
+
+- `disable` - Disable goodbye logs
+- `enable` - Enable goodbye logs
+- `message` - Set goodbye message
+- `channel` - Set goodbye channel
+
+##### Cmd info
+
+- Description: Manage goodbye logs settings
+- Usage: (subcommand)
+- Aliases: `goodbyelogs`
+- Cooldown: 10
+
 ### `lang`
 
 ##### Subcommands:
@@ -903,18 +886,17 @@ Not providing any arguments will display the current settings.
 - Aliases: `language`, `changelang`, `getlang`
 - Cooldown: 10
 
-### `message`
+### `modlogs`
 
 ##### Subcommands:
 
-- `set` - Set Welcome message
-- `reset` - Reset Welcome message
+- `set` - Set ModLogs channel
 
 ##### Cmd info
 
-- Description: Manage welcome message for this server
+- Description: Manage ModLogs settings
 - Usage: (subcommand)
-- Aliases: `msg`
+- Aliases: `modlog`
 - Cooldown: 10
 
 ### `prefix`
@@ -929,4 +911,20 @@ Not providing any arguments will display the current settings.
 - Description: Manage prefix for this server
 - Usage: (subcommand)
 - Aliases: `getprefix`
+- Cooldown: 10
+
+### `welcome`
+
+##### Subcommands:
+
+- `disable` - Disable welcome logs
+- `enable` - Enable welcome logs
+- `message` - Set welcome message
+- `channel` - Set welcome channel
+
+##### Cmd info
+
+- Description: Manage welcome logs settings
+- Usage: (subcommand)
+- Aliases: `welcomelogs`
 - Cooldown: 10
