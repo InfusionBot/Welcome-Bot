@@ -111,6 +111,8 @@
     "cmdDesc": "Deposit money to your bank",
     "notAvailable": "Woah... You don't have that much money in your wallet!",
     "noSpace": "Woah... You don't have space to deposit that money!",
+    "noMoney": "Hey! You don't have anything in wallet to deposit",
+    "missingAmount": "The amount you specified is Not a Number or you did't specify the amount to deposit."
     "title": "Money deposited",
     "success": "Deposited {{wcoins}} wcoins"
   },

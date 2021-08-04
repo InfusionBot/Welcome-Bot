@@ -31,45 +31,39 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
+        if (!(parseInt(userDB.wallet, 10) > 0)) {
+            return message.reply(t("cmds:deposit.noMoney"));
+        }
         if (userDB.bank === userDB.bankLimit) {
             return message.reply(t("cmds:deposit.noSpace"));
         }
-        let wcoins = NaN;
-        if (!isNaN(parseInt(args[0]))) {
-            wcoins = parseInt(args[0]);
-            if (wcoins > userDB.wallet) {
-                return message.reply(t("cmds:deposit.notAvailable"));
-            }
-        } else if (
+        let amount = args[0];
+        if (
             args[0].toLowerCase() === "all" ||
             args[0].toLowerCase() === "max"
         ) {
-            const freeSpace = userDB.bankLimit - userDB.bank;
-            if (freeSpace > 0) {
-                wcoins = userDB.wallet;
-                if (wcoins < 0) {
-                    //wcoins is a negetive integer
-                    return message.reply(t("cmds:deposit.notAvailable"));
-                } else if (wcoins > freeSpace) {
-                    wcoins = wcoins - freeSpace;
-                }
-            } else if (freeSpace < 0) {
-                //no free space
-                return message.reply(t("cmds:deposit.noSpace"));
+            amount = parseInt(userDB.wallet, 10);
+        } else {
+            if (isNaN(amount) || parseInt(amount, 10) < 1) {
+                return message.reply(t("cmds:deposit.missingAmount"));
             }
+            amount = parseInt(amount, 10);
+        }
+        if (userDB.wallet < amount) {
+            return message.reply(t("cmds:deposit.notAvailable"));
         }
         try {
             await updateUser(
                 message.author.id,
                 "bank",
                 (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) +
-                    wcoins
+                    amount
             );
             await updateUser(
                 message.author.id,
                 "wallet",
                 (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) -
-                    wcoins
+                    amount
             );
         } catch (e) {
             message.client.logger.log(
@@ -82,7 +76,7 @@ module.exports = class CMD extends Command {
             .setTitle(t("cmds:deposit.title"))
             .setDesc(
                 t("cmds:deposit.success", {
-                    wcoins,
+                    amount,
                 })
             );
         message.reply({ embeds: [embed] });

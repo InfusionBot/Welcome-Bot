@@ -6,6 +6,7 @@
 const { Permissions } = require("discord.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
 const { Embed, Command } = require("../../classes");
+const { Pagination } = require("djs-pagination-buttons");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -102,7 +103,7 @@ module.exports = class CMD extends Command {
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
 
-            const curPage = await message.channel.send({
+            /*const curPage = await message.channel.send({
                 embeds: [
                     pages[page].setFooter(
                         `${t("misc:page")} ${page + 1} / ${pages.length}`
@@ -166,7 +167,12 @@ module.exports = class CMD extends Command {
                         ),
                     ],
                 });
-            });
+            });*/
+            const pagination = new Pagination(this.client);
+            pagination.setPages(pages);
+            pagination.setChannel(message.channel);
+            pagination.setAuthorizedUsers([message.author.id]);
+            pagination.send();
             return;
         } else if (args[0] && args[0] === "--list-categories") {
             let cats = [];
