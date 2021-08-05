@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
             .setTitle(t("cmds:support.cmdDesc"))
             .addField(
                 "\u200b",
-                `Join the support server: ${message.client.supportGuildInvite}`
+                `Join the support server`
             )
             .addField(
                 "🔗 Links:",
@@ -40,7 +40,7 @@ module.exports = class CMD extends Command {
             );
         const button = new MessageButton()
             .setLabel("Join the support server")
-            .setURL(message.client.supportGuildInvite)
+            .setURL(message.client.config.supportGuildInviteReal(this.client))
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
         message.channel.send({

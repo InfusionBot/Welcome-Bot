@@ -53,21 +53,14 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:deposit.notAvailable"));
         }
         try {
-            await updateUser(
-                message.author.id,
-                "bank",
-                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) +
-                    amount
-            );
-            await updateUser(
-                message.author.id,
-                "wallet",
-                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) -
-                    amount
-            );
+            userDB.bank = (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) + amount;
+            userDB.markModified("bank");
+            userDB.wallet = (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) - amount;
+            userDB.markModified("wallet");
+            await userDB.save();
         } catch (e) {
             message.client.logger.log(
-                "Error occurred when depositing user's wcoins",
+                "Error occurred when depositing user's amount",
                 "error"
             );
             throw e;

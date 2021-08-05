@@ -57,7 +57,7 @@ module.exports = class CMD extends Command {
             stop: "⏹",
         };
         let page = 0;
-        let pages = [new Embed({ color: "blue", timestamp: true })];
+        const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
         itemsThatGuyHas.forEach((item) => {
             const p = pages.length;

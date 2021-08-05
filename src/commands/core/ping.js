@@ -21,7 +21,6 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args }, t) {
-        //TODO: Add translation
         const msg = `${t("misc:pong")} ${message.author}\n${t(
             "misc:webheart"
         )}: ${message.client.ws.ping}ms.`;
@@ -30,7 +29,7 @@ module.exports = class CMD extends Command {
             .then((sent) => {
                 sent.edit(
                     msg +
-                        `\nRoundtrip latency: ${
+                        `\n${t("misc:latency")} ${
                             sent.createdTimestamp - message.createdTimestamp
                         }ms`
                 );

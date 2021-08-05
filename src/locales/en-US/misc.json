@@ -43,5 +43,7 @@
   "not_set": "Not set",
   "items": {
     "banknote": "banknote(s)"
-  }
+  },
+  "latency": "Roundtrip latency",
+  "verificationLevel": "Verification Level"
 }

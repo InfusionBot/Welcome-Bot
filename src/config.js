@@ -25,7 +25,7 @@ module.exports = {
     },
     invite: (client) => {
         return client.generateInvite({
-            scopes: ["bot"],
+            scopes: ["bot", "applications.commands"],
             permissions: defaultPerms,
         });
     },
@@ -45,4 +45,15 @@ module.exports = {
             msgLength: 50, //max goodbye msg length
         },
     },
+    supportGuildInvite: "https://dsc.gg/welcome-bot-guild",
+    supportGuildInviteReal: (client) => {
+        let invite = client.config.supportGuildInvite;
+        try {
+            const guild = client.guilds.cache.get(client.config.botGuildId);
+            invite = guild.invites.create(guild.systemChannelId);
+        } catch(e) {
+            invite = client.config.supportGuildInvite;
+        }
+        return invite;
+    }
 };

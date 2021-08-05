@@ -60,7 +60,8 @@ module.exports = class CMD extends Command {
                 `> ${t("misc:exiSince")}: ${message.guild.createdAt}\n` +
                     `> ${t("misc:lang")}: ${
                         message.guild.preferredLocale ?? "none"
-                    }`
+                    }\n` +
+                    `> ${t("misc:verificationLevel")}: ${message.guild.verificationLevel}`
             );
         const content = message.guild.id;
         switch (args[0]) {

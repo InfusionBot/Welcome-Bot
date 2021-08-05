@@ -13,7 +13,7 @@ module.exports = class CMD extends Command {
                 aliases: ["shard"],
                 memberPerms: [],
                 botPerms: [],
-                disabled: true,
+                disabled: false,
                 cooldown: 10,
                 category: "Core",
             },

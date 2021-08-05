@@ -56,8 +56,9 @@ module.exports = class CMD extends Command {
                 footer: t("cmds:report.done"),
             })
                 .setTitle(
-                    `Join the Welcome-Bot support server: ${message.client.supportGuildInvite}`
+                    `Join the Welcome-Bot support server`
                 )
+                .setURL(message.client.supportGuildInvite)
                 .setDesc(
                     t("cmds:report.view", {
                         chanid: message.client.config.reportsChannelId,
