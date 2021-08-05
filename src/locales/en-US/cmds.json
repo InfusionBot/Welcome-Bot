@@ -114,7 +114,7 @@
     "noMoney": "Hey! You don't have anything in wallet to deposit",
     "missingAmount": "The amount you specified is Not a Number or you did't specify the amount to deposit.",
     "title": "Money deposited",
-    "success": "Deposited {{wcoins}} wcoins"
+    "success": "Deposited {{amount}} wcoins"
   },
   "give": {
     "cmdDesc": "Donate monry to another user",
