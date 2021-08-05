@@ -1,7 +1,7 @@
 {
   "timeout": "Time's up! Please send the command again!",
   "ptimeout": "Pagination timed out",
-  "resMod": "**Responsible moderator**",
+  "resMod": "**Responsible Moderator:**",
   "channels": "Channels",
   "channel": "Channel",
   "bots": "Bots",
