@@ -60,7 +60,6 @@
   "dependencies": {
     "@discordjs/builders": "^0.3.0",
     "@top-gg/sdk": "^3.1.2",
-    "@discordjs/builders": "^0.3.0",
     "ascii-table": "^0.0.9",
     "axios": "^0.21.1",
     "btoa": "^1.2.1",
@@ -83,7 +82,6 @@
     "moment-duration-format": "^2.3.2",
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.12",
     "opusscript": "^0.0.8",
     "pokemon": "^2.2.0"
   },
@@ -92,6 +90,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "mocha": "^9.0.2",
+    "nodemon": "^2.0.12",
     "prettier": "^2.3.2"
   }
 }
