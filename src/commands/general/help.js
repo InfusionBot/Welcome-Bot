@@ -102,73 +102,7 @@ module.exports = class CMD extends Command {
                 "Commands",
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
-
-            /*const curPage = await message.channel.send({
-                embeds: [
-                    pages[page].setFooter(
-                        `${t("misc:page")} ${page + 1} / ${pages.length}`
-                    ),
-                ],
-            });
-            for (var key in emojiList) {
-                await curPage.react(emojiList[key]);
-            }
-            const reactionCollector = curPage.createReactionCollector({
-                filter: (reaction, user) =>
-                    Object.values(emojiList).includes(reaction.emoji.name) &&
-                    user.id === message.author.id,
-                time: timeout,
-            });
-            reactionCollector.on("collect", (reaction) => {
-                const botPerms = message.guild.me.permissionsIn(
-                    message.channel
-                );
-                // Remove the reaction when the user react to the message if the bot has perm
-                if (
-                    message.channel.type !== "DM" &&
-                    botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES)
-                )
-                    reaction.users.remove(message.author);
-                switch (reaction.emoji.name) {
-                    case emojiList["back"]:
-                        page = page > 0 ? --page : pages.length - 1;
-                        break;
-                    case emojiList["forward"]:
-                        page = page + 1 < pages.length ? ++page : 0;
-                        break;
-                    case emojiList["stop"]:
-                        return curPage.delete();
-                        break;
-                    case emojiList["first"]:
-                        page = 0;
-                        break;
-                    case emojiList["last"]:
-                        page = pages.length - 1;
-                        break;
-                }
-                curPage.edit({
-                    embeds: [
-                        pages[page].setFooter(
-                            `${t("misc:page")} ${page + 1} / ${pages.length}`
-                        ),
-                    ],
-                });
-            });
-            reactionCollector.on("end", () => {
-                curPage.reactions.removeAll().catch((err) => {
-                    if (message.client.debug) console.error(err);
-                });
-                curPage.edit({
-                    embeds: [
-                        pages[page].setFooter(
-                            `${t("misc:page")} ${page + 1} / ${
-                                pages.length
-                            } | ${t("misc:ptimeout")}`
-                        ),
-                    ],
-                });
-            });*/
-            const pagination = new Pagination(this.client);
+            const pagination = new Pagination(this.client, {timeout: timeout});
             pagination.setPages(pages);
             pagination.setChannel(message.channel);
             pagination.setAuthorizedUsers([message.author.id]);
