@@ -29,7 +29,7 @@
   "MANAGE_NICKNAMES": "Manage Nicknames",
   "MANAGE_ROLES": "Manage Roles",
   "MANAGE_WEBHOOKS": "Manage Webhooks",
-  "MANAGE_EMOJIS": "Manage Emojis",
+  "MANAGE_EMOJIS": "Gestionar emojis",
   "USE_APPLICATION_COMMANDS": "Usar comandos Slash",
   "REQUEST_TO_SPEAK": "Solicitud para hablar"
 }
