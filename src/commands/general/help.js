@@ -48,13 +48,6 @@ module.exports = class CMD extends Command {
         }
         const commands = message.client.commands.enabled;
         const { categories } = message.client;
-        const emojiList = {
-            first: "⏮",
-            back: "⏪",
-            forward: "⏩",
-            last: "⏭",
-            stop: "⏹",
-        };
         let page = 0;
         let pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
@@ -94,10 +87,6 @@ module.exports = class CMD extends Command {
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
             );
-            /*pages[0].addField(
-                "What is Cooldown:",
-                "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
-            );*/
             pages[0].addField(
                 "Commands",
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
