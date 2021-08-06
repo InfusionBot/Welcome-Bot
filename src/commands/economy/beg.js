@@ -36,7 +36,7 @@ module.exports = class CMD extends Command {
 
         if (wcoins > 50 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.success", { wcoins });
-        } else if (wcoins < 0 || isNaN(wcoins)) {
+        } else if (wcoins < 0 || isNaN(wcoins) || wcoins === Infinity) {
             result = t("cmds:beg.chances.failed");
             wcoins = 0;
         } else if (wcoins !== Infinity) {

@@ -56,7 +56,8 @@ module.exports = class CMD extends Command {
             const p = pages.length;
             pages[p] = new Embed({ color: "blue", timestamp: true });
             pages[p].addField(
-                `${userDB.inventory[item]} ${t(
+                `${userDB.inventory[item]}`,
+                `${t(
                     `misc:items.${item.toLowerCase()}`
                 )}`
             );
