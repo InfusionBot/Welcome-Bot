@@ -28,12 +28,31 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
         await message.guild.members.fetch();
-        const administrators = message.guild.members.cache.filter((m) => m.permissions.has(Permissions.FLAGS.ADMINISTRATOR) && !m.user.bot);
-        const moderators = message.guild.members.cache.filter((m) => !administrators.has(m.id) && m.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES) && !m.user.bot);
-        const embed = new Embed({color: "blue"})
+        const administrators = message.guild.members.cache.filter(
+            (m) =>
+                m.permissions.has(Permissions.FLAGS.ADMINISTRATOR) &&
+                !m.user.bot
+        );
+        const moderators = message.guild.members.cache.filter(
+            (m) =>
+                !administrators.has(m.id) &&
+                m.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES) &&
+                !m.user.bot
+        );
+        const embed = new Embed({ color: "blue" })
             .setAuthor(`${message.guild.name} Staff`)
-            .addField(t("misc:admins"), (administrators.size > 0 ? administrators.map((a) => `${a.user.tag}`).join("\n") : t("misc:no_admins")))
-            .addField(t("misc:mods"), (moderators.size > 0 ? moderators.map((m) => `${m.user.tag}`).join("\n") : t("misc:no_mods")));
-            message.channel.send({ embeds: [embed] });
+            .addField(
+                t("misc:admins"),
+                administrators.size > 0
+                    ? administrators.map((a) => `${a.user.tag}`).join("\n")
+                    : t("misc:no_admins")
+            )
+            .addField(
+                t("misc:mods"),
+                moderators.size > 0
+                    ? moderators.map((m) => `${m.user.tag}`).join("\n")
+                    : t("misc:no_mods")
+            );
+        message.channel.send({ embeds: [embed] });
     }
 };
