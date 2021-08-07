@@ -47,9 +47,9 @@ module.exports = class CMD extends Command {
                     ? administrators
                           .map(
                               (a) =>
-                                  `${this.getStatusEmoji(a?.presence?.status)} ${
-                                      a.user.tag
-                                  }`
+                                  `${this.getStatusEmoji(
+                                      a?.presence?.status
+                                  )} ${a.user.tag}`
                           )
                           .join("\n")
                     : t("misc:no_admins")
@@ -60,9 +60,9 @@ module.exports = class CMD extends Command {
                     ? moderators
                           .map(
                               (m) =>
-                                  `${this.getStatusEmoji(a?.presence?.status)} ${
-                                      m.user.tag
-                                  }`
+                                  `${this.getStatusEmoji(
+                                      a?.presence?.status
+                                  )} ${m.user.tag}`
                           )
                           .join("\n")
                     : t("misc:no_mods")
