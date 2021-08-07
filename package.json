@@ -26,6 +26,8 @@
     "feat: New cmd `goodbye`",
     "feat: New cmd `modlogs`",
     "feat: New cmd `seek`",
+    "refactor: translations for command usages",
+    "feat: New cmds `chanid`, `roleid`, `serverid`, `userid`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

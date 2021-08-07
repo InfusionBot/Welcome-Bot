@@ -210,6 +210,21 @@
     "cmdDesc": "Get a user's avatar",
     "profile": "Avatar of {{user}}"
   },
+  "chanid": {
+    "cmdDesc": "Get channel id",
+    "usage": "[channel]"
+  },
+  "roleid": {
+    "cmdDesc": "Get role id",
+    "usage": "[@role]"
+  },
+  "serverid": {
+    "cmdDesc": "Get server id"
+  },
+  "userid": {
+    "cmdDesc": "Get a id of a user",
+    "usage": "[@user]"
+  },
   "hastebin": {
     "cmdDesc": "Upload your text on hastebin!",
     "invalidExt": "Invalid Extension",

@@ -148,6 +148,7 @@ client.on("ready", async () => {
             "debug",
             ["DASHBOARD"]
         );
+    client.loadCommands(__dirname + "/commands");
     process.env.BOT_ID = client.user.id;
     presence(client);
     if (process.env.NODE_ENV === "production") serverCount(client);

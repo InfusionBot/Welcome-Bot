@@ -5,26 +5,21 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const { channelIdFromMention } = require("../../helpers/Util.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "sample",
-                aliases: ["example"],
+                name: "chanid",
+                aliases: ["channel-id"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
-                    subcommand: false,
-                    args: false,
+                    args: true,
                     guildOnly: true,
-                    ownerOnly: false,
                 },
                 disabled: false,
-                subcommands: [
-                    { name: "set", desc: "Set this" },
-                    { name: "reset", desc: "Reset that" },
-                ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "General",
             },
             client
@@ -32,7 +27,10 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB, userDB }, t) {
-        return;
+    async execute({ message, args, guildDB, userDB }, t) {
+        const channelId = channelIdFromMention(args[0]);
+        const channel = await message.guild.channels.fetch(channelId);
+        if (!channel) return message.reply(t("errors:invalidChannel"));
+        message.channel.send(`${channelId}`);
     }
 };
