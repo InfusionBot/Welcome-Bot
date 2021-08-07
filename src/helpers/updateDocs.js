@@ -38,7 +38,7 @@ module.exports = (client) => {
                     subcommands ? subcommands.join("\n- ") : "None"
                 }\n\n##### Cmd info\n\n` +
                 `- Description: ${t(`cmds:${cmd.name}.cmdDesc`)}\n` +
-                `- Usage: ${cmd.usage ? cmd.usage : "None"}\n` +
+                `- Usage: ${cmd.usage ? `${client.config.defaultPrefix}${cmd.name} ${cmd.defaultUsage}`}\n` +
                 `- Aliases: ${aliases}\n` +
                 `- Cooldown: ${cmd.cooldown}\n`;
         });

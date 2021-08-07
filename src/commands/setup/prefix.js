@@ -17,7 +17,6 @@ module.exports = class CMD extends Command {
                     subcommand: false,
                     guildOnly: true,
                 },
-                usage: "(subcommand)",
                 subcommands: [
                     { name: "set", desc: "Set Custom prefix" },
                     { name: "reset", desc: "Reset Custom prefix" },

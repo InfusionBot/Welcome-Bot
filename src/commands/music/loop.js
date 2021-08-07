@@ -17,7 +17,6 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                     subcommand: true,
                 },
-                usage: "[subcommand]",
                 subcommands: [
                     {
                         name: "off",

@@ -13,7 +13,6 @@ module.exports = class CMD extends Command {
                 aliases: ["vinfo", "ver"],
                 memberPerms: [],
                 botPerms: [],
-                usage: "(version)",
                 disabled: false,
                 cooldown: 10,
                 category: "General",

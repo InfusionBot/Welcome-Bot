@@ -18,7 +18,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: false,
                 },
-                usage: "(command name / category / --list-categories)",
                 disabled: false,
                 cooldown: 10,
                 category: "General",
@@ -28,24 +27,6 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        if (message.channel.type !== "DM" && !args.length) {
-            const botPerms = message.guild.me.permissionsIn(message.channel);
-            if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
-                message
-                    .reply(
-                        `${t("errors:note")}: ${t(
-                            "errors:iDontHavePermission",
-                            {
-                                permission: t("permissions:MANAGE_MESSAGES"),
-                            }
-                        )}, ${t("errors:pagination")}`
-                    )
-                    .then((msg) => {
-                        setTimeout(() => {
-                            msg.delete();
-                        }, 5000);
-                    });
-        }
         const commands = message.client.commands.enabled;
         const { categories } = message.client;
         let page = 0;
@@ -127,6 +108,7 @@ module.exports = class CMD extends Command {
         }
 
         if (command) {
+            command.usage = command.getUsage(t);
             pages[0].setDescription(
                 t(`cmds:help.cmdHelp`, { cmd: command.name })
             );
@@ -145,7 +127,7 @@ module.exports = class CMD extends Command {
                 pages[0].addField("Aliases: ", command.aliases.join(", "));
             if (command.memberPerms && command.memberPerms.length > 0)
                 pages[0].addField(
-                    "Member Permissions",
+                    "User Permissions",
                     `You need ${beautifyPerms(
                         command.memberPerms,
                         message.client.allPerms,
@@ -165,12 +147,7 @@ module.exports = class CMD extends Command {
                 pages[0].addField(
                     "Usage",
                     `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                        `\n**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.`
-                );
-            if (command.ownerOnly)
-                pages[0].addField(
-                    "Can be executed by:",
-                    "Welcome-Bot developers **ONLY**"
+                        `\n${t("misc:usageKey")}`
                 );
 
             pages[0].addField(

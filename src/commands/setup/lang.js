@@ -19,7 +19,6 @@ module.exports = class CMD extends Command {
                     subcommand: false,
                     guildOnly: true,
                 },
-                usage: "(subcommand) (lang)",
                 subcommands: [
                     { name: "list", desc: "List of all languages available" },
                     { name: "set", desc: "Set language" },

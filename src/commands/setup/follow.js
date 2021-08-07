@@ -18,7 +18,6 @@ module.exports = class CMD extends Command {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[channel / channel id]",
                 disabled: false,
                 cooldown: 10,
                 category: "Setup",
@@ -35,7 +34,7 @@ module.exports = class CMD extends Command {
         } else if (typeof args[0] === "number") {
             channelId = args[0];
         } else {
-            message.reply("Please provide a proper channel which exists.");
+            message.reply(t("errors:invalidChannel"));
         }
         message.client.guilds.cache
             .get(message.client.botServerId)
@@ -45,6 +44,6 @@ module.exports = class CMD extends Command {
                 console.error(err);
                 message.reply(t("errors:generic"));
             });
-        message.channel.send("Successfully followed");
+        message.channel.send(t("cmds:follow.success"));
     }
 };

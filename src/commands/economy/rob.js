@@ -14,7 +14,6 @@ module.exports = class CMD extends Command {
                 name: "rob",
                 memberPerms: [],
                 botPerms: [],
-                usage: "[@mention / user id]",
                 requirements: {
                     guildOnly: true,
                     args: true,

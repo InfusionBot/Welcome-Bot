@@ -13,7 +13,6 @@ module.exports = class CMD extends Command {
                 aliases: ["dp"],
                 memberPerms: [],
                 botPerms: [],
-                usage: "(@mention / user id)",
                 disabled: false,
                 cooldown: 10,
                 category: "General",

@@ -58,6 +58,8 @@ module.exports = async (message, guildDB) => {
 
         if (guildDB.disabled.includes(command.name)) return; //ignore disabled commands
 
+        command.usage = command.getUsage(t); //Don't use defaultUsage if there's an language translation for the command's usage
+
         if (
             message.guild &&
             !message.guild.me

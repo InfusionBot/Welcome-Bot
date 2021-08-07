@@ -40,6 +40,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `welcome`
 - feat: New cmd `goodbye`
 - feat: New cmd `modlogs`
+- feat: New cmd `seek`
+- refactor: translations for command usages
 
 ### Changes
 

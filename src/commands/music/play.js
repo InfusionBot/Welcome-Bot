@@ -18,7 +18,6 @@ module.exports = class CMD extends Command {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[name]",
                 disabled: false,
                 cooldown: 10,
                 category: "Music",

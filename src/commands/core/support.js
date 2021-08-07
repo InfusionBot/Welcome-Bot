@@ -40,7 +40,7 @@ module.exports = class CMD extends Command {
             );
         const button = new MessageButton()
             .setLabel("Join the support server")
-            .setURL(message.client.config.supportGuildInviteReal(this.client))
+            .setURL(`${await message.client.config.supportGuildInviteReal(this.client)}`)
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
         message.channel.send({

@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    async execute({ message, args }, t) {
         //TODO: Add translation
         if (args[1]) {
             args[1] = args[1].toLowerCase();
@@ -70,7 +70,7 @@ module.exports = class CMD extends Command {
             )
             .addField(
                 "🔗 Useful links:",
-                `> [Support server](${message.client.config.supportGuildInviteReal(this.client)})\n` +
+                `> [Support server](${await message.client.config.supportGuildInviteReal(this.client)})\n` +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                     "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.html) and [Terms of service](https://welcome-bot.github.io/docs/terms.html)\n" +
                     "> [Documentation](https://welcome-bot.github.io/docs)",

@@ -18,7 +18,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[@mention / user id] [amount]",
                 disabled: false,
                 cooldown: 5,
                 category: "Economy",

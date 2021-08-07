@@ -17,7 +17,6 @@ module.exports = class CMD extends Command {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[@mention / user id] (reason)",
                 disabled: false,
                 cooldown: 10,
                 category: "Moderation",
@@ -27,23 +26,9 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        let user;
+        //TODO: Add translation
         const reason = args.slice(1).join(" ") || t("misc:not_spec");
-        if (args[0]) {
-            if (args[0].startsWith("<@")) {
-                user = userFromMention(
-                    args[0] || `${message.author}`,
-                    message.client
-                );
-            }
-            if (!isNaN(parseInt(args[0]))) {
-                user = message.client.users.cache.get(args[0]);
-                if (!user) user = await message.client.users.fetch(args[0]);
-            }
-        }
-        if (!user) {
-            return message.reply(t("errors:invalidUser"));
-        }
+        const user = await this.getUserFromIdOrMention(args[0]);
         if (message.author.id === user.id) {
             return message.reply(t("cmds:unmute.errorYourself"));
         }
@@ -75,12 +60,10 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.plugins.modlogs) {
-                    const channel = message.guild.channels.cache.find(
-                        (ch) => ch.name === guildDB.plugins.modlogs
-                    );
+                    const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs);
                     if (channel) {
                         embed.setTitle(
-                            `User unmuted: ${user.tag} (${user.id})`
+                            `${t("cmds:unmute.unmuted")}: ${user.tag} (${user.id})`
                         );
                         embed.addField(
                             t("misc:resMod"),

@@ -6,6 +6,7 @@
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 const { Permissions } = require("discord.js");
+const { Pagination } = require("djs-pagination-buttons");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -27,24 +28,6 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
-        if (message.channel.type !== "DM") {
-            const botPerms = message.guild.me.permissionsIn(message.channel);
-            if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
-                message
-                    .reply(
-                        `${t("errors:note")}: ${t(
-                            "errors:iDontHavePermission",
-                            {
-                                permission: t("permissions:MANAGE_MESSAGES"),
-                            }
-                        )}, ${t("errors:pagination")}`
-                    )
-                    .then((msg) => {
-                        setTimeout(() => {
-                            msg.delete();
-                        }, 5000);
-                    });
-        }
         const items = Object.keys(userDB.inventory);
         const itemsThatGuyHas = items.filter((i) => userDB.inventory[i] > 0);
         if (!itemsThatGuyHas.length || itemsThatGuyHas.length <= 0)

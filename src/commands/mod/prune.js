@@ -39,6 +39,7 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB }, t) {
+        //TODO: Add translation
         let messages;
         const errMsg =
             "An error occurred when trying to prune messages in this channel";

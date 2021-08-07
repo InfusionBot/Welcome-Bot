@@ -26,6 +26,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
+        //TODO: Add translation
         const id = args[0];
         if (!id || isNaN(parseInt(id))) {
             return message.reply(t("errors:invalidUserId"));
@@ -41,9 +42,7 @@ module.exports = class CMD extends Command {
         }
 
         if (guildDB.plugins.modlogs) {
-            const channel = message.guild.channels.cache.find(
-                (ch) => ch.name === guildDB.plugins.modlogs
-            );
+            const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs);
             if (channel) {
                 const embed = new MessageEmbed();
                 embed.setTitle(`User unbanned: ${user.tag} (${user.id})`);

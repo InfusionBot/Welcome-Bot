@@ -43,6 +43,9 @@ module.exports = class CMD extends Command {
             args[0].toLowerCase() === "max"
         ) {
             amount = parseInt(userDB.wallet, 10);
+            if ((amount + userDB.bank) > userDB.bankLimit) {
+                amount = parseInt(userDB.bankLimit - userDB.bank, 10);
+            }
         } else {
             if (isNaN(amount) || parseInt(amount, 10) < 1) {
                 return message.reply(t("cmds:deposit.missingAmount"));
