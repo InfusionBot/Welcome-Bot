@@ -187,9 +187,8 @@ module.exports = class Command {
             case "idle":
                 return emojis.idle;
             case "offline":
-                return emojis.offline;
             default:
-                return "";
+                return emojis.offline;
                 break;
         }
     }
