@@ -32,6 +32,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `emojify`
 - feat: New cmd `daily` and new category `Economy`
 - feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`, `use`, `inventory`
+- feat: New item `banknote`
 - feat: New cmd `report`
 - feat: New cmd `duck`
 - feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages
