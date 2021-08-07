@@ -155,7 +155,6 @@ class WelcomeBot extends Client {
             leaveOnStop: true,
             enableLive: true,
         });
-        this.loadCommands(__dirname + "/commands");
         this.addDbFuncs();
     }
 

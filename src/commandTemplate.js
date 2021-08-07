@@ -19,7 +19,6 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                     ownerOnly: false,
                 },
-                usage: "[arg1] (arg2)",
                 disabled: false,
                 subcommands: [
                     { name: "set", desc: "Set this" },
