@@ -9,22 +9,15 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "sample",
-                aliases: ["example"],
+                name: "userid",
+                aliases: ["uid", "user-id"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
-                    subcommand: false,
-                    args: false,
-                    guildOnly: true,
-                    ownerOnly: false,
+                    args: true,
                 },
                 disabled: false,
-                subcommands: [
-                    { name: "set", desc: "Set this" },
-                    { name: "reset", desc: "Reset that" },
-                ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "General",
             },
             client
@@ -32,7 +25,11 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB, userDB }, t) {
-        return;
+    async execute({ message, args, guildDB, userDB }, t) {
+        const user = await this.getUserFromIdOrMention(args[0]);
+        if (!user) {
+            return message.reply(t("errors:invalidUser"));
+        }
+        message.channel.send(`${user.id}`);
     }
 };

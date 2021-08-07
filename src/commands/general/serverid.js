@@ -9,22 +9,15 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "sample",
-                aliases: ["example"],
+                name: "serverid",
+                aliases: ["sid", "guild-id"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
-                    subcommand: false,
-                    args: false,
                     guildOnly: true,
-                    ownerOnly: false,
                 },
                 disabled: false,
-                subcommands: [
-                    { name: "set", desc: "Set this" },
-                    { name: "reset", desc: "Reset that" },
-                ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "General",
             },
             client
@@ -33,6 +26,6 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB, userDB }, t) {
-        return;
+        message.channel.send(`${message.guild.id}`);
     }
 };
