@@ -179,7 +179,7 @@ module.exports = class Command {
 
     getStatusEmoji(status) {
         const emojis = this.client.customEmojis;
-        switch(status) {
+        switch (status) {
             case "online":
                 return emojis.online;
             case "dnd":
