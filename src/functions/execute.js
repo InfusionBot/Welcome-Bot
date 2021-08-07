@@ -58,6 +58,8 @@ module.exports = async (message, guildDB) => {
 
         if (guildDB.disabled.includes(command.name)) return; //ignore disabled commands
 
+        command.usage = command.getUsage(t); //Don't use defaultUsage if there's an language translation for the command's usage
+
         if (
             message.guild &&
             !message.guild.me
@@ -167,7 +169,7 @@ module.exports = async (message, guildDB) => {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
-                let subcmds = [];
+                const subcmds = [];
                 for (let i = 0; i < command.subcommands.length; i++) {
                     subcmds.push(command.subcommands[i].name);
                 }

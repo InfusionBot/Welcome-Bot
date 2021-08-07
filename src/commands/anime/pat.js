@@ -16,7 +16,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[@mention / user id]",
                 disabled: false,
                 cooldown: 5,
                 category: "Anime",

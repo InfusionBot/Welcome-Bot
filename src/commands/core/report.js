@@ -15,7 +15,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[bug description]",
                 disabled: false,
                 cooldown: 10,
                 category: "Core",
@@ -55,9 +54,8 @@ module.exports = class CMD extends Command {
                 color: "red",
                 footer: t("cmds:report.done"),
             })
-                .setTitle(
-                    `Join the Welcome-Bot support server: ${message.client.supportGuildInvite}`
-                )
+                .setTitle(`Join the Welcome-Bot support server`)
+                .setURL(message.client.supportGuildInvite)
                 .setDesc(
                     t("cmds:report.view", {
                         chanid: message.client.config.reportsChannelId,

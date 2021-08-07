@@ -19,7 +19,6 @@ module.exports = class CMD extends Command {
                     subcommand: false,
                     guildOnly: true,
                 },
-                usage: "(subcommand)",
                 disabled: false,
                 subcommands: [
                     { name: "disable", desc: "Disable goodbye logs" },

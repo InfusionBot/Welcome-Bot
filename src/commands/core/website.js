@@ -27,10 +27,7 @@ module.exports = class CMD extends Command {
             color: "green",
             timestamp: true,
             footer: "Official Website of Welcome-Bot",
-        }).addField(
-            "Wanna get link to Welcome-Bot's website?",
-            `Here's it: ${message.client.site}`
-        );
+        }).setDesc(`Here's it: ${message.client.site}`);
         const button = new MessageButton()
             .setLabel("Website")
             .setURL(message.client.site)

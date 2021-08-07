@@ -17,7 +17,6 @@ module.exports = class CMD extends Command {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[@mention] (reason)",
                 disabled: false,
                 cooldown: 10,
                 category: "Moderation",
@@ -27,6 +26,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
+        //TODO: Add translation
         const user = userFromMention(args[0], message.client);
         if (!user) {
             return message.reply(t("errors:invalidUser"));
@@ -37,17 +37,13 @@ module.exports = class CMD extends Command {
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
         if (user.id === message.client.user.id)
-            return message.reply(
-                "Please don't try to kick me, you have to do it yourself."
-            );
+            return message.reply(t("cmds:kick.mySelf"));
 
         if (
             member.roles.highest.position >=
             message.member.roles.highest.position
         )
-            return message.channel.send(
-                "You cannot kick someone with an equal or higher role!"
-            );
+            return message.channel.send(t("misc:higherRole"));
 
         const reason = args.slice(1).join(" ") || t("misc:not_spec");
         try {
@@ -58,12 +54,14 @@ module.exports = class CMD extends Command {
         }
 
         if (guildDB.plugins.modlogs) {
-            const channel = member.guild.channels.cache.find(
-                (ch) => ch.name === guildDB.plugins.modlogs
+            const channel = message.guild.channels.cache.get(
+                guildDB.plugins.modlogs
             );
             if (channel) {
                 const embed = new Embed({ color: "red" });
-                embed.setTitle(`User kicked: ${user.tag} (${user.id})`);
+                embed.setTitle(
+                    `${t("cmds:lick.kicked")}: ${user.tag} (${user.id})`
+                );
                 embed.addField(
                     t("misc:resMod"),
                     `${message.author.tag} (${message.author.id})`

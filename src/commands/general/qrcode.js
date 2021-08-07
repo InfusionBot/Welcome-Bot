@@ -12,7 +12,6 @@ module.exports = class CMD extends Command {
                 aliases: ["qr"],
                 memberPerms: [],
                 botPerms: [],
-                usage: "[subcommand] [data / image_url]",
                 requirements: {
                     args: true,
                 },
@@ -34,7 +33,7 @@ module.exports = class CMD extends Command {
         const baseURL = "http://api.qrserver.com/v1";
         if (!args[1])
             return message.reply(
-                "Please provide a data / image_url to generate / read a qrcode respectively"
+                "Please provide a text / image url to generate / read a qrcode respectively"
             );
         const body = fetch(
             `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(

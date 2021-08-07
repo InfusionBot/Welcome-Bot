@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -18,7 +18,6 @@ module.exports = class CMD extends Command {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[name]",
                 disabled: false,
                 cooldown: 10,
                 category: "Music",
@@ -69,7 +68,7 @@ module.exports = class CMD extends Command {
         } catch (e) {
             message.client.player.deleteQueue(message.guild);
             message.client.logger.log(
-                "Error when connectioning to voice channel",
+                "Error when connecting to voice channel",
                 "error",
                 ["VOICE"]
             );

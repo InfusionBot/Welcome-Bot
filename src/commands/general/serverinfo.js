@@ -15,7 +15,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     guildOnly: true,
                 },
-                usage: "(--dm)",
                 disabled: false,
                 cooldown: 5,
                 category: "General",
@@ -60,6 +59,9 @@ module.exports = class CMD extends Command {
                 `> ${t("misc:exiSince")}: ${message.guild.createdAt}\n` +
                     `> ${t("misc:lang")}: ${
                         message.guild.preferredLocale ?? "none"
+                    }\n` +
+                    `> ${t("misc:verificationLevel")}: ${
+                        message.guild.verificationLevel
                     }`
             );
         const content = message.guild.id;

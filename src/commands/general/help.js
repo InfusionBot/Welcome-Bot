@@ -6,6 +6,7 @@
 const { Permissions } = require("discord.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
 const { Embed, Command } = require("../../classes");
+const { Pagination } = require("djs-pagination-buttons");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -17,7 +18,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: false,
                 },
-                usage: "(command name / category / --list-categories)",
                 disabled: false,
                 cooldown: 10,
                 category: "General",
@@ -27,35 +27,10 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        if (message.channel.type !== "DM" && !args.length) {
-            const botPerms = message.guild.me.permissionsIn(message.channel);
-            if (!botPerms || !botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES))
-                message
-                    .reply(
-                        `${t("errors:note")}: ${t(
-                            "errors:iDontHavePermission",
-                            {
-                                permission: t("permissions:MANAGE_MESSAGES"),
-                            }
-                        )}, ${t("errors:pagination")}`
-                    )
-                    .then((msg) => {
-                        setTimeout(() => {
-                            msg.delete();
-                        }, 5000);
-                    });
-        }
         const commands = message.client.commands.enabled;
         const { categories } = message.client;
-        const emojiList = {
-            first: "⏮",
-            back: "⏪",
-            forward: "⏩",
-            last: "⏭",
-            stop: "⏹",
-        };
-        let page = 0;
-        let pages = [new Embed({ color: "blue", timestamp: true })];
+        const page = 0;
+        const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
 
         for (var i = 0; i < pages.length; i++) {
@@ -64,7 +39,7 @@ module.exports = class CMD extends Command {
         if (!args.length) {
             categories.forEach((cat) => {
                 const p = pages.length;
-                let commandsCat = [];
+                const commandsCat = [];
                 pages[p] = new Embed({
                     color: "blue",
                     timestamp: true,
@@ -93,86 +68,20 @@ module.exports = class CMD extends Command {
                 "Get help for specific command:",
                 `Send \`${guildDB.prefix}help (command name)\` to get info on a specific command!`
             );
-            /*pages[0].addField(
-                "What is Cooldown:",
-                "Cooldown is the time that must elapse between each command so that it can be executed again by the user"
-            );*/
             pages[0].addField(
                 "Commands",
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
-
-            const curPage = await message.channel.send({
-                embeds: [
-                    pages[page].setFooter(`Page ${page + 1} / ${pages.length}`),
-                ],
+            const pagination = new Pagination(this.client, {
+                timeout: timeout,
             });
-            for (var key in emojiList) {
-                await curPage.react(emojiList[key]);
-            }
-            const reactionCollector = curPage.createReactionCollector({
-                filter: (reaction, user) =>
-                    Object.values(emojiList).includes(reaction.emoji.name) &&
-                    user.id === message.author.id,
-                time: timeout,
-            });
-            reactionCollector.on("collect", (reaction) => {
-                const botPerms = message.guild.me.permissionsIn(
-                    message.channel
-                );
-                // Remove the reaction when the user react to the message if the bot has perm
-                if (
-                    message.channel.type !== "DM" &&
-                    botPerms.has(Permissions.FLAGS.MANAGE_MESSAGES)
-                )
-                    reaction.users.remove(message.author);
-                else if (message.client.debug)
-                    message.client.logger.log(
-                        "silently failing to remove user's reaction, because I don't have MANAGE_MESSAGES permission",
-                        "debug"
-                    );
-                switch (reaction.emoji.name) {
-                    case emojiList["back"]:
-                        page = page > 0 ? --page : pages.length - 1;
-                        break;
-                    case emojiList["forward"]:
-                        page = page + 1 < pages.length ? ++page : 0;
-                        break;
-                    case emojiList["stop"]:
-                        return curPage.delete();
-                        break;
-                    case emojiList["first"]:
-                        page = 0;
-                        break;
-                    case emojiList["last"]:
-                        page = pages.length - 1;
-                        break;
-                }
-                curPage.edit({
-                    embeds: [
-                        pages[page].setFooter(
-                            `${t("misc:page")} ${page + 1} / ${pages.length}`
-                        ),
-                    ],
-                });
-            });
-            reactionCollector.on("end", () => {
-                curPage.reactions.removeAll().catch((err) => {
-                    console.error(err);
-                });
-                curPage.edit({
-                    embeds: [
-                        pages[page].setFooter(
-                            `${t("misc:page")} ${page + 1} / ${
-                                pages.length
-                            } | ${t("misc:ptimeout")}`
-                        ),
-                    ],
-                });
-            });
+            pagination.setPages(pages);
+            pagination.setChannel(message.channel);
+            pagination.setAuthorizedUsers([message.author.id]);
+            pagination.send();
             return;
         } else if (args[0] && args[0] === "--list-categories") {
-            let cats = [];
+            const cats = [];
             categories.forEach((cat) => {
                 cats.push(`${t(`categories:${cat.key}`)}`);
             });
@@ -201,6 +110,7 @@ module.exports = class CMD extends Command {
         }
 
         if (command) {
+            command.usage = command.getUsage(t);
             pages[0].setDescription(
                 t(`cmds:help.cmdHelp`, { cmd: command.name })
             );
@@ -219,7 +129,7 @@ module.exports = class CMD extends Command {
                 pages[0].addField("Aliases: ", command.aliases.join(", "));
             if (command.memberPerms && command.memberPerms.length > 0)
                 pages[0].addField(
-                    "Member Permissions",
+                    "User Permissions",
                     `You need ${beautifyPerms(
                         command.memberPerms,
                         message.client.allPerms,
@@ -227,7 +137,7 @@ module.exports = class CMD extends Command {
                     ).join(", ")} permission(s) to execute this command.`
                 );
             if (command.subcommands) {
-                let subcommands = [];
+                const subcommands = [];
                 for (let i = 0; i < command.subcommands.length; i++) {
                     subcommands.push(
                         `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
@@ -239,12 +149,7 @@ module.exports = class CMD extends Command {
                 pages[0].addField(
                     "Usage",
                     `\`\`\`\n${guildDB.prefix}${command.name} ${command.usage}\n\`\`\`` +
-                        `\n**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.`
-                );
-            if (command.ownerOnly)
-                pages[0].addField(
-                    "Can be executed by:",
-                    "Welcome-Bot developers **ONLY**"
+                        `\n${t("misc:usageKey")}`
                 );
 
             pages[0].addField(
@@ -252,7 +157,7 @@ module.exports = class CMD extends Command {
                 `${command.cooldown || 3} second(s)`
             );
         } else if (category) {
-            let commandsInCat = [];
+            const commandsInCat = [];
             commands.each((cmd) => {
                 if (cmd.category.toLowerCase() === category.name.toLowerCase())
                     commandsInCat.push(

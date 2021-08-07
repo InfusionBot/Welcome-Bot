@@ -205,7 +205,8 @@ class WelcomeBot extends Client {
                     process.exit();
                 }
             }
-            this.categories.push(metadata);
+            if (metadata.name.indexOf("Owner") === -1)
+                this.categories.push(metadata);
         }
         if (this.debug && this.debugLevel > 1)
             this.logger.log("Finished loading commands", "debug", [

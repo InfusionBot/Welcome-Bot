@@ -5,6 +5,7 @@
  */
 const createOptionHandler = require("../functions/createOptionHandler");
 const addUser = require("../db/functions/user/addUser");
+const { userFromMention } = require("../helpers/Util.js");
 const { Permissions, Collection } = require("discord.js");
 module.exports = class Command {
     constructor(opts, client) {
@@ -20,7 +21,11 @@ module.exports = class Command {
             guildOnly: false,
             ownerOnly: false,
         });
-        this.usage = options.optional("usage", null);
+        //this.usage = options.optional("usage", null);
+        this.defaultUsage = client.i18next.getFixedT("en-US")(
+            `cmds:${this.name}.usage`
+        );
+        if (this.defaultUsage === `${this.name}.usage`) this.defaultUsage = "";
         this.disabled = options.optional("disabled", false);
         this.subcommands = options.optional("subcommands", null);
         this.cooldown = options.optional("cooldown", 3);
@@ -153,5 +158,28 @@ module.exports = class Command {
     async fetchJson(url, options = {}) {
         const res = await require("node-fetch")(url, options);
         return res.json();
+    }
+
+    async getUserFromIdOrMention(idOrMention) {
+        let user;
+        if (idOrMention) {
+            if (idOrMention.startsWith("<@")) {
+                user = userFromMention(idOrMention, this.client);
+            }
+            if (!isNaN(parseInt(idOrMention))) {
+                user = this.client.users.cache.get(idOrMention);
+                if (!user) user = await this.client.users.fetch(idOrMention);
+            }
+        }
+        if (!user) {
+            return null;
+        }
+        return user;
+    }
+
+    getUsage(t) {
+        const usage = t(`cmds:${this.name}.usage`);
+        if (usage === `${this.name}.usage`) return this.defaultUsage;
+        return usage;
     }
 };

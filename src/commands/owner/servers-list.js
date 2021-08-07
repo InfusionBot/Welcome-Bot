@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) {
+    async execute({ message, args, guildDB }) {
         const servers = message.client.guilds.cache.size;
         const emojiList = {
             back: "⏪",

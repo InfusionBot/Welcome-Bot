@@ -14,7 +14,6 @@ module.exports = class CMD extends Command {
                 name: "rob",
                 memberPerms: [],
                 botPerms: [],
-                usage: "[@mention / user id]",
                 requirements: {
                     guildOnly: true,
                     args: true,
@@ -96,13 +95,11 @@ module.exports = class CMD extends Command {
                         : 0) - lostCoins
                 );
             } else {
-                await updateUser(
-                    message.author.id,
-                    "wallet",
+                userDB.wallet =
                     (!isNaN(parseInt(userDB.wallet))
                         ? parseInt(userDB.wallet)
-                        : 0) + stolenCoins
-                );
+                        : 0) + stolenCoins;
+                userDB.markModified("wallet");
                 await updateUser(
                     user.id,
                     "wallet",
@@ -110,6 +107,7 @@ module.exports = class CMD extends Command {
                         ? parseInt(userDB2.wallet)
                         : 0) - stolenCoins
                 );
+                await userDB.save();
             }
         } catch (e) {
             throw e;

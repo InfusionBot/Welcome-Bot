@@ -18,7 +18,6 @@ module.exports = class CMD extends Command {
                     args: false,
                     guildOnly: true,
                 },
-                usage: "(command name / subcommand)",
                 subcommands: [
                     { name: "display", desc: "Show current settings" },
                 ],

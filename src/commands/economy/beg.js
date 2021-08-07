@@ -30,14 +30,16 @@ module.exports = class CMD extends Command {
         wcoins = Math.round(wcoins);
         let result;
 
-        if (wcoins > 100 && wcoins !== Infinity) {
+        if (wcoins === Infinity) {
+            wcoins = Math.floor(Math.random() * (begCoins - 100));
+        }
+
+        if (wcoins > 50 && wcoins !== Infinity) {
             result = t("cmds:beg.chances.success", { wcoins });
-        } else if (wcoins > 50 && wcoins !== Infinity) {
-            result = t("cmds:beg.chances.little", { wcoins });
-        } else if (wcoins < 0 || wcoins === Infinity || isNaN(wcoins)) {
+        } else if (wcoins < 0 || isNaN(wcoins) || wcoins === Infinity) {
             result = t("cmds:beg.chances.failed");
             wcoins = 0;
-        } else {
+        } else if (wcoins !== Infinity) {
             result = t("cmds:beg.chances.little", { wcoins });
         }
 

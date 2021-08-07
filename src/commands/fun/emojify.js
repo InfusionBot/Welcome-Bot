@@ -14,7 +14,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[text]",
                 disabled: false,
                 cooldown: 8,
                 category: "Fun",

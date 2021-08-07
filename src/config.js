@@ -12,6 +12,7 @@ module.exports = {
     logsChannelId: "855331801635749888",
     votesChannelId: "867925583777103872",
     suggestionLogsChannelId: "862126837110800414",
+    defaultPrefix: "w/",
     reportsChannelId: "869017115385024543",
     ownerIDs: [
         "815204465937481749" /*PuneetGopinath#0001*/,
@@ -25,7 +26,7 @@ module.exports = {
     },
     invite: (client) => {
         return client.generateInvite({
-            scopes: ["bot"],
+            scopes: ["bot", "applications.commands"],
             permissions: defaultPerms,
         });
     },
@@ -44,5 +45,16 @@ module.exports = {
         goodbye: {
             msgLength: 50, //max goodbye msg length
         },
+    },
+    supportGuildInvite: "https://dsc.gg/welcome-bot-guild",
+    supportGuildInviteReal: (client) => {
+        let invite = client.config.supportGuildInvite;
+        try {
+            const guild = client.guilds.cache.get(client.config.botGuildId);
+            invite = guild.invites.create(guild.systemChannelId);
+        } catch (e) {
+            invite = client.config.supportGuildInvite;
+        }
+        return invite;
     },
 };

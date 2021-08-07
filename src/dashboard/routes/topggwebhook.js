@@ -15,13 +15,14 @@ router.post(
         const { client } = req;
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) return;
-        await client.userDbFuncs.addUser(vUser.id);
+        if (!(await client.userDbFuncs.getUser(vUser.id)))
+            await client.userDbFuncs.addUser(vUser.id);
         const userDB = await client.userDbFuncs.getUser(vUser.id);
-        await client.userDbFuncs.updateUser(
-            vUser.id,
-            "wallet",
-            parseInt(userDB.wallet) + 500
-        ); //Give user 500 coins
+        userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
+        userDB.markModified("wallet");
+        userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
+        userDB.markModified("inventory.banknote");
+        await userDB.save();
         if (client.config.votesChannelId) {
             client.channels.cache
                 .get(client.config.votesChannelId)
@@ -30,7 +31,7 @@ router.post(
                         client.username
                     }${
                         vote.guild ? " Support server" : " itself"
-                    }** on top.gg and got 500 wcoins 🎉!`
+                    }** on top.gg and got 500 wcoins with other rewards 🎉!`
                 )
                 .catch(console.log);
         } else {

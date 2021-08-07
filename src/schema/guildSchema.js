@@ -56,8 +56,8 @@ const guildSchema = new mongoose.Schema({
             },
         },
         modlogs: {
-            default: "mod-log",
-            type: String,
+            default: 0,
+            type: Number,
         },
     },
 });

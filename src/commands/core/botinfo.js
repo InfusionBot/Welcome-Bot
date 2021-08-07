@@ -3,8 +3,9 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { version } = require("discord.js");
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const { version } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -22,7 +23,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    //eslint-disable-next-line no-unused-vars
+    async execute({ message, args }, t) {
         //TODO: Add translation
         if (args[1]) {
             args[1] = args[1].toLowerCase();
@@ -70,7 +72,9 @@ module.exports = class CMD extends Command {
             )
             .addField(
                 "🔗 Useful links:",
-                `> [Support server](${message.client.supportGuildInvite})\n` +
+                `> [Support server](${await message.client.config.supportGuildInviteReal(
+                    this.client
+                )})\n` +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                     "> [Privacy policy](https://welcome-bot.github.io/docs/privacy-policy.html) and [Terms of service](https://welcome-bot.github.io/docs/terms.html)\n" +
                     "> [Documentation](https://welcome-bot.github.io/docs)",

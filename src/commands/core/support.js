@@ -3,8 +3,9 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { MessageActionRow, MessageButton } = require("discord.js");
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const { MessageActionRow, MessageButton } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -21,8 +22,10 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    //eslint-disable-next-line no-unused-vars
+    async execute({ message, args }, t) {
         //TODO: Add translation
+        const link = await message.client.config.supportGuildInviteReal(this.client);
         const embed = new Embed({
             color: "green",
             timestamp: true,
@@ -31,7 +34,7 @@ module.exports = class CMD extends Command {
             .setTitle(t("cmds:support.cmdDesc"))
             .addField(
                 "\u200b",
-                `Join the support server: ${message.client.supportGuildInvite}`
+                `Join the support server`
             )
             .addField(
                 "🔗 Links:",
@@ -40,7 +43,7 @@ module.exports = class CMD extends Command {
             );
         const button = new MessageButton()
             .setLabel("Join the support server")
-            .setURL(message.client.supportGuildInvite)
+            .setURL(`${link}`)
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
         message.channel.send({

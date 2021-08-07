@@ -3,9 +3,10 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+//eslint-disable-next-line no-unused-vars
+const { Embed, Command } = require("../../classes");
 const TopggAPI = require("../../classes/Topgg").api;
 const { MessageActionRow, MessageButton } = require("discord.js");
-const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -21,6 +22,7 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
         const id = "848459799783669790";
         const userVotedTopgg = await TopggAPI.hasVoted(message.author.id);
@@ -34,14 +36,13 @@ module.exports = class CMD extends Command {
             }
         );
         userVotedBls = userVotedBls.upvoted;
-        console.log(userVotedBls);
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
             .setDesc(
                 `${t("cmds:vote.rewards.index")}\n${t(
                     "cmds:vote.rewards.coins",
                     { coins: 500 }
-                )}`
+                )}\n${t("cmds:vote.rewards.banknote")}`
             );
         const buttonTopgg = new MessageButton()
             .setLabel("top.gg")

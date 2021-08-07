@@ -1,7 +1,7 @@
 {
   "timeout": "Time's up! Please send the command again!",
   "ptimeout": "Pagination timed out",
-  "resMod": "**Responsible moderator**",
+  "resMod": "**Responsible Moderator:**",
   "channels": "Channels",
   "channel": "Channel",
   "bots": "Bots",
@@ -40,5 +40,12 @@
   "servers": "Servers",
   "cached_users": "Cached Users",
   "ping": "Ping",
-  "not_set": "Not set"
+  "not_set": "Not set",
+  "items": {
+    "banknote": "banknote(s)"
+  },
+  "latency": "Roundtrip latency",
+  "verificationLevel": "Verification Level",
+  "usageKey": "**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.",
+  "higherRole": "You cannot do that to someone with an equal or higher role!"
 }
