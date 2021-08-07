@@ -44,13 +44,27 @@ module.exports = class CMD extends Command {
             .addField(
                 t("misc:admins"),
                 administrators.size > 0
-                    ? administrators.map((a) => `${this.getStatusEmoji(user?.presence)} ${a.user.tag}`).join("\n")
+                    ? administrators
+                          .map(
+                              (a) =>
+                                  `${this.getStatusEmoji(user?.presence)} ${
+                                      a.user.tag
+                                  }`
+                          )
+                          .join("\n")
                     : t("misc:no_admins")
             )
             .addField(
                 t("misc:mods"),
                 moderators.size > 0
-                    ? moderators.map((m) => `${this.getStatusEmoji(user?.presence)} ${m.user.tag}`).join("\n")
+                    ? moderators
+                          .map(
+                              (m) =>
+                                  `${this.getStatusEmoji(user?.presence)} ${
+                                      m.user.tag
+                                  }`
+                          )
+                          .join("\n")
                     : t("misc:no_mods")
             );
         message.channel.send({ embeds: [embed] });
