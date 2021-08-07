@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.3.2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2.3.2
         with:
-          node-version: 12
+          node-version: "16.x"
+      - run: npm install npm -g
       - run: npm install
       #- run: npm test
 
@@ -23,10 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.3.2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2.3.2
         with:
-          node-version: 12
+          node-version: "16.x"
           registry-url: https://registry.npmjs.org/
+      - run: npm install npm -g
       - run: npm install
       - run: npm publish --access=public
         env:
