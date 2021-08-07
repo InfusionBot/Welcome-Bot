@@ -52,9 +52,9 @@ module.exports = {
         try {
             const guild = client.guilds.cache.get(client.config.botGuildId);
             invite = guild.invites.create(guild.systemChannelId);
-        } catch(e) {
+        } catch (e) {
             invite = client.config.supportGuildInvite;
         }
         return invite;
-    }
+    },
 };

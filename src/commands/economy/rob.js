@@ -95,7 +95,10 @@ module.exports = class CMD extends Command {
                         : 0) - lostCoins
                 );
             } else {
-                userDB.wallet = (!isNaN(parseInt(userDB.wallet)) ? parseInt(userDB.wallet) : 0) + stolenCoins;
+                userDB.wallet =
+                    (!isNaN(parseInt(userDB.wallet))
+                        ? parseInt(userDB.wallet)
+                        : 0) + stolenCoins;
                 userDB.markModified("wallet");
                 await updateUser(
                     user.id,

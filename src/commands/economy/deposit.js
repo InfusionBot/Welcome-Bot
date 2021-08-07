@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
             args[0].toLowerCase() === "max"
         ) {
             amount = parseInt(userDB.wallet, 10);
-            if ((amount + userDB.bank) > userDB.bankLimit) {
+            if (amount + userDB.bank > userDB.bankLimit) {
                 amount = parseInt(userDB.bankLimit - userDB.bank, 10);
             }
         } else {
@@ -56,9 +56,13 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:deposit.notAvailable"));
         }
         try {
-            userDB.bank = (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) + amount;
+            userDB.bank =
+                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) +
+                amount;
             userDB.markModified("bank");
-            userDB.wallet = (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) - amount;
+            userDB.wallet =
+                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) -
+                amount;
             userDB.markModified("wallet");
             await userDB.save();
         } catch (e) {

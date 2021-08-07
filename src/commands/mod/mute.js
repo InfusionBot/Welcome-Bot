@@ -89,9 +89,13 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.plugins.modlogs) {
-                    const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs);
+                    const channel = message.guild.channels.cache.get(
+                        guildDB.plugins.modlogs
+                    );
                     if (channel) {
-                        embed.setTitle(`${t("cmds:mute.muted")}: ${user.tag} (${user.id})`);
+                        embed.setTitle(
+                            `${t("cmds:mute.muted")}: ${user.tag} (${user.id})`
+                        );
                         embed.addField(
                             t("misc:resMod"),
                             `${message.author.tag} (${message.author.id})`

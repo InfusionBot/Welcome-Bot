@@ -24,9 +24,9 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     execute({ message, args }, t) {
         //TODO: Add translation
-        const embed = new Embed().setTitle(
-            t("misc:djsv")
-        ).setURL("https://discord.js.org");
+        const embed = new Embed()
+            .setTitle(t("misc:djsv"))
+            .setURL("https://discord.js.org");
         return message.reply({ embeds: [embed] });
     }
 };

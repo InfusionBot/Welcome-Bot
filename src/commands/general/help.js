@@ -29,8 +29,8 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB }, t) {
         const commands = message.client.commands.enabled;
         const { categories } = message.client;
-        let page = 0;
-        let pages = [new Embed({ color: "blue", timestamp: true })];
+        const page = 0;
+        const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
 
         for (var i = 0; i < pages.length; i++) {
@@ -72,14 +72,16 @@ module.exports = class CMD extends Command {
                 "Commands",
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
-            const pagination = new Pagination(this.client, {timeout: timeout});
+            const pagination = new Pagination(this.client, {
+                timeout: timeout,
+            });
             pagination.setPages(pages);
             pagination.setChannel(message.channel);
             pagination.setAuthorizedUsers([message.author.id]);
             pagination.send();
             return;
         } else if (args[0] && args[0] === "--list-categories") {
-            let cats = [];
+            const cats = [];
             categories.forEach((cat) => {
                 cats.push(`${t(`categories:${cat.key}`)}`);
             });
@@ -135,7 +137,7 @@ module.exports = class CMD extends Command {
                     ).join(", ")} permission(s) to execute this command.`
                 );
             if (command.subcommands) {
-                let subcommands = [];
+                const subcommands = [];
                 for (let i = 0; i < command.subcommands.length; i++) {
                     subcommands.push(
                         `\`${command.subcommands[i].name}\` - ${command.subcommands[i].desc}`
@@ -155,7 +157,7 @@ module.exports = class CMD extends Command {
                 `${command.cooldown || 3} second(s)`
             );
         } else if (category) {
-            let commandsInCat = [];
+            const commandsInCat = [];
             commands.each((cmd) => {
                 if (cmd.category.toLowerCase() === category.name.toLowerCase())
                     commandsInCat.push(

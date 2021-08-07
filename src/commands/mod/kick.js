@@ -54,10 +54,14 @@ module.exports = class CMD extends Command {
         }
 
         if (guildDB.plugins.modlogs) {
-            const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs);
+            const channel = message.guild.channels.cache.get(
+                guildDB.plugins.modlogs
+            );
             if (channel) {
                 const embed = new Embed({ color: "red" });
-                embed.setTitle(`${t("cmds:lick.kicked")}: ${user.tag} (${user.id})`);
+                embed.setTitle(
+                    `${t("cmds:lick.kicked")}: ${user.tag} (${user.id})`
+                );
                 embed.addField(
                     t("misc:resMod"),
                     `${message.author.tag} (${message.author.id})`
