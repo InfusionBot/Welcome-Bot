@@ -54,9 +54,7 @@ module.exports = class CMD extends Command {
                 color: "green",
                 footer: t("cmds:suggest.done"),
             })
-                .setTitle(
-                    `Join the Welcome-Bot support server`
-                )
+                .setTitle(`Join the Welcome-Bot support server`)
                 .setURL(message.client.supportGuildInvite)
                 .setDesc(
                     t("cmds:suggest.view", {

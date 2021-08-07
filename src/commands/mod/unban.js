@@ -42,7 +42,9 @@ module.exports = class CMD extends Command {
         }
 
         if (guildDB.plugins.modlogs) {
-            const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs);
+            const channel = message.guild.channels.cache.get(
+                guildDB.plugins.modlogs
+            );
             if (channel) {
                 const embed = new MessageEmbed();
                 embed.setTitle(`User unbanned: ${user.tag} (${user.id})`);

@@ -60,10 +60,14 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.plugins.modlogs) {
-                    const channel = message.guild.channels.cache.get(guildDB.plugins.modlogs);
+                    const channel = message.guild.channels.cache.get(
+                        guildDB.plugins.modlogs
+                    );
                     if (channel) {
                         embed.setTitle(
-                            `${t("cmds:unmute.unmuted")}: ${user.tag} (${user.id})`
+                            `${t("cmds:unmute.unmuted")}: ${user.tag} (${
+                                user.id
+                            })`
                         );
                         embed.addField(
                             t("misc:resMod"),

@@ -57,7 +57,7 @@ module.exports.load = (client) => {
         })
         .use((req, res, next) => {
             if (req.url.indexOf("webhook") !== -1) return next();
-            csrf(req, res, next)
+            csrf(req, res, next);
         });
 
     const routesFolder = path.join(__dirname, "/routes");

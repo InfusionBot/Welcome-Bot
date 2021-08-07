@@ -32,7 +32,7 @@ module.exports = class CMD extends Command {
         const itemsThatGuyHas = items.filter((i) => userDB.inventory[i] > 0);
         if (!itemsThatGuyHas.length || itemsThatGuyHas.length <= 0)
             return message.reply(t("cmds:inventory.noItems"));
-        let page = 0;
+        const page = 0;
         const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
         itemsThatGuyHas.forEach((item) => {
@@ -40,12 +40,10 @@ module.exports = class CMD extends Command {
             pages[p] = new Embed({ color: "blue", timestamp: true });
             pages[p].addField(
                 `${userDB.inventory[item]}`,
-                `${t(
-                    `misc:items.${item.toLowerCase()}`
-                )}`
+                `${t(`misc:items.${item.toLowerCase()}`)}`
             );
         });
-        const pagination = new Pagination(this.client, {timeout: timeout});
+        const pagination = new Pagination(this.client, { timeout: timeout });
         pagination.setPages(pages);
         pagination.setChannel(message.channel);
         pagination.setAuthorizedUsers([message.author.id]);
