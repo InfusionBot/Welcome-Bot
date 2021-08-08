@@ -5,22 +5,24 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const { channelIdFromMention } = require("../../helpers/Util.js");
-const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "modlogs",
-                aliases: ["modlog"],
-                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                name: "autorole",
+                aliases: ["ar"],
+                memberPerms: [],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
                     guildOnly: true,
                 },
-                subcommands: [{ name: "set [#channel]", desc: "Set ModLogs channel" }],
                 disabled: false,
+                subcommands: [
+                    { name: "disable", desc: "Disable autorole" },
+                    { name: "enable", desc: "Enable autorole" },
+                    { name: "set [role id]", desc: "Set autorole" },
+                ],
                 cooldown: 10,
                 category: "Setup",
             },
@@ -34,43 +36,49 @@ module.exports = class CMD extends Command {
             prefix: guildDB.prefix,
             cmd: this.name,
         });
-        const subcommand = args[0] ? args[0].toLowerCase() : "";
         const embed = new Embed();
-        let channel = args
-            .join(" ")
-            .replace(`${args[0] ?? ""} `, "")
-            .replace(" ", ""); //replace empty space as there is no empty space in a channel name
-        switch (subcommand) {
+        if (args[0]) args[0] = args[0].toLowerCase();
+
+        let role, roleId;
+        switch (args[0]) {
             case "set":
                 if (!args[1]) return message.reply(missingArgs);
-                if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                    channel = channelIdFromMention(args[1]);
-                } else {
-                    channel = message.guild.channels.cache.find(
-                        (ch) => ch.name === channel
-                    ).id;
-                }
-                channel = message.guild.channels.cache.get(channel);
-                guildDB.plugins.modlogs = channel.id;
-                guildDB.markModified("plugins.modlogs");
-                message.reply(
-                    t("cmds:modlogs.channelSet", { channel: `${channel}` })
+                roleId = args[1];
+                role = message.guild.roles.cache.find(
+                    (r) => r.id === roleId
                 );
+                if (!role)
+                    return message.reply(t("cmds:autorole.invalidRole"));
+                guildDB.plugins.autorole.role = role.id;
+                guildDB.markModified("plugins.autorole.role");
+                message.reply(
+                    t("cmds:autorole.success", { role: `${role.name}` })
+                );
+                break;
+            case "disable":
+                guildDB.plugins.autorole.enabled = false;
+                guildDB.markModified("plugins.autorole.enabled");
+                message.reply(t("cmds:autorole.disabled"));
+                break;
+            case "enable":
+                guildDB.plugins.autorole.enabled = true;
+                guildDB.markModified("plugins.autorole.enabled");
+                message.reply(t("cmds:autorole.enabled"));
                 break;
             default:
                 if (!args.length) {
-                    const channel =
-                        message.guild.channels.cache.get(
-                            guildDB.plugins.modlogs
+                    role =
+                        message.guild.roles.cache.get(
+                            guildDB.plugins.autorole.role
                         ) ?? t("misc:not_set");
                     embed
-                        .setTitle(t("cmds:modlogs.current.title"))
+                        .setTitle(t("cmds:autorole.current.title"))
                         .setDesc(
-                            t("cmds:modlogs.current.desc", {
+                            t("cmds:autorole.current.desc", {
                                 prefix: guildDB.prefix,
                             })
                         )
-                        .addField(t("misc:channel"), `${channel}`);
+                        .addField(t("misc:role"), `${role.name ?? role}`);
                     message.channel.send({ embeds: [embed] });
                 } else {
                     return message.reply(
@@ -80,6 +88,7 @@ module.exports = class CMD extends Command {
                         })
                     );
                 }
+                this.removeCooldown(message.author);
                 break;
         }
         await guildDB.save();

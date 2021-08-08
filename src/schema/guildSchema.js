@@ -59,6 +59,16 @@ const guildSchema = new mongoose.Schema({
             default: 0,
             type: Number,
         },
+        autorole: {
+            enabled: {
+                default: false,
+                type: Boolean,
+            },
+            role: {
+                default: 0,
+                type: Number,
+            },
+        },
     },
 });
 

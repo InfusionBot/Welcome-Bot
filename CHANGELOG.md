@@ -45,6 +45,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor: translations for command usages
 - feat: New cmd `staff`
 - feat: New cmds `chanid`, `roleid`, `serverid`, `userid`
+- feat: New cmd `autorole` & new plugin autorole
 
 ### Changes
 

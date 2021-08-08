@@ -32,6 +32,7 @@
   "presence": "Presence",
   "message": "Message",
   "support": "Support Server",
+  "role": "Role",
   "djs": "Discord.js",
   "djsv": "Discord.js v13",
   "pong": "Pong",

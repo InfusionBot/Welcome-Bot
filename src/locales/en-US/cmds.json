@@ -382,6 +382,18 @@
     "current": "Current volume is **{{volume}}**%!",
     "success": "Volume adjusted to {{volume}}"
   },
+  "autorole": {
+    "cmdDesc": "Manage autorole settings",
+    "usage": "(subcommand)",
+    "success": "Autorole set to {{role}}",
+    "current": {
+      "title": "Current settings for autorole",
+      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "disabled": "Successfully disabled autorole",
+    "enabled": "Successfully enabled autorole"
+  },
   "disable": {
     "cmdDesc": "Disable commands.",
     "usage": "(command name / subcommand)",
