@@ -19,7 +19,9 @@ module.exports = class CMD extends Command {
                     subcommand: false,
                     guildOnly: true,
                 },
-                subcommands: [{ name: "set [#channel]", desc: "Set ModLogs channel" }],
+                subcommands: [
+                    { name: "set [#channel]", desc: "Set ModLogs channel" },
+                ],
                 disabled: false,
                 cooldown: 10,
                 category: "Setup",

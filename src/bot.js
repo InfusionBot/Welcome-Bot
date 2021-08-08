@@ -188,14 +188,20 @@ client.on("guildMemberAdd", (member) => {
     greetUser(member);
     const guildDB = getGuild(member.guild.id);
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-    const autorole = member.guild.roles.cache.get(guildDB.plugins.autorole.role);
+    const autorole = member.guild.roles.cache.get(
+        guildDB.plugins.autorole.role
+    );
     if (autorole && guildDB.plugins.autorole.enabled) {
         try {
             member.roles.add(autorole, "Autorole");
-        } catch(e) {
-            const modlogs = member.guild.channels.cache.get(guildDB.plugins.modlogs);
+        } catch (e) {
+            const modlogs = member.guild.channels.cache.get(
+                guildDB.plugins.modlogs
+            );
             if (modlogs) {
-                modlogs.send(t("errors:errorAutorole", {tag: member.user.tag}));
+                modlogs.send(
+                    t("errors:errorAutorole", { tag: member.user.tag })
+                );
             }
         }
     }

@@ -44,11 +44,8 @@ module.exports = class CMD extends Command {
             case "set":
                 if (!args[1]) return message.reply(missingArgs);
                 roleId = args[1];
-                role = message.guild.roles.cache.find(
-                    (r) => r.id === roleId
-                );
-                if (!role)
-                    return message.reply(t("cmds:autorole.invalidRole"));
+                role = message.guild.roles.cache.find((r) => r.id === roleId);
+                if (!role) return message.reply(t("cmds:autorole.invalidRole"));
                 guildDB.plugins.autorole.role = role.id;
                 guildDB.markModified("plugins.autorole.role");
                 message.reply(
