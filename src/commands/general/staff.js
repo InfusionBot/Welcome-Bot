@@ -40,7 +40,7 @@ module.exports = class CMD extends Command {
                 !m.user.bot
         );
         const embed = new Embed({ color: "blue" })
-            .setAuthor(`${message.guild.name} Staff`)
+            .setAuthor(`${message.guild.name} ${t("misc:staff")}`)
             .addField(
                 t("misc:admins"),
                 administrators.size > 0
@@ -61,7 +61,7 @@ module.exports = class CMD extends Command {
                           .map(
                               (m) =>
                                   `${this.getStatusEmoji(
-                                      a?.presence?.status
+                                      m?.presence?.status
                                   )} ${m.user.tag}`
                           )
                           .join("\n")

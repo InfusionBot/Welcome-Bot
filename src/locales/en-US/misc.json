@@ -51,5 +51,6 @@
   "admins": "**Administrators**",
   "no_admins": "No Administrators",
   "mods": "**Moderators**",
-  "no_mods": "No Moderators"
+  "no_mods": "No Moderators",
+  "staff": "Staff"
 }
