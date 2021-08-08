@@ -177,6 +177,22 @@ module.exports = class Command {
         return user;
     }
 
+    getStatusEmoji(status) {
+        const emojis = this.client.customEmojis;
+        switch (status) {
+            case "online":
+                return emojis.online;
+            case "dnd":
+                return emojis.dnd;
+            case "idle":
+                return emojis.idle;
+            case "offline":
+            default:
+                return emojis.offline;
+                break;
+        }
+    }
+
     getUsage(t) {
         const usage = t(`cmds:${this.name}.usage`);
         if (usage === `${this.name}.usage`) return this.defaultUsage;

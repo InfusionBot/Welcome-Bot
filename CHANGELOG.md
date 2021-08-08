@@ -43,6 +43,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `modlogs`
 - feat: New cmd `seek`
 - refactor: translations for command usages
+- feat: New cmd `staff`
 - feat: New cmds `chanid`, `roleid`, `serverid`, `userid`
 
 ### Changes

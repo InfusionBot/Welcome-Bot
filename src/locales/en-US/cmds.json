@@ -261,6 +261,9 @@
     "cmdDesc": "Your server statistics",
     "usage": "(--dm)"
   },
+  "staff": {
+    "cmdDesc": "View this server's staff"
+  },
   "testwelcome": {
     "cmdDesc": "Test by sending welcome message",
     "welcomeDisabled": "Welcome logs are disabled and can't be tested right now."
