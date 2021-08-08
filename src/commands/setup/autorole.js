@@ -11,7 +11,7 @@ module.exports = class CMD extends Command {
             {
                 name: "autorole",
                 aliases: ["ar"],
-                memberPerms: [],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
