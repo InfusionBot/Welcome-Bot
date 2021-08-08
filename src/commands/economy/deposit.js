@@ -58,7 +58,7 @@ module.exports = class CMD extends Command {
         try {
             userDB.bank = parseInt(userDB.bank, 10) + amount;
             userDB.markModified("bank");
-            userDB.wallet = parseInt(userDB.bank, 10) - amount;
+            userDB.wallet = parseInt(userDB.wallet, 10) - amount;
             userDB.markModified("wallet");
             await userDB.save();
         } catch (e) {
