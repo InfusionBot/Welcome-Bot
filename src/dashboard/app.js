@@ -11,8 +11,8 @@ const express = require("express");
 
 module.exports.load = (client) => {
     const session = require("express-session");
-    const csurf = require("csurf");
-    const csrf = csurf();
+    //const csurf = require("csurf");
+    //const csrf = csurf();
     if (client.debug) client.logger.log("loading dashboard");
     const app = express();
     app.use(express.urlencoded({ extended: true }))
@@ -55,10 +55,10 @@ module.exports.load = (client) => {
             }`;
             next();
         })
-        .use((req, res, next) => {
+        /*.use((req, res, next) => {
             if (req.url.indexOf("webhook") !== -1) return next();
             csrf(req, res, next);
-        });
+        })*/;
 
     const routesFolder = path.join(__dirname, "/routes");
     const routesFiles = fs
