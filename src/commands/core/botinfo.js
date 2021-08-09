@@ -52,7 +52,11 @@ module.exports = class CMD extends Command {
                 `:gear: __${t("misc:system")}__`,
                 `> ${message.client.customEmojis.nodejs} Node.js: ${process.version}\n` +
                     `> ${message.client.customEmojis.djs} Discord.js: v${version}\n` +
-                    `> ${t("misc:ram_used")}: \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``
+                    `> ${t("misc:ram_used")}: \`${(
+                        process.memoryUsage().heapUsed /
+                        1024 /
+                        1024
+                    ).toFixed(2)}MB\``
             )
             .addField(
                 `${message.client.customEmojis.owner} Bot owners`,
