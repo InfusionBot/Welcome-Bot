@@ -158,10 +158,10 @@ class WelcomeBot extends Client {
         this.addDbFuncs();
     }
 
-    loadCommand(commandPath, commandName) {
+    /*loadCommand(commandPath, commandName) {
         const CMD = require(`${commandPath}/${commandName.replace(".js", "")}`);
         return this.setCmd(CMD);
-    }
+    }*/
 
     setCmd(CMD) {
         const command = new CMD(this);
