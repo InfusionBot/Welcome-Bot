@@ -46,6 +46,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `staff`
 - feat: New cmds `chanid`, `roleid`, `serverid`, `userid`
 - feat: New cmd `autorole` & new plugin autorole
+- feat: New cmd `reverse`
 
 ### Changes
 
