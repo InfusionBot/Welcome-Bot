@@ -49,6 +49,7 @@ module.exports = class CMD extends Command {
                 if (!role) return message.reply(t("cmds:autorole.invalidRole"));
                 guildDB.plugins.autorole.role = role.id;
                 guildDB.markModified("plugins.autorole.role");
+                await guildDB.save();
                 message.reply(
                     t("cmds:autorole.success", { role: `${role.name}` })
                 );
@@ -56,11 +57,13 @@ module.exports = class CMD extends Command {
             case "disable":
                 guildDB.plugins.autorole.enabled = false;
                 guildDB.markModified("plugins.autorole.enabled");
+                await guildDB.save();
                 message.reply(t("cmds:autorole.disabled"));
                 break;
             case "enable":
                 guildDB.plugins.autorole.enabled = true;
                 guildDB.markModified("plugins.autorole.enabled");
+                await guildDB.save();
                 message.reply(t("cmds:autorole.enabled"));
                 break;
             default:
