@@ -76,9 +76,8 @@ module.exports = class CMD extends Command {
                 timeout: timeout,
             });
             pagination.setPages(pages);
-            pagination.setChannel(message.channel);
             pagination.setAuthorizedUsers([message.author.id]);
-            pagination.send();
+            pagination.send(message);
             return;
         } else if (args[0] && args[0] === "--list-categories") {
             const cats = [];

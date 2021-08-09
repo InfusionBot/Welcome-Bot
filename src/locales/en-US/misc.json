@@ -53,5 +53,7 @@
   "no_admins": "No Administrators",
   "mods": "**Moderators**",
   "no_mods": "No Moderators",
-  "staff": "Staff"
+  "staff": "Staff",
+  "system": "System",
+  "ram_used": "Ram Used"
 }
