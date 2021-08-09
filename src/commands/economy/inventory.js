@@ -45,8 +45,7 @@ module.exports = class CMD extends Command {
         });
         const pagination = new Pagination(this.client, { timeout: timeout });
         pagination.setPages(pages);
-        pagination.setChannel(message.channel);
         pagination.setAuthorizedUsers([message.author.id]);
-        pagination.send();
+        pagination.send(message);
     }
 };

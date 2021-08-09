@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
                     { name: "disable", desc: "Disable goodbye logs" },
                     { name: "enable", desc: "Enable goodbye logs" },
                     { name: "message", desc: "Set goodbye message" },
-                    { name: "channel", desc: "Set goodbye channel" },
+                    { name: "channel [#channel]", desc: "Set goodbye channel" },
                 ],
                 cooldown: 10,
                 category: "Setup",

@@ -77,7 +77,7 @@
     "cmdDesc": "Get uptime of the bot"
   },
   "vote": {
-    "cmdDesc": "Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)",
+    "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",
     "title": "Vote for Welcome-Bot",
     "rewards": {
       "index": "**Rewards**",
@@ -95,7 +95,7 @@
     "cmdDesc": "Link to Welcome-Bot's website"
   },
   "balance": {
-    "cmdDesc": "Check your wcoin balance, or someone else's. Shows wallect & bank",
+    "cmdDesc": "Check your balance, or someone else's. Shows wallect & bank",
     "title": "{{user}}'s balance",
     "titleShort": "Balance",
     "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
@@ -112,7 +112,7 @@
   },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
-    "success": "{{wcoins}} wcoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
+    "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
     "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
   },
   "deposit": {
@@ -123,7 +123,7 @@
     "noMoney": "Hey! You don't have anything in wallet to deposit",
     "missingAmount": "The amount you specified is Not a Number or you did't specify the amount to deposit.",
     "title": "Money deposited",
-    "success": "Deposited {{amount}} wcoins"
+    "success": "Deposited {{amount}} WCoins"
   },
   "give": {
     "cmdDesc": "Donate money to another user",
@@ -143,7 +143,7 @@
   "rob": {
     "cmdDesc": "Steal another user's wallet! :dollar:",
     "usage": "[@mention / user id]",
-    "notEnoughMoney": "You must have at least 200 wcoins in your wallet to rob someone",
+    "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
     "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
     "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
     "failed": "You were caught by the police when stealing and you lost {{lostCoins}}"
@@ -167,7 +167,7 @@
     "usage": "[coins / subcommand]",
     "notAvailable": "Woah... You don't have that much money in your bank!",
     "title": "Money withdrawed",
-    "success": "Withdrawed {{wcoins}} wcoins"
+    "success": "Withdrawed {{wcoins}} WCoins"
   },
   "8ball": {
     "cmdDesc": "Get your fortune by asking your question",
@@ -200,10 +200,9 @@
   "addemoji": {
     "cmdDesc": "Add emoji from a image link",
     "usage": "[link] [emoji name]",
-    "usage": "(@mention / user id)",
     "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
     "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
+    "success": "<:{{emojiName}}:{{emojiId}}>",
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {
@@ -381,6 +380,18 @@
     "usage": "(0-200)",
     "current": "Current volume is **{{volume}}**%!",
     "success": "Volume adjusted to {{volume}}"
+  },
+  "autorole": {
+    "cmdDesc": "Manage autorole settings",
+    "usage": "(subcommand)",
+    "success": "Autorole set to {{role}}",
+    "current": {
+      "title": "Current settings for autorole",
+      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "disabled": "Successfully disabled autorole",
+    "enabled": "Successfully enabled autorole"
   },
   "disable": {
     "cmdDesc": "Disable commands.",

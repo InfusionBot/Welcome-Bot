@@ -52,6 +52,8 @@ module.exports = class CMD extends Command {
         let muteRole = message.guild.roles.cache.find(
             (r) => r.name === "Muted"
         );
+        if (message.guild.me.roles.highest.position >= muteRole.position)
+            return message.channel.send(t("misc:higherRoleBot"));
         if (!muteRole) {
             try {
                 muteRole = await message.guild.roles.create({

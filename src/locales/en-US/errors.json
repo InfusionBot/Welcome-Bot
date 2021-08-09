@@ -30,5 +30,6 @@
   "noSendMsgPerm": "Woah... Wait, do you think I can message in that channel?? I even don't have \"Send Messages\" permission!!",
   "msgBig": "The {{name}} message is longer than 2000 charcters, so I can't send it",
   "tooLong": "The {{name}} you provided it too long.",
-  "invalidSubcmd": "You have provided a invalid subcommand, use `{{prefix}}help {{cmd}}` for more info"
+  "invalidSubcmd": "You have provided a invalid subcommand, use `{{prefix}}help {{cmd}}` for more info",
+  "errorAutorole": "Can't add autorole for {{tag}}"
 }

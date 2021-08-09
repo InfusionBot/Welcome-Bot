@@ -56,13 +56,9 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:deposit.notAvailable"));
         }
         try {
-            userDB.bank =
-                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) +
-                amount;
+            userDB.bank = parseInt(userDB.bank, 10) + amount;
             userDB.markModified("bank");
-            userDB.wallet =
-                (!isNaN(parseInt(userDB.bank)) ? parseInt(userDB.bank) : 0) -
-                amount;
+            userDB.wallet = parseInt(userDB.wallet, 10) - amount;
             userDB.markModified("wallet");
             await userDB.save();
         } catch (e) {

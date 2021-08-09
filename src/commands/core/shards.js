@@ -29,7 +29,7 @@ module.exports = class CMD extends Command {
             .setHeading(
                 t("misc:shard"),
                 t("misc:servers"),
-                t("cached_users"),
+                t("misc:cached_users"),
                 t("misc:ping")
             )
             .setAlign(0, AsciiTable.CENTER)

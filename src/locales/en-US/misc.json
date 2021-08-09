@@ -32,6 +32,7 @@
   "presence": "Presence",
   "message": "Message",
   "support": "Support Server",
+  "role": "Role",
   "djs": "Discord.js",
   "djsv": "Discord.js v13",
   "pong": "Pong",
@@ -48,9 +49,12 @@
   "verificationLevel": "Verification Level",
   "usageKey": "**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.",
   "higherRole": "You cannot do that to someone with an equal or higher role!",
+  "higherRoleBot": "I can't do that, because my role is lower than that role",
   "admins": "**Administrators**",
   "no_admins": "No Administrators",
   "mods": "**Moderators**",
   "no_mods": "No Moderators",
-  "staff": "Staff"
+  "staff": "Staff",
+  "system": "System",
+  "ram_used": "Ram Used"
 }

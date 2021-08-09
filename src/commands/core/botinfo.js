@@ -41,7 +41,7 @@ module.exports = class CMD extends Command {
             .setDescription(t("cmds:botinfo.footer"))
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
             .addField(
-                `:pencil: ${t("categories:general")}`,
+                `:pencil: __${t("categories:general")}__`,
                 `> Servers: ${message.client.guilds.cache.size} servers\n` +
                     `> Users: ${message.client.users.cache.size} users\n` +
                     `> Channels: ${message.client.channels.cache.size} channels\n` +
@@ -49,9 +49,16 @@ module.exports = class CMD extends Command {
                     `> Commands: ${message.client.commands.enabled.size} commands`
             )
             .addField(
-                ":gear: System",
-                `> ${message.client.customEmojis.nodejs} Node.js version: ${process.version}\n` +
-                    `> ${message.client.customEmojis.djs} Discord.js version: ${version}`
+                `:gear: __${t("misc:system")}__`,
+                `> ${message.client.customEmojis.nodejs} Node.js: ${process.version}\n` +
+                    `> ${message.client.customEmojis.djs} Discord.js: v${version}\n` +
+                    `> ${message.client.customEmojis.ram} ${t(
+                        "misc:ram_used"
+                    )}: \`${(
+                        process.memoryUsage().heapUsed /
+                        1024 /
+                        1024
+                    ).toFixed(2)}MB\``
             )
             .addField(
                 `${message.client.customEmojis.owner} Bot owners`,
