@@ -47,15 +47,13 @@ module.exports = class CMD extends Command {
                     embeds: [
                         embed
                             .setTitle(
-                                `${
-                                    t("cmds:addemoji.success", {
-                                        emoji: `${emoji}`,
-                                        emojiName: `${emoji.name}`,
-                                        emojiId: emoji.id
-                                    })
-                                }`
+                                `${t("cmds:addemoji.success", {
+                                    emoji: `${emoji}`,
+                                    emojiName: `${emoji.name}`,
+                                    emojiId: emoji.id,
+                                })}`
                             )
-                            .setDesc(`${emoji}`)
+                            .setDesc(`${emoji}`),
                     ],
                 });
             })
