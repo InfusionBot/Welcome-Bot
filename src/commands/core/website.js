@@ -21,7 +21,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    execute({ message }, t) {
         //TODO: Add translation
         const embed = new Embed({
             color: "green",
