@@ -200,10 +200,9 @@
   "addemoji": {
     "cmdDesc": "Add emoji from a image link",
     "usage": "[link] [emoji name]",
-    "usage": "(@mention / user id)",
     "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
     "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
+    "success": "\<\:{{emojiName}}\:{{emojiId}}>",
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {

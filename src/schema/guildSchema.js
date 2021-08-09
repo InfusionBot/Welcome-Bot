@@ -56,8 +56,8 @@ const guildSchema = new mongoose.Schema({
             },
         },
         modlogs: {
-            default: 0,
-            type: Number,
+            default: "0",
+            type: String,
         },
         autorole: {
             enabled: {
@@ -65,8 +65,8 @@ const guildSchema = new mongoose.Schema({
                 type: Boolean,
             },
             role: {
-                default: 0,
-                type: Number,
+                default: "0",
+                type: String,
             },
         },
     },
