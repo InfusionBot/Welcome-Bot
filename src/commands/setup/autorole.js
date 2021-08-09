@@ -70,7 +70,7 @@ module.exports = class CMD extends Command {
                 if (!args.length) {
                     role =
                         message.guild.roles.cache.get(
-                            guildDB.plugins.autorole.role
+                            `${guildDB.plugins.autorole.role}`
                         ) ?? t("misc:not_set");
                     embed
                         .setTitle(t("cmds:autorole.current.title"))
