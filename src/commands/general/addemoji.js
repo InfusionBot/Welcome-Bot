@@ -56,7 +56,6 @@ module.exports = class CMD extends Command {
                                 }`
                             )
                             .setDesc(`${emoji}`)
-                            ),
                     ],
                 });
             })
