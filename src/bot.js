@@ -183,10 +183,10 @@ client.on("rateLimit", (info) => {
     client.logger.log(JSON.stringify(info, null, 4), "warn");
 });
 
-client.on("guildMemberAdd", (member) => {
+client.on("guildMemberAdd", async (member) => {
     // When a new member joins
     greetUser(member);
-    const guildDB = getGuild(member.guild.id);
+    const guildDB = await getGuild(member.guild.id);
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     const autorole = member.guild.roles.cache.get(
         guildDB.plugins.autorole.role
