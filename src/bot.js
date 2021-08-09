@@ -193,7 +193,7 @@ client.on("guildMemberAdd", async (member) => {
     );
     if (autorole && guildDB.plugins.autorole.enabled) {
         try {
-            member.roles.add(autorole, "Autorole");
+            member.roles.add(autorole.id, "Autorole");
         } catch (e) {
             const modlogs = member.guild.channels.cache.get(
                 guildDB.plugins.modlogs

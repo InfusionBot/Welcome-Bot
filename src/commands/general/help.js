@@ -60,6 +60,7 @@ module.exports = class CMD extends Command {
                     `${cat.emoji} ${t("cmds:help.in_cat")}`,
                     `\`\`\`\n${commandsCat.join("\n")}\n\`\`\``
                 );
+                pages[p].setFooter(`${t("misc:page")} ${p}`);
             });
             pages[0].setDescription(t("cmds:help.all"));
             pages[0].addField("No. of Commands", `${commands.size}`);
