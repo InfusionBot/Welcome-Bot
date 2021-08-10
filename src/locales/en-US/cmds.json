@@ -256,6 +256,10 @@
     "cmdDesc": "Generate or Read a QR code",
     "usage": "[subcommand] [text / image url]"
   },
+  "reverse": {
+    "cmdDesc": "Reverse text",
+    "usage": "[text]"
+  },
   "serverinfo": {
     "cmdDesc": "Your server statistics",
     "usage": "(--dm)"

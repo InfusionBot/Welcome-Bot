@@ -38,6 +38,7 @@ module.exports = class CMD extends Command {
         itemsThatGuyHas.forEach((item) => {
             const p = pages.length;
             pages[p] = new Embed({ color: "blue", timestamp: true });
+            pages[p].setDesc(t("cmds:inventory.cmdDesc"));
             pages[p].addField(
                 `${userDB.inventory[item]}`,
                 `${t(`misc:items.${item.toLowerCase()}`)}`

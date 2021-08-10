@@ -20,19 +20,31 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    execute({ message }, t) {
         const msg = `${t("misc:pong")} ${message.author}\n${t(
             "misc:webheart"
-        )}: ${message.client.ws.ping}ms.`;
-        message.channel
-            .send(msg + `\nGetting roundtrip latency`)
-            .then((sent) => {
-                sent.edit(
-                    msg +
-                        `\n${t("misc:latency")} ${
-                            sent.createdTimestamp - message.createdTimestamp
-                        }ms`
-                );
-            });
+        )}: ${message.client.ws.ping}ms.\n`;
+        message.reply(msg + `Getting roundtrip latency`).then((sent) => {
+            sent.edit(
+                msg +
+                    `${t("misc:latency")}: ${
+                        sent.createdTimestamp - message.createdTimestamp
+                    }ms`
+            );
+        });
+    }
+
+    async run({ interaction }, t) {
+        const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
+            "misc:webheart"
+        )}: ${interaction.client.ws.ping}ms.\n`;
+        await interaction.reply(msg + `Getting roundtrip latency`);
+        const sent = await interaction.fetchReply();
+        sent.edit(
+            msg +
+                `${t("misc:latency")}: ${
+                    sent.createdTimestamp - interaction.createdTimestamp
+                }ms`
+        );
     }
 };
