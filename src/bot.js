@@ -252,7 +252,9 @@ client.on("guildDelete", (guild) => {
 
 client.on("interactionCreate", async (interaction) => {
     if (!interaction.isCommand()) return;
-    const t = interaction.inGuild() ? await getT(interaction.guild.id) : client.i18next.getFixedT("en-US");
+    const t = interaction.inGuild()
+        ? await getT(interaction.guild.id)
+        : client.i18next.getFixedT("en-US");
     const { commandName: cmd } = interaction;
 
     if (cmd === "ping") {

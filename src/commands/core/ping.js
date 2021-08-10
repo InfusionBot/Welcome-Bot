@@ -39,14 +39,13 @@ module.exports = class CMD extends Command {
         const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
             "misc:webheart"
         )}: ${interaction.client.ws.ping}ms.\n`;
-        interaction.reply(msg + `Getting roundtrip latency`)
-            .then((sent) => {
-                sent.edit(
-                    msg +
-                        `${t("misc:latency")}: ${
-                            sent.createdTimestamp - interaction.createdTimestamp
-                        }ms`
-                );
-            });
+        interaction.reply(msg + `Getting roundtrip latency`).then((sent) => {
+            sent.edit(
+                msg +
+                    `${t("misc:latency")}: ${
+                        sent.createdTimestamp - interaction.createdTimestamp
+                    }ms`
+            );
+        });
     }
 };
