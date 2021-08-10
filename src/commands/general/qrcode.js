@@ -39,7 +39,7 @@ module.exports = class CMD extends Command {
             `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
                 args[1]
             ).replace(/\*/g, "%2A")}`
-        ).then((res) => res.json()).catch(() => {});
+        ).then((res) => res.json());
         switch (args[0]) {
             case "generate":
                 return message.channel.send({
@@ -55,7 +55,6 @@ module.exports = class CMD extends Command {
             case "read":
                 if (!args[1].startsWith("http"))
                     return message.reply(t("errors:invalidURL"));
-                console.log(body);
                 if (body[0].symbol[0] && body[0].symbol[0].data !== null) {
                     return message.channel.send({
                         embeds: [embed.setDescription(body[0].symbol[0].data)],
