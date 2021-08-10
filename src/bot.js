@@ -169,8 +169,8 @@ client.on("ready", async () => {
     await client.application.commands.set([
         {
             name: "ping",
-            description: "Shows my ping!"
-        }
+            description: "Shows my ping!",
+        },
     ]);
     client.logger.log(`Welcome-Bot v${client.package.version} started!`);
 });
