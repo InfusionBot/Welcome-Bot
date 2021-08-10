@@ -21,7 +21,7 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message }, t) {
-        const msg = `${t("misc:pong")} ${message.member.user}\n${t(
+        const msg = `${t("misc:pong")} ${message.author}\n${t(
             "misc:webheart"
         )}: ${message.client.ws.ping}ms.\n`;
         message.reply(msg + `Getting roundtrip latency`)
@@ -30,6 +30,22 @@ module.exports = class CMD extends Command {
                     msg +
                         `${t("misc:latency")}: ${
                             sent.createdTimestamp - message.createdTimestamp
+                        }ms`
+                );
+            });
+    }
+
+    run({ interaction }, t) {
+        interaction.deferReply({ ephemeral: true });
+        const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
+            "misc:webheart"
+        )}: ${interaction.client.ws.ping}ms.\n`;
+        interaction.reply(msg + `Getting roundtrip latency`)
+            .then((sent) => {
+                sent.edit(
+                    msg +
+                        `${t("misc:latency")}: ${
+                            sent.createdTimestamp - interaction.createdTimestamp
                         }ms`
                 );
             });
