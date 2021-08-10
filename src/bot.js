@@ -166,6 +166,12 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
+    await client.application.commands.set([
+        {
+            name: "ping",
+            description: "Shows my ping!"
+        }
+    ]);
     client.logger.log(`Welcome-Bot v${client.package.version} started!`);
 });
 
@@ -242,6 +248,16 @@ client.on("guildDelete", (guild) => {
     client.channels.cache
         .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
+});
+
+client.on("interactionCreate", async (interaction) => {
+    if (!interaction.isCommand()) return;
+    const t = interaction.guild ? getT(interaction.guild.id) : client.i18next.getFixedT("en-US");
+    const { commandName: cmd } = interaction;
+
+    if (cmd === "ping") {
+        client.commands.enabled.get("ping").execute({message: interaction}, t);
+    }
 });
 
 client.on("messageCreate", async function (message) {

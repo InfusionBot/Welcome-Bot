@@ -31,6 +31,7 @@
     "feat: New cmds `chanid`, `roleid`, `serverid`, `userid`",
     "feat: New cmd `autorole` & new plugin autorole",
     "feat: New cmd `reverse`",
+    "feat: New slash cmd `ping`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

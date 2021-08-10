@@ -20,16 +20,15 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
-        const msg = `${t("misc:pong")} ${message.author}\n${t(
+    execute({ message }, t) {
+        const msg = `${t("misc:pong")} ${message.member.user}\n${t(
             "misc:webheart"
-        )}: ${message.client.ws.ping}ms.`;
-        message.channel
-            .send(msg + `\nGetting roundtrip latency`)
+        )}: ${message.client.ws.ping}ms.\n`;
+        message.reply(msg + `Getting roundtrip latency`)
             .then((sent) => {
                 sent.edit(
                     msg +
-                        `\n${t("misc:latency")} ${
+                        `${t("misc:latency")}: ${
                             sent.createdTimestamp - message.createdTimestamp
                         }ms`
                 );
