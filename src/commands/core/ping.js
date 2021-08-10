@@ -34,17 +34,17 @@ module.exports = class CMD extends Command {
         });
     }
 
-    run({ interaction }, t) {
+    async run({ interaction }, t) {
         const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
             "misc:webheart"
         )}: ${interaction.client.ws.ping}ms.\n`;
-        interaction.reply(msg + `Getting roundtrip latency`).then((sent) => {
-            sent.edit(
-                msg +
-                    `${t("misc:latency")}: ${
-                        sent.createdTimestamp - interaction.createdTimestamp
-                    }ms`
-            );
-        });
+        await interaction.reply(msg + `Getting roundtrip latency`);
+        const sent = await interaction.fetchReply();
+        sent.edit(
+            msg +
+                `${t("misc:latency")}: ${
+                    sent.createdTimestamp - interaction.createdTimestamp
+                }ms`
+        );
     }
 };

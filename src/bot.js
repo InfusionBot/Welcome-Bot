@@ -258,7 +258,7 @@ client.on("interactionCreate", async (interaction) => {
     const { commandName: cmd } = interaction;
 
     if (cmd === "ping") {
-        client.commands.enabled.get("ping").run({ interaction }, t);
+        await client.commands.enabled.get("ping").run({ interaction }, t);
     }
 });
 
