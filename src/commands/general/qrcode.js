@@ -39,7 +39,9 @@ module.exports = class CMD extends Command {
             `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
                 args[1]
             ).replace(/\*/g, "%2A")}`
-        ).then((res) => res.json()).catch(() => {});
+        )
+            .then((res) => res.json())
+            .catch(() => {});
         switch (args[0]) {
             case "generate":
                 return message.channel.send({
