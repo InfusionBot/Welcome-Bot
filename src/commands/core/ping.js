@@ -35,7 +35,6 @@ module.exports = class CMD extends Command {
     }
 
     run({ interaction }, t) {
-        interaction.deferReply({ ephemeral: true });
         const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
             "misc:webheart"
         )}: ${interaction.client.ws.ping}ms.\n`;
