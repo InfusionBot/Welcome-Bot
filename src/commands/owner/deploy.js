@@ -27,7 +27,9 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
         this.client.guilds.cache.forEach(async (guild) => {
-            const guildT = this.client.i18next.getFixedT(guildDB.lang || "en-US");
+            const guildT = this.client.i18next.getFixedT(
+                guildDB.lang || "en-US"
+            );
             await guild.commands.set([
                 {
                     name: "ping",
