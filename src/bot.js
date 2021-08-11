@@ -256,7 +256,7 @@ client.on("interactionCreate", async (interaction) => {
         : client.i18next.getFixedT("en-US");
     const { commandName: cmd } = interaction;
     let guildDB;
-    if (message.guild && message.channel.type !== "DM") {
+    if (interaction.inGuild() && interaction.channel.type !== "DM") {
         guildDB = await getGuild(message.guild.id);
     } else {
         guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
