@@ -265,11 +265,9 @@ client.on("interactionCreate", async (interaction) => {
     const command = client.commands.enabled.get(cmd);
     if (!command) return;
     command.run({ interaction, guildDB, userDB }, t).catch((err) => {
-        client.logger.log("Error when executing cmds", "error", [
-            "CMDS",
-        ]);
+        client.logger.log("Error when executing cmds", "error", ["CMDS"]);
         console.log(err);
-        const embed = new Embed({color: "error"})
+        const embed = new Embed({ color: "error" })
             .setTitle(t("errors:generic"))
             .addField(
                 `Please report this to ${message.client.ownersTags.join(
@@ -278,7 +276,7 @@ client.on("interactionCreate", async (interaction) => {
                 "\u200b"
             );
         interaction.followUp({ embeds: [embed] });
-    })
+    });
 });
 
 client.on("messageCreate", async function (message) {
