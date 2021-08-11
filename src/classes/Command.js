@@ -154,6 +154,11 @@ module.exports = class Command {
         return true;
     }
 
+    //eslint-disable-next-line no-unused-vars
+    run({ interaction, guildDB, userDB }, t) {
+        throw new Error(`Command ${this.name} doesn't has a run method`);
+    }
+
     /* Simple utils */
     async fetchJson(url, options = {}) {
         const res = await require("node-fetch")(url, options);

@@ -166,12 +166,6 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
-    await client.application.commands.set([
-        {
-            name: "ping",
-            description: "Shows my ping!",
-        },
-    ]);
     client.logger.log(`Welcome-Bot v${client.package.version} started!`);
 });
 
@@ -261,10 +255,30 @@ client.on("interactionCreate", async (interaction) => {
         ? await getT(interaction.guild.id)
         : client.i18next.getFixedT("en-US");
     const { commandName: cmd } = interaction;
-
-    if (cmd === "ping") {
-        await client.commands.enabled.get("ping").run({ interaction }, t);
+    let guildDB;
+    if (message.guild && message.channel.type !== "DM") {
+        guildDB = await getGuild(message.guild.id);
+    } else {
+        guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
+    const userDB = await client.userDbFuncs.getUser(message.author.id);
+    const command = client.commands.enabled.get(cmd);
+    if (!command) return;
+    command.run({ interaction, guildDB, userDB }, t).catch((err) => {
+        client.logger.log("Error when executing cmds", "error", [
+            "CMDS",
+        ]);
+        console.log(err);
+        const embed = new Embed({color: "error"})
+            .setTitle(t("errors:generic"))
+            .addField(
+                `Please report this to ${message.client.ownersTags.join(
+                    " OR "
+                )}`,
+                "\u200b"
+            );
+        interaction.followUp({ embeds: [embed] });
+    })
 });
 
 client.on("messageCreate", async function (message) {
@@ -277,7 +291,7 @@ client.on("messageCreate", async function (message) {
     if (message.guild && message.channel.type !== "DM") {
         guildDB = await getGuild(message.guild.id);
     } else {
-        guildDB = { prefix: client.defaultPrefix, disabled: [] };
+        guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
     if (client.debug && client.debugLevel > 0)
         client.logger.log("running execute func", "debug");
