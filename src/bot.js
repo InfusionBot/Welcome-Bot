@@ -226,7 +226,11 @@ client.on("guildCreate", (guild) => {
         guild.channels.cache
             .get(guild.systemChannelID)
             .send(
-                `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInviteReal(client)}`
+                `Thank you for choosing this bot! To get started, type \`${
+                    client.config.defaultPrefix
+                }help\`\nJoin the support server: ${client.config.supportGuildInviteReal(
+                    client
+                )}`
             )
             .catch(() => {});
     }
