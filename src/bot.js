@@ -270,9 +270,7 @@ client.on("interactionCreate", async (interaction) => {
         const embed = new Embed({ color: "error" })
             .setTitle(t("errors:generic"))
             .addField(
-                `Please report this to ${client.ownersTags.join(
-                    " OR "
-                )}`,
+                `Please report this to ${client.ownersTags.join(" OR ")}`,
                 "\u200b"
             );
         interaction.followUp({ embeds: [embed] });
