@@ -257,11 +257,11 @@ client.on("interactionCreate", async (interaction) => {
     const { commandName: cmd } = interaction;
     let guildDB;
     if (interaction.inGuild() && interaction.channel.type !== "DM") {
-        guildDB = await getGuild(message.guild.id);
+        guildDB = await getGuild(interaction.guild.id);
     } else {
         guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
-    const userDB = await client.userDbFuncs.getUser(message.author.id);
+    const userDB = await client.userDbFuncs.getUser(interaction.member.user.id);
     const command = client.commands.enabled.get(cmd);
     if (!command) return;
     command.run({ interaction, guildDB, userDB }, t).catch((err) => {
@@ -270,7 +270,7 @@ client.on("interactionCreate", async (interaction) => {
         const embed = new Embed({ color: "error" })
             .setTitle(t("errors:generic"))
             .addField(
-                `Please report this to ${message.client.ownersTags.join(
+                `Please report this to ${client.ownersTags.join(
                     " OR "
                 )}`,
                 "\u200b"
