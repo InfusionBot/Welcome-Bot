@@ -34,6 +34,7 @@ module.exports = class CMD extends Command {
         });
     }
 
+    //eslint-disable-next-line no-unused-vars
     async run({ interaction }, t) {
         const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
             "misc:webheart"

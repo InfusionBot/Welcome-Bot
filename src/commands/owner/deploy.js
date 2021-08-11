@@ -26,12 +26,19 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
-        await this.client.application.commands.set([
-            {
-                name: "ping",
-                description: "Shows my ping!",
-            },
-        ]);
-        message.reply("Successfully reloaded commands!");
+        this.client.guilds.cache.forEach(async (guild) => {
+            const guildT = this.client.i18next.getFixedT(guildDB.lang || "en-US");
+            await guild.commands.set([
+                {
+                    name: "ping",
+                    description: guildT("cmds:ping.cmdDesc"),
+                },
+                {
+                    name: "staff",
+                    description: guildT("cmds:staff.cmdDesc"),
+                },
+            ]);
+        });
+        message.reply("Successfully reloaded slash commands!");
     }
 };

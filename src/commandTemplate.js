@@ -35,4 +35,9 @@ module.exports = class CMD extends Command {
     execute({ message, args, guildDB, userDB }, t) {
         return;
     }
+
+    //eslint-disable-next-line no-unused-vars
+    run({ interaction, guildDB, userDB }, t) {
+        return;
+    }
 };
