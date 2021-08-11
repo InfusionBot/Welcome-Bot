@@ -35,9 +35,31 @@ module.exports = class CMD extends Command {
             )
             .addField(
                 `**${t("misc:plugins")}**`,
-                `${t("dashboard:welcome")}: ${message.guild.channels.cache.get(guildDB.plugins.welcome.channel)} (${guildDB.plugins.welcome.enabled ? t("misc:enabled") : t("misc:enabled")})\n\n` +
-                `${t("dashboard:goodbye")}: ${message.guild.channels.cache.get(guildDB.plugins.goodbye.channel)} (${guildDB.plugins.goodbye.enabled ? t("misc:enabled") : t("misc:enabled")})\n\n` +
-                `${t("dashboard:autorole")}: ${message.guild.roles.cache.get(guildDB.plugins.autorole.role).name} (${guildDB.plugins.autorole.enabled ? t("misc:enabled") : t("misc:enabled")})\n\n`
+                `${t("dashboard:welcome")}: ${message.guild.channels.cache.get(
+                    guildDB.plugins.welcome.channel
+                )} (${
+                    guildDB.plugins.welcome.enabled
+                        ? t("misc:enabled")
+                        : t("misc:enabled")
+                })\n\n` +
+                    `${t(
+                        "dashboard:goodbye"
+                    )}: ${message.guild.channels.cache.get(
+                        guildDB.plugins.goodbye.channel
+                    )} (${
+                        guildDB.plugins.goodbye.enabled
+                            ? t("misc:enabled")
+                            : t("misc:enabled")
+                    })\n\n` +
+                    `${t("dashboard:autorole")}: ${
+                        message.guild.roles.cache.get(
+                            guildDB.plugins.autorole.role
+                        ).name
+                    } (${
+                        guildDB.plugins.autorole.enabled
+                            ? t("misc:enabled")
+                            : t("misc:enabled")
+                    })\n\n`
             );
         message.channel.send({ embeds: [embed] });
     }
