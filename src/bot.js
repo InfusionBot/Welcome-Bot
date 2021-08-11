@@ -226,8 +226,9 @@ client.on("guildCreate", (guild) => {
         guild.channels.cache
             .get(guild.systemChannelID)
             .send(
-                "Thank you for choosing this bot! To get started, type `w/help`"
-            );
+                `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInviteReal(client)}`
+            )
+            .catch(() => {});
     }
     embed = new Embed({ color: "success", timestamp: true })
         .setTitle(`:white_check_mark: Added to "${guild.name}"`)

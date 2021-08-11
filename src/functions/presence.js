@@ -11,30 +11,30 @@ module.exports = function (client) {
     const presences = [
         {
             name: `${servers} server${servers > 1 ? "s" : ""} | ${
-                client.defaultPrefix
+                client.config.defaultPrefix
             }help`,
             type: "WATCHING",
         },
         {
             name: `${commands} command${commands > 1 ? "s" : ""} | ${
-                client.defaultPrefix
+                client.config.defaultPrefix
             }help`,
             type: "PLAYING",
         },
         {
             name: `${channels} channel${channels > 1 ? "s" : ""} | ${
-                client.defaultPrefix
+                client.config.defaultPrefix
             }help`,
             type: "LISTENING",
         },
         {
             name: `${users} user${users > 1 ? "s" : ""} | ${
-                client.defaultPrefix
+                client.config.defaultPrefix
             }help`,
             type: "WATCHING",
         },
         {
-            name: `${client.user.username} v${client.package.version} | ${client.defaultPrefix}help`,
+            name: `${client.user.username} v${client.package.version} | ${client.config.defaultPrefix}help`,
             type: "PLAYING",
         },
     ];

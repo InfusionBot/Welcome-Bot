@@ -32,6 +32,7 @@
     "feat: New cmd `autorole` & new plugin autorole",
     "feat: New cmd `reverse`",
     "feat: New slash cmd `ping`",
+    "feat: New cmd `config`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",
