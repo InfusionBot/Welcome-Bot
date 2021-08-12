@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         let commands = this.client.commands.enabled
             .filter((cmd) => Object.hasOwnProperty.call(cmd, "run"))
             .map(({ name, options }) => {
-                const cmd = {name};
+                const cmd = { name };
                 if (options && options?.length) cmd.options = options;
                 return cmd;
             });
