@@ -54,16 +54,16 @@ module.exports = class CMD extends Command {
             .setURL(`https://discordlist.space/bot/${id}/upvote`)
             .setStyle("LINK");
         if (userVotedBls) buttonBls.setDisabled(true);
-        const buttonGuild = new MessageButton()
+        /*const buttonGuild = new MessageButton()
             .setLabel(`${this.client.username} ${t("misc:support")}`)
             .setURL(
                 `https://top.gg/servers/${this.client.config.botGuildId}/vote`
             )
-            .setStyle("LINK");
+            .setStyle("LINK");*/
         const row = new MessageActionRow().addComponents(
             buttonTopgg,
             buttonBls,
-            buttonGuild
+            //buttonGuild
         );
         message.reply({
             embeds: [embed],
