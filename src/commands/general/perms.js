@@ -39,13 +39,12 @@ module.exports = class CMD extends Command {
         const embed = this.makeEmbed(message, member);
         message.reply({
             embeds: [
-                embed
-                    .setTitle(
-                        t("cmds:perms.message", {
-                            tag: user.tag,
-                            channel: message.channel.name,
-                        })
-                    ),
+                embed.setTitle(
+                    t("cmds:perms.message", {
+                        tag: user.tag,
+                        channel: message.channel.name,
+                    })
+                ),
             ],
         });
     }
