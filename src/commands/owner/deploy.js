@@ -34,8 +34,8 @@ module.exports = class CMD extends Command {
                 if (options && options?.length) cmd.options = options;
                 return cmd;
             });
-        commands = [...commands.values()];
         console.log(commands);
+        commands = [...commands.values()];
         this.client.guilds.cache.forEach(async (guild) => {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
