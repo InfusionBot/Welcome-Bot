@@ -16,6 +16,7 @@ module.exports = class CMD extends Command {
                 disabled: false,
                 cooldown: 5,
                 category: "Core",
+                supportsSlash: true,
             },
             client
         );

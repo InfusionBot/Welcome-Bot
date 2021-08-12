@@ -19,6 +19,7 @@ module.exports = class CMD extends Command {
                 disabled: false,
                 cooldown: 10,
                 category: "Moderation",
+                supportsSlash: true,
                 options: [
                     {
                         name: "user",

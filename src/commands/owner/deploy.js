@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const errors = [];
         let commands = this.client.commands.enabled
-            .filter((cmd) => cmd.run)
+            .filter((cmd) => cmd.supportsSlash)
             .map(({ name, options }) => {
                 const cmd = { name };
                 if (options && options?.length) cmd.options = options;
