@@ -231,7 +231,7 @@ client.on("guildCreate", (guild) => {
     embed = new Embed({ color: "success", timestamp: true })
         .setTitle(`:white_check_mark: Added to "${guild.name}"`)
         .setDescription(`${guild.id}`)
-        .addField("In shard: ", `${guild.shardId}`);
+        .addField("Info", `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}`);
     client.channels.cache
         .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
@@ -243,7 +243,7 @@ client.on("guildDelete", (guild) => {
     embed = new Embed({ color: "red", timestamp: true })
         .setTitle(`:x: Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`)
-        .addField("In shard: ", `${guild.shardId}`);
+        .addField("Info", `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}`);
     client.channels.cache
         .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
