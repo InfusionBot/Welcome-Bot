@@ -60,13 +60,6 @@ module.exports = class CMD extends Command {
             .catch((err) => {
                 console.log(err);
             });
-
-        //Covert badges to images markdown
-        let badgesStr = [];
-        for (var i = 0; i < badges.length; i++) {
-            badgesStr[badgesStr.length] = `${message.client.emojis.cache.find(
-                (emoji) => emoji.id === badges[i].emoji
-            )}`;
         }*/
         const embed = new Embed({
             tag: message.author.tag,
@@ -83,8 +76,8 @@ module.exports = class CMD extends Command {
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`
         );
-        /*if (badgesStr.length > 0) {
-            embed.addField("Badges:", badgesStr.join(" "));
+        /*if (badges.length > 0) {
+            embed.addField("Badges:", badges.join(" "));
         } else {
             embed.addField("Badges:", "None");
         }*/

@@ -26,6 +26,7 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
+        const errors = [];
         this.client.guilds.cache.forEach(async (guild) => {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
@@ -39,8 +40,8 @@ module.exports = class CMD extends Command {
                     name: "staff",
                     description: guildT("cmds:staff.cmdDesc"),
                 },
-            ]);
+            ]).catch(e => errors.push(e?.path));
         });
-        message.reply("Successfully reloaded slash commands!");
+        message.reply(`Successfully reloaded slash commands!\nErrors:\n${errors.join(", ")}`);
     }
 };
