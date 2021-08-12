@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const errors = [];
         let commands = this.client.commands.enabled
-            .filter((cmd) => Object.hasOwnProperty.call(cmd, "run"))
+            .filter((cmd) => cmd.run)
             .map(({ name, options }) => {
                 const cmd = { name };
                 if (options && options?.length) cmd.options = options;
