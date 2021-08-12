@@ -62,7 +62,7 @@ module.exports = class CMD extends Command {
             .setStyle("LINK");*/
         const row = new MessageActionRow().addComponents(
             buttonTopgg,
-            buttonBls,
+            buttonBls
             //buttonGuild
         );
         message.reply({
