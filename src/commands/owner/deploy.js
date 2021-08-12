@@ -35,6 +35,7 @@ module.exports = class CMD extends Command {
                 return cmd;
             });
         commands = [...commands.values()];
+        console.log(commands);
         this.client.guilds.cache.forEach(async (guild) => {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
@@ -43,6 +44,7 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
+            console.log(cmdsWithDesc);
             await guild.commands
                 .set(cmdsWithDesc)
                 .catch((e) => errors.push(e?.path));
