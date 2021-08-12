@@ -45,6 +45,10 @@ module.exports = class CMD extends Command {
             });
             await guild.commands.set(cmdsWithDesc).catch(e => errors.push(e?.path));
         });
-        message.reply(`Successfully reloaded slash commands!\nErrors:\n${errors.join(", ")}`);
+        message.reply(
+            `Successfully reloaded slash commands!\nErrors:\n${errors.join(
+                ", "
+            )}`
+        );
     }
 };
