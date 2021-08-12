@@ -28,9 +28,9 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const errors = [];
         let commands = this.client.commands.enabled
-            .filter(cmd => Object.hasOwnProperty.call(cmd, "run"))
-            .map(({name, options}) => {
-                let cmd = {name};
+            .filter((cmd) => Object.hasOwnProperty.call(cmd, "run"))
+            .map(({ name, options }) => {
+                let cmd = { name };
                 if (options && options?.length) cmd.options = options;
                 return cmd;
             });
@@ -39,11 +39,13 @@ module.exports = class CMD extends Command {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
             );
-            cmdsWithDesc = commands.map(cmd => {
+            cmdsWithDesc = commands.map((cmd) => {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
-                return cmd
+                return cmd;
             });
-            await guild.commands.set(cmdsWithDesc).catch(e => errors.push(e?.path));
+            await guild.commands
+                .set(cmdsWithDesc)
+                .catch((e) => errors.push(e?.path));
         });
         message.reply(
             `Successfully reloaded slash commands!\nErrors:\n${errors.join(

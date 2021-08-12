@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
                         type: "STRING",
                         required: false,
                     },
-                ]
+                ],
             },
             client
         );
@@ -86,7 +86,8 @@ module.exports = class CMD extends Command {
 
     async run({ interaction }, t) {
         const user = interaction.options.getUser("user", true);
-        const reason = interaction.options.getUser("reason") ?? t("misc:not_spec");
+        const reason =
+            interaction.options.getUser("reason") ?? t("misc:not_spec");
         if (!user) {
             return interaction.reply(t("errors:invalidUser"));
         }
@@ -145,11 +146,13 @@ module.exports = class CMD extends Command {
                 });
                 message.guild.channels.fetch().then((channels) => {
                     channels.forEach(async (channel) => {
-                        await channel.permissionOverwrites.create(muteRole, {
-                            VIEW_CHANNEL: true,
-                            SEND_MESSAGES: false,
-                            ADD_REACTIONS: false,
-                        }).catch(() => {});
+                        await channel.permissionOverwrites
+                            .create(muteRole, {
+                                VIEW_CHANNEL: true,
+                                SEND_MESSAGES: false,
+                                ADD_REACTIONS: false,
+                            })
+                            .catch(() => {});
                     });
                 });
             } catch (e) {
@@ -168,15 +171,13 @@ module.exports = class CMD extends Command {
         );
         const embed = new Embed({ color: "error", timestamp: true });
         if (channel) {
-            embed.setTitle(
-                `${t("cmds:mute.muted")}: ${user.tag} (${user.id})`
-            );
+            embed.setTitle(`${t("cmds:mute.muted")}: ${user.tag} (${user.id})`);
             embed.addField(
                 t("misc:resMod"),
                 `${message.author.tag} (${message.author.id})`
-                        );
-                        embed.addField(t("misc:reason"), reason);
-                        channel.send({ embeds: [embed] });
-                    }
+            );
+            embed.addField(t("misc:reason"), reason);
+            channel.send({ embeds: [embed] });
+        }
     }
 };
