@@ -3,8 +3,8 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+//eslint-disable no-unused-vars
 const fs = require("fs");
-const getGuild = require("../../db/functions/guild/getGuild");
 const versionSender = require("../../functions/versionSender.js");
 const presence = require("../../functions/presence.js");
 const serverCount = require("../../functions/serverCount.js");

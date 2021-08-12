@@ -5,7 +5,6 @@
  */
 const { Permissions } = require("discord.js");
 const updateGuild = require("../../db/functions/guild/updateGuild");
-const { lowercaseArray } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {

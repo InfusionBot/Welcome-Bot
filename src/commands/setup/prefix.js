@@ -31,7 +31,6 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         const updateGuild = require("../../db/functions/guild/updateGuild");
-        const getGuild = require("../../db/functions/guild/getGuild");
         const subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
@@ -60,11 +59,11 @@ module.exports = class CMD extends Command {
                 updateGuild(
                     message.guild.id,
                     "prefix",
-                    message.client.defaultPrefix
+                    this.client.config.defaultPrefix
                 );
 
                 message.reply(
-                    "Prefix reset to `" + message.client.defaultPrefix + "`"
+                    "Prefix reset to `" + this.client.config.defaultPrefix + "`"
                 );
                 break;
             case "get":
