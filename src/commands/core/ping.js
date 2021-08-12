@@ -41,9 +41,7 @@ module.exports = class CMD extends Command {
         const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
             "misc:webheart"
         )}: ${interaction.client.ws.ping}ms.\n`;
-        await interaction.reply(
-            msg + `Getting roundtrip latency`
-        );
+        await interaction.reply(msg + `Getting roundtrip latency`);
         const sent = await interaction.fetchReply();
         sent.edit(
             msg +
