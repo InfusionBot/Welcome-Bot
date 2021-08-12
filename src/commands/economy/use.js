@@ -42,8 +42,8 @@ module.exports = class CMD extends Command {
         let metadata;
         switch (item) {
             case "banknote":
-                userDB.bankLimit = userDB.bankLimit + 100;
-                metadata = t("cmds:use.banknote", { added: 100 });
+                userDB.bankLimit = userDB.bankLimit + 100 * count;
+                metadata = t("cmds:use.banknote", { added: 100 * count });
                 break;
             default:
                 throw new Error(
