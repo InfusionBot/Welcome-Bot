@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            //console.log(cmdsWithDesc);
+            console.log(cmdsWithDesc);
             guild.commands
                 .set(cmdsWithDesc)
                 .catch((e) => errors.push(e.path ?? e));
