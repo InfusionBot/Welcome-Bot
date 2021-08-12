@@ -30,6 +30,7 @@ module.exports = class Command {
         this.subcommands = options.optional("subcommands", null);
         this.cooldown = options.optional("cooldown", 3);
         this.category = options.optional("category", "General");
+        this.options = options.optional("options", null);
         if (this.subcommands) {
             for (var i = 0; i < this.subcommands.length; i++) {
                 if (this.subcommands[i].name && !this.subcommands[i].desc) {

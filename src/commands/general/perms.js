@@ -27,32 +27,30 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        //Note for contributors: If you disable this cmd, update that in botperms cmd.
-        let user;
-        if (args[0]) {
-            if (args[0].startsWith("<@")) {
-                user = userFromMention(
-                    args[0] || `${message.author}`,
-                    message.client
-                );
-            }
-            if (!isNaN(parseInt(args[0]))) {
-                user = message.client.users.cache.get(args[0]);
-                if (!user) user = await message.client.users.fetch(args[0]);
-            }
-        } else {
-            user = message.author;
-        }
-
+        const user = await this.getUserFromIdOrMention(args[0]);
         if (!user) {
             return message.reply(t("errors:userNotFound"));
         }
-        let member;
-        member = message.guild.members.cache.get(user.id);
+        let member = message.guild.members.cache.get(user.id);
         if (!member) {
             member = await message.guild.members.fetch(user.id);
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
+        const embed = this.makeEmbed(message, member);
+        message.reply({
+            embeds: [
+                embed
+                    .setTitle(
+                        t("cmds:perms.message", {
+                            tag: user.tag,
+                            channel: message.channel.name,
+                        })
+                    ),
+            ],
+        });
+    }
+
+    makeEmbed(message, member) {
         const embed = new Embed();
         let text = "";
         const mPermissions = message.channel.permissionsFor(member);
@@ -77,17 +75,7 @@ module.exports = class CMD extends Command {
             }
         });
         text += `\n\n${allowed} ✅ | ${denied} ❌`;
-        message.reply({
-            embeds: [
-                embed
-                    .setTitle(
-                        t("cmds:perms.message", {
-                            tag: user.tag,
-                            channel: message.channel.name,
-                        })
-                    )
-                    .setDesc(text),
-            ],
-        });
+        embed.setDesc(text);
+        return embed;
     }
 };
