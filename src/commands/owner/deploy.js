@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         let commands = this.client.commands.enabled
             .filter(cmd => Object.hasOwnProperty.call(cmd, "run"))
             .map(({name, options}) => {
-                let cmd = {name};
+                const cmd = {name};
                 if (options && options?.length) cmd.options = options;
                 return cmd;
             });
@@ -39,7 +39,7 @@ module.exports = class CMD extends Command {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
             );
-            cmdsWithDesc = commands.map(cmd => {
+            const cmdsWithDesc = commands.map(cmd => {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd
             });
