@@ -273,7 +273,7 @@ client.on("interactionCreate", async (interaction) => {
                 `Please report this to ${client.ownersTags.join(" OR ")}`,
                 "\u200b"
             );
-        interaction.followUp({ embeds: [embed] });
+        interaction.followUp({ embeds: [embed], ephemeral: true });
     });
 });
 

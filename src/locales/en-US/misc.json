@@ -59,5 +59,6 @@
   "ram_used": "Ram Used",
   "plugins": "Plugins",
   "enabled": "enabled",
-  "disabled": "disabled"
+  "disabled": "disabled",
+  "inventory": "Inventory"
 }

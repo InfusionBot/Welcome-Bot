@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -20,6 +21,7 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     execute({ message }, t) {
         const msg = `${t("misc:pong")} ${message.author}\n${t(
             "misc:webheart"
@@ -39,8 +41,7 @@ module.exports = class CMD extends Command {
         const msg = `${t("misc:pong")} ${interaction.member.user}\n${t(
             "misc:webheart"
         )}: ${interaction.client.ws.ping}ms.\n`;
-        await interaction.reply(msg + `Getting roundtrip latency`);
-        const sent = await interaction.fetchReply();
+        const sent = await interaction.reply(msg + `Getting roundtrip latency`, { fetchReply: true });
         sent.edit(
             msg +
                 `${t("misc:latency")}: ${
