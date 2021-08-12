@@ -31,17 +31,23 @@ module.exports = class CMD extends Command {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
             );
-            await guild.commands.set([
-                {
-                    name: "ping",
-                    description: guildT("cmds:ping.cmdDesc"),
-                },
-                {
-                    name: "staff",
-                    description: guildT("cmds:staff.cmdDesc"),
-                },
-            ]).catch(e => errors.push(e?.path));
+            await guild.commands
+                .set([
+                    {
+                        name: "ping",
+                        description: guildT("cmds:ping.cmdDesc"),
+                    },
+                    {
+                        name: "staff",
+                        description: guildT("cmds:staff.cmdDesc"),
+                    },
+                ])
+                .catch((e) => errors.push(e?.path));
         });
-        message.reply(`Successfully reloaded slash commands!\nErrors:\n${errors.join(", ")}`);
+        message.reply(
+            `Successfully reloaded slash commands!\nErrors:\n${errors.join(
+                ", "
+            )}`
+        );
     }
 };
