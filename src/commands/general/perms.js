@@ -36,7 +36,7 @@ module.exports = class CMD extends Command {
             member = await message.guild.members.fetch(user.id);
             if (!member) return message.reply(t("errors:userNotInGuild"));
         }
-        const embed = this.makeEmbed(message, member);
+        const embed = this.makeEmbed(message, member, t);
         message.reply({
             embeds: [
                 embed.setTitle(
@@ -49,7 +49,7 @@ module.exports = class CMD extends Command {
         });
     }
 
-    makeEmbed(message, member) {
+    makeEmbed(message, member, t) {
         const embed = new Embed();
         let text = "";
         const mPermissions = message.channel.permissionsFor(member);

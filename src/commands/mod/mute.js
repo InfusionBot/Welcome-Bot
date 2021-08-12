@@ -76,7 +76,7 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.plugins.modlogs) {
-                    this.handleModLogs(message, guildDB, t);
+                    this.handleModLogs(message, guildDB, user, reason, t);
                 }
                 message.reply(t("cmds:mute.success", { tag: user.tag }));
             })
@@ -85,7 +85,7 @@ module.exports = class CMD extends Command {
             });
     }
 
-    async run({ interaction }, t) {
+    async run({ interaction, guildDB }, t) {
         const user = interaction.options.getUser("user", true);
         const reason =
             interaction.options.getUser("reason") ?? t("misc:not_spec");
@@ -125,7 +125,7 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.plugins.modlogs) {
-                    this.handleModLogs(interaction, guildDB, t);
+                    this.handleModLogs(interaction, guildDB, user, reason, t);
                 }
                 interaction.reply(t("cmds:mute.success", { tag: user.tag }));
             })
@@ -165,7 +165,7 @@ module.exports = class CMD extends Command {
         return muteRole;
     }
 
-    handleModLogs(message, guildDB, t) {
+    handleModLogs(message, guildDB, user, reason, t) {
         message.author = message.author ?? message.user;
         const channel = message.guild.channels.cache.get(
             guildDB.plugins.modlogs
