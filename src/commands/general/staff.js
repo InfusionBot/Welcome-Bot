@@ -28,18 +28,18 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
         await message.guild.members.fetch();
-        const embed = this.buildEmbed(message.guild);
+        const embed = this.buildEmbed(message.guild, t);
         message.channel.send({ embeds: [embed] });
     }
 
     //eslint-disable-next-line no-unused-vars
     async run({ interaction }, t) {
         await interaction.guild.members.fetch();
-        const embed = this.buildEmbed(interaction.guild);
+        const embed = this.buildEmbed(interaction.guild, t);
         interaction.reply({ embeds: [embed] });
     }
 
-    buildEmbed(guild) {
+    buildEmbed(guild, t) {
         const administrators = guild.members.cache.filter(
             (m) =>
                 m.permissions.has(Permissions.FLAGS.ADMINISTRATOR) &&
