@@ -41,7 +41,9 @@ module.exports = class CMD extends Command {
             pages[p].setDesc(`${t("misc:inventory")}`);
             pages[p].addField(
                 `\u200b`,
-                `• ${userDB.inventory[item]} ${t(`misc:items.${item.toLowerCase()}`)}`
+                `• ${userDB.inventory[item]} ${t(
+                    `misc:items.${item.toLowerCase()}`
+                )}`
             );
         });
         const pagination = new Pagination(this.client, { timeout: timeout });
