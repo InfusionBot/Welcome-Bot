@@ -59,7 +59,8 @@ module.exports = class Command {
 
     async preCheck(interaction, guildDB, t) {
         await interaction.deferReply();
-        if (!this.client.application?.owner) await message.client.application?.fetch();
+        if (!this.client.application?.owner)
+            await message.client.application?.fetch();
         if (guildDB.disabled.includes(this.name)) return false; //ignore disabled commands
         const usage = this.getUsage(t);
         if (
@@ -71,7 +72,8 @@ module.exports = class Command {
         ) {
             return interaction.editReply(t("errors:developerOnly"));
         }
-        if (command.requirements?.guildOnly && !interaction.inGuild()) return false;// silently fail if command is for guilds only
+        if (command.requirements?.guildOnly && !interaction.inGuild())
+            return false; // silently fail if command is for guilds only
         let userDB = await this.client.userDbFuncs.getUser(interaction.user.id);
         if (!userDB) {
             await this.client.userDbFuncs.addUser(interaction.user.id);
@@ -85,42 +87,52 @@ module.exports = class Command {
         ];
         //Checking perms
         if (interaction.inGuild()) {
-            const botPerms = interaction.guild.me.permissionsIn(interaction.channel);
+            const botPerms = interaction.guild.me.permissionsIn(
+                interaction.channel
+            );
             if (!botPerms) return false;
             for (let i = 0; i < basicPerms.length; i++) {
                 if (!botPerms.has(basicPerms[i])) {
                     interaction.editReply(
                         t("errors:iDontHavePermission", {
-                            permission: this.getPermTranslation(basicPerms[i], t),
+                            permission: this.getPermTranslation(
+                                basicPerms[i],
+                                t
+                            ),
                         })
                     );
                     return false;
                 }
             }
             if (this?.botPerms?.length) {
-            for (let i = 0; i < this.botPerms.length; i++) {
-                if (!botPerms.has(this.botPerms[i])) {
-                    interaction.editReply(
-                        t("errors:iDontHavePermission", {
-                            permission: this.getPermTranslation(this.botPerms[i], t),
-                        })
-                    );
-                    return false;
+                for (let i = 0; i < this.botPerms.length; i++) {
+                    if (!botPerms.has(this.botPerms[i])) {
+                        interaction.editReply(
+                            t("errors:iDontHavePermission", {
+                                permission: this.getPermTranslation(
+                                    this.botPerms[i],
+                                    t
+                                ),
+                            })
+                        );
+                        return false;
+                    }
                 }
             }
-            }
         }
-        if (
-            this?.memberPerms?.length &&
-            interaction.inGuild()
-        ) {
-            const authorPerms = interaction.channel.permissionsFor(interaction.user);
+        if (this?.memberPerms?.length && interaction.inGuild()) {
+            const authorPerms = interaction.channel.permissionsFor(
+                interaction.user
+            );
             if (!authorPerms) return false;
             for (let i = 0; i < this.memberPerms.length; i++) {
                 if (!authorPerms.has(this.memberPerms[i])) {
                     interaction.editReply(
                         t("errors:youDontHavePermission", {
-                            permission: this.getPermTranslation(this.memberPerms[i], t),
+                            permission: this.getPermTranslation(
+                                this.memberPerms[i],
+                                t
+                            ),
                         })
                     );
                     return false;
@@ -200,7 +212,10 @@ module.exports = class Command {
                 if (!botPerms.has(basicPerms[i])) {
                     message.reply(
                         t("errors:iDontHavePermission", {
-                            permission: this.getPermTranslation(basicPerms[i], t),
+                            permission: this.getPermTranslation(
+                                basicPerms[i],
+                                t
+                            ),
                         })
                     );
                     return false;
@@ -302,6 +317,11 @@ module.exports = class Command {
     }
 
     getPermTranslation(perm, t) {
-        return t(`permissions:${new Permissions(perms).toArray().join("").toUpperCase()}`);
+        return t(
+            `permissions:${new Permissions(perms)
+                .toArray()
+                .join("")
+                .toUpperCase()}`
+        );
     }
 };
