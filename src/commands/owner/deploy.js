@@ -43,10 +43,10 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            const guildCmds = await guild.commands
+            guild.commands
                 .set(cmdsWithDesc)
+                .then(console.log)
                 .catch((e) => errors.push(e.path ?? e));
-            console.log(guildCmds);
         });
         message.reply(
             `Successfully reloaded slash commands!\nErrors:\n${errors.join(
