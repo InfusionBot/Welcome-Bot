@@ -270,6 +270,9 @@ client.on("interactionCreate", async (interaction) => {
     const userDB = await client.userDbFuncs.getUser(interaction.member.user.id);
     const command = client.commands.enabled.get(cmd);
     if (!command) return;
+    let preCheck = false;
+    preCheck = await command.preCheck(interaction, guildDB, t);
+    if (!preCheck) return;
     command.run({ interaction, guildDB, userDB }, t).catch((err) => {
         client.logger.log("Error when executing cmds", "error", ["CMDS"]);
         console.log(err);

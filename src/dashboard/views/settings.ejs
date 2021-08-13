@@ -23,7 +23,6 @@
                             </div>
                             <div class="card-body">
                                 <form action="/settings" method="POST">
-                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <div class="form-group">
                                         <label><%= translate("misc:bio2") %></label>
                                         <textarea maxlength="100" rows="3" name="bio" class="form-control" required="true"><%= userDB.bio %></textarea>

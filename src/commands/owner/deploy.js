@@ -10,7 +10,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "deploy",
-                aliases: ["addslash"],
+                //aliases: ["addslash"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
@@ -25,7 +25,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args, guildDB, userDB }, t) {
+    execute({ message, args, guildDB, userDB }, t) {
         const errors = [];
         let commands = this.client.commands.enabled
             .filter((cmd) => cmd.supportsSlash)
@@ -43,10 +43,10 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            console.log(cmdsWithDesc);
-            guild.commands
+            const guildCmds = await guild.commands
                 .set(cmdsWithDesc)
                 .catch((e) => errors.push(e.path ?? e));
+            console.log(guildCmds);
         });
         message.reply(
             `Successfully reloaded slash commands!\nErrors:\n${errors.join(
