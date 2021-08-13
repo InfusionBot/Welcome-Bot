@@ -40,8 +40,8 @@ module.exports = class CMD extends Command {
             pages[p] = new Embed({ color: "blue", timestamp: true });
             pages[p].setDesc(`${t("misc:inventory")}`);
             pages[p].addField(
-                `${userDB.inventory[item]}`,
-                `${t(`misc:items.${item.toLowerCase()}`)}`
+                `\u200b`,
+                `• ${userDB.inventory[item]} ${t(`misc:items.${item.toLowerCase()}`)}`
             );
         });
         const pagination = new Pagination(this.client, { timeout: timeout });

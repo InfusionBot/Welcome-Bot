@@ -11,8 +11,8 @@ module.exports = class CMD extends Command {
             {
                 name: "prune",
                 aliases: ["purge"],
-                memberPerms: [Permissions.FLAGS.KICK_MEMBERS],
-                botPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                memberPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
                 requirements: {
                     args: true,
                     guildOnly: true,
