@@ -220,10 +220,10 @@ module.exports = async (message, guildDB) => {
                 );
             if (!userDB) userDB = await getUser(message.author.id);
             message.channel.sendTyping();
-            command
-                .execute({ message, args, guildDB, userDB }, t)
-                .catch((err) => {
-                    client.logger.log("Error when executing cmds", "error", [
+            try {
+                command.execute({ message, args, guildDB, userDB }, t)
+            } catch (err) {
+                client.logger.log("Error when executing cmds", "error", [
                         "CMDS",
                     ]);
                     console.error(err);
@@ -237,7 +237,7 @@ module.exports = async (message, guildDB) => {
                         );
                     message.reply({ embeds: [embed] });
                     return;
-                });
+            }
             if (client.debug && client.debugLevel >= 2)
                 client.logger.log(
                     `Finished executing cmd: ${command.name}`,
