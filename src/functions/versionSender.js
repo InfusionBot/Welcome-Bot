@@ -12,6 +12,7 @@ module.exports = async (client) => {
     );
     const Guild = client.guildSchema;
     if (newVersion) {
+        //eslint-disable-next-line no-unused-vars
         Guild.where({}).find((err, guilds) => {
             if (err) {
                 console.log(err);
@@ -31,12 +32,12 @@ module.exports = async (client) => {
                     if (newsChannel) newsChannel.send(reply);
                     else
                         client.logger.log(
-                            "can't find newsChannel to send version updates",
+                            "No News Channel found to send version updates",
                             "error"
                         );
                 }
             }
         });
-        client.logger.log("Version updated", "debug");
+        if (client.debug) client.logger.log("Version updated", "debug");
     }
 };

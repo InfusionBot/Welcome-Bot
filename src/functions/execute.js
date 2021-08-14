@@ -5,7 +5,7 @@
  */
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
-const beautifyPerms = require("../functions/beautifyPerms");
+//const beautifyPerms = require("../functions/beautifyPerms");
 const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {

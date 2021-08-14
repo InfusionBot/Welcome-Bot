@@ -60,7 +60,7 @@ module.exports = class Command {
     async preCheck(interaction, guildDB, t) {
         await interaction.deferReply();
         if (!this.client.application?.owner)
-            await message.client.application?.fetch();
+            await this.client.application?.fetch();
         if (guildDB.disabled.includes(this.name)) return false; //ignore disabled commands
         const usage = this.getUsage(t);
         if (
@@ -72,7 +72,7 @@ module.exports = class Command {
         ) {
             return interaction.editReply(t("errors:developerOnly"));
         }
-        if (command.requirements?.guildOnly && !interaction.inGuild())
+        if (this.requirements?.guildOnly && !interaction.inGuild())
             return false; // silently fail if command is for guilds only
         let userDB = await this.client.userDbFuncs.getUser(interaction.user.id);
         if (!userDB) {
@@ -318,7 +318,7 @@ module.exports = class Command {
 
     getPermTranslation(perm, t) {
         return t(
-            `permissions:${new Permissions(perms)
+            `permissions:${new Permissions(perm)
                 .toArray()
                 .join("")
                 .toUpperCase()}`
