@@ -92,7 +92,7 @@ module.exports = class CMD extends Command {
     async run({ interaction, guildDB }, t) {
         const user = interaction.options.getUser("user", true);
         const reason =
-            interaction.options.getUser("reason") ?? t("misc:not_spec");
+            interaction.options.getString("reason") ?? t("misc:not_spec");
         if (!user) {
             return interaction.followUp(t("errors:invalidUser"));
         }
