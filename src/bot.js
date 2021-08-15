@@ -281,17 +281,23 @@ client.on("interactionCreate", async (interaction) => {
                 console.log(`Executed ${command.name} command successfully`);
         })
         .catch((err) => {
-        client.logger.log(`Error when executing ${command.name}`, "error", ["CMDS"]);
-        console.log(err);
-        const embed = new Embed({ color: "error" })
-            .setTitle(t("errors:generic"))
-            .addField(
-                `Please report this to ${client.ownersTags.join(" OR ")}`,
-                "\u200b"
-            );
-        if (client.config.ownerIDs.includes(interaction.user.id) || interaction.user.id === client.application?.owner.id) embed.addField("Error", `${err}`);
-        interaction.channel.send({ embeds: [embed], ephemeral: true });
-    });
+            client.logger.log(`Error when executing ${command.name}`, "error", [
+                "CMDS",
+            ]);
+            console.log(err);
+            const embed = new Embed({ color: "error" })
+                .setTitle(t("errors:generic"))
+                .addField(
+                    `Please report this to ${client.ownersTags.join(" OR ")}`,
+                    "\u200b"
+                );
+            if (
+                client.config.ownerIDs.includes(interaction.user.id) ||
+                interaction.user.id === client.application?.owner.id
+            )
+                embed.addField("Error", `${err}`);
+            interaction.channel.send({ embeds: [embed], ephemeral: true });
+        });
 });
 
 client.on("messageCreate", async function (message) {
