@@ -46,7 +46,11 @@ module.exports = class CMD extends Command {
             registeredCmds = await guild.commands.set(cmdsWithDesc);
         });
         message.reply(
-            `Successfully reloaded slash commands!\n${(args[0] && args[0].toLowerCase() === "--show") ? `• ${registeredCmds.map(cmd => cmd.name).join("\n• ")}` : ""}`
+            `Successfully reloaded slash commands!\n${
+                args[0] && args[0].toLowerCase() === "--show"
+                    ? `• ${registeredCmds.map((cmd) => cmd.name).join("\n• ")}`
+                    : ""
+            }`
         );
     }
 };
