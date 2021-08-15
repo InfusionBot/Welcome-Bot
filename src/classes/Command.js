@@ -167,7 +167,6 @@ module.exports = class Command {
         }
 
         this.applyCooldown(interaction.user, cooldownAmount);
-        await interaction.deleteReply();
         return true;
     }
 

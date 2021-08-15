@@ -37,7 +37,7 @@ module.exports = class CMD extends Command {
     async run({ interaction }, t) {
         await interaction.guild.members.fetch();
         const embed = this.buildEmbed(interaction.guild, t);
-        interaction.reply({ embeds: [embed] });
+        interaction.followUp({ embeds: [embed] });
     }
 
     buildEmbed(guild, t) {

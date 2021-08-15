@@ -59,7 +59,9 @@ module.exports = class CMD extends Command {
                 })
             );
         }
-        const muteRole = await this.muteRole(message, t);
+        const muteRole = await this.muteRole(message);
+        if (message.guild.me.roles.highest.position >= muteRole.position)
+            return message.reply(t("misc:higherRoleBot"));
         member.roles
             .add(
                 muteRole,
@@ -90,25 +92,27 @@ module.exports = class CMD extends Command {
         const reason =
             interaction.options.getUser("reason") ?? t("misc:not_spec");
         if (!user) {
-            return interaction.reply(t("errors:invalidUser"));
+            return interaction.followUp(t("errors:invalidUser"));
         }
         if (interaction.user.id === user.id) {
-            return interaction.reply(t("cmds:mute.errorYourself"));
+            return interaction.followUp(t("cmds:mute.errorYourself"));
         }
 
         let member = interaction.guild.members.cache.get(user.id);
         if (!member) {
             member = await interaction.guild.members.fetch(user.id);
-            if (!member) return interaction.reply(t("errors:userNotInGuild"));
+            if (!member) return interaction.followUp(t("errors:userNotInGuild"));
         }
         if (member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) {
-            return interaction.reply(
+            return interaction.followUp(
                 t("cmds:mute.memberHasPerm", {
                     permission: t("permissions:MANAGE_MESSAGES"),
                 })
             );
         }
-        const muteRole = await this.muteRole(interaction, t);
+        const muteRole = await this.muteRole(interaction);
+        if (interaction.guild.me.roles.highest.position >= muteRole.position)
+            return interaction.followUp(t("misc:higherRoleBot"));
         member.roles
             .add(
                 muteRole,
@@ -127,14 +131,14 @@ module.exports = class CMD extends Command {
                 if (guildDB.plugins.modlogs) {
                     this.handleModLogs(interaction, guildDB, user, reason, t);
                 }
-                interaction.reply(t("cmds:mute.success", { tag: user.tag }));
+                interaction.followUp(t("cmds:mute.success", { tag: user.tag }));
             })
             .catch((e) => {
                 throw e;
             });
     }
 
-    async muteRole(message, t) {
+    async muteRole(message) {
         let muteRole = message.guild.roles.cache.find(
             (r) => r.name === "Muted"
         );
@@ -160,8 +164,6 @@ module.exports = class CMD extends Command {
                 throw e;
             }
         }
-        if (message.guild.me.roles.highest.position >= muteRole.position)
-            return message.reply(t("misc:higherRoleBot"));
         return muteRole;
     }
 
