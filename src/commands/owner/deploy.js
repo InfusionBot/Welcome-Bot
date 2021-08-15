@@ -35,6 +35,7 @@ module.exports = class CMD extends Command {
             });
         commands = [...commands.values()];
         let registeredCmds;
+        let cmds;
         this.client.guilds.cache.forEach(async (guild) => {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
@@ -44,18 +45,20 @@ module.exports = class CMD extends Command {
                 return cmd;
             });
             if (guild.id === this.client.config.botGuildId) {
+                cmds = cmdsWithDesc;
                 registeredCmds = await guild.commands.set(cmdsWithDesc);
+                return;
             }
-            if (!registeredCmds) {
-                registeredCmds = await guild.commands.set(cmdsWithDesc);
-            } else {
-                await guild.commands.set(cmdsWithDesc);
-            }
+            await guild.commands.set(cmdsWithDesc);
         });
         message.reply(
             `Successfully reloaded slash commands!\n${
                 args[0] && args[0].toLowerCase() === "--show"
                     ? `• ${registeredCmds.map((cmd) => cmd.name).join("\n• ")}`
+                    : ""
+            }\n${
+                args[0] && args[0].toLowerCase() === "--show-cmds"
+                    ? `• ${cmds.map((cmd) => cmd.name).join("\n• ")}`
                     : ""
             }`
         );
