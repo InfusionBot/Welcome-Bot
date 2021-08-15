@@ -273,8 +273,10 @@ client.on("interactionCreate", async (interaction) => {
     let preCheck = false;
     preCheck = await command.preCheck(interaction, guildDB, t);
     if (!preCheck) return;
-    command.run({ interaction, guildDB, userDB }, t).catch((err) => {
-        client.logger.log("Error when executing cmds", "error", ["CMDS"]);
+    command.run({ interaction, guildDB, userDB }, t)
+        .then(() => {if (client.debug) console.log(`Executed ${command.name} command successfully`)})
+        .catch((err) => {
+        client.logger.log(`Error when executing ${command.name}`, "error", ["CMDS"]);
         console.log(err);
         const embed = new Embed({ color: "error" })
             .setTitle(t("errors:generic"))
@@ -282,7 +284,7 @@ client.on("interactionCreate", async (interaction) => {
                 `Please report this to ${client.ownersTags.join(" OR ")}`,
                 "\u200b"
             );
-        interaction.followUp({ embeds: [embed], ephemeral: true });
+        interaction.channel.send({ embeds: [embed], ephemeral: true });
     });
 });
 

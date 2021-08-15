@@ -235,6 +235,7 @@ module.exports = async (message, guildDB) => {
                         )}`,
                         "\u200b"
                     );
+                if (message.client.ownerIDs.includes(message.author.id) || message.author.id === client.application?.owner.id) embed.addField("Error", `${err}`);
                 message.reply({ embeds: [embed] });
                 return;
             }
