@@ -260,6 +260,7 @@ client.on("interactionCreate", async (interaction) => {
     const t = interaction.inGuild()
         ? await getT(interaction.guild.id)
         : client.i18next.getFixedT("en-US");
+    if (!client.application?.owner) await client.application?.fetch();
     const { commandName: cmd } = interaction;
     let guildDB;
     if (interaction.inGuild() && interaction.channel.type !== "DM") {
@@ -284,6 +285,7 @@ client.on("interactionCreate", async (interaction) => {
                 `Please report this to ${client.ownersTags.join(" OR ")}`,
                 "\u200b"
             );
+        if (client.config.ownerIDs.includes(interaction.user.id) || interaction.user.id === client.application?.owner.id) embed.addField("Error", `${err}`);
         interaction.channel.send({ embeds: [embed], ephemeral: true });
     });
 });

@@ -43,7 +43,14 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            registeredCmds = await guild.commands.set(cmdsWithDesc);
+            if (guild.id === client.config.botGuildId) {
+                registeredCmds = await guild.commands.set(cmdsWithDesc);
+            }
+            if (!registeredCmds) {
+                registeredCmds = await guild.commands.set(cmdsWithDesc);
+            } else {
+                await guild.commands.set(cmdsWithDesc);
+            }
         });
         message.reply(
             `Successfully reloaded slash commands!\n${
