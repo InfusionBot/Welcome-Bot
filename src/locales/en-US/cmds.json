@@ -52,7 +52,7 @@
     "cmdDesc": "Library used to build Welcome-Bot"
   },
   "ping": {
-    "cmdDesc": "Ping the bot"
+    "cmdDesc": "Get ping of the bot"
   },
   "report": {
     "cmdDesc": "Report bugs",

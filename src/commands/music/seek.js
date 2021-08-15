@@ -33,7 +33,7 @@ module.exports = class CMD extends Command {
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
         if (!queue || !queue.playing)
             return message.reply(t("cmds:stop.notPlaying"));
-        const time = ms(args[0]);
+        const time = ms(args.join(" "));
         if (isNaN(time)) {
             return message.reply(t("cmds:seek.invalidTime"));
         }
