@@ -23,11 +23,13 @@ module.exports = class CMD extends Command {
                 options: [
                     {
                         name: "user",
+                        description: "User to mute",
                         type: "USER",
                         required: true,
                     },
                     {
                         name: "reason",
+                        description: "Why do you want to mute this guy?",
                         type: "STRING",
                         required: false,
                     },
