@@ -26,7 +26,6 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB, userDB }, t) {
-        const errors = [];
         let commands = this.client.commands.enabled
             .filter((cmd) => cmd.supportsSlash)
             .map(({ name, options }) => {
@@ -43,15 +42,10 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            guild.commands
-                .set(cmdsWithDesc)
-                .then(console.log)
-                .catch((e) => errors.push(e));
+            const registeredCmds = await guild.commands.set(cmdsWithDesc);
         });
         message.reply(
-            `Successfully reloaded slash commands!\nErrors:\n${errors.join(
-                ", "
-            )}`
+            `Successfully reloaded slash commands!\n${(args[0] && args[0].toLowerCase() === "--show") ? `• ${registeredCmds.map(cmd => cmd.name).join("\n• ")}` : ""}`
         );
     }
 };
