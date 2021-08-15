@@ -274,8 +274,12 @@ client.on("interactionCreate", async (interaction) => {
     let preCheck = false;
     preCheck = await command.preCheck(interaction, guildDB, t);
     if (!preCheck) return;
-    command.run({ interaction, guildDB, userDB }, t)
-        .then(() => {if (client.debug) console.log(`Executed ${command.name} command successfully`)})
+    command
+        .run({ interaction, guildDB, userDB }, t)
+        .then(() => {
+            if (client.debug)
+                console.log(`Executed ${command.name} command successfully`);
+        })
         .catch((err) => {
         client.logger.log(`Error when executing ${command.name}`, "error", ["CMDS"]);
         console.log(err);
