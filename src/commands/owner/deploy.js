@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            if (guild.id === client.config.botGuildId) {
+            if (guild.id === this.client.config.botGuildId) {
                 registeredCmds = await guild.commands.set(cmdsWithDesc);
             }
             if (!registeredCmds) {
