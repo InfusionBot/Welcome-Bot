@@ -101,7 +101,8 @@ module.exports = class CMD extends Command {
         let member = interaction.guild.members.cache.get(user.id);
         if (!member) {
             member = await interaction.guild.members.fetch(user.id);
-            if (!member) return interaction.followUp(t("errors:userNotInGuild"));
+            if (!member)
+                return interaction.followUp(t("errors:userNotInGuild"));
         }
         if (member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) {
             return interaction.followUp(
