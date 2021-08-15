@@ -34,6 +34,7 @@ module.exports = class CMD extends Command {
                 return cmd;
             });
         commands = [...commands.values()];
+        let registeredCmds;
         this.client.guilds.cache.forEach(async (guild) => {
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
@@ -42,7 +43,7 @@ module.exports = class CMD extends Command {
                 cmd.description = guildT(`cmds:${cmd.name}.cmdDesc`);
                 return cmd;
             });
-            const registeredCmds = await guild.commands.set(cmdsWithDesc);
+            registeredCmds = await guild.commands.set(cmdsWithDesc);
         });
         message.reply(
             `Successfully reloaded slash commands!\n${(args[0] && args[0].toLowerCase() === "--show") ? `• ${registeredCmds.map(cmd => cmd.name).join("\n• ")}` : ""}`
