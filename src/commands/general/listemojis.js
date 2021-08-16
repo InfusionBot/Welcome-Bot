@@ -5,6 +5,7 @@
  */
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
+const { Pagination } = require("djs-pagination-buttons");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
