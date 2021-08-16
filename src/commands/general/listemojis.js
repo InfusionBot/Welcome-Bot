@@ -13,7 +13,7 @@ module.exports = class CMD extends Command {
                 name: "listemojis",
                 aliases: ["list-emojis"],
                 memberPerms: [],
-                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                botPerms: [],
                 requirements: {
                     guildOnly: true,
                 },

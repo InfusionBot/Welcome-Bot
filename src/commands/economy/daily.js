@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const dailyCoins = 100;
+        const dailyCoins = 200;
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
 
         const diff =
