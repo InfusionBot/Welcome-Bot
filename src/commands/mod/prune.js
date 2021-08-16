@@ -55,7 +55,7 @@ module.exports = class CMD extends Command {
         }
         if (typeof args[0] === "string" && args[0].startsWith("*")) {
             args[0] = args[0].slice(1); //Remove * from it
-            messages = await message.channel.messages.fetch({limit: 100}).then(msgs => msgs.filter((m) => m.content.indexOf(args[0]) !== -1);
+            messages = await message.channel.messages.fetch({limit: 100}).then(msgs => msgs.filter((m) => m.content.indexOf(args[0]) !== -1));
         }
         if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]) + 1;
