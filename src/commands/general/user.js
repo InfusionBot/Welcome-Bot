@@ -79,7 +79,10 @@ module.exports = class CMD extends Command {
         );
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
-        embed.addField(t("misc:presence"), `${member?.presence?.status ?? "undefined"}`);
+        embed.addField(
+            t("misc:presence"),
+            `${member?.presence?.status ?? "undefined"}`
+        );
         const content = user.id;
         switch (args[1]) {
             case "--dm":
