@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB, userDB }, t) {
+    execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
@@ -37,5 +37,7 @@ module.exports = class CMD extends Command {
         if (isNaN(time)) {
             return message.reply(t("cmds:seek.invalidTime"));
         }
+        if (queue.seek(time)) message.react("👍");
+        else message.react("❌");
     }
 };

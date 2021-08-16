@@ -52,7 +52,7 @@ module.exports = class CMD extends Command {
                 m.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES) &&
                 !m.user.bot
         );
-        const embed = new Embed({ color: "blue" })
+        const embed = new Embed()
             .setAuthor(`${guild.name} ${t("misc:staff")}`)
             .addField(
                 t("misc:admins"),

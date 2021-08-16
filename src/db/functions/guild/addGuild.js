@@ -5,12 +5,11 @@
  */
 const Guild = require("../../../schema/guildSchema");
 
-module.exports = (guildId, lang = "en-US", disabled = ["goodbye"]) => {
+module.exports = (guildId, lang = "en-US") => {
     return new Promise((resolve, reject) => {
         const guild = new Guild({
             guildId,
             lang,
-            disabled,
         });
 
         guild.save((err) => {
