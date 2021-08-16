@@ -20,7 +20,7 @@ module.exports = class CMD extends Command {
                 disabled: false,
                 cooldown: 10,
                 category: "General",
-                supportsSlash: true,
+                slash: true,
             },
             client
         );

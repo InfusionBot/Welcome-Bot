@@ -243,7 +243,7 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
     removeGuild(guild.id);
-    embed = new Embed({ color: "red", timestamp: true })
+    embed = new Embed({ color: "error", timestamp: true })
         .setTitle(`:x: Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`)
         .addField(
