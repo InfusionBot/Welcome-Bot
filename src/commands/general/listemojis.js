@@ -36,11 +36,9 @@ module.exports = class CMD extends Command {
                 .slice(i0, i1)
                 .join("\n");
         };
-        for (let i = 0; i < emojis;) {
+        for (let i = 0; i < emojis; ) {
             const embed = new Embed({ timestamp: true })
-                .setTitle(
-                    t("cmds:listemojis.cmdDesc")
-                )
+                .setTitle(t("cmds:listemojis.cmdDesc"))
                 .setDesc(getList());
             const p = pages.length;
             pages[p] = embed;
