@@ -22,8 +22,7 @@ module.exports = async (message, guildDB) => {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
     } catch (e) {} //eslint-disable-line no-empty
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-    if (!client.application?.owner)
-        await client.application?.fetch();
+    if (!client.application?.owner) await client.application?.fetch();
     const embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
@@ -202,9 +201,7 @@ module.exports = async (message, guildDB) => {
             embed
                 .setTitle(t("errors:generic"))
                 .addField(
-                    `Please report this to ${client.ownersTags.join(
-                        " OR "
-                    )}`,
+                    `Please report this to ${client.ownersTags.join(" OR ")}`,
                     "\u200b"
                 );
             message.reply({ embeds: [embed] });
@@ -216,7 +213,8 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            if (!userDB) userDB = await client.userDbFuncs.getUser(message.author.id);
+            if (!userDB)
+                userDB = await client.userDbFuncs.getUser(message.author.id);
             message.channel.sendTyping();
             try {
                 command.execute({ message, args, guildDB, userDB }, t);
