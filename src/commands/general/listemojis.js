@@ -25,7 +25,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message }, t) {
+    execute({ message }, t) {
         const pages = [];
         let i0 = 0; //From
         let i1 = 10; //To
@@ -33,7 +33,7 @@ module.exports = class CMD extends Command {
         const emojis = message.guild.emojis.cache.size;
         const getList = () => {
             return message.guild.emojis.cache
-                .map((e, x) => `• ${e.name} (${x})`)
+                .map((e, x) => `• ${e.name} (${x}) [\`${e}\`]`)
                 .slice(i0, i1)
                 .join("\n");
         };
