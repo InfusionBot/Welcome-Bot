@@ -27,16 +27,7 @@ module.exports = class CMD extends Command {
         }
         let user;
         if (args[0]) {
-            if (args[0].startsWith("<@")) {
-                user = userFromMention(
-                    args[0] || `${message.author}`,
-                    message.client
-                );
-            }
-            if (!isNaN(parseInt(args[0]))) {
-                user = message.client.users.cache.get(args[0]);
-                if (!user) user = await message.client.users.fetch(args[0]);
-            }
+            user = await this.getUserFromIdOrMention(args[0]);
         } else {
             user = message.author;
         }
@@ -45,11 +36,9 @@ module.exports = class CMD extends Command {
             message.reply(t("errors:invalidUser"));
             return false;
         }
-        let member;
+        const member = await message.guild.members.fetch(user.id);
         if (!member) {
-            member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply("That user was not found in this server");
+            return message.reply("That user was not found in this server");
         }
 
         /*let badges = [];
@@ -90,9 +79,7 @@ module.exports = class CMD extends Command {
         );
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
-        if (member?.presence)
-            embed.addField(t("misc:presence"), `${member.presence.status}`);
-        else embed.addField(t("misc:presence"), `Unknown`);
+        embed.addField(t("misc:presence"), `${member?.presence?.status ?? "undefined"}`);
         const content = user.id;
         switch (args[1]) {
             case "--dm":

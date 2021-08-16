@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message }, t) {
         await message.guild.members.fetch();
         const embed = this.buildEmbed(message.guild, t);
         message.channel.send({ embeds: [embed] });

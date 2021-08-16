@@ -29,7 +29,14 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         const dailyCoins = 200;
-        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
+        const lang = guildDB.lang ?? "en-US";
+        const language = this.client.languages.find(
+            (l) =>
+                l.name === lang ||
+                l.aliases.includes(lang) ||
+                l.aliases.includes(lang)
+        );
+        moment.locale(language.moment);
 
         const diff =
             24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.dailyClaimed);

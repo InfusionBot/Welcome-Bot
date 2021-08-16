@@ -62,7 +62,7 @@ module.exports = class CMD extends Command {
             );
         }
         const muteRole = await this.muteRole(message);
-        if (message.guild.me.roles.highest.position =< muteRole.position)
+        if (message.guild.me.roles.highest.position <= muteRole.position)
             return message.reply(t("misc:higherRoleBot"));
         member.roles
             .add(
@@ -114,7 +114,7 @@ module.exports = class CMD extends Command {
             );
         }
         const muteRole = await this.muteRole(interaction);
-        if (interaction.guild.me.roles.highest.position =< muteRole.position)
+        if (interaction.guild.me.roles.highest.position <= muteRole.position)
             return interaction.followUp(t("misc:higherRoleBot"));
         member.roles
             .add(
