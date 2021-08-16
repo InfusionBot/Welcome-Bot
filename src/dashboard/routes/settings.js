@@ -24,7 +24,6 @@ router.get("/", CheckAuth, (req, res) => {
         userDB: req.userDB,
         translate: req.translate,
         currentURL: req.currentURL,
-        csrfToken: req.csrfToken(),
     });
     res.end();
 });

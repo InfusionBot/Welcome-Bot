@@ -4,7 +4,6 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const createOptionHandler = require("../functions/createOptionHandler");
-const addUser = require("../db/functions/user/addUser");
 const { userFromMention } = require("../helpers/Util.js");
 const { Permissions, Collection } = require("discord.js");
 module.exports = class Command {
@@ -30,6 +29,8 @@ module.exports = class Command {
         this.subcommands = options.optional("subcommands", null);
         this.cooldown = options.optional("cooldown", 3);
         this.category = options.optional("category", "General");
+        this.supportsSlash = options.optional("supportsSlash", false);
+        this.options = options.optional("options", null);
         if (this.subcommands) {
             for (var i = 0; i < this.subcommands.length; i++) {
                 if (this.subcommands[i].name && !this.subcommands[i].desc) {
@@ -56,9 +57,122 @@ module.exports = class Command {
         }
     }
 
+    async preCheck(interaction, guildDB, t) {
+        await interaction.deferReply();
+        if (!this.client.application?.owner)
+            await this.client.application?.fetch();
+        if (guildDB.disabled.includes(this.name)) return false; //ignore disabled commands
+        const usage = this.getUsage(t);
+        if (
+            this.requirements?.ownerOnly &&
+            !(
+                this.client.ownerIDs.includes(interaction.user.id) ||
+                interaction.user.id === this.client.application?.owner.id
+            )
+        ) {
+            return interaction.editReply(t("errors:developerOnly"));
+        }
+        if (this.requirements?.guildOnly && !interaction.inGuild())
+            return false; // silently fail if command is for guilds only
+        let userDB = await this.client.userDbFuncs.getUser(interaction.user.id);
+        if (!userDB) {
+            await this.client.userDbFuncs.addUser(interaction.user.id);
+            userDB = await this.client.userDbFuncs.getUser(interaction.user.id);
+        }
+        const basicPerms = [
+            Permissions.FLAGS.VIEW_CHANNEL,
+            Permissions.FLAGS.SEND_MESSAGES,
+            Permissions.FLAGS.READ_MESSAGE_HISTORY,
+            Permissions.FLAGS.EMBED_LINKS,
+        ];
+        //Checking perms
+        if (interaction.inGuild()) {
+            const botPerms = interaction.guild.me.permissionsIn(
+                interaction.channel
+            );
+            if (!botPerms) return false;
+            for (let i = 0; i < basicPerms.length; i++) {
+                if (!botPerms.has(basicPerms[i])) {
+                    interaction.editReply(
+                        t("errors:iDontHavePermission", {
+                            permission: this.getPermTranslation(
+                                basicPerms[i],
+                                t
+                            ),
+                        })
+                    );
+                    return false;
+                }
+            }
+            if (this?.botPerms?.length) {
+                for (let i = 0; i < this.botPerms.length; i++) {
+                    if (!botPerms.has(this.botPerms[i])) {
+                        interaction.editReply(
+                            t("errors:iDontHavePermission", {
+                                permission: this.getPermTranslation(
+                                    this.botPerms[i],
+                                    t
+                                ),
+                            })
+                        );
+                        return false;
+                    }
+                }
+            }
+        }
+        if (this?.memberPerms?.length && interaction.inGuild()) {
+            const authorPerms = interaction.channel.permissionsFor(
+                interaction.user
+            );
+            if (!authorPerms) return false;
+            for (let i = 0; i < this.memberPerms.length; i++) {
+                if (!authorPerms.has(this.memberPerms[i])) {
+                    interaction.editReply(
+                        t("errors:youDontHavePermission", {
+                            permission: this.getPermTranslation(
+                                this.memberPerms[i],
+                                t
+                            ),
+                        })
+                    );
+                    return false;
+                }
+            }
+        }
+        const { cooldowns } = this.client.commands;
+
+        if (!cooldowns.has(this.name)) {
+            cooldowns.set(this.name, new Collection());
+        }
+
+        const now = Date.now(); //number of milliseconds elapsed since January 1, 1970 00:00:00 UTC. Example: 1625731103509
+        const timestamps = cooldowns.get(this.name);
+        const cooldownAmount = (this.cooldown || 3) * 1000;
+
+        if (timestamps.has(interaction.user.id)) {
+            const expirationTime =
+                timestamps.get(interaction.user.id) + cooldownAmount;
+
+            if (now < expirationTime) {
+                //Still this cooldown didn't expire.
+                const timeLeft = (expirationTime - now) / 1000;
+                interaction.editReply(
+                    t(`errors:cooldown`, {
+                        seconds: timeLeft.toFixed(),
+                        command: this.name,
+                    })
+                );
+                return false;
+            }
+        }
+
+        this.applyCooldown(interaction.user, cooldownAmount);
+        return true;
+    }
+
     async prerun(message, guildDB, t) {
         try {
-            await addUser(message.author.id);
+            await this.client.userDbFuncs.addUser(message.author.id);
         } catch (e) {
             if (this.category.toLowerCase() === "economy") {
                 throw e;
@@ -94,15 +208,13 @@ module.exports = class Command {
                 );
                 return false;
             }
-            for (var i = 0; i < basicPerms.length; i++) {
+            for (let i = 0; i < basicPerms.length; i++) {
                 if (!botPerms.has(basicPerms[i])) {
                     message.reply(
                         t("errors:iDontHavePermission", {
-                            permission: t(
-                                `permissions:${new Permissions(basicPerms[i])
-                                    .toArray()
-                                    .join("")
-                                    .toUpperCase()}`
+                            permission: this.getPermTranslation(
+                                basicPerms[i],
+                                t
                             ),
                         })
                     );
@@ -154,6 +266,11 @@ module.exports = class Command {
         return true;
     }
 
+    //eslint-disable-next-line no-unused-vars
+    run({ interaction, guildDB, userDB }, t) {
+        throw new Error(`Command ${this.name} doesn't has a run method`);
+    }
+
     /* Simple utils */
     async fetchJson(url, options = {}) {
         const res = await require("node-fetch")(url, options);
@@ -197,5 +314,14 @@ module.exports = class Command {
         const usage = t(`cmds:${this.name}.usage`);
         if (usage === `${this.name}.usage`) return this.defaultUsage;
         return usage;
+    }
+
+    getPermTranslation(perm, t) {
+        return t(
+            `permissions:${new Permissions(perm)
+                .toArray()
+                .join("")
+                .toUpperCase()}`
+        );
     }
 };

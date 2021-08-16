@@ -52,7 +52,7 @@
     "cmdDesc": "Library used to build Welcome-Bot"
   },
   "ping": {
-    "cmdDesc": "Ping the bot"
+    "cmdDesc": "Get ping of the bot"
   },
   "report": {
     "cmdDesc": "Report bugs",
@@ -202,7 +202,7 @@
     "usage": "[link] [emoji name]",
     "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
     "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "<:{{emojiName}}:{{emojiId}}>",
+    "success": "`<:{{emojiName}}:{{emojiId}}>`",
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {
@@ -317,7 +317,7 @@
     "success": "Successfully unmuted **{{tag}}**!"
   },
   "prune": {
-    "cmdDesc": "Prune Messages."
+    "cmdDesc": "Prune Messages. Add a -f option in the end to delete pinned messages also!"
   },
   "unban": {
     "cmdDesc": "Unban a user."

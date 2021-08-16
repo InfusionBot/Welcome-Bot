@@ -33,15 +33,17 @@ module.exports = class CMD extends Command {
         if (!itemsThatGuyHas.length || itemsThatGuyHas.length <= 0)
             return message.reply(t("cmds:inventory.noItems"));
         const page = 0;
-        const pages = [new Embed({ color: "blue", timestamp: true })];
+        const pages = [];
         const timeout = 200000; //20 secs timeout
         itemsThatGuyHas.forEach((item) => {
             const p = pages.length;
             pages[p] = new Embed({ color: "blue", timestamp: true });
-            pages[p].setDesc(t("cmds:inventory.cmdDesc"));
+            pages[p].setDesc(`${t("misc:inventory")}`);
             pages[p].addField(
-                `${userDB.inventory[item]}`,
-                `${t(`misc:items.${item.toLowerCase()}`)}`
+                `\u200b`,
+                `• ${userDB.inventory[item]} ${t(
+                    `misc:items.${item.toLowerCase()}`
+                )}`
             );
         });
         const pagination = new Pagination(this.client, { timeout: timeout });

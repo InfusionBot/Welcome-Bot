@@ -8,6 +8,7 @@
   "basicconf": "📝 Basic configuration",
   "welcome": "👋 Welcome messages",
   "goodbye": "😢 Goodbye messages",
+  "autorole": "🎖️ Autorole plugin",
   "dashboard": "Dashboard",
   "disable_messages": "Disable Messages",
   "enable_messages": "Enable Messages",

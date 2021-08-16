@@ -37,15 +37,17 @@ module.exports = class CMD extends Command {
         }
 
         try {
-            const res = await fetch("https://hastebin.com/documents", {
-                method: "POST",
-                body: text,
-                headers: {
-                    "Content-Type": "text/plain",
-                    "User-Agent": process.env.userAgent,
-                },
-            });
-            const json = await res.json();
+            const json = await this.fetchJson(
+                "https://hastebin.com/documents",
+                {
+                    method: "POST",
+                    body: text,
+                    headers: {
+                        "Content-Type": "text/plain",
+                        "User-Agent": process.env.userAgent,
+                    },
+                }
+            );
             let url;
             if (json.key) {
                 url = `https://hastebin.com/${json.key}.${ext}`;

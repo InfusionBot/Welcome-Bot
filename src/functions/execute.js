@@ -5,7 +5,7 @@
  */
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
-const beautifyPerms = require("../functions/beautifyPerms");
+//const beautifyPerms = require("../functions/beautifyPerms");
 const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {
@@ -218,7 +218,7 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            userDB = await getUser(message.author.id);
+            if (!userDB) userDB = await getUser(message.author.id);
             message.channel.sendTyping();
             try {
                 command.execute({ message, args, guildDB, userDB }, t);
@@ -235,6 +235,11 @@ module.exports = async (message, guildDB) => {
                         )}`,
                         "\u200b"
                     );
+                if (
+                    message.client.ownerIDs.includes(message.author.id) ||
+                    message.author.id === client.application?.owner.id
+                )
+                    embed.addField("Error", `${err}`);
                 message.reply({ embeds: [embed] });
                 return;
             }

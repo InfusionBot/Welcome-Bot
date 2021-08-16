@@ -166,12 +166,6 @@ client.on("ready", async () => {
     require("./functions/versionSender")(client);
     if (process.env.NODE_ENV !== "production")
         require("./helpers/updateDocs")(client);
-    await client.application.commands.set([
-        {
-            name: "ping",
-            description: "Shows my ping!",
-        },
-    ]);
     client.logger.log(`Welcome-Bot v${client.package.version} started!`);
 });
 
@@ -226,13 +220,21 @@ client.on("guildCreate", (guild) => {
         guild.channels.cache
             .get(guild.systemChannelID)
             .send(
-                "Thank you for choosing this bot! To get started, type `w/help`"
-            );
+                `Thank you for choosing this bot! To get started, type \`${
+                    client.config.defaultPrefix
+                }help\`\nJoin the support server: ${client.config.supportGuildInviteReal(
+                    client
+                )}`
+            )
+            .catch(() => {});
     }
     embed = new Embed({ color: "success", timestamp: true })
         .setTitle(`:white_check_mark: Added to "${guild.name}"`)
         .setDescription(`${guild.id}`)
-        .addField("In shard: ", `${guild.shardId}`);
+        .addField(
+            "Info",
+            `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}`
+        );
     client.channels.cache
         .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
@@ -244,7 +246,10 @@ client.on("guildDelete", (guild) => {
     embed = new Embed({ color: "red", timestamp: true })
         .setTitle(`:x: Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`)
-        .addField("In shard: ", `${guild.shardId}`);
+        .addField(
+            "Info",
+            `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}`
+        );
     client.channels.cache
         .get(client.config.logsChannelId)
         .send({ embeds: [embed] });
@@ -255,11 +260,44 @@ client.on("interactionCreate", async (interaction) => {
     const t = interaction.inGuild()
         ? await getT(interaction.guild.id)
         : client.i18next.getFixedT("en-US");
+    if (!client.application?.owner) await client.application?.fetch();
     const { commandName: cmd } = interaction;
-
-    if (cmd === "ping") {
-        await client.commands.enabled.get("ping").run({ interaction }, t);
+    let guildDB;
+    if (interaction.inGuild() && interaction.channel.type !== "DM") {
+        guildDB = await getGuild(interaction.guild.id);
+    } else {
+        guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
+    const userDB = await client.userDbFuncs.getUser(interaction.member.user.id);
+    const command = client.commands.enabled.get(cmd);
+    if (!command) return;
+    let preCheck = false;
+    preCheck = await command.preCheck(interaction, guildDB, t);
+    if (!preCheck) return;
+    command
+        .run({ interaction, guildDB, userDB }, t)
+        .then(() => {
+            if (client.debug)
+                console.log(`Executed ${command.name} command successfully`);
+        })
+        .catch((err) => {
+            client.logger.log(`Error when executing ${command.name}`, "error", [
+                "CMDS",
+            ]);
+            console.log(err);
+            const embed = new Embed({ color: "error" })
+                .setTitle(t("errors:generic"))
+                .addField(
+                    `Please report this to ${client.ownersTags.join(" OR ")}`,
+                    "\u200b"
+                );
+            if (
+                client.config.ownerIDs.includes(interaction.user.id) ||
+                interaction.user.id === client.application?.owner.id
+            )
+                embed.addField("Error", `${err}`);
+            interaction.channel.send({ embeds: [embed], ephemeral: true });
+        });
 });
 
 client.on("messageCreate", async function (message) {
@@ -272,7 +310,7 @@ client.on("messageCreate", async function (message) {
     if (message.guild && message.channel.type !== "DM") {
         guildDB = await getGuild(message.guild.id);
     } else {
-        guildDB = { prefix: client.defaultPrefix, disabled: [] };
+        guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
     if (client.debug && client.debugLevel > 0)
         client.logger.log("running execute func", "debug");

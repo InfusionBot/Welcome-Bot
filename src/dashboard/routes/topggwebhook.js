@@ -31,7 +31,7 @@ router.post(
                         client.username
                     }${
                         vote.guild ? " Support server" : " itself"
-                    }** on top.gg and got 500 wcoins with other rewards 🎉!`
+                    }** on top.gg and got 500 WCoins with other rewards 🎉!`
                 )
                 .catch(console.log);
         } else {

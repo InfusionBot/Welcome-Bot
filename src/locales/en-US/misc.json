@@ -56,5 +56,9 @@
   "no_mods": "No Moderators",
   "staff": "Staff",
   "system": "System",
-  "ram_used": "Ram Used"
+  "ram_used": "Ram Used",
+  "plugins": "Plugins",
+  "enabled": "enabled",
+  "disabled": "disabled",
+  "inventory": "Inventory"
 }

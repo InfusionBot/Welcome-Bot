@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message }, t) {
         const embed = new Embed({ timestamp: true });
         message.guild.members.fetch();
         embed

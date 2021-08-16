@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **70 commands** in **8 categories**!
+Welcome-Bot contains more than **80 commands** in **8 categories**!
 
 ### **Usage Key!**
 
@@ -38,7 +38,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Cuddle with a user
-- Usage: [@mention / user id]
+- Usage: w/cuddle
 - Aliases: None
 - Cooldown: 5
 
@@ -51,7 +51,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Give a hug to a user
-- Usage: [@mention / user id]
+- Usage: w/hug
 - Aliases: None
 - Cooldown: 5
 
@@ -64,7 +64,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Kiss a user
-- Usage: [@mention / user id]
+- Usage: w/kiss
 - Aliases: None
 - Cooldown: 5
 
@@ -77,7 +77,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Pats someone
-- Usage: [@mention / user id]
+- Usage: w/pat
 - Aliases: None
 - Cooldown: 5
 
@@ -90,11 +90,11 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Fetches a random waifu and displays it.
-- Usage: None
+- Usage: w/waifu
 - Aliases: None
 - Cooldown: 5
 
-## Core (11 commands)
+## Core (12 commands)
 
 ### `botinfo`
 
@@ -105,7 +105,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Bot information
-- Usage: (--dm)
+- Usage: w/botinfo
 - Aliases: `bi`, `binfo`, `info`, `stats`, `about`
 - Cooldown: 5
 
@@ -118,7 +118,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: List of permissions given to bot
-- Usage: None
+- Usage: w/botperms
 - Aliases: None
 - Cooldown: 10
 
@@ -131,7 +131,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get Invite link for the bot
-- Usage: None
+- Usage: w/invite
 - Aliases: `invite-bot`, `invitebot`
 - Cooldown: 20
 
@@ -144,7 +144,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Library used to build Welcome-Bot
-- Usage: None
+- Usage: w/lib
 - Aliases: `library`
 - Cooldown: 10
 
@@ -156,8 +156,8 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: Ping the bot
-- Usage: None
+- Description: Get ping of the bot
+- Usage: w/ping
 - Aliases: `latency`, `pong`
 - Cooldown: 5
 
@@ -170,8 +170,21 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Report bugs
-- Usage: [bug description]
+- Usage: w/report
 - Aliases: `report-bug`, `reportbug`
+- Cooldown: 10
+
+### `shards`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows information about the bot's shards
+- Usage: w/shards
+- Aliases: `shard`
 - Cooldown: 10
 
 ### `suggest`
@@ -183,7 +196,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Give suggestions
-- Usage: [suggestion]
+- Usage: w/suggest
 - Aliases: `suggestion`
 - Cooldown: 10
 
@@ -196,7 +209,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get Support for Welcome-Bot
-- Usage: None
+- Usage: w/support
 - Aliases: `support-server`, `supportserver`
 - Cooldown: 20
 
@@ -209,7 +222,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get uptime of the bot
-- Usage: None
+- Usage: w/uptime
 - Aliases: `bot-uptime`, `botuptime`
 - Cooldown: 10
 
@@ -221,8 +234,8 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: Vote for Welcome-Bot and claim your bonus wcoins (500 wcoins)
-- Usage: None
+- Description: Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)
+- Usage: w/vote
 - Aliases: None
 - Cooldown: 10
 
@@ -235,11 +248,11 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Link to Welcome-Bot's website
-- Usage: None
+- Usage: w/website
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (10 commands)
+## Economy (11 commands)
 
 ### `balance`
 
@@ -249,8 +262,8 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: Check your wcoin balance, or someone else's. Shows wallect & bank
-- Usage: None
+- Description: Check your balance, or someone else's. Shows wallect & bank
+- Usage: w/balance
 - Aliases: `bal`, `wallet`
 - Cooldown: 5
 
@@ -263,7 +276,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get money by begging!
-- Usage: None
+- Usage: w/beg
 - Aliases: None
 - Cooldown: 60
 
@@ -276,7 +289,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get your daily wcoins!
-- Usage: None
+- Usage: w/daily
 - Aliases: None
 - Cooldown: 10
 
@@ -289,7 +302,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Deposit money to your bank
-- Usage: None
+- Usage: w/deposit
 - Aliases: `dep`, `bankdep`
 - Cooldown: 10
 
@@ -301,10 +314,23 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: Donate monry to another user
-- Usage: [@mention / user id] [amount]
+- Description: Donate money to another user
+- Usage: w/give
 - Aliases: `donate`, `share`
 - Cooldown: 5
+
+### `inventory`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows your inventory
+- Usage: w/inventory
+- Aliases: `inv`
+- Cooldown: 10
 
 ### `profile`
 
@@ -315,7 +341,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Shows your profile or someone else's.
-- Usage: None
+- Usage: w/profile
 - Aliases: `user-profile`, `account`, `userprofile`
 - Cooldown: 5
 
@@ -328,7 +354,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Steal another user's wallet! :dollar:
-- Usage: [@mention / user id]
+- Usage: w/rob
 - Aliases: None
 - Cooldown: 60
 
@@ -341,7 +367,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Set your Welcome-Bot account's bio!
-- Usage: None
+- Usage: w/setbio
 - Aliases: `bio`
 - Cooldown: 10
 
@@ -354,8 +380,8 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Use your items
-- Usage: [item] (count)
-- Aliases: `use-items`, `useitems`
+- Usage: w/use
+- Aliases: `equip`
 - Cooldown: 10
 
 ### `withdraw`
@@ -367,7 +393,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Withdraw money from your bank
-- Usage: None
+- Usage: w/withdraw
 - Aliases: `wd`, `with`
 - Cooldown: 10
 
@@ -382,7 +408,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get your fortune by asking your question
-- Usage: [question]
+- Usage: w/8ball
 - Aliases: `eight-ball`, `8b`, `8-ball`, `eightball`
 - Cooldown: 10
 
@@ -395,7 +421,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Flip a coin.
-- Usage: None
+- Usage: w/coinflip
 - Aliases: `cf`, `filpcoin`
 - Cooldown: 10
 
@@ -408,7 +434,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Shows a random duck image
-- Usage: None
+- Usage: w/duck
 - Aliases: None
 - Cooldown: 5
 
@@ -421,7 +447,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Emojify a text.
-- Usage: [text]
+- Usage: w/emojify
 - Aliases: None
 - Cooldown: 8
 
@@ -434,7 +460,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Implement the FIGfont spec in JS
-- Usage: [string]
+- Usage: w/figlet
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 10
 
@@ -447,7 +473,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Generate a random pokemon image
-- Usage: None
+- Usage: w/image
 - Aliases: `random-image`, `randomimage`
 - Cooldown: 10
 
@@ -460,11 +486,11 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get a pokemon image
-- Usage: [pokemon character]
+- Usage: w/pokemon
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## General (13 commands)
+## General (19 commands)
 
 ### `addemoji`
 
@@ -475,7 +501,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Add emoji from a image link
-- Usage: [link] [emoji name]
+- Usage: w/addemoji
 - Aliases: `emoji`
 - Cooldown: 10
 
@@ -488,9 +514,22 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get a user's avatar
-- Usage: (@mention / user id)
-- Aliases: `dp`
+- Usage: w/avatar
+- Aliases: `av`
 - Cooldown: 10
+
+### `chanid`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get channel id
+- Usage: w/chanid
+- Aliases: `channel-id`, `channelid`
+- Cooldown: 5
 
 ### `hastebin`
 
@@ -501,7 +540,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Upload your text on hastebin!
-- Usage: [text]
+- Usage: w/hastebin
 - Aliases: `pastebin`
 - Cooldown: 10
 
@@ -514,7 +553,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: List all commands or get info for a specific command/category.
-- Usage: (command name / category / --list-categories)
+- Usage: w/help
 - Aliases: `commands`, `cmds`, `ajuda`
 - Cooldown: 10
 
@@ -527,7 +566,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: List of all custom emojis in this server, with there IDs.
-- Usage: None
+- Usage: w/listemojis
 - Aliases: `list-emojis`
 - Cooldown: 10
 
@@ -540,7 +579,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Shows the server member count
-- Usage: None
+- Usage: w/membercount
 - Aliases: `mc`, `members`
 - Cooldown: 5
 
@@ -553,7 +592,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get permissions given to a specific user. Not providing any user mention will show your permissions
-- Usage: (@mention / user id)
+- Usage: w/perms
 - Aliases: `permissions`
 - Cooldown: 10
 
@@ -567,9 +606,48 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Generate or Read a QR code
-- Usage: [subcommand] [data / image_url]
+- Usage: w/qrcode
 - Aliases: `qr`
 - Cooldown: 10
+
+### `reverse`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Reverse text
+- Usage: w/reverse
+- Aliases: `rs`
+- Cooldown: 10
+
+### `roleid`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get role id
+- Usage: w/roleid
+- Aliases: `role-id`, `rid`
+- Cooldown: 5
+
+### `serverid`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get server id
+- Usage: w/serverid
+- Aliases: `sid`, `guild-id`, `guildid`
+- Cooldown: 5
 
 ### `serverinfo`
 
@@ -580,9 +658,22 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Your server statistics
-- Usage: (--dm)
+- Usage: w/serverinfo
 - Aliases: `si`, `sinfo`
 - Cooldown: 5
+
+### `staff`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: View this server's staff
+- Usage: w/staff
+- Aliases: `server-staff`, `serverstaff`
+- Cooldown: 10
 
 ### `testgoodbye`
 
@@ -593,7 +684,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Test by sending goodbye message
-- Usage: None
+- Usage: w/testgoodbye
 - Aliases: None
 - Cooldown: 10
 
@@ -606,7 +697,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Test by sending welcome message
-- Usage: None
+- Usage: w/testwelcome
 - Aliases: None
 - Cooldown: 10
 
@@ -619,9 +710,22 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get information about a user. It will show your info if no user was mentioned
-- Usage: (@mention / user id) (--dm)
+- Usage: w/user
 - Aliases: `whois`, `ui`, `uinfo`
 - Cooldown: 10
+
+### `userid`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get a id of a user
+- Usage: w/userid
+- Aliases: `uid`, `user-id`
+- Cooldown: 5
 
 ### `version`
 
@@ -632,7 +736,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Get information on a version or latest version
-- Usage: (version)
+- Usage: w/version
 - Aliases: `vinfo`, `ver`
 - Cooldown: 10
 
@@ -647,7 +751,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Ban a user.
-- Usage: [@mention] (reason)
+- Usage: w/ban
 - Aliases: None
 - Cooldown: 10
 
@@ -660,7 +764,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Kick a user.
-- Usage: [@mention] (reason)
+- Usage: w/kick
 - Aliases: None
 - Cooldown: 10
 
@@ -673,7 +777,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Mute a member
-- Usage: [@mention / user id] (reason)
+- Usage: w/mute
 - Aliases: None
 - Cooldown: 10
 
@@ -687,8 +791,8 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: Prune Messages.
-- Usage: [no of msg / subcommand]
+- Description: Prune Messages. Add a -f option in the end to delete pinned messages also!
+- Usage: w/prune
 - Aliases: `purge`
 - Cooldown: 10
 
@@ -701,7 +805,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Unban a user.
-- Usage: [user id]
+- Usage: w/unban
 - Aliases: None
 - Cooldown: 10
 
@@ -714,11 +818,11 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Unmute a member
-- Usage: [@mention / user id] (reason)
+- Usage: w/unmute
 - Aliases: None
 - Cooldown: 10
 
-## Music (7 commands)
+## Music (8 commands)
 
 ### `back`
 
@@ -729,7 +833,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Play prevoius music
-- Usage: None
+- Usage: w/back
 - Aliases: `prevoius`
 - Cooldown: 10
 
@@ -745,7 +849,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Manage loop settings for music
-- Usage: [subcommand]
+- Usage: w/loop
 - Aliases: `setloop`
 - Cooldown: 10
 
@@ -758,7 +862,7 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: The details of song which is being played now
-- Usage: None
+- Usage: w/np
 - Aliases: `now-playing`, `nowplaying`
 - Cooldown: 10
 
@@ -772,9 +876,22 @@ Welcome-Bot contains more than **70 commands** in **8 categories**!
 
 - Description: Play music on channel.
 You must join a voice channel before using this command.
-- Usage: [name]
+- Usage: w/play
 - Aliases: `joue`
 - Cooldown: 10
+
+### `seek`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Go forward or backward a specific amount of time in the current song!!
+- Usage: w/seek
+- Aliases: `skip-to`, `skipto`
+- Cooldown: 5
 
 ### `skip`
 
@@ -785,7 +902,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Skip the current song
-- Usage: None
+- Usage: w/skip
 - Aliases: `nextmusic`
 - Cooldown: 10
 
@@ -798,7 +915,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Stop the music
-- Usage: None
+- Usage: w/stop
 - Aliases: `leave`
 - Cooldown: 10
 
@@ -811,11 +928,39 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Adjust the volume of the music
-- Usage: (0-200)
+- Usage: w/volume
 - Aliases: `sound-level`, `soundlevel`
 - Cooldown: 10
 
-## Setup (8 commands)
+## Setup (10 commands)
+
+### `autorole`
+
+##### Subcommands:
+
+- `disable` - Disable autorole
+- `enable` - Enable autorole
+- `set [role id]` - Set autorole
+
+##### Cmd info
+
+- Description: Manage autorole settings
+- Usage: w/autorole
+- Aliases: `ar`
+- Cooldown: 10
+
+### `config`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: config.cmdDesc
+- Usage: w/config
+- Aliases: `cf`, `configuration`, `conf`
+- Cooldown: 10
 
 ### `disable`
 
@@ -826,7 +971,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Disable commands.
-- Usage: (command name / subcommand)
+- Usage: w/disable
 - Aliases: None
 - Cooldown: 10
 
@@ -839,7 +984,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Enable commands.
-- Usage: [command name]
+- Usage: w/enable
 - Aliases: None
 - Cooldown: 10
 
@@ -852,7 +997,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Get news and version updates to this bot sent to a specific channel.
-- Usage: [channel / channel id]
+- Usage: w/follow
 - Aliases: `getnews`
 - Cooldown: 10
 
@@ -863,12 +1008,12 @@ You must join a voice channel before using this command.
 - `disable` - Disable goodbye logs
 - `enable` - Enable goodbye logs
 - `message` - Set goodbye message
-- `channel` - Set goodbye channel
+- `channel [#channel]` - Set goodbye channel
 
 ##### Cmd info
 
 - Description: Manage goodbye logs settings
-- Usage: (subcommand)
+- Usage: w/goodbye
 - Aliases: `goodbyelogs`
 - Cooldown: 10
 
@@ -882,7 +1027,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Change language
-- Usage: (subcommand) (lang)
+- Usage: w/lang
 - Aliases: `language`, `changelang`, `getlang`
 - Cooldown: 10
 
@@ -890,12 +1035,12 @@ You must join a voice channel before using this command.
 
 ##### Subcommands:
 
-- `set` - Set ModLogs channel
+- `set [#channel]` - Set ModLogs channel
 
 ##### Cmd info
 
 - Description: Manage ModLogs settings
-- Usage: (subcommand)
+- Usage: w/modlogs
 - Aliases: `modlog`
 - Cooldown: 10
 
@@ -909,7 +1054,7 @@ You must join a voice channel before using this command.
 ##### Cmd info
 
 - Description: Manage prefix for this server
-- Usage: (subcommand)
+- Usage: w/prefix
 - Aliases: `getprefix`
 - Cooldown: 10
 
@@ -920,11 +1065,11 @@ You must join a voice channel before using this command.
 - `disable` - Disable welcome logs
 - `enable` - Enable welcome logs
 - `message` - Set welcome message
-- `channel` - Set welcome channel
+- `channel [#channel]` - Set welcome channel
 
 ##### Cmd info
 
 - Description: Manage welcome logs settings
-- Usage: (subcommand)
+- Usage: w/welcome
 - Aliases: `welcomelogs`
 - Cooldown: 10

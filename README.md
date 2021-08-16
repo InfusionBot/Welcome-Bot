@@ -24,7 +24,7 @@ Feel free to add a star ⭐ to the repository to promote the project!
 Welcome-Bot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 70+ commands
+- 🥳 80+ commands
 
 ### Customizable Settings
 
@@ -50,7 +50,7 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 ## Commands
 
-Welcome-Bot has more than 70 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
+Welcome-Bot has more than 80 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
 
 ## Default values
 
@@ -60,7 +60,7 @@ The default welcome message is `Welcome {mention} to the {server} server!\nYou a
 
 ### Default channel
 
-The default welcome channel is set to `new-members`, commonly used welcome channels are:
+The default welcome channel is set to `member-log`, commonly used welcome channels are:
 - `welcome`
 - `new-members`
 - `member-log`
@@ -72,8 +72,8 @@ The bot requires the following permissions:
 - Read Messages (View channels)
 - Send Messages
 - Read Message History
-- Manage Messages
-- Embed links
+- Manage Messages - mod commands
+- Embed links - all commands
 - Manage Emojis and Stickers - addemoji command
 - Connect & Speak - music commands
 
@@ -93,15 +93,15 @@ To invite the bot with all the necessary required permissions **except permissio
 
 ### Welcome channel
 
-By default the bot will check for a channel named `new-members`.
+By default the bot will check for a channel named `member-log`.
 
-You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+You can change this channel name, by using the `welcome channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#welcome)
 
 ### Moderation channel
 
 By default the bot will check for a channel named `mod-log`.
 
-You can change this channel name, by using the `channel setmod` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+You can change this channel name, by using the `modlogs set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
 
 ## Botlists
 
