@@ -49,6 +49,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `reverse`
 - feat: New slash commands `ping`, `staff`, `mute`
 - feat: New cmd `config`
+- feat: Add `-f` option for prune cmd
 
 ### Changes
 

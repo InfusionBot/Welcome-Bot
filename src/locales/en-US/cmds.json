@@ -317,7 +317,7 @@
     "success": "Successfully unmuted **{{tag}}**!"
   },
   "prune": {
-    "cmdDesc": "Prune Messages."
+    "cmdDesc": "Prune Messages. Add a -f option in the end to delete pinned messages also!"
   },
   "unban": {
     "cmdDesc": "Unban a user."
