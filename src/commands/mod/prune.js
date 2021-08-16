@@ -48,14 +48,18 @@ module.exports = class CMD extends Command {
                 args[0] = 99;
                 break;
             case "bots":
-                messages = await message.channel.messages.fetch({limit: 100}).then(msgs => msgs.filter(
-                    (m) => m.author.bot
-                ));
+                messages = await message.channel.messages
+                    .fetch({ limit: 100 })
+                    .then((msgs) => msgs.filter((m) => m.author.bot));
                 break;
         }
         if (typeof args[0] === "string" && args[0].startsWith("*")) {
             args[0] = args[0].slice(1); //Remove * from it
-            messages = await message.channel.messages.fetch({limit: 100}).then(msgs => msgs.filter((m) => m.content.indexOf(args[0]) !== -1));
+            messages = await message.channel.messages
+                .fetch({ limit: 100 })
+                .then((msgs) =>
+                    msgs.filter((m) => m.content.indexOf(args[0]) !== -1)
+                );
         }
         if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]) + 1;
@@ -72,17 +76,21 @@ module.exports = class CMD extends Command {
                 );
             }
 
-            messages = await message.channel.messages.fetch({limit: 100}).then(msgs => {
-                if (args[1] && !args[1] === "-f") return msgs.filter(msg => !msg.pinned);
-                return msgs;
-            });
+            messages = await message.channel.messages
+                .fetch({ limit: 100 })
+                .then((msgs) => {
+                    if (args[1] && !args[1] === "-f")
+                        return msgs.filter((msg) => !msg.pinned);
+                    return msgs;
+                });
             message.channel.bulkDelete(message).catch((err) => {
                 message.client.logger.log(err, "error", ["PRUNING"]);
                 return message.channel.send(errMsg);
             });
         } else if (messages) {
             message.delete();
-            if (args[1] && !args[1] === "-f") messages = messages.filter(msg => !msg.pinned);
+            if (args[1] && !args[1] === "-f")
+                messages = messages.filter((msg) => !msg.pinned);
             message.channel.bulkDelete(messages).catch((err) => {
                 message.client.logger.log(
                     "Error when PRUNING messages",
