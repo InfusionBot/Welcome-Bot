@@ -149,13 +149,14 @@ class WelcomeBot extends Client {
         this.ownerIDs = config.ownerIDs;
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
-        this.ownersTags = [];
+        const ownersTags = [];
         (async () => {
             for (let i = 0; i < client.config.ownerIds.length; i++) {
-                const user = await client.users.fetch.(client.config.ownerIds[i]);
-                this.ownersTags.push(`${user?.tag}`);
+                const user = await client.users.fetch(client.config.ownerIds[i]);
+                ownersTags.push(`${user?.tag}`);
             }
         })();
+        this.ownersTags = ownersTags;
         this.player = new Player(this, {
             leaveOnEmpty: false,
             leaveOnStop: true,
