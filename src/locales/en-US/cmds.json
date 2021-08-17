@@ -167,6 +167,8 @@
     "usage": "[coins / subcommand]",
     "notAvailable": "Woah... You don't have that much money in your bank!",
     "title": "Money withdrawed",
+    "noMoney": "Hey! You don't have anything in bank to withdraw",
+    "isNegative": "Woah! The number you gave is negative, I won't help.",
     "success": "Withdrawed {{wcoins}} WCoins"
   },
   "8ball": {
