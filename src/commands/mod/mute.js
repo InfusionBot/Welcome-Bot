@@ -49,10 +49,9 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:mute.errorYourself"));
         }
 
-        let member = message.guild.members.cache.get(user.id);
+        condt member = await message.guild.members.fetch(user.id);
         if (!member) {
-            member = await message.guild.members.fetch(user.id);
-            if (!member) return message.reply(t("errors:userNotInGuild"));
+            return message.reply(t("errors:userNotInGuild"));
         }
         if (member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) {
             return message.reply(
@@ -184,6 +183,8 @@ module.exports = class CMD extends Command {
             );
             embed.addField(t("misc:reason"), reason);
             channel.send({ embeds: [embed] });
+        } else if (this.client.debug) {
+            this.client.logger.log("Can't find mod channel", "debug");
         }
     }
 };
