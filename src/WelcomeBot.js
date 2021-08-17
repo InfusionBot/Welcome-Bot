@@ -150,10 +150,12 @@ class WelcomeBot extends Client {
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         this.ownersTags = [];
-        for (let i = 0; i < client.config.ownerIds.length; i++) {
-            const user = await client.users.fetch.(client.config.ownerIds[i]);
-            this.ownersTags.push(`${user?.tag}`);
-        }
+        (async () => {
+            for (let i = 0; i < client.config.ownerIds.length; i++) {
+                const user = await client.users.fetch.(client.config.ownerIds[i]);
+                this.ownersTags.push(`${user?.tag}`);
+            }
+        })();
         this.player = new Player(this, {
             leaveOnEmpty: false,
             leaveOnStop: true,
@@ -205,7 +207,6 @@ class WelcomeBot extends Client {
                 } catch (e) {
                     this.logger.log(`Error occurred when loading ${cmd.name}`);
                     console.error(e);
-                    process.exit();
                 }
             }
             if (metadata.name.indexOf("Owner") === -1)
