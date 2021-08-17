@@ -5,11 +5,49 @@
  */
 const express = require("express");
 const router = express.Router();
+//POST /webhooks/bls
+router.post("/bls", async (req, res) => {
+    if (req.client.debug) console.log("/webhooks/bls");
+    if (!process.env.BLS_Wtoken) return res.sendStatus(500);
+    if (
+        !req.headers.authorization ||
+        req.headers.authorization !== process.env.BLS_Wtoken
+    )
+        return res.sendStatus(401);
+    const { client } = req;
+    const vUser = await client.users.fetch(req.body.user.id);
+    if (!vUser) return;
+    if (!(await client.userDbFuncs.getUser(vUser.id)))
+        await client.userDbFuncs.addUser(vUser.id);
+    const userDB = await client.userDbFuncs.getUser(vUser.id);
+    userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
+    userDB.markModified("wallet");
+    userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
+    userDB.markModified("inventory.banknote");
+    if (client.config.votesChannelId) {
+        client.channels.cache
+            .get(client.config.votesChannelId)
+            .send(
+                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on botlist.space and got 500 WCoins with other rewards 🎉!`
+            )
+            .catch(console.log);
+    } else {
+        console.log("No votesChannelId in config");
+    }
+    res.sendStatus(200);
+    res.end();
+});
+//GET /webhooks/bls
+router.get("/bls", (req, res) => {
+    res.send("Use POST request instead of GET");
+    res.end();
+});
 const { webhook } = require("../../classes/Topgg");
-//POST /topggwebhook
+//POST /webhooks/topgg
 router.post(
-    "/",
+    "/topgg",
     webhook.listener(async (vote, req, res) => {
+        if (req.client.debug) console.log("/webhooks/topgg");
         if (vote.type.toLowerCase() === "test")
             return console.log("topggwebhook test success");
         const { client } = req;
@@ -41,4 +79,9 @@ router.post(
         res.end();
     })
 );
+//GET /webhooks/topgg
+router.get("/topgg", (req, res) => {
+    res.send("Use POST request instead of GET");
+    res.end();
+});
 module.exports = router;
