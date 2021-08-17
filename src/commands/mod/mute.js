@@ -49,7 +49,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:mute.errorYourself"));
         }
 
-        condt member = await message.guild.members.fetch(user.id);
+        const member = await message.guild.members.fetch(user.id);
         if (!member) {
             return message.reply(t("errors:userNotInGuild"));
         }
