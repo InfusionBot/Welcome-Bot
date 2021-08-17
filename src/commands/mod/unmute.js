@@ -74,7 +74,9 @@ module.exports = class CMD extends Command {
         );
         const embed = new Embed({ color: "success", timestamp: true });
         if (channel) {
-            embed.setTitle(`${t("cmds:unmute.unmuted")}: ${user.tag} (${user.id})`);
+            embed.setTitle(
+                `${t("cmds:unmute.unmuted")}: ${user.tag} (${user.id})`
+            );
             embed.addField(
                 t("misc:resMod"),
                 `${message.author.tag} (${message.author.id})`
