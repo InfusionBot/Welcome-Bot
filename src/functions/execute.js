@@ -70,7 +70,7 @@ module.exports = async (message, guildDB) => {
         if (
             command.requirements?.ownerOnly &&
             !(
-                client.ownerIDs.includes(message.author.id) ||
+                client.config.ownerIds.includes(message.author.id) ||
                 message.author.id === client.application?.owner.id
             )
         ) {

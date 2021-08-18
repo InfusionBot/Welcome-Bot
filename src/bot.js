@@ -292,7 +292,7 @@ client.on("interactionCreate", async (interaction) => {
                     "\u200b"
                 );
             if (
-                client.config.ownerIDs.includes(interaction.user.id) ||
+                client.config.ownerIds.includes(interaction.user.id) ||
                 interaction.user.id === client.application?.owner.id
             )
                 embed.addField("Error", `${err}`);

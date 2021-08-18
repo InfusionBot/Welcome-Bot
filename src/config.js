@@ -14,7 +14,7 @@ module.exports = {
     suggestionLogsChannelId: "862126837110800414",
     defaultPrefix: "w/",
     reportsChannelId: "869017115385024543",
-    ownerIDs: [
+    ownerIds: [
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
         "772421156787191818" /*Kirito#1555*/,
