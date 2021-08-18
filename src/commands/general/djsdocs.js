@@ -50,7 +50,7 @@ module.exports = class CMD extends Command {
             if (args[index + 1] && typeof args[index + 1] === "string") source = args[index + 1];
             query = query.replace(args[index], "");
         }
-        if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source)) {
+        if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source))) {
             source = "stable";
         }
         query = query.replace(source, "");
@@ -65,7 +65,7 @@ module.exports = class CMD extends Command {
     run({ interaction }, t) {
         condt query = interaction.options.getString("query");
         let source = interaction.options.getString("source") ?? null;
-        if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source)) {
+        if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source))) {
             source = "stable";
         }
         const queryParams = new URLSearchParams({ src: source, q: query });
