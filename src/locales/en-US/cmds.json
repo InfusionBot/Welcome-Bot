@@ -215,6 +215,10 @@
     "cmdDesc": "Get channel id",
     "usage": "[channel]"
   },
+  "djsdocs": {
+    "cmdDesc": "Search djs docs",
+    "usage": "[query] (--source [source])"
+  },
   "roleid": {
     "cmdDesc": "Get role id",
     "usage": "[@role]"

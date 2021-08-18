@@ -34,6 +34,7 @@
     "feat: New slash commands `ping`, `staff`, `mute`, `listemojis`",
     "feat: New cmd `config`",
     "feat: Add `-f` option for prune cmd",
+    "feat: New cmd `djsdocs`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

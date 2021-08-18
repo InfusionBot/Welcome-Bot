@@ -50,6 +50,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New slash commands `ping`, `staff`, `mute`, `listemojis`
 - feat: New cmd `config`
 - feat: Add `-f` option for prune cmd
+- feat: New cmd `djsdocs`
 
 ### Changes
 

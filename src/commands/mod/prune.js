@@ -82,7 +82,7 @@ module.exports = class CMD extends Command {
                         return msgs.filter((msg) => !msg.pinned);
                     return msgs;
                 });
-            message.channel.bulkDelete(message).catch((err) => {
+            message.channel.bulkDelete(messages).catch((err) => {
                 message.client.logger.log(err, "error", ["PRUNING"]);
                 return message.channel.send(errMsg);
             });
