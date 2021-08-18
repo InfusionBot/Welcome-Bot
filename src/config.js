@@ -6,7 +6,6 @@
 require("dotenv").config();
 //const { Permissions } = require("discord.js");
 const defaultPerms = require("./data/defaultPerms");
-const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 module.exports = {
     botGuildId: "836854115526770708",
     newsChannelId: "847459283876577360",

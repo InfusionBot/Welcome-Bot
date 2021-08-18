@@ -74,7 +74,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    run({ interaction }, t) {
+    async run({ interaction }, t) {
         const query = interaction.options.getString("query");
         let source = interaction.options.getString("source") ?? null;
         if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source))) {

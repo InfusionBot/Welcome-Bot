@@ -232,6 +232,7 @@
   },
   "hastebin": {
     "cmdDesc": "Upload your text on hastebin!",
+    "usage": "[text] (--extension [value])",
     "invalidExt": "Invalid Extension",
     "missingText": "Please enter a valid text!",
     "title": "Upload complete!",
