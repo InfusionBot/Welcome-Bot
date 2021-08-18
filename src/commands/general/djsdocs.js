@@ -37,7 +37,14 @@ module.exports = class CMD extends Command {
             },
             client
         );
-        this.VALID_SOURCES = ["stable", "master", "commando", "rpc", "akairo-master", "collection"];
+        this.VALID_SOURCES = [
+            "stable",
+            "master",
+            "commando",
+            "rpc",
+            "akairo-master",
+            "collection",
+        ];
     }
 
     //eslint-disable-next-line no-unused-vars
@@ -45,9 +52,12 @@ module.exports = class CMD extends Command {
         let query = args.join(" ");
         let source = "stable";
         let index = null;
-        if (args.find(arg => arg === "--source")) index = args.indexOf(args.find(arg => arg === "--source")) ?? null;
+        if (args.find((arg) => arg === "--source"))
+            index =
+                args.indexOf(args.find((arg) => arg === "--source")) ?? null;
         if (index) {
-            if (args[index + 1] && typeof args[index + 1] === "string") source = args[index + 1];
+            if (args[index + 1] && typeof args[index + 1] === "string")
+                source = args[index + 1];
             query = query.replace(args[index], "");
         }
         if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source))) {
@@ -55,7 +65,9 @@ module.exports = class CMD extends Command {
         }
         query = query.replace(source, "");
         const queryParams = new URLSearchParams({ src: source, q: query });
-        const json = await this.fetchJson(`https://djsdocs.sorta.moe/v2/embed?${queryParams}`);
+        const json = await this.fetchJson(
+            `https://djsdocs.sorta.moe/v2/embed?${queryParams}`
+        );
         message.channel.send({
             embeds: [json],
         });
@@ -69,7 +81,9 @@ module.exports = class CMD extends Command {
             source = "stable";
         }
         const queryParams = new URLSearchParams({ src: source, q: query });
-        const json = await this.fetchJson(`https://djsdocs.sorta.moe/v2/embed?${queryParams}`);
+        const json = await this.fetchJson(
+            `https://djsdocs.sorta.moe/v2/embed?${queryParams}`
+        );
         interaction.editReply({
             embeds: [json],
         });
