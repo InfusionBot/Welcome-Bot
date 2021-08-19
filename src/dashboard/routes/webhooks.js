@@ -34,6 +34,7 @@ router.post("/bls", async (req, res) => {
     } else {
         console.log("No votesChannelId in config");
     }
+    const t = req.client.i18next.getFixedT("en-US");
     vUser.send(t("misc:thanks.vote", {site: "botlist.space"})).catch(() => {});
     res.sendStatus(200);
     res.end();
@@ -76,6 +77,7 @@ router.post(
         } else {
             console.log("No votesChannelId in config");
         }
+        const t = req.client.i18next.getFixedT("en-US");
         vUser.send(t("misc:thanks.vote", {site: "top.gg"})).catch(() => {});
         res.sendStatus(200);
         res.end();
