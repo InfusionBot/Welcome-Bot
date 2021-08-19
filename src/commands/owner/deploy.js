@@ -45,8 +45,10 @@ module.exports = class CMD extends Command {
             });
             if (guild.id === this.client.config.botGuildId) {
                 cmds = cmdsWithDesc;
+                await guild.commands.set(cmdsWithDesc);
+                return;
             }
-            await guild.commands.set(cmdsWithDesc);
+            await guild.commands.set(cmdsWithDesc).catch(() => {});
         });
         message.reply(
             `Successfully reloaded slash commands!\n${

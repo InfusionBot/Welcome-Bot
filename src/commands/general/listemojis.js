@@ -102,7 +102,7 @@ module.exports = class CMD extends Command {
             timeout: timeout,
         });
         pagination.setPages(pages);
-        pagination.setAuthorizedUsers([interaction.author.id]);
+        pagination.setAuthorizedUsers([interaction.user.id]);
         pagination.send(null, interaction);
     }
 };
