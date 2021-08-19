@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message }) {
+    async execute({ message }, t) {
         const guilds = message.client.guilds.cache;
         const pages = [];
         let i0 = 0; //From
@@ -40,7 +40,7 @@ module.exports = class CMD extends Command {
                 .slice(i0, i1)
                 .join("\n");
         };
-        for (let i = 0; i < emojis.size; ) {
+        for (let i = 0; i < guilds.size; ) {
             const p = pages.length;
             const embed = new Embed({ timestamp: true })
                 .setTitle(`Page: ${p + 1} / ${Math.ceil(guilds.size / 10)}`)
