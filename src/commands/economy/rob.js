@@ -39,12 +39,6 @@ module.exports = class CMD extends Command {
                     message.client
                 );
             }
-            if (!isNaN(parseInt(args[0]))) {
-                user = message.client.users.cache.get(args[0]);
-                if (!user) user = await message.client.users.fetch(args[0]);
-            }
-        } else {
-            user = message.author;
         }
 
         if (!user || user.bot) {
@@ -115,6 +109,6 @@ module.exports = class CMD extends Command {
         const embed = new Embed({ color: lost ? "error" : "success" })
             .setTitle(t("cmds:rob.cmdDesc"))
             .setDesc(result);
-        message.reply({ content: `${user}`, embeds: [embed] });
+        message.reply({ embeds: [embed] });
     }
 };

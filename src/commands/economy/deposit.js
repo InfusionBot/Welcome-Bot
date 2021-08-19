@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
                     },
                 ],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Economy",
             },
             client

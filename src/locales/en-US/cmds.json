@@ -142,7 +142,7 @@
   },
   "rob": {
     "cmdDesc": "Steal another user's wallet! :dollar:",
-    "usage": "[@mention / user id]",
+    "usage": "[@mention]",
     "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
     "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
     "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",

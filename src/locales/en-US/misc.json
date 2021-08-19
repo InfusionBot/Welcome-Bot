@@ -60,5 +60,8 @@
   "plugins": "Plugins",
   "enabled": "enabled",
   "disabled": "disabled",
-  "inventory": "Inventory"
+  "inventory": "Inventory",
+  "thanks": {
+    "vote": "Thanks for voting on {{site}}, you just got 500 WCoins with other rewards 🎉!"
+  }
 }
