@@ -25,6 +25,9 @@ router.get("/login", (req, res) => {
 //GET /callback
 router.get("/callback", async (req, res) => {
     if (!req.query.code) return res.redirect("/");
+    /*if (req.client.dashboard.states[req.query?.state] !== atob(decodeURIComponent(req.query?.state))) {
+        return res.send("You may have been clickjacked!");
+    }*/
     const redirectUrl =
         req.client.dashboard.states[req.query?.state] ?? "/dashboard";
     const params = new URLSearchParams();

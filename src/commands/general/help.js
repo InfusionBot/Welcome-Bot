@@ -74,6 +74,9 @@ module.exports = class CMD extends Command {
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
             const pagination = new Pagination(this.client, {
+                buttons: {
+                    page: `${t("misc:page")} {{page}} / {{total_pages}}`
+                },
                 timeout: timeout,
             });
             pagination.setPages(pages);

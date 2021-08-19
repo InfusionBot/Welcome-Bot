@@ -29,6 +29,16 @@ module.exports = class CMD extends Command {
         if (args[1]) {
             args[1] = args[1].toLowerCase();
         }
+        const promises = [
+            this.client.shard.fetchClientValues("guilds.cache.size"),
+            this.client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
+        ];
+        const counts = await Promise.all(promises)
+            .then(results => {
+                const totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
+                const totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
+                return {totalGuilds, totalMembers};
+            });
         const inline = true;
         const embed = new Embed({
             color: "success",
@@ -38,12 +48,12 @@ module.exports = class CMD extends Command {
             .setTitle(
                 `${message.client.user.username} v${message.client.package.version}`
             )
-            .setDescription(t("cmds:botinfo.footer"))
+            .setDescription(`${this.client.application.description}`)
             .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
             .addField(
                 `:pencil: __${t("categories:general")}__`,
-                `> Servers: ${message.client.guilds.cache.size} servers\n` +
-                    `> Users: ${message.client.users.cache.size} users\n` +
+                `> Servers: ${counts.totalGuilds} servers\n` +
+                    `> Users: ${counts.totalMembers} users\n` +
                     `> Channels: ${message.client.channels.cache.size} channels\n` +
                     `> Version: ${message.client.package.version}\n` +
                     `> Commands: ${message.client.commands.enabled.size} commands`

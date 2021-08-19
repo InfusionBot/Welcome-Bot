@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Embed, Command } = require("../../classes");
+const { Pagination } = require("djs-pagination-buttons");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -24,18 +25,13 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message }) {
-        const servers = message.client.guilds.cache.size;
-        const emojiList = {
-            back: "⏪",
-            forward: "⏩",
-            stop: "⏹",
-        };
-        let page = 0;
-        let i0 = 0;
-        let i1 = 10;
+        const guilds = message.client.guilds.cache;
+        const pages = [];
+        let i0 = 0; //From
+        let i1 = 10; //To
         const timeout = 200000; //20 secs timeout
         const getList = () => {
-            return message.client.guilds.cache
+            return guilds
                 .sort((a, b) => b.memberCount - a.memberCount)
                 .map(
                     (r, i) =>
@@ -44,75 +40,31 @@ module.exports = class CMD extends Command {
                 .slice(i0, i1)
                 .join("\n");
         };
-        const embed = new Embed()
-            .setAuthor(
-                message.author.tag,
-                message.author.displayAvatarURL({
-                    size: 512,
-                    dynamic: true,
-                    format: "png",
-                })
-            )
-            .setTitle(`Page: ${page + 1} / ${Math.ceil(servers / 10)}`)
-            .setDescription(`Servers: ${servers}\n\n` + getList());
-        const curPage = await message.channel.send({ embeds: [embed] });
-        for (var key in emojiList) {
-            await curPage.react(emojiList[key]);
-        }
-        const reactionCollector = curPage.createReactionCollector(
-            (reaction, user) =>
-                Object.values(emojiList).includes(reaction.emoji.name) &&
-                user.id === message.author.id,
-            { time: timeout }
-        );
-        reactionCollector.on("collect", (reaction) => {
-            // Remove the reaction when the user react to the message
-            reaction.users.remove(message.author);
-            switch (reaction.emoji.name) {
-                case emojiList["back"]:
-                    i0 = i0 - 10;
-                    i1 = i1 - 10;
-                    page = page - 1;
-                    break;
-                case emojiList["forward"]:
-                    i0 = i0 + 10;
-                    i1 = i1 + 10;
-                    page = page + 1;
-                    break;
-                case emojiList["stop"]:
-                    return curPage.delete();
-                    break;
-            }
-            // If there is no guild to display, delete the message
-            if (i1 > servers + 10) {
-                return curPage.delete();
+        for (let i = 0; i < emojis.size; ) {
+            const p = pages.length;
+            const embed = new Embed({ timestamp: true })
+                .setTitle(`Page: ${p + 1} / ${Math.ceil(guilds.size / 10)}`)
+                .setDesc(`Servers: ${guilds.size}\n\n` + getList());
+            pages[p] = embed;
+            i = i + 10;
+            i0 = i0 + 10;
+            i1 = i1 + 10;
+            if (i1 > guilds.size + 10) {
+                break;
             }
             if (!i0 || !i1) {
-                return curPage.delete();
+                delete pages[p];
+                break;
             }
-            curPage.edit({
-                embeds: [
-                    embed
-                        .setDescription(`Servers: ${servers}\n\n${getList()}`)
-                        .setTitle(
-                            `Page ${page + 1} / ${Math.ceil(servers / 10)}`
-                        ),
-                ],
-            });
+        }
+        const pagination = new Pagination(this.client, {
+            buttons: {
+                page: `${t("misc:page")} {{page}} / {{total_pages}}`
+            },
+            timeout: timeout,
         });
-        reactionCollector.on("end", () => {
-            curPage.reactions.removeAll().catch((err) => {
-                console.error(err);
-            });
-            curPage.edit({
-                embeds: [
-                    embed.setFooter(
-                        `Page ${page + 1} / ${Math.ceil(
-                            servers / 10
-                        )} | Pagination timed out`
-                    ),
-                ],
-            });
-        });
+        pagination.setPages(pages);
+        pagination.setAuthorizedUsers([message.author.id]);
+        pagination.send(message);
     }
 };

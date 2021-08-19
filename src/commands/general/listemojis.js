@@ -39,10 +39,10 @@ module.exports = class CMD extends Command {
                 .join("\n");
         };
         for (let i = 0; i < emojis.size; ) {
+            const p = pages.length;
             const embed = new Embed({ timestamp: true })
                 .setTitle(t("cmds:listemojis.cmdDesc"))
                 .setDesc(getList());
-            const p = pages.length;
             pages[p] = embed;
             i = i + 10;
             i0 = i0 + 10;
@@ -56,6 +56,9 @@ module.exports = class CMD extends Command {
             }
         }
         const pagination = new Pagination(this.client, {
+            buttons: {
+                page: `${t("misc:page")} {{page}} / {{total_pages}}`
+            },
             timeout: timeout,
         });
         pagination.setPages(pages);
@@ -76,10 +79,10 @@ module.exports = class CMD extends Command {
                 .join("\n");
         };
         for (let i = 0; i < emojis.size; ) {
+            const p = pages.length;
             const embed = new Embed({ timestamp: true })
                 .setTitle(t("cmds:listemojis.cmdDesc"))
                 .setDesc(getList());
-            const p = pages.length;
             pages[p] = embed;
             i = i + 10;
             i0 = i0 + 10;
@@ -93,10 +96,13 @@ module.exports = class CMD extends Command {
             }
         }
         const pagination = new Pagination(this.client, {
+            buttons: {
+                page: `${t("misc:page")} {{page}} / {{total_pages}}`
+            },
             timeout: timeout,
         });
         pagination.setPages(pages);
         pagination.setAuthorizedUsers([interaction.author.id]);
-        pagination.send(interaction);
+        pagination.send(null, interaction);
     }
 };
