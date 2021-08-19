@@ -54,6 +54,6 @@ module.exports = class CMD extends Command {
         });
         pagination.setPages(pages);
         pagination.setAuthorizedUsers([message.author.id]);
-        pagination.send(message);
+        pagination.send(message.channel);
     }
 };
