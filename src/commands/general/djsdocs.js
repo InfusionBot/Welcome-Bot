@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
                 slash: true,
                 options: [
                     {
-                        name: "Query",
+                        name: "query",
                         description: "Search query",
                         type: "STRING",
                         required: true,

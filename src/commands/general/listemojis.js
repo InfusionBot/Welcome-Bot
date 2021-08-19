@@ -34,7 +34,7 @@ module.exports = class CMD extends Command {
         const emojis = message.guild.emojis.cache;
         const getList = () => {
             return emojis
-                .map((e, x) => `• ${e.name} (${x}) [\`${e}\`]`)
+                .map((e, x) => `• ${x} [\`${e}\`] ${e}`)
                 .slice(i0, i1)
                 .join("\n");
         };
