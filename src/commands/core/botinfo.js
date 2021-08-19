@@ -79,8 +79,9 @@ module.exports = class CMD extends Command {
                         1024 /
                         1024
                     ).toFixed(2)}MB\``
-            )
-            .addField(
+            );
+            if (args[1] && args[1] !== "--short") {
+            embed.addField(
                 `${message.client.customEmojis.owner} Bot owners`,
                 `Welcome-Bot was created by ${message.client.ownersTags.join(
                     ", "
@@ -96,8 +97,9 @@ module.exports = class CMD extends Command {
                     "> [discord.boats](https://discord.boats/bot/848459799783669790)\n" +
                     "> [top.gg](https://top.gg/bot/848459799783669790)\n",
                 inline
-            )
-            .addField(
+            );
+            }
+            embed.addField(
                 "🔗 Useful links:",
                 `> [Support server](${message.client.config.supportGuildInvite})\n` +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +

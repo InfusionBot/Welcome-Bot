@@ -35,7 +35,8 @@ process.on("unhandledRejection", (error) => {
     ) {
         dbAuditor(client);
     } else {
-        console.error("Unhandled promise rejection:", error);
+        client.logger.log("Unhandled promise rejection", "error");
+        console.error(error);
     }
 });
 process.on("exit", (code) => {
@@ -276,10 +277,6 @@ client.on("interactionCreate", async (interaction) => {
     if (!preCheck) return;
     command
         .run({ interaction, guildDB, userDB }, t)
-        .then(() => {
-            if (client.debug)
-                console.log(`Executed ${command.name} command successfully`);
-        })
         .catch((err) => {
             client.logger.log(`Error when executing ${command.name}`, "error", [
                 "CMDS",
@@ -296,8 +293,10 @@ client.on("interactionCreate", async (interaction) => {
                 interaction.user.id === client.application?.owner.id
             )
                 embed.addField("Error", `${err}`);
-            interaction.channel.send({ embeds: [embed], ephemeral: true });
+            interaction.followUp({ embeds: [embed], ephemeral: true });
         });
+        if (client.debug)
+            console.log(`Executed ${command.name} command`);
 });
 
 client.on("messageCreate", async function (message) {
