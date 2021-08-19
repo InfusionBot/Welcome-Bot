@@ -107,7 +107,7 @@ module.exports.load = (client) => {
                     currentURL: req.currentURL,
                 });
             } else if (req.accepts("json")) {
-                res.json({ error: "Internal Server Error" });
+                res.json({ error: "500", message: "Internal Server Error" });
             } else {
                 return res.type("txt").sendStatus(500);
             }
