@@ -57,7 +57,7 @@ module.exports = class CMD extends Command {
         }
         const pagination = new Pagination(this.client, {
             buttons: {
-                page: `${t("misc:page")} {{page}} / {{total_pages}}`
+                page: `${t("misc:page")} {{page}} / {{total_pages}}`,
             },
             timeout: timeout,
         });
@@ -97,7 +97,7 @@ module.exports = class CMD extends Command {
         }
         const pagination = new Pagination(this.client, {
             buttons: {
-                page: `${t("misc:page")} {{page}} / {{total_pages}}`
+                page: `${t("misc:page")} {{page}} / {{total_pages}}`,
             },
             timeout: timeout,
         });

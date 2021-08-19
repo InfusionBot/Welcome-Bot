@@ -48,9 +48,9 @@ module.exports = class CMD extends Command {
         });
         const pagination = new Pagination(this.client, {
             buttons: {
-                page: `${t("misc:page")} {{page}} / {{total_pages}}`
+                page: `${t("misc:page")} {{page}} / {{total_pages}}`,
             },
-            timeout: timeout
+            timeout: timeout,
         });
         pagination.setPages(pages);
         pagination.setAuthorizedUsers([message.author.id]);
