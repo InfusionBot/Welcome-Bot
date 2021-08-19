@@ -12,9 +12,9 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "help",
-                aliases: ["commands", "cmds", "ajuda"], //ajuda means help in portuguese and some other langs
+                aliases: ["commands", "cmds", "ajuda"], //ajuda means help in portuguese
                 memberPerms: [],
-                //botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                botPerms: [],
                 requirements: {
                     args: false,
                 },
@@ -27,8 +27,8 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const commands = message.client.commands.enabled;
-        const { categories } = message.client;
+        const commands = this.client.commands.enabled;
+        const { categories } = this.client;
         const page = 0;
         const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
@@ -74,6 +74,9 @@ module.exports = class CMD extends Command {
                 `${t("cmds:help.cmds", { prefix: guildDB.prefix })}`
             );
             const pagination = new Pagination(this.client, {
+                buttons: {
+                    page: `${t("misc:page")} {{page}} / {{total_pages}}`,
+                },
                 timeout: timeout,
             });
             pagination.setPages(pages);
@@ -132,7 +135,7 @@ module.exports = class CMD extends Command {
                     "User Permissions",
                     `You need ${beautifyPerms(
                         command.memberPerms,
-                        message.client.allPerms,
+                        this.client.allPerms,
                         t
                     ).join(", ")} permission(s) to execute this command.`
                 );

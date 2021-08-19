@@ -31,6 +31,11 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
+        if (isNaN(args[0]) || parseInt(args[0], 10) < 1)
+            return message.reply(t("cmds:withdraw.isNegative"));
+        if (!(parseInt(userDB.bank, 10) > 0)) {
+            return message.reply(t("cmds:withdraw.noMoney"));
+        }
         let wcoins = NaN;
         if (!isNaN(parseInt(args[0]))) {
             wcoins = parseInt(args[0]);

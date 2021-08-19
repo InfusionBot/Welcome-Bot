@@ -27,14 +27,13 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB, userDB }, t) {
         let commands = this.client.commands.enabled
-            .filter((cmd) => cmd.supportsSlash)
+            .filter((cmd) => cmd.slash)
             .map(({ name, options }) => {
                 const cmd = { name };
                 if (options && options?.length) cmd.options = options;
                 return cmd;
             });
         commands = [...commands.values()];
-        let registeredCmds;
         let cmds;
         this.client.guilds.cache.forEach(async (guild) => {
             const guildT = this.client.i18next.getFixedT(
@@ -46,17 +45,11 @@ module.exports = class CMD extends Command {
             });
             if (guild.id === this.client.config.botGuildId) {
                 cmds = cmdsWithDesc;
-                registeredCmds = await guild.commands.set(cmdsWithDesc);
-                return;
             }
             await guild.commands.set(cmdsWithDesc);
         });
         message.reply(
             `Successfully reloaded slash commands!\n${
-                args[0] && args[0].toLowerCase() === "--show"
-                    ? `• ${registeredCmds.map((cmd) => cmd.name).join("\n• ")}`
-                    : ""
-            }\n${
                 args[0] && args[0].toLowerCase() === "--show-cmds"
                     ? `• ${cmds.map((cmd) => cmd.name).join("\n• ")}`
                     : ""

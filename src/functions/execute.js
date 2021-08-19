@@ -5,12 +5,10 @@
  */
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
-//const beautifyPerms = require("../functions/beautifyPerms");
-const getUser = require("../db/functions/user/getUser");
 
 module.exports = async (message, guildDB) => {
     const { client } = message;
-    let userDB = await getUser(message.author.id);
+    let userDB = await client.userDbFuncs.getUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
         escapeRegex(client.defaultPrefix.toLowerCase()),
@@ -24,23 +22,22 @@ module.exports = async (message, guildDB) => {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
     } catch (e) {} //eslint-disable-line no-empty
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-    if (!message.client.application?.owner)
-        await message.client.application?.fetch();
+    if (!client.application?.owner) await client.application?.fetch();
     const embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
-            message.client.commands.enabled.get(commandName) ||
-            message.client.commands.enabled.find(
+            client.commands.enabled.get(commandName) ||
+            client.commands.enabled.find(
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
         /*if (
-            message.client.commands.disabled &&
-            (message.client.commands.disabled.get(commandName) ||
-                message.client.commands.disabled.find(
+            client.commands.disabled &&
+            (client.commands.disabled.get(commandName) ||
+                client.commands.disabled.find(
                     (cmd) => cmd.aliases.length && cmd.aliases.includes(commandName)
                 ))
         ) {
@@ -73,7 +70,7 @@ module.exports = async (message, guildDB) => {
         if (
             command.requirements?.ownerOnly &&
             !(
-                message.client.ownerIDs.includes(message.author.id) ||
+                client.config.ownerIds.includes(message.author.id) ||
                 message.author.id === client.application?.owner.id
             )
         ) {
@@ -204,9 +201,7 @@ module.exports = async (message, guildDB) => {
             embed
                 .setTitle(t("errors:generic"))
                 .addField(
-                    `Please report this to ${message.client.ownersTags.join(
-                        " OR "
-                    )}`,
+                    `Please report this to ${client.ownersTags.join(" OR ")}`,
                     "\u200b"
                 );
             message.reply({ embeds: [embed] });
@@ -218,7 +213,8 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            if (!userDB) userDB = await getUser(message.author.id);
+            if (!userDB)
+                userDB = await client.userDbFuncs.getUser(message.author.id);
             message.channel.sendTyping();
             try {
                 command.execute({ message, args, guildDB, userDB }, t);
@@ -230,13 +226,13 @@ module.exports = async (message, guildDB) => {
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(
-                        `Please report this to ${message.client.ownersTags.join(
+                        `Please report this to ${client.ownersTags.join(
                             " OR "
                         )}`,
                         "\u200b"
                     );
                 if (
-                    message.client.ownerIDs.includes(message.author.id) ||
+                    client.ownerIDs.includes(message.author.id) ||
                     message.author.id === client.application?.owner.id
                 )
                     embed.addField("Error", `${err}`);

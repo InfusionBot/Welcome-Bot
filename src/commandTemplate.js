@@ -10,7 +10,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "sample",
-                aliases: ["example"],
+                aliases: ["null"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
@@ -20,12 +20,10 @@ module.exports = class CMD extends Command {
                     ownerOnly: false,
                 },
                 disabled: false,
-                subcommands: [
-                    { name: "set", desc: "Set this" },
-                    { name: "reset", desc: "Reset that" },
-                ],
+                subcommands: [{ name: "set", desc: "Set this" }],
                 cooldown: 10,
                 category: "General",
+                slash: false,
             },
             client
         );

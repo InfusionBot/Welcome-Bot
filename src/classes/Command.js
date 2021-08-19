@@ -29,7 +29,7 @@ module.exports = class Command {
         this.subcommands = options.optional("subcommands", null);
         this.cooldown = options.optional("cooldown", 3);
         this.category = options.optional("category", "General");
-        this.supportsSlash = options.optional("supportsSlash", false);
+        this.slash = options.optional("slash", false);
         this.options = options.optional("options", null);
         if (this.subcommands) {
             for (var i = 0; i < this.subcommands.length; i++) {
@@ -59,8 +59,6 @@ module.exports = class Command {
 
     async preCheck(interaction, guildDB, t) {
         await interaction.deferReply();
-        if (!this.client.application?.owner)
-            await this.client.application?.fetch();
         if (guildDB.disabled.includes(this.name)) return false; //ignore disabled commands
         const usage = this.getUsage(t);
         if (

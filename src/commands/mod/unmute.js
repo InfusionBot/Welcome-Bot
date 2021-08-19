@@ -42,7 +42,6 @@ module.exports = class CMD extends Command {
         );
         if (!muteRole || !member.roles.cache.has(muteRole.id))
             return message.reply(t("cmds:unmute.notMuted"));
-        const embed = new Embed({ color: "error", timestamp: true });
         member.roles
             .remove(
                 muteRole,
@@ -59,27 +58,33 @@ module.exports = class CMD extends Command {
                     })
                 );
                 if (guildDB.plugins.modlogs) {
-                    const channel = message.guild.channels.cache.get(
-                        guildDB.plugins.modlogs
-                    );
-                    if (channel) {
-                        embed.setTitle(
-                            `${t("cmds:unmute.unmuted")}: ${user.tag} (${
-                                user.id
-                            })`
-                        );
-                        embed.addField(
-                            t("misc:resMod"),
-                            `${message.author.tag} (${message.author.id})`
-                        );
-                        embed.addField(t("misc:reason"), reason);
-                        channel.send({ embeds: [embed] });
-                    }
+                    this.handleModLogs(message, guildDB, user, reason, t);
                 }
                 message.reply(t("cmds:unmute.success", { tag: user.tag }));
             })
             .catch((e) => {
                 throw e;
             });
+    }
+
+    handleModLogs(message, guildDB, user, reason, t) {
+        message.author = message.author ?? message.user;
+        const channel = message.guild.channels.cache.get(
+            guildDB.plugins.modlogs
+        );
+        const embed = new Embed({ color: "success", timestamp: true });
+        if (channel) {
+            embed.setTitle(
+                `${t("cmds:unmute.unmuted")}: ${user.tag} (${user.id})`
+            );
+            embed.addField(
+                t("misc:resMod"),
+                `${message.author.tag} (${message.author.id})`
+            );
+            embed.addField(t("misc:reason"), reason);
+            channel.send({ embeds: [embed] });
+        } else if (this.client.debug) {
+            this.client.logger.log("Can't find mod channel", "debug");
+        }
     }
 };

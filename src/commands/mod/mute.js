@@ -19,7 +19,7 @@ module.exports = class CMD extends Command {
                 disabled: false,
                 cooldown: 10,
                 category: "Moderation",
-                supportsSlash: true,
+                slash: true,
                 options: [
                     {
                         name: "user",
@@ -49,10 +49,9 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:mute.errorYourself"));
         }
 
-        let member = message.guild.members.cache.get(user.id);
+        const member = await message.guild.members.fetch(user.id);
         if (!member) {
-            member = await message.guild.members.fetch(user.id);
-            if (!member) return message.reply(t("errors:userNotInGuild"));
+            return message.reply(t("errors:userNotInGuild"));
         }
         if (member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) {
             return message.reply(
@@ -62,7 +61,7 @@ module.exports = class CMD extends Command {
             );
         }
         const muteRole = await this.muteRole(message);
-        if (message.guild.me.roles.highest.position >= muteRole.position)
+        if (message.guild.me.roles.highest.position <= muteRole.position)
             return message.reply(t("misc:higherRoleBot"));
         member.roles
             .add(
@@ -114,7 +113,7 @@ module.exports = class CMD extends Command {
             );
         }
         const muteRole = await this.muteRole(interaction);
-        if (interaction.guild.me.roles.highest.position >= muteRole.position)
+        if (interaction.guild.me.roles.highest.position <= muteRole.position)
             return interaction.followUp(t("misc:higherRoleBot"));
         member.roles
             .add(
@@ -184,6 +183,8 @@ module.exports = class CMD extends Command {
             );
             embed.addField(t("misc:reason"), reason);
             channel.send({ embeds: [embed] });
+        } else if (this.client.debug) {
+            this.client.logger.log("Can't find mod channel", "debug");
         }
     }
 };

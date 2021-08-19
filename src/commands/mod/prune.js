@@ -41,8 +41,7 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB }, t) {
         //TODO: Add translation
         let messages;
-        const errMsg =
-            "An error occurred when trying to prune messages in this channel";
+        const errMsg = t("errors:generic");
         switch (args[0]) {
             case "all":
                 args[0] = 99;
@@ -83,7 +82,7 @@ module.exports = class CMD extends Command {
                         return msgs.filter((msg) => !msg.pinned);
                     return msgs;
                 });
-            message.channel.bulkDelete(message).catch((err) => {
+            message.channel.bulkDelete(messages).catch((err) => {
                 message.client.logger.log(err, "error", ["PRUNING"]);
                 return message.channel.send(errMsg);
             });
