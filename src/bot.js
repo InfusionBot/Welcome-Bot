@@ -131,7 +131,7 @@ client.player
     });
 
 client.on("ready", async () => {
-    condt presence = require("./functions/presence");
+    const presence = require("./functions/presence");
     const serverCount = require("./functions/serverCount");
     // We logged in
     if (client.debug)
