@@ -16,7 +16,10 @@ router.post("/bls", async (req, res) => {
         return res.sendStatus(401);
     const { client } = req;
     const vUser = await client.users.fetch(req.body.user.id);
-    if (!vUser) return console.log("bls webhook: User not found to give rewards");
+    if (!vUser) {
+            res.sendStatus(500);
+            return console.log("bls webhook: User not found to give vote rewards");
+        }
     if (!(await client.userDbFuncs.getUser(vUser.id)))
         await client.userDbFuncs.addUser(vUser.id);
     const userDB = await client.userDbFuncs.getUser(vUser.id);
@@ -34,7 +37,7 @@ router.post("/bls", async (req, res) => {
     } else {
         console.log("No votesChannelId in config");
     }
-    const t = req.client.i18next.getFixedT("en-US");
+    const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
     vUser.send(t("misc:thanks.vote", {site: "botlist.space"})).catch(() => {});
     res.sendStatus(200);
     res.end();
@@ -54,7 +57,10 @@ router.post(
             return console.log("topggwebhook test success");
         const { client } = req;
         const vUser = await client.users.fetch(vote.user);
-        if (!vUser) return console.log("topgg webhook: User not found to give vote rewards");
+        if (!vUser) {
+            res.sendStatus(500);
+            return console.log("topgg webhook: User not found to give vote rewards");
+        }
         if (!(await client.userDbFuncs.getUser(vUser.id)))
             await client.userDbFuncs.addUser(vUser.id);
         const userDB = await client.userDbFuncs.getUser(vUser.id);
@@ -69,15 +75,15 @@ router.post(
                 .send(
                     `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${
                         client.username
-                    }${
-                        vote.guild ? " Support server" : " itself"
+                    } ${
+                        vote.guild ? "Support server" : "itself"
                     }** on top.gg and got 500 WCoins with other rewards 🎉!`
                 )
                 .catch(console.log);
         } else {
             console.log("No votesChannelId in config");
         }
-        const t = req.client.i18next.getFixedT("en-US");
+        const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
         vUser.send(t("misc:thanks.vote", {site: "top.gg"})).catch(() => {});
         res.sendStatus(200);
         res.end();

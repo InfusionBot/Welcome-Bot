@@ -32,6 +32,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:invalidUserId"));
         }
         const reason = args.slice(1).join(" ") || t("misc:not_spec");
+        const user = message.client.users.cache.get(id);
 
         try {
             await message.guild.members.unban(id);
@@ -57,7 +58,6 @@ module.exports = class CMD extends Command {
             }
         }
 
-        const user = message.client.users.cache.get(id);
         return message.channel.send(
             `Successfully unbanned **${user.tag}** from the server!`
         );

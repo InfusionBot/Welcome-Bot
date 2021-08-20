@@ -3,21 +3,16 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-/*eslint-disable no-unused-vars*/
-//const fs = require("fs");
 require("dotenv").config();
 const WelcomeBot = require("./WelcomeBot");
-//const { MessageEmbed } = require("discord.js");
 const { Embed } = require("./classes");
 
 const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
 });
 
-const presence = require("./functions/presence");
 const greetUser = require("./functions/greetUser");
 const sayGoodBye = require("./functions/sayGoodBye");
-const serverCount = require("./functions/serverCount");
 const execute = require("./functions/execute");
 
 require("./db/connection");
@@ -136,6 +131,8 @@ client.player
     });
 
 client.on("ready", async () => {
+    condt presence = require("./functions/presence");
+    const serverCount = require("./functions/serverCount");
     // We logged in
     if (client.debug)
         client.logger.log(
@@ -296,7 +293,7 @@ client.on("interactionCreate", async (interaction) => {
             interaction.followUp({ embeds: [embed], ephemeral: true });
         });
         if (client.debug)
-            console.log(`Executed ${command.name} command`);
+            client.logger.log(`Executed ${command.name} command`, "debug");
 });
 
 client.on("messageCreate", async function (message) {

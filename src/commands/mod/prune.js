@@ -82,6 +82,7 @@ module.exports = class CMD extends Command {
                         return msgs.filter((msg) => !msg.pinned);
                     return msgs;
                 });
+            messages = messages.last(amount);
             message.channel.bulkDelete(messages).catch((err) => {
                 message.client.logger.log(err, "error", ["PRUNING"]);
                 return message.channel.send(errMsg);
@@ -90,7 +91,7 @@ module.exports = class CMD extends Command {
             message.delete();
             if (args[1] && !args[1] === "-f")
                 messages = messages.filter((msg) => !msg.pinned);
-            message.channel.bulkDelete(messages).catch((err) => {
+            message.channel.bulkDelete(messages, true).catch((err) => {
                 message.client.logger.log(
                     "Error when PRUNING messages",
                     "error",
