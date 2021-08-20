@@ -6,7 +6,9 @@
 module.exports = async (client) => {
     const servers = client.guilds.cache.size;
     const commands = client.commands.enabled.size;
-    const allUsers = await client.shard.broadcastEval((c) => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0));
+    const allUsers = await client.shard.broadcastEval((c) =>
+        c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)
+    );
     const users = allUsers.reduce((acc, memberCount) => acc + memberCount, 0);
     const channels = client.channels.cache.size;
     const presences = [

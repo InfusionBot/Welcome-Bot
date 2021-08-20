@@ -272,28 +272,26 @@ client.on("interactionCreate", async (interaction) => {
     let preCheck = false;
     preCheck = await command.preCheck(interaction, guildDB, t);
     if (!preCheck) return;
-    command
-        .run({ interaction, guildDB, userDB }, t)
-        .catch((err) => {
-            client.logger.log(`Error when executing ${command.name}`, "error", [
-                "CMDS",
-            ]);
-            console.log(err);
-            const embed = new Embed({ color: "error" })
-                .setTitle(t("errors:generic"))
-                .addField(
-                    `Please report this to ${client.ownersTags.join(" OR ")}`,
-                    "\u200b"
-                );
-            if (
-                client.config.ownerIds.includes(interaction.user.id) ||
-                interaction.user.id === client.application?.owner.id
-            )
-                embed.addField("Error", `${err}`);
-            interaction.followUp({ embeds: [embed], ephemeral: true });
-        });
-        if (client.debug)
-            client.logger.log(`Executed ${command.name} command`, "debug");
+    command.run({ interaction, guildDB, userDB }, t).catch((err) => {
+        client.logger.log(`Error when executing ${command.name}`, "error", [
+            "CMDS",
+        ]);
+        console.log(err);
+        const embed = new Embed({ color: "error" })
+            .setTitle(t("errors:generic"))
+            .addField(
+                `Please report this to ${client.ownersTags.join(" OR ")}`,
+                "\u200b"
+            );
+        if (
+            client.config.ownerIds.includes(interaction.user.id) ||
+            interaction.user.id === client.application?.owner.id
+        )
+            embed.addField("Error", `${err}`);
+        interaction.followUp({ embeds: [embed], ephemeral: true });
+    });
+    if (client.debug)
+        client.logger.log(`Executed ${command.name} command`, "debug");
 });
 
 client.on("messageCreate", async function (message) {

@@ -80,26 +80,28 @@ module.exports = class CMD extends Command {
                         1024
                     ).toFixed(2)}MB\``
             );
-            if (args[1] && args[1] !== "--short") {
-            embed.addField(
-                `${message.client.customEmojis.owner} Bot owners`,
-                `Welcome-Bot was created by ${message.client.ownersTags.join(
-                    ", "
-                )}`
-            )
+        if (args[1] && args[1] !== "--short") {
+            embed
+                .addField(
+                    `${message.client.customEmojis.owner} Bot owners`,
+                    `Welcome-Bot was created by ${message.client.ownersTags.join(
+                        ", "
+                    )}`
+                )
+                .addField(
+                    "🧾 Bot lists:",
+                    "> [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
+                        "> [disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
+                        "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
+                        "> [discordservices.net](https://discordservices.net/bot/848459799783669790)\n" +
+                        "> [discordlist.space](https://discordlist.space/bot/848459799783669790)\n" +
+                        "> [discord.boats](https://discord.boats/bot/848459799783669790)\n" +
+                        "> [top.gg](https://top.gg/bot/848459799783669790)\n",
+                    inline
+                );
+        }
+        embed
             .addField(
-                "🧾 Bot lists:",
-                "> [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)\n" +
-                    "> [disbotlist.xyz](https://disbotlist.xyz/bot/848459799783669790)\n" +
-                    "> [dblist.xyz](https://dblist.xyz/bot/848459799783669790)\n" +
-                    "> [discordservices.net](https://discordservices.net/bot/848459799783669790)\n" +
-                    "> [discordlist.space](https://discordlist.space/bot/848459799783669790)\n" +
-                    "> [discord.boats](https://discord.boats/bot/848459799783669790)\n" +
-                    "> [top.gg](https://top.gg/bot/848459799783669790)\n",
-                inline
-            );
-            }
-            embed.addField(
                 "🔗 Useful links:",
                 `> [Support server](${message.client.config.supportGuildInvite})\n` +
                     "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +

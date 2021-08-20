@@ -17,9 +17,9 @@ router.post("/bls", async (req, res) => {
     const { client } = req;
     const vUser = await client.users.fetch(req.body.user.id);
     if (!vUser) {
-            res.sendStatus(500);
-            return console.log("bls webhook: User not found to give vote rewards");
-        }
+        res.sendStatus(500);
+        return console.log("bls webhook: User not found to give vote rewards");
+    }
     if (!(await client.userDbFuncs.getUser(vUser.id)))
         await client.userDbFuncs.addUser(vUser.id);
     const userDB = await client.userDbFuncs.getUser(vUser.id);
@@ -38,7 +38,9 @@ router.post("/bls", async (req, res) => {
         console.log("No votesChannelId in config");
     }
     const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
-    vUser.send(t("misc:thanks.vote", {site: "botlist.space"})).catch(() => {});
+    vUser
+        .send(t("misc:thanks.vote", { site: "botlist.space" }))
+        .catch(() => {});
     res.sendStatus(200);
     res.end();
 });
@@ -59,7 +61,9 @@ router.post(
         const vUser = await client.users.fetch(vote.user);
         if (!vUser) {
             res.sendStatus(500);
-            return console.log("topgg webhook: User not found to give vote rewards");
+            return console.log(
+                "topgg webhook: User not found to give vote rewards"
+            );
         }
         if (!(await client.userDbFuncs.getUser(vUser.id)))
             await client.userDbFuncs.addUser(vUser.id);
@@ -84,7 +88,7 @@ router.post(
             console.log("No votesChannelId in config");
         }
         const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
-        vUser.send(t("misc:thanks.vote", {site: "top.gg"})).catch(() => {});
+        vUser.send(t("misc:thanks.vote", { site: "top.gg" })).catch(() => {});
         res.sendStatus(200);
         res.end();
     })

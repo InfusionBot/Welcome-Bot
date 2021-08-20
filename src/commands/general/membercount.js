@@ -25,7 +25,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message }, t) {
         const embed = new Embed({ timestamp: true });
-        message.guild.members.fetch({force: true});
+        message.guild.members.fetch({ force: true });
         embed
             .setTitle(t("misc:members"))
             .setDesc(
