@@ -34,7 +34,7 @@ module.exports = class CMD extends Command {
         if (!(parseInt(userDB.wallet, 10) > 0)) {
             return message.reply(t("cmds:deposit.noMoney"));
         }
-        if (userDB.bank === userDB.bankLimit) {
+        if (userDB.bank >= userDB.bankLimit) {
             return message.reply(t("cmds:deposit.noSpace"));
         }
         let amount = args[0];
