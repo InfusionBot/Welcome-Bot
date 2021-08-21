@@ -83,7 +83,7 @@ module.exports = class CMD extends Command {
                     return msgs;
                 });
             messages = messages.last(amount);
-            message.channel.bulkDelete(messages).catch((err) => {
+            message.channel.bulkDelete(messages, true).catch((err) => {
                 message.client.logger.log(err, "error", ["PRUNING"]);
                 return message.channel.send(errMsg);
             });
