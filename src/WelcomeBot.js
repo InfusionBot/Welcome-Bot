@@ -16,6 +16,7 @@ const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const { Player } = require("discord-player");
+const dbAuditor = require("./db/functions/dbAuditor");
 
 class WelcomeBot extends Client {
     constructor(opts) {
