@@ -12,6 +12,7 @@ module.exports = {
     logsChannelId: "855331801635749888",
     votesChannelId: "867925583777103872",
     suggestionLogsChannelId: "862126837110800414",
+    errorLogsChannelId: "878431491581964328",
     defaultPrefix: "w/",
     reportsChannelId: "869017115385024543",
     ownerIds: [

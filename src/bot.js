@@ -32,6 +32,7 @@ process.on("unhandledRejection", (error) => {
     } else {
         client.logger.log("Unhandled promise rejection", "error");
         console.error(error);
+        client.channels.cache.get(client.config?.errorLogsChannelId).send(`${error}`).catch(() => {});
     }
 });
 process.on("exit", (code) => {
@@ -130,41 +131,13 @@ client.player
         }
     });
 
-client.on("ready", async () => {
-    const presence = require("./functions/presence");
-    const serverCount = require("./functions/serverCount");
+client.on("ready", () => {
     // We logged in
     if (client.debug)
         client.logger.log(
             `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
-    await require("./loaders/Locale.js")(client);
-    if (client.config.dashboard.enabled) client.dashboard.load(client);
-    else if (client.debug)
-        client.logger.log(
-            "Not loading dashboard as it is not enabled",
-            "debug",
-            ["DASHBOARD"]
-        );
-    client.loadCommands(__dirname + "/commands");
-    process.env.BOT_ID = client.user.id;
-    presence(client);
-    if (process.env.NODE_ENV === "production") serverCount(client);
-    // 1 * 60 * (1 second)
-    // Update presence every 1 minute
-    setInterval(() => presence(client), 1 * 60 * 1000);
-    // Update server count every 25 minutes if environment is in PRODUCTION
-    if (process.env.NODE_ENV === "production")
-        setInterval(() => serverCount(client), 25 * 60 * 1000);
-    dbAuditor(client);
-    //Run dbAuditor every 3 hours
-    setInterval(() => {
-        dbAuditor(client);
-    }, 3 * 60 * 60 * 1000);
-    require("./functions/versionSender")(client);
-    if (process.env.NODE_ENV !== "production")
-        require("./helpers/updateDocs")(client);
-    client.logger.log(`Welcome-Bot v${client.package.version} started!`);
+    client.onReady();
 });
 
 client.on("debug", (info) => {

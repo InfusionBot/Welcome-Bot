@@ -33,7 +33,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "discord.boats",
-            path: "/api/bot/" + process.env.BOT_ID,
+            path: "/api/bot/" + client.user.id,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -52,7 +52,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordextremelist.xyz",
-            path: "/v2/bot/" + process.env.BOT_ID + "/stats",
+            path: "/v2/bot/" + client.user.id + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "discord.bots.gg",
-            path: "/api/v1/bots/" + process.env.BOT_ID + "/stats",
+            path: "/api/v1/bots/" + client.user.id + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +90,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordlist.space",
-            path: "/v1/bots/" + process.env.BOT_ID,
+            path: "/v1/bots/" + client.user.id,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -110,7 +110,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordservices.net",
-            path: "/bot/" + process.env.BOT_ID + "/stats",
+            path: "/bot/" + client.user.id + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
