@@ -173,8 +173,7 @@ class WelcomeBot extends Client {
         const serverCount = require("./functions/serverCount");
         await require("./loaders/Locale.js")(this);
         if (this.config.dashboard.enabled) this.dashboard.load(this);
-        else
-            this.logger.log("Dashboard not enabled", "debug");
+        else this.logger.log("Dashboard not enabled", "debug");
         this.loadCommands(__dirname + "/commands");
         presence(this);
         if (process.env.NODE_ENV === "production") serverCount(this);
