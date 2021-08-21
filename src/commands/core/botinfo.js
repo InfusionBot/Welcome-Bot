@@ -80,7 +80,7 @@ module.exports = class CMD extends Command {
                         1024
                     ).toFixed(2)}MB\``
             );
-        if (args[1] && args[1] !== "--short") {
+        if (!args[1] || args[1] !== "--short") {
             embed
                 .addField(
                     `${message.client.customEmojis.owner} Bot owners`,

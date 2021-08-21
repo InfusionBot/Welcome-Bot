@@ -86,4 +86,16 @@ module.exports = class CMD extends Command {
                 });
             });
     }
+
+    async giveCredits(amount, userId, message) {
+        const userDB = await this.client.userDbFuncs.getUser(userId).catch(() => {});
+        if (userDB) {
+            userDB.wallet = parseInt(userDB.wallet) + amount;
+            userDB.markModified("wallet");
+            await userDB.save();
+            message.reply("Done");
+        } else {
+            message.reply("No such user in db");
+        }
+    }
 };
