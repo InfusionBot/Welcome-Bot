@@ -17,8 +17,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - `modChannel` in db is changed to `plugins.modlogs`
 - `channel` in db is dropped in favour of `plugins.welcome.channel`
 - fix(goodbye): They are disabled by default now!
-- Default welcome message is changed to `Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member`
-- Default goodbye message is changed to `Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {{members}} members`
+- Default welcome message is changed to `Welcome {mention} to the {server} server!\nYou are our {members_formatted} member`
+- Default goodbye message is changed to `Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members`
 
 ### Bug fixes
 

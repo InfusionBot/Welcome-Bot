@@ -32,7 +32,7 @@ const guildSchema = new mongoose.Schema({
             },
             message: {
                 default:
-                    "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
+                    "Welcome {mention} to the {server} server!\nYou are our {members_formatted} member",
                 type: String,
             },
             channel: {

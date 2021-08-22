@@ -215,7 +215,7 @@ module.exports = async (message, guildDB) => {
                 );
             if (!userDB)
                 userDB = await client.userDbFuncs.getUser(message.author.id);
-            message.channel.sendTyping();
+            message.channel.sendTyping().catch(() => {});
             try {
                 command.execute({ message, args, guildDB, userDB }, t);
             } catch (err) {
