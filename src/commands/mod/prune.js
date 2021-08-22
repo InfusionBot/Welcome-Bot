@@ -78,7 +78,7 @@ module.exports = class CMD extends Command {
             messages = await message.channel.messages
                 .fetch({ limit: amount })
                 .then((msgs) => {
-                    if (args[1] && !args[1] === "-f")
+                    if (!args[1] || args[1] !== "-f")
                         return msgs.filter((msg) => !msg.pinned);
                     return msgs;
                 });
@@ -88,7 +88,7 @@ module.exports = class CMD extends Command {
             });
         } else if (messages) {
             message.delete();
-            if (args[1] && !args[1] === "-f")
+            if (!args[1] || args[1] !== "-f")
                 messages = messages.filter((msg) => !msg.pinned);
             message.channel.bulkDelete(messages, true).catch((err) => {
                 message.client.logger.log(
