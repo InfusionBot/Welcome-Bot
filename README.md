@@ -1,11 +1,9 @@
 # Discord Welcome-Bot
 
-> A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Welcome & Goodbye logs, Fun, Music
+> A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Economy, Welcome & Goodbye logs, Fun, Music
 
 Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
-[![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)][stargazers]
-[![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)][discord]
@@ -28,7 +26,7 @@ Welcome-Bot offers:
 
 ### Customizable Settings
 
-Adjust the settings to fit all the needs of your server! You can select the channel to send welcome logs to, the welcome log message, the prefix of the bot for this server, and more…
+Adjust the settings to fit all the needs of your server! You can select the channel to send welcome logs to, the welcome log message, the prefix of the bot for this server, and more...
 
 ### Reliable and High Quality
 
@@ -56,7 +54,7 @@ Welcome-Bot has more than 80 commands, keeping a list of commands up to date her
 
 ### Default message
 
-The default welcome message is `Welcome {mention} to the {server} server!\nYou are our #{members} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
+The default welcome message is `Welcome {mention} to the {server} server!\nYou are our {members_formatted} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
 
 ### Default channel
 
@@ -72,36 +70,32 @@ The bot requires the following permissions:
 - Read Messages (View channels)
 - Send Messages
 - Read Message History
-- Manage Messages - mod commands
 - Embed links - all commands
 - Manage Emojis and Stickers - addemoji command
 - Connect & Speak - music commands
-
-Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
-
+- Manage Messages - prune command
 - Ban Members - ban & unban command
 - Kick Members - kick command
 - Manage Roles - mute command
 
-To include the `moderation` feature, use this invite link:
+To invite the bot with all the necessary required permissions mentioned above you can use this invitation link:
 > https://dsc.gg/welcome-bot
-
-To invite the bot with all the necessary required permissions **except permissions for moderation feature** mentioned above you can use this invitation link:
-> https://dsc.gg/welcome-bot2
 
 ## Setting up the channel
 
 ### Welcome channel
 
-By default the bot will check for a channel named `member-log`.
+You can set welcome channel, by using the `welcome channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#welcome)
 
-You can change this channel name, by using the `welcome channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#welcome)
+### Goodbye channel
+
+You can set goodbye channel, by using the `goodbye channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#goodbye)
 
 ### Moderation channel
 
 By default the bot will check for a channel named `mod-log`.
 
-You can change this channel name, by using the `modlogs set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+You can change this channel name, by using the `modlogs set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#modlogs)
 
 ## Botlists
 
