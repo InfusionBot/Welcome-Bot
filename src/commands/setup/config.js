@@ -54,7 +54,7 @@ module.exports = class CMD extends Command {
                     `${t("dashboard:autorole")}: ${
                         message.guild.roles.cache.get(
                             guildDB.plugins.autorole.role
-                        ).name
+                        ).name ?? ""
                     } (${
                         guildDB.plugins.autorole.enabled
                             ? t("misc:enabled")

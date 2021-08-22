@@ -83,8 +83,10 @@ module.exports = class CMD extends Command {
         if (!args[1] || args[1] !== "--short") {
             embed
                 .addField(
-                    `${message.client.customEmojis.owner} Bot owners`,
-                    `Welcome-Bot was created by ${message.client.ownersTags.join(
+                    `${message.client.customEmojis.owner} Bot owners and staff`,
+                    `Welcome-Bot owners: ${this.client.ownersTags.join(
+                        ", "
+                    )}\nWelcome-Bot staff: ${this.client.staffTags.join(
                         ", "
                     )}`
                 )

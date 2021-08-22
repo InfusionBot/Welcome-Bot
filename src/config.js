@@ -18,6 +18,8 @@ module.exports = {
     ownerIds: [
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
+    ],
+    staffIds: [
         "772421156787191818" /*Kirito#1555*/,
     ],
     dashboard: {

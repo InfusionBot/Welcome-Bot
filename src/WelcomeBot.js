@@ -160,6 +160,16 @@ class WelcomeBot extends Client {
             }
         })(this);
         this.ownersTags = ownersTags;
+        const staffTags = [];
+        (async (client) => {
+            for (let i = 0; i < client.config.staffIds.length; i++) {
+                const user = await client.users.fetch(
+                    client.config.staffIds[i]
+                );
+                staffTags.push(`${user?.tag}`);
+            }
+        })(this);
+        this.staffTags = staffTags;
         this.player = new Player(this, {
             leaveOnEmpty: false,
             leaveOnStop: true,

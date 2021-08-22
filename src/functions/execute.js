@@ -71,6 +71,7 @@ module.exports = async (message, guildDB) => {
             command.requirements?.ownerOnly &&
             !(
                 client.config.ownerIds.includes(message.author.id) ||
+                client.config.staffIds.includes(message.author.id) ||
                 message.author.id === client.application?.owner.id
             )
         ) {
@@ -232,7 +233,8 @@ module.exports = async (message, guildDB) => {
                         "\u200b"
                     );
                 if (
-                    client.ownerIDs.includes(message.author.id) ||
+                    client.config.ownerIDs.includes(message.author.id) ||
+                    client.config.staffIds.includes(message.author.id) ||
                     message.author.id === client.application?.owner.id
                 )
                     embed.addField("Error", `${err}`);

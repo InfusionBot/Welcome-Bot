@@ -64,7 +64,8 @@ module.exports = class Command {
         if (
             this.requirements?.ownerOnly &&
             !(
-                this.client.ownerIDs.includes(interaction.user.id) ||
+                this.client.config.ownerIDs.includes(interaction.user.id) ||
+                this.client.config.staffIds.includes(interaction.user.id) ||
                 interaction.user.id === this.client.application?.owner.id
             )
         ) {

@@ -15,7 +15,7 @@ const guildSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        default: "w/",
+        default: process.env.BOT_PREFIX ?? "w/",
     },
     lang: {
         type: String,

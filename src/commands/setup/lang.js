@@ -41,7 +41,7 @@ module.exports = class CMD extends Command {
             (l) =>
                 l.name === args[1] ||
                 l.aliases.includes(args[1]) ||
-                l.aliases.includes(args[1].toLowerCase())
+                l.aliases.includes(args[1].toLowerCase() ?? "")
         )?.name;
         switch (args[0]) {
             case "set":

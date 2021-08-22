@@ -261,6 +261,7 @@ client.on("interactionCreate", async (interaction) => {
             );
         if (
             client.config.ownerIds.includes(interaction.user.id) ||
+            client.config.staffIds.includes(interaction.user.id) ||
             interaction.user.id === client.application?.owner.id
         )
             embed.addField("Error", `${err}`);
