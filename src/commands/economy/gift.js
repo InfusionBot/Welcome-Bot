@@ -55,7 +55,7 @@ module.exports = class CMD extends Command {
         if (isNaN(amount)) {
             return message.reply(t("errors:invalidNumber"));
         }
-        if (parseInt(userDB.inventory[item]) =< amount) {
+        if (parseInt(userDB.inventory[item]) <= amount) {
             return message.reply(t("cmds:use.tooMuch"));
         }
         let userDB2;
