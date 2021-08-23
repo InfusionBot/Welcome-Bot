@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }) {
+    execute({ message, args, guildDB, userDB }) {
         const { client } = this;
         const content = args.join(" ");
         const embed = new Embed({ color: "success" }).addField(

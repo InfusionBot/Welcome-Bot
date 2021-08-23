@@ -13,7 +13,7 @@ module.exports = class CMD extends Command {
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Fun",
             },
             client
@@ -27,9 +27,10 @@ module.exports = class CMD extends Command {
         };
         const sides = ["heads", "tails"];
         const chosenSide = sides[Math.floor(Math.random() * sides.length)];
+        console.log(chosenSide, typeof chosenSide);
         const embed = new Embed()
             .setImage(coins[chosenSide])
-            .setDescription(t("cmds:coinflip.done", chosenSide));
+            .setDescription(t("cmds:coinflip.done", {chosenSide}));
         message.channel.send({ embeds: [embed] });
     }
 };

@@ -252,7 +252,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (11 commands)
+## Economy (12 commands)
 
 ### `balance`
 
@@ -304,6 +304,19 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Description: Deposit money to your bank
 - Usage: w/deposit [coins / subcommand]
 - Aliases: `dep`, `bankdep`
+- Cooldown: 5
+
+### `gift`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Donate some items to another user
+- Usage: w/gift [@mention / user id] [item] (amount)
+- Aliases: ``
 - Cooldown: 10
 
 ### `give`
@@ -354,7 +367,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Steal another user's wallet! :dollar:
-- Usage: w/rob [@mention / user id]
+- Usage: w/rob [@mention]
 - Aliases: None
 - Cooldown: 60
 
@@ -423,7 +436,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Description: Flip a coin.
 - Usage: w/coinflip 
 - Aliases: `cf`, `filpcoin`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `duck`
 
@@ -462,7 +475,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Description: Implement the FIGfont spec in JS
 - Usage: w/figlet [string]
 - Aliases: `asciify`, `bigtext`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `image`
 
@@ -490,7 +503,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## General (19 commands)
+## General (20 commands)
 
 ### `addemoji`
 
@@ -531,6 +544,19 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `channel-id`, `channelid`
 - Cooldown: 5
 
+### `djsdocs`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Search djs docs
+- Usage: w/djsdocs [query] (--source [source])
+- Aliases: `djs`
+- Cooldown: 10
+
 ### `hastebin`
 
 ##### Subcommands:
@@ -540,7 +566,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 ##### Cmd info
 
 - Description: Upload your text on hastebin!
-- Usage: w/hastebin 
+- Usage: w/hastebin [text] (--extension [value])
 - Aliases: `pastebin`
 - Cooldown: 10
 

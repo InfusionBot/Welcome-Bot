@@ -32,10 +32,8 @@ process.on("unhandledRejection", (error) => {
     } else {
         client.logger.log("Unhandled promise rejection", "error");
         console.error(error);
-        client.channels.cache
-            .get(client.config?.errorLogsChannelId)
-            .send(`${error}`)
-            .catch(() => {});
+        const channel = client.channels.cache.get(client.config?.errorLogsChannelId) ?? null;
+        if (channel) channel.send(`${error}`).catch(() => {});
     }
 });
 process.on("exit", (code) => {
