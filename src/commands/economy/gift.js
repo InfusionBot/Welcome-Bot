@@ -9,20 +9,17 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "sample",
-                aliases: ["null"],
+                name: "gift",
+                aliases: [],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
-                    subcommand: false,
-                    args: false,
+                    args: true,
                     guildOnly: true,
-                    ownerOnly: false,
                 },
                 disabled: false,
-                subcommands: [{ name: "set", desc: "Set this" }],
                 cooldown: 10,
-                category: "General",
+                category: "Economy",
                 slash: false,
             },
             client
