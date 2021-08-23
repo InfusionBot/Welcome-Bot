@@ -1,6 +1,6 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.0",
+  "version": "2.0.0-dev.94285ee",
   "changelog": [
     "**Breaking Changes**",
     "`modChannel` in db is changed to `plugins.modlogs`",
@@ -16,7 +16,7 @@
     "**New features**",
     "feat: New cmd `emojify`",
     "feat: New cmd `daily` and new category `Economy`",
-    "feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`, `use`, `inventory`",
+    "feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`, `use`, `inventory`, `gift`",
     "feat: New cmd `report`",
     "feat: New cmd `duck`",
     "feat: add `{username}`, `{members_formatted}` placeholders for welcome & goodbye messages",

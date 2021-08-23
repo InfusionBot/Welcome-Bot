@@ -51,6 +51,6 @@ module.exports = async (member) => {
         .setTitle(`Goodbye ${member.user.tag}!`)
         .setDescription(msg)
         .setFooter(`Total members: ${member.guild.memberCount}`);
-    const sent = await channel.send({ embeds: [embed] }).catch(() => {});
+    const sent = await channel.send({ content: `${member.user}`, embeds: [embed] }).catch(() => {});
     return sent;
 };

@@ -35,7 +35,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:use.youDontHaveAny"));
         if (!args[1]) args[1] = 1;
         const [item, count] = args;
-        if (userDB.inventory[item] < count)
+        if (parseInt(userDB.inventory[item]) < parseInt(count))
             return message.reply(t("cmds:use.tooMuch", { item, count }));
         userDB.inventory[item] = userDB.inventory[item] - count;
         userDB.markModified(`inventory.${item}`);

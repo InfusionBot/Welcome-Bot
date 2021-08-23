@@ -3,28 +3,35 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "give",
-                aliases: ["donate", "share"],
+                name: "sample",
+                aliases: ["null"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
-                    args: true,
+                    subcommand: false,
+                    args: false,
+                    guildOnly: true,
+                    ownerOnly: false,
                 },
                 disabled: false,
-                cooldown: 5,
-                category: "Economy",
+                subcommands: [{ name: "set", desc: "Set this" }],
+                cooldown: 10,
+                category: "General",
+                slash: false,
             },
             client
         );
     }
 
-    async execute({ message, args, userDB }, t) {
-        const { getUser, updateUser } = client.userDbFuncs;
+    //eslint-disable-next-line no-unused-vars
+    execute({ message, args, userDB }, t) {
+        const { getUser } = client.userDbFuncs;
         const user = await this.getUserFromIdOrMention(args[0]);
 
         if (!user || user.bot) {
@@ -32,15 +39,25 @@ module.exports = class CMD extends Command {
             return false;
         }
         if (user.id === message.author.id) {
-            message.reply(t("cmds:give.errorYourself"));
+            message.reply(t("cmds:gift.errorYourself"));
             return false;
         }
-        const amount = parseInt(args[1]);
+        const item = args[1] ?? null;
+        if (!item) {
+            return message.reply(t("cmds:gift.noItem"));
+        }
+        const items = Object.keys(userDB.inventory);
+        if (!items.includes(item))
+            return message.reply(t("cmds:use.notAnItem"));
+        const itemsThatGuyHas = items.filter((i) => userDB.inventory[i] > 0);
+        if (!itemsThatGuyHas.includes(args[0]))
+            return message.reply(t("cmds:use.youDontHaveAny"));
+        const amount = parseInt(args[2] ?? 1);
         if (isNaN(amount)) {
             return message.reply(t("errors:invalidNumber"));
         }
-        if (parseInt(userDB.wallet) - amount < 0) {
-            return message.reply(t("cmds:deposit.notAvailable"));
+        if (parseInt(userDB.inventory[item]) =< amount) {
+            return message.reply(t("cmds:use.tooMuch"));
         }
         let userDB2;
         try {
@@ -52,16 +69,12 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:noAcc"));
         }
         try {
-            await updateUser(
-                message.author.id,
-                "wallet",
-                parseInt(userDB.wallet) - amount
-            );
-            await updateUser(
-                user.id,
-                "wallet",
-                amount + parseInt(userDB2.wallet)
-            );
+            userDB.inventory[item] = userDB.inventory[item] - amount;
+            userDB.markModified(`inventory.${item}`);
+            await userDB.save();
+            userDB2.inventory[item] = userDB2.inventory[item] + amount;
+            userDB2.markModified(`inventory.${item}`);
+            await userDB2.save();
         } catch (e) {
             message.client.logger.log(
                 "Error occurred when donating wcoins",
@@ -74,12 +87,16 @@ module.exports = class CMD extends Command {
             .setDesc(
                 t("cmds:give.success", {
                     amount,
-                    yourWallet: parseInt(userDB.wallet) - amount,
-                    userWallet: amount + parseInt(userDB2.wallet),
                     mention: `${message.author}`,
                     user: user.tag,
+                    item,
                 })
             );
         message.reply({ embeds: [embed] });
+    }
+
+    //eslint-disable-next-line no-unused-vars
+    run({ interaction, guildDB, userDB }, t) {
+        return;
     }
 };

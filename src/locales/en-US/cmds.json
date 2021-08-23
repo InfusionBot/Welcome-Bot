@@ -125,6 +125,14 @@
     "title": "Money deposited",
     "success": "Deposited {{amount}} WCoins"
   },
+  "gift": {
+    "cmdDesc": "Donate some items to another user",
+    "usage": "[@mention / user id] [item] (amount)",
+    "title": "Donated item!",
+    "success": "{{mention}} You gave {{user}} {{amount}} {{item}}(s)",
+    "noItem": "You didn't provide any item",
+    "errorYourself": "Woah, can you donate yourself?"
+  },
   "give": {
     "cmdDesc": "Donate money to another user",
     "usage": "[@mention / user id] [amount]",
@@ -156,7 +164,7 @@
   "use": {
     "cmdDesc": "Use your items",
     "usage": "[item] (count)",
-    "notAnItem": "What are you thinking, that is not at all an item",
+    "notAnItem": "What are you thinking fool? There is no item like that",
     "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
     "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
     "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",

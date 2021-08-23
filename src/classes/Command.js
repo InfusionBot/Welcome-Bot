@@ -280,15 +280,11 @@ module.exports = class Command {
         let user;
         if (idOrMention) {
             if (idOrMention.startsWith("<@")) {
-                user = userFromMention(idOrMention, this.client);
+                user = userFromMention(idOrMention, this.client) ?? null;
             }
             if (!isNaN(parseInt(idOrMention))) {
-                user = this.client.users.cache.get(idOrMention);
-                if (!user) user = await this.client.users.fetch(idOrMention);
+                user = await this.client.users.fetch(idOrMention) ?? null;
             }
-        }
-        if (!user) {
-            return null;
         }
         return user;
     }
