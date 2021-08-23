@@ -19,9 +19,7 @@ module.exports = {
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
     ],
-    staffIds: [
-        "772421156787191818" /*Kirito#1555*/,
-    ],
+    staffIds: ["772421156787191818" /*Kirito#1555*/],
     dashboard: {
         port: process.env.PORT || 8000,
         secret: process.env.SESS_SECRET ?? null,

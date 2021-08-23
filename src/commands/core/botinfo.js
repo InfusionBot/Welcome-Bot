@@ -86,9 +86,7 @@ module.exports = class CMD extends Command {
                     `${message.client.customEmojis.owner} Bot owners and staff`,
                     `Welcome-Bot owners: ${this.client.ownersTags.join(
                         ", "
-                    )}\nWelcome-Bot staff: ${this.client.staffTags.join(
-                        ", "
-                    )}`
+                    )}\nWelcome-Bot staff: ${this.client.staffTags.join(", ")}`
                 )
                 .addField(
                     "🧾 Bot lists:",

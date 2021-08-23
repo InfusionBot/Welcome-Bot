@@ -45,7 +45,10 @@ module.exports = class CMD extends Command {
         )
             return message.channel.send(t("misc:higherRole"));
 
-        if (message.guild.me.roles.highest.position <= member.roles.highest.position)
+        if (
+            message.guild.me.roles.highest.position <=
+            member.roles.highest.position
+        )
             return message.reply(t("misc:higherRoleBot"));
 
         const reason = args.slice(1).join(" ") || t("misc:not_spec");

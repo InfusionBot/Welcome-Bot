@@ -25,7 +25,10 @@ module.exports = async (client) => {
                         reply += `\n- ${change}`;
                     }
                 });
-                if (process.env.NODE_ENV === "production" && client.package.version.indexOf("dev") === -1) {
+                if (
+                    process.env.NODE_ENV === "production" &&
+                    client.package.version.indexOf("dev") === -1
+                ) {
                     const newsChannel = client.channels.cache.get(
                         client.config.newsChannelId
                     );
