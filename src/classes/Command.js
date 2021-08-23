@@ -283,7 +283,7 @@ module.exports = class Command {
                 user = userFromMention(idOrMention, this.client) ?? null;
             }
             if (!isNaN(parseInt(idOrMention))) {
-                user = await this.client.users.fetch(idOrMention) ?? null;
+                user = (await this.client.users.fetch(idOrMention)) ?? null;
             }
         }
         return user;
