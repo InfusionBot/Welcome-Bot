@@ -283,6 +283,8 @@ client.on("messageCreate", async function (message) {
     } else {
         guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
+    if (message.channel.partial) await message.channel.fetch();
+    if (message.partial) await message.fetch();
     if (client.debug && client.debugLevel > 0)
         client.logger.log("running execute func", "debug");
     try {
