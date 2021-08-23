@@ -11,6 +11,21 @@ const express = require("express");
 
 module.exports.load = (client) => {
     const session = require("express-session");
+    const MongoDBStore = require("connect-mongodb-session")(session);
+    const store = new MongoDBStore({
+        uri: process.env.MONOGO_URL,
+        collection: "Sessions",
+        connectionOptions: {
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+        },
+    });
+    // Catch errors
+    store.on("error", (err) => {
+        console.log(err);
+    });
     //const csurf = require("csurf");
     //const csrf = csurf();
     if (client.debug) client.logger.log("loading dashboard");
@@ -26,7 +41,11 @@ module.exports.load = (client) => {
         .use(
             session({
                 secret: client.config.dashboard.secret,
-                resave: false,
+                cookie: {
+                    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+                },
+                store: store,
+                resave: true,
                 saveUninitialized: false,
             })
         )

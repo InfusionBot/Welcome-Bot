@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         console.log(chosenSide, typeof chosenSide);
         const embed = new Embed()
             .setImage(coins[chosenSide])
-            .setDescription(t("cmds:coinflip.done", {chosenSide}));
+            .setDescription(t("cmds:coinflip.done", { chosenSide }));
         message.channel.send({ embeds: [embed] });
     }
 };
