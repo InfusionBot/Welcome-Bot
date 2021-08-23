@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, userDB }, t) {
-        const { getUser, updateUser } = client.userDbFuncs;
+        const { getUser, updateUser } = this.client.userDbFuncs;
         const user = await this.getUserFromIdOrMention(args[0]);
 
         if (!user || user.bot) {

@@ -30,10 +30,9 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    execute({ message, args, userDB }, t) {
+    async execute({ message, args, userDB }, t) {
         const { getUser } = client.userDbFuncs;
         const user = await this.getUserFromIdOrMention(args[0]);
-
         if (!user || user.bot) {
             message.reply(t("errors:invalidUser"));
             return false;
