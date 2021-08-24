@@ -40,7 +40,7 @@ module.exports.load = (client) => {
             session({
                 secret: client.config.dashboard.secret,
                 cookie: {
-                    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+                    maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
                 },
                 store: store,
                 resave: true,
