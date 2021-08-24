@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
             .setDesc(`${guild.description ?? guild.id}`)
             .setThumbnail(message.guild.iconURL());
         const iconURL = message.guild.iconURL().slice(0, 35) + "...";
-        message.guild.members.fetch();
+        await message.guild.members.fetch();
         embed
             .addField(
                 `${this.client.customEmojis.owner} ${t("misc:owner")}`,

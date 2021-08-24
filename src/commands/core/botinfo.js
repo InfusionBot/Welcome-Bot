@@ -26,8 +26,8 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args }, t) {
         //TODO: Add translation
-        if (args[1]) {
-            args[1] = args[1].toLowerCase();
+        if (args[0]) {
+            args[0] = args[0].toLowerCase();
         }
         const promises = [
             this.client.shard.fetchClientValues("guilds.cache.size"),
@@ -80,13 +80,13 @@ module.exports = class CMD extends Command {
                         1024
                     ).toFixed(2)}MB\``
             );
-        if (!args[1] || args[1] !== "--short") {
+        if (!args[0] || args[0] !== "--short") {
             embed
                 .addField(
                     `${message.client.customEmojis.owner} Bot owners and staff`,
-                    `Welcome-Bot owners: ${this.client.ownersTags.join(
+                    `**Welcome-Bot owners:** ${this.client.ownersTags.join(
                         ", "
-                    )}\nWelcome-Bot staff: ${this.client.staffTags.join(", ")}`
+                    )}\n**Welcome-Bot staff:** ${this.client.staffTags.join(", ")}`
                 )
                 .addField(
                     "🧾 Bot lists:",
