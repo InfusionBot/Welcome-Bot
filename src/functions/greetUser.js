@@ -92,22 +92,9 @@ module.exports = async (member) => {
             "{members_formatted}",
             `${member.guild.memberCount}${nth(member.guild.memberCount)}`
         );
-    const embed = new Embed({ color: "blue" })
-        .setAuthor(
-            member.user.tag,
-            member.user.displayAvatarURL({
-                size: 512,
-                dynamic: true,
-                format: "png",
-            })
-        )
-        .setTitle(`Welcome ${member.user.tag}!`)
-        .setDescription(msg)
-        .setFooter(`Total members: ${member.guild.memberCount}`);
     const sent = await channel
         .send({
-            content: `${member.user}`,
-            embeds: [embed],
+            content: msg,
             files: [attachment],
         })
         .catch(() => {});
