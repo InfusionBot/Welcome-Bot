@@ -75,6 +75,7 @@
     "axios": "^0.21.1",
     "btoa": "^1.2.1",
     "bufferutil": "^4.0.3",
+    "canvas": "^2.8.0",
     "colors-logger": "^0.3.1",
     "connect-mongodb-session": "^3.0.0",
     "csurf": "^1.11.0",
