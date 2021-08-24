@@ -17,9 +17,7 @@ module.exports.load = (client) => {
         collection: "Sessions",
         connectionOptions: {
             useNewUrlParser: true,
-            useCreateIndex: true,
             useUnifiedTopology: true,
-            useFindAndModify: false,
         },
     });
     // Catch errors
