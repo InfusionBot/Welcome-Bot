@@ -51,6 +51,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `config`
 - feat: Add `-f` option for prune cmd
 - feat: New cmd `djsdocs`
+- feat: New cmd `reminder`
 
 ### Changes
 

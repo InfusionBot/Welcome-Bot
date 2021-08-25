@@ -9,15 +9,20 @@ const { Embed } = require("../classes");
 const { MessageAttachment } = require("discord.js");
 const { resolve } = require("path");
 const Canvas = require("canvas");
-Canvas.registerFont(resolve(__dirname + "/../assets/fonts/theboldfont.ttf"), { family: "Bold" });
-Canvas.registerFont(resolve(__dirname + "/../assets/fonts/JosefinSans-Bold.ttf"), { family: "JosefinSans" });
+Canvas.registerFont(resolve(__dirname + "/../assets/fonts/theboldfont.ttf"), {
+    family: "Bold",
+});
+Canvas.registerFont(
+    resolve(__dirname + "/../assets/fonts/JosefinSans-Bold.ttf"),
+    { family: "JosefinSans" }
+);
 // Pass the entire Canvas object because you'll need access to its width and context
-const applyText = (canvas, text, fontSize=60, font="Bold") => {
+const applyText = (canvas, text, fontSize = 60, font = "Bold") => {
     const context = canvas.getContext("2d");
 
     do {
         // Assign the font to the context and decrement it so it can be measured again
-        context.font = `${fontSize -= 10}px ${font}`;
+        context.font = `${(fontSize -= 10)}px ${font}`;
         // Compare pixel width of the text to the canvas minus the approximate avatar size
     } while (context.measureText(text).width > canvas.width - 300);
 
@@ -52,7 +57,9 @@ module.exports = async (member) => {
     const ctx = canvas.getContext("2d");
 
     // Draw the background image
-    const background = await Canvas.loadImage(__dirname + "/../assets/img/welcome_bg.jpg");
+    const background = await Canvas.loadImage(
+        __dirname + "/../assets/img/welcome_bg.jpg"
+    );
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Draw a rectangle with the dimensions of the entire canvas
@@ -76,10 +83,15 @@ module.exports = async (member) => {
     ctx.clip();
 
     // Draw the user's avatar
-    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: "jpg", size: 512 }));
+    const avatar = await Canvas.loadImage(
+        member.user.displayAvatarURL({ format: "jpg", size: 512 })
+    );
     ctx.drawImage(avatar, 100, 100, 200, 200);
 
-    const attachment = new MessageAttachment(canvas.toBuffer(), `welcome-${member.user.tag}.png`);
+    const attachment = new MessageAttachment(
+        canvas.toBuffer(),
+        `welcome-${member.user.tag}.png`
+    );
     let msg = guildDB.plugins.welcome.message;
     //Replace Placeholders with their values
     msg = msg

@@ -74,7 +74,9 @@ router.post(
         userDB.markModified("inventory.banknote");
         await userDB.save();
         if (process.env.NODE_ENV !== "production") {
-            console.log("NODE_ENV not in production so not sending any messages for voting on botlist.space");
+            console.log(
+                "NODE_ENV not in production so not sending any messages for voting on botlist.space"
+            );
             res.sendStatus(200);
             return res.end();
         }

@@ -271,6 +271,11 @@
     "cmdDesc": "Generate or Read a QR code",
     "usage": "[subcommand] [text / image url]"
   },
+  "reminder": {
+    "cmdDesc": "Set a reminder",
+    "usage": "[time] (text)",
+    "set": "Reminder set!"
+  },
   "reverse": {
     "cmdDesc": "Reverse text",
     "usage": "[text]"
