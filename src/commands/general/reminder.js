@@ -28,10 +28,10 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     execute({ message, args }, t) {
         const time = require("ms")(args[0]);
-        const text = args[1] ?? "No text provided";
-        const { channel } = message;
+        const text = `${args[1]}` ?? "No text provided";
+        const { channel, member } = message;
         setTimeout(() => {
-            channel.send(`${text}`);
+            channel.send(t("cmds:reminder.remind", {user: `${member.user}`, text}));
         }, time);
         message.reply(t("cmds:reminder.set"));
     }

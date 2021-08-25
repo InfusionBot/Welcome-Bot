@@ -274,6 +274,7 @@
   "reminder": {
     "cmdDesc": "Set a reminder",
     "usage": "[time] (text)",
+    "remind": "Hey {{user}}, a gentle remember for `{{text}}`"
     "set": "Reminder set!"
   },
   "reverse": {
