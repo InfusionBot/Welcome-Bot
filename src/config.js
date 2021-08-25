@@ -13,6 +13,7 @@ module.exports = {
     votesChannelId: "867925583777103872",
     suggestionLogsChannelId: "862126837110800414",
     errorLogsChannelId: "878431491581964328",
+    loginLogsChannelId: "880122897472036894",
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     reportsChannelId: "869017115385024543",
     ownerIds: [
