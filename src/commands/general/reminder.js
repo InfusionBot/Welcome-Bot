@@ -31,7 +31,9 @@ module.exports = class CMD extends Command {
         const text = `${args[1]}` ?? "No text provided";
         const { channel, member } = message;
         setTimeout(() => {
-            channel.send(t("cmds:reminder.remind", {user: `${member.user}`, text}));
+            channel.send(
+                t("cmds:reminder.remind", { user: `${member.user}`, text })
+            );
         }, time);
         message.reply(t("cmds:reminder.set"));
     }
