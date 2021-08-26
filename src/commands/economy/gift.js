@@ -45,7 +45,9 @@ module.exports = class CMD extends Command {
         const items = Object.keys(userDB.inventory);
         if (!items.includes(item))
             return message.reply(t("cmds:use.notAnItem"));
-        const itemsThatGuyHas = items.filter((i) => parseInt(userDB.inventory[i]) > 0);
+        const itemsThatGuyHas = items.filter(
+            (i) => parseInt(userDB.inventory[i]) > 0
+        );
         if (!itemsThatGuyHas.includes(args[0]))
             return message.reply(t("cmds:use.youDontHaveAny"));
         const amount = parseInt(args[2] ?? 1);

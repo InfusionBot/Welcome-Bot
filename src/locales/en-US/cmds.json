@@ -144,6 +144,9 @@
     "cmdDesc": "Shows your inventory",
     "noItems": "You don't have anything in your inventory"
   },
+  "leaderboard": {
+    "cmdDesc": "Shows the leaderboard",
+  },
   "profile": {
     "cmdDesc": "Shows your profile or someone else's.",
     "title": "Profile of {{tag}}"

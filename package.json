@@ -36,6 +36,7 @@
     "feat: Add `-f` option for prune cmd",
     "feat: New cmd `djsdocs`",
     "feat: New cmd `reminder`",
+    "feat: New cmd `leaderboard`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

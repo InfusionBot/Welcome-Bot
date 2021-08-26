@@ -35,7 +35,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    run({ interaction, guildDB, userDB }, t) {
+    async run({ interaction, guildDB, userDB }, t) {
         return;
     }
 };
