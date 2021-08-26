@@ -33,7 +33,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args }, t) {
+    async execute({ message, args, guildDB }, t) {
         const missingArgs = t("errors:missingArgs", {
             prefix: guildDB.prefix,
             cmd: this.name,
