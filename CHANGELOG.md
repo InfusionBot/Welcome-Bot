@@ -53,6 +53,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `djsdocs`
 - feat: New cmd `reminder`
 - feat: New cmd `leaderboard`
+- feat: New cmd `backup` but it is disabled
 
 ### Changes
 

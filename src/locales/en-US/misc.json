@@ -64,5 +64,8 @@
   "thanks": {
     "vote": "Thanks for voting on {{site}}, you just got 500 WCoins with other rewards 🎉!"
   },
-  "welcome": "Welcome!"
+  "welcome": "Welcome!",
+  "sname": "**Server name**",
+  "size": "**Size**",
+  "creat": "**Created at**"
 }

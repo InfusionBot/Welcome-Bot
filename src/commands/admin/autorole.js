@@ -5,14 +5,13 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "autorole",
                 aliases: ["ar"],
-                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                memberPerms: ["MANAGE_GUILD"],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
@@ -25,7 +24,7 @@ module.exports = class CMD extends Command {
                     { name: "set [role id]", desc: "Set autorole" },
                 ],
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );

@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
                     { name: "channel [#channel]", desc: "Set welcome channel" },
                 ],
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );

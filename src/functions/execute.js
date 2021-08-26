@@ -188,6 +188,16 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
+        if (command.subcommands && command.requirements?.subcommand) {
+            if (!command.subcommands.map((subcmd) => subcmd.name).has(args[0]))
+                return message.reply(
+                    t("errors:invalidSubCmd", {
+                        prefix: guildDB.prefix,
+                        cmd: command.name,
+                    })
+                );
+        }
+
         if (client.debug && client.debugLevel >= 3)
             client.logger.log(
                 `Starting to prerun cmd: ${command.name}`,

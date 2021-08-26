@@ -18,12 +18,12 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                 },
                 subcommands: [
-                    { name: "set", desc: "Set Custom prefix" },
+                    { name: "set [prefix]", desc: "Set Custom prefix" },
                     { name: "reset", desc: "Reset Custom prefix" },
                 ],
                 disabled: false,
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );

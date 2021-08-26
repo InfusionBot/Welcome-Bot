@@ -7,5 +7,5 @@
   "mod": "Moderation",
   "music": "Music",
   "owner": "Owner Only",
-  "setup": "Setup"
+  "admin": "Administration"
 }

@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
                 ],
                 disabled: false,
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );
@@ -47,7 +47,11 @@ module.exports = class CMD extends Command {
             if (!cmd) {
                 return message.reply(t("errors:commandNotFound"));
             }
-            updateGuild(message.guild.id, "disabled", [cmd.name, ...disabled]);
+            if (!disabled.includes(cmd.name))
+                updateGuild(message.guild.id, "disabled", [
+                    cmd.name,
+                    ...disabled,
+                ]);
             return message.reply(t("cmds:disable.done"));
         }
     }

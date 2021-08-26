@@ -37,6 +37,7 @@
     "feat: New cmd `djsdocs`",
     "feat: New cmd `reminder`",
     "feat: New cmd `leaderboard`",
+    "feat: New cmd `backup` but it is disabled",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",
@@ -99,7 +100,8 @@
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
     "opusscript": "^0.0.8",
-    "pokemon": "^2.2.0"
+    "pokemon": "^2.2.0",
+    "discord-backup": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^7.29.0",

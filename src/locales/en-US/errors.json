@@ -1,5 +1,5 @@
 {
-  "generic": "An error occurred!",
+  "generic": ":x: An error occurred!",
   "guildOnly": "This can only be done in servers.",
   "pagination": "Your reaction won't be removed automatically, as soon as you react.",
   "noAcc": "That user doesn't have a Welcome-Bot account, they may create one by typing any command of Welcome-Bot",
