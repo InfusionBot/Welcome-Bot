@@ -23,7 +23,8 @@ module.exports = class CMD extends Command {
                 options: [
                     {
                         name: "time",
-                        description: "After how much time should i remind you? Example: 1min",
+                        description:
+                            "After how much time should i remind you? Example: 1min",
                         type: "STRING",
                         required: true,
                     },
@@ -55,12 +56,11 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     run({ interaction }, t) {
         const time = require("ms")(interaction.options.getString("time"));
-        const text = interaction.options.getString("text") ?? "No text provided";
+        const text =
+            interaction.options.getString("text") ?? "No text provided";
         const { channel, user } = interaction;
         setTimeout(() => {
-            channel.send(
-                t("cmds:reminder.remind", { user: `${user}`, text })
-            );
+            channel.send(t("cmds:reminder.remind", { user: `${user}`, text }));
         }, time);
         interaction.folloUp(t("cmds:reminder.set"));
     }

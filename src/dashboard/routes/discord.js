@@ -111,8 +111,13 @@ router.get("/callback", async (req, res) => {
         );
     }
     if (user) {
-        const channel = req.client.channels.cache.get(req.client.config.loginLogsChannelId).catch(() => {});
-        if (channel) channel.send(`${user.tag} (${user.id}) has logged in to the dashboard`);
+        const channel = req.client.channels.cache
+            .get(req.client.config.loginLogsChannelId)
+            .catch(() => {});
+        if (channel)
+            channel.send(
+                `${user.tag} (${user.id}) has logged in to the dashboard`
+            );
     }
     res.redirect(redirectUrl);
 });
