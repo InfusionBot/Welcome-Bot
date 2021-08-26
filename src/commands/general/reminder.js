@@ -62,6 +62,6 @@ module.exports = class CMD extends Command {
         setTimeout(() => {
             channel.send(t("cmds:reminder.remind", { user: `${user}`, text }));
         }, time);
-        await interaction.folloUp(t("cmds:reminder.set"));
+        await interaction.followUp(t("cmds:reminder.set"));
     }
 };
