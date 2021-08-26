@@ -259,7 +259,7 @@ client.on("interactionCreate", async (interaction) => {
         client.logger.log(`Executed ${command.name} command`, "debug");
 });
 
-client.on("messageCreate", async function (message) {
+client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
     if (client.debug && client.debugLevel > 0)
         client.logger.log("message event triggered", "debug");
@@ -271,8 +271,8 @@ client.on("messageCreate", async function (message) {
     } else {
         guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
     }
-    if (message.channel.partial) await message.channel.fetch();
-    if (message.partial) await message.fetch();
+    if (message.channel?.partial) await message.channel.fetch();
+    if (message?.partial) await message.fetch();
     if (client.debug && client.debugLevel > 0)
         client.logger.log("running execute func", "debug");
     try {
