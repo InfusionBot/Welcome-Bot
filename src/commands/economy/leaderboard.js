@@ -11,7 +11,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "leaderboard",
-                aliases: ["top-10"],
+                aliases: ["top-10", "rich", "richest"],
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
@@ -26,17 +26,21 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message }, t) {
         const Users = await this.client.userSchema.find({});
-        const array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
+        let array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
             this.client.users.cache.has(user.userId)
         );
+        if (message.guild)
+            array = array.filter((user) =>
+                message.guild.members.cache.has(user.id)
+            );
         const text = Formatters.codeBlock(
             array
                 .slice(0, 10)
                 .map(
                     (user, position) =>
-                        `• ${
-                            this.client.users.cache.get(user.userId).tag
-                        }: ${user.wallet}💰`
+                        `• ${this.client.users.cache.get(user.userId).tag}: ${
+                            user.wallet
+                        }💰`
                 )
                 .join("\n")
         );
