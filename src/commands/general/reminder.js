@@ -54,7 +54,7 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    run({ interaction }, t) {
+    async run({ interaction }, t) {
         const time = require("ms")(interaction.options.getString("time"));
         const text =
             interaction.options.getString("text") ?? "No text provided";
@@ -62,6 +62,6 @@ module.exports = class CMD extends Command {
         setTimeout(() => {
             channel.send(t("cmds:reminder.remind", { user: `${user}`, text }));
         }, time);
-        interaction.folloUp(t("cmds:reminder.set"));
+        await interaction.folloUp(t("cmds:reminder.set"));
     }
 };
