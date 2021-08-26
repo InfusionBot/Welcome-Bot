@@ -34,7 +34,7 @@ module.exports = class CMD extends Command {
                 .slice(0, 10)
                 .map(
                     (user, position) =>
-                        `• (${position + 1}) ${
+                        `• ${
                             this.client.users.cache.get(user.userId).tag
                         }: ${user.wallet}💰`
                 )
