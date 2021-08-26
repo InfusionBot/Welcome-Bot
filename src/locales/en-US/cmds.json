@@ -145,7 +145,7 @@
     "noItems": "You don't have anything in your inventory"
   },
   "leaderboard": {
-    "cmdDesc": "Shows the leaderboard",
+    "cmdDesc": "Shows the leaderboard"
   },
   "profile": {
     "cmdDesc": "Shows your profile or someone else's.",

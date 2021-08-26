@@ -27,18 +27,21 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB, userDB }, t) {
         const Users = await this.client.userSchema.find({});
         const text = Formatters.codeBlock(
-            Users
-                .sort((a, b) => b.wallet - a.wallet)
-                .filter(user => this.client.users.cache.has(user.userId))
+            Users.sort((a, b) => b.wallet - a.wallet)
+                .filter((user) => this.client.users.cache.has(user.userId))
                 .first(10)
-                .map((user, position) => `• (${position + 1}) ${(client.users.cache.get(user.userId).tag)}: ${user.wallet}💰`)
-                .join("\n");
+                .map(
+                    (user, position) =>
+                        `• (${position + 1}) ${
+                            client.users.cache.get(user.userId).tag
+                        }: ${user.wallet}💰`
+                )
+                .join("\n")
         );
-        const embed = new Embed()
-            .setDesc(text);
-        message.reply(
+        const embed = new Embed().setDesc(text);
+        message.reply({
             embeds: [embed],
-        );
+        });
     }
 
     //eslint-disable-next-line no-unused-vars
