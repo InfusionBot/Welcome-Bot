@@ -5,7 +5,7 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const { Formatters } = require("discord.js");
+const { Formatters, Collection } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -26,14 +26,17 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB, userDB }, t) {
         const Users = await this.client.userSchema.find({});
+        const array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
+            this.client.users.cache.has(user.userId)
+        );
+        const collection = new Collection(array);
         const text = Formatters.codeBlock(
-            Users.sort((a, b) => b.wallet - a.wallet)
-                .filter((user) => this.client.users.cache.has(user.userId))
+            collection
                 .first(10)
                 .map(
                     (user, position) =>
                         `• (${position + 1}) ${
-                            client.users.cache.get(user.userId).tag
+                            this.client.users.cache.get(user.userId).tag
                         }: ${user.wallet}💰`
                 )
                 .join("\n")
