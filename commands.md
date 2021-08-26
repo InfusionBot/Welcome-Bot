@@ -252,7 +252,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (12 commands)
+## Economy (13 commands)
 
 ### `balance`
 
@@ -345,6 +345,19 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `inv`
 - Cooldown: 10
 
+### `leaderboard`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows the leaderboard
+- Usage: w/leaderboard 
+- Aliases: `top-10`, `top10`
+- Cooldown: 10
+
 ### `profile`
 
 ##### Subcommands:
@@ -394,8 +407,8 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 
 - Description: Use your items
 - Usage: w/use [item] (count)
-- Aliases: `equip`
-- Cooldown: 10
+- Aliases: `equip`, `consume`
+- Cooldown: 5
 
 ### `withdraw`
 
@@ -503,7 +516,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## General (20 commands)
+## General (21 commands)
 
 ### `addemoji`
 
@@ -635,6 +648,19 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Usage: w/qrcode [subcommand] [text / image url]
 - Aliases: `qr`
 - Cooldown: 10
+
+### `reminder`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Set a reminder
+- Usage: w/reminder [time] (text)
+- Aliases: `remind-me`, `remindme`
+- Cooldown: 5
 
 ### `reverse`
 

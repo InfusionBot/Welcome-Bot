@@ -24,15 +24,14 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message }, t) {
         const Users = await this.client.userSchema.find({});
         const array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
             this.client.users.cache.has(user.userId)
         );
-        const collection = new Collection(array);
         const text = Formatters.codeBlock(
-            collection
-                .first(10)
+            array
+                .slice(0, 10)
                 .map(
                     (user, position) =>
                         `• (${position + 1}) ${
