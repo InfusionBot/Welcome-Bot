@@ -10,14 +10,14 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "use",
-                aliases: ["equip"],
+                aliases: ["equip", "consume"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
                     args: true,
                 },
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Economy",
             },
             client
@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         args[0] = args[0].toLowerCase();
         if (!items.includes(args[0]))
             return message.reply(t("cmds:use.notAnItem"));
-        const itemsThatGuyHas = items.filter((i) => userDB.inventory[i] > 0);
+        const itemsThatGuyHas = items.filter((i) => parseInt(userDB.inventory[i]) > 0);
         if (!itemsThatGuyHas.includes(args[0]))
             return message.reply(t("cmds:use.youDontHaveAny"));
         if (!args[1]) args[1] = 1;
