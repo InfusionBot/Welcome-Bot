@@ -59,6 +59,61 @@ module.exports = class CMD extends Command {
                     });
                 break;
             case "load":
+                if (!args[1]) return message.reply(missingArgs);
+                const [, backupId] = args;
+                backup
+                    .fetch(backupID)
+                    .then(() => {
+                        message.channel.send(
+                            t("cmds:backup.warning")
+                        );
+
+                        const collector =
+                            message.channel.createMessageCollector(
+                                {
+                                    filter: (m) => m.author.id === message.author.id && ["confirm", "cancel"].includes(m.content),
+                                    time: 60000,
+                                    max: 1,
+                                }
+                            );
+                        collector.on("collect", (m) => {
+                            const confirm = m.content === "confirm";
+                            collector.stop();
+                            if (confirm) {
+                                backup
+                                    .load(backupID, message.guild)
+                                    .then(() => {
+                                        return message.author.send(
+                                            t("cmds:backup.success")
+                                        );
+                                    })
+                                    .catch((err) => {
+                                        if (err === "No backup found")
+                                            return message.channel.send(
+                                                t("cmds:backup.invalidId")
+                                            );
+                                        else
+                                            return message.author.send(
+                                                t("errors:generic")
+                                            );
+                                    });
+                            } else {
+                                return message.channel.send(t("cmds:backup.cancelled"));
+                            }
+                        });
+
+                        collector.on("end", (collected, reason) => {
+                            if (reason === "time")
+                                return message.channel.send(
+                                    t("misc:timeout")
+                                );
+                        });
+                    })
+                    .catch(() => {
+                        return message.channel.send(
+                            t("cmds:backup.invalidId")
+                        );
+                    });
                 break;
             case "info":
                 if (!args[1]) return message.reply(missingArgs);

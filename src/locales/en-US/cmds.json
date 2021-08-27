@@ -14,8 +14,11 @@
   "backup": {
     "cmdDesc": "Take backup of your server!",
     "usage": "[subcommand]",
-    "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}back load {{id}}` to load it",
+    "warning": ":warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!",
+    "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}backup load {{id}}` to load it",
     "invalidId": ":x: Invalid backup ID",
+    "cancelled": ":x: Cancelled.",
+    "success": "Backup loaded successfully!",
     "created": "Backup created! I have sent you the ID in DMs."
   },
   "disable": {
