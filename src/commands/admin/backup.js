@@ -13,7 +13,7 @@ module.exports = class CMD extends Command {
                 name: "backup",
                 aliases: ["bc"],
                 memberPerms: ["MANAGE_GUILD"],
-                botPerms: ["MANAGE_CHANNELS", "MANAGE_GUILD"],
+                botPerms: ["ADMINISTRATOR"],
                 requirements: {
                     subcommand: true,
                     guildOnly: true,
