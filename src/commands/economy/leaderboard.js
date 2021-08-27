@@ -34,9 +34,9 @@ module.exports = class CMD extends Command {
                 .slice(0, 10)
                 .map(
                     (user, position) =>
-                        `• ${
-                            this.client.users.cache.get(user.userId).tag
-                        }: ${user.wallet}💰`
+                        `• ${this.client.users.cache.get(user.userId).tag}: ${
+                            user.wallet
+                        }💰`
                 )
                 .join("\n")
         );
