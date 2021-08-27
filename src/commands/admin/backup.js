@@ -64,18 +64,16 @@ module.exports = class CMD extends Command {
                 backup
                     .fetch(backupID)
                     .then(() => {
-                        message.channel.send(
-                            t("cmds:backup.warning")
-                        );
+                        message.channel.send(t("cmds:backup.warning"));
 
                         const collector =
-                            message.channel.createMessageCollector(
-                                {
-                                    filter: (m) => m.author.id === message.author.id && ["confirm", "cancel"].includes(m.content),
-                                    time: 60000,
-                                    max: 1,
-                                }
-                            );
+                            message.channel.createMessageCollector({
+                                filter: (m) =>
+                                    m.author.id === message.author.id &&
+                                    ["confirm", "cancel"].includes(m.content),
+                                time: 60000,
+                                max: 1,
+                            });
                         collector.on("collect", (m) => {
                             const confirm = m.content === "confirm";
                             collector.stop();
@@ -98,21 +96,19 @@ module.exports = class CMD extends Command {
                                             );
                                     });
                             } else {
-                                return message.channel.send(t("cmds:backup.cancelled"));
+                                return message.channel.send(
+                                    t("cmds:backup.cancelled")
+                                );
                             }
                         });
 
                         collector.on("end", (collected, reason) => {
                             if (reason === "time")
-                                return message.channel.send(
-                                    t("misc:timeout")
-                                );
+                                return message.channel.send(t("misc:timeout"));
                         });
                     })
                     .catch(() => {
-                        return message.channel.send(
-                            t("cmds:backup.invalidId")
-                        );
+                        return message.channel.send(t("cmds:backup.invalidId"));
                     });
                 break;
             case "info":
