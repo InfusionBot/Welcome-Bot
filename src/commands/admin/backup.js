@@ -40,6 +40,9 @@ module.exports = class CMD extends Command {
         });
         const embed = new Embed();
         args[0] = args[0].toLowerCase();
+        if (!args[1] && args[0] !== "create") return message.reply(missingArgs);
+        if (args[1]) const [, backupId] = args;
+        else const backupId = "";
 
         switch (args[0]) {
             case "create":
@@ -59,8 +62,6 @@ module.exports = class CMD extends Command {
                     });
                 break;
             case "load":
-                if (!args[1]) return message.reply(missingArgs);
-                const [, backupId] = args;
                 backup
                     .fetch(backupID)
                     .then(() => {
@@ -112,8 +113,6 @@ module.exports = class CMD extends Command {
                     });
                 break;
             case "info":
-                if (!args[1]) return message.reply(missingArgs);
-                const [, backupId] = args;
                 backup
                     .fetch(backupId)
                     .then((backupData) => {
