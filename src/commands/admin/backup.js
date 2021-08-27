@@ -64,7 +64,7 @@ module.exports = class CMD extends Command {
                 break;
             case "load":
                 backup
-                    .fetch(backupID)
+                    .fetch(backupId)
                     .then(() => {
                         message.channel.send(t("cmds:backup.warning"));
 
@@ -81,7 +81,7 @@ module.exports = class CMD extends Command {
                             collector.stop();
                             if (confirm) {
                                 backup
-                                    .load(backupID, message.guild)
+                                    .load(backupId, message.guild)
                                     .then(() => {
                                         return message.author.send(
                                             t("cmds:backup.success")
