@@ -7,12 +7,7 @@ const mongoose = require("mongoose");
 
 // eslint-disable-next-line no-undef
 mongoose
-    .connect(process.env.MONGO_URL, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-    })
+    .connect(process.env.MONGO_URL)
     .then(() => {
         console.log("Connected to MongoDB!");
     })
