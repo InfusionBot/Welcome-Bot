@@ -41,8 +41,9 @@ module.exports = class CMD extends Command {
         const embed = new Embed();
         args[0] = args[0].toLowerCase();
         if (!args[1] && args[0] !== "create") return message.reply(missingArgs);
-        if (args[1]) const [, backupId] = args;
-        else const backupId = "";
+        let backupId;
+        if (args[1]) backupId = args[1];
+        else backupId = "";
 
         switch (args[0]) {
             case "create":
