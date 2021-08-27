@@ -6,14 +6,15 @@
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 const backup = require("discord-backup");
+const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "backup",
                 aliases: ["bc"],
-                memberPerms: ["MANAGE_GUILD"],
-                botPerms: ["ADMINISTRATOR"],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                botPerms: [Permissions.FLAGS.ADMINISTRATOR],
                 requirements: {
                     subcommand: true,
                     guildOnly: true,
