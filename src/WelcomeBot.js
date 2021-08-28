@@ -79,32 +79,7 @@ class WelcomeBot extends Client {
             enableLive: true,
         });
         this.addDbFuncs();
-    }
-
-    async onReady() {
-        const presence = require("./functions/presence");
-        const serverCount = require("./functions/serverCount");
-        await require("./loaders/Locale.js")(this);
-        if (this.config.dashboard.enabled) this.dashboard.load(this);
-        else this.logger.log("Dashboard not enabled", "debug");
-        this.loadCommands(__dirname + "/commands");
-        presence(this);
-        if (process.env.NODE_ENV === "production") serverCount(this);
-        // 1 * 60 * (1 second)
-        // Update presence every 1 minute
-        setInterval(() => presence(this), 1 * 60 * 1000);
-        // Update server count every 25 minutes if environment is in PRODUCTION
-        if (process.env.NODE_ENV === "production")
-            setInterval(() => serverCount(this), 25 * 60 * 1000);
-        dbAuditor(this);
-        //Run dbAuditor every 3 hours
-        setInterval(() => {
-            dbAuditor(this);
-        }, 3 * 60 * 60 * 1000);
-        require("./functions/versionSender")(this);
-        if (process.env.NODE_ENV !== "production")
-            require("./helpers/updateDocs")(this);
-        this.logger.log(`Welcome-Bot v${this.package.version} started!`);
+        this.loadEvents(__dirname + "/events");
     }
 
     /*loadCommand(commandPath, commandName) {
@@ -120,6 +95,24 @@ class WelcomeBot extends Client {
             this.commands.disabled.set(command.name, command);
         }
         return command;
+    }
+
+    loadEvents(eventsFolder) {
+        const eventFiles = fs
+            .readdirSync(eventsFolder)
+            .filter((file) => file.endsWith(".js"));
+        for (const file of eventFiles) {
+            const event = require(`./events/${file}`);
+            if (event.once) {
+                client.once(event.name, (...args) =>
+                    event.execute(client, ...args)
+                );
+            } else {
+                client.on(event.name, (...args) =>
+                    event.execute(client, ...args)
+                );
+            }
+        }
     }
 
     loadCommands(commandFolder) {
