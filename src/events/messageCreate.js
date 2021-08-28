@@ -15,7 +15,7 @@ module.exports = {
         if (!client.application?.owner) await client.application?.fetch();
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            guildDB = await getGuild(message.guild.id);
+            guildDB = await client.guildDbFuncs.getGuild(message.guild.id);
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
