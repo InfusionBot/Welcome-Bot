@@ -4,12 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
-const {
-    Client,
-    Collection,
-    Intents,
-    Options,
-} = require("discord.js");
+const { Client, Collection, Intents, Options } = require("discord.js");
 const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
