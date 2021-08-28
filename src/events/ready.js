@@ -12,9 +12,9 @@ module.exports = {
             client.logger.log(
                 `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
             );
-        const presence = require("./functions/presence");
-        const serverCount = require("./functions/serverCount");
-        await require("./loaders/Locale.js")(this);
+        const presence = require("../functions/presence");
+        const serverCount = require("../functions/serverCount");
+        await require("../loaders/Locale.js")(this);
         if (this.config.dashboard.enabled) this.dashboard.load(this);
         else this.logger.log("Dashboard not enabled", "debug");
         this.loadCommands(__dirname + "/commands");
@@ -31,7 +31,7 @@ module.exports = {
         setInterval(() => {
             dbAuditor(this);
         }, 3 * 60 * 60 * 1000);
-        require("./functions/versionSender")(this);
+        require("../functions/versionSender")(this);
         if (process.env.NODE_ENV !== "production")
             require("./helpers/updateDocs")(this);
         this.logger.log(`Welcome-Bot v${this.package.version} started!`);

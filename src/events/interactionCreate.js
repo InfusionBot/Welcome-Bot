@@ -11,9 +11,10 @@ module.exports = {
         if (!interaction.isCommand()) return;
         if (!client.application?.owner) await client.application?.fetch();
         const { commandName: cmd } = interaction;
+        await interaction.deferReply();
         let guildDB;
         if (interaction.inGuild() && interaction.channel.type !== "DM") {
-            guildDB = await getGuild(interaction.guild.id);
+            guildDB = await client.guildDbFuncs.getGuild(interaction.guild.id);
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
