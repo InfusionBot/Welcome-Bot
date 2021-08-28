@@ -7,7 +7,7 @@ const execute = require("../functions/execute");
 module.exports = {
     name: "messageCreate",
     once: false,
-    execute(client, message) {
+    async execute(client, message) {
         if (message.author.bot) return;
         if (client.debug && client.debugLevel > 0)
             client.logger.log("message event triggered", "debug");

@@ -7,7 +7,7 @@ const { Embed } = require("../classes");
 module.exports = {
     name: "interactionCreate",
     once: false,
-    execute(client, interaction) {
+    async execute(client, interaction) {
         if (!interaction.isCommand()) return;
         if (!client.application?.owner) await client.application?.fetch();
         const { commandName: cmd } = interaction;
