@@ -108,9 +108,7 @@ class WelcomeBot extends Client {
                     event.execute(this, ...args)
                 );
             } else {
-                this.on(event.name, (...args) =>
-                    event.execute(this, ...args)
-                );
+                this.on(event.name, (...args) => event.execute(this, ...args));
             }
         }
     }
