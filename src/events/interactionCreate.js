@@ -9,9 +9,6 @@ module.exports = {
     once: false,
     execute(client, interaction) {
         if (!interaction.isCommand()) return;
-        const t = interaction.inGuild()
-            ? await getT(interaction.guild.id)
-            : client.i18next.getFixedT("en-US");
         if (!client.application?.owner) await client.application?.fetch();
         const { commandName: cmd } = interaction;
         let guildDB;
@@ -20,6 +17,7 @@ module.exports = {
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
+        const t = client.i18next.getFixedT(guildDB.lang ?? "en-US");
         const userDB = await client.userDbFuncs.getUser(
             interaction.member.user.id
         );
