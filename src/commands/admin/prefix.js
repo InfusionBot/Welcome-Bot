@@ -45,7 +45,7 @@ module.exports = class CMD extends Command {
                         "Custom prefix has been set to `" +
                             args.join(" ").replace(`${args[0]} `, "").trim() +
                             "`\nYou can still use the default prefix (" +
-                            message.client.defaultPrefix +
+                            this.client.config.defaultPrefix +
                             ")."
                     );
                 } else {

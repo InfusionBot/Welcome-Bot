@@ -27,10 +27,10 @@ module.exports = class CMD extends Command {
             color: "green",
             timestamp: true,
             footer: "Official Website of Welcome-Bot",
-        }).setDesc(`Here's it: ${message.client.site}`);
+        }).setDesc(`Here's it: ${this.client.config.site}`);
         const button = new MessageButton()
             .setLabel("Website")
-            .setURL(message.client.site)
+            .setURL(this.client.config.site)
             .setStyle("LINK");
         const row = new MessageActionRow().addComponents(button);
         message.channel.send({

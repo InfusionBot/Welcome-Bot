@@ -27,6 +27,7 @@ module.exports = {
         enabled: process.env.SESS_SECRET ?? null ? true : false,
         logs: "855331801635749888",
     },
+    site: "https://welcome-bot.github.io/",
     invite: (client) => {
         return client.generateInvite({
             scopes: ["bot", "applications.commands"],

@@ -11,7 +11,7 @@ module.exports = async (message, guildDB) => {
     let userDB = await client.userDbFuncs.getUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        escapeRegex(client.defaultPrefix.toLowerCase()),
+        escapeRegex(client.config.defaultPrefix.toLowerCase()),
         escapeRegex(guildDB.prefix.toLowerCase()),
     ];
     const prefixRegex = new RegExp(
