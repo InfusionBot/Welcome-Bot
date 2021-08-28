@@ -11,13 +11,9 @@ const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
 });
 
-const greetUser = require("./functions/greetUser");
-const sayGoodBye = require("./functions/sayGoodBye");
 const execute = require("./functions/execute");
 
 require("./db/connection");
-const addGuild = require("./db/functions/guild/addGuild");
-const removeGuild = require("./db/functions/guild/removeGuild");
 const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
 
@@ -159,7 +155,7 @@ client.on("rateLimit", (info) => {
 
 client.on("guildMemberAdd", async (member) => {
     // When a new member joins
-    greetUser(member);
+    require("./functions/greetUser")(member);
     const guildDB = await getGuild(member.guild.id);
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (guildDB.plugins.autorole.enabled) {
@@ -171,13 +167,13 @@ client.on("guildMemberAdd", async (member) => {
 
 client.on("guildMemberRemove", (member) => {
     // When a member leaves or is kicked or is banned
-    sayGoodBye(member);
+    require("./functions/sayGoodBye")(member);
 });
 
 client.on("guildCreate", (guild) => {
     const lang = guild.preferredLocale || "en-US";
     //Bot has been invited to a new guild
-    addGuild(guild.id, lang);
+    client.guildDbFuncs.addGuild(guild.id, lang);
     if (guild.systemChannelID) {
         guild.channels.cache
             .get(guild.systemChannelID)
@@ -204,7 +200,7 @@ client.on("guildCreate", (guild) => {
 
 client.on("guildDelete", (guild) => {
     //Bot has been kicked or banned in a guild
-    removeGuild(guild.id);
+    client.guildDbFuncs.removeGuild(guild.id);
     embed = new Embed({ color: "error", timestamp: true })
         .setTitle(`:x: Removed from "${guild.name}"`)
         .setDescription(`${guild.id}`)

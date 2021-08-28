@@ -74,7 +74,7 @@ module.exports = class CMD extends Command {
                                 filter: (m) =>
                                     m.author.id === message.author.id &&
                                     ["confirm", "cancel"].includes(m.content),
-                                time: 60000,
+                                time: 60000, //60 seconds
                                 max: 1,
                             });
                         collector.on("collect", (m) => {
@@ -84,7 +84,7 @@ module.exports = class CMD extends Command {
                                 backup
                                     .load(backupId, message.guild)
                                     .then(() => {
-                                        return message.author.send(
+                                        return message.channel.send(
                                             t("cmds:backup.success")
                                         );
                                     })
@@ -94,8 +94,8 @@ module.exports = class CMD extends Command {
                                                 t("cmds:backup.invalidId")
                                             );
                                         else
-                                            return message.author.send(
-                                                t("errors:generic")
+                                            return message.channel.send(
+                                                `${t("errors:generic")}\n${err}`
                                             );
                                     });
                             } else {

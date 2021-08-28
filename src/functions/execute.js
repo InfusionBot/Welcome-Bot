@@ -91,15 +91,7 @@ module.exports = async (message, guildDB) => {
         ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms) {
-                return message.reply(
-                    `${t("errors:iDontHavePermShort")}\nType \`${
-                        guildDB.prefix
-                    }help ${
-                        this.name
-                    }\` to get list of permissions required by this command.\nDon't know what you have given already? Type \`${
-                        guildDB.prefix
-                    }botperms\` in this channel itself.`
-                );
+                return message.reply(t("errors:iDontHavePermShort"));
             }
             for (var i = 0; i < command.botPerms.length; i++) {
                 if (!botPerms.has(command.botPerms[i])) {
