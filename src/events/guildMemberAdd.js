@@ -6,7 +6,7 @@
 module.exports = {
     name: "guildMemberAdd",
     once: false,
-    execute(client, member) {
+    async execute(client, member) {
         // When a new member joins
         require("./functions/greetUser")(member);
         const guildDB = await client.guildDbFuncs.getGuild(member.guild.id);
