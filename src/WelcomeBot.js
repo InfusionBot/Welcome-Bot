@@ -105,11 +105,11 @@ class WelcomeBot extends Client {
             const event = require(`./events/${file}`);
             if (event.once) {
                 this.once(event.name, (...args) =>
-                    event.execute(this, ...args);
+                    event.execute(this, ...args)
                 );
             } else {
                 this.on(event.name, (...args) =>
-                    event.execute(this, ...args);
+                    event.execute(this, ...args)
                 );
             }
         }
