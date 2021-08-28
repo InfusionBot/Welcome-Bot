@@ -14,13 +14,11 @@ const dbAuditor = require("./db/functions/dbAuditor");
 
 class WelcomeBot extends Client {
     constructor(opts) {
-        //https://discord.js.org/#/docs/main/master/class/Intents?scrollTo=s-FLAGS
         super({
             intents: [
                 Intents.FLAGS.GUILDS,
                 Intents.FLAGS.GUILD_MEMBERS,
-                Intents.FLAGS.GUILD_BANS,
-                Intents.FLAGS.GUILD_WEBHOOKS,
+                //Intents.FLAGS.GUILD_BANS,
                 Intents.FLAGS.GUILD_MESSAGES,
                 Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
                 Intents.FLAGS.DIRECT_MESSAGES,
@@ -32,9 +30,6 @@ class WelcomeBot extends Client {
                 MessageManager: 200,
             }),
             partials: ["CHANNEL"],
-            //messageCacheMaxSize: 100,
-            //messageCacheLifetime: 60 * 24 * 7, //Message older than 7 days are considered removable
-            //messageSweepInterval: 60 * 24 * 14, //Every 14 days, remove messages from the cache that are older than the message cache lifetime
         });
         this.username = "Welcome-Bot";
         this.commands = {
@@ -52,13 +47,12 @@ class WelcomeBot extends Client {
         this.customEmojis = require("./data/customEmojis.json");
         this.languages = require("./locales/languages.json");
         this.allPerms = require("./data/allPerms");
-        this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
+        this.wait = util.promisify(setTimeout); // await client.wait(1000) - Wait 1 second
         this.package = packageJson;
         this.config = config;
-        this.botGuildId = config.botGuildId;
-        this.ownerIDs = config.ownerIDs;
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
+        if (!this.debug) this.debugLevel = -1;
         const ownersTags = [];
         (async (client) => {
             for (let i = 0; i < client.config.ownerIds.length; i++) {
@@ -120,7 +114,7 @@ class WelcomeBot extends Client {
 
     setCmd(CMD) {
         const command = new CMD(this);
-        if (!command.disabled) {
+        if (!command?.disabled) {
             this.commands.enabled.set(command.name, command);
         } else {
             this.commands.disabled.set(command.name, command);
@@ -129,7 +123,7 @@ class WelcomeBot extends Client {
     }
 
     loadCommands(commandFolder) {
-        if (this.debug && this.debugLevel > 1)
+        if (this.debugLevel > 1)
             this.logger.log("Loading commands", "debug", ["CORE", "CMDS"]);
         const commandFolders = fs.readdirSync(commandFolder);
 
@@ -143,7 +137,6 @@ class WelcomeBot extends Client {
                 } catch (e) {
                     this.logger.log(`Error occurred when loading ${file}`);
                     console.error(e);
-                    process.exit();
                 }
             }*/
             const {
@@ -161,7 +154,7 @@ class WelcomeBot extends Client {
             if (metadata.name.indexOf("Owner") === -1)
                 this.categories.push(metadata);
         }
-        if (this.debug && this.debugLevel > 1)
+        if (this.debugLevel > 1)
             this.logger.log("Finished loading commands", "debug", [
                 "CORE",
                 "CMDS",
