@@ -128,5 +128,4 @@ client.player
         }
     });
 
-// Login
 client.login(process.env.DISCORD_TOKEN);
