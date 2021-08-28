@@ -3,7 +3,6 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Permissions } = require("discord.js");
 const beautifyPerms = require("../../functions/beautifyPerms");
 const { Embed, Command } = require("../../classes");
 const { Pagination } = require("djs-pagination-buttons");
@@ -29,7 +28,6 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB }, t) {
         const commands = this.client.commands.enabled;
         const { categories } = this.client;
-        const page = 0;
         const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
 
@@ -60,7 +58,6 @@ module.exports = class CMD extends Command {
                     `${cat.emoji} ${t("cmds:help.in_cat")}`,
                     `\`\`\`\n${commandsCat.join("\n")}\n\`\`\``
                 );
-                pages[p].setFooter(`${t("misc:page")} ${p}`);
             });
             pages[0].setDescription(t("cmds:help.all"));
             pages[0].addField("No. of Commands", `${commands.size}`);

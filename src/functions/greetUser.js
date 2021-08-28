@@ -5,7 +5,7 @@
  */
 const getGuild = require("../db/functions/guild/getGuild");
 const { nth } = require("../helpers/Util.js");
-const { Embed } = require("../classes");
+//const { Embed } = require("../classes");
 const { MessageAttachment } = require("discord.js");
 const { resolve } = require("path");
 const Canvas = require("canvas");

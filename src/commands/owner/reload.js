@@ -25,7 +25,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }) {
+    execute({ message, args }) {
         const commandName = args[0].toLowerCase();
         const command =
             message.client.commands.enabled.get(commandName) ||

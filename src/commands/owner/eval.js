@@ -4,11 +4,6 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 //eslint-disable no-unused-vars
-const fs = require("fs");
-const versionSender = require("../../functions/versionSender.js");
-const presence = require("../../functions/presence.js");
-const serverCount = require("../../functions/serverCount.js");
-const { inspect } = require("util");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -23,7 +18,7 @@ module.exports = class CMD extends Command {
                 },
                 usage: "[statement]",
                 disabled: false,
-                cooldown: 20,
+                cooldown: 10,
                 category: "Owner Only",
             },
             client
@@ -31,6 +26,10 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message, args, guildDB, userDB }, t) {
+        const versionSender = require("../../functions/versionSender.js");
+        const presence = require("../../functions/presence.js");
+        const serverCount = require("../../functions/serverCount.js");
+        const { inspect } = require("util");
         const { client } = this;
         const content = args.join(" ");
         const embed = new Embed({ color: "success" }).addField(

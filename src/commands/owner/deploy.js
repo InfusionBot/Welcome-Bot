@@ -17,7 +17,7 @@ module.exports = class CMD extends Command {
                     ownerOnly: true,
                 },
                 disabled: false,
-                cooldown: 10,
+                cooldown: 20,
                 category: "Owner Only",
             },
             client
