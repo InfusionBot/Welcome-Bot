@@ -8,11 +8,8 @@ module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
-        if (client.debug && client.debugLevel > 0)
+        if (client.debugLevel > 0)
             client.logger.log("messageCreate event", "debug");
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
-        if (!client.application?.owner) await client.application?.fetch();
-        let guildDB;
         if (message.guild && message.channel.type !== "DM") {
             guildDB = await client.guildDbFuncs.getGuild(message.guild.id);
         } else {
@@ -24,6 +21,9 @@ module.exports = {
         )
             message.crosspost().catch(() => {});
         if (message.author.bot) return;
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
+        if (!client.application?.owner) await client.application?.fetch();
+        let guildDB;
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
         if (client.debug && client.debugLevel > 0)
