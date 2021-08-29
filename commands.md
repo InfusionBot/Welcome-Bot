@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **80 commands** in **8 categories**!
+Welcome-Bot contains more than **90 commands** in **8 categories**!
 
 ### **Usage Key!**
 
@@ -16,6 +16,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 
 # Table of contents
 
+- [Administration](#administration)
 - [Anime](#anime)
 - [Core](#core)
 - [Economy](#economy)
@@ -23,9 +24,164 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - [General](#general)
 - [Moderation](#moderation)
 - [Music](#music)
-- [Setup](#setup)
 
 
+
+## Administration (11 commands)
+
+### `autopublish`
+
+##### Subcommands:
+
+- `disable` - Disable autopublish
+- `enable` - Enable autopublish
+
+##### Cmd info
+
+- Description: Manage autopublish settings
+- Usage: w/autopublish (subcommand)
+- Aliases: `ap`
+- Cooldown: 10
+
+### `autorole`
+
+##### Subcommands:
+
+- `disable` - Disable autorole
+- `enable` - Enable autorole
+- `set [role id]` - Set autorole
+
+##### Cmd info
+
+- Description: Manage autorole settings
+- Usage: w/autorole (subcommand)
+- Aliases: `ar`
+- Cooldown: 10
+
+### `config`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: config.cmdDesc
+- Usage: w/config 
+- Aliases: `cf`, `configuration`, `conf`
+- Cooldown: 10
+
+### `disable`
+
+##### Subcommands:
+
+- `display` - Show current settings
+
+##### Cmd info
+
+- Description: Disable commands.
+- Usage: w/disable (command name / subcommand)
+- Aliases: None
+- Cooldown: 10
+
+### `enable`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Enable commands.
+- Usage: w/enable [command name]
+- Aliases: None
+- Cooldown: 10
+
+### `follow`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get news and version updates to this bot sent to a specific channel.
+- Usage: w/follow [channel / channel id]
+- Aliases: `getnews`
+- Cooldown: 10
+
+### `goodbye`
+
+##### Subcommands:
+
+- `disable` - Disable goodbye logs
+- `enable` - Enable goodbye logs
+- `message` - Set goodbye message
+- `channel [#channel]` - Set goodbye channel
+
+##### Cmd info
+
+- Description: Manage goodbye logs settings
+- Usage: w/goodbye (subcommand)
+- Aliases: `goodbyelogs`
+- Cooldown: 10
+
+### `lang`
+
+##### Subcommands:
+
+- `list` - List of all languages available
+- `set` - Set language
+
+##### Cmd info
+
+- Description: Change language
+- Usage: w/lang (subcommand) (lang)
+- Aliases: `language`, `changelang`, `getlang`
+- Cooldown: 10
+
+### `modlogs`
+
+##### Subcommands:
+
+- `set [#channel]` - Set ModLogs channel
+
+##### Cmd info
+
+- Description: Manage ModLogs settings
+- Usage: w/modlogs (subcommand)
+- Aliases: `modlog`
+- Cooldown: 10
+
+### `prefix`
+
+##### Subcommands:
+
+- `set [prefix]` - Set Custom prefix
+- `reset` - Reset Custom prefix
+
+##### Cmd info
+
+- Description: Manage prefix for this server
+- Usage: w/prefix (subcommand)
+- Aliases: `getprefix`
+- Cooldown: 10
+
+### `welcome`
+
+##### Subcommands:
+
+- `disable` - Disable welcome logs
+- `enable` - Enable welcome logs
+- `message` - Set welcome message
+- `channel [#channel]` - Set welcome channel
+
+##### Cmd info
+
+- Description: Manage welcome logs settings
+- Usage: w/welcome (subcommand)
+- Aliases: `welcomelogs`
+- Cooldown: 10
 
 ## Anime (5 commands)
 
@@ -252,7 +408,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (13 commands)
+## Economy (14 commands)
 
 ### `balance`
 
@@ -340,7 +496,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 
 ##### Cmd info
 
-- Description: Shows your inventory
+- Description: Shows yours or some one else's inventory
 - Usage: w/inventory 
 - Aliases: `inv`
 - Cooldown: 10
@@ -355,7 +511,7 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 
 - Description: Shows the leaderboard
 - Usage: w/leaderboard 
-- Aliases: `top-10`, `top10`
+- Aliases: `top-10`, `rich`, `richest`, `top10`
 - Cooldown: 10
 
 ### `profile`
@@ -396,6 +552,19 @@ Welcome-Bot contains more than **80 commands** in **8 categories**!
 - Usage: w/setbio [bio]
 - Aliases: `bio`
 - Cooldown: 10
+
+### `shop`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shop items
+- Usage: w/shop 
+- Aliases: `item`, `items`
+- Cooldown: 5
 
 ### `use`
 
@@ -982,146 +1151,4 @@ You must join a voice channel before using this command.
 - Description: Adjust the volume of the music
 - Usage: w/volume (0-200)
 - Aliases: `sound-level`, `soundlevel`
-- Cooldown: 10
-
-## Setup (10 commands)
-
-### `autorole`
-
-##### Subcommands:
-
-- `disable` - Disable autorole
-- `enable` - Enable autorole
-- `set [role id]` - Set autorole
-
-##### Cmd info
-
-- Description: Manage autorole settings
-- Usage: w/autorole (subcommand)
-- Aliases: `ar`
-- Cooldown: 10
-
-### `config`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: config.cmdDesc
-- Usage: w/config 
-- Aliases: `cf`, `configuration`, `conf`
-- Cooldown: 10
-
-### `disable`
-
-##### Subcommands:
-
-- `display` - Show current settings
-
-##### Cmd info
-
-- Description: Disable commands.
-- Usage: w/disable (command name / subcommand)
-- Aliases: None
-- Cooldown: 10
-
-### `enable`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Enable commands.
-- Usage: w/enable [command name]
-- Aliases: None
-- Cooldown: 10
-
-### `follow`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Get news and version updates to this bot sent to a specific channel.
-- Usage: w/follow [channel / channel id]
-- Aliases: `getnews`
-- Cooldown: 10
-
-### `goodbye`
-
-##### Subcommands:
-
-- `disable` - Disable goodbye logs
-- `enable` - Enable goodbye logs
-- `message` - Set goodbye message
-- `channel [#channel]` - Set goodbye channel
-
-##### Cmd info
-
-- Description: Manage goodbye logs settings
-- Usage: w/goodbye (subcommand)
-- Aliases: `goodbyelogs`
-- Cooldown: 10
-
-### `lang`
-
-##### Subcommands:
-
-- `list` - List of all languages available
-- `set` - Set language
-
-##### Cmd info
-
-- Description: Change language
-- Usage: w/lang (subcommand) (lang)
-- Aliases: `language`, `changelang`, `getlang`
-- Cooldown: 10
-
-### `modlogs`
-
-##### Subcommands:
-
-- `set [#channel]` - Set ModLogs channel
-
-##### Cmd info
-
-- Description: Manage ModLogs settings
-- Usage: w/modlogs (subcommand)
-- Aliases: `modlog`
-- Cooldown: 10
-
-### `prefix`
-
-##### Subcommands:
-
-- `set` - Set Custom prefix
-- `reset` - Reset Custom prefix
-
-##### Cmd info
-
-- Description: Manage prefix for this server
-- Usage: w/prefix (subcommand)
-- Aliases: `getprefix`
-- Cooldown: 10
-
-### `welcome`
-
-##### Subcommands:
-
-- `disable` - Disable welcome logs
-- `enable` - Enable welcome logs
-- `message` - Set welcome message
-- `channel [#channel]` - Set welcome channel
-
-##### Cmd info
-
-- Description: Manage welcome logs settings
-- Usage: w/welcome (subcommand)
-- Aliases: `welcomelogs`
 - Cooldown: 10
