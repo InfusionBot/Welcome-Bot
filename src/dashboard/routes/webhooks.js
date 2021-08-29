@@ -96,7 +96,7 @@ router.post(
             console.log("No votesChannelId in config");
         }
         const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
-        vUser.send(t("misc:thanks.vote", { site: "top.gg" })).catch(() => {});
+        vUser.send(t("misc:thanks.vote", { site: "top.gg" })).catch(() => {}).catch(() => {});
         res.sendStatus(200);
         res.end();
     })
