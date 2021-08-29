@@ -8,6 +8,6 @@ module.exports = {
     once: false,
     execute(client, member) {
         // When a member leaves or is kicked or is banned
-        require("./functions/sayGoodBye")(member);
+        require("../functions/sayGoodBye")(member);
     },
 };

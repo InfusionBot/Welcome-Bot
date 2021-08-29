@@ -8,7 +8,7 @@ module.exports = {
     once: false,
     async execute(client, member) {
         // When a new member joins
-        require("./functions/greetUser")(member);
+        require("../functions/greetUser")(member);
         const guildDB = await client.guildDbFuncs.getGuild(member.guild.id);
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (guildDB.plugins.autorole.enabled) {
