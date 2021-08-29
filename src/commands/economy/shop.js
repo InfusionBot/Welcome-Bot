@@ -25,23 +25,25 @@ module.exports = class CMD extends Command {
             client
         );
         this.timeout = 200000; //20 secs timeout
-        const pages = [];
-        const { shop } = this.client;
-        shop.each((item) => {
-            const p = pages.length;
-            const { name } = item;
-            pages[p] = new Embed({ color: "blue", timestamp: true })
-                .setDesc(`${t("misc:shop")}`)
-                .addField(
-                    `• ${t(`shop:${name}.name`)}`,
-                    `IDs: ${item.ids.join(", ")}\n${t(`shop:${name}.desc`)}`
-                );
-        });
-        this.pages = pages;
+        this.getPages = (t) => {
+            const pages = [];
+            const { shop } = this.client;
+            shop.each((item) => {
+                const p = pages.length;
+                const { name } = item;
+                pages[p] = new Embed({ color: "blue", timestamp: true })
+                    .setDesc(`${t("misc:shop")}`)
+                    .addField(
+                        `• ${t(`shop:${name}.name`)}`,
+                        `IDs: ${item.ids.join(", ")}\n${t(`shop:${name}.desc`)}`
+                    );
+            });
+        };
     }
 
     execute({ message, args }, t) {
-        const { timeout, pages } = this;
+        const { timeout } = this;
+        const pages = this.getPages(t);
         const pagination = new Pagination(this.client, {
             buttons: {
                 page: `${t("misc:page")} {{page}} / {{total_pages}}`,
@@ -54,7 +56,8 @@ module.exports = class CMD extends Command {
     }
 
     async run({ interaction }, t) {
-        const { timeout, pages } = this;
+        const { timeout } = this;
+        const pages = this.getPages(t);
         const pagination = new Pagination(this.client, {
             buttons: {
                 page: `${t("misc:page")} {{page}} / {{total_pages}}`,
