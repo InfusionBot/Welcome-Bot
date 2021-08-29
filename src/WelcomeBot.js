@@ -30,13 +30,13 @@ class WelcomeBot extends Client {
             }),
             partials: ["CHANNEL"],
         });
+        this.logger = new Logger();
         this.username = "Welcome-Bot";
         this.commands = {
             enabled: new Collection(),
             disabled: new Collection(),
             cooldowns: new Collection(),
         };
-        this.logger = new Logger();
         this.guildSchema = require("./schema/guildSchema");
         //this.versionSchema = require("./schema/versionSchema");
         this.userSchema = require("./schema/userSchema");
