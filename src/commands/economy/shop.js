@@ -38,6 +38,7 @@ module.exports = class CMD extends Command {
                         `IDs: ${item.ids.join(", ")}\n${t(`shop:${name}.desc`)}`
                     );
             });
+            return pages;
         };
     }
 
