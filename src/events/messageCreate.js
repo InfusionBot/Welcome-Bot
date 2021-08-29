@@ -8,9 +8,8 @@ module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
-        if (message.author.bot) return;
         if (client.debug && client.debugLevel > 0)
-            client.logger.log("message event triggered", "debug");
+            client.logger.log("messageCreate event", "debug");
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
         if (!client.application?.owner) await client.application?.fetch();
         let guildDB;
@@ -19,13 +18,14 @@ module.exports = {
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
-        if (message.channel?.partial) await message.channel.fetch();
-        if (message?.partial) await message.fetch();
         if (
             message.channel.type === "GUILD_NEWS" &&
             guildDB.plugins.autopublish
         )
             message.crosspost().catch(() => {});
+        if (message.author.bot) return;
+        if (message.channel?.partial) await message.channel.fetch();
+        if (message?.partial) await message.fetch();
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");
         try {
