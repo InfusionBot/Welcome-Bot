@@ -34,7 +34,8 @@ module.exports = class CMD extends Command {
         }
         let userDB2;
         try {
-            if (message.author.id !== user.id) userDB2 = await client.userDbFuncs.getUser(user.id);
+            if (message.author.id !== user.id)
+                userDB2 = await client.userDbFuncs.getUser(user.id);
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
