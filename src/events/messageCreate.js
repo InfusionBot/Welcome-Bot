@@ -54,7 +54,7 @@ module.exports = {
             message.channel.send(reply);
         } else {
             message.channel.messages
-                .fetch(message.reference.messageID)
+                .fetch(message.reference.messageId)
                 .then((msg) => {
                     if (msg.author.id != client.user.id) {
                         message.channel.sendTyping();
