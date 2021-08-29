@@ -34,9 +34,7 @@ module.exports = class CMD extends Command {
                 .setDesc(`${t("misc:shop")}`)
                 .addField(
                     `• ${t(`shop:${name}.name`)}`,
-                    `IDs: ${item.ids.join(", ")}\n${t(
-                        `shop:${name}.desc`
-                    )}`
+                    `IDs: ${item.ids.join(", ")}\n${t(`shop:${name}.desc`)}`
                 );
         });
         this.pages = pages;
