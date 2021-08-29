@@ -26,7 +26,9 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, userDB }, t) {
-        const user = args[0] ? await this.getUserFromIdOrMention(args[0]) : message.author;
+        const user = args[0]
+            ? await this.getUserFromIdOrMention(args[0])
+            : message.author;
         if (!user || user.bot) {
             return message.reply(t("errors:invalidUser"));
         }
@@ -49,11 +51,13 @@ module.exports = class CMD extends Command {
         itemsThatGuyHas.forEach((item) => {
             const p = pages.length;
             pages[p] = new Embed({ color: "blue", timestamp: true })
-            .setDesc(`${t("misc:inventory")}`)
-            .addField(
-                `• ${userDB2.inventory[item]} ${t(`shop:${item.toLowerCase()}.name`)}`,
-                `${t(`shop:${item.toLowerCase()}.desc`)}`
-            );
+                .setDesc(`${t("misc:inventory")}`)
+                .addField(
+                    `• ${userDB2.inventory[item]} ${t(
+                        `shop:${item.toLowerCase()}.name`
+                    )}`,
+                    `${t(`shop:${item.toLowerCase()}.desc`)}`
+                );
         });
         const pagination = new Pagination(this.client, {
             buttons: {

@@ -24,7 +24,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
                     "permissions",
                     "misc",
                     "dashboard",
-                    "shop"
+                    "shop",
                 ],
                 preload: dir,
                 fallbackLng: "en-US",

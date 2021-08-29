@@ -1,14 +1,14 @@
 [
-    {
-        "name": "banknote",
-        "ids": ["bn"],
-        "sale": false,
-        "price": 0
-    },
-    {
-        "name": "topmedal",
-        "ids": ["medal"],
-        "sale": true,
-        "price": 10000000
-    }
+  {
+    "name": "banknote",
+    "ids": ["bn"],
+    "sale": false,
+    "price": 0
+  },
+  {
+    "name": "topmedal",
+    "ids": ["medal"],
+    "sale": true,
+    "price": 10000000
+  }
 ]

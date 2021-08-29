@@ -25,7 +25,9 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
-        const user = args[0] ? await this.getUserFromIdOrMention(args[0]) : message.author;
+        const user = args[0]
+            ? await this.getUserFromIdOrMention(args[0])
+            : message.author;
 
         if (!user || user.bot) {
             message.reply(t("errors:invalidUser"));

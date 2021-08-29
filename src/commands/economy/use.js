@@ -28,9 +28,12 @@ module.exports = class CMD extends Command {
     async execute({ message, args, userDB }, t) {
         const items = Object.keys(userDB.inventory);
         args[0] = args[0].toLowerCase();
-        if (!this.client.shop.find(i => i.ids.includes(args[0])) || !items.includes(args[0]))
+        if (
+            !this.client.shop.find((i) => i.ids.includes(args[0])) ||
+            !items.includes(args[0])
+        )
             return message.reply(t("cmds:use.notAnItem"));
-        args[0] = this.client.shop.find(i => i.ids.includes(args[0])).name;
+        args[0] = this.client.shop.find((i) => i.ids.includes(args[0])).name;
         const itemsThatGuyHas = items.filter(
             (i) => parseInt(userDB.inventory[i]) > 0
         );

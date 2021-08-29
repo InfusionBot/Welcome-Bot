@@ -34,11 +34,13 @@ module.exports = class CMD extends Command {
             const p = pages.length;
             const name = item.ids[0].toLowerCase();
             pages[p] = new Embed({ color: "blue", timestamp: true })
-            .setDesc(`${t("misc:shop")}`)
-            .addField(
-                `• ${t(`shop:${name}.name`)}`,
-                `IDs: ${item.ids.join(", ")}\n${t(`shop:${item.toLowerCase()}.desc`)}`
-            );
+                .setDesc(`${t("misc:shop")}`)
+                .addField(
+                    `• ${t(`shop:${name}.name`)}`,
+                    `IDs: ${item.ids.join(", ")}\n${t(
+                        `shop:${item.toLowerCase()}.desc`
+                    )}`
+                );
         });
         const pagination = new Pagination(this.client, {
             buttons: {
@@ -59,11 +61,13 @@ module.exports = class CMD extends Command {
             const p = pages.length;
             const name = item.ids[0].toLowerCase();
             pages[p] = new Embed({ color: "blue", timestamp: true })
-            .setDesc(`${t("misc:shop")}`)
-            .addField(
-                `• ${t(`shop:${name}.name`)}`,
-                `IDs: ${item.ids.join(", ")}\n${t(`shop:${item.toLowerCase()}.desc`)}`
-            );
+                .setDesc(`${t("misc:shop")}`)
+                .addField(
+                    `• ${t(`shop:${name}.name`)}`,
+                    `IDs: ${item.ids.join(", ")}\n${t(
+                        `shop:${item.toLowerCase()}.desc`
+                    )}`
+                );
         });
         const pagination = new Pagination(this.client, {
             buttons: {
