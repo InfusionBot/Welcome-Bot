@@ -34,7 +34,7 @@ module.exports = {
         }, 3 * 60 * 60 * 1000);
         require("../functions/versionSender")(client);
         if (process.env.NODE_ENV !== "production")
-            require("./helpers/updateDocs")(client);
+            require("../helpers/updateDocs")(client);
         client.logger.log(`Welcome-Bot v${client.package.version} started!`);
     },
 };
