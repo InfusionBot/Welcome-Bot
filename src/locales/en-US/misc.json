@@ -42,9 +42,6 @@
   "cached_users": "Cached Users",
   "ping": "Ping",
   "not_set": "Not set",
-  "items": {
-    "banknote": "banknote(s)"
-  },
   "latency": "Roundtrip latency",
   "verificationLevel": "Verification Level",
   "usageKey": "**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.",
@@ -67,5 +64,6 @@
   "welcome": "Welcome!",
   "sname": "**Server name**",
   "size": "**Size**",
-  "creat": "**Created at**"
+  "creat": "**Created at**",
+  "shop": "Shop items"
 }

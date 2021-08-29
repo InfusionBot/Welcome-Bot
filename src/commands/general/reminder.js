@@ -45,11 +45,11 @@ module.exports = class CMD extends Command {
         const time = require("ms")(args[0]);
         const text = args.slice(1).join(" ") ?? "No text provided";
         const { channel, author } = message;
-        setTimeout(() => {
+        this.client.wait(time).then(() => {
             channel.send(
                 t("cmds:reminder.remind", { user: `${author}`, text })
             );
-        }, time);
+        });
         message.reply(t("cmds:reminder.set"));
     }
 
@@ -59,9 +59,9 @@ module.exports = class CMD extends Command {
         const text =
             interaction.options.getString("text") ?? "No text provided";
         const { channel, user } = interaction;
-        setTimeout(() => {
+        this.client.wait(time).then(() => {
             channel.send(t("cmds:reminder.remind", { user: `${user}`, text }));
-        }, time);
+        });
         await interaction.followUp(t("cmds:reminder.set"));
     }
 };
