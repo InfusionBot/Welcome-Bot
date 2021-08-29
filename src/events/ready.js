@@ -15,26 +15,26 @@ module.exports = {
             );
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
-        await require("../loaders/Locale.js")(this);
-        if (this.config.dashboard.enabled) this.dashboard.load(this);
-        else this.logger.log("Dashboard not enabled", "debug");
-        this.loadCommands(__dirname + "/commands");
-        presence(this);
-        if (process.env.NODE_ENV === "production") serverCount(this);
+        await require("../loaders/Locale.js")(client);
+        if (client.config.dashboard.enabled) client.dashboard.load(client);
+        else client.logger.log("Dashboard not enabled", "debug");
+        client.loadCommands(__dirname + "/commands");
+        presence(client);
+        if (process.env.NODE_ENV === "production") serverCount(client);
         // 1 * 60 * (1 second)
         // Update presence every 1 minute
-        setInterval(() => presence(this), 1 * 60 * 1000);
+        setInterval(() => presence(client), 1 * 60 * 1000);
         // Update server count every 25 minutes if environment is in PRODUCTION
         if (process.env.NODE_ENV === "production")
-            setInterval(() => serverCount(this), 25 * 60 * 1000);
-        dbAuditor(this);
+            setInterval(() => serverCount(client), 25 * 60 * 1000);
+        dbAuditor(client);
         //Run dbAuditor every 3 hours
         setInterval(() => {
-            dbAuditor(this);
+            dbAuditor(client);
         }, 3 * 60 * 60 * 1000);
-        require("../functions/versionSender")(this);
+        require("../functions/versionSender")(client);
         if (process.env.NODE_ENV !== "production")
-            require("./helpers/updateDocs")(this);
-        this.logger.log(`Welcome-Bot v${this.package.version} started!`);
+            require("./helpers/updateDocs")(client);
+        client.logger.log(`Welcome-Bot v${client.package.version} started!`);
     },
 };
