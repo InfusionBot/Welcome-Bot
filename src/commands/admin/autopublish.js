@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }, t) {
+    async execute({ message, args, guildDB }, t) {
         const missingArgs = t("errors:missingArgs", {
             prefix: guildDB.prefix,
             cmd: this.name,

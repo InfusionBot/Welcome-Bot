@@ -84,7 +84,7 @@ module.exports = class CMD extends Command {
         const json = await this.fetchJson(
             `https://djsdocs.sorta.moe/v2/embed?${queryParams}`
         );
-        await interaction.editReply({
+        await interaction.followUp({
             embeds: [json],
         });
     }
