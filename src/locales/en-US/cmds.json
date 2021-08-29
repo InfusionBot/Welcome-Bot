@@ -1,4 +1,15 @@
 {
+  "autopublish": {
+    "cmdDesc": "Manage autopublish settings",
+    "usage": "(subcommand)",
+    "current": {
+      "title": "Current settings for autopublish",
+      "desc": "These are the current Autopublish settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "disabled": "Successfully disabled autorole",
+    "enabled": "Successfully enabled autorole"
+  },
   "autorole": {
     "cmdDesc": "Manage autorole settings",
     "usage": "(subcommand)",

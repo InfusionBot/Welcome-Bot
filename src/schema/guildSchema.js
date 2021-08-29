@@ -69,6 +69,10 @@ const guildSchema = new mongoose.Schema({
                 type: String,
             },
         },
+        autopublish: {
+            default: false,
+            type: Boolean,
+        },
     },
 });
 

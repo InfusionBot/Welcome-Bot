@@ -15,10 +15,6 @@ module.exports.load = (client) => {
     const store = new MongoDBStore({
         uri: process.env.MONOGO_URL,
         collection: "Sessions",
-        connectionOptions: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        },
     });
     // Catch errors
     store.on("error", (err) => {

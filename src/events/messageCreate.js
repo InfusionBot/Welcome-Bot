@@ -21,6 +21,11 @@ module.exports = {
         }
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
+        if (
+            message.channel.type === "GUILD_NEWS" &&
+            guildDB.plugins.autopublish
+        )
+            message.crosspost().catch(() => {});
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");
         try {
