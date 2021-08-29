@@ -111,8 +111,8 @@ router.get("/callback", async (req, res) => {
         );
     }
     if (user) {
-        const channel = req.client.channels.cache
-            .get(req.client.config.loginLogsChannelId)
+        const channel = await req.client.channels
+            .fetch(req.client.config.loginLogsChannelId)
             .catch(() => {});
         if (channel)
             channel.send(
