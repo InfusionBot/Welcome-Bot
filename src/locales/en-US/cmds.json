@@ -235,7 +235,7 @@
     "errorYourself": "Woah, can you donate yourself?"
   },
   "inventory": {
-    "cmdDesc": "Shows your inventory",
+    "cmdDesc": "Shows yours or some one else's inventory",
     "noItems": "You don't have anything in your inventory"
   },
   "leaderboard": {
@@ -257,6 +257,9 @@
     "cmdDesc": "Set your Welcome-Bot account's bio!",
     "usage": "[bio]",
     "success": "Successfully set bio to **{{bio}}**"
+  },
+  "shop": {
+    "cmdDesc": "Shop items"
   },
   "use": {
     "cmdDesc": "Use your items",

@@ -46,6 +46,12 @@ class WelcomeBot extends Client {
         this.customEmojis = require("./data/customEmojis.json");
         this.languages = require("./locales/languages.json");
         this.allPerms = require("./data/allPerms");
+        this.shop = new Collection();
+        const shop = require("./data/shop");
+        for (let i = 0; i < shop.length; i++) {
+            shop[i].ids.push(shop[i].name);
+            this.shop.set(shop[i].name, shop[i]);
+        }
         this.wait = util.promisify(setTimeout); // await client.wait(1000) - Wait 1 second
         this.package = packageJson;
         this.config = config;

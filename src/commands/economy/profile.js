@@ -25,24 +25,7 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB, userDB }, t) {
         moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
-        let user;
-        if (args[0]) {
-            if (args[0].startsWith("<@")) {
-                user = userFromMention(
-                    args[0] || `${message.author}`,
-                    message.client
-                );
-            }
-            if (
-                !isNaN(parseInt(args[0])) &&
-                args[0] !== message.client.user.id
-            ) {
-                user = message.client.users.cache.get(args[0]);
-                if (!user) user = await message.client.users.fetch(args[0]);
-            }
-        } else {
-            user = message.author;
-        }
+        const user = args[0] ? await this.getUserFromIdOrMention(args[0]) : message.author;
 
         if (!user || user.bot) {
             message.reply(t("errors:invalidUser"));
