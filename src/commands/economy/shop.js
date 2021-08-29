@@ -24,29 +24,31 @@ module.exports = class CMD extends Command {
             },
             client
         );
-    }
-
-    execute({ message, args }, t) {
-        const { shop } = this.client;
+        this.timeout = 200000; //20 secs timeout
         const pages = [];
-        const timeout = 200000; //20 secs timeout
+        const { shop } = this.client;
         shop.each((item) => {
             const p = pages.length;
-            const name = item.ids[0].toLowerCase();
+            const { name } = item;
             pages[p] = new Embed({ color: "blue", timestamp: true })
                 .setDesc(`${t("misc:shop")}`)
                 .addField(
                     `• ${t(`shop:${name}.name`)}`,
                     `IDs: ${item.ids.join(", ")}\n${t(
-                        `shop:${item.toLowerCase()}.desc`
+                        `shop:${name}.desc`
                     )}`
                 );
         });
+        this.pages = pages;
+    }
+
+    execute({ message, args }, t) {
+        const { timeout, pages } = this;
         const pagination = new Pagination(this.client, {
             buttons: {
                 page: `${t("misc:page")} {{page}} / {{total_pages}}`,
             },
-            timeout: timeout,
+            timeout,
         });
         pagination.setPages(pages);
         pagination.setAuthorizedUsers([message.author.id]);
@@ -54,26 +56,12 @@ module.exports = class CMD extends Command {
     }
 
     async run({ interaction }, t) {
-        const { shop } = this.client;
-        const pages = [];
-        const timeout = 200000; //20 secs timeout
-        shop.each((item) => {
-            const p = pages.length;
-            const name = item.ids[0].toLowerCase();
-            pages[p] = new Embed({ color: "blue", timestamp: true })
-                .setDesc(`${t("misc:shop")}`)
-                .addField(
-                    `• ${t(`shop:${name}.name`)}`,
-                    `IDs: ${item.ids.join(", ")}\n${t(
-                        `shop:${item.toLowerCase()}.desc`
-                    )}`
-                );
-        });
+        const { timeout, pages } = this;
         const pagination = new Pagination(this.client, {
             buttons: {
                 page: `${t("misc:page")} {{page}} / {{total_pages}}`,
             },
-            timeout: timeout,
+            timeout,
         });
         pagination.setPages(pages);
         pagination.setAuthorizedUsers([interaction.user.id]);
