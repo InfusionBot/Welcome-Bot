@@ -13,7 +13,7 @@ module.exports.load = (client) => {
     const session = require("express-session");
     const MongoDBStore = require("connect-mongodb-session")(session);
     const store = new MongoDBStore({
-        uri: process.env.MONOGO_URL,
+        uri: process.env.MONGO_URL,
         collection: "Sessions",
     });
     // Catch errors
