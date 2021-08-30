@@ -112,7 +112,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             enabled: false,
             message:
                 "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
-            channel: "new-members",
+            channel: "member-log",
         };
         guildDB.markModified("plugins.welcome");
     }
@@ -136,9 +136,26 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             enabled: false,
             message:
                 "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
-            channel: null,
+            channel: "",
         };
         guildDB.markModified("plugins.goodbye");
+    }
+    if (
+        Object.prototype.hasOwnProperty.call(data, "autoroleEnable") ||
+        Object.prototype.hasOwnProperty.call(data, "autorolePlugin")
+    ) {
+        guildDB.plugins.autorole = {
+            enabled: true,
+            role: guild.roles.cache.find((r) => r.name === data.autorole).id,
+        };
+        guildDB.markModified("plugins.autorole");
+    }
+    if (Object.prototype.hasOwnProperty.call(data, "autoroleDisable")) {
+        guildDB.plugins.autorole = {
+            enabled: false,
+            role: "0",
+        };
+        guildDB.markModified("plugins.autorole");
     }
     await guildDB.save();
     res.redirect(303, "/manage/" + guild.id);

@@ -107,7 +107,7 @@ class WelcomeBot extends Client {
             .readdirSync(eventsFolder)
             .filter((file) => file.endsWith(".js"));
         for (const file of eventFiles) {
-            const event = require(`./events/${file}`);
+            const event = require(`${eventsFolder}/${file}`);
             if (event.once) {
                 this.once(event.name, (...args) =>
                     event.execute(this, ...args)

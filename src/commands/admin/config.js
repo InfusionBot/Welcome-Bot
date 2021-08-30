@@ -30,8 +30,13 @@ module.exports = class CMD extends Command {
         const embed = new Embed()
             .setAuthor(message.guild.name, message.guild.iconURL())
             .addField(
-                `**${t("category:general")}**`,
-                `${t("misc:prefix")}: ${guildDB.prefix}`
+                `**${t("categories:general")}**`,
+                `${t("misc:prefix")}: ${guildDB.prefix}\n\n` +
+                    `${t("misc:lang")}: ${
+                        this.client.languages.find(
+                            (l) => l.name === (guildDB.lang ?? "en-US")
+                        ).aliases[0]
+                    }`
             )
             .addField(
                 `**${t("misc:plugins")}**`,
