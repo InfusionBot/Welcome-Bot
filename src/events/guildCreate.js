@@ -12,16 +12,17 @@ module.exports = {
         //Bot has been invited to a new guild
         client.db.findOrCreateGuild(guild.id, lang);
         if (guild.systemChannelId) {
-            const channel = await guild.channels.fetch(guild.systemChannelId)
+            const channel = await guild.channels.fetch(guild.systemChannelId);
             if (channel)
-                channel.send(
-                    `Thank you for choosing this bot! To get started, type \`${
-                        client.config.defaultPrefix
-                    }help\`\nJoin the support server: ${client.config.supportGuildInviteReal(
-                        client
-                    )}`
-                )
-                .catch(() => {});
+                channel
+                    .send(
+                        `Thank you for choosing this bot! To get started, type \`${
+                            client.config.defaultPrefix
+                        }help\`\nJoin the support server: ${client.config.supportGuildInviteReal(
+                            client
+                        )}`
+                    )
+                    .catch(() => {});
         }
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(`:white_check_mark: Added to "${guild.name}"`)
