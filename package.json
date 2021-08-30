@@ -1,6 +1,6 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.0-dev.6972af1",
+  "version": "2.0.0-dev",
   "changelog": [
     "**Breaking Changes**",
     "`modChannel` in db is changed to `plugins.modlogs`",
