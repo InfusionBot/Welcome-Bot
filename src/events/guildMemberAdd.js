@@ -13,7 +13,7 @@ module.exports = {
         const t = client.i18next.getFixedT(guildDB.lang ?? "en-US");
         if (guildDB.plugins.autorole.enabled) {
             member.roles
-                .add(guildDB.plugins.autorole.role, "Autorole")
+                .add(guildDB.plugins.autorole.role, "AutoRole")
                 .catch(() => {});
         }
     },

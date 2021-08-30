@@ -25,8 +25,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB }, t) {
+    execute({ message, guildDB }, t) {
         const embed = new Embed()
             .setAuthor(message.guild.name, message.guild.iconURL())
             .addField(
