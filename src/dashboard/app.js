@@ -11,15 +11,6 @@ const express = require("express");
 
 module.exports.load = (client) => {
     const session = require("express-session");
-    const MongoDBStore = require("connect-mongodb-session")(session);
-    const store = new MongoDBStore({
-        uri: process.env.MONGO_URL,
-        collection: "Sessions",
-    });
-    // Catch errors
-    store.on("error", (err) => {
-        console.log(err);
-    });
     //const csurf = require("csurf");
     //const csrf = csurf();
     if (client.debug) client.logger.log("loading dashboard");
@@ -35,11 +26,7 @@ module.exports.load = (client) => {
         .use(
             session({
                 secret: client.config.dashboard.secret,
-                cookie: {
-                    maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-                },
-                store: store,
-                resave: true,
+                resave: false,
                 saveUninitialized: false,
             })
         )
