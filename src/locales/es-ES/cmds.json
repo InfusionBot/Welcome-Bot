@@ -1,40 +1,40 @@
 {
   "cuddle": {
-    "cmdDesc": "Cuddle with a user",
-    "success": "{{author}} just cuddled to {{user}}",
-    "errorYourself": "You can't cuddle yourself."
+    "cmdDesc": "Abrazar a un usuario",
+    "success": "{{author}} ha abrazado a {{user}}",
+    "errorYourself": "No puedes abrazarte tu solo."
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
-    "success": "{{author}} has hugged {{user}}",
-    "errorYourself": "You can't hug yourself."
+    "success": "{{author}} ha abrazado a {{user}}",
+    "errorYourself": "No puedes abrazarte a ti mismo."
   },
   "kiss": {
     "cmdDesc": "Kiss a user",
-    "success": "{{author}} has kissed {{user}}",
-    "errorYourself": "You can't kiss yourself!"
+    "success": "{{author}} ha besado a {{user}}",
+    "errorYourself": "¡No puedes besarte a ti mismo!"
   },
   "pat": {
-    "cmdDesc": "Pats someone",
+    "cmdDesc": "Acaricia a alguien",
     "success": "{{author}} pats {{user}}",
-    "errorYourself": "You can't pat yourself!"
+    "errorYourself": "¡No puedes acariciarte a ti mismo!"
   },
   "slap": {
-    "cmdDesc": "Slap a user",
-    "success": "{{author}} slapped {{user}}",
-    "errorYourself": "You can't slap yourself!"
+    "cmdDesc": "Abofetear a un usuario",
+    "success": "{{author}} ha abofeteado a {{user}}",
+    "errorYourself": "¡No puedes abofetearte a ti mismo!"
   },
   "tickle": {
-    "cmdDesc": "Tickle a user",
-    "success": "{{author}} tickles {{user}}",
-    "errorYourself": "You can't tickle yourself!"
+    "cmdDesc": "Cosquillear a un usuario",
+    "success": "{{author}} cosquilló a {{user}}",
+    "errorYourself": "¡No puedes hacerte cosquillas a ti mismo!"
   },
   "waifu": {
     "cmdDesc": "Fetches a random waifu and displays it."
   },
   "botinfo": {
-    "cmdDesc": "Bot information",
-    "footer": "Information & Stats of Welcome-Bot"
+    "cmdDesc": "Información del bot",
+    "footer": "Información y estadísticas de Welcome-Bot"
   },
   "botperms": {
     "cmdDesc": "List of permissions given to bot"
@@ -69,8 +69,8 @@
     "cmdDesc": "Get your fortune by asking your question"
   },
   "coinflip": {
-    "cmdDesc": "Flip a coin.",
-    "done": "I've flipped a coin and it landed {{chosenSide}}"
+    "cmdDesc": "Voltear una moneda.",
+    "done": "He volteado una moneda y ha salido {{chosenSide}}"
   },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS",
@@ -92,7 +92,7 @@
   },
   "avatar": {
     "cmdDesc": "Get a user's avatar",
-    "profile": "Avatar of {{user}}"
+    "profile": "Avatar de {{user}}"
   },
   "hastebin": {
     "cmdDesc": "Upload your text on hastebin!",
