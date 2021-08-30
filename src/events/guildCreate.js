@@ -18,18 +18,19 @@ module.exports = {
                     .send(
                         `Thank you for choosing this bot! To get started, type \`${
                             client.config.defaultPrefix
-                        }help\`\nJoin the support server: ${client.config.supportGuildInviteReal(
+                        }help\`\nJoin the support server: ${await client.config.supportGuildInviteReal(
                             client
                         )}`
                     )
                     .catch(() => {});
         }
+        const bots = guild.members.cache.filter(m => m.user.bot).size;
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(`:white_check_mark: Added to "${guild.name}"`)
             .setDescription(`${guild.id}`)
             .addField(
                 "Info",
-                `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}`
+                `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}\nBots VS Humams: ${Math.round(bots / guild.memberCount * 100)}%`
             );
         client.channels.cache
             .get(client.config.logsChannelId)
