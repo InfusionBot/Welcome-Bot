@@ -12,7 +12,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
     try {
         guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
     } catch (e) {
-        if (process.env.NODE_ENV === "development") console.error(e);
+        if (process.env.NODE_ENV === "development") console.log(e);
     }
     const guild = req.client.guilds.cache.get(req.params.guildId);
     if (
@@ -39,7 +39,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
         userData: req.userData,
         userDB: req.userDB,
         guildDB,
-        guild: { ...guild2, ...guild },
+        guild: guild2,
         dclient: req.client,
         translate: req.translate,
         currentURL: req.currentURL,
