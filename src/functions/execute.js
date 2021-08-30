@@ -8,7 +8,7 @@ const { MessageEmbed, Permissions } = require("discord.js");
 
 module.exports = async (message, guildDB) => {
     const { client } = message;
-    let userDB = await client.userDbFuncs.getUser(message.author.id);
+    const userDB = await client.db.findOrCreateUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
         escapeRegex(client.config.defaultPrefix.toLowerCase()),
@@ -197,7 +197,7 @@ module.exports = async (message, guildDB) => {
             );
         let prerunResult = false;
         try {
-            prerunResult = await command.prerun(message, guildDB, t);
+            prerunResult = command.prerun(message, guildDB, t);
         } catch (e) {
             client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
             console.error(e);
@@ -216,8 +216,6 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            if (!userDB)
-                userDB = await client.userDbFuncs.getUser(message.author.id);
             message.channel.sendTyping().catch(() => {});
             try {
                 command.execute({ message, args, guildDB, userDB }, t);

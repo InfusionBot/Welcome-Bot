@@ -20,6 +20,7 @@ module.exports = {
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
     ],
+    dbCacheRefreshInterval: 3 * 60 * 60 * 1000, //refresh db cache every 3 hrs
     staffIds: ["772421156787191818" /*Kirito#1555*/],
     dashboard: {
         port: process.env.PORT || 8000,

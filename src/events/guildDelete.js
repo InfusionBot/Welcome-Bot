@@ -7,9 +7,9 @@ const { Embed } = require("../classes");
 module.exports = {
     name: "guildDelete",
     once: false,
-    execute(client, guild) {
+    async execute(client, guild) {
         //Bot has been kicked or banned in a guild
-        client.guildDbFuncs.removeGuild(guild.id);
+        await client.db.deleteGuild(guild.id);
         const embed = new Embed({ color: "error", timestamp: true })
             .setTitle(`:x: Removed from "${guild.name}"`)
             .setDescription(`${guild.id}`)

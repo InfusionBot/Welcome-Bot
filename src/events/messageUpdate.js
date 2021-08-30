@@ -12,7 +12,7 @@ module.exports = {
             client.logger.log("messageUpdate event", "debug");
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            guildDB = await client.guildDbFuncs.getGuild(message.guild.id);
+            guildDB = await client.db.findOrCreateGuild(message.guild.id);
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }

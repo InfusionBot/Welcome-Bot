@@ -12,7 +12,6 @@ const client = new WelcomeBot({
 });
 
 require("./db/connection");
-const getGuild = require("./db/functions/guild/getGuild");
 const dbAuditor = require("./db/functions/dbAuditor");
 
 process.env.userAgent = "Discord Welcome-Bot " + client.package.version;
@@ -37,7 +36,7 @@ process.on("exit", (code) => {
 });
 
 const getT = async (guildId) => {
-    const guildDB = await getGuild(guildId);
+    const guildDB = await client.db.findOrCreateGuild(guildId);
     return client.i18next.getFixedT(guildDB.lang || "en-US");
 };
 

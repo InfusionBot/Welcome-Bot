@@ -168,22 +168,7 @@ module.exports = class Command {
         return true;
     }
 
-    async prerun(message, guildDB, t) {
-        try {
-            await this.client.userDbFuncs.addUser(message.author.id);
-        } catch (e) {
-            if (this.category.toLowerCase() === "economy") {
-                throw e;
-                // eslint-disable-next-line no-unreachable
-                return false;
-            } else {
-                this.client.logger.log("Can't add user:", "error", [
-                    "USER",
-                    "DB",
-                ]);
-                console.log(e);
-            }
-        }
+    prerun(message, guildDB, t) {
         const basicPerms = [
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,

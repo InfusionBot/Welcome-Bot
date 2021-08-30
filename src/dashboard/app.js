@@ -44,7 +44,7 @@ module.exports.load = (client) => {
             }
             if (!req.user) req.user = null;
             req.userDB = req.user
-                ? await client.userDbFuncs.getUser(req.user.id)
+                ? await client.db.findOrCreateUser(req.user.id)
                 : null;
             req.locale = "en-US";
             if (req.userData && req.userData.locale)

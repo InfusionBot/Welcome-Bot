@@ -7,14 +7,14 @@ const { Embed } = require("../classes");
 module.exports = {
     name: "guildCreate",
     once: false,
-    execute(client, guild) {
+    async execute(client, guild) {
         const lang = guild.preferredLocale || "en-US";
         //Bot has been invited to a new guild
-        client.guildDbFuncs.addGuild(guild.id, lang);
-        if (guild.systemChannelID) {
-            guild.channels.cache
-                .get(guild.systemChannelID)
-                .send(
+        client.db.findOrCreateGuild(guild.id, lang);
+        if (guild.systemChannelId) {
+            const channel = await guild.channels.fetch(guild.systemChannelId)
+            if (channel)
+                channel.send(
                     `Thank you for choosing this bot! To get started, type \`${
                         client.config.defaultPrefix
                     }help\`\nJoin the support server: ${client.config.supportGuildInviteReal(

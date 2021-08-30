@@ -7,7 +7,7 @@ const { nth } = require("../helpers/Util.js");
 const { Embed } = require("../classes");
 module.exports = async (member) => {
     const { client } = member;
-    const guildDB = await client.guildDbFuncs.getGuild(member.guild.id);
+    const guildDB = await client.db.findOrCreateGuild(member.guild.id);
     if (
         !guildDB.plugins.goodbye.enabled ||
         guildDB.disabled.includes("goodbye")

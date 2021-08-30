@@ -14,12 +14,12 @@ module.exports = {
         await interaction.deferReply();
         let guildDB;
         if (interaction.inGuild() && interaction.channel.type !== "DM") {
-            guildDB = await client.guildDbFuncs.getGuild(interaction.guild.id);
+            guildDB = await client.db.findOrCreateGuild(interaction.guild.id);
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
         const t = client.i18next.getFixedT(guildDB.lang ?? "en-US");
-        const userDB = await client.userDbFuncs.getUser(
+        const userDB = await client.db.findOrCreateGuild(
             interaction.member.user.id
         );
         const command = client.commands.enabled.get(cmd);

@@ -10,6 +10,7 @@ const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const { Player } = require("discord-player");
+const DBCache = require("./db/DBCache");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -30,6 +31,7 @@ class WelcomeBot extends Client {
             }),
             partials: ["CHANNEL"],
         });
+        this.config = config;
         this.logger = new Logger();
         this.username = "Welcome-Bot";
         this.commands = {
@@ -37,6 +39,7 @@ class WelcomeBot extends Client {
             disabled: new Collection(),
             cooldowns: new Collection(),
         };
+        this.db = new DBCache(this);
         this.guildSchema = require("./schema/guildSchema");
         //this.versionSchema = require("./schema/versionSchema");
         this.userSchema = require("./schema/userSchema");
@@ -54,7 +57,6 @@ class WelcomeBot extends Client {
         }
         this.wait = util.promisify(setTimeout); // await client.wait(1000) - Wait 1 second
         this.package = packageJson;
-        this.config = config;
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         if (!this.debug) this.debugLevel = -1;

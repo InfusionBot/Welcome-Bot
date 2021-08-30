@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/:guildId", CheckAuth, async (req, res) => {
     let guildDB;
     try {
-        guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
+        guildDB = await req.client.db.findOrCreateGuild(req.params.guildId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.log(e);
     }
@@ -51,7 +51,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
 router.post("/:guildId", CheckAuth, async (req, res) => {
     let guildDB;
     try {
-        guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
+        guildDB = await req.client.db.findOrCreateGuild(req.params.guildId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
