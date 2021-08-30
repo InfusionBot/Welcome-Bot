@@ -95,7 +95,7 @@ module.exports.load = (client) => {
             res.end();
         })
         //Error handler
-        .use(CheckAuth, (err, req, res) => {
+        .use(CheckAuth, (err, req, res, next) => {
             console.error(err.stack);
             if (!req.user) return res.redirect("/");
             if (req.accepts("html")) {

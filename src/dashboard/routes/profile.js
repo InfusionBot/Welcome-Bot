@@ -21,13 +21,13 @@ router.get("/:userId", async (req, res) => {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
     if (!userDB) {
-        return res.send({
+        return res.json({
             error: "404",
             message: "User not found in database",
         });
     }
     if (!user) {
-        return res.send({ error: "404", message: "User not found in discord" });
+        return res.json({ error: "404", message: "User not found in discord" });
     }
     res.render("profile", {
         user: req.user,

@@ -31,9 +31,10 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
             currentURL: req.currentURL,
         });
     }
-    const guild2 = req.userData.displayedGuilds.find(
+    let guild2 = req.userData.displayedGuilds.find(
         (g) => g.id === req.params.guildId
     );
+    guild2 = Object.assign(guild, guild2);
     res.render("manage", {
         user: req.user,
         userData: req.userData,
