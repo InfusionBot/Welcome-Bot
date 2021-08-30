@@ -82,8 +82,9 @@
     "canvas": "^2.8.0",
     "colors-logger": "^0.3.1",
     "csurf": "^1.11.0",
+    "discord-backup": "^3.0.1",
     "discord-player": "^5.0.0",
-    "discord.js": "^13.0.0",
+    "discord.js": "^13.2.0-dev.1630281876.29d5fd1",
     "djs-pagination-buttons": "^0.2.0",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
@@ -100,8 +101,7 @@
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
     "opusscript": "^0.0.8",
-    "pokemon": "^2.2.0",
-    "discord-backup": "^3.0.1"
+    "pokemon": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
