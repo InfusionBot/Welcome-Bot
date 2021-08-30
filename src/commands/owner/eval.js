@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
                     //Client token
                     text = text.replace(message.client.token, "T0K3N");
                 }
-                if (text.includes(message.client.config.dashboard.secret)) {
+                if (message.client.config.dashboard.secret && text.includes(message.client.config.dashboard.secret)) {
                     //Client secret
                     text = text.replace(
                         message.client.config.dashboard.secret,
