@@ -24,13 +24,17 @@ module.exports = {
                     )
                     .catch(() => {});
         }
-        const bots = guild.members.cache.filter(m => m.user.bot).size;
+        const bots = guild.members.cache.filter((m) => m.user.bot).size;
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(`:white_check_mark: Added to "${guild.name}"`)
             .setDescription(`${guild.id}`)
             .addField(
                 "Info",
-                `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}\nBots VS Humams: ${Math.round(bots / guild.memberCount * 100)}%`
+                `Shard: ${guild.shardId}\nOwner: <@${
+                    guild.ownerId
+                }>\nMembers: ${guild.memberCount}\nBots VS Humams: ${Math.round(
+                    (bots / guild.memberCount) * 100
+                )}%`
             );
         client.channels.cache
             .get(client.config.logsChannelId)

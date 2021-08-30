@@ -36,7 +36,10 @@ module.exports = class DBCache {
                 return guildDB;
             } else {
                 if (this.client.debug) {
-                    this.client.logger.log(`Creating guild (${guildId}) in db`, "debug");
+                    this.client.logger.log(
+                        `Creating guild (${guildId}) in db`,
+                        "debug"
+                    );
                 }
                 guildDB = new this.guildSchema({ guildId, lang });
                 await guildDB.save();
@@ -56,7 +59,10 @@ module.exports = class DBCache {
                 return userDB;
             } else {
                 if (this.client.debug) {
-                    this.client.logger.log(`Creating user (${userId}) in db`, "debug");
+                    this.client.logger.log(
+                        `Creating user (${userId}) in db`,
+                        "debug"
+                    );
                 }
                 userDB = new this.userSchema({ userId });
                 await userDB.save();

@@ -15,7 +15,11 @@ module.exports = {
             .setDescription(`${guild.id}`)
             .addField(
                 "Info",
-                `Shard: ${guild.shardId}\nOwner: <@${guild.ownerId}>\nMembers: ${guild.memberCount}\nBots VS Humams: ${Math.round(bots / guild.memberCount * 100)}%`
+                `Shard: ${guild.shardId}\nOwner: <@${
+                    guild.ownerId
+                }>\nMembers: ${guild.memberCount}\nBots VS Humams: ${Math.round(
+                    (bots / guild.memberCount) * 100
+                )}%`
             );
         client.channels.cache
             .get(client.config.logsChannelId)
