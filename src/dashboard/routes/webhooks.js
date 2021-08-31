@@ -28,7 +28,9 @@ router.post("/bls", async (req, res) => {
     userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
     userDB.markModified("inventory.banknote");
     await userDB.save();
-    const member = client.guilds.cache.get(client.config.botGuildId).members.cache.get(vUser.id);
+    const member = client.guilds.cache
+        .get(client.config.botGuildId)
+        .members.cache.get(vUser.id);
     if (member) member.roles.add(client.config.votersRole);
     if (process.env.NODE_ENV !== "production") {
         console.log(
@@ -83,7 +85,9 @@ router.post(
         userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
         userDB.markModified("inventory.banknote");
         await userDB.save();
-        const member = client.guilds.cache.get(client.config.botGuildId).members.cache.get(vUser.id);
+        const member = client.guilds.cache
+            .get(client.config.botGuildId)
+            .members.cache.get(vUser.id);
         if (member) member.roles.add(client.config.votersRole);
         if (client.config.votesChannelId) {
             client.channels.cache
