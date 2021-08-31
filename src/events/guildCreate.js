@@ -16,11 +16,7 @@ module.exports = {
             if (channel)
                 channel
                     .send(
-                        `Thank you for choosing this bot! To get started, type \`${
-                            client.config.defaultPrefix
-                        }help\`\nJoin the support server: ${await client.config.supportGuildInviteReal(
-                            client
-                        )}`
+                        `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInviteReal2}`
                     )
                     .catch(() => {});
         }
