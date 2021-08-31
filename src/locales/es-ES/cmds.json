@@ -10,13 +10,13 @@
     "errorYourself": "No puedes abrazarte a ti mismo."
   },
   "kiss": {
-    "cmdDesc": "Kiss a user",
+    "cmdDesc": "Besar a un usuario",
     "success": "{{author}} ha besado a {{user}}",
     "errorYourself": "¡No puedes besarte a ti mismo!"
   },
   "pat": {
     "cmdDesc": "Acaricia a alguien",
-    "success": "{{author}} pats {{user}}",
+    "success": "{{author}} ha acariciado a {{user}}",
     "errorYourself": "¡No puedes acariciarte a ti mismo!"
   },
   "slap": {
