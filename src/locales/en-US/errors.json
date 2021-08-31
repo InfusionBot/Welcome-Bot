@@ -9,6 +9,7 @@
   "missingArgs": "Arguments are required for this command. Use `{{prefix}}help {{cmd}}` for more info",
   "notTrueOrFalse": "You have to give me a value that is true or false.",
   "invalidNumber": "You have to give me a valid number.",
+  "invalidItem": "This is not a valid item!",
   "invalidUser": "You have to give me a valid user mention or id.",
   "invalidUserId": "You have to give me a valid user id.",
   "commandNotFound": "I couldn't find any command with that name.",

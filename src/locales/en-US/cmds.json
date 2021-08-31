@@ -214,6 +214,13 @@
       "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
     }
   },
+  "buy": {
+    "cmdDesc": "Buy items which are available in the shop",
+    "usage": "[item] (amount)",
+    "notAvailable": "Sorry friend, but that item is not available for sale",
+    "noMoney": "You don't have enough money to buy that! Check the shop",
+    "done": "Successfully bought {{amount}} {{item}}(s)"
+  },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
     "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
@@ -269,12 +276,14 @@
     "success": "Successfully set bio to **{{bio}}**"
   },
   "shop": {
-    "cmdDesc": "Shop items"
+    "cmdDesc": "Shop items",
+    "notAvailable": "Not available",
+    "available": "Available"
   },
   "use": {
     "cmdDesc": "Use your items",
     "usage": "[item] (count)",
-    "notAnItem": "What are you thinking fool? There is no item like that",
+    "notAnItem": "What are you thinking fool? There is no item like that or it is not usable item",
     "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
     "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
     "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",

@@ -29,7 +29,7 @@ module.exports = class CMD extends Command {
         const items = Object.keys(userDB.inventory);
         args[0] = args[0].toLowerCase();
         if (
-            !this.client.shop.some((i) => i.ids.includes(args[0])) ||
+            !this.client.shop.some((i) => i.ids.includes(args[0]) && i.usable) ||
             !items.includes(args[0])
         )
             return message.reply(t("cmds:use.notAnItem"));

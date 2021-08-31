@@ -30,17 +30,14 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
         const subcommand = args[0] ? args[0].toLowerCase() : "";
         switch (subcommand) {
             case "set":
                 if (args[1]) {
                     //Set bot prefix
-                    updateGuild(
-                        message.guild.id,
-                        "prefix",
-                        args.join(" ").replace(`${args[0]} `, "").trim()
-                    );
+                    guildDB.prefix = args.slice(1).join(" ").trim();
+                    guildDB.markModified("prefix");
+                    await guildDB.save();
                     message.reply(
                         "Custom prefix has been set to `" +
                             args.join(" ").replace(`${args[0]} `, "").trim() +
@@ -56,11 +53,9 @@ module.exports = class CMD extends Command {
                 break;
             case "reset":
                 //Reset bot prefix
-                updateGuild(
-                    message.guild.id,
-                    "prefix",
-                    this.client.config.defaultPrefix
-                );
+                guildDB.prefix = this.client.config.defaultPrefix;
+                guildDB.markModified("prefix");
+                await guildDB.save();
 
                 message.reply(
                     "Prefix reset to `" + this.client.config.defaultPrefix + "`"

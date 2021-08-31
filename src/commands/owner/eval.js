@@ -90,16 +90,11 @@ module.exports = class CMD extends Command {
     }
 
     async giveCredits(userId, amount, message) {
-        const userDB = await this.client.db.userSchema
-            .findOne({ userId })
+        const userDB = await this.client.db.findOrCreateUser(userId)
             .catch(() => {});
-        if (userDB) {
-            userDB.wallet = parseInt(userDB.wallet) + amount;
-            userDB.markModified("wallet");
-            await userDB.save();
-            message.reply("Done");
-        } else {
-            message.reply("No such user in db");
-        }
+        userDB.wallet = parseInt(userDB.wallet) + amount;
+        userDB.markModified("wallet");
+        await userDB.save();
+        message.reply("Done");
     }
 };

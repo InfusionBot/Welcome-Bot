@@ -408,7 +408,7 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (14 commands)
+## Economy (15 commands)
 
 ### `balance`
 
@@ -435,6 +435,19 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Usage: w/beg 
 - Aliases: None
 - Cooldown: 60
+
+### `buy`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Buy items which are available in the shop
+- Usage: w/buy [item] (amount)
+- Aliases: `purchase`
+- Cooldown: 5
 
 ### `daily`
 

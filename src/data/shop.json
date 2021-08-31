@@ -3,12 +3,14 @@
     "name": "banknote",
     "ids": ["bn"],
     "sale": false,
-    "price": 0
+    "price": 0,
+    "usable": true
   },
   {
     "name": "topmedal",
     "ids": ["medal"],
     "sale": true,
-    "price": 10000000
+    "price": 10000000,
+    "usable": false
   }
 ]

@@ -12,18 +12,24 @@ module.exports = class DBCache {
         this.guildSchema = require("../schema/guildSchema");
         this.userSchema = require("../schema/userSchema");
         setInterval(() => {
-            this.client.logger.log("Refreshing db cache", "debug");
-            this.guilds.each((guildDB) => {
-                const { guildId: id } = guildDB;
-                this.guilds.delete(id);
-                this.findOrCreateGuild(id);
-            });
-            this.users.each((userDB) => {
-                const { userId: id } = userDB;
-                this.users.delete(id);
-                this.findOrCreateUser(id);
-            });
+            this.refreshCache();
         }, this.client.config.dbCacheRefreshInterval);
+    }
+
+    refreshCache() {
+        this.guildSchema = require("../schema/guildSchema");
+        this.userSchema = require("../schema/userSchema");
+        this.client.logger.log("Refreshing db cache", "debug");
+        this.guilds.each((guildDB) => {
+            const { guildId: id } = guildDB;
+            this.guilds.delete(id);
+            this.findOrCreateGuild(id);
+        });
+        this.users.each((userDB) => {
+            const { userId: id } = userDB;
+            this.users.delete(id);
+            this.findOrCreateUser(id);
+        });
     }
 
     async findOrCreateGuild(guildId, lang = "en-US") {
