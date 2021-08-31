@@ -63,4 +63,5 @@ module.exports = {
         }
         return invite;
     },
+    supportGuildInviteReal2: "https://discord.gg/vEUnKUNNRB",
 };
