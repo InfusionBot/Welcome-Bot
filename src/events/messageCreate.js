@@ -35,11 +35,18 @@ module.exports = {
         }
         if (client.debug && client.debugLevel > 0)
             client.logger.log("finished running execute func", "debug");
-        if (message.content.split(" ").length > 1) return;
 
         const mentionRegex = new RegExp(
             `^(<@!?${message.client.user.id}>)\\s*`
         );
+        if (message.content.split(" ").length > 1 && message.mentions.has(client.user)) {
+            if (!process.env.CHATBOT_API) return;
+            const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${process.env.CHATBOT_API}&uid=${message.author.id}&msg=${message.content}`;
+            if (client.debug) client.logger.log("Chatbot");
+            const chat = await require("node-fetch")(chatBotUrl).then(res => res.json());
+            return message.reply(`${chat?.cnt}`);
+        }
+
         if (!mentionRegex.test(message.content)) return;
         let reply = `Hi there, ${
             message.author
