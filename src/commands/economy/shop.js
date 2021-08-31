@@ -35,7 +35,17 @@ module.exports = class CMD extends Command {
                     .setDesc(`${t("misc:shop")}`)
                     .addField(
                         `• ${t(`shop:${name}.name`)}`,
-                        `IDs: ${item.ids.join(", ")}\n${item.sale ? item.price + " " + this.client.customEmojis.wcoins : ""}\n${t(`shop:${name}.desc`)} (${item.sale ? t("cmds:shop.available") : t("cmds:shop.notAvailable")})`
+                        `IDs: ${item.ids.join(", ")}\n${
+                            item.sale
+                                ? item.price +
+                                  " " +
+                                  this.client.customEmojis.wcoins
+                                : ""
+                        }\n${t(`shop:${name}.desc`)} (${
+                            item.sale
+                                ? t("cmds:shop.available")
+                                : t("cmds:shop.notAvailable")
+                        })`
                     );
             });
             return pages;

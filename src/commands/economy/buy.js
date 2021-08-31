@@ -30,18 +30,21 @@ module.exports = class CMD extends Command {
         if (isNaN(args[1])) return message.reply(t("errors:invalidNumber"));
         args[1] = parseInt(args[1]);
         args[0] = args[0].toLowerCase();
-        if (!(this.client.shop.some(i => i.ids.includes(args[0])))) return message.reply(t("errors:invalidItem"));
-        const [ itemName, amount ] = args;
-        const item = this.client.shop.find(i => i.ids.includes(itemName));
+        if (!this.client.shop.some((i) => i.ids.includes(args[0])))
+            return message.reply(t("errors:invalidItem"));
+        const [itemName, amount] = args;
+        const item = this.client.shop.find((i) => i.ids.includes(itemName));
         if (!item.sale) return message.reply(t("cmds:buy.notAvailable"));
-        if (userDB.wallet < item.price) return message.reply(t("cmds:buy.noMoney"));
+        if (userDB.wallet < item.price)
+            return message.reply(t("cmds:buy.noMoney"));
         userDB.wallet = userDB.wallet - item.price;
         userDB.markModified("wallet");
         if (!userDB.inventory[item.name]) userDB.inventory[item.name] = 0;
-        userDB.inventory[item.name] = parseInt(userDB.inventory[item.name]) + amount;
+        userDB.inventory[item.name] =
+            parseInt(userDB.inventory[item.name]) + amount;
         userDB.markModified(`inventory.${item.name}`);
         await userDB.save();
-        message.reply(t("cmds:buy.done", {amount, item: itemName}));
+        message.reply(t("cmds:buy.done", { amount, item: itemName }));
     }
 
     async run({ interaction, userDB }, t) {

@@ -90,7 +90,8 @@ module.exports = class CMD extends Command {
     }
 
     async giveCredits(userId, amount, message) {
-        const userDB = await this.client.db.findOrCreateUser(userId)
+        const userDB = await this.client.db
+            .findOrCreateUser(userId)
             .catch(() => {});
         userDB.wallet = parseInt(userDB.wallet) + amount;
         userDB.markModified("wallet");
