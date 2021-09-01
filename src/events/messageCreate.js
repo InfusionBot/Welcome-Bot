@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const execute = require("../functions/execute");
+const formatChat = require("../functions/formatChat");
 module.exports = {
     name: "messageCreate",
     once: false,
@@ -36,7 +37,7 @@ module.exports = {
             const chat = await require("node-fetch")(chatBotUrl).then((res) =>
                 res.json()
             );
-            message.reply(`${chat?.cnt}`);
+            message.reply(`${formatChat(chat?.cnt)}`);
         }
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");
