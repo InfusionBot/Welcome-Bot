@@ -5,6 +5,8 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const moment = require("moment");
+require("moment-duration-format");
 const { version } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
