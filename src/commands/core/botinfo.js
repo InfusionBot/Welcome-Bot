@@ -5,10 +5,7 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const { codeBlock } = require("@discordjs/builders");
 const { version } = require("discord.js");
-const moment = require("moment");
-require("moment-duration-format");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -26,8 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB }, t) {
-        //Thanks to https://github.com/AnIdiotsGuide/guidebot/blob/master/commands/stats.js for some styling
+    async execute({ message, args }, t) {
         //TODO: Add translation
         if (args[0]) {
             args[0] = args[0].toLowerCase();
@@ -56,30 +52,6 @@ module.exports = class CMD extends Command {
             );
             return { totalGuilds, totalMembers };
         });
-
-        const system = codeBlock(
-            "asciidoc",
-            `= ${t("misc:system")} =
-        • ${t("misc:ram_used")}   :: ${(
-                process.memoryUsage().heapUsed /
-                1024 /
-                1024
-            ).toFixed(2)} MB
-        • Discord.js :: v${version}
-        • Node       :: ${process.version}`
-        );
-
-        const general = codeBlock(
-            "asciidoc",
-            `= ${t("categories:general")} =
-        • Uptime     :: ${duration}
-        • Users      :: ${counts.totalMembers}
-        • Servers    :: ${counts.totalGuilds}
-        • Channels   :: ${this.client.channels.cache.size}
-        • Commands   :: ${this.client.commands.enabled.size} commands
-        • Version    :: ${message.client.package.version}`
-        );
-
         const inline = true;
         const embed = new Embed({
             color: "success",
@@ -90,8 +62,27 @@ module.exports = class CMD extends Command {
                 `${message.client.user.username} v${message.client.package.version}`
             )
             .setDescription(`${this.client.application.description}`)
-            .addField(`:pencil:`, general)
-            .addField(`:gear:`, system);
+            .addField(
+                `:pencil: __${t("categories:general")}__`,
+                `> ${t("misc:servers")}: ${counts.totalGuilds} servers\n` +
+                    `> Users: ${counts.totalMembers} users\n` +
+                    `> ${t("misc:channels")}: ${message.client.channels.cache.size} channels\n` +
+                    `> Version: ${message.client.package.version}\n` +
+                    `> Commands: ${message.client.commands.enabled.size} commands\n` +
+                    `> ${message.client.customEmojis.online} ${t("misc:uptime")}: ${duration}`
+            )
+            .addField(
+                `:gear: __${t("misc:system")}__`,
+                `> ${message.client.customEmojis.nodejs} Node: ${process.version}\n` +
+                    `> ${message.client.customEmojis.djs} Discord.js: v${version}\n` +
+                    `> ${message.client.customEmojis.ram} ${t(
+                        "misc:ram_used"
+                    )}: \`${(
+                        process.memoryUsage().heapUsed /
+                        1024 /
+                        1024
+                    ).toFixed(2)}MB\``
+            );
         if (!args[0] || args[0] !== "--short") {
             embed
                 .addField(
