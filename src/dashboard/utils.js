@@ -19,17 +19,19 @@ const fetchUser = async (userData, client) => {
         for (var i = 0; i < userData.guilds.length; i++) {
             let guild = userData.guilds[i];
             const perms = new Permissions(BigInt(guild.permissions));
+            let admin = false;
             if (perms.has(Permissions.FLAGS.MANAGE_GUILD) || guild.owner) {
-                guild.admin = true;
+                admin = true;
             }
-            guild.manageUrl = `/manage/${guild.id}`;
-            guild.botInvited = true;
             const djsGuild = await fetchGuild(guild.id, client);
             if (djsGuild && djsGuild.id) {
-                guild = { ...guild, djsGuild };
+                guild = djsGuild;
+                guild.botInvited = true;
             } else {
                 guild.botInvited = false;
             }
+            guild.admin = admin;
+            guild.manageUrl = `/manage/${guild.id}`;
             guild.iconURL = guild.icon
                 ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`
                 : "https://emoji.gg/assets/emoji/discord.png";
