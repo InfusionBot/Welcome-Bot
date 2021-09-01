@@ -41,7 +41,7 @@ module.exports = class CMD extends Command {
                 )
             ),
         ];
-        const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+        const duration = moment.duration(this.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         const counts = await Promise.all(promises).then((results) => {
             const totalGuilds = results[0].reduce(
                 (acc, guildCount) => acc + guildCount,
