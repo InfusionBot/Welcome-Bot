@@ -37,7 +37,13 @@ module.exports = {
             const chat = await require("node-fetch")(chatBotUrl).then((res) =>
                 res.json()
             );
-            message.reply(`${chat.cnt ? formatChat(chat.cnt) : "Error: No message provided"}`);
+            message.reply(
+                `${
+                    chat.cnt
+                        ? formatChat(chat.cnt)
+                        : "Error: No message provided"
+                }`
+            );
         }
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");
