@@ -66,10 +66,14 @@ module.exports = class CMD extends Command {
                 `:pencil: __${t("categories:general")}__`,
                 `> ${t("misc:servers")}: ${counts.totalGuilds} servers\n` +
                     `> Users: ${counts.totalMembers} users\n` +
-                    `> ${t("misc:channels")}: ${message.client.channels.cache.size} channels\n` +
+                    `> ${t("misc:channels")}: ${
+                        message.client.channels.cache.size
+                    } channels\n` +
                     `> Version: ${message.client.package.version}\n` +
                     `> Commands: ${message.client.commands.enabled.size} commands\n` +
-                    `> ${message.client.customEmojis.online} ${t("misc:uptime")}: ${duration}`
+                    `> ${message.client.customEmojis.online} ${t(
+                        "misc:uptime"
+                    )}: ${duration}`
             )
             .addField(
                 `:gear: __${t("misc:system")}__`,
