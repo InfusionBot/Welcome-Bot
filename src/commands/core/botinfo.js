@@ -26,12 +26,13 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message, args, guildDB }, t) {
         //Thanks to https://github.com/AnIdiotsGuide/guidebot/blob/master/commands/stats.js for some styling
         //TODO: Add translation
         if (args[0]) {
             args[0] = args[0].toLowerCase();
         }
+        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
         const promises = [
             this.client.shard.fetchClientValues("guilds.cache.size"),
             this.client.shard.broadcastEval((c) =>
