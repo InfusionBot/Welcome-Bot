@@ -26,6 +26,18 @@ module.exports = {
         if (!client.application?.owner) await client.application?.fetch();
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
+        if (
+            guildDB.plugins.chatbot.enabled &&
+            message.channel.id === guildDB.plugins.chatbot.channel &&
+            process.env.CHATBOT_API
+        ) {
+            const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${process.env.CHATBOT_API}&uid=${message.author.id}&msg=${message.content}`;
+            if (client.debug) client.logger.log("Chatbot", "debug");
+            const chat = await require("node-fetch")(chatBotUrl).then((res) =>
+                res.json()
+            );
+            message.reply(`${chat?.cnt}`);
+        }
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");
         try {
@@ -39,13 +51,7 @@ module.exports = {
         const mentionRegex = new RegExp(
             `^(<@!?${message.client.user.id}>)\\s*`
         );
-        if (message.content.split(" ").length > 1 && message.mentions.has(client.user)) {
-            if (!process.env.CHATBOT_API) return;
-            const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${process.env.CHATBOT_API}&uid=${message.author.id}&msg=${message.content}`;
-            if (client.debug) client.logger.log("Chatbot");
-            const chat = await require("node-fetch")(chatBotUrl).then(res => res.json());
-            return message.reply(`${chat?.cnt}`);
-        }
+        if (message.content.split(" ").length > 1) return;
 
         if (!mentionRegex.test(message.content)) return;
         let reply = `Hi there, ${

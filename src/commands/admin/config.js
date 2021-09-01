@@ -44,7 +44,7 @@ module.exports = class CMD extends Command {
                 )} (${
                     guildDB.plugins.welcome.enabled
                         ? t("misc:enabled")
-                        : t("misc:enabled")
+                        : t("misc:disabled")
                 })\n\n` +
                     `${t(
                         "dashboard:goodbye"
@@ -53,7 +53,7 @@ module.exports = class CMD extends Command {
                     )} (${
                         guildDB.plugins.goodbye.enabled
                             ? t("misc:enabled")
-                            : t("misc:enabled")
+                            : t("misc:disabled")
                     })\n\n` +
                     `${t("dashboard:autorole")}: ${
                         message.guild.roles.cache.get(
@@ -62,7 +62,16 @@ module.exports = class CMD extends Command {
                     } (${
                         guildDB.plugins.autorole.enabled
                             ? t("misc:enabled")
-                            : t("misc:enabled")
+                            : t("misc:disabled")
+                    })\n\n` +
+                    `${t(
+                        "dashboard:chatbot"
+                    )}: ${message.guild.channels.cache.get(
+                        guildDB.plugins.chatbot.channel
+                    )} (${
+                        guildDB.plugins.chatbot.enabled
+                            ? t("misc:enabled")
+                            : t("misc:disabled")
                     })\n\n`
             );
         message.channel.send({ embeds: [embed] });

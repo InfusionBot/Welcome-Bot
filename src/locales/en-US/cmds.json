@@ -31,6 +31,22 @@
     "success": "Backup loaded successfully!",
     "created": "Backup created! I have sent you the ID in DMs."
   },
+  "chatbot": {
+    "cmdDesc": "Manage chatbot settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Chatbot channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for chatbot",
+      "desc": "These are the current Chatbot settings of this Server.\nUse `{{prefix}}chatbot [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled chatbot",
+    "enabled": "Successfully enabled chatbot"
+  },
   "disable": {
     "cmdDesc": "Disable commands.",
     "usage": "(command name / subcommand)",

@@ -56,6 +56,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `backup` but it is disabled
 - feat: New cmd `autopublish` & new plugin autopublish
 - feat: New cmd `buy`
+- feat: New cmd `chatbot`
 
 ### Changes
 
