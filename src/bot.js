@@ -28,21 +28,24 @@ process.on("unhandledRejection", (error) => {
         const channel =
             client.channels.cache.get(client.config?.errorLogsChannelId) ??
             null;
-        if (channel) channel.send({
-            embeds: [
-                {
-                    title: ":x: An error occurred",
-                    description: `${error}`,
-                    fields: [
+        if (channel)
+            channel
+                .send({
+                    embeds: [
                         {
-                            name: "Stack trace",
-                            value: `${error.stack}`,
-                            inline: true
-                        }
-                    ]
-                }
-            ]
-        }).catch(() => {});
+                            title: ":x: An error occurred",
+                            description: `${error}`,
+                            fields: [
+                                {
+                                    name: "Stack trace",
+                                    value: `${error.stack}`,
+                                    inline: true,
+                                },
+                            ],
+                        },
+                    ],
+                })
+                .catch(() => {});
     }
 });
 process.on("exit", (code) => {
