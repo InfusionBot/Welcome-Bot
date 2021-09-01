@@ -41,7 +41,9 @@ module.exports = class CMD extends Command {
                 )
             ),
         ];
-        const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+        const duration = moment
+            .duration(client.uptime)
+            .format(" D [days], H [hrs], m [mins], s [secs]");
         const counts = await Promise.all(promises).then((results) => {
             const totalGuilds = results[0].reduce(
                 (acc, guildCount) => acc + guildCount,
@@ -54,18 +56,28 @@ module.exports = class CMD extends Command {
             return { totalGuilds, totalMembers };
         });
 
-        const system = codeBlock("asciidoc", `= ${t("misc:system")} =
-        • ${t("misc:ram_used")}   :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
+        const system = codeBlock(
+            "asciidoc",
+            `= ${t("misc:system")} =
+        • ${t("misc:ram_used")}   :: ${(
+                process.memoryUsage().heapUsed /
+                1024 /
+                1024
+            ).toFixed(2)} MB
         • Discord.js :: v${version}
-        • Node       :: ${process.version}`);
+        • Node       :: ${process.version}`
+        );
 
-        const general = codeBlock("asciidoc", `= ${t("categories:general")} =
+        const general = codeBlock(
+            "asciidoc",
+            `= ${t("categories:general")} =
         • Uptime     :: ${duration}
         • Users      :: ${counts.totalMembers}
         • Servers    :: ${counts.totalGuilds}
         • Channels   :: ${this.client.channels.cache.size}
         • Commands   :: ${this.client.commands.enabled.size} commands
-        • Version    :: ${message.client.package.version}`);
+        • Version    :: ${message.client.package.version}`
+        );
 
         const inline = true;
         const embed = new Embed({
@@ -77,14 +89,8 @@ module.exports = class CMD extends Command {
                 `${message.client.user.username} v${message.client.package.version}`
             )
             .setDescription(`${this.client.application.description}`)
-            .addField(
-                `:pencil:`,
-                general
-            )
-            .addField(
-                `:gear:`,
-                system
-            );
+            .addField(`:pencil:`, general)
+            .addField(`:gear:`, system);
         if (!args[0] || args[0] !== "--short") {
             embed
                 .addField(
