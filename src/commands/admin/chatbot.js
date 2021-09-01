@@ -16,7 +16,7 @@ module.exports = class CMD extends Command {
                 memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
-                    subcommand: true,
+                    subcommand: false,
                     guildOnly: true,
                 },
                 disabled: false,

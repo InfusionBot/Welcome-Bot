@@ -181,7 +181,11 @@ module.exports = async (message, guildDB) => {
         }
 
         if (command.subcommands && command.requirements?.subcommand) {
-            if (!command.subcommands.map((subcmd) => subcmd.name).has(args[0]))
+            const subcmds = [];
+            for (let i = 0; i < command.subcommands.length; i++) {
+                subcmds.push(command.subcommands[i].name);
+            }
+            if (!subcmds.has(args[0]))
                 return message.reply(
                     t("errors:invalidSubCmd", {
                         prefix: guildDB.prefix,
