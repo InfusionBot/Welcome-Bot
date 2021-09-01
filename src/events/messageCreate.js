@@ -32,7 +32,11 @@ module.exports = {
             message.channel.id === guildDB.plugins.chatbot.channel &&
             process.env.CHATBOT_API
         ) {
-            const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${process.env.CHATBOT_API}&uid=${encodeURIComponent(message.author.id)}&msg=${encodeURIComponent(message.content)}`;
+            const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${
+                process.env.CHATBOT_API
+            }&uid=${encodeURIComponent(
+                message.author.id
+            )}&msg=${encodeURIComponent(message.content)}`;
             if (client.debug) client.logger.log("Chatbot", "debug");
             const chat = await require("node-fetch")(chatBotUrl).then((res) =>
                 res.json()
