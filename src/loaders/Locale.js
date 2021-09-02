@@ -12,7 +12,7 @@ module.exports = async (client, dirPath = __dirname + "/../locales") => {
     if (fs.existsSync(dirPath)) {
         dir = fs.readdirSync(dirPath);
     } else {
-        client.logger.log(`Can't read ${dirPath}`);
+        return client.logger.log(`Can't read ${dirPath}`);
     }
     try {
         await i18next.use(translationBackend).init(

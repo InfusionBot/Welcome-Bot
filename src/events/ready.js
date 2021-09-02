@@ -15,10 +15,8 @@ module.exports = {
             );
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
-        await require("../loaders/Locale.js")(client);
         if (client.config.dashboard.enabled) client.dashboard.load(client);
         else client.logger.log("Dashboard not enabled", "debug");
-        client.loadCommands(__dirname + "/../commands");
         presence(client);
         if (process.env.NODE_ENV === "production") serverCount(client);
         // 1 * 60 * (1 second)

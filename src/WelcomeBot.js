@@ -34,11 +34,6 @@ class WelcomeBot extends Client {
         this.config = config;
         this.logger = new Logger();
         this.username = "Welcome-Bot";
-        this.commands = {
-            enabled: new Collection(),
-            disabled: new Collection(),
-            cooldowns: new Collection(),
-        };
         this.db = new DBCache(this);
         this.guildSchema = require("./schema/guildSchema");
         //this.versionSchema = require("./schema/versionSchema");
@@ -86,7 +81,11 @@ class WelcomeBot extends Client {
             enableLive: true,
         });
         this.addDbFuncs();
-        this.loadEvents(__dirname + "/events");
+        ["Event", "Locale", "Command"].forEach((f) => {
+            if (this.debug) this.logger.log(`Loading ${f}s`);
+            await require(`./loaders/${f}.js`)(this);
+            if (this.debug) thid.logger.log(`Finished loading ${f}s`);
+        });
     }
 
     /*loadCommand(commandPath, commandName) {
@@ -102,61 +101,6 @@ class WelcomeBot extends Client {
             this.commands.disabled.set(command.name, command);
         }
         return command;
-    }
-
-    loadEvents(eventsFolder) {
-        const eventFiles = fs
-            .readdirSync(eventsFolder)
-            .filter((file) => file.endsWith(".js"));
-        for (const file of eventFiles) {
-            const event = require(`${eventsFolder}/${file}`);
-            if (event.once) {
-                this.once(event.name, (...args) =>
-                    event.execute(this, ...args)
-                );
-            } else {
-                this.on(event.name, (...args) => event.execute(this, ...args));
-            }
-        }
-    }
-
-    loadCommands(commandFolder) {
-        if (this.debugLevel > 1)
-            this.logger.log("Loading commands", "debug", ["CORE", "CMDS"]);
-        const commandFolders = fs.readdirSync(commandFolder);
-
-        for (const folder of commandFolders) {
-            /*const commandFiles = fs
-                .readdirSync(`${commandFolder}/${folder}`)
-                .filter((file) => file.endsWith(".js"));
-            for (const file of commandFiles) {
-                try {
-                    this.loadCommand(`${commandFolder}/${folder}`, file);
-                } catch (e) {
-                    this.logger.log(`Error occurred when loading ${file}`);
-                    console.error(e);
-                }
-            }*/
-            const {
-                commands,
-                metadata,
-            } = require(`${commandFolder}/${folder}`);
-            for (const cmd of commands) {
-                try {
-                    this.setCmd(cmd);
-                } catch (e) {
-                    this.logger.log(`Error occurred when loading ${cmd.name}`);
-                    console.error(e);
-                }
-            }
-            if (metadata.name.indexOf("Owner") === -1)
-                this.categories.push(metadata);
-        }
-        if (this.debugLevel > 1)
-            this.logger.log("Finished loading commands", "debug", [
-                "CORE",
-                "CMDS",
-            ]);
     }
 
     setDebug(debug = true, level = 0) {
