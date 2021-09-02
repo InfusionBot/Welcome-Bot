@@ -29,7 +29,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message, args, userDB }, t) {
         if (!(parseInt(userDB.wallet, 10) > 0)) {
             return message.reply(t("cmds:deposit.noMoney"));
         }

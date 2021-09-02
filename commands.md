@@ -27,7 +27,7 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 
 
 
-## Administration (11 commands)
+## Administration (12 commands)
 
 ### `autopublish`
 
@@ -57,6 +57,21 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Usage: w/autorole (subcommand)
 - Aliases: `ar`
 - Cooldown: 10
+
+### `chatbot`
+
+##### Subcommands:
+
+- `disable` - Disable chatbot
+- `enable` - Enable chatbot
+- `channel [#channel]` - Set chatbot channel
+
+##### Cmd info
+
+- Description: Manage chatbot settings
+- Usage: w/chatbot (subcommand)
+- Aliases: `chat`
+- Cooldown: 5
 
 ### `config`
 
@@ -698,7 +713,7 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Aliases: `pokémon`
 - Cooldown: 10
 
-## General (21 commands)
+## General (22 commands)
 
 ### `addemoji`
 
@@ -737,6 +752,19 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Description: Get channel id
 - Usage: w/chanid [channel]
 - Aliases: `channel-id`, `channelid`
+- Cooldown: 5
+
+### `clone`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Clone a text
+- Usage: w/clone [text]
+- Aliases: `copy`
 - Cooldown: 5
 
 ### `djsdocs`

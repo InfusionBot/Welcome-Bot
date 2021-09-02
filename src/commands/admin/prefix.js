@@ -31,25 +31,24 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args, guildDB }, t) {
         const subcommand = args[0] ? args[0].toLowerCase() : "";
+        const missingArgs = t("errors:missingArgs", {
+            prefix: guildDB.prefix,
+            cmd: this.name,
+        });
         switch (subcommand) {
             case "set":
-                if (args[1]) {
-                    //Set bot prefix
-                    guildDB.prefix = args.slice(1).join(" ").trim();
-                    guildDB.markModified("prefix");
-                    await guildDB.save();
-                    message.reply(
-                        "Custom prefix has been set to `" +
-                            args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "`\nYou can still use the default prefix (" +
-                            this.client.config.defaultPrefix +
-                            ")."
-                    );
-                } else {
-                    message.reply(
-                        "Please supply valid value for setting prefix."
-                    );
-                }
+                if (!args[1]) return message.reply(missingArgs);
+                //Set bot prefix
+                guildDB.prefix = args.slice(1).join(" ").trim();
+                guildDB.markModified("prefix");
+                await guildDB.save();
+                message.reply(
+                    "Custom prefix has been set to `" +
+                        args.join(" ").replace(`${args[0]} `, "").trim() +
+                        "`\nYou can still use the default prefix (" +
+                        this.client.config.defaultPrefix +
+                        ")."
+                );
                 break;
             case "reset":
                 //Reset bot prefix

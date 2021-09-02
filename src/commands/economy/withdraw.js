@@ -30,7 +30,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message, args, userDB }, t) {
         if (!(parseInt(userDB.bank, 10) > 0)) {
             return message.reply(t("cmds:withdraw.noMoney"));
         }

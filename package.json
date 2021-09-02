@@ -41,6 +41,7 @@
     "feat: New cmd `autopublish` & new plugin autopublish",
     "feat: New cmd `buy`",
     "feat: New cmd `chatbot`",
+    "feat: New cmd `clone`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

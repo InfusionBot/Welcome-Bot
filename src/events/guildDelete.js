@@ -10,6 +10,7 @@ module.exports = {
     async execute(client, guild) {
         //Bot has been kicked or banned in a guild
         await client.db.deleteGuild(guild.id);
+        const bots = guild.members.cache.filter((m) => m.user.bot).size;
         const embed = new Embed({ color: "error", timestamp: true })
             .setTitle(`:x: Removed from "${guild.name}"`)
             .setDescription(`${guild.id}`)

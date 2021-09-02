@@ -354,6 +354,10 @@
     "cmdDesc": "Get a user's avatar",
     "profile": "Avatar of {{user}}"
   },
+  "clone": {
+    "cmdDesc": "Clone a text",
+    "usage": "[text]"
+  },
   "chanid": {
     "cmdDesc": "Get channel id",
     "usage": "[channel]"

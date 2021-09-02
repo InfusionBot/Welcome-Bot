@@ -59,7 +59,7 @@ module.exports = class Command {
 
     async preCheck(interaction, guildDB, t) {
         if (guildDB.disabled.includes(this.name)) return false; //ignore disabled commands
-        const usage = this.getUsage(t);
+        //const usage = this.getUsage(t);
         if (
             this.requirements?.ownerOnly &&
             !(

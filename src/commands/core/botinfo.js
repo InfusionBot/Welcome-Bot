@@ -25,7 +25,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message, args, guildDB }, t) {
         //TODO: Add translation
         if (args[0]) {
             args[0] = args[0].toLowerCase();

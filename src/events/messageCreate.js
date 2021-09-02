@@ -42,7 +42,7 @@ module.exports = {
                 .replace(/@(everyone)/gi, "everyone")
                 .replace(/@(here)/gi, "here");
             if (message.content.includes(`@`)) {
-                return message.channel.send(`** Please dont mention anyone**`);
+                return message.reply(`**Hey, Please dont mention anyone**`);
             }
             const chat = await require("node-fetch")(chatBotUrl).then((res) =>
                 res.json()
