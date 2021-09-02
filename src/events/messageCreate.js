@@ -9,6 +9,7 @@ module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
+        if (!client.initialized) return;
         if (client.debugLevel > 0)
             client.logger.log("messageCreate event", "debug");
         let guildDB;

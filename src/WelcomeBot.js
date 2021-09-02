@@ -31,6 +31,7 @@ class WelcomeBot extends Client {
             }),
             partials: ["CHANNEL"],
         });
+        this.initialized = false;
         this.config = config;
         this.logger = new Logger();
         this.username = "Welcome-Bot";
@@ -80,18 +81,23 @@ class WelcomeBot extends Client {
             leaveOnStop: true,
             enableLive: true,
         });
-        this.addDbFuncs();
-        ["Event", "Locale", "Command"].forEach((f) => {
-            if (this.debug) this.logger.log(`Loading ${f}s`);
-            (async () => await require(`./loaders/${f}.js`)(this))();
-            if (this.debug) this.logger.log(`Finished loading ${f}s`);
-        });
+        this.initialize();
     }
 
     /*loadCommand(commandPath, commandName) {
         const CMD = require(`${commandPath}/${commandName.replace(".js", "")}`);
         return this.setCmd(CMD);
     }*/
+
+    async initialize() {
+        this.addDbFuncs();
+        ["Event", "Locale", "Command"].forEach((f) => {
+            if (this.debug) this.logger.log(`Loading ${f}s`);
+            await require(`./loaders/${f}.js`)(this);
+            if (this.debug) this.logger.log(`Finished loading ${f}s`);
+        });
+        this.initialized = true;
+    }
 
     setCmd(CMD) {
         const command = new CMD(this);
