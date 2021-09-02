@@ -35,7 +35,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message, args }) {
         const text = args.join(" ");
         const { author: user } = message;
         const webhook = await message.channel.createWebhook(user.username, {
@@ -48,7 +48,7 @@ module.exports = class CMD extends Command {
         await webhook.delete();
     }
 
-    async run({ interaction }, t) {
+    async run({ interaction }) {
         const text = interaction.options.getString("text");
         const { user } = interaction;
         const webhook = await interaction.channel.createWebhook(user.username, {

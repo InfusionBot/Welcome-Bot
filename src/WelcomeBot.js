@@ -91,7 +91,7 @@ class WelcomeBot extends Client {
 
     async initialize() {
         this.addDbFuncs();
-        ["Event", "Locale", "Command"].forEach((f) => {
+        ["Event", "Locale", "Command"].forEach(async (f) => {
             if (this.debug) this.logger.log(`Loading ${f}s`);
             await require(`./loaders/${f}.js`)(this);
             if (this.debug) this.logger.log(`Finished loading ${f}s`);
