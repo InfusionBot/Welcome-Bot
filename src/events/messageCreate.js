@@ -38,6 +38,12 @@ module.exports = {
                 message.author.id
             )}&msg=${encodeURIComponent(message.content)}`;
             if (client.debug) client.logger.log("Chatbot", "debug");
+            message.content = message.content
+                .replace(/@(everyone)/gi, "everyone")
+                .replace(/@(here)/gi, "here");
+            if (message.content.includes(`@`)) {
+                return message.channel.send(`** Please dont mention anyone**`);
+            }
             const chat = await require("node-fetch")(chatBotUrl).then((res) =>
                 res.json()
             );
