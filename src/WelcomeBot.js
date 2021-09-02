@@ -84,7 +84,7 @@ class WelcomeBot extends Client {
         ["Event", "Locale", "Command"].forEach((f) => {
             if (this.debug) this.logger.log(`Loading ${f}s`);
             (async () => await require(`./loaders/${f}.js`)(this))();
-            if (this.debug) thid.logger.log(`Finished loading ${f}s`);
+            if (this.debug) this.logger.log(`Finished loading ${f}s`);
         });
     }
 

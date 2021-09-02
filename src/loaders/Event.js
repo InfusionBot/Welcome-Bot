@@ -8,7 +8,7 @@ const fs = require("fs");
 module.exports = async (client) => {
     const table = new AsciiTable();
     table.setHeading("Event", "Status");
-    const eventsFolder = __dirname + "/events";
+    const eventsFolder = `${__dirname}/../events`;
     let eventFiles;
     if (fs.existsSync(eventsFolder)) {
         eventFiles = fs.readdirSync(eventsFolder);

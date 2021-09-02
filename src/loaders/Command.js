@@ -15,7 +15,7 @@ module.exports = async (client) => {
         disabled: new Collection(),
         cooldowns: new Collection(),
     };
-    const commandFolder = __dirname + "/../commands";
+    const commandFolder = `${__dirname}/../commands`;
     let commandFolders;
     if (fs.existsSync(commandFolder)) {
         commandFolders = fs.readdirSync(commandFolder);
