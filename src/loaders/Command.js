@@ -4,6 +4,8 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const AsciiTable = require("ascii-table");
+const fs = require("fs");
+const { Collection } = require("discord.js");
 module.exports = async (client) => {
     // Create a new Ascii table
     const table = new AsciiTable();
