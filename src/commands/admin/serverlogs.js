@@ -5,13 +5,15 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const { channelIdFromMention } = require("../../helpers/Util.js");
+const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "serverlogs",
                 aliases: ["server-logs", "logs"],
-                memberPerms: [],
+                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
@@ -21,7 +23,10 @@ module.exports = class CMD extends Command {
                 subcommands: [
                     { name: "disable", desc: "Disable server logs" },
                     { name: "enable", desc: "Enable server logs" },
-                    { name: "channel [#channel]", desc: "Set server logs channel" },
+                    {
+                        name: "channel [#channel]",
+                        desc: "Set server logs channel",
+                    },
                 ],
                 cooldown: 10,
                 category: "Administration",
@@ -44,10 +49,7 @@ module.exports = class CMD extends Command {
         switch (args[0]) {
             case "channel":
                 if (!args[1]) return message.reply(missingArgs);
-                channel = args
-                    .slice(1)
-                    .join(" ")
-                    .replace(" ", "");
+                channel = args.slice(1).join(" ").replace(" ", "");
                 channel = channelIdFromMention(args[1]);
                 channel = message.guild.channels.cache.get(channel);
                 if (!channel)

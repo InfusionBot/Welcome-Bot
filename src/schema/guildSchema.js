@@ -92,7 +92,7 @@ const guildSchema = new mongoose.Schema({
                 default: "",
                 type: String,
             },
-        }
+        },
     },
 });
 

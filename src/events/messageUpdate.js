@@ -23,19 +23,23 @@ module.exports = {
         )
             message.crosspost().catch(() => {});
         if (guildDB.plugins.serverlogs.enabled) {
-            const channel = await message.guild.channels.fetch(guildDB.plugins.serverlogs.channel);
+            const channel = await message.guild.channels.fetch(
+                guildDB.plugins.serverlogs.channel
+            );
             if (channel) {
                 const embed = new Embed()
                     .setTitle(t("misc:edited"))
                     .setDesc(
                         "```\n" +
-                        `- ${oldMessage.content}\n` +
-                        `+ ${message.content}\n` +
-                        "```"
+                            `- ${oldMessage.content}\n` +
+                            `+ ${message.content}\n` +
+                            "```"
                     );
-                channel.send({
-                    embeds: [embed]
-                }).catch(() => {});
+                channel
+                    .send({
+                        embeds: [embed],
+                    })
+                    .catch(() => {});
             }
         }
     },

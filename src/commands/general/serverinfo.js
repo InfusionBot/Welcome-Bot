@@ -64,16 +64,16 @@ module.exports = class CMD extends Command {
                     `> ${t("misc:verificationLevel")}: ${
                         guild.verificationLevel
                     }`
-            )
-            const features = [];
-            guild.features.forEach((f) => {
-                const trans = t(`features:${f}`);
-                features.push(`> ${trans}`);
-            });
-            embed.addField(
-                `**${t("misc:features")}**`,
-                `> ${features.join("\n> ")}`
             );
+        const features = [];
+        guild.features.forEach((f) => {
+            const trans = t(`features:${f}`);
+            features.push(`> ${trans}`);
+        });
+        embed.addField(
+            `**${t("misc:features")}**`,
+            `> ${features.join("\n> ")}`
+        );
         const content = message.guild.id;
         switch (args[0]) {
             case "--dm":

@@ -47,10 +47,7 @@ module.exports = class CMD extends Command {
         switch (args[0]) {
             case "channel":
                 if (!args[1]) return message.reply(missingArgs);
-                channel = args
-                    .slice(1)
-                    .join(" ")
-                    .replace(" ", "");
+                channel = args.slice(1).join(" ").replace(" ", "");
                 if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                     channel = channelIdFromMention(args[1]);
                 } else {
