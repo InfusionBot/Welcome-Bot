@@ -44,9 +44,8 @@ module.exports = class CMD extends Command {
                 )
                 .join("\n")
         );
-        const embed = new Embed().setDesc(text);
         message.reply({
-            embeds: [embed],
+            content: text,
         });
     }
 
