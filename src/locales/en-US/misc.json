@@ -33,6 +33,7 @@
   "message": "Message",
   "support": "Support Server",
   "role": "Role",
+  "roles": "Roles",
   "djs": "Discord.js",
   "djsv": "Discord.js v13",
   "pong": "Pong",
@@ -67,5 +68,6 @@
   "creat": "**Created at**",
   "shop": "Shop items",
   "features": "Features",
-  "edited": "Message Edited"
+  "edited": "Message Edited",
+  "mem_update": "Member Updated"
 }
