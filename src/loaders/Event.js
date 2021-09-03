@@ -5,7 +5,7 @@
  */
 const AsciiTable = require("ascii-table");
 const fs = require("fs");
-module.exports = async (client) => {
+module.exports = (client) => {
     const table = new AsciiTable();
     table.setHeading("Event", "Status");
     const eventsFolder = `${__dirname}/../events`;

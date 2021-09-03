@@ -6,7 +6,7 @@
 const AsciiTable = require("ascii-table");
 const fs = require("fs");
 const { Collection } = require("discord.js");
-module.exports = async (client) => {
+module.exports = (client) => {
     // Create a new Ascii table
     const table = new AsciiTable();
     table.setHeading("Category", "Status");
