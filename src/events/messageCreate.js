@@ -18,6 +18,7 @@ module.exports = {
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
+        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&
             guildDB.plugins.autopublish

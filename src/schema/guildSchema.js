@@ -83,6 +83,16 @@ const guildSchema = new mongoose.Schema({
                 type: String,
             },
         },
+        serverlogs: {
+            enabled: {
+                default: false,
+                type: Boolean,
+            },
+            channel: {
+                default: "",
+                type: String,
+            },
+        }
     },
 });
 

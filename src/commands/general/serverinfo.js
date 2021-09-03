@@ -70,7 +70,7 @@ module.exports = class CMD extends Command {
                 const trans = t(`features:${f}`);
                 features.push(`> ${trans}`);
             });
-            .addField(
+            embed.addField(
                 `**${t("misc:features")}**`,
                 `> ${features.join("\n> ")}`
             );

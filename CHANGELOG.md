@@ -58,6 +58,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `buy`
 - feat: New cmd `chatbot`
 - feat: New cmd `clone`
+- feat: New cmd `serverlogs` & new plugin serverlogs
 
 ### Changes
 

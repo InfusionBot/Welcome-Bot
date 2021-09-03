@@ -5,15 +5,13 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const { channelIdFromMention } = require("../../helpers/Util.js");
-const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "welcome",
-                aliases: ["welcomelogs"],
-                memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
+                name: "serverlogs",
+                aliases: ["server-logs", "logs"],
+                memberPerms: [],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
@@ -21,20 +19,19 @@ module.exports = class CMD extends Command {
                 },
                 disabled: false,
                 subcommands: [
-                    { name: "disable", desc: "Disable welcome logs" },
-                    { name: "enable", desc: "Enable welcome logs" },
-                    { name: "message", desc: "Set welcome message" },
-                    { name: "channel [#channel]", desc: "Set welcome channel" },
+                    { name: "disable", desc: "Disable server logs" },
+                    { name: "enable", desc: "Enable server logs" },
+                    { name: "channel [#channel]", desc: "Set server logs channel" },
                 ],
                 cooldown: 10,
                 category: "Administration",
+                slash: false,
             },
             client
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
-    async execute({ message, args, guildDB }, t) {
+    execute({ message, args, guildDB }, t) {
         const missingArgs = t("errors:missingArgs", {
             prefix: guildDB.prefix,
             cmd: this.name,
@@ -42,7 +39,7 @@ module.exports = class CMD extends Command {
         const embed = new Embed();
         if (args[0]) args[0] = args[0].toLowerCase();
 
-        let channel, message2;
+        let channel;
 
         switch (args[0]) {
             case "channel":
@@ -51,58 +48,43 @@ module.exports = class CMD extends Command {
                     .slice(1)
                     .join(" ")
                     .replace(" ", "");
-                if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                    channel = channelIdFromMention(args[1]);
-                } else {
-                    channel = message.guild.channels.cache.find(
-                        (ch) => ch.name === channel
-                    ).id;
-                }
+                channel = channelIdFromMention(args[1]);
                 channel = message.guild.channels.cache.get(channel);
                 if (!channel)
-                    return message.reply(t("cmds:welcome.invalid.channel"));
-                guildDB.plugins.welcome.channel = channel.id;
-                guildDB.markModified("plugins.welcome.channel");
+                    return message.reply(t("cmds:serverlogs.invalid.channel"));
+                guildDB.plugins.serverlogs.channel = channel.id;
+                guildDB.markModified("plugins.serverlogs.channel");
                 message.reply(
-                    t("cmds:welcome.set.channel", { channel: `${channel}` })
-                );
-                break;
-            case "message":
-                if (!args[1]) return message.reply(missingArgs);
-                message2 = args.join(" ").replace(`${args[0] ?? ""} `, "");
-                guildDB.plugins.welcome.message = message2.trim();
-                guildDB.markModified("plugins.welcome.message");
-                message.reply(
-                    t("cmds:welcome.set.message", { message: message2 })
+                    t("cmds:serverlogs.set.channel", { channel: `${channel}` })
                 );
                 break;
             case "disable":
-                guildDB.plugins.welcome.enabled = false;
-                guildDB.markModified("plugins.welcome.enabled");
-                message.reply(t("cmds:welcome.disabled"));
+                guildDB.plugins.serverlogs.enabled = false;
+                guildDB.markModified("plugins.serverlogs.enabled");
+                message.reply(t("cmds:serverlogs.disabled"));
                 break;
             case "enable":
-                guildDB.plugins.welcome.enabled = true;
-                guildDB.markModified("plugins.welcome.enabled");
-                message.reply(t("cmds:welcome.enabled"));
+                guildDB.plugins.serverlogs.enabled = true;
+                guildDB.markModified("plugins.serverlogs.enabled");
+                message.reply(t("cmds:serverlogs.enabled"));
                 break;
             default:
                 if (!args.length) {
                     const channel =
                         message.guild.channels.cache.get(
-                            guildDB.plugins.welcome.channel
+                            guildDB.plugins.serverlogs.channel
                         ) ?? t("misc:not_set");
                     embed
-                        .setTitle(t("cmds:welcome.current.title"))
+                        .setTitle(t("cmds:serverlogs.current.title"))
                         .setDesc(
-                            t("cmds:welcome.current.desc", {
+                            t("cmds:serverlogs.current.desc", {
                                 prefix: guildDB.prefix,
                             })
                         )
                         .addField(t("misc:channel"), `${channel}`)
                         .addField(
                             t("misc:message"),
-                            `\`\`\`\n${guildDB.plugins.welcome.message}\n\`\`\``
+                            `\`\`\`\n${guildDB.plugins.serverlogs.message}\n\`\`\``
                         );
                     message.channel.send({ embeds: [embed] });
                 } else {
@@ -117,5 +99,9 @@ module.exports = class CMD extends Command {
                 break;
         }
         await guildDB.save();
+    }
+
+    async run({ interaction, guildDB }, t) {
+        return;
     }
 };

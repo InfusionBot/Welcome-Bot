@@ -102,6 +102,22 @@
     "cmdDesc": "Manage prefix for this server",
     "usage": "(subcommand)"
   },
+  "serverlogs": {
+    "cmdDesc": "Manage server logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Server logs channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for server logs",
+      "desc": "These are the current Server logs settings of this Server.\nUse `{{prefix}}serverlogs [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled server logs",
+    "enabled": "Successfully enabled server logs"
+  },
   "welcome": {
     "cmdDesc": "Manage welcome logs settings",
     "usage": "(subcommand)",
