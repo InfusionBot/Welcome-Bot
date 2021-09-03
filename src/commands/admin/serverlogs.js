@@ -83,11 +83,7 @@ module.exports = class CMD extends Command {
                                 prefix: guildDB.prefix,
                             })
                         )
-                        .addField(t("misc:channel"), `${channel}`)
-                        .addField(
-                            t("misc:message"),
-                            `\`\`\`\n${guildDB.plugins.serverlogs.message}\n\`\`\``
-                        );
+                        .addField(t("misc:channel"), `${channel}`);
                     message.channel.send({ embeds: [embed] });
                 } else {
                     return message.reply(

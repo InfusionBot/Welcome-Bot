@@ -72,6 +72,15 @@ module.exports = class CMD extends Command {
                         guildDB.plugins.chatbot.enabled
                             ? t("misc:enabled")
                             : t("misc:disabled")
+                    })\n\n` +
+                    `${t(
+                        "dashboard:serverlogs"
+                    )}: ${message.guild.channels.cache.get(
+                        guildDB.plugins.serverlogs.channel
+                    )} (${
+                        guildDB.plugins.serverlogs.enabled
+                            ? t("misc:enabled")
+                            : t("misc:disabled")
                     })\n\n`
             );
         message.channel.send({ embeds: [embed] });
