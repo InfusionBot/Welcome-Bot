@@ -22,6 +22,7 @@ module.exports = async (client) => {
                     "cmds",
                     "errors",
                     "permissions",
+                    "features",
                     "misc",
                     "dashboard",
                     "shop",

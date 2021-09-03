@@ -39,7 +39,7 @@ module.exports = class CMD extends Command {
             )
             .addField("Icon URL:", `[${iconURL}](${message.guild.iconURL()})`)
             .addField(
-                t("categories:general"),
+                `**${t("categories:general")}**`,
                 `> ${t("misc:channels")}: ${
                     message.guild.channels.cache.size
                 }\n` +
@@ -56,14 +56,23 @@ module.exports = class CMD extends Command {
                     }`
             )
             .addField(
-                t("misc:stats"),
-                `> ${t("misc:exiSince")}: ${message.guild.createdAt}\n` +
+                `**${t("misc:stats")}**`,
+                `> ${t("misc:exiSince")}: ${guild.createdAt}\n` +
                     `> ${t("misc:lang")}: ${
-                        message.guild.preferredLocale ?? "none"
+                        guild.preferredLocale ?? "none"
                     }\n` +
                     `> ${t("misc:verificationLevel")}: ${
-                        message.guild.verificationLevel
+                        guild.verificationLevel
                     }`
+            )
+            const features = [];
+            guild.features.forEach((f) => {
+                const trans = t(`features:${f}`);
+                features.push(`> ${trans}`);
+            });
+            .addField(
+                `**${t("misc:features")}**`,
+                `> ${features.join("\n> ")}`
             );
         const content = message.guild.id;
         switch (args[0]) {

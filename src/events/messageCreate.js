@@ -50,7 +50,7 @@ module.exports = {
             );
             message.reply(
                 `${
-                    chat.cnt
+                    chat?.cnt
                         ? formatChat(chat.cnt)
                         : "Error: No message provided"
                 }`
