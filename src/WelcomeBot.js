@@ -100,6 +100,7 @@ class WelcomeBot extends Client {
             if (this.debug) this.logger.log(`Finished loading ${f}s`);
         });
         this.initialized = true;
+        this.emit("initialized", this);
     }
 
     setCmd(CMD) {
