@@ -24,8 +24,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB, userDB }, t) {
+    execute({ message, args, guildDB }, t) {
         let commands = this.client.commands.enabled
             .filter((cmd) => cmd.slash)
             .map(({ name, options }) => {

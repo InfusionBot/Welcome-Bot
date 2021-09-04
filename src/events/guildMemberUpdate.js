@@ -9,7 +9,7 @@ module.exports = {
     async execute(client, oldMember, newMember) {
         if (client.debugLevel > 0)
             client.logger.log("guildMemberUpdate event", "debug");
-        if (oldMember.equals(newMember)) return;
+        if (oldMember.equals(newMember) || newMember.user.bot) return;
         let diff = "```\n";
         const { cache: oldRoles } = oldMember.roles;
         const { cache: newRoles } = newMember.roles;
@@ -26,7 +26,7 @@ module.exports = {
         }
         diff += "\n```";
         let guildDB;
-        if (newMember.guild && message.channel.type !== "DM") {
+        if (newMember.guild) {
             guildDB = await client.db.findOrCreateGuild(newMember.guild.id);
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };

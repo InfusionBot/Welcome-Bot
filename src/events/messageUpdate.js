@@ -10,6 +10,7 @@ module.exports = {
     async execute(client, oldMessage, message) {
         if (client.debugLevel > 0)
             client.logger.log("messageUpdate event", "debug");
+        if (message.author.bot) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
             guildDB = await client.db.findOrCreateGuild(message.guild.id);

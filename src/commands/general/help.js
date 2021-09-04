@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
         const pages = [new Embed({ color: "blue", timestamp: true })];
         const timeout = 200000; //20 secs timeout
 
-        for (var i = 0; i < pages.length; i++) {
+        for (let i = 0; i < pages.length; i++) {
             pages[i].setTitle(t("cmds:help.bot-help"));
         }
         if (!args.length) {
@@ -46,7 +46,7 @@ module.exports = class CMD extends Command {
                         `categories:${cat.key}`
                     )} ${t("misc:category")}`
                 );
-                message.client.commands.enabled.forEach((command) => {
+                commands.forEach((command) => {
                     if (command.category === cat.name)
                         commandsCat.push(
                             `• ${command.name} - ${t(
