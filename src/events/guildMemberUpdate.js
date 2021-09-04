@@ -22,7 +22,9 @@ module.exports = {
         if (diffRoles1.size > 0 || diffRoles2.size > 0) {
             const diff1 = [...diffRoles1.values()];
             const diff2 = [...diffRoles2.values()];
-            diff += `${t("misc:roles")}\n+ ${diff1.join("\n+ ")}\n- ${diff2.join("\n- ")}`;
+            diff += `${t("misc:roles")}\n+ ${diff1.join(
+                "\n+ "
+            )}\n- ${diff2.join("\n- ")}`;
         }
         diff += "\n```";
         let guildDB;
