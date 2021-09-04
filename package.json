@@ -43,6 +43,7 @@
     "feat: New cmd `chatbot`",
     "feat: New cmd `clone`",
     "feat: New cmd `serverlogs` & new plugin serverlogs",
+    "feat: New cmd `cat`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",

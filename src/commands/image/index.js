@@ -11,8 +11,8 @@ const commands = require("fs")
 module.exports = {
     commands,
     metadata: {
-        name: "General",
-        key: "general",
-        emoji: "ℹ️",
+        name: "Image",
+        key: "image",
+        emoji: "🖼",
     },
 };

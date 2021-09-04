@@ -6,7 +6,7 @@
 module.exports = {
     name: "guildMemberUpdate",
     once: false,
-    execute(client, oldMember, newMember) {
+    async execute(client, oldMember, newMember) {
         if (client.debugLevel > 0)
             client.logger.log("guildMemberUpdate event", "debug");
         if (oldMember.equals(newMember)) return;

@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **90 commands** in **8 categories**!
+Welcome-Bot contains more than **90 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -22,12 +22,13 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - [Economy](#economy)
 - [Fun](#fun)
 - [General](#general)
+- [Image](#image)
 - [Moderation](#moderation)
 - [Music](#music)
 
 
 
-## Administration (12 commands)
+## Administration (13 commands)
 
 ### `autopublish`
 
@@ -180,6 +181,21 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Description: Manage prefix for this server
 - Usage: w/prefix (subcommand)
 - Aliases: `getprefix`
+- Cooldown: 10
+
+### `serverlogs`
+
+##### Subcommands:
+
+- `disable` - Disable server logs
+- `enable` - Enable server logs
+- `channel [#channel]` - Set server logs channel
+
+##### Cmd info
+
+- Description: Manage server logs settings
+- Usage: w/serverlogs (subcommand)
+- Aliases: `server-logs`, `logs`
 - Cooldown: 10
 
 ### `welcome`
@@ -620,7 +636,7 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Aliases: `wd`, `with`
 - Cooldown: 10
 
-## Fun (7 commands)
+## Fun (4 commands)
 
 ### `8ball`
 
@@ -648,19 +664,6 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Aliases: `cf`, `filpcoin`
 - Cooldown: 5
 
-### `duck`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Shows a random duck image
-- Usage: w/duck 
-- Aliases: None
-- Cooldown: 5
-
 ### `emojify`
 
 ##### Subcommands:
@@ -686,32 +689,6 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Usage: w/figlet [string]
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 5
-
-### `image`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Generate a random pokemon image
-- Usage: w/image 
-- Aliases: `random-image`, `randomimage`
-- Cooldown: 10
-
-### `pokemon`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Get a pokemon image
-- Usage: w/pokemon [pokemon character]
-- Aliases: `pokémon`
-- Cooldown: 10
 
 ## General (22 commands)
 
@@ -1001,6 +978,34 @@ Welcome-Bot contains more than **90 commands** in **8 categories**!
 - Usage: w/version (version)
 - Aliases: `vinfo`, `ver`
 - Cooldown: 10
+
+## Image (2 commands)
+
+### `cat`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: cat.cmdDesc
+- Usage: w/cat 
+- Aliases: None
+- Cooldown: 5
+
+### `duck`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows a random duck image
+- Usage: w/duck 
+- Aliases: None
+- Cooldown: 5
 
 ## Moderation (6 commands)
 

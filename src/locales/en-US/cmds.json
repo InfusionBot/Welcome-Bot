@@ -459,6 +459,9 @@
     "cmdDesc": "Get information on a version or latest version",
     "usage": "(version)"
   },
+  "cat": {
+    "cmdDesc": "Show a random cat image"
+  },
   "ban": {
     "cmdDesc": "Ban a user.",
     "usage": "[@mention] (reason)",
