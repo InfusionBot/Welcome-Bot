@@ -25,7 +25,9 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message }, t) {
-        const image = await require("node-fetch")("http://thecatapi.com/api/images/get?format=src&type=png").then(res => res.url);
+        const image = await require("node-fetch")(
+            "http://thecatapi.com/api/images/get?format=src&type=png"
+        ).then((res) => res.url);
         message.channel.send({
             embeds: [
                 {
@@ -41,7 +43,9 @@ module.exports = class CMD extends Command {
     }
 
     async run({ interaction }, t) {
-        const image = await require("node-fetch")("http://thecatapi.com/api/images/get?format=src&type=png").then(res => res.url);
+        const image = await require("node-fetch")(
+            "http://thecatapi.com/api/images/get?format=src&type=png"
+        ).then((res) => res.url);
         interaction.followUp({
             embeds: [
                 {
