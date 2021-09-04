@@ -27,6 +27,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
+        const embed = new Embed({ color: "success", timestamp: true });
         for (const rawEmoji of args) {
             const emoji = Util.parseEmoji(rawEmoji);
             if (emoji.id) {
