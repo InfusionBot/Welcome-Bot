@@ -49,8 +49,6 @@ module.exports = class CMD extends Command {
                             .setTitle(
                                 `${t("cmds:addemoji.success", {
                                     emoji: `${emoji}`,
-                                    emojiName: `${emoji.name}`,
-                                    emojiId: emoji.id,
                                 })}`
                             )
                             .setDesc(`${emoji}`),

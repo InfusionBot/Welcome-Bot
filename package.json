@@ -44,6 +44,7 @@
     "feat: New cmd `clone`",
     "feat: New cmd `serverlogs` & new plugin serverlogs",
     "feat: New cmd `cat`",
+    "feat: New cmd `stealemoji`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",
