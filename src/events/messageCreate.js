@@ -21,9 +21,10 @@ module.exports = {
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&
-            guildDB.plugins.autopublish
+            guildDB.plugins.autopublish &&
+            message.crosspostable
         )
-            message.crosspost().catch(() => {});
+            message.crosspost();
         if (message.author.bot) return;
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#optional_chaining_operator
         if (!client.application?.owner) await client.application?.fetch();

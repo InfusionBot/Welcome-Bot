@@ -121,4 +121,5 @@ client.on("initialized", () => {
             }
         });
     });
+    process.exit();
 });

@@ -20,9 +20,10 @@ module.exports = {
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&
-            guildDB.plugins.autopublish
+            guildDB.plugins.autopublish &&
+            message.crosspostable
         )
-            message.crosspost().catch(() => {});
+            message.crosspost();
         if (guildDB.plugins.serverlogs.enabled) {
             const channel = await message.guild.channels.fetch(
                 guildDB.plugins.serverlogs.channel
