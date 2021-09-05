@@ -55,7 +55,7 @@ module.exports = class CMD extends Command {
                                 embed.setTitle(
                                     `${
                                         t("cmds:stealemoji.error", {
-                                            emojiName: `${name}`,
+                                            emojiName: `${emoji.name}`,
                                         }).split("\n")[1]
                                     }`
                                 ),
