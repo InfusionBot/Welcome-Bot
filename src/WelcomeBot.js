@@ -81,7 +81,7 @@ class WelcomeBot extends Client {
             leaveOnStop: true,
             enableLive: true,
         });
-        this.initialize();
+        if (!process.env.TEST_MODE) this.initialize();
     }
 
     /*loadCommand(commandPath, commandName) {
