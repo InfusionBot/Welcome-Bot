@@ -34,5 +34,8 @@ module.exports = (data) => {
         .replace("Believer", `Shape of You`) //favourite song
         .replace("Baseball", `Football`) //favourite sport
         .replace("making friends", `Maths`) //favourite subject
-        .replace("Dallas Cowboys", `Dallas Cowboys`); //favourite football team
+        .replace("Dallas Cowboys", `Dallas Cowboys`) //favourite football team
+        .replace("<aco-btn>", "") //useless
+        .replace("</aco-btn>", ",") //useless
+        .replace("Acobot is a great A.I. R&D team based in CA. They aim to help people all over the world with artificial intellegence.", "A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Economy, Welcome & Goodbye logs, Fun, Music"); //advertisement
 };
