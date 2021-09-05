@@ -24,7 +24,7 @@ module.exports = {
             message.crosspostable
         )
             message.crosspost();
-        if (guildDB.plugins.serverlogs.enabled) {
+        if (guildDB.plugins.serverlogs.enabled && oldMessage.content !== message.content) {
             const channel = await message.guild.channels.fetch(
                 guildDB.plugins.serverlogs.channel
             );
