@@ -5,7 +5,6 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const backup = require("discord-backup");
 const { Permissions } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -35,6 +34,7 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB }, t) {
+        const backup = require("discord-backup");
         const missingArgs = t("errors:missingArgs", {
             prefix: guildDB.prefix,
             cmd: this.name,
