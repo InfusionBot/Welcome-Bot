@@ -14,9 +14,9 @@ const findArrDups = (array) => {
     });
 };
 describe("Commands", () => {
-    client.on("initialized", () => {
-        const commands = client.commands.enabled;
-        it("should have no duplicate names or aliases", (done) => {
+    const commands = client.commands.enabled;
+    it("should have no duplicate names or aliases", (done) => {
+        client.on("initialized", () => {
             const aliases = commands.reduce((arr, command) => {
                 const { name } = command;
                 const aliases = command?.aliases || [];
@@ -35,8 +35,10 @@ describe("Commands", () => {
                 );
             }
         });
+    });
 
-        it("should have only lowercase names and aliases", (done) => {
+    it("should have only lowercase names and aliases", (done) => {
+        client.on("initialized", () => {
             const aliases = commands.reduce((arr, command) => {
                 const { name } = command;
                 const aliases = command?.aliases || [];
@@ -60,8 +62,10 @@ describe("Commands", () => {
                 );
             }
         });
+    });
 
-        it("should be defined in cmds.json", (done) => {
+    it("should be defined in cmds.json", (done) => {
+        client.on("initialized", () => {
             const t = client.i18next.getFixedT("en-US");
             const cmds = commands.reduce((arr, command) => {
                 if (command.category.indexOf("Owner") === -1) return [];
@@ -86,8 +90,10 @@ describe("Commands", () => {
                 );
             }
         });
+    });
 
-        it("should have proper category name", (done) => {
+    it("should have proper category name", (done) => {
+        client.on("initialized", () => {
             if (!client.i18next) {
                 //Wait 10 seconds if client.i18next is not defined
                 client.wait(10);
