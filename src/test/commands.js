@@ -14,10 +14,7 @@ const findArrDups = (array) => {
         return array.indexOf(val) !== index;
     });
 };
-describe("Commands", async () => {
-    client.logger.log(`Loading Locales`);
-    await require("./loaders/Locale")(client); //Locale loader is async, so load it seperately
-    client.logger.log(`Finished loading Locales`);
+describe("Commands", () => {
     ["Command"].forEach((f) => {
         client.logger.log(`Loading ${f}s`);
         require(`./loaders/${f}`)(client);
@@ -70,15 +67,15 @@ describe("Commands", async () => {
     });
 
     it("should be defined in cmds.json", (done) => {
-        const t = client.i18next.getFixedT("en-US");
+        const cmdsFile = require("../src/locales/en-US/cmds.json");
         const cmds = commands.reduce((arr, command) => {
             if (command.category.indexOf("Owner") === -1) return [];
             const { name } = command;
             return [...arr, name];
         }, []);
         let errors = [];
-        for (var i = 0; i < cmds.length; i++) {
-            if (t(`cmds:${cmds[i]}.cmdDesc`) === `${cmds[i]}.cmdDesc`) {
+        for (let i = 0; i < cmds.length; i++) {
+            if (!cmdsFile[cmds[i]]?.cmdDesc) {
                 errors.push(cmds[i]);
             }
         }
