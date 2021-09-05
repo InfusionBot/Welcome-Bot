@@ -17,7 +17,7 @@ const findArrDups = (array) => {
 describe("Commands", () => {
     ["Command"].forEach((f) => {
         client.logger.log(`Loading ${f}s`);
-        require(`./loaders/${f}`)(client);
+        require(`../loaders/${f}`)(client);
         client.logger.log(`Finished loading ${f}s`);
     });
     const commands = client.commands.enabled;
