@@ -13,9 +13,9 @@ const findArrDups = (array) => {
         return array.indexOf(val) !== index;
     });
 };
-client.on("initialized", () => {
-    const commands = client.commands.enabled;
-    describe("Commands", () => {
+describe("Commands", () => {
+    client.on("initialized", () => {
+        const commands = client.commands.enabled;
         it("should have no duplicate names or aliases", (done) => {
             const aliases = commands.reduce((arr, command) => {
                 const { name } = command;
@@ -121,5 +121,4 @@ client.on("initialized", () => {
             }
         });
     });
-    process.exit();
 });
