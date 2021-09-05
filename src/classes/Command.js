@@ -21,9 +21,9 @@ module.exports = class Command {
             ownerOnly: false,
         });
         //this.usage = options.optional("usage", null);
-        this.defaultUsage = client.i18next ? client.i18next.getFixedT("en-US")(
-            `cmds:${this.name}.usage`
-        ) : "";
+        this.defaultUsage = client.i18next
+            ? client.i18next.getFixedT("en-US")(`cmds:${this.name}.usage`)
+            : "";
         if (this.defaultUsage === `${this.name}.usage`) this.defaultUsage = "";
         this.disabled = options.optional("disabled", false);
         this.subcommands = options.optional("subcommands", null);
