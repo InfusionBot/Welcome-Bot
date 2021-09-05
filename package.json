@@ -61,7 +61,7 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js",
-    "test": "npx mocha src/test --recursive --exit"
+    "test": "npx mocha src/test --recursive --exit --timeout 10000"
   },
   "repository": {
     "type": "git",
