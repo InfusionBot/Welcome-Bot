@@ -5,11 +5,11 @@
  */
 const { Embed } = require("../classes");
 module.exports = {
-    name: "messageUpdate",
+    name: "messageDelete",
     once: false,
-    async execute(client, oldMessage, message) {
+    async execute(client, message) {
         if (client.debugLevel > 0)
-            client.logger.log("messageUpdate event", "debug");
+            client.logger.log("messageDelete event", "debug");
         if (message.author.bot) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
@@ -18,25 +18,14 @@ module.exports = {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-        if (
-            message.channel.type === "GUILD_NEWS" &&
-            guildDB.plugins.autopublish &&
-            message.crosspostable
-        )
-            message.crosspost();
         if (guildDB.plugins.serverlogs.enabled) {
             const channel = await message.guild.channels.fetch(
                 guildDB.plugins.serverlogs.channel
             );
             if (channel) {
                 const embed = new Embed()
-                    .setTitle(t("misc:edited"))
-                    .setDesc(
-                        "```diff\n" +
-                            `- ${oldMessage.content}\n` +
-                            `+ ${message.content}\n` +
-                            "```"
-                    );
+                    .setTitle(t("misc:deleted"))
+                    .setDesc("```diff\n" + `- ${message.content}\n` + "```");
                 channel
                     .send({
                         embeds: [embed],
