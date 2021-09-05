@@ -33,6 +33,7 @@
   "message": "Message",
   "support": "Support Server",
   "role": "Role",
+  "roles": "Roles",
   "djs": "Discord.js",
   "djsv": "Discord.js v13",
   "pong": "Pong",
@@ -42,9 +43,6 @@
   "cached_users": "Cached Users",
   "ping": "Ping",
   "not_set": "Not set",
-  "items": {
-    "banknote": "banknote(s)"
-  },
   "latency": "Roundtrip latency",
   "verificationLevel": "Verification Level",
   "usageKey": "**Usage Key!**\nThe [ and ] around the argument mean it’s required.\nThe ( and ) around the argument mean it’s optional.",
@@ -64,5 +62,12 @@
   "thanks": {
     "vote": "Thanks for voting on {{site}}, you just got 500 WCoins with other rewards 🎉!"
   },
-  "welcome": "Welcome!"
+  "welcome": "Welcome!",
+  "sname": "**Server name**",
+  "size": "**Size**",
+  "creat": "**Created at**",
+  "shop": "Shop items",
+  "features": "Features",
+  "edited": "Message Edited",
+  "mem_update": "Member Updated"
 }

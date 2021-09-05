@@ -11,64 +11,71 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "modlogs",
-                aliases: ["modlog"],
+                name: "chatbot",
+                aliases: ["chat"],
                 memberPerms: [Permissions.FLAGS.MANAGE_GUILD],
                 botPerms: [],
                 requirements: {
                     subcommand: false,
                     guildOnly: true,
                 },
-                subcommands: [
-                    { name: "set [#channel]", desc: "Set ModLogs channel" },
-                ],
                 disabled: false,
-                cooldown: 10,
-                category: "Setup",
+                subcommands: [
+                    { name: "disable", desc: "Disable chatbot" },
+                    { name: "enable", desc: "Enable chatbot" },
+                    { name: "channel [#channel]", desc: "Set chatbot channel" },
+                ],
+                cooldown: 5,
+                category: "Administration",
+                slash: false,
             },
             client
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB }, t) {
         const missingArgs = t("errors:missingArgs", {
             prefix: guildDB.prefix,
             cmd: this.name,
         });
-        const subcommand = args[0] ? args[0].toLowerCase() : "";
         const embed = new Embed();
-        let channel = args
-            .join(" ")
-            .replace(`${args[0] ?? ""} `, "")
-            .replace(" ", ""); //replace empty space as there is no empty space in a channel name
-        switch (subcommand) {
-            case "set":
+        if (args[0]) args[0] = args[0].toLowerCase();
+
+        let channel;
+
+        switch (args[0]) {
+            case "channel":
                 if (!args[1]) return message.reply(missingArgs);
-                if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
-                    channel = channelIdFromMention(args[1]);
-                } else {
-                    channel = message.guild.channels.cache.find(
-                        (ch) => ch.name === channel
-                    ).id;
-                }
+                channel = channelIdFromMention(args[1]);
                 channel = message.guild.channels.cache.get(channel);
-                guildDB.plugins.modlogs = channel.id;
-                guildDB.markModified("plugins.modlogs");
+                if (!channel)
+                    return message.reply(t("cmds:chatbot.invalid.channel"));
+                guildDB.plugins.chatbot.channel = channel.id;
+                guildDB.markModified("plugins.chatbot.channel");
                 message.reply(
-                    t("cmds:modlogs.channelSet", { channel: `${channel}` })
+                    t("cmds:chatbot.set.channel", { channel: `${channel}` })
                 );
+                break;
+            case "disable":
+                guildDB.plugins.chatbot.enabled = false;
+                guildDB.markModified("plugins.chatbot.enabled");
+                message.reply(t("cmds:chatbot.disabled"));
+                break;
+            case "enable":
+                guildDB.plugins.chatbot.enabled = true;
+                guildDB.markModified("plugins.chatbot.enabled");
+                message.reply(t("cmds:chatbot.enabled"));
                 break;
             default:
                 if (!args.length) {
                     const channel =
                         message.guild.channels.cache.get(
-                            guildDB.plugins.modlogs
+                            guildDB.plugins.chatbot.channel
                         ) ?? t("misc:not_set");
                     embed
-                        .setTitle(t("cmds:modlogs.current.title"))
+                        .setTitle(t("cmds:chatbot.current.title"))
                         .setDesc(
-                            t("cmds:modlogs.current.desc", {
+                            t("cmds:chatbot.current.desc", {
                                 prefix: guildDB.prefix,
                             })
                         )
@@ -82,8 +89,13 @@ module.exports = class CMD extends Command {
                         })
                     );
                 }
+                this.removeCooldown(message.author);
                 break;
         }
         await guildDB.save();
+    }
+
+    async run({ interaction, guildDB }, t) {
+        return;
     }
 };

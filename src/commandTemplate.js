@@ -29,12 +29,10 @@ module.exports = class CMD extends Command {
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
     execute({ message, args, guildDB, userDB }, t) {
         return;
     }
 
-    //eslint-disable-next-line no-unused-vars
     async run({ interaction, guildDB, userDB }, t) {
         return;
     }

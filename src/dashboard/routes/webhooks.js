@@ -27,6 +27,18 @@ router.post("/bls", async (req, res) => {
     userDB.markModified("wallet");
     userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
     userDB.markModified("inventory.banknote");
+    await userDB.save();
+    const member = client.guilds.cache
+        .get(client.config.botGuildId)
+        .members.cache.get(vUser.id);
+    if (member) member.roles.add(client.config.votersRole);
+    if (process.env.NODE_ENV !== "production") {
+        console.log(
+            "NODE_ENV not in production so not sending any messages for voting on botlist.space"
+        );
+        res.sendStatus(200);
+        return res.end();
+    }
     if (client.config.votesChannelId) {
         client.channels.cache
             .get(client.config.votesChannelId)
@@ -73,13 +85,10 @@ router.post(
         userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
         userDB.markModified("inventory.banknote");
         await userDB.save();
-        if (process.env.NODE_ENV !== "production") {
-            console.log(
-                "NODE_ENV not in production so not sending any messages for voting on botlist.space"
-            );
-            res.sendStatus(200);
-            return res.end();
-        }
+        const member = client.guilds.cache
+            .get(client.config.botGuildId)
+            .members.cache.get(vUser.id);
+        if (member) member.roles.add(client.config.votersRole);
         if (client.config.votesChannelId) {
             client.channels.cache
                 .get(client.config.votesChannelId)
@@ -95,7 +104,10 @@ router.post(
             console.log("No votesChannelId in config");
         }
         const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
-        vUser.send(t("misc:thanks.vote", { site: "top.gg" })).catch(() => {});
+        vUser
+            .send(t("misc:thanks.vote", { site: "top.gg" }))
+            .catch(() => {})
+            .catch(() => {});
         res.sendStatus(200);
         res.end();
     })

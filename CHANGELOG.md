@@ -31,7 +31,7 @@ The displayed date is in the format `DD-MM-YYYY`
 
 - feat: New cmd `emojify`
 - feat: New cmd `daily` and new category `Economy`
-- feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`, `use`, `inventory`, `gift`
+- feat: New cmds `balance`, `deposit`, `give`, `beg`, `withdraw`, `profile`, `setbio`, `rob`, `vote`, `use`, `inventory`, `gift`, `shop`
 - feat: New item `banknote`
 - feat: New cmd `report`
 - feat: New cmd `duck`
@@ -53,6 +53,14 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `djsdocs`
 - feat: New cmd `reminder`
 - feat: New cmd `leaderboard`
+- feat: New cmd `backup` but it is disabled
+- feat: New cmd `autopublish` & new plugin autopublish
+- feat: New cmd `buy`
+- feat: New cmd `chatbot`
+- feat: New cmd `clone`
+- feat: New cmd `serverlogs` & new plugin serverlogs
+- feat: New cmd `cat`
+- feat: New cmd `stealemoji`
 
 ### Changes
 
@@ -60,6 +68,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor(disable cmd): disable commands using disable cmd!
 - refactor(enable): enable commands using enable cmd!
 - refactor(translations): Lot more translations
+- refactor: remove pokemon, image commands
 
 [v2.0.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.0
 

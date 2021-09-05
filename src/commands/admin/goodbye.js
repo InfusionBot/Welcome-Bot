@@ -27,13 +27,12 @@ module.exports = class CMD extends Command {
                     { name: "channel [#channel]", desc: "Set goodbye channel" },
                 ],
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB }, t) {
         const missingArgs = t("errors:missingArgs", {
             prefix: guildDB.prefix,
@@ -47,10 +46,7 @@ module.exports = class CMD extends Command {
         switch (args[0]) {
             case "channel":
                 if (!args[1]) return message.reply(missingArgs);
-                channel = args
-                    .join(" ")
-                    .replace(`${args[0] ?? ""} `, "")
-                    .replace(" ", "");
+                channel = args.slice(1).join(" ").replace(" ", "");
                 if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                     channel = channelIdFromMention(args[1]);
                 } else {

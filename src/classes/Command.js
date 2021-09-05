@@ -21,9 +21,9 @@ module.exports = class Command {
             ownerOnly: false,
         });
         //this.usage = options.optional("usage", null);
-        this.defaultUsage = client.i18next.getFixedT("en-US")(
-            `cmds:${this.name}.usage`
-        );
+        this.defaultUsage = client.i18next
+            ? client.i18next.getFixedT("en-US")(`cmds:${this.name}.usage`)
+            : "";
         if (this.defaultUsage === `${this.name}.usage`) this.defaultUsage = "";
         this.disabled = options.optional("disabled", false);
         this.subcommands = options.optional("subcommands", null);
@@ -58,9 +58,8 @@ module.exports = class Command {
     }
 
     async preCheck(interaction, guildDB, t) {
-        await interaction.deferReply();
         if (guildDB.disabled.includes(this.name)) return false; //ignore disabled commands
-        const usage = this.getUsage(t);
+        //const usage = this.getUsage(t);
         if (
             this.requirements?.ownerOnly &&
             !(
@@ -169,22 +168,7 @@ module.exports = class Command {
         return true;
     }
 
-    async prerun(message, guildDB, t) {
-        try {
-            await this.client.userDbFuncs.addUser(message.author.id);
-        } catch (e) {
-            if (this.category.toLowerCase() === "economy") {
-                throw e;
-                // eslint-disable-next-line no-unreachable
-                return false;
-            } else {
-                this.client.logger.log("Can't add user:", "error", [
-                    "USER",
-                    "DB",
-                ]);
-                console.log(e);
-            }
-        }
+    prerun(message, guildDB, t) {
         const basicPerms = [
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,

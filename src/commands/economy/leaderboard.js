@@ -5,13 +5,13 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const { Formatters, Collection } = require("discord.js");
+const { Formatters } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "leaderboard",
-                aliases: ["top-10"],
+                aliases: ["top-10", "rich", "richest"],
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
@@ -26,9 +26,13 @@ module.exports = class CMD extends Command {
     //eslint-disable-next-line no-unused-vars
     async execute({ message }, t) {
         const Users = await this.client.userSchema.find({});
-        const array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
+        let array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
             this.client.users.cache.has(user.userId)
         );
+        if (message.guild)
+            array = array.filter((user) =>
+                message.guild.members.cache.has(user.id)
+            );
         const text = Formatters.codeBlock(
             array
                 .slice(0, 10)
@@ -40,9 +44,8 @@ module.exports = class CMD extends Command {
                 )
                 .join("\n")
         );
-        const embed = new Embed().setDesc(text);
         message.reply({
-            embeds: [embed],
+            content: text,
         });
     }
 

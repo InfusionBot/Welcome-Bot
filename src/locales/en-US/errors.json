@@ -1,5 +1,5 @@
 {
-  "generic": "An error occurred!",
+  "generic": ":x: An error occurred!",
   "guildOnly": "This can only be done in servers.",
   "pagination": "Your reaction won't be removed automatically, as soon as you react.",
   "noAcc": "That user doesn't have a Welcome-Bot account, they may create one by typing any command of Welcome-Bot",
@@ -9,6 +9,7 @@
   "missingArgs": "Arguments are required for this command. Use `{{prefix}}help {{cmd}}` for more info",
   "notTrueOrFalse": "You have to give me a value that is true or false.",
   "invalidNumber": "You have to give me a valid number.",
+  "invalidItem": "This is not a valid item!",
   "invalidUser": "You have to give me a valid user mention or id.",
   "invalidUserId": "You have to give me a valid user id.",
   "commandNotFound": "I couldn't find any command with that name.",

@@ -5,6 +5,8 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
+const moment = require("moment");
+require("moment-duration-format");
 const { version } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -23,12 +25,12 @@ module.exports = class CMD extends Command {
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
-    async execute({ message, args }, t) {
+    async execute({ message, args, guildDB }, t) {
         //TODO: Add translation
         if (args[0]) {
             args[0] = args[0].toLowerCase();
         }
+        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
         const promises = [
             this.client.shard.fetchClientValues("guilds.cache.size"),
             this.client.shard.broadcastEval((c) =>
@@ -38,6 +40,9 @@ module.exports = class CMD extends Command {
                 )
             ),
         ];
+        const duration = moment
+            .duration(this.client.uptime)
+            .format(" D [days], H [hrs], m [mins], s [secs]");
         const counts = await Promise.all(promises).then((results) => {
             const totalGuilds = results[0].reduce(
                 (acc, guildCount) => acc + guildCount,
@@ -59,18 +64,22 @@ module.exports = class CMD extends Command {
                 `${message.client.user.username} v${message.client.package.version}`
             )
             .setDescription(`${this.client.application.description}`)
-            .setThumbnail("https://welcome-bot.github.io/assets/img/logo.png")
             .addField(
                 `:pencil: __${t("categories:general")}__`,
-                `> Servers: ${counts.totalGuilds} servers\n` +
+                `> ${t("misc:servers")}: ${counts.totalGuilds} servers\n` +
                     `> Users: ${counts.totalMembers} users\n` +
-                    `> Channels: ${message.client.channels.cache.size} channels\n` +
+                    `> ${t("misc:channels")}: ${
+                        message.client.channels.cache.size
+                    } channels\n` +
                     `> Version: ${message.client.package.version}\n` +
-                    `> Commands: ${message.client.commands.enabled.size} commands`
+                    `> Commands: ${message.client.commands.enabled.size} commands\n` +
+                    `> ${message.client.customEmojis.online} ${t(
+                        "misc:uptime"
+                    )}: ${duration}`
             )
             .addField(
                 `:gear: __${t("misc:system")}__`,
-                `> ${message.client.customEmojis.nodejs} Node.js: ${process.version}\n` +
+                `> ${message.client.customEmojis.nodejs} Node: ${process.version}\n` +
                     `> ${message.client.customEmojis.djs} Discord.js: v${version}\n` +
                     `> ${message.client.customEmojis.ram} ${t(
                         "misc:ram_used"

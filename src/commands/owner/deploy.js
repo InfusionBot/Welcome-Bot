@@ -17,15 +17,14 @@ module.exports = class CMD extends Command {
                     ownerOnly: true,
                 },
                 disabled: false,
-                cooldown: 10,
+                cooldown: 20,
                 category: "Owner Only",
             },
             client
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB, userDB }, t) {
+    execute({ message, args, guildDB }, t) {
         let commands = this.client.commands.enabled
             .filter((cmd) => cmd.slash)
             .map(({ name, options }) => {

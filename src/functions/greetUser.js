@@ -3,9 +3,8 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const getGuild = require("../db/functions/guild/getGuild");
 const { nth } = require("../helpers/Util.js");
-const { Embed } = require("../classes");
+//const { Embed } = require("../classes");
 const { MessageAttachment } = require("discord.js");
 const { resolve } = require("path");
 const Canvas = require("canvas");
@@ -31,7 +30,7 @@ const applyText = (canvas, text, fontSize = 60, font = "Bold") => {
 };
 module.exports = async (member) => {
     const { client } = member;
-    const guildDB = await getGuild(member.guild.id);
+    const guildDB = await client.db.findOrCreateGuild(member.guild.id);
     if (
         !guildDB.plugins.welcome.enabled ||
         guildDB.disabled.includes("welcome")

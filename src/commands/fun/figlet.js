@@ -27,11 +27,10 @@ module.exports = class CMD extends Command {
         const figlet = require("figlet");
         const figletAsync = require("util").promisify(figlet);
         const text = args.join(" ");
-        let result;
         if (text.length > 20) {
             return message.channel.send(t("cmds:figlet.error"));
         }
-        result = await figletAsync(text);
+        const result = await figletAsync(text);
         message.reply("```" + result + "```");
     }
 };

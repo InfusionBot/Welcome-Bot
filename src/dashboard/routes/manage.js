@@ -10,9 +10,9 @@ const router = express.Router();
 router.get("/:guildId", CheckAuth, async (req, res) => {
     let guildDB;
     try {
-        guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
+        guildDB = await req.client.db.findOrCreateGuild(req.params.guildId);
     } catch (e) {
-        if (process.env.NODE_ENV === "development") console.error(e);
+        if (process.env.NODE_ENV === "development") console.log(e);
     }
     const guild = req.client.guilds.cache.get(req.params.guildId);
     if (
@@ -31,15 +31,16 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
             currentURL: req.currentURL,
         });
     }
-    const guild2 = req.userData.displayedGuilds.find(
+    let guild2 = req.userData.displayedGuilds.find(
         (g) => g.id === req.params.guildId
     );
+    guild2 = Object.assign(guild, guild2);
     res.render("manage", {
         user: req.user,
         userData: req.userData,
         userDB: req.userDB,
         guildDB,
-        guild: { ...guild2, ...guild },
+        guild: guild2,
         dclient: req.client,
         translate: req.translate,
         currentURL: req.currentURL,
@@ -50,7 +51,7 @@ router.get("/:guildId", CheckAuth, async (req, res) => {
 router.post("/:guildId", CheckAuth, async (req, res) => {
     let guildDB;
     try {
-        guildDB = await req.client.guildDbFuncs.getGuild(req.params.guildId);
+        guildDB = await req.client.db.findOrCreateGuild(req.params.guildId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
@@ -112,7 +113,7 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             enabled: false,
             message:
                 "Welcome {mention} to the {server} server!\nYou are our #{members_formatted} member",
-            channel: "new-members",
+            channel: "member-log",
         };
         guildDB.markModified("plugins.welcome");
     }
@@ -136,9 +137,26 @@ router.post("/:guildId", CheckAuth, async (req, res) => {
             enabled: false,
             message:
                 "Good Bye {mention}!\nWe are sad to see you go!\nWithout you, we are {members} members",
-            channel: null,
+            channel: "",
         };
         guildDB.markModified("plugins.goodbye");
+    }
+    if (
+        Object.prototype.hasOwnProperty.call(data, "autoroleEnable") ||
+        Object.prototype.hasOwnProperty.call(data, "autorolePlugin")
+    ) {
+        guildDB.plugins.autorole = {
+            enabled: true,
+            role: guild.roles.cache.find((r) => r.name === data.autorole).id,
+        };
+        guildDB.markModified("plugins.autorole");
+    }
+    if (Object.prototype.hasOwnProperty.call(data, "autoroleDisable")) {
+        guildDB.plugins.autorole = {
+            enabled: false,
+            role: "0",
+        };
+        guildDB.markModified("plugins.autorole");
     }
     await guildDB.save();
     res.redirect(303, "/manage/" + guild.id);

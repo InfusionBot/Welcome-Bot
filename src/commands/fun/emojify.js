@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }, t) {
+    execute({ message, args }, t) {
         const specialChars = {
             0: ":zero:",
             1: ":one:",

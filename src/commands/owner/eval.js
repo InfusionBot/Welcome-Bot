@@ -3,12 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-//eslint-disable no-unused-vars
-const fs = require("fs");
-const versionSender = require("../../functions/versionSender.js");
-const presence = require("../../functions/presence.js");
-const serverCount = require("../../functions/serverCount.js");
-const { inspect } = require("util");
+/*eslint-disable no-unused-vars*/
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -23,14 +18,18 @@ module.exports = class CMD extends Command {
                 },
                 usage: "[statement]",
                 disabled: false,
-                cooldown: 20,
+                cooldown: 10,
                 category: "Owner Only",
             },
             client
         );
     }
 
-    execute({ message, args, guildDB, userDB }) {
+    execute({ message, args, guildDB, userDB }, t) {
+        const versionSender = require("../../functions/versionSender.js");
+        const presence = require("../../functions/presence.js");
+        const serverCount = require("../../functions/serverCount.js");
+        const { inspect } = require("util");
         const { client } = this;
         const content = args.join(" ");
         const embed = new Embed({ color: "success" }).addField(
@@ -44,7 +43,10 @@ module.exports = class CMD extends Command {
                     //Client token
                     text = text.replace(message.client.token, "T0K3N");
                 }
-                if (text.includes(message.client.config.dashboard.secret)) {
+                if (
+                    message.client.config.dashboard.secret &&
+                    text.includes(message.client.config.dashboard.secret)
+                ) {
                     //Client secret
                     text = text.replace(
                         message.client.config.dashboard.secret,
@@ -87,17 +89,13 @@ module.exports = class CMD extends Command {
             });
     }
 
-    async giveCredits(amount, userId, message) {
-        const userDB = await this.client.userDbFuncs
-            .getUser(userId)
+    async giveCredits(userId, amount, message) {
+        const userDB = await this.client.db
+            .findOrCreateUser(userId)
             .catch(() => {});
-        if (userDB) {
-            userDB.wallet = parseInt(userDB.wallet) + amount;
-            userDB.markModified("wallet");
-            await userDB.save();
-            message.reply("Done");
-        } else {
-            message.reply("No such user in db");
-        }
+        userDB.wallet = parseInt(userDB.wallet) + amount;
+        userDB.markModified("wallet");
+        await userDB.save();
+        message.reply("Done");
     }
 };

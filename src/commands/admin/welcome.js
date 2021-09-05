@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
                     { name: "channel [#channel]", desc: "Set welcome channel" },
                 ],
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );
@@ -47,10 +47,7 @@ module.exports = class CMD extends Command {
         switch (args[0]) {
             case "channel":
                 if (!args[1]) return message.reply(missingArgs);
-                channel = args
-                    .join(" ")
-                    .replace(`${args[0] ?? ""} `, "")
-                    .replace(" ", "");
+                channel = args.slice(1).join(" ").replace(" ", "");
                 if (args[1].startsWith("<#") && isNaN(parseInt(args[1]))) {
                     channel = channelIdFromMention(args[1]);
                 } else {

@@ -18,49 +18,43 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                 },
                 subcommands: [
-                    { name: "set", desc: "Set Custom prefix" },
+                    { name: "set [prefix]", desc: "Set Custom prefix" },
                     { name: "reset", desc: "Reset Custom prefix" },
                 ],
                 disabled: false,
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );
     }
 
     async execute({ message, args, guildDB }, t) {
-        const updateGuild = require("../../db/functions/guild/updateGuild");
         const subcommand = args[0] ? args[0].toLowerCase() : "";
+        const missingArgs = t("errors:missingArgs", {
+            prefix: guildDB.prefix,
+            cmd: this.name,
+        });
         switch (subcommand) {
             case "set":
-                if (args[1]) {
-                    //Set bot prefix
-                    updateGuild(
-                        message.guild.id,
-                        "prefix",
-                        args.join(" ").replace(`${args[0]} `, "").trim()
-                    );
-                    message.reply(
-                        "Custom prefix has been set to `" +
-                            args.join(" ").replace(`${args[0]} `, "").trim() +
-                            "`\nYou can still use the default prefix (" +
-                            message.client.defaultPrefix +
-                            ")."
-                    );
-                } else {
-                    message.reply(
-                        "Please supply valid value for setting prefix."
-                    );
-                }
+                if (!args[1]) return message.reply(missingArgs);
+                //Set bot prefix
+                guildDB.prefix = args.slice(1).join(" ").trim();
+                guildDB.markModified("prefix");
+                await guildDB.save();
+                message.reply(
+                    "Custom prefix has been set to `" +
+                        args.join(" ").replace(`${args[0]} `, "").trim() +
+                        "`\nYou can still use the default prefix (" +
+                        this.client.config.defaultPrefix +
+                        ")."
+                );
                 break;
             case "reset":
                 //Reset bot prefix
-                updateGuild(
-                    message.guild.id,
-                    "prefix",
-                    this.client.config.defaultPrefix
-                );
+                guildDB.prefix = this.client.config.defaultPrefix;
+                guildDB.markModified("prefix");
+                await guildDB.save();
 
                 message.reply(
                     "Prefix reset to `" + this.client.config.defaultPrefix + "`"

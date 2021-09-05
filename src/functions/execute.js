@@ -8,10 +8,10 @@ const { MessageEmbed, Permissions } = require("discord.js");
 
 module.exports = async (message, guildDB) => {
     const { client } = message;
-    let userDB = await client.userDbFuncs.getUser(message.author.id);
+    const userDB = await client.db.findOrCreateUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        escapeRegex(client.defaultPrefix.toLowerCase()),
+        escapeRegex(client.config.defaultPrefix.toLowerCase()),
         escapeRegex(guildDB.prefix.toLowerCase()),
     ];
     const prefixRegex = new RegExp(
@@ -91,15 +91,7 @@ module.exports = async (message, guildDB) => {
         ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms) {
-                return message.reply(
-                    `${t("errors:iDontHavePermShort")}\nType \`${
-                        guildDB.prefix
-                    }help ${
-                        this.name
-                    }\` to get list of permissions required by this command.\nDon't know what you have given already? Type \`${
-                        guildDB.prefix
-                    }botperms\` in this channel itself.`
-                );
+                return message.reply(t("errors:iDontHavePermShort"));
             }
             for (var i = 0; i < command.botPerms.length; i++) {
                 if (!botPerms.has(command.botPerms[i])) {
@@ -188,6 +180,20 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
+        if (command.subcommands && command.requirements?.subcommand) {
+            const subcmds = [];
+            for (let i = 0; i < command.subcommands.length; i++) {
+                subcmds.push(command.subcommands[i].name);
+            }
+            if (!subcmds.has(args[0]))
+                return message.reply(
+                    t("errors:invalidSubCmd", {
+                        prefix: guildDB.prefix,
+                        cmd: command.name,
+                    })
+                );
+        }
+
         if (client.debug && client.debugLevel >= 3)
             client.logger.log(
                 `Starting to prerun cmd: ${command.name}`,
@@ -195,7 +201,7 @@ module.exports = async (message, guildDB) => {
             );
         let prerunResult = false;
         try {
-            prerunResult = await command.prerun(message, guildDB, t);
+            prerunResult = command.prerun(message, guildDB, t);
         } catch (e) {
             client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
             console.error(e);
@@ -214,8 +220,6 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            if (!userDB)
-                userDB = await client.userDbFuncs.getUser(message.author.id);
             message.channel.sendTyping().catch(() => {});
             try {
                 command.execute({ message, args, guildDB, userDB }, t);

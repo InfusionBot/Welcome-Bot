@@ -39,7 +39,6 @@
                             </div>
                             <div class="card-body">
                                 <form action="/manage/<%= guild.id %>/" method="POST">
-                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <div class="form-group">
                                         <label><%= translate("misc:prefix") %></label>
                                         <input type="text" name="prefix" class="form-control" placeholder="<%= guildDB.prefix %>">
@@ -63,7 +62,6 @@
                                 <h3 class="card-title"><%= translate("dashboard:welcome") %></h3>
                             </div>
                             <div class="card-body">
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <form action="/manage/<%= guild.id %>/" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:message") %></label>
@@ -82,10 +80,10 @@
                                             <% } %>
                                         </select>
                                         <% if (guildDB.plugins.welcome.enabled) { %>
-                                        <button type="submit" name="welcomeDisable" class="btn btn-danger"><%= translate("dashboard:disable_messages") %></button>
+                                        <button type="submit" name="welcomeDisable" class="btn btn-danger"><%= translate("dashboard:disable") %></button>
                                         <button type="submit" name="welcomePlugin" class="btn btn-primary pull-right"><%= translate("misc:update") %></button>
                                         <% } else { %>
-                                        <button type="submit" name="welcomeEnable" class="btn btn-success"><%= translate("dashboard:enable_messages") %></button>
+                                        <button type="submit" name="welcomeEnable" class="btn btn-success"><%= translate("dashboard:enable") %></button>
                                         <% } %>
                                     </div>
                                 </form>
@@ -96,7 +94,6 @@
                                 <h3 class="card-title"><%= translate("dashboard:goodbye") %></h3>
                             </div>
                             <div class="card-body">
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <form action="/manage/<%= guild.id %>/" method="POST">
                                     <div class="form-group">
                                         <label><%= translate("misc:message") %></label>
@@ -104,21 +101,51 @@
                                         <label><%= translate("misc:channel") %></label>
                                         <select class="form-control" name="channel">
                                         <% if (guildDB.plugins.goodbye.enabled && (guild.channels.cache.has(guildDB.plugins.goodbye.channel) || guild.channels.cache.find(c => c.name === guildDB.plugins.goodbye.channel))) { %>
-                                            <option selected="selected"><%= (guild.channels.cache.get(guildDB.plugins.goodbye.channel)?.name ?? guildDB.plugins.goodbye.channel) %></option>
-                                            <% guild.channels.cache.filter((ch) => ch.id !== guildDB.plugins.goodbye.channel && ch.type === "GUILD_TEXT").forEach((ch) => { %>
-                                            <option><%= ch.name %></option>
-                                            <% }); } else { %>
-                                            <option selected="selected"><%= guild.channels.cache.filter((ch) => ch.type === "GUILD_TEXT").first().name %></option>
-                                            <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.cache.first().id && ch.type === "GUILD_TEXT").forEach((ch) => { %>
-                                            <option><%= ch.name %></option>
-                                            <% }); %>
+                                        <option selected="selected"><%= (guild.channels.cache.get(guildDB.plugins.goodbye.channel)?.name ?? guildDB.plugins.goodbye.channel) %></option>
+                                        <% guild.channels.cache.filter((ch) => ch.id !== guildDB.plugins.goodbye.channel && ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                        <option><%= ch.name %></option>
+                                        <% }); } else { %>
+                                        <option selected="selected"><%= guild.channels.cache.filter((ch) => ch.type === "GUILD_TEXT").first().name %></option>
+                                        <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.cache.first().id && ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                        <option><%= ch.name %></option>
+                                        <% }); %>
                                         <% } %>
                                         </select>
                                         <% if (guildDB.plugins.goodbye.enabled) { %>
-                                        <button type="submit" name="goodbyeDisable" class="btn btn-danger"><%= translate("dashboard:disable_messages") %></button>
+                                        <button type="submit" name="goodbyeDisable" class="btn btn-danger"><%= translate("dashboard:disable") %></button>
                                         <button type="submit" name="goodbyePlugin" class="btn btn-primary pull-right"><%= translate("misc:update") %></button>
                                         <% } else { %>
-                                        <button type="submit" name="goodbyeEnable" class="btn btn-success"><%= translate("dashboard:enable_messages") %></button>
+                                        <button type="submit" name="goodbyeEnable" class="btn btn-success"><%= translate("dashboard:enable") %></button>
+                                        <% } %>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card card-dark">
+                            <div class="card-header">
+                                <h3 class="card-title"><%= translate("dashboard:autorole") %></h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="/manage/<%= guild.id %>/" method="POST">
+                                    <div class="form-group">
+                                        <label><%= translate("misc:role") %></label>
+                                        <select class="form-control" name="autorole">
+                                            <% if (guildDB.plugins.autorole.enabled && (guild.roles.cache.has(guildDB.plugins.autorole.role) || guild.roles.cache.find(c => c.name === guildDB.plugins.autorole.role))) { %>
+                                            <option selected="selected"><%= (guild.roles.cache.get(guildDB.plugins.autorole.role)?.name) %></option>
+                                            <% guild.roles.cache.filter((r) => r.id !== guildDB.plugins.autorole.role && r.position < guild.me.roles.highest.position).forEach((r) => { %>
+                                            <option><%= r.name %></option>
+                                            <% }); } else { %>
+                                            <option selected="selected"><%= guild.roles.cache.filter((r) => r.position < guild.me.roles.highest.position).first().name %></option>
+                                            <% guild.roles.cache.filter((r) => r.id !== guild.roles.cache.first().id && r.position < guild.me.roles.highest.position).forEach((r) => { %>
+                                            <option><%= r.name %></option>
+                                            <% }); %>
+                                            <% } %>
+                                        </select>
+                                        <% if (guildDB.plugins.autorole.enabled) { %>
+                                        <button type="submit" name="autoroleDisable" class="btn btn-danger"><%= translate("dashboard:disable") %></button>
+                                        <button type="submit" name="autorolePlugin" class="btn btn-primary pull-right"><%= translate("misc:update") %></button>
+                                        <% } else { %>
+                                        <button type="submit" name="autoroleEnable" class="btn btn-success"><%= translate("dashboard:enable") %></button>
                                         <% } %>
                                     </div>
                                 </form>

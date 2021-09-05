@@ -13,6 +13,8 @@ module.exports = [
     Permissions.FLAGS.KICK_MEMBERS,
     Permissions.FLAGS.BAN_MEMBERS,
     Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS,
+    Permissions.FLAGS.MANAGE_GUILD,
+    Permissions.FLAGS.MANAGE_CHANNELS,
     Permissions.FLAGS.MANAGE_WEBHOOKS,
     Permissions.FLAGS.MANAGE_MESSAGES,
     Permissions.FLAGS.ADD_REACTIONS,

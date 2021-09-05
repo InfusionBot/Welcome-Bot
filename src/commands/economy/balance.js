@@ -3,7 +3,6 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const getUser = require("../../db/functions/user/getUser");
 const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
@@ -48,7 +47,8 @@ module.exports = class CMD extends Command {
         }
         let userDB2;
         try {
-            if (message.author.id !== user.id) userDB2 = await getUser(user.id);
+            if (message.author.id !== user.id)
+                userDB2 = await this.client.userDbFuncs.getUser(user.id);
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
@@ -67,6 +67,6 @@ module.exports = class CMD extends Command {
                     percentage: (bankLimit - bank) / 100,
                 })
             );
-        message.reply({ embeds: [embed] });
+        message.channel.send({ embeds: [embed] });
     }
 };

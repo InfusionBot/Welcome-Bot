@@ -11,7 +11,7 @@ router.get("/:userId", async (req, res) => {
     let userDB;
     let user;
     try {
-        userDB = await req.client.userDbFuncs.getUser(req.params.userId);
+        userDB = await req.client.db.findOrCreateUser(req.params.userId);
     } catch (e) {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
@@ -21,13 +21,13 @@ router.get("/:userId", async (req, res) => {
         if (process.env.NODE_ENV === "development") console.error(e);
     }
     if (!userDB) {
-        return res.send({
+        return res.json({
             error: "404",
             message: "User not found in database",
         });
     }
     if (!user) {
-        return res.send({ error: "404", message: "User not found in discord" });
+        return res.json({ error: "404", message: "User not found in discord" });
     }
     res.render("profile", {
         user: req.user,

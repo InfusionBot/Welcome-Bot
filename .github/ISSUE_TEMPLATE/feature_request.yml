@@ -1,0 +1,36 @@
+name: Feature request
+about: Suggest an idea for this project
+title: "Feature request: "
+labels:
+  - "Type: enhancement"
+assignees: ""
+
+body:
+  - type: markdown
+    attributes:
+      value: |-
+        Thank you for opening a new issue!
+
+        Please remember that you should fill out all files marked with a `*` and that you should give as much information as possible.
+  - type: checkboxes
+    attributes:
+      label: Checks
+      description: Make sure you have performed these important steps before opening this issue.
+      options:
+        - label: I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue) for already existing feature requests.
+          required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: |-
+        Try to describe your feature request as detailed as possible.
+        If it is related to an existing problem should you mention that. If there exists an option GitHub issue about this should you also link to it using `#<id>`.
+
+        The text field also allows you to upload screenshots and similar.
+      placeholder: I would love the bot if it had ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternatives considered
+      description: Do you consider any alternatives to use? This is optional

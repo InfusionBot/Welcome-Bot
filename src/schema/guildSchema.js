@@ -69,6 +69,30 @@ const guildSchema = new mongoose.Schema({
                 type: String,
             },
         },
+        autopublish: {
+            default: false,
+            type: Boolean,
+        },
+        chatbot: {
+            enabled: {
+                default: false,
+                type: Boolean,
+            },
+            channel: {
+                default: "",
+                type: String,
+            },
+        },
+        serverlogs: {
+            enabled: {
+                default: false,
+                type: Boolean,
+            },
+            channel: {
+                default: "",
+                type: String,
+            },
+        },
     },
 });
 

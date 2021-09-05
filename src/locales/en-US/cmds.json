@@ -1,4 +1,140 @@
 {
+  "autopublish": {
+    "cmdDesc": "Manage autopublish settings",
+    "usage": "(subcommand)",
+    "current": {
+      "title": "Current settings for autopublish",
+      "desc": "These are the current Autopublish settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "disabled": "Successfully disabled autopublish",
+    "enabled": "Successfully enabled autopublish"
+  },
+  "autorole": {
+    "cmdDesc": "Manage autorole settings",
+    "usage": "(subcommand)",
+    "success": "Autorole set to {{role}}",
+    "current": {
+      "title": "Current settings for autorole",
+      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "disabled": "Successfully disabled autorole",
+    "enabled": "Successfully enabled autorole"
+  },
+  "backup": {
+    "cmdDesc": "Take backup of your server!",
+    "usage": "[subcommand]",
+    "warning": ":warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!",
+    "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}backup load {{id}}` to load it",
+    "invalidId": ":x: Invalid backup ID",
+    "cancelled": ":x: Cancelled.",
+    "success": "Backup loaded successfully!",
+    "created": "Backup created! I have sent you the ID in DMs."
+  },
+  "chatbot": {
+    "cmdDesc": "Manage chatbot settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Chatbot channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for chatbot",
+      "desc": "These are the current Chatbot settings of this Server.\nUse `{{prefix}}chatbot [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled chatbot",
+    "enabled": "Successfully enabled chatbot"
+  },
+  "disable": {
+    "cmdDesc": "Disable commands.",
+    "usage": "(command name / subcommand)",
+    "title": "Currently disabled commands",
+    "done": "Successfully disabled!"
+  },
+  "enable": {
+    "cmdDesc": "Enable commands.",
+    "usage": "[command name]",
+    "notDisabled": "That command was not disabled so not doing anything",
+    "done": "Successfully enabled!"
+  },
+  "follow": {
+    "cmdDesc": "Get news and version updates to this bot sent to a specific channel.",
+    "usage": "[channel / channel id]",
+    "success": "Successfully followed"
+  },
+  "goodbye": {
+    "cmdDesc": "Manage goodbye logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Goodbye channel set to {{channel}}",
+      "message": "Goodbye message set to ```\n{{message}}\n```"
+    },
+    "current": {
+      "title": "Current settings for goodbye logs",
+      "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled goodbye logs",
+    "enabled": "Successfully enabled goodbye logs"
+  },
+  "lang": {
+    "cmdDesc": "Change language",
+    "usage": "(subcommand) (lang)",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
+    "success": "Language set to {{lang}}",
+    "show": "Language successfully set to {{lang}}",
+    "langNotProvided": "You have not provided lang argument"
+  },
+  "modlogs": {
+    "cmdDesc": "Manage ModLogs settings",
+    "usage": "(subcommand)",
+    "channelSet": "ModLogs channel set to {{channel}}",
+    "current": {
+      "title": "Current settings for ModLogs",
+      "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
+    }
+  },
+  "prefix": {
+    "cmdDesc": "Manage prefix for this server",
+    "usage": "(subcommand)"
+  },
+  "serverlogs": {
+    "cmdDesc": "Manage server logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Server logs channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for server logs",
+      "desc": "These are the current Server logs settings of this Server.\nUse `{{prefix}}serverlogs [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled server logs",
+    "enabled": "Successfully enabled server logs"
+  },
+  "welcome": {
+    "cmdDesc": "Manage welcome logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Welcome channel set to {{channel}}",
+      "message": "Welcome message set to ```\n{{message}}\n```"
+    },
+    "current": {
+      "title": "Current settings for welcome logs",
+      "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled welcome logs",
+    "enabled": "Successfully enabled welcome logs"
+  },
   "cuddle": {
     "cmdDesc": "Cuddle with a user",
     "usage": "[@mention / user id]",
@@ -110,6 +246,13 @@
       "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
     }
   },
+  "buy": {
+    "cmdDesc": "Buy items which are available in the shop",
+    "usage": "[item] (amount)",
+    "notAvailable": "Sorry friend, but that item is not available for sale",
+    "noMoney": "You don't have enough money to buy that! Check the shop",
+    "done": "Successfully bought {{amount}} {{item}}(s)"
+  },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
     "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
@@ -141,7 +284,7 @@
     "errorYourself": "Woah, can you donate yourself?"
   },
   "inventory": {
-    "cmdDesc": "Shows your inventory",
+    "cmdDesc": "Shows yours or some one else's inventory",
     "noItems": "You don't have anything in your inventory"
   },
   "leaderboard": {
@@ -164,10 +307,15 @@
     "usage": "[bio]",
     "success": "Successfully set bio to **{{bio}}**"
   },
+  "shop": {
+    "cmdDesc": "Shop items",
+    "notAvailable": "Not available",
+    "available": "Available"
+  },
   "use": {
     "cmdDesc": "Use your items",
     "usage": "[item] (count)",
-    "notAnItem": "What are you thinking fool? There is no item like that",
+    "notAnItem": "What are you thinking fool? There is no item like that or it is not usable item",
     "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
     "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
     "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",
@@ -215,12 +363,16 @@
     "usage": "[link] [emoji name]",
     "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
     "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "`<:{{emojiName}}:{{emojiId}}>`",
+    "success": "`{{emoji}}`",
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {
     "cmdDesc": "Get a user's avatar",
     "profile": "Avatar of {{user}}"
+  },
+  "clone": {
+    "cmdDesc": "Clone a text",
+    "usage": "[text]"
   },
   "chanid": {
     "cmdDesc": "Get channel id",
@@ -291,6 +443,12 @@
   "staff": {
     "cmdDesc": "View this server's staff"
   },
+  "stealemoji": {
+    "cmdDesc": "Steal emojis from other servers",
+    "usage": "[emoji]",
+    "success": "`{{emoji}}`",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
+  },
   "testwelcome": {
     "cmdDesc": "Test by sending welcome message",
     "welcomeDisabled": "Welcome logs are disabled and can't be tested right now."
@@ -306,6 +464,9 @@
   "version": {
     "cmdDesc": "Get information on a version or latest version",
     "usage": "(version)"
+  },
+  "cat": {
+    "cmdDesc": "Show a random cat image"
   },
   "ban": {
     "cmdDesc": "Ban a user.",
@@ -408,89 +569,5 @@
     "usage": "(0-200)",
     "current": "Current volume is **{{volume}}**%!",
     "success": "Volume adjusted to {{volume}}"
-  },
-  "autorole": {
-    "cmdDesc": "Manage autorole settings",
-    "usage": "(subcommand)",
-    "success": "Autorole set to {{role}}",
-    "current": {
-      "title": "Current settings for autorole",
-      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
-    },
-    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
-    "disabled": "Successfully disabled autorole",
-    "enabled": "Successfully enabled autorole"
-  },
-  "disable": {
-    "cmdDesc": "Disable commands.",
-    "usage": "(command name / subcommand)",
-    "title": "Currently disabled commands",
-    "done": "Successfully disabled!"
-  },
-  "enable": {
-    "cmdDesc": "Enable commands.",
-    "usage": "[command name]",
-    "notDisabled": "That command was not disabled so not doing anything",
-    "done": "Successfully enabled!"
-  },
-  "follow": {
-    "cmdDesc": "Get news and version updates to this bot sent to a specific channel.",
-    "usage": "[channel / channel id]",
-    "success": "Successfully followed"
-  },
-  "goodbye": {
-    "cmdDesc": "Manage goodbye logs settings",
-    "usage": "(subcommand)",
-    "set": {
-      "channel": "Goodbye channel set to {{channel}}",
-      "message": "Goodbye message set to ```\n{{message}}\n```"
-    },
-    "current": {
-      "title": "Current settings for goodbye logs",
-      "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
-    },
-    "invalid": {
-      "channel": "The channel you provided is invalid"
-    },
-    "disabled": "Successfully disabled goodbye logs",
-    "enabled": "Successfully enabled goodbye logs"
-  },
-  "lang": {
-    "cmdDesc": "Change language",
-    "usage": "(subcommand) (lang)",
-    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language set to {{lang}}",
-    "show": "Language successfully set to {{lang}}",
-    "langNotProvided": "You have not provided lang argument"
-  },
-  "modlogs": {
-    "cmdDesc": "Manage ModLogs settings",
-    "usage": "(subcommand)",
-    "channelSet": "ModLogs channel set to {{channel}}",
-    "current": {
-      "title": "Current settings for ModLogs",
-      "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
-    }
-  },
-  "prefix": {
-    "cmdDesc": "Manage prefix for this server",
-    "usage": "(subcommand)"
-  },
-  "welcome": {
-    "cmdDesc": "Manage welcome logs settings",
-    "usage": "(subcommand)",
-    "set": {
-      "channel": "Welcome channel set to {{channel}}",
-      "message": "Welcome message set to ```\n{{message}}\n```"
-    },
-    "current": {
-      "title": "Current settings for welcome logs",
-      "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
-    },
-    "invalid": {
-      "channel": "The channel you provided is invalid"
-    },
-    "disabled": "Successfully disabled welcome logs",
-    "enabled": "Successfully enabled welcome logs"
   }
 }

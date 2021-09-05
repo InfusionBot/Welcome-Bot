@@ -21,7 +21,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message }, t) {
         const embed = new Embed({ color: "success" }).setTitle(
             t("cmds:shards.cmdDesc")
         );

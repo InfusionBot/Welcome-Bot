@@ -19,19 +19,23 @@ module.exports = class CMD extends Command {
                 },
                 disabled: false,
                 cooldown: 10,
-                category: "Setup",
+                category: "Administration",
             },
             client
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
-    execute({ message, args, guildDB }, t) {
+    execute({ message, guildDB }, t) {
         const embed = new Embed()
             .setAuthor(message.guild.name, message.guild.iconURL())
             .addField(
-                `**${t("category:general")}**`,
-                `${t("misc:prefix")}: ${guildDB.prefix}`
+                `**${t("categories:general")}**`,
+                `${t("misc:prefix")}: ${guildDB.prefix}\n\n` +
+                    `${t("misc:lang")}: ${
+                        this.client.languages.find(
+                            (l) => l.name === (guildDB.lang ?? "en-US")
+                        ).aliases[0]
+                    }`
             )
             .addField(
                 `**${t("misc:plugins")}**`,
@@ -40,7 +44,7 @@ module.exports = class CMD extends Command {
                 )} (${
                     guildDB.plugins.welcome.enabled
                         ? t("misc:enabled")
-                        : t("misc:enabled")
+                        : t("misc:disabled")
                 })\n\n` +
                     `${t(
                         "dashboard:goodbye"
@@ -49,7 +53,7 @@ module.exports = class CMD extends Command {
                     )} (${
                         guildDB.plugins.goodbye.enabled
                             ? t("misc:enabled")
-                            : t("misc:enabled")
+                            : t("misc:disabled")
                     })\n\n` +
                     `${t("dashboard:autorole")}: ${
                         message.guild.roles.cache.get(
@@ -58,7 +62,25 @@ module.exports = class CMD extends Command {
                     } (${
                         guildDB.plugins.autorole.enabled
                             ? t("misc:enabled")
-                            : t("misc:enabled")
+                            : t("misc:disabled")
+                    })\n\n` +
+                    `${t(
+                        "dashboard:chatbot"
+                    )}: ${message.guild.channels.cache.get(
+                        guildDB.plugins.chatbot.channel
+                    )} (${
+                        guildDB.plugins.chatbot.enabled
+                            ? t("misc:enabled")
+                            : t("misc:disabled")
+                    })\n\n` +
+                    `${t(
+                        "dashboard:serverlogs"
+                    )}: ${message.guild.channels.cache.get(
+                        guildDB.plugins.serverlogs.channel
+                    )} (${
+                        guildDB.plugins.serverlogs.enabled
+                            ? t("misc:enabled")
+                            : t("misc:disabled")
                     })\n\n`
             );
         message.channel.send({ embeds: [embed] });

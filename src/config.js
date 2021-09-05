@@ -15,11 +15,13 @@ module.exports = {
     errorLogsChannelId: "878431491581964328",
     loginLogsChannelId: "880122897472036894",
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
+    votersRole: "852512614789808138",
     reportsChannelId: "869017115385024543",
     ownerIds: [
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,
     ],
+    dbCacheRefreshInterval: 1 * 60 * 60 * 1000, //refresh db cache every hour
     staffIds: ["772421156787191818" /*Kirito#1555*/],
     dashboard: {
         port: process.env.PORT || 8000,
@@ -27,6 +29,7 @@ module.exports = {
         enabled: process.env.SESS_SECRET ?? null ? true : false,
         logs: "855331801635749888",
     },
+    site: "https://welcome-bot.github.io/",
     invite: (client) => {
         return client.generateInvite({
             scopes: ["bot", "applications.commands"],
@@ -60,4 +63,5 @@ module.exports = {
         }
         return invite;
     },
+    supportGuildInviteReal2: "https://discord.gg/vEUnKUNNRB",
 };

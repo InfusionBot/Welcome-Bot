@@ -9,8 +9,10 @@
   "welcome": "👋 Welcome messages",
   "goodbye": "😢 Goodbye messages",
   "autorole": "🎖️ Autorole plugin",
+  "chatbot": "🤖 Chat Bot",
+  "serverlogs": "☑ Server Logs",
   "dashboard": "Dashboard",
-  "disable_messages": "Disable Messages",
-  "enable_messages": "Enable Messages",
+  "disable": "Disable",
+  "enable": "Enable",
   "bio": "Your bio"
 }

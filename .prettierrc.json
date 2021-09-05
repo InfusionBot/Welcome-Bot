@@ -12,6 +12,12 @@
             "options": {
                 "tabWidth": 4
             }
+        },
+        {
+            "files": ["*.yml"],
+            "options": {
+                "tabWidth": 2
+            }
         }
     ],
     "endOfLine": "lf"

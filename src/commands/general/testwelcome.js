@@ -6,7 +6,6 @@
 const { Permissions } = require("discord.js");
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const greetUser = require("../../functions/greetUser");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -26,7 +25,8 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args }, t) {
+    async execute({ message }, t) {
+        const greetUser = require("../../functions/greetUser");
         const result = await greetUser(message.member);
         if (result === "channelNotFound") {
             return message.reply(t("errors:channelDoesntExist"));
