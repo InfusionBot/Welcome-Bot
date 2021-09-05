@@ -9,7 +9,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "coinflip",
-                aliases: ["cf", "filpcoin"],
+                aliases: ["cfp", "filpcoin"],
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
