@@ -25,7 +25,8 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message }, t) const sayGoodBye = require("../../functions/sayGoodBye");
+    async execute({ message }, t) {
+        const sayGoodBye = require("../../functions/sayGoodBye");
         const result = await sayGoodBye(message.member);
         if (result === "channelNotFound") {
             return message.reply(t("errors:channelDoesntExist"));
