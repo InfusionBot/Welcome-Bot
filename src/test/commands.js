@@ -14,7 +14,10 @@ const findArrDups = (array) => {
     });
 };
 describe("Commands", () => {
-    const commands = client.commands.enabled;
+    let commands;
+    client.on("initialized", () => {
+        commands = client.commands.enabled;
+    });
     it("should have no duplicate names or aliases", (done) => {
         client.on("initialized", () => {
             const aliases = commands.reduce((arr, command) => {
