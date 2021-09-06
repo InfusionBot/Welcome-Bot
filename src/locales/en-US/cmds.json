@@ -481,6 +481,11 @@
     "kicked": "User kicked",
     "mySelf": "Please don't try to kick me, you have to do it yourself."
   },
+  "lock": {
+    "cmdDesc": "Lock current channel",
+    "locked": "Locked down the channel",
+    "already": "The channel is already locked!"
+  },
   "mute": {
     "cmdDesc": "Mute a member",
     "usage": "[@mention / user id] (reason)",
@@ -506,6 +511,11 @@
   },
   "unban": {
     "cmdDesc": "Unban a user."
+  },
+  "unlock": {
+    "cmdDesc": "Unlock current channel",
+    "unlocked": "Unlocked down the channel",
+    "already": "The channel is already unlocked!"
   },
   "back": {
     "cmdDesc": "Play prevoius music",

@@ -1020,7 +1020,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Moderation (6 commands)
+## Moderation (8 commands)
 
 ### `ban`
 
@@ -1047,6 +1047,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Usage: w/kick [@mention] (reason)
 - Aliases: None
 - Cooldown: 10
+
+### `lock`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Lock current channel
+- Usage: w/lock 
+- Aliases: `lock-channel`, `lockchannel`
+- Cooldown: 5
 
 ### `mute`
 
@@ -1088,6 +1101,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Usage: w/unban 
 - Aliases: None
 - Cooldown: 10
+
+### `unlock`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Unlock current channel
+- Usage: w/unlock 
+- Aliases: `unlock-channel`, `unlockchannel`
+- Cooldown: 5
 
 ### `unmute`
 
