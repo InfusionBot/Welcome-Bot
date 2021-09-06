@@ -10,8 +10,8 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "lock",
-                aliases: ["lock-channel"],
+                name: "unlock",
+                aliases: ["unlock-channel"],
                 memberPerms: [Permissions.FLAGS.MANAGE_CHANNELS],
                 botPerms: [Permissions.FLAGS.MANAGE_CHANNELS],
                 requirements: {
@@ -28,17 +28,17 @@ module.exports = class CMD extends Command {
 
     async execute({ message }, t) {
         const { channel, guild } = message;
-        const result = await this.lockChannel(channel, guild);
+        const result = await this.unlockChannel(channel, guild);
         await message.channel.send(t(result));
     }
 
     async run({ interaction }, t) {
         const { channel, guild } = interaction;
-        const result = await this.lockChannel(channel, guild);
+        const result = await this.unlockChannel(channel, guild);
         await interaction.followUp(t(result));
     }
 
-    async lockChannel(channel, guild) {
+    async unlockChannel(channel, guild) {
         if (!channel.permissionOverwrites.cache.get(this.client.user.id)) {
             await channel.permissionOverwrites.create(this.client.user.id, {
                 SEND_MESSAGES: true,
@@ -56,20 +56,19 @@ module.exports = class CMD extends Command {
         }
         if (!channel.permissionOverwrites.cache.get(guild.roles.everyone.id)) {
             await channel.permissionOverwrites.create(guild.roles.everyone.id, {
-                SEND_MESSAGES: false,
+                SEND_MESSAGES: true,
             });
-            return "cmds:lock.locked";
+            return "cmds:unlock.unlocked";
         }
-        if (
-            channel.permissionOverwrites.cache
-                .get(guild.roles.everyone.id)
-                .deny.toArray()
-                .includes("SEND_MESSAGES")
-        )
-            return "cmds:lock.already";
+        if (channel.permissionOverwrites.cache
+                    .get(guild.roles.everyone.id)
+                    .allow.toArray()
+                    .includes("SEND_MESSAGES")
+            )
+                return "cmds:unlock.already";
         await channel.permissionOverwrites.edit(guild.roles.everyone.id, {
-            SEND_MESSAGES: false,
+            SEND_MESSAGES: true,
         });
-        return "cmds:lock.locked";
+        return "cmds:unlock.unlocked";
     }
 };

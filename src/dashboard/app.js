@@ -13,7 +13,7 @@ module.exports.load = (client) => {
     const session = require("express-session");
     //const csurf = require("csurf");
     //const csrf = csurf();
-    if (client.debug) client.logger.log("loading dashboard");
+    if (client.debug) client.logger.debug("Loading dashboard");
     const app = express();
     app.use(express.urlencoded({ extended: true }))
         .use(express.json())
@@ -31,7 +31,7 @@ module.exports.load = (client) => {
             })
         )
         //Set port
-        .set("port", client.config.dashboard.port || 3000)
+        .set("port", client.config.dashboard?.port || 3000)
         //Adding new shortcuts by extending like a plugin
         .use(async (req, res, next) => {
             req.client = client;

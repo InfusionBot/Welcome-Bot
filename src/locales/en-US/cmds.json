@@ -512,6 +512,11 @@
   "unban": {
     "cmdDesc": "Unban a user."
   },
+  "unlock": {
+    "cmdDesc": "Unlock current channel",
+    "unlocked": "Unlocked down the channel",
+    "already": "The channel is already unlocked!"
+  },
   "back": {
     "cmdDesc": "Play prevoius music",
     "pleaseVote": "More than half members in the voice channel must react with 👍 to go to the prevoius music! {{count}} more votes are required.",
