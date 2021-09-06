@@ -60,12 +60,13 @@ module.exports = class CMD extends Command {
             });
             return "cmds:unlock.unlocked";
         }
-        if (channel.permissionOverwrites.cache
-                    .get(guild.roles.everyone.id)
-                    .allow.toArray()
-                    .includes("SEND_MESSAGES")
-            )
-                return "cmds:unlock.already";
+        if (
+            channel.permissionOverwrites.cache
+                .get(guild.roles.everyone.id)
+                .allow.toArray()
+                .includes("SEND_MESSAGES")
+        )
+            return "cmds:unlock.already";
         await channel.permissionOverwrites.edit(guild.roles.everyone.id, {
             SEND_MESSAGES: true,
         });
