@@ -61,6 +61,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `serverlogs` & new plugin serverlogs
 - feat: New cmd `cat`
 - feat: New cmd `stealemoji`
+- feat: New cmd `lock`
 
 ### Changes
 
