@@ -69,5 +69,7 @@
   "shop": "Shop items",
   "features": "Features",
   "edited": "Message Edited",
-  "mem_update": "Member Updated"
+  "mem_update": "Member Updated",
+  "deleted": "Message Deleted",
+  "nickModify": "Nickname updated"
 }

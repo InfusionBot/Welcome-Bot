@@ -35,4 +35,5 @@ module.exports = (client) => {
             table.addRow(event.name, "❌");
         }
     }
+    console.log(`${table}`);
 };

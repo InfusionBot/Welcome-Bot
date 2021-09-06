@@ -11,23 +11,6 @@ module.exports = {
         if (client.debugLevel > 0)
             client.logger.log("guildMemberUpdate event", "debug");
         if (oldMember.equals(newMember) || newMember.user.bot) return;
-        let diff = "```\n";
-        const { cache: oldRoles } = oldMember.roles;
-        const { cache: newRoles } = newMember.roles;
-        const diffRoles1 = oldRoles
-            .difference(newRoles)
-            .map((r) => "+ " + r.name);
-        const diffRoles2 = newRoles
-            .difference(oldRoles)
-            .map((r) => "+ " + r.name);
-        if (diffRoles1.size > 0 || diffRoles2.size > 0) {
-            const diff1 = [...diffRoles1.values()];
-            const diff2 = [...diffRoles2.values()];
-            diff += `${t("misc:roles")}\n+ ${diff1.join(
-                "\n+ "
-            )}\n- ${diff2.join("\n- ")}`;
-        }
-        diff += "\n```";
         let guildDB;
         if (newMember.guild) {
             guildDB = await client.db.findOrCreateGuild(newMember.guild.id);
@@ -35,6 +18,33 @@ module.exports = {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        let diff = "";
+        const addedRoles = [];
+        newMember.roles.cache.forEach((role) => {
+            if (!oldMember.roles.cache.has(role.id)) addedRoles.push(role.name);
+        });
+        const removedRoles = [];
+        oldMember.roles.cache.forEach((role) => {
+            if (!newMember.roles.cache.has(role.id))
+                removedRoles.push(role.name);
+        });
+        if (addedRoles.length > 0 || removedRoles.length > 0) {
+            diff += `\n**${t("misc:roles")}**\n`;
+            diff += "```diff";
+            if (addedRoles.length > 0) {
+                diff += `\n+ ${addedRoles.join("\n+ ")}`;
+            }
+            if (removedRoles.length > 0) {
+                diff += `\n- ${removedRoles.join("\n- ")}`;
+            }
+        } else if (oldMember.nickname !== newMember.nickname) {
+            diff += `\n**${t("misc:nickModify")}**\n`;
+            diff += "```diff";
+            diff += `\n- ${oldMember.nickname ?? oldMember.user.username}`;
+            diff += `\n+ ${newMember.nickname ?? newMember.user.username}`;
+        }
+        diff += "\n```";
+        diff = diff.trim();
         if (guildDB.plugins.serverlogs.enabled) {
             const channel = await newMember.guild.channels.fetch(
                 guildDB.plugins.serverlogs.channel

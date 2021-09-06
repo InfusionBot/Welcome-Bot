@@ -661,7 +661,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 
 - Description: Flip a coin.
 - Usage: w/coinflip 
-- Aliases: `cf`, `filpcoin`
+- Aliases: `cfp`, `filpcoin`
 - Cooldown: 5
 
 ### `emojify`
@@ -690,7 +690,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 5
 
-## General (22 commands)
+## General (23 commands)
 
 ### `addemoji`
 
@@ -914,6 +914,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: `server-staff`, `serverstaff`
 - Cooldown: 10
 
+### `stealemoji`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Steal emojis from other servers
+- Usage: w/stealemoji [emoji]
+- Aliases: None
+- Cooldown: 5
+
 ### `testgoodbye`
 
 ##### Subcommands:
@@ -989,7 +1002,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: cat.cmdDesc
+- Description: Show a random cat image
 - Usage: w/cat 
 - Aliases: None
 - Cooldown: 5
