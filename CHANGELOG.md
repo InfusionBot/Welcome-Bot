@@ -63,6 +63,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - feat: New cmd `stealemoji`
 - feat: New cmd `lock` & `unlock`
 - feat: New cmd `screenshot`
+- feat: New cmd `dehoist`
 
 ### Changes
 

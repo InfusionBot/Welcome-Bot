@@ -15,6 +15,7 @@ module.exports = (client) => {
         disabled: new Collection(),
         cooldowns: new Collection(),
     };
+    client.categories = [];
     const commandFolder = `${__dirname}/../commands`;
     let commandFolders;
     if (fs.existsSync(commandFolder)) {

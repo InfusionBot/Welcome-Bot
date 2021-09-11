@@ -39,7 +39,8 @@ module.exports = class CMD extends Command {
                 "🔗 Links:",
                 "> [GitHub](https://github.com/Welcome-Bot/welcome-bot/)\n" +
                     "> [Documentation](https://welcome-bot.github.io/docs)"
-            );
+            )
+            .setURL(`${link}`);
         const button = new MessageButton()
             .setLabel("Join the support server")
             .setURL(`${link}`)
