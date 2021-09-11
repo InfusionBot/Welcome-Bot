@@ -50,8 +50,8 @@ module.exports = {
                 guildDB.plugins.serverlogs.channel
             );
             if (channel) {
-                const embed = new Embed()
-                    .setTitle(`${t("misc:mem_update")} - ${newMember.user.tag}`)
+                const embed = new Embed({ tag: oldMember.user.tag, avatarURL: oldMember.displayAvatarURL(), footer: `ID: ${newMember.user.id}` })
+                    .setTitle(`${t("misc:mem_update")}`)
                     .setDesc(diff);
                 channel
                     .send({
