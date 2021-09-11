@@ -32,6 +32,7 @@ module.exports = {
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
         if (
+            message.guild &&
             guildDB.plugins.chatbot.enabled &&
             message.channel.id === guildDB.plugins.chatbot.channel &&
             process.env.CHATBOT_API
