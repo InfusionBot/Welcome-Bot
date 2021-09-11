@@ -46,6 +46,7 @@
     "feat: New cmd `cat`",
     "feat: New cmd `stealemoji`",
     "feat: New cmd `lock` && `unlock`",
+    "feat: New cmd `screenshot`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",
