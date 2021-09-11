@@ -38,7 +38,7 @@ module.exports = class CMD extends Command {
         }
         message.client.guilds.cache
             .get(message.client.botServerId)
-            .channels.cache.get(message.client.newsChannelId)
+            .channels.cache.get(message.client.config.newsChannelId)
             .addFollower(channelId)
             .catch((err) => {
                 console.error(err);
