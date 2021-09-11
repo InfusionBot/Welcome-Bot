@@ -386,6 +386,10 @@
     "cmdDesc": "Get role id",
     "usage": "[@role]"
   },
+  "screenshot": {
+    "cmdDesc": "Take a screenshot",
+    "usage": "[site]"
+  },
   "serverid": {
     "cmdDesc": "Get server id"
   },
