@@ -475,6 +475,9 @@
     "mySelf": "Please don't try to ban me, you have to do it yourself.",
     "success": "Successfully banned **{{tag}}** from the server!"
   },
+  "dehoist": {
+    "cmdDesc": "Dehoist users that are trying to hoist"
+  },
   "kick": {
     "cmdDesc": "Kick a user.",
     "usage": "[@mention] (reason)",

@@ -24,7 +24,11 @@ module.exports = {
             );
             if (channel) {
                 const embed = new Embed()
-                    .setTitle(t("misc:deleted"))
+                    .setTitle(
+                        `${t("misc:deleted")} - ${message.author} (${
+                            message.author.id
+                        })`
+                    )
                     .setDesc("```diff\n" + `- ${message.content}\n` + "```");
                 channel
                     .send({

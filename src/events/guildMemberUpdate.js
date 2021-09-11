@@ -51,7 +51,7 @@ module.exports = {
             );
             if (channel) {
                 const embed = new Embed()
-                    .setTitle(t("misc:mem_update"))
+                    .setTitle(`${t("misc:mem_update")} - ${newMember.user.tag}`)
                     .setDesc(diff);
                 channel
                     .send({
