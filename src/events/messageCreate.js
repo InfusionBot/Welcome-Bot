@@ -14,7 +14,8 @@ module.exports = {
             client.logger.log("messageCreate event", "debug");
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            guildDB = await client.db.findOrCreateGuild(message.guild.id);
+            const lang = message.guild.preferredLocale ?? "en-US";
+            guildDB = await client.db.findOrCreateGuild(message.guild.id, lang);
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
