@@ -78,6 +78,8 @@ const nth = (d) => {
     }
 };
 
+const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 module.exports = {
     userFromMention,
     channelIdFromMention,
@@ -86,4 +88,5 @@ module.exports = {
     lowercaseVals,
     lowercaseArray,*/
     nth,
+    escapeRegex,
 };

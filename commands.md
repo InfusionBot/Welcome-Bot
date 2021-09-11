@@ -1020,7 +1020,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Moderation (8 commands)
+## Moderation (9 commands)
 
 ### `ban`
 
@@ -1034,6 +1034,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Usage: w/ban [@mention] (reason)
 - Aliases: None
 - Cooldown: 10
+
+### `dehoist`
+
+##### Subcommands:
+
+- `list` - List all members who are hoisting
+
+##### Cmd info
+
+- Description: Dehoist users that are trying to hoist
+- Usage: w/dehoist 
+- Aliases: `deh`
+- Cooldown: 5
 
 ### `kick`
 

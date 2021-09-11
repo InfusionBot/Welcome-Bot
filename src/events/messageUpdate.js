@@ -33,7 +33,11 @@ module.exports = {
             );
             if (channel) {
                 const embed = new Embed()
-                    .setTitle(t("misc:edited"))
+                    .setTitle(
+                        `${t("misc:edited")} - ${message.author} (${
+                            message.author.id
+                        })`
+                    )
                     .setDesc(
                         "```diff\n" +
                             `- ${oldMessage.content}\n` +

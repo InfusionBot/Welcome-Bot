@@ -46,6 +46,7 @@
     "feat: New cmd `cat`",
     "feat: New cmd `stealemoji`",
     "feat: New cmd `lock` && `unlock`",
+    "feat: New cmd `dehoist`",
     "**Changes**",
     "refactor(goodbye logs): Goodbye logs now use embeds!",
     "refactor(disable cmd): disable commands using disable cmd!",
@@ -57,7 +58,7 @@
   "main": "src/shard.js",
   "scripts": {
     "start": "node src/shard.js",
-    "startDev": "node --trace-warnings src/bot.js",
+    "dev": "npx nodemon src/bot.js --watch src",
     "lint": "eslint src",
     "format:check": "prettier --check .",
     "format": "prettier --write .",

@@ -22,7 +22,9 @@ module.exports = {
         const userDB = await client.db.findOrCreateGuild(
             interaction.member.user.id
         );
-        const command = client.commands.enabled.get(cmd);
+        const command = client.commands.enabled
+            .filter((cmd) => cmd.sladh)
+            .get(cmd);
         if (!command) return;
         let preCheck = false;
         preCheck = await command.preCheck(interaction, guildDB, t);
