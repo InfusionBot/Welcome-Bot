@@ -17,7 +17,7 @@ module.exports = async (message, guildDB) => {
     const prefixRegex = new RegExp(
         `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
     );
-    let prefix;
+    let prefix = null;
     try {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
     } catch (e) {} //eslint-disable-line no-empty
@@ -222,7 +222,7 @@ module.exports = async (message, guildDB) => {
                 );
             message.channel.sendTyping().catch(() => {});
             try {
-                command.execute({ message, args, guildDB, userDB }, t);
+                command.execute({ prefix, message, args, guildDB, userDB }, t);
             } catch (err) {
                 client.logger.log("Error when executing cmds", "error", [
                     "CMDS",
@@ -237,7 +237,7 @@ module.exports = async (message, guildDB) => {
                         "\u200b"
                     );
                 if (
-                    client.config.ownerIDs.includes(message.author.id) ||
+                    client.config.ownerIds.includes(message.author.id) ||
                     client.config.staffIds.includes(message.author.id) ||
                     message.author.id === client.application?.owner.id
                 )
