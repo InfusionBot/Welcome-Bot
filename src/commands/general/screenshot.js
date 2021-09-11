@@ -23,10 +23,11 @@ module.exports = class CMD extends Command {
                 options: [
                     {
                         name: "site",
-                        description: "The url of site of which you want a screenshot",
+                        description:
+                            "The url of site of which you want a screenshot",
                         type: "STRING",
                         required: true,
-                    }
+                    },
                 ],
             },
             client
@@ -38,12 +39,16 @@ module.exports = class CMD extends Command {
     }
 
     async run({ interaction }, t) {
-        await interaction.followUp(await this.req(interaction.options.getString("site")));
+        await interaction.followUp(
+            await this.req(interaction.options.getString("site"))
+        );
     }
 
     async req(site) {
         const url = /^(https?:\/\/)/i.test(site) ? site : `http://${site}`;
-        const { body } = await require("node-fetch")(`https://image.thum.io/get/width/1920/crop/675/noanimate/${url}`);
+        const { body } = await require("node-fetch")(
+            `https://image.thum.io/get/width/1920/crop/675/noanimate/${url}`
+        );
         return { files: [{ attachment: body, name: "Screenshot.png" }] };
     }
 };
