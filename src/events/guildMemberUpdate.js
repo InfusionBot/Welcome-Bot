@@ -52,7 +52,7 @@ module.exports = {
             if (channel) {
                 const embed = new Embed({
                     tag: oldMember.user.tag,
-                    avatarURL: oldMember.displayAvatarURL(),
+                    avatarURL: oldMember.user.displayAvatarURL(),
                     footer: `ID: ${newMember.user.id}`,
                 })
                     .setTitle(`${t("misc:mem_update")}`)
