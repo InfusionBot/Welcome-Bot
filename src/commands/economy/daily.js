@@ -31,9 +31,7 @@ module.exports = class CMD extends Command {
         const dailyCoins = 200;
         const lang = guildDB.lang ?? "en-US";
         const language = this.client.languages.find(
-            (l) =>
-                l.name === lang ||
-                l.aliases.includes(lang)
+            (l) => l.name === lang || l.aliases.includes(lang)
         );
         moment.locale(language.moment);
 
