@@ -33,7 +33,6 @@ module.exports = class CMD extends Command {
         const language = this.client.languages.find(
             (l) =>
                 l.name === lang ||
-                l.aliases.includes(lang) ||
                 l.aliases.includes(lang)
         );
         moment.locale(language.moment);
