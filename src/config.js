@@ -52,7 +52,7 @@ module.exports = {
             msgLength: 50, //max goodbye msg length
         },
     },
-    supportGuildInvite: "https://dsc.gg/welcome-bot-guild",
+    supportGuildInvite: "https://discord.gg/vEUnKUNNRB",
     supportGuildInviteReal: (client) => {
         let invite = client.config.supportGuildInvite;
         try {
@@ -63,5 +63,4 @@ module.exports = {
         }
         return invite;
     },
-    supportGuildInviteReal2: "https://discord.gg/vEUnKUNNRB",
 };

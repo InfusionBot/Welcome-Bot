@@ -12,13 +12,17 @@ module.exports = {
         //Bot has been invited to a new guild
         //client.db.findOrCreateGuild(guild.id, lang);
         if (guild.systemChannelId) {
-            const channel = await guild.channels.fetch(guild.systemChannelId);
-            if (channel)
+            const channel = await guild.channels.fetch(guild?.systemChannelId);
+            const content = `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInvite}`;
+            if (channel) {
                 channel
-                    .send(
-                        `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInviteReal2}`
-                    )
-                    .catch(() => {});
+                    .send(content)
+                    .catch(() => {
+                        guild.channels.find(
+                            c => (c.permissionsFor(client.user.id).has("SEND_MESSAGES") && c.type === "GUILD_TEXT")
+                        ).send(content);
+                    });
+            }
         }
         const bots = guild.members.cache.filter((m) => m.user.bot).size;
         const embed = new Embed({ color: "success", timestamp: true })
@@ -28,7 +32,7 @@ module.exports = {
                 "Info",
                 `Shard: ${guild.shardId}\nOwner: <@${
                     guild.ownerId
-                }>\nMembers: ${guild.memberCount}\nBots VS Humams: ${Math.round(
+                }>\nMembers: ${guild.memberCount}\nHumams: ${Math.round(
                     (bots / guild.memberCount) * 100
                 )}%`
             );
