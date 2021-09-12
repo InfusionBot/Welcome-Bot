@@ -1,11 +1,11 @@
 {
   "cuddle": {
-    "cmdDesc": "Cuddle with a user",
-    "success": "{{author}} just cuddled to {{user}}",
-    "errorYourself": "You can't cuddle yourself."
+    "cmdDesc": "Kramas med en användare",
+    "success": "{{author}} Kramades precis med {{user}}",
+    "errorYourself": "Du kan inte kramas med dig själv."
   },
   "hug": {
-    "cmdDesc": "Give a hug to a user",
+    "cmdDesc": "Ge en kram till en användare",
     "success": "{{author}} has hugged {{user}}",
     "errorYourself": "You can't hug yourself."
   },
