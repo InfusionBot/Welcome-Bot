@@ -6,13 +6,13 @@
   },
   "hug": {
     "cmdDesc": "Ge en kram till en användare",
-    "success": "{{author}} has hugged {{user}}",
-    "errorYourself": "You can't hug yourself."
+    "success": "{{author}} har kramat {{user}}",
+    "errorYourself": "Du kan inte krama dig själv."
   },
   "kiss": {
-    "cmdDesc": "Kiss a user",
-    "success": "{{author}} has kissed {{user}}",
-    "errorYourself": "You can't kiss yourself!"
+    "cmdDesc": "Kyss en användare",
+    "success": "{{author}} har kysst {{user}}",
+    "errorYourself": "Du kan inte kyssa dig själv!"
   },
   "pat": {
     "cmdDesc": "Pats someone",
