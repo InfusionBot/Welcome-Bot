@@ -61,7 +61,7 @@ module.exports = class CMD extends Command {
             query = query.replace(args[index], "");
         }
         if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source))) {
-            source = "stable";
+            source = this.VALID_SOURCES[0];
         }
         query = query.replace(source, "");
         const queryParams = new URLSearchParams({ src: source, q: query });
@@ -78,7 +78,7 @@ module.exports = class CMD extends Command {
         const query = interaction.options.getString("query");
         let source = interaction.options.getString("source") ?? null;
         if (!this.VALID_SOURCES.includes(source) && isNaN(parseInt(source))) {
-            source = "stable";
+            source = this.VALID_SOURCES[0];
         }
         const queryParams = new URLSearchParams({ src: source, q: query });
         const json = await this.fetchJson(
