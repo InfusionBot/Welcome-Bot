@@ -7,3 +7,4 @@ Thanks goes to these wonderful people who helped translate Welcome-Bot to differ
 - [iigalaxy](https://crowdin.com/profile/iigalaxy) - Spanish
 - [ulasw](https://crowdin.com/profile/ulasw) - Turkish
 - [PeterLe](https://crowdin.com/profile/PeterLe) - Vietnamese
+- [lumus051123](https://crowdin.com/profile/lumus051123) - Swedish
