@@ -37,11 +37,11 @@ module.exports = class CMD extends Command {
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
         }
+        if (args[1]) args[1] = args[1].toLowerCase();
         const language = this.client.languages.find(
             (l) =>
                 l.name === args[1] ||
-                l.aliases.includes(args[1]) ||
-                l.aliases.includes(args[1].toLowerCase() ?? "")
+                l.aliases.includes(args[1])
         )?.name;
         switch (args[0]) {
             case "set":
