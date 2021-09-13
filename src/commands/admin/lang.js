@@ -39,9 +39,7 @@ module.exports = class CMD extends Command {
         }
         if (args[1]) args[1] = args[1].toLowerCase();
         const language = this.client.languages.find(
-            (l) =>
-                l.name === args[1] ||
-                l.aliases.includes(args[1])
+            (l) => l.name === args[1] || l.aliases.includes(args[1])
         )?.name;
         switch (args[0]) {
             case "set":
