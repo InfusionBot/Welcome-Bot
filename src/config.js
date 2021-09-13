@@ -17,10 +17,10 @@ module.exports = {
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",
     roles: {
-        voteReminder: "886776592666353724"
+        voteReminder: "886776592666353724",
     },
     channels: {
-        general: "836854115526770711"
+        general: "836854115526770711",
     },
     reportsChannelId: "869017115385024543",
     ownerIds: [

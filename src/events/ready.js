@@ -17,7 +17,9 @@ module.exports = {
         cron.schedule("0 0 */12 * * *", () => {
             client.channels.cache
                 .get(`${client.config.channels.general}`)
-                .send(`<@&${client.config.roles.voteReminder}> Time to vote! Use vote command`);
+                .send(
+                    `<@&${client.config.roles.voteReminder}> Time to vote! Use vote command`
+                );
         });
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
