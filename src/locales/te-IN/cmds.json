@@ -1,0 +1,254 @@
+{
+  "cuddle": {
+    "cmdDesc": "Cuddle with a user",
+    "success": "{{author}} just cuddled to {{user}}",
+    "errorYourself": "You can't cuddle yourself."
+  },
+  "hug": {
+    "cmdDesc": "Give a hug to a user",
+    "success": "{{author}} has hugged {{user}}",
+    "errorYourself": "You can't hug yourself."
+  },
+  "kiss": {
+    "cmdDesc": "Kiss a user",
+    "success": "{{author}} has kissed {{user}}",
+    "errorYourself": "You can't kiss yourself!"
+  },
+  "pat": {
+    "cmdDesc": "Pats someone",
+    "success": "{{author}} pats {{user}}",
+    "errorYourself": "You can't pat yourself!"
+  },
+  "slap": {
+    "cmdDesc": "Slap a user",
+    "success": "{{author}} slapped {{user}}",
+    "errorYourself": "You can't slap yourself!"
+  },
+  "tickle": {
+    "cmdDesc": "Tickle a user",
+    "success": "{{author}} tickles {{user}}",
+    "errorYourself": "You can't tickle yourself!"
+  },
+  "waifu": {
+    "cmdDesc": "Fetches a random waifu and displays it."
+  },
+  "botinfo": {
+    "cmdDesc": "Bot information",
+    "footer": "Information & Stats of Welcome-Bot"
+  },
+  "botperms": {
+    "cmdDesc": "List of permissions given to bot"
+  },
+  "invite": {
+    "cmdDesc": "Get Invite link for the bot"
+  },
+  "lib": {
+    "cmdDesc": "Library used to build Welcome-Bot"
+  },
+  "ping": {
+    "cmdDesc": "Ping the bot"
+  },
+  "shards": {
+    "cmdDesc": "Shows information about the bot's shards"
+  },
+  "suggest": {
+    "cmdDesc": "Give suggestions",
+    "done": "Your suggestion has been added, Thank You.",
+    "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
+  },
+  "support": {
+    "cmdDesc": "Get Support for Welcome-Bot"
+  },
+  "uptime": {
+    "cmdDesc": "Get uptime of the bot"
+  },
+  "website": {
+    "cmdDesc": "Link to Welcome-Bot's website"
+  },
+  "8ball": {
+    "cmdDesc": "Get your fortune by asking your question"
+  },
+  "coinflip": {
+    "cmdDesc": "Flip a coin.",
+    "done": "I've flipped a coin and it landed {{chosenSide}}"
+  },
+  "figlet": {
+    "cmdDesc": "Implement the FIGfont spec in JS",
+    "error": "Your text has to be smaller than 20 characters"
+  },
+  "image": {
+    "cmdDesc": "Generate a random pokemon image"
+  },
+  "pokemon": {
+    "cmdDesc": "Get a pokemon image",
+    "error": "Oh! Could not find that Pokemon"
+  },
+  "addemoji": {
+    "cmdDesc": "Add emoji from a image link",
+    "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
+    "invalidName": "The length of the emoji name must be between 2 and 32!",
+    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
+  },
+  "avatar": {
+    "cmdDesc": "Get a user's avatar",
+    "profile": "Avatar of {{user}}"
+  },
+  "hastebin": {
+    "cmdDesc": "Upload your text on hastebin!",
+    "missingText": "Please enter a valid text!",
+    "title": "Upload complete!",
+    "success": "Here's your link: {{link}}"
+  },
+  "help": {
+    "cmdDesc": "List all commands or get info for a specific command/category.",
+    "cmdHelp": "Help for {{cmd}} command",
+    "cmds": "Use arrows ⏪⏩",
+    "listcats": "List of categories",
+    "bot-help": "Welcome-Bot help",
+    "in-cat": "Commands in this category"
+  },
+  "listemojis": {
+    "cmdDesc": "List of all custom emojis in this server, with there IDs."
+  },
+  "perms": {
+    "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions",
+    "message": "Permissions for **{{tag}}** in *{{channel}}* channel"
+  },
+  "qrcode": {
+    "cmdDesc": "Generate or Read a QR code"
+  },
+  "serverinfo": {
+    "cmdDesc": "Your server statistics"
+  },
+  "user": {
+    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
+  },
+  "test": {
+    "cmdDesc": "Test by sending welcome message"
+  },
+  "version": {
+    "cmdDesc": "Get information on a version or latest version"
+  },
+  "ban": {
+    "cmdDesc": "Ban a user.",
+    "success": "Successfully banned **{{tag}}** from the server!"
+  },
+  "kick": {
+    "cmdDesc": "Kick a user."
+  },
+  "mute": {
+    "cmdDesc": "Mute a member",
+    "errorYourself": "Woah... Wait. Can you mute yourself?",
+    "memberHasPerm": "The member you are trying to mute has {{permission}} permission. So, I won't mute that member",
+    "reason": "Muted by {{tag}} for \"{{reason}}\" reason",
+    "DMtext": "You have been muted by {{tag}}.\nFor reason: {{reason}}",
+    "success": "Successfully muted **{{tag}}**!"
+  },
+  "unmute": {
+    "cmdDesc": "Unmute a member",
+    "errorYourself": "Woah... Wait. Are you muted?",
+    "notMuted": "That member is currently not muted",
+    "reason": "Unmuted by {{tag}} for \"{{reason}}\" reason",
+    "DMtext": "You have been unmuted by {{tag}}.\nFor reason: {{reason}}",
+    "success": "Successfully unmuted **{{tag}}**!"
+  },
+  "prune": {
+    "cmdDesc": "Prune Messages."
+  },
+  "unban": {
+    "cmdDesc": "Unban a user."
+  },
+  "back": {
+    "cmdDesc": "Play prevoius music",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to go to the prevoius music! {{count}} more votes are required.",
+    "success": "Went back to the prevoius song",
+    "failure": "An error occurred, When going back to the prevoius song."
+  },
+  "loop": {
+    "cmdDesc": "Manage loop settings for music",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to set loop mode! {{count}} more votes are required.",
+    "invalidMode": "Invalid loop mode provided, type `{{prefix}}help loop` for help. You have provided {{mode}}",
+    "success": "Loop mode set to {{mode}}.",
+    "failure": "An error occurred, When setting loop mode."
+  },
+  "np": {
+    "cmdDesc": "The details of song which is being played now",
+    "playing": "Currently playing"
+  },
+  "play": {
+    "cmdDesc": "Play music on channel.\nYou must join a voice channel before using this command.",
+    "cantJoin": "Could not join your voice channel!",
+    "voiceNotJoined": "❌ Please join a voice channel before using this command",
+    "missingSongName": "You didn't provide me the song name to start playing",
+    "voiceChanDiff": "Please join the same voice channel the bot is in",
+    "playlistStart": "Starting playlist **{{playlistTitle}}**.\nPlaying the first song, **{{songName}}**! :musical_note:",
+    "botDisconnected": "Music has been stopped as I have been disconnected from the voice channel.",
+    "noResults": "The bot can't find any song like that :cry:",
+    "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
+    "queueAddCount": "{{songCount}} songs added to the queue!",
+    "queueAdded": "Added to queue",
+    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}\nProgress: {{progress}}",
+    "errorOccurred": "An error occurred... Code: `{{error}}`",
+    "starting": "Starting to play",
+    "rateLimited": "Sorry, I can't play the song as I am rate limited",
+    "destroyedQueue": "The queue was destroyed, abd I can't play music using that queue. Please create a new queue from play command",
+    "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)",
+    "forbidden": "I am forbidden to play that song, will try to play some other song that matches"
+  },
+  "skip": {
+    "cmdDesc": "Skip the current song",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to skip the music! {{count}} more votes are required.",
+    "success": "Skipped the current song",
+    "failure": "An error occurred, When skiping the current song."
+  },
+  "stop": {
+    "cmdDesc": "Stop the music",
+    "notPlaying": "No songs are currently playing in this server.",
+    "success": "Music stopped!",
+    "pleaseVote": "More than half members in the voice channel must react with 👍 to stop the music! {{count}} more votes are required."
+  },
+  "volume": {
+    "cmdDesc": "Adjust the volume of the music",
+    "current": "Current volume is **{{volume}}**%!",
+    "success": "Volume adjusted to {{volume}}"
+  },
+  "eval": {
+    "cmdDesc": "Execute a JS statement."
+  },
+  "reload": {
+    "cmdDesc": "Reloads a command"
+  },
+  "restart": {
+    "cmdDesc": "Restart the bot"
+  },
+  "servers-list": {
+    "cmdDesc": "Show the list of servers the bot is in."
+  },
+  "channel": {
+    "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
+    "invalidArgs": "Invalid args, please use proper subcommands, see "
+  },
+  "disable": {
+    "cmdDesc": "Disable welcome and goodbye logs."
+  },
+  "enable": {
+    "cmdDesc": "Enable welcome and goodbye logs."
+  },
+  "follow": {
+    "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
+  },
+  "lang": {
+    "cmdDesc": "Change language",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
+    "success": "Language set to {{lang}}",
+    "show": "Language successfully set to {{lang}}",
+    "langNotProvided": "You have not provided lang argument"
+  },
+  "message": {
+    "cmdDesc": "Manage welcome message for this server"
+  },
+  "prefix": {
+    "cmdDesc": "Manage prefix for this server"
+  }
+}
