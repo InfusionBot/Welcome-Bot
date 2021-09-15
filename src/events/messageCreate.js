@@ -22,7 +22,7 @@ module.exports = {
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&
-            guildDB.plugins.autopublish &&
+            guildDB.plugins?.autopublish &&
             message.crosspostable
         )
             message.crosspost();
