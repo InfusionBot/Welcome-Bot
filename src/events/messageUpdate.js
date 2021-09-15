@@ -25,6 +25,7 @@ module.exports = {
         )
             message.crosspost();
         if (
+            message.guild &&
             guildDB.plugins.serverlogs.enabled &&
             oldMessage.content !== message.content
         ) {
