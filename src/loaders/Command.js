@@ -25,24 +25,13 @@ module.exports = (client) => {
     }
 
     for (const folder of commandFolders) {
-        /*const commandFiles = fs
-            .readdirSync(`${commandFolder}/${folder}`)
-            .filter((file) => file.endsWith(".js"));
-        for (const file of commandFiles) {
-            try {
-                client.loadCommand(`${commandFolder}/${folder}`, file);
-            } catch (e) {
-                client.logger.log(`Error occurred when loading ${file}`);
-                console.error(e);
-            }
-        }*/
         let error = false;
         const { commands, metadata } = require(`${commandFolder}/${folder}`);
         for (const cmd of commands) {
             try {
                 client.setCmd(cmd);
             } catch (e) {
-                client.logger.log(`Error occurred when loading ${cmd.name}`);
+                client.logger.log(`Error occurred`);
                 console.error(e);
                 error = true;
             }
