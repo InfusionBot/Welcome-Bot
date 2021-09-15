@@ -43,8 +43,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:gift.noItem"));
         }
         const { shop } = this.client;
-        if (!shop.get(item))
-            return message.reply(t("cmds:use.notAnItem"));
+        if (!shop.get(item)) return message.reply(t("cmds:use.notAnItem"));
         const itemsThatGuyHas = Object.keys(userDB.inventory).filter(
             (i) => parseInt(userDB.inventory[i]) > 0
         );
