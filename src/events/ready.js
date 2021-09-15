@@ -13,14 +13,21 @@ module.exports = {
             client.logger.log(
                 `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
             );
-        const cron = require("node-cron");
-        cron.schedule("0 0 */12 * * *", () => {
-            client.channels.cache
-                .get(`${client.config.channels.general}`)
-                .send(
-                    `<@&${client.config.roles.voteReminder}> Time to vote! Use vote command`
-                );
-        });
+        const { CronJob } = require("cron");
+        const job = new CronJob(
+            "0 0 */12 * * *",
+            () => {
+                client.channels.cache
+                    .get(`${client.config.channels.general}`)
+                    .send(
+                        `<@&${client.config.roles.voteReminder}> Time to vote! Use vote command`
+                    );
+            },
+            null,
+            true,
+            "America/Los_Angeles"
+        );
+        job.start();
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);

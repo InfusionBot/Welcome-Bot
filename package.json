@@ -91,6 +91,7 @@
     "bufferutil": "^4.0.3",
     "canvas": "^2.8.0",
     "colors-logger": "^0.4.0",
+    "cron": "^1.8.2",
     "csurf": "^1.11.0",
     "discord-backup": "^3.0.1",
     "discord-player": "^5.0.0",
@@ -110,8 +111,7 @@
     "mongoose": "^6.0.2",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
-    "opusscript": "^0.0.8",
-    "node-cron": "^3.0.0"
+    "opusscript": "^0.0.8"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
