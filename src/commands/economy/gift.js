@@ -38,14 +38,14 @@ module.exports = class CMD extends Command {
             message.reply(t("cmds:gift.errorYourself"));
             return false;
         }
-        const item = args[1] ?? null;
+        const item = args[1] ? args[1].toLowerCase() : null;
         if (!item) {
             return message.reply(t("cmds:gift.noItem"));
         }
-        const items = Object.keys(userDB.inventory);
-        if (!items.includes(item))
+        const { shop } = this.client;
+        if (!shop.get(item))
             return message.reply(t("cmds:use.notAnItem"));
-        const itemsThatGuyHas = items.filter(
+        const itemsThatGuyHas = Object.keys(userDB.inventory).filter(
             (i) => parseInt(userDB.inventory[i]) > 0
         );
         if (!itemsThatGuyHas.includes(args[0]))
