@@ -16,12 +16,24 @@ module.exports = {
         const { CronJob } = require("cron");
         const job = new CronJob(
             "0 0 */12 * * *",
-            () => {
-                client.channels.cache
-                    .get(`${client.config.channels.general}`)
-                    .send(
-                        `<@&${client.config.roles.voteReminder}> Time to vote! Use vote command`
-                    );
+            async () => {
+                if (process.env.NODE_ENV !== "production") return;
+                const { Topgg } = require("../classes/");
+                if (!Topgg || !Topgg.api) return;
+                const guild = client.guilds.cache.get(client.config.botGuildId);
+                const role = await guild.roles.fetch(
+                    client.config.roles.voteReminder
+                );
+                await guild.members.fetch();
+                const membersToRemind = guild.members.cache.filter((m) =>
+                    m.roles.cache.has(role.id)
+                );
+                membersToRemind.forEach(async (m) => {
+                    if (await Topgg.api.hasVoted(m.user.id)) return;
+                    client.channels.cache
+                        .get(client.config.channels.general)
+                        .send(`Hey ${m}! Gentle reminder for voting! Use vote command`);
+                });
             },
             null,
             true,
