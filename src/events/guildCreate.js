@@ -16,7 +16,7 @@ module.exports = {
             const content = `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInvite}`;
             if (channel) {
                 channel.send(content).catch(() => {
-                    guild.channels
+                    guild.channels.cache
                         .find(
                             (c) =>
                                 c
