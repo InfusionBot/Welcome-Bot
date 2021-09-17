@@ -52,10 +52,10 @@ module.exports = class CMD extends Command {
                             cmd: `\`${guildDB.prefix}lang list\``,
                         })
                     );
-                updateGuild(message.guild.id, "lang", language);
+                await updateGuild(message.guild.id, "lang", language);
                 return message.reply(
                     t("cmds:lang.success", {
-                        lang: `${list[args[1]]} (${args[1]})`,
+                        lang: `${language.aliases[0]} (${args[1]})`,
                     })
                 );
                 break;

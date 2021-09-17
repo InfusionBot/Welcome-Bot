@@ -88,8 +88,8 @@
     "cmdDesc": "Change language",
     "usage": "(subcommand) (lang)",
     "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language set to {{lang}}",
-    "show": "Language successfully set to {{lang}}",
+    "success": "Language successfully set to {{lang}}",
+    "show": "Language is currently set to {{lang}}",
     "langNotProvided": "You have not provided lang argument"
   },
   "modlogs": {
