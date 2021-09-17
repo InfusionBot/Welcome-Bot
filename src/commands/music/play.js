@@ -86,9 +86,10 @@ module.exports = class CMD extends Command {
             message.client.player.deleteQueue(message.guild);
             return message.channel.send(t("cmds:play.noResults"));
         }
-        song.playlist
+        /*song.playlist
             ? queue.addTracks(song.tracks)
-            : queue.addTrack(song.tracks[0]);
+            : queue.addTrack(song.tracks[0]);*/
+        queue.addTrack(song.tracks[0]);
         if (song.playlist) {
             message.channel.send(
                 t("cmds:play.playlistAdded", {
