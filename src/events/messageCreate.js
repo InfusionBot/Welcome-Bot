@@ -14,7 +14,9 @@ module.exports = {
         if (!client.initialized) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            guildDB = await client.db.guildSchema.findOne({ guildId: message.guild.id });
+            guildDB = await client.db.guildSchema.findOne({
+                guildId: message.guild.id,
+            });
         } else {
             guildDB = {
                 prefix: client.config.defaultPrefix,
