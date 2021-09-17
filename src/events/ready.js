@@ -32,7 +32,9 @@ module.exports = {
                     if (await Topgg.api.hasVoted(m.user.id)) return;
                     client.channels.cache
                         .get(client.config.channels.general)
-                        .send(`Hey ${m}! Gentle reminder for voting! Use vote command`);
+                        .send(
+                            `Hey ${m}! Gentle reminder for voting! Use vote command`
+                        );
                 });
             },
             null,
