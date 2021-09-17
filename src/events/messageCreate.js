@@ -8,17 +8,21 @@ module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
-        const execute = require("../functions/execute");
-        if (!client.initialized) return;
         if (client.debugLevel > 0)
             client.logger.log("messageCreate event", "debug");
+        const execute = require("../functions/execute");
+        if (!client.initialized) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            const lang = message.guild.preferredLocale ?? "en-US";
-            guildDB = await client.db.findOrCreateGuild(message.guild.id, lang);
+            guildDB = await client.db.guildSchema.findOne({ guildId });
         } else {
-            guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
+            guildDB = {
+                prefix: client.config.defaultPrefix,
+                disabled: [],
+                plugins: {},
+            };
         }
+        if (!guildDB) return;
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&

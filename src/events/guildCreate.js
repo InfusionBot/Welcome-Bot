@@ -8,9 +8,9 @@ module.exports = {
     name: "guildCreate",
     once: false,
     async execute(client, guild) {
-        //const lang = guild.preferredLocale ?? "en-US";
+        const lang = guild.preferredLocale ?? "en-US";
         //Bot has been invited to a new guild
-        //client.db.findOrCreateGuild(guild.id, lang);
+        await client.db.findOrCreateGuild(guild.id, lang);
         if (guild.systemChannelId) {
             const channel = await guild.channels.fetch(guild?.systemChannelId);
             const content = `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInvite}`;
