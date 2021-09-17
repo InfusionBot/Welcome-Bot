@@ -77,7 +77,10 @@ module.exports = class CMD extends Command {
         }
         const song = await message.client.player.search(name, {
             requestedBy: message.author,
-            searchEngine: args[args.length] === "--playlist" ? QueryType.SPOTIFY_PLAYLIST : QueryType.SPOTIFY_SONG,
+            searchEngine:
+                args[args.length] === "--playlist"
+                    ? QueryType.SPOTIFY_PLAYLIST
+                    : QueryType.SPOTIFY_SONG,
         });
         if (!song) {
             message.client.player.deleteQueue(message.guild);
