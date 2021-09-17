@@ -59,11 +59,7 @@ module.exports = class CMD extends Command {
                 "wallet",
                 parseInt(userDB.wallet) + dailyCoins
             );
-            await updateUser(
-                message.author.id,
-                "daily",
-                new Date().getTime()
-            );
+            await updateUser(message.author.id, "daily", new Date().getTime());
         } catch (e) {
             throw e;
         }
