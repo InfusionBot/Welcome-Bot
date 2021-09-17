@@ -91,7 +91,7 @@ module.exports = {
             reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
         }
         if (!message.reference) {
-            message.channel.sendTyping();
+            message.channel.sendTyping().catch(() => {});
             message.channel.send(reply);
         } else {
             message.channel.messages
