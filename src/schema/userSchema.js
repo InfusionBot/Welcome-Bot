@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 10000, //10k
     },
-    dailyClaimed: {
+    daily: {
         type: Number,
         trim: true,
         required: true,

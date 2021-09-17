@@ -11,6 +11,21 @@ module.exports = class DBCache {
         this.users = new Collection();
         this.guildSchema = require("../schema/guildSchema");
         this.userSchema = require("../schema/userSchema");
+        //TODO: Remove this waste, after executed once on main db
+        this.guildSchema.find({}, async (err, guild) => {
+            if (err) return console.log(err);
+            if (!guild.channel) return;
+            guild.plugins.welcome.channel = guild.channel;
+            guild.channel = undefined;
+            await guild.save();
+        });
+        this.userSchema.find({}, async (err, user) => {
+            if (err) return console.log(err);
+            if (!user.dailyClaimed) return;
+            user.daily = new Date(user.dailyClaimed).getTime();
+            user.dailyClaimed = undefined;
+            await user.save();
+        });
         setInterval(() => {
             this.refreshCache();
         }, this.client.config.dbCacheRefreshInterval);

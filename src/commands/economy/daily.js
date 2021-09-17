@@ -36,7 +36,7 @@ module.exports = class CMD extends Command {
         moment.locale(language.moment);
 
         const diff =
-            24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.dailyClaimed);
+            24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.daily);
 
         if (diff > 0) {
             const hours = Math.round(diff / (1000 * 60 * 60));
@@ -61,7 +61,7 @@ module.exports = class CMD extends Command {
             );
             await updateUser(
                 message.author.id,
-                "dailyClaimed",
+                "daily",
                 new Date().getTime()
             );
         } catch (e) {
