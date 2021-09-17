@@ -114,7 +114,7 @@ module.exports = async (message, guildDB) => {
         if (
             command?.memberPerms &&
             message.channel.type !== "DM" &&
-            message.guild &&
+            message.guild
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
