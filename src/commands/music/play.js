@@ -3,7 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Queue } = require("discord-player");
+const { Queue, QueryType } = require("discord-player");
 const { Permissions } = require("discord.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
@@ -27,7 +27,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        const name = args.join(" ");
+        const name = args.join(" ").replace("--playlist", "");
         if (!name) return message.reply(t("cmds:play.missingSongName"));
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
@@ -77,8 +77,10 @@ module.exports = class CMD extends Command {
         }
         const song = await message.client.player.search(name, {
             requestedBy: message.author,
+            searchEngine: args[args.length] === "--playlist" ? QueryType.SPOTIFY_PLAYLIST : QueryType.SPOTIFY_SONG,
         });
         if (!song) {
+            message.client.player.deleteQueue(message.guild);
             return message.channel.send(t("cmds:play.noResults"));
         }
         song.playlist
