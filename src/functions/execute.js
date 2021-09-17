@@ -135,7 +135,8 @@ module.exports = async (message, guildDB) => {
                             ),
                         })
                     );
-                    if (!client.config.ownerIds.includes(message.author.id)) return;
+                    if (!client.config.ownerIds.includes(message.author.id))
+                        return;
                 }
             }
         }
