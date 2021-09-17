@@ -114,15 +114,16 @@ module.exports = async (message, guildDB) => {
         if (
             command?.memberPerms &&
             message.channel.type !== "DM" &&
-            message.guild
+            message.guild &&
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
-                return message.reply(t("errors:youDontHavePermShort"));
+                message.reply(t("errors:youDontHavePermShort"));
+                if (!client.config.ownerIds.includes(message.author.id)) return;
             }
             for (let i = 0; i < command.memberPerms.length; i++) {
                 if (!authorPerms.has(command.memberPerms[i])) {
-                    return message.reply(
+                    message.reply(
                         t("errors:youDontHavePermission", {
                             permission: t(
                                 `permissions:${new Permissions(
@@ -134,6 +135,7 @@ module.exports = async (message, guildDB) => {
                             ),
                         })
                     );
+                    if (!client.config.ownerIds.includes(message.author.id)) return;
                 }
             }
         }
