@@ -47,6 +47,9 @@
     "disabled": "Successfully disabled chatbot",
     "enabled": "Successfully enabled chatbot"
   },
+  "config": {
+    "cmdDesc": "See current configuration"
+  },
   "disable": {
     "cmdDesc": "Disable commands.",
     "usage": "(command name / subcommand)",
