@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -13,7 +13,7 @@ module.exports = class CMD extends Command {
                 aliases: ["shard"],
                 memberPerms: [],
                 botPerms: [],
-                disabled: true,
+                disabled: false,
                 cooldown: 10,
                 category: "Core",
             },
@@ -21,12 +21,17 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message }, t) {
         const embed = new Embed({ color: "success" }).setTitle(
             t("cmds:shards.cmdDesc")
         );
         const table = new AsciiTable()
-            .setHeading("Shard", "Servers", "Cached Users", "Ping")
+            .setHeading(
+                t("misc:shard"),
+                t("misc:servers"),
+                t("misc:cached_users"),
+                t("misc:ping")
+            )
             .setAlign(0, AsciiTable.CENTER)
             .setAlign(1, AsciiTable.CENTER)
             .setAlign(2, AsciiTable.CENTER)
@@ -47,8 +52,9 @@ module.exports = class CMD extends Command {
                 `${ping[shardId]}ms`
             );
         });
+        embed.setDesc(`\`\`\`${table.toString()}\`\`\``);
         message.channel.send({
-            embeds: [embed.setDesc(`\`\`\`${table.toString()}\`\`\``)],
+            embeds: [embed],
         });
     }
 };

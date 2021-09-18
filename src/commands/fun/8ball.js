@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -16,7 +16,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[question]",
                 disabled: false,
                 cooldown: 10,
                 category: "Fun",
@@ -30,7 +29,7 @@ module.exports = class CMD extends Command {
         let res = await fetch("https://nekos.life/api/v2/8ball");
         res = await res.json();
         const text = args.join(" ");
-        let embed = new Embed()
+        const embed = new Embed()
             .setTitle(text)
             .setDescription(`**${res.response}**`)
             .setImage(res.url);

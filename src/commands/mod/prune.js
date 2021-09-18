@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -11,8 +11,8 @@ module.exports = class CMD extends Command {
             {
                 name: "prune",
                 aliases: ["purge"],
-                memberPerms: [Permissions.FLAGS.KICK_MEMBERS],
-                botPerms: [Permissions.FLAGS.KICK_MEMBERS],
+                memberPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
+                botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
                 requirements: {
                     args: true,
                     guildOnly: true,
@@ -37,25 +37,28 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }, t) {
+    //eslint-disable-next-line no-unused-vars
+    async execute({ message, args, guildDB }, t) {
+        //TODO: Add translation
         let messages;
-        const errMsg =
-            "An error occurred when trying to prune messages in this channel";
+        const errMsg = t("errors:generic");
         switch (args[0]) {
             case "all":
                 args[0] = 99;
                 break;
             case "bots":
-                messages = message.channel.messages.cache.filter(
-                    (m) => m.author.bot
-                );
+                messages = await message.channel.messages
+                    .fetch({ limit: 100 })
+                    .then((msgs) => msgs.filter((m) => m.author.bot));
                 break;
         }
         if (typeof args[0] === "string" && args[0].startsWith("*")) {
             args[0] = args[0].slice(1); //Remove * from it
-            messages = message.channel.messages.cache.filter(
-                (m) => m.content.indexOf(args[0]) !== -1
-            );
+            messages = await message.channel.messages
+                .fetch({ limit: 100 })
+                .then((msgs) =>
+                    msgs.filter((m) => m.content.indexOf(args[0]) !== -1)
+                );
         }
         if (!isNaN(parseInt(args[0]))) {
             const amount = parseInt(args[0]) + 1;
@@ -72,20 +75,32 @@ module.exports = class CMD extends Command {
                 );
             }
 
-            message.channel.bulkDelete(amount, true).catch((err) => {
+            messages = await message.channel.messages
+                .fetch({ limit: amount })
+                .then((msgs) => {
+                    if (!args[1] || args[1] !== "-f")
+                        return msgs.filter((msg) => !msg.pinned);
+                    return msgs;
+                });
+            message.channel.bulkDelete(messages, true).catch((err) => {
                 message.client.logger.log(err, "error", ["PRUNING"]);
                 return message.channel.send(errMsg);
             });
-        } else {
-            if (messages) {
-                message.delete();
-                message.channel.bulkDelete(messages, true).catch((err) => {
-                    message.client.logger.log(err, "error", ["PRUNING"]);
-                    return message.channel.send(errMsg);
-                });
-            } else {
+        } else if (messages) {
+            message.delete();
+            if (!args[1] || args[1] !== "-f")
+                messages = messages.filter((msg) => !msg.pinned);
+            message.channel.bulkDelete(messages, true).catch((err) => {
+                message.client.logger.log(
+                    "Error when PRUNING messages",
+                    "error",
+                    ["CMDS"]
+                );
+                console.log(err);
                 return message.channel.send(errMsg);
-            }
+            });
+        } else {
+            return message.channel.send(errMsg);
         }
         message.channel
             .send("Pruning done 👍. This message will be deleted in 5 seconds")

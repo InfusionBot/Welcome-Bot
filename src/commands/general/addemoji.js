@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -11,13 +11,12 @@ module.exports = class CMD extends Command {
             {
                 name: "addemoji",
                 aliases: ["emoji"],
-                memberPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
-                botPerms: [Permissions.FLAGS.MANAGE_EMOJIS],
+                memberPerms: [Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS],
+                botPerms: [Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS],
                 requirements: {
                     args: true,
                     guildOnly: true,
                 },
-                usage: "[link] [emoji name]",
                 disabled: false,
                 cooldown: 10,
                 category: "General",
@@ -26,7 +25,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args }, t) {
+    execute({ message, args, guildDB }, t) {
         if (!args[0].startsWith("http"))
             return message.reply(t("errors:invalidURL"));
         const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
@@ -48,20 +47,11 @@ module.exports = class CMD extends Command {
                     embeds: [
                         embed
                             .setTitle(
-                                `
-                                ${
-                                    t("cmds:addemoji.success", {
-                                        emoji: `${emoji}`,
-                                        emojiName: emoji.name,
-                                    }).split("\n")[1]
-                                } (${emoji.id})`
-                            )
-                            .setDesc(
-                                t("cmds:addemoji.success", {
+                                `${t("cmds:addemoji.success", {
                                     emoji: `${emoji}`,
-                                    emojiName: emoji.name,
-                                }).split("\n")[0]
-                            ),
+                                })}`
+                            )
+                            .setDesc(`${emoji}`),
                     ],
                 });
             })
@@ -69,9 +59,11 @@ module.exports = class CMD extends Command {
                 message.channel.send({
                     embeds: [
                         embed.setTitle(
-                            t("cmds:addemoji.error", {
-                                emojiName: name,
-                            }).split("\n")[1]
+                            `${
+                                t("cmds:addemoji.error", {
+                                    emojiName: `${name}`,
+                                }).split("\n")[1]
+                            }`
                         ),
                     ],
                 });

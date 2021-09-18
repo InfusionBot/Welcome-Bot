@@ -1,0 +1,24 @@
+name: Lint code
+
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main, development, v2]
+
+jobs:
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: "16.x"
+      - run: npm install npm -g
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint
+        uses: icrawl/action-eslint@v1

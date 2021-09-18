@@ -1,8 +1,9 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -20,12 +21,12 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     execute({ message, args }, t) {
         //TODO: Add translation
-        let embed = new Embed().addField(
-            "Discord.js v13 (master branch)",
-            "We are opensource, you can check out source code at [GitHub](https://github.com/Welcome-Bot/welcome-bot)"
-        );
+        const embed = new Embed()
+            .setTitle(t("misc:djsv"))
+            .setURL("https://discord.js.org");
         return message.reply({ embeds: [embed] });
     }
 };

@@ -1,7 +1,7 @@
 [coc]: https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md
 [discussion]: https://github.com/Welcome-Bot/welcome-bot/discussions
-[bug]: https://github.com/Welcome-Bot/welcome-bot/issues/new?template=bug_report.md
-[feature]: https://github.com/Welcome-Bot/welcome-bot/issues/new?template=feature_request.md
+[bug]: https://github.com/Welcome-Bot/welcome-bot/issues/new?template=bug_report.yml
+[feature]: https://github.com/Welcome-Bot/welcome-bot/issues/new?template=feature_request.yml
 [issues]: https://github.com/Welcome-Bot/welcome-bot/issues/
 [featureReqs]: https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+enhancement%22
 [issue]: https://github.com/Welcome-Bot/welcome-bot/issues/new

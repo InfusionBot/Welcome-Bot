@@ -1,14 +1,9 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const fs = require("fs");
-const getGuild = require("../../db/functions/guild/getGuild");
-const versionSender = require("../../functions/versionSender.js");
-const presence = require("../../functions/presence.js");
-const serverCount = require("../../functions/serverCount.js");
-const { inspect } = require("util");
+/*eslint-disable no-unused-vars*/
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -23,24 +18,41 @@ module.exports = class CMD extends Command {
                 },
                 usage: "[statement]",
                 disabled: false,
-                cooldown: 20,
+                cooldown: 10,
                 category: "Owner Only",
             },
             client
         );
     }
 
-    execute({ message, args, guildDB }, t) {
-        const client = message.client;
+    execute({ message, args, guildDB, userDB }, t) {
+        const versionSender = require("../../functions/versionSender.js");
+        const presence = require("../../functions/presence.js");
+        const serverCount = require("../../functions/serverCount.js");
+        const { inspect } = require("util");
+        const { client } = this;
         const content = args.join(" ");
-        const embed = new Embed({ color: "success" })
-            .setTitle(t("cmds:eval.cmdDesc"))
-            .addField("**Input**", "```js\n" + content + "\n```");
+        const embed = new Embed({ color: "success" }).addField(
+            "**Input**",
+            "```js\n" + content + "\n```"
+        );
         const result = new Promise((resolve) => resolve(eval(content)));
+        if (!message || !message.channel) return;
         const clean = (text) => {
             if (typeof text === "string") {
                 if (text.includes(message.client.token)) {
+                    //Client token
                     text = text.replace(message.client.token, "T0K3N");
+                }
+                if (
+                    message.client.config.dashboard.secret &&
+                    text.includes(message.client.config.dashboard.secret)
+                ) {
+                    //Client secret
+                    text = text.replace(
+                        message.client.config.dashboard.secret,
+                        "SECR3T"
+                    );
                 }
                 return text
                     .replace(/`/g, "`" + String.fromCharCode(8203))
@@ -76,5 +88,15 @@ module.exports = class CMD extends Command {
                     ],
                 });
             });
+    }
+
+    async giveCredits(userId, amount, message) {
+        const userDB = await this.client.db
+            .findOrCreateUser(userId)
+            .catch(() => {});
+        userDB.wallet = parseInt(userDB.wallet) + amount;
+        userDB.markModified("wallet");
+        await userDB.save();
+        message.reply("Done");
     }
 };

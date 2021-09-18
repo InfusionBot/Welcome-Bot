@@ -1,9 +1,8 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { userFromMention } = require("../../helpers/Util.js");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -13,7 +12,6 @@ module.exports = class CMD extends Command {
                 aliases: ["whois", "ui", "uinfo"],
                 memberPerms: [],
                 botPerms: [],
-                usage: "(@mention / user id) (--dm)",
                 disabled: false,
                 cooldown: 10,
                 category: "General",
@@ -28,32 +26,18 @@ module.exports = class CMD extends Command {
         }
         let user;
         if (args[0]) {
-            if (args[0].startsWith("<@")) {
-                user = userFromMention(
-                    args[0] || `${message.author}`,
-                    message.client
-                );
-            }
-            if (
-                !isNaN(parseInt(args[0])) &&
-                args[0] !== message.client.user.id
-            ) {
-                user = message.client.users.cache.get(args[0]);
-                if (!user) user = await message.client.users.fetch(args[0]);
-            }
+            user = await this.getUserFromIdOrMention(args[0]);
         } else {
             user = message.author;
         }
 
         if (!user) {
-            message.reply(t("errors:userNotFound"));
+            message.reply(t("errors:invalidUser"));
             return false;
         }
-        let member;
+        const member = await message.guild.members.fetch(user.id);
         if (!member) {
-            member = await message.guild.members.fetch(user.id);
-            if (!member)
-                return message.reply("That user was not found in this server");
+            return message.reply("That user was not found in this server");
         }
 
         /*let badges = [];
@@ -64,15 +48,8 @@ module.exports = class CMD extends Command {
             .catch((err) => {
                 console.log(err);
             });
-
-        //Covert badges to images markdown
-        let badgesStr = [];
-        for (var i = 0; i < badges.length; i++) {
-            badgesStr[badgesStr.length] = `${message.client.emojis.cache.find(
-                (emoji) => emoji.id === badges[i].emoji
-            )}`;
         }*/
-        let embed = new Embed({
+        const embed = new Embed({
             tag: message.author.tag,
             avatarURL: message.author.displayAvatarURL(),
             color: "success",
@@ -82,14 +59,13 @@ module.exports = class CMD extends Command {
         embed.setDescription(`Information about ${args[0] || message.author}`);
         embed.setThumbnail(`${user.displayAvatarURL()}`);
         embed.addField("ID:", `\`\`\`\n${user.id}\n\`\`\``);
-        let avatarURL = user.displayAvatarURL().slice(0, 35);
-        avatarURL += "...";
+        const avatarURL = user.displayAvatarURL().slice(0, 35) + "...";
         embed.addField(
             "Avatar URL:",
             `[${avatarURL}](${user.displayAvatarURL()})`
         );
-        /*if (badgesStr.length > 0) {
-            embed.addField("Badges:", badgesStr.join(" "));
+        /*if (badges.length > 0) {
+            embed.addField("Badges:", badges.join(" "));
         } else {
             embed.addField("Badges:", "None");
         }*/
@@ -102,15 +78,18 @@ module.exports = class CMD extends Command {
         );
         if (member && member.nickname)
             embed.addField("Nickname:", `${member.nickname}`);
-        //https://discord.js.org/#/docs/main/stable/class/User?scrollTo=presence
-        embed.addField("Presence:", `${member.presence.status}`);
+        embed.addField(
+            t("misc:presence"),
+            `${member?.presence?.status ?? "undefined"}`
+        );
+        const content = user.id;
         switch (args[1]) {
             case "--dm":
-                message.author.send({ embeds: [embed] });
+                message.author.send({ content, embeds: [embed] });
                 message.channel.send(`Check out your DMs, ${message.author}`);
                 break;
             default:
-                message.channel.send({ embeds: [embed] });
+                message.channel.send({ content, embeds: [embed] });
                 break;
         }
     }

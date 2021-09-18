@@ -1,0 +1,27 @@
+[
+  {
+    "name": "en-US",
+    "aliases": ["english", "en", "en_us"],
+    "moment": "en"
+  },
+  {
+    "name": "ar-SA",
+    "aliases": ["arabic", "ar", "ar_sa"],
+    "moment": "ar"
+  },
+  {
+    "name": "es-ES",
+    "aliases": ["spanish", "es", "es_es"],
+    "moment": "es"
+  },
+  {
+    "name": "hi-IN",
+    "aliases": ["hindi", "hi", "hi_in"],
+    "moment": "hi"
+  },
+  {
+    "name": "tr-TR",
+    "aliases": ["turkish", "tr", "tr_tr"],
+    "moment": "tr"
+  }
+]

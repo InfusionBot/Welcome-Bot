@@ -1,9 +1,9 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Permissions } = require("discord.js");
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -20,20 +20,10 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     execute({ message, args }, t) {
-        const beautifyPerms = require("../../functions/beautifyPerms");
-        let permsGiven = message.guild.me
-            .permissionsIn(message.channel)
-            .toArray();
-        for (var i = 0; i < permsGiven.length; i++) {
-            permsGiven[i] = Permissions.FLAGS[permsGiven[i]];
-        }
-        message.reply(
-            `You have given: ${beautifyPerms(
-                permsGiven,
-                message.client.allPerms,
-                t
-            ).join(", ")}`
-        );
+        this.client.commands.enabled
+            .get("perms")
+            .execute({ message, args: [`${this.client.user.id}`] }, t);
     }
 };

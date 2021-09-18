@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -12,9 +12,8 @@ module.exports = (client) => {
     let toc = "# Table of contents\n\n"; //Table of contents
     const t = client.i18next.getFixedT("en-US");
     categories.forEach((cat) => {
-        const cmds = commands
-            .filter((cmd) => cmd.category === cat.name)
-            .array();
+        let cmds = commands.filter((cmd) => cmd.category === cat.name);
+        cmds = [...cmds.values()];
         toc += `- [${cat.name}](#${cat.name
             .toLowerCase()
             .replace(" ", "-")})\n`;
@@ -39,7 +38,7 @@ module.exports = (client) => {
                     subcommands ? subcommands.join("\n- ") : "None"
                 }\n\n##### Cmd info\n\n` +
                 `- Description: ${t(`cmds:${cmd.name}.cmdDesc`)}\n` +
-                `- Usage: ${cmd.usage ? cmd.usage : "None"}\n` +
+                `- Usage: ${client.config.defaultPrefix}${cmd.name} ${cmd.defaultUsage}\n` +
                 `- Aliases: ${aliases}\n` +
                 `- Cooldown: ${cmd.cooldown}\n`;
         });

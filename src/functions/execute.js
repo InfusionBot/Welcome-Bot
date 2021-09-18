@@ -1,44 +1,43 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
-const beautifyPerms = require("../functions/beautifyPerms");
 
 module.exports = async (message, guildDB) => {
-    const client = message.client;
+    const { client } = message;
+    const userDB = await client.db.findOrCreateUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixes = [
-        escapeRegex(client.defaultPrefix.toLowerCase()),
+        escapeRegex(client.config.defaultPrefix.toLowerCase()),
         escapeRegex(guildDB.prefix.toLowerCase()),
     ];
     const prefixRegex = new RegExp(
         `^(<@!?${client.user.id}> |${prefixes.join("|")})\\s*`
     );
-    let prefix;
+    let prefix = null;
     try {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
-    } catch (e) {}
+    } catch (e) {} //eslint-disable-line no-empty
     const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-    if (!message.client.application?.owner)
-        await message.client.application?.fetch();
-    let embed = new MessageEmbed().setColor("#ff0000");
+    if (!client.application?.owner) await client.application?.fetch();
+    const embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {
         //let errMsg = `Are you trying to run a command?\nI think you have a typo in the command.\nWant help, send \`${guildDB.prefix}help\``;
-        let args = message.content.slice(prefix.length).trim().split(/ +/);
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command =
-            message.client.commands.enabled.get(commandName) ||
-            message.client.commands.enabled.find(
+            client.commands.enabled.get(commandName) ||
+            client.commands.enabled.find(
                 (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
             );
 
         /*if (
-            message.client.disabled &&
-            (message.client.disabled.get(commandName) ||
-                message.client.disabled.find(
+            client.commands.disabled &&
+            (client.commands.disabled.get(commandName) ||
+                client.commands.disabled.find(
                     (cmd) => cmd.aliases.length && cmd.aliases.includes(commandName)
                 ))
         ) {
@@ -54,6 +53,10 @@ module.exports = async (message, guildDB) => {
             return;
         }
 
+        if (guildDB.disabled.includes(command.name)) return; //ignore disabled commands
+
+        command.usage = command.getUsage(t); //Don't use defaultUsage if there's an language translation for the command's usage
+
         if (
             message.guild &&
             !message.guild.me
@@ -67,7 +70,8 @@ module.exports = async (message, guildDB) => {
         if (
             command.requirements?.ownerOnly &&
             !(
-                message.client.ownerIDs.includes(message.author.id) ||
+                client.config.ownerIds.includes(message.author.id) ||
+                client.config.staffIds.includes(message.author.id) ||
                 message.author.id === client.application?.owner.id
             )
         ) {
@@ -81,50 +85,16 @@ module.exports = async (message, guildDB) => {
         }
 
         if (
-            command?.memberPerms &&
-            message.channel.type !== "DM" &&
-            message?.guild
-        ) {
-            const authorPerms = message.channel.permissionsFor(message.author);
-            if (!authorPerms) {
-                return message.reply(t("errors:youDontHavePermShort"));
-            }
-            for (var i = 0; i < command.memberPerms.length; i++) {
-                if (!authorPerms.has(command.memberPerms[i])) {
-                    return message.reply(
-                        t("errors:youDontHavePermission", {
-                            permission: t(
-                                `permissions:${new Permissions(
-                                    command.memberPerms[i]
-                                )
-                                    .toArray()
-                                    .join("")
-                                    .toUpperCase()}`
-                            ),
-                        })
-                    );
-                }
-            }
-        }
-
-        if (
             command?.botPerms &&
             message.channel.type !== "DM" &&
-            message?.guild
+            message.guild
         ) {
-            const bot_perms = message.guild.me.permissionsIn(message.channel);
-            const botG_perms = message.guild.me.permissions;
-
-            if (!bot_perms) {
-                return message.reply(
-                    `You didn't give the bot permission(s) to do this!\nSend \`${guildDB.prefix}help ${command.name}\` to get list of permissions required by this command.\nDon't know what you have given already? Send \`${guildDB.prefix}botperms\` in this channel itself.`
-                );
+            const botPerms = message.guild.me.permissionsIn(message.channel);
+            if (!botPerms) {
+                return message.reply(t("errors:iDontHavePermShort"));
             }
             for (var i = 0; i < command.botPerms.length; i++) {
-                if (
-                    !bot_perms.has(command.botPerms[i]) ||
-                    !botG_perms.has(command.botPerms[i])
-                ) {
+                if (!botPerms.has(command.botPerms[i])) {
                     return message.reply(
                         t("errors:iDontHavePermission", {
                             permission: t(
@@ -141,21 +111,49 @@ module.exports = async (message, guildDB) => {
             }
         }
 
+        if (
+            command?.memberPerms &&
+            message.channel.type !== "DM" &&
+            message.guild
+        ) {
+            const authorPerms = message.channel.permissionsFor(message.author);
+            if (!authorPerms) {
+                message.reply(t("errors:youDontHavePermShort"));
+                if (!client.config.ownerIds.includes(message.author.id)) return;
+            }
+            for (let i = 0; i < command.memberPerms.length; i++) {
+                if (!authorPerms.has(command.memberPerms[i])) {
+                    message.reply(
+                        t("errors:youDontHavePermission", {
+                            permission: t(
+                                `permissions:${new Permissions(
+                                    command.memberPerms[i]
+                                )
+                                    .toArray()
+                                    .join("")
+                                    .toUpperCase()}`
+                            ),
+                        })
+                    );
+                    if (!client.config.ownerIds.includes(message.author.id))
+                        return;
+                }
+            }
+        }
+
         if (command.requirements?.args && !args.length) {
-            let reply = t("errors:missingArgs");
+            let reply = t("errors:missingArgs", {
+                prefix: guildDB.prefix,
+                cmd: command.name,
+            });
 
             if (command.usage) {
-                reply += `\nThe proper usage would be: \`${guildDB.prefix}${command.name} ${command.usage}\``;
+                reply += `\nUsage: \`${guildDB.prefix}${command.name} ${command.usage}\``;
             }
 
-            embed.setTitle("No args provided");
             embed.addField(
                 `You didn't provide any arguments, ${message.author.tag}!`,
                 reply
-            );
-            embed.addField(
-                "Want help?",
-                `Send \`${guildDB.prefix}help ${command.name}\``
             );
             return message.reply({ embeds: [embed] });
         }
@@ -164,8 +162,8 @@ module.exports = async (message, guildDB) => {
             let reply = `Subcommands are required for this command.`;
 
             if (command.subcommands) {
-                let subcmds = [];
-                for (var i = 0; i < command.subcommands.length; i++) {
+                const subcmds = [];
+                for (let i = 0; i < command.subcommands.length; i++) {
                     subcmds.push(command.subcommands[i].name);
                 }
                 reply += `\nThe subcommand(s) available are: \`${subcmds.join(
@@ -185,20 +183,49 @@ module.exports = async (message, guildDB) => {
             return message.reply({ embeds: [embed] });
         }
 
+        if (command.subcommands && command.requirements?.subcommand) {
+            const subcmds = [];
+            for (let i = 0; i < command.subcommands.length; i++) {
+                subcmds.push(command.subcommands[i].name);
+            }
+            if (!subcmds.has(args[0]))
+                return message.reply(
+                    t("errors:invalidSubCmd", {
+                        prefix: guildDB.prefix,
+                        cmd: command.name,
+                    })
+                );
+        }
+
         if (client.debug && client.debugLevel >= 3)
             client.logger.log(
                 `Starting to prerun cmd: ${command.name}`,
                 "debug"
             );
-        if (command.prerun(message, t)) {
+        let prerunResult = false;
+        try {
+            prerunResult = command.prerun(message, guildDB, t);
+        } catch (e) {
+            client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
+            console.error(e);
+            embed
+                .setTitle(t("errors:generic"))
+                .addField(
+                    `Please report this to ${client.ownersTags.join(" OR ")}`,
+                    "\u200b"
+                );
+            message.reply({ embeds: [embed] });
+            return;
+        }
+        if (prerunResult) {
             if (client.debug && client.debugLevel >= 2)
                 client.logger.log(
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            message.channel.sendTyping();
+            message.channel.sendTyping().catch(() => {});
             try {
-                command.execute({ message, args, guildDB }, t);
+                command.execute({ prefix, message, args, guildDB, userDB }, t);
             } catch (err) {
                 client.logger.log("Error when executing cmds", "error", [
                     "CMDS",
@@ -207,11 +234,17 @@ module.exports = async (message, guildDB) => {
                 embed
                     .setTitle(t("errors:generic"))
                     .addField(
-                        `Please report this to ${message.client.ownersTags.join(
+                        `Please report this to ${client.ownersTags.join(
                             " OR "
                         )}`,
                         "\u200b"
                     );
+                if (
+                    client.config.ownerIds.includes(message.author.id) ||
+                    client.config.staffIds.includes(message.author.id) ||
+                    message.author.id === client.application?.owner.id
+                )
+                    embed.addField("Error", `${err}`);
                 message.reply({ embeds: [embed] });
                 return;
             }

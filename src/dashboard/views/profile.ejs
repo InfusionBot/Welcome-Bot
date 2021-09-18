@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <%- include('includes/head') %>
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-closed sidebar-fixed sidebar-collapse">
+        <div class="wrapper">
+            <%- include('includes/header') %>
+            <div class="content-wrapper px-4 py-2" >
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1><%= translate("misc:profile") %></h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title"><%= user2.tag %></h3>
+                            </div>
+                            <div class="card-body">
+                                <img src="<%= user2.displayAvatarURL() %>" class="rounded mx-auto d-block" style="max-width: 200px; max-height: 200px">
+                                <%= userDB2.bio %>
+                            </div>
+                            <div class="card-footer">
+                                <%= `${translate("misc:accCreated")}: ${new Date(userDB2.registeredAt).toString()}` %><br>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-content">
+                                <span class="info-box-icon bg-info"><i class="fas fa-university"></i></span>
+                                <span class="info-box-text"><%= translate("cmds:balance.walletOnly", {wallet: userDB2.wallet,}) %></span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" style="width: <%= `${(userDB2.bankLimit - userDB2.bank) / 100}%` %>"></div>
+                                </div>
+                                <span class="progress-description">
+                                    <%= translate("cmds:balance.bankOnly", {
+                                        bank: userDB2.bank,
+                                        bankLimit: userDB2.bankLimit,
+                                        percentage: (userDB2.bankLimit - userDB2.bank) / 100,
+                                    }) %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <%- include('includes/footer') %>
+    </body>
+</html>

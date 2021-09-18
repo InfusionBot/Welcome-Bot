@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -7,10 +7,10 @@ const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
     constructor(opts = {}, data = {}) {
         super(data);
-        let {
+        let { color = null } = opts;
+        const {
             tag = null,
             avatarURL = null,
-            color = null,
             timestamp = true,
             footer = null,
         } = opts;
@@ -33,14 +33,17 @@ module.exports = class Embed extends MessageEmbed {
             case "lightblue":
                 color = "#76b3fc";
                 break;
+            case "pink":
+                color = "#da70d6";
+                break;
             default:
                 if (!color) color = "RANDOM";
                 break;
         }
         this.setColor(color);
-        if (tag && avatarURL) this.setFooter(`${tag}`, `${avatarURL}`);
-        else if (tag) this.setFooter(`${tag}`);
-        else if (footer) this.setFooter(`${footer}`);
+        if (tag && avatarURL) this.setAuthor(`${tag}`, `${avatarURL}`);
+        else if (tag) this.setAuthor(`${tag}`);
+        if (footer) this.setFooter(`${footer}`);
         if (timestamp) this.setTimestamp();
     }
 

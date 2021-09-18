@@ -1,13 +1,17 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const https = require("https");
+const TopggAPI = require("../classes/Topgg").api;
 const sendReq = function (data, options) {
     const req = https
         .request(options, (res) => {
-            console.log("statusCode: ", res.statusCode);
+            console.log(
+                `Status Code for ${options.hostname}: `,
+                res.statusCode
+            );
         })
         .on("error", (err) => {
             console.error(err.message);
@@ -29,7 +33,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "discord.boats",
-            path: "/api/bot/" + process.env.BOT_ID,
+            path: "/api/bot/" + client.user.id,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +52,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordextremelist.xyz",
-            path: "/v2/bot/" + process.env.BOT_ID + "/stats",
+            path: "/v2/bot/" + client.user.id + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -67,7 +71,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "discord.bots.gg",
-            path: "/api/v1/bots/" + process.env.BOT_ID + "/stats",
+            path: "/api/v1/bots/" + client.user.id + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -86,11 +90,11 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordlist.space",
-            path: "/v1/bots/" + process.env.BOT_ID,
+            path: "/v1/bots/" + client.user.id,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: process.env.DISCORDLIST_token,
+                Authorization: `Bot ${process.env.DISCORDLIST_token}`,
                 "User-Agent": process.env.userAgent,
             },
         };
@@ -106,7 +110,7 @@ module.exports = function (client) {
         });
         options = {
             hostname: "api.discordservices.net",
-            path: "/bot/" + process.env.BOT_ID + "/stats",
+            path: "/bot/" + client.user.id + "/stats",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -138,4 +142,14 @@ module.exports = function (client) {
     } else {
         client.logger.log("DISBOTLIST_token is not set", "warn");
     }
+
+    //Top.gg stats
+    TopggAPI.postStats({
+        serverCount: servers,
+        shardCount: 0,
+    })
+        .then(() => {
+            if (client.debug) console.log("Posted stats to Topgg");
+        })
+        .catch(console.error);
 };

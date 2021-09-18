@@ -1,10 +1,10 @@
 {
-  "setup": "Setup",
+  "anime": "Anime",
+  "core": "Core",
+  "economy": "Economy",
+  "fun": "Fun",
   "general": "General",
   "mod": "Moderation",
-  "fun": "Fun",
   "music": "Music",
-  "anime": "Anime",
-  "owner": "Owner Only",
-  "core": "Core"
+  "admin": "Administration"
 }

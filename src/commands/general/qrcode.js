@@ -12,7 +12,6 @@ module.exports = class CMD extends Command {
                 aliases: ["qr"],
                 memberPerms: [],
                 botPerms: [],
-                usage: "[subcommand] [data / image_url]",
                 requirements: {
                     args: true,
                 },
@@ -30,12 +29,17 @@ module.exports = class CMD extends Command {
 
     async execute({ message, args }, t) {
         const fetch = require("node-fetch");
-        let embed = new Embed();
+        const embed = new Embed();
         const baseURL = "http://api.qrserver.com/v1";
         if (!args[1])
             return message.reply(
-                "Please provide a data / image_url to generate / read a qrcode respectively"
+                "Please provide a text / image url to generate / read a qrcode respectively"
             );
+        const body = fetch(
+            `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
+                args[1]
+            ).replace(/\*/g, "%2A")}`
+        ).then((res) => res.json());
         switch (args[0]) {
             case "generate":
                 return message.channel.send({
@@ -51,11 +55,6 @@ module.exports = class CMD extends Command {
             case "read":
                 if (!args[1].startsWith("http"))
                     return message.reply(t("errors:invalidURL"));
-                const body = await fetch(
-                    `${baseURL}/read-qr-code/?fileurl=${encodeURIComponent(
-                        args[1]
-                    ).replace(/\*/g, "%2A")}`
-                ).then((res) => res.json());
                 if (body[0].symbol[0] && body[0].symbol[0].data !== null) {
                     return message.channel.send({
                         embeds: [embed.setDescription(body[0].symbol[0].data)],

@@ -5,8 +5,7 @@
  */
 module.exports = async (user) => {
     const flags = user.flags || (await user.fetchFlags());
-    let userFlags = [];
-    //https://discord.js.org/#/docs/main/v12/class/UserFlags?scrollTo=s-FLAGS
+    const userFlags = [];
     const allFlags = [
         {
             id: "DISCORD_EMPLOYEE",
@@ -46,7 +45,7 @@ module.exports = async (user) => {
         { id: "VERIFIED_BOT", emoji: "" },
         { id: "EARLY_VERIFIED_BOT_DEVELOPER", emoji: "" },
     ];
-    for (let flag of allFlags) {
+    for (const flag of allFlags) {
         const hasFlag = flags.toArray().includes(flag.id);
         if (hasFlag) userFlags.push(flag);
     }

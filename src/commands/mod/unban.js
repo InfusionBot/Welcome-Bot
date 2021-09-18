@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -26,41 +26,38 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB }, t) {
+        //TODO: Add translation
         const id = args[0];
         if (!id || isNaN(parseInt(id))) {
-            return message.reply(
-                "Please use a proper user id if you want to unban someone."
-            );
+            return message.reply(t("errors:invalidUserId"));
         }
+        const reason = args.slice(1).join(" ") || t("misc:not_spec");
+        const user = message.client.users.cache.get(id);
 
         try {
             await message.guild.members.unban(id);
         } catch (err) {
             if (!err.toString().includes("Unknown Ban")) console.error(err);
-            else
-                return message.reply(
-                    "Looks like that person is not banned at all in this server. Double check the person's id!"
-                );
+            else return message.reply(t("errors:userNotInGuild"));
             return message.channel.send(`Failed to unban **${id}**`);
         }
 
-        if (guildDB.modChannel) {
-            channel = message.guild.channels.cache.find(
-                (ch) => ch.name === guildDB.modChannel
+        if (guildDB.plugins.modlogs) {
+            const channel = message.guild.channels.cache.get(
+                guildDB.plugins.modlogs
             );
             if (channel) {
-                embed = new MessageEmbed();
+                const embed = new MessageEmbed();
                 embed.setTitle(`User unbanned: ${user.tag} (${user.id})`);
                 embed.addField(
-                    "Responsible moderator:",
+                    t("misc:resMod"),
                     `${message.author.tag} (${message.author.id})`
                 );
-                embed.addField("Reason:", reason);
+                embed.addField(t("misc:reason"), reason);
                 channel.send({ embeds: [embed] });
             }
         }
 
-        const user = message.client.users.cache.get(id);
         return message.channel.send(
             `Successfully unbanned **${user.tag}** from the server!`
         );

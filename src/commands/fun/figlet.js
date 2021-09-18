@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -15,9 +15,8 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[string]",
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Fun",
             },
             client
@@ -27,12 +26,11 @@ module.exports = class CMD extends Command {
     async execute({ message, args }, t) {
         const figlet = require("figlet");
         const figletAsync = require("util").promisify(figlet);
-        let text = args.join(" ");
-        let result;
+        const text = args.join(" ");
         if (text.length > 20) {
             return message.channel.send(t("cmds:figlet.error"));
         }
-        result = await figletAsync(text);
+        const result = await figletAsync(text);
         message.reply("```" + result + "```");
     }
 };

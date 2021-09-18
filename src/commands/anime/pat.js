@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -16,7 +16,6 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                 },
-                usage: "[@mention / user id]",
                 disabled: false,
                 cooldown: 5,
                 category: "Anime",
@@ -43,13 +42,13 @@ module.exports = class CMD extends Command {
         }
 
         if (!user) {
-            message.reply(t("errors:userNotFound"));
+            message.reply(t("errors:invalidUser"));
             return false;
         }
         if (user.id === message.author.id) {
             return message.reply(t("cmds:pat.errorYourself"));
         }
-        let embed = new Embed()
+        const embed = new Embed()
             .setTitle(
                 t("cmds:pat.success", {
                     author: message.author.tag,

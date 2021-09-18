@@ -1,11 +1,9 @@
 # Discord Welcome-Bot
 
-> A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...
+> A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Economy, Welcome & Goodbye logs, Fun, Music
 
 Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
-[![GitHub stars](https://img.shields.io/github/stars/Welcome-Bot/welcome-bot)][stargazers]
-[![GitHub forks](https://img.shields.io/github/forks/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)][discord]
@@ -13,6 +11,7 @@ Welcome-Bot is a bot built for you, to welcome new users to your servers mainly.
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
 [![CI](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml/badge.svg?branch=development&event=push)](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml)
 ![Codelines](https://img.shields.io/tokei/lines/github/Welcome-Bot/welcome-bot)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Welcome-Bot/welcome-bot)
 
 Feel free to add a star ⭐ to the repository to promote the project!
 
@@ -23,11 +22,11 @@ Feel free to add a star ⭐ to the repository to promote the project!
 Welcome-Bot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 50+ commands
+- 🥳 80+ commands
 
 ### Customizable Settings
 
-Adjust the settings to fit all the needs of your server! You can select the channel to send welcome logs to, the welcome log message, the prefix of the bot for this server, and more…
+Adjust the settings to fit all the needs of your server! You can select the channel to send welcome logs to, the welcome log message, the prefix of the bot for this server, and more...
 
 ### Reliable and High Quality
 
@@ -49,17 +48,17 @@ Check out the docs on the [site](https://welcome-bot.github.io/docs)
 
 ## Commands
 
-Welcome-Bot has more than 50+ commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
+Welcome-Bot has more than 80 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
 
 ## Default values
 
 ### Default message
 
-The default welcome message is `Welcome {mention} to the {server} server!\nYou are our #{members} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
+The default welcome message is `Welcome {mention} to the {server} server!\nYou are our {members_formatted} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
 
 ### Default channel
 
-The default welcome channel is set to `new-members`, commonly used welcome channels are:
+The default welcome channel is set to `member-log`, commonly used welcome channels are:
 - `welcome`
 - `new-members`
 - `member-log`
@@ -68,36 +67,35 @@ The default welcome channel is set to `new-members`, commonly used welcome chann
 
 The bot requires the following permissions:
 
-- Read messages (View channels)
-- Send messages
+- Read Messages (View channels)
+- Send Messages
 - Read Message History
-- Manage messages
-- Embed links
+- Embed links - all commands
+- Manage Emojis and Stickers - addemoji command
+- Connect & Speak - music commands
+- Manage Messages - prune command
+- Ban Members - ban & unban command
+- Kick Members - kick command
+- Manage Roles - mute command
 
-Additionally if you want `Moderation` [feature](#Features) to work, you will need to give:
-
-- Ban Members
-- Kick Members
-
-To include the `moderation` feature, use this invite link:
+To invite the bot with all the necessary required permissions mentioned above you can use this invitation link:
 > https://dsc.gg/welcome-bot
-
-To invite the bot with all the necessary required permissions **except permissions for moderation feature** mentioned above you can use this invitation link:
-> https://dsc.gg/welcome-bot2
 
 ## Setting up the channel
 
 ### Welcome channel
 
-By default the bot will check for a channel named `new-members`.
+You can set welcome channel, by using the `welcome channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#welcome)
 
-You can change this channel name, by using the `channel set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+### Goodbye channel
+
+You can set goodbye channel, by using the `goodbye channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#goodbye)
 
 ### Moderation channel
 
 By default the bot will check for a channel named `mod-log`.
 
-You can change this channel name, by using the `channel setmod` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#channel)
+You can change this channel name, by using the `modlogs set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#modlogs)
 
 ## Botlists
 
@@ -135,6 +133,12 @@ Feel free to upvote him to show your support.
 ### [discord.bots.gg](https://discord.bots.gg/bots/848459799783669790)
 
 > The original Discord bot list, find the right bot for your server today.
+
+### [top.gg](https://top.gg/bot/848459799783669790)
+
+> Spice up your Discord experience with our diverse range of Discord bots
+
+[![Top.gg](https://top.gg/api/widget/848459799783669790.svg)](https://top.gg/bot/848459799783669790)
 
 ## Self hosting
 

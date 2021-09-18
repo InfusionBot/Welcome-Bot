@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -17,7 +17,6 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                     subcommand: true,
                 },
-                usage: "[subcommand]",
                 subcommands: [
                     {
                         name: "off",
@@ -38,7 +37,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args }, t) {
+    async execute({ message, args, guildDB }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
@@ -74,7 +73,7 @@ module.exports = class CMD extends Command {
                 ? "🔁"
                 : "▶";
         const members = voice.members.filter((m) => !m.user.bot);
-        let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
+        const embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:loop.cmdDesc")
         );
         const msg = await message.channel.send({ embeds: [embed] });

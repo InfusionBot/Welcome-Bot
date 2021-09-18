@@ -2,9 +2,12 @@ name: Release notes
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ development, v2 ]
+    branches: [dev]
+    types:
+      - labeled
+      - unlabeled
   workflow_dispatch:
 
 jobs:

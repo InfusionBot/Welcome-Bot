@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -23,6 +23,7 @@ module.exports = class CMD extends Command {
         );
     }
 
+    //eslint-disable-next-line no-unused-vars
     async execute({ message, args }, t) {
         const queue = message.client.player.getQueue(message.guild);
         const voice = message.member.voice.channel;
@@ -30,7 +31,7 @@ module.exports = class CMD extends Command {
         if (!queue || !queue.playing)
             return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
-        let embed = new Embed({ color: "blue", timestamp: true }).setTitle(
+        const embed = new Embed({ color: "blue", timestamp: true }).setTitle(
             t("cmds:back.cmdDesc")
         );
         const msg = await message.channel.send({ embeds: [embed] });
@@ -88,16 +89,14 @@ module.exports = class CMD extends Command {
                     return message.reply(t("misc:timeout"));
                 }
             });
+        } else if (queue.back()) {
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:back.success"))],
+            });
         } else {
-            if (queue.back()) {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:back.success"))],
-                });
-            } else {
-                msg.edit({
-                    embeds: [embed.setDesc(t("cmds:back.failure"))],
-                });
-            }
+            msg.edit({
+                embeds: [embed.setDesc(t("cmds:back.failure"))],
+            });
         }
     }
 };

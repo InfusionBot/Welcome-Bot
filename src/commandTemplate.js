@@ -1,15 +1,16 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+//eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
                 name: "sample",
-                aliases: ["example"],
+                aliases: ["null"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
@@ -18,20 +19,21 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                     ownerOnly: false,
                 },
-                usage: "[arg1] (arg2)",
                 disabled: false,
-                subcommands: [
-                    { name: "set", desc: "Set this" },
-                    { name: "reset", desc: "Reset that" },
-                ],
+                subcommands: [{ name: "set", desc: "Set this" }],
                 cooldown: 10,
                 category: "General",
+                slash: false,
             },
             client
         );
     }
 
-    execute({ message, args, guildDB }, t) {
+    execute({ message, args, guildDB, userDB }, t) {
+        return;
+    }
+
+    async run({ interaction, guildDB, userDB }, t) {
         return;
     }
 };

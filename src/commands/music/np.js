@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -31,7 +31,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("cmds:stop.notPlaying"));
         const track = queue.nowPlaying();
         const progress = queue.createProgressBar().split(" ┃ ");
-        let embed = new Embed({ color: "blue", timestamp: true })
+        const embed = new Embed({ color: "blue", timestamp: true })
             .setTitle(t("cmds:np.playing"))
             .setDescription(track.title)
             .setImage(track.thumbnail)

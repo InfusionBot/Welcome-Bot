@@ -1,5 +1,5 @@
 /**
- * Discord Welcome bot
+ * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
@@ -9,11 +9,11 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "coinflip",
-                aliases: ["cf", "filpcoin"],
+                aliases: ["cfp", "filpcoin"],
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Fun",
             },
             client
@@ -27,9 +27,10 @@ module.exports = class CMD extends Command {
         };
         const sides = ["heads", "tails"];
         const chosenSide = sides[Math.floor(Math.random() * sides.length)];
-        let embed = new Embed()
+        console.log(chosenSide, typeof chosenSide);
+        const embed = new Embed()
             .setImage(coins[chosenSide])
-            .setDescription(t("cmds:coinflip.done", chosenSide));
+            .setDescription(t("cmds:coinflip.done", { chosenSide }));
         message.channel.send({ embeds: [embed] });
     }
 };

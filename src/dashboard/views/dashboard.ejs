@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <%- include('includes/head') %>
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-closed sidebar-fixed sidebar-collapse">
+        <div class="wrapper">
+            <%- include('includes/header') %>
+            <div class="content-wrapper px-4 py-2" >
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1><%= translate("misc:dashboard") %></h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <% if (userData?.displayedGuilds?.length > 0) { %>
+                            <% for (let i = 0; i < userData.displayedGuilds.length; i++) { %>
+                            <div class="col-md-3">
+                                <% if (userData.displayedGuilds[i].botInvited) { %>
+                                <div class="card card-primary">
+                                <% } else { %>
+                                <div class="card card-warning">
+                                <% } %>
+                                    <div class="card-header text-center">
+                                        <h3 class="card-title"><%= userData.displayedGuilds[i].name %></h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="<%= userData.displayedGuilds[i].iconURL %>" class="rounded mx-auto d-block" style="max-width: 200px; max-height: 200px">
+                                    </div>
+                                    <div class="card-footer">
+                                        <% if (userData.displayedGuilds[i].botInvited) { %>
+                                        <a href="<%= userData.displayedGuilds[i].manageUrl %>"><%= translate("dashboard:manageGuild") %></a>
+                                        <% } else { %>
+                                        <a href="<%= dclient.config.inviteToGuild(dclient, userData.displayedGuilds[i].id) %>"><%= translate("misc:invite") %></a>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <% } else { %>
+                            <div class="col-md-12">
+                                <div class="card card-danger">
+                                    <div class="card-header">
+                                        <h3 class="card-title"><% translate("dashboard:noGuild") %></h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <% translate("dashboard:noGuildBody") %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <%- include('includes/footer') %>
+    </body>
+</html>
