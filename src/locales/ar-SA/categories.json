@@ -1,10 +1,10 @@
 {
-  "setup": "إعداد",
+  "anime": "انمي",
+  "core": "Core",
+  "economy": "Economy",
+  "fun": "الترفيه",
   "general": "جنرال لواء",
   "mod": "Moderation",
-  "fun": "الترفيه",
   "music": "Music",
-  "anime": "انمي",
-  "owner": "مالك فقط",
-  "core": "Core"
+  "admin": "Administration"
 }
