@@ -1,31 +1,176 @@
 {
+  "autopublish": {
+    "cmdDesc": "Manage autopublish settings",
+    "usage": "(subcommand)",
+    "current": {
+      "title": "Current settings for autopublish",
+      "desc": "These are the current Autopublish settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "disabled": "Successfully disabled autopublish",
+    "enabled": "Successfully enabled autopublish"
+  },
+  "autorole": {
+    "cmdDesc": "Manage autorole settings",
+    "usage": "(subcommand)",
+    "success": "Autorole set to {{role}}",
+    "current": {
+      "title": "Current settings for autorole",
+      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "disabled": "Successfully disabled autorole",
+    "enabled": "Successfully enabled autorole"
+  },
+  "backup": {
+    "cmdDesc": "Take backup of your server!",
+    "usage": "[subcommand]",
+    "warning": ":warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!",
+    "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}backup load {{id}}` to load it",
+    "invalidId": ":x: Invalid backup ID",
+    "cancelled": ":x: Cancelled.",
+    "success": "Backup loaded successfully!",
+    "created": "Backup created! I have sent you the ID in DMs."
+  },
+  "chatbot": {
+    "cmdDesc": "Manage chatbot settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Chatbot channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for chatbot",
+      "desc": "These are the current Chatbot settings of this Server.\nUse `{{prefix}}chatbot [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled chatbot",
+    "enabled": "Successfully enabled chatbot"
+  },
+  "config": {
+    "cmdDesc": "See current configuration"
+  },
+  "disable": {
+    "cmdDesc": "Disable commands.",
+    "usage": "(command name / subcommand)",
+    "title": "Currently disabled commands",
+    "done": "Successfully disabled!"
+  },
+  "enable": {
+    "cmdDesc": "Enable commands.",
+    "usage": "[command name]",
+    "notDisabled": "That command was not disabled so not doing anything",
+    "done": "Successfully enabled!"
+  },
+  "follow": {
+    "cmdDesc": "Belirlediğin kanalda botun haberlerini ve versiyon güncellemelerini al.",
+    "usage": "[channel / channel id]",
+    "success": "Successfully followed"
+  },
+  "goodbye": {
+    "cmdDesc": "Manage goodbye logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Goodbye channel set to {{channel}}",
+      "message": "Goodbye message set to ```\n{{message}}\n```"
+    },
+    "current": {
+      "title": "Current settings for goodbye logs",
+      "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled goodbye logs",
+    "enabled": "Successfully enabled goodbye logs"
+  },
+  "lang": {
+    "cmdDesc": "Dili değiştir",
+    "usage": "(subcommand) (lang)",
+    "invalid": "Geçersiz dil. Kullanılabilir tüm dilleri görmek için {{cmd}} komutunu kullan.",
+    "success": "Language successfully set to {{lang}}",
+    "show": "Language is currently set to {{lang}}",
+    "langNotProvided": "Dil argümanı belirtmedin"
+  },
+  "modlogs": {
+    "cmdDesc": "Manage ModLogs settings",
+    "usage": "(subcommand)",
+    "channelSet": "ModLogs channel set to {{channel}}",
+    "current": {
+      "title": "Current settings for ModLogs",
+      "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
+    }
+  },
+  "prefix": {
+    "cmdDesc": "Bu sunucu için ön eki yönet",
+    "usage": "(subcommand)"
+  },
+  "serverlogs": {
+    "cmdDesc": "Manage server logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Server logs channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for server logs",
+      "desc": "These are the current Server logs settings of this Server.\nUse `{{prefix}}serverlogs [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled server logs",
+    "enabled": "Successfully enabled server logs"
+  },
+  "welcome": {
+    "cmdDesc": "Manage welcome logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Welcome channel set to {{channel}}",
+      "message": "Welcome message set to ```\n{{message}}\n```"
+    },
+    "current": {
+      "title": "Current settings for welcome logs",
+      "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled welcome logs",
+    "enabled": "Successfully enabled welcome logs"
+  },
   "cuddle": {
     "cmdDesc": "Bir üye ile kucaklaş",
+    "usage": "[@mention / user id]",
     "success": "{{author}}, {{user}} adlı üyeyle kucaklaştı",
     "errorYourself": "Kendini kucaklayamazsın."
   },
   "hug": {
     "cmdDesc": "Bir üyeye sarıl",
+    "usage": "[@mention / user id]",
     "success": "{{author}}, {{user}} adlı üyeye sarıldı",
     "errorYourself": "Kendine sarılamazsın."
   },
   "kiss": {
     "cmdDesc": "Bir üyeyi öp",
+    "usage": "[@mention / user id]",
     "success": "{{author}}, {{user}} adlı üyeyi öptü",
     "errorYourself": "Kendini öpemezsin!"
   },
   "pat": {
     "cmdDesc": "Birini okşarsın",
+    "usage": "[@mention / user id]",
     "success": "{{author}}, {{user}} adlı üyeyi okşadı",
     "errorYourself": "Kendini okşayamazsın!"
   },
   "slap": {
     "cmdDesc": "Birini tokatlarsın",
+    "usage": "[@mention / user id]",
     "success": "{{author}}, {{user}} adlı üyeyi tokatladı",
     "errorYourself": "Kendini tokatlayamazsın!"
   },
   "tickle": {
     "cmdDesc": "Bir kullanıcıyı gıdıklarsın",
+    "usage": "[@mention / user id]",
     "success": "{{author}}, {{user}} adlı üyeyi gıdıkladı",
     "errorYourself": "Kendini gıdıklayamazsın!"
   },
@@ -46,34 +191,166 @@
     "cmdDesc": "Welcome-Bot'u oluşturmak için kullanılan kütüphaneler"
   },
   "ping": {
-    "cmdDesc": "Botu pingle"
+    "cmdDesc": "Get ping of the bot"
+  },
+  "report": {
+    "cmdDesc": "Report bugs",
+    "usage": "[bug description]",
+    "done": "Your bug has been reported, Thank You.",
+    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
   "shards": {
     "cmdDesc": "Botun shardları hakkında bilgi verir"
   },
   "suggest": {
     "cmdDesc": "Öneri yap",
+    "usage": "[suggestion description]",
     "done": "Teşekkürler, önerin gönderildi.",
-    "view": "Welcome-Bot sunucusundaki <#{{chanid}}> kanalından önerini görüntüleyebilirsin."
+    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
   "support": {
-    "cmdDesc": "Welcome-Bot için yardım al"
+    "cmdDesc": "Welcome-Bot için yardım al",
+    "footer": "Official Support Discord for Welcome-Bot"
   },
   "uptime": {
     "cmdDesc": "Botun çalışma süresini gör"
   },
+  "vote": {
+    "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",
+    "title": "Vote for Welcome-Bot",
+    "rewards": {
+      "index": "**Rewards**",
+      "coins": ":dollar: WCoins {{coins}}",
+      "banknote": ":bank: Banknote × 3"
+    },
+    "howToVote": {
+      "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
+      "bls": "**[Vote on botlist.space]({{link}})** to claim your bonus."
+    },
+    "howToVoteServer": "**[Vote on Top.gg for Welcome-Bot server]({{link}})** to claim another bonus.",
+    "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
+  },
   "website": {
     "cmdDesc": "Welcome-Bot websitesinin bağlantısını görüntüle"
   },
+  "balance": {
+    "cmdDesc": "Check your balance, or someone else's. Shows wallect & bank",
+    "title": "{{user}}'s balance",
+    "titleShort": "Balance",
+    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
+    "walletOnly": "Wallet: {{wallet}}",
+    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+  },
+  "beg": {
+    "cmdDesc": "Get money by begging!",
+    "chances": {
+      "failed": "Oh poor beggar, don't you feel ashame :question:",
+      "success": "Woah... Seems you have a way with people :people_hugging:, you got {{wcoins}} from begging",
+      "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
+    }
+  },
+  "buy": {
+    "cmdDesc": "Buy items which are available in the shop",
+    "usage": "[item] (amount)",
+    "notAvailable": "Sorry friend, but that item is not available for sale",
+    "noMoney": "You don't have enough money to buy that! Check the shop",
+    "done": "Successfully bought {{amount}} {{item}}(s)"
+  },
+  "daily": {
+    "cmdDesc": "Get your daily wcoins!",
+    "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
+    "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
+  },
+  "deposit": {
+    "cmdDesc": "Deposit money to your bank",
+    "usage": "[coins / subcommand]",
+    "notAvailable": "Woah... You don't have that much money in your wallet!",
+    "noSpace": "Woah... You don't have space to deposit that money!",
+    "noMoney": "Hey! You don't have anything in wallet to deposit",
+    "missingAmount": "The amount you specified is Not a Number or you did't specify the amount to deposit.",
+    "title": "Money deposited",
+    "success": "Deposited {{amount}} WCoins"
+  },
+  "gift": {
+    "cmdDesc": "Donate some items to another user",
+    "usage": "[@mention / user id] [item] (amount)",
+    "title": "Donated item!",
+    "success": "{{mention}} You gave {{user}} {{amount}} {{item}}(s)",
+    "noItem": "You didn't provide any item",
+    "errorYourself": "Woah, can you donate yourself?"
+  },
+  "give": {
+    "cmdDesc": "Donate money to another user",
+    "usage": "[@mention / user id] [amount]",
+    "title": "Donated money!",
+    "success": "{{mention}} You gave {{user}} {{amount}}, now you have {{yourWallet}} and they've got {{userWallet}}",
+    "errorYourself": "Woah, can you donate yourself?"
+  },
+  "inventory": {
+    "cmdDesc": "Shows yours or some one else's inventory",
+    "noItems": "You don't have anything in your inventory"
+  },
+  "leaderboard": {
+    "cmdDesc": "Shows the leaderboard"
+  },
+  "profile": {
+    "cmdDesc": "Shows your profile or someone else's.",
+    "title": "Profile of {{tag}}"
+  },
+  "rob": {
+    "cmdDesc": "Steal another user's wallet! :dollar:",
+    "usage": "[@mention]",
+    "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
+    "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
+    "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
+    "failed": "You were caught by the police when stealing and you lost {{lostCoins}}"
+  },
+  "setbio": {
+    "cmdDesc": "Set your Welcome-Bot account's bio!",
+    "usage": "[bio]",
+    "success": "Successfully set bio to **{{bio}}**"
+  },
+  "shop": {
+    "cmdDesc": "Shop items",
+    "notAvailable": "Not available",
+    "available": "Available"
+  },
+  "use": {
+    "cmdDesc": "Use your items",
+    "usage": "[item] (count)",
+    "notAnItem": "What are you thinking fool? There is no item like that or it is not usable item",
+    "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
+    "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
+    "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",
+    "banknote": "Your bank space increased by {{added}}"
+  },
+  "withdraw": {
+    "cmdDesc": "Withdraw money from your bank",
+    "usage": "[coins / subcommand]",
+    "notAvailable": "Woah... You don't have that much money in your bank!",
+    "title": "Money withdrawed",
+    "noMoney": "Hey! You don't have anything in bank to withdraw",
+    "isNegative": "Woah! The number you gave is negative, I won't help.",
+    "success": "Withdrawed {{wcoins}} WCoins"
+  },
   "8ball": {
-    "cmdDesc": "Soru sorarak kaderini öğren"
+    "cmdDesc": "Soru sorarak kaderini öğren",
+    "usage": "[question]"
   },
   "coinflip": {
     "cmdDesc": "Yazı tura at.",
     "done": "Yazı Tura attım ve {{chosenSide}} geldi"
   },
+  "duck": {
+    "cmdDesc": "Shows a random duck image"
+  },
+  "emojify": {
+    "cmdDesc": "Emojify a text.",
+    "usage": "[text]"
+  },
   "figlet": {
     "cmdDesc": "FIGfont belirtimini JS'de uygula",
+    "usage": "[string]",
     "error": "Metnin 20 karakterden küçük olmalı"
   },
   "image": {
@@ -81,64 +358,148 @@
   },
   "pokemon": {
     "cmdDesc": "Bir pokemon resmi görüntüle",
+    "usage": "[pokemon character]",
     "error": "Olamaz! Bu Pokemonu bulunamadı"
   },
   "addemoji": {
     "cmdDesc": "Bir resim bağlantısından emoji ekle",
+    "usage": "[link] [emoji name]",
     "nameMissing": "Emoji adı eksik, lütfen yardım için `{{cmd}}` komutunu kullan",
     "invalidName": "Emoji adının uzunluğu 2 ile 32 arasında olmalıdır!",
-    "success": "Önizleme: {{emoji}}\n:{{emojiName}}: eklendi!",
+    "success": "`{{emoji}}`",
     "error": "{{emojiName}} eklenemedi. Sunucunuzda hâlâ yeni emojiler için yer olup olmadığını kontrol edin!"
   },
   "avatar": {
     "cmdDesc": "Bir üyenin profil resmini görüntüle",
     "profile": "{{user}} adlı üyenin profil resmi"
   },
+  "clone": {
+    "cmdDesc": "Clone a text",
+    "usage": "[text]"
+  },
+  "chanid": {
+    "cmdDesc": "Get channel id",
+    "usage": "[channel]"
+  },
+  "djsdocs": {
+    "cmdDesc": "Search djs docs",
+    "usage": "[query] (--source [source])"
+  },
+  "roleid": {
+    "cmdDesc": "Get role id",
+    "usage": "[@role]"
+  },
+  "screenshot": {
+    "cmdDesc": "Take a screenshot",
+    "usage": "[site]"
+  },
+  "serverid": {
+    "cmdDesc": "Get server id"
+  },
+  "userid": {
+    "cmdDesc": "Get a id of a user",
+    "usage": "[@user]"
+  },
   "hastebin": {
     "cmdDesc": "Metnini hastebin'e yükle!",
+    "usage": "[text] (--extension [value])",
+    "invalidExt": "Invalid Extension",
     "missingText": "Lütfen geçerli bir metin gir!",
     "title": "Yükleme tamamlandı!",
     "success": "İşte bağlantın: {{link}}"
   },
   "help": {
     "cmdDesc": "Tüm komutları listeleyin veya belirli bir komut/kategori hakkında bilgi alın.",
+    "usage": "(command / category / --list-categories)",
+    "all": "List of all commands available in the bot",
     "cmdHelp": "{{cmd}} komutu için yardım",
-    "cmds": "Okları kullan ⏪⏩",
+    "cmds": "Use arrows ⏪⏩ or `{{prefix}}help [category]`",
     "listcats": "Kategori listesi",
     "bot-help": "Welcome-Bot yardım",
-    "in-cat": "Bu kategorideki komutlar"
+    "in_cat": "Commands in this category"
   },
   "listemojis": {
     "cmdDesc": "Bu sunucudaki tüm özel emojilerin ID'leriyle birlikte listesi."
   },
+  "membercount": {
+    "cmdDesc": "Shows the server member count"
+  },
   "perms": {
     "cmdDesc": "Belirli bir kullanıcıya verilen izinleri görüntüleyin. Herhangi bir kullanıcı belirtmemek kendi izinlerini gösterecektir",
+    "usage": "(@mention / user id)",
     "message": "**{{tag}}** adlı üyenin *{{channel}}* kanalındaki izinleri"
   },
   "qrcode": {
-    "cmdDesc": "Bir QR kodu oluşturur veya okur"
+    "cmdDesc": "Bir QR kodu oluşturur veya okur",
+    "usage": "[subcommand] [text / image url]"
+  },
+  "reminder": {
+    "cmdDesc": "Set a reminder",
+    "usage": "[time] (text)",
+    "remind": "Hey {{user}}, a gentle remember for `{{text}}`",
+    "set": "Reminder set!"
+  },
+  "reverse": {
+    "cmdDesc": "Reverse text",
+    "usage": "[text]"
   },
   "serverinfo": {
-    "cmdDesc": "Sunucu İstatistiklerin"
+    "cmdDesc": "Sunucu İstatistiklerin",
+    "usage": "(--dm)"
+  },
+  "staff": {
+    "cmdDesc": "View this server's staff"
+  },
+  "stealemoji": {
+    "cmdDesc": "Steal emojis from other servers",
+    "usage": "[emoji]",
+    "success": "`{{emoji}}`",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
+  },
+  "testwelcome": {
+    "cmdDesc": "Test by sending welcome message",
+    "welcomeDisabled": "Welcome logs are disabled and can't be tested right now."
+  },
+  "testgoodbye": {
+    "cmdDesc": "Test by sending goodbye message",
+    "goodbyeDisabled": "Goodbye logs are disabled and can't be tested right now."
   },
   "user": {
-    "cmdDesc": "Bir kullanıcı hakkında bilgi alın. Herhangi bir kullanıcı belirtilmemişse sizin bilgileriniz gösterilir"
-  },
-  "test": {
-    "cmdDesc": "Karşılama mesajı göndererek test et"
+    "cmdDesc": "Bir kullanıcı hakkında bilgi alın. Herhangi bir kullanıcı belirtilmemişse sizin bilgileriniz gösterilir",
+    "usage": "(@mention / user id) (--dm)"
   },
   "version": {
-    "cmdDesc": "Bir sürüm veya en son sürüm hakkında bilgi alın"
+    "cmdDesc": "Bir sürüm veya en son sürüm hakkında bilgi alın",
+    "usage": "(version)"
+  },
+  "cat": {
+    "cmdDesc": "Show a random cat image"
   },
   "ban": {
     "cmdDesc": "Bir üyeyi yasakla.",
+    "usage": "[@mention] (reason)",
+    "banned": "User banned",
+    "mySelf": "Please don't try to ban me, you have to do it yourself.",
     "success": "**{{tag}}** başarıyla sunucudan yasaklandı!"
   },
+  "dehoist": {
+    "cmdDesc": "Dehoist users that are trying to hoist"
+  },
   "kick": {
-    "cmdDesc": "Bir üyeyi at."
+    "cmdDesc": "Bir üyeyi at.",
+    "usage": "[@mention] (reason)",
+    "kicked": "User kicked",
+    "mySelf": "Please don't try to kick me, you have to do it yourself."
+  },
+  "lock": {
+    "cmdDesc": "Lock current channel",
+    "locked": "Locked down the channel",
+    "already": "The channel is already locked!"
   },
   "mute": {
     "cmdDesc": "Bir üyeyi sustur",
+    "usage": "[@mention / user id] (reason)",
+    "muted": "User muted",
     "errorYourself": "Woah... Bekle. Kendini susturabilir misin?",
     "memberHasPerm": "Susturmaya çalıştığın üye {{permission}} iznine sahip. Bu yüzden, bu üyeyi susturamam",
     "reason": "{{tag}} tarafından \"{{reason}}\" sebebiyle susturuldu",
@@ -147,6 +508,8 @@
   },
   "unmute": {
     "cmdDesc": "Bir üyenin susturmasını kaldır",
+    "usage": "[@mention / user id] (reason)",
+    "unmuted": "User unmuted",
     "errorYourself": "Woah... Bekle. Sen susturuldun mu?",
     "notMuted": "Bu üye şu anda susturulmamış",
     "reason": "{{tag}} tarafından \"{{reason}}\" sebebiyle susturulması kaldırıldı",
@@ -154,10 +517,15 @@
     "success": "Başarıyla **{{tag}}** adlı üyenin suturulması kaldırıldı!"
   },
   "prune": {
-    "cmdDesc": "Mesajları Sil."
+    "cmdDesc": "Prune Messages. Add a -f option in the end to delete pinned messages also!"
   },
   "unban": {
     "cmdDesc": "Bir üyenin yasaklamasını kaldır."
+  },
+  "unlock": {
+    "cmdDesc": "Unlock current channel",
+    "unlocked": "Unlocked down the channel",
+    "already": "The channel is already unlocked!"
   },
   "back": {
     "cmdDesc": "Önceki şarkıyı oynat",
@@ -167,6 +535,7 @@
   },
   "loop": {
     "cmdDesc": "Müzik için döngü ayarlarını yönetin",
+    "usage": "[subcommand]",
     "pleaseVote": "Ses kanalındaki üyelerin yarısından fazlası döngü modu için 👍 ile tepki vermelidir! {{count}} oydan daha fazla oy gerekiyor.",
     "invalidMode": "Geçersiz döngü modu belirtildi, yardım için `{{prefix}}help loop` yaz. Belirttiğiniz mod {{mode}}",
     "success": "Döngü modu {{mode}} olarak ayarlandı.",
@@ -178,13 +547,14 @@
   },
   "play": {
     "cmdDesc": "Kanalda müzik çalın.\nBu komutu kullanmadan önce ses kanalında olmanız gerekiyor.",
+    "usage": "[song name]",
     "cantJoin": "Ses kanalınıza katılınamadı!",
     "voiceNotJoined": "❌ Bu komutu kullanmadan önce lütfen bir ses kanalına girin",
     "missingSongName": "Oynatmam için bana bir müzik adı sağlamadın",
     "voiceChanDiff": "Lütfen bot ile aynı ses kanalına bağlan",
     "playlistStart": "**{{playlistTitle}}** çalma listesi oynatılıyor.\nİlk şarkı oynatılıyor: **{{songName}}**! :musical_note:",
     "botDisconnected": "Ses kanalı ile bağlantım kesildiği için müzik durduruldu.",
-    "noResults": "Bot bu isimde bir şarkı bulamadı :cry:",
+    "noResults": "The bot can't find any song like that :cry: [Note: Now we only support spotify]",
     "queueEnd": "Kuyruk sonlandırıldı. Artık çalacak müzik yok :musical_note:...",
     "queueAddCount": "{{songCount}} şarkı kuyruğa eklendi!",
     "queueAdded": "Kuyruğa eklendi",
@@ -195,6 +565,12 @@
     "destroyedQueue": "Kuyruk silindi ve bu kuyruğu kullanarak şarkı çalamıyorum. Lütfen play komutundan yeni bir kuyruk oluşturun",
     "playlistAdded": "\"{{playlist}}\" çalma listesi kuyruğa eklendi. ({{songs}} şarkı)",
     "forbidden": "O şarkıyı oynatamıyorum, eşleşen başka bir şarkıyı oynatmaya çalışacağım"
+  },
+  "seek": {
+    "cmdDesc": "Go forward or backward a specific amount of time in the current song!!",
+    "usage": "[time]",
+    "invalidTime": "You must specify a valid number of time!",
+    "success": "▶️ Music sought successfully!"
   },
   "skip": {
     "cmdDesc": "Çalan şarkıyı geç",
@@ -210,45 +586,8 @@
   },
   "volume": {
     "cmdDesc": "Şarkının sesini ayarlayın",
+    "usage": "(0-200)",
     "current": "Şu anki ses seviyesi **%{{volume}}**!",
     "success": "Ses seviyesi {{volume}} olarak değiştirildi"
-  },
-  "eval": {
-    "cmdDesc": "Bir JS deyimi yürütün."
-  },
-  "reload": {
-    "cmdDesc": "Bir komutu yeniden yükler"
-  },
-  "restart": {
-    "cmdDesc": "Botu yeniden başlatır"
-  },
-  "servers-list": {
-    "cmdDesc": "Botun bulunduğu sunucuların listesini gösterir."
-  },
-  "channel": {
-    "cmdDesc": "Bu sunucu için kanal ayarlarını yönetin\nHerhangi bir argüman sağlamamak, mevcut ayarları gösterecektir.",
-    "invalidArgs": "Geçersiz argüman. lütfen geçerli alt komutları kullanın, bkz. "
-  },
-  "disable": {
-    "cmdDesc": "Karşılama ve uğurlama loglarını devre dışı bırak."
-  },
-  "enable": {
-    "cmdDesc": "Karşılama ve uğurlama loglarını etkinleştir."
-  },
-  "follow": {
-    "cmdDesc": "Belirlediğin kanalda botun haberlerini ve versiyon güncellemelerini al."
-  },
-  "lang": {
-    "cmdDesc": "Dili değiştir",
-    "invalid": "Geçersiz dil. Kullanılabilir tüm dilleri görmek için {{cmd}} komutunu kullan.",
-    "success": "Dil {{lang}} olarak ayarlandı",
-    "show": "Dil başarıyla {{lang}} olarak ayarlandı",
-    "langNotProvided": "Dil argümanı belirtmedin"
-  },
-  "message": {
-    "cmdDesc": "Bu sunucu için karşılama mesajını yönet"
-  },
-  "prefix": {
-    "cmdDesc": "Bu sunucu için ön eki yönet"
   }
 }
