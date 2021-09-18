@@ -1,0 +1,23 @@
+{
+  "ANIMATED_ICON": "Animated Icon",
+  "BANNER": "Banner",
+  "COMMERCE": "Commerce",
+  "COMMUNITY": "Community",
+  "DISCOVERABLE": "Discoverable",
+  "FEATURABLE": "Featurable",
+  "INVITE_SPLASH": "Invite Splash",
+  "MEMBER_VERIFICATION_GATE_ENABLED": "Member Verification Gate Enabled",
+  "NEWS": "News",
+  "PARTNERED": "Partnered",
+  "PREVIEW_ENABLED": "Preview Enabled",
+  "VANITY_URL": "Vanity URL",
+  "VERIFIED": "Verified",
+  "VIP_REGIONS": "VIP Regions",
+  "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
+  "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled",
+  "MONETIZATION_ENABLED": "Monitization Enabled",
+  "MORE_STICKERS": "More Stickers",
+  "THREE_DAY_THREAD_ARCHIVE": "Three Day Thread Archive",
+  "SEVEN_DAY_THREAD_ARCHIVE": "Seven Day Thread Archive",
+  "PRIVATE_THREADS": "Private Threads"
+}
