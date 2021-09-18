@@ -1,31 +1,176 @@
 {
+  "autopublish": {
+    "cmdDesc": "Manage autopublish settings",
+    "usage": "(subcommand)",
+    "current": {
+      "title": "Current settings for autopublish",
+      "desc": "These are the current Autopublish settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "disabled": "Successfully disabled autopublish",
+    "enabled": "Successfully enabled autopublish"
+  },
+  "autorole": {
+    "cmdDesc": "Manage autorole settings",
+    "usage": "(subcommand)",
+    "success": "Autorole set to {{role}}",
+    "current": {
+      "title": "Current settings for autorole",
+      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+    },
+    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "disabled": "Successfully disabled autorole",
+    "enabled": "Successfully enabled autorole"
+  },
+  "backup": {
+    "cmdDesc": "Take backup of your server!",
+    "usage": "[subcommand]",
+    "warning": ":warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!",
+    "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}backup load {{id}}` to load it",
+    "invalidId": ":x: Invalid backup ID",
+    "cancelled": ":x: Cancelled.",
+    "success": "Backup loaded successfully!",
+    "created": "Backup created! I have sent you the ID in DMs."
+  },
+  "chatbot": {
+    "cmdDesc": "Manage chatbot settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Chatbot channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for chatbot",
+      "desc": "These are the current Chatbot settings of this Server.\nUse `{{prefix}}chatbot [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled chatbot",
+    "enabled": "Successfully enabled chatbot"
+  },
+  "config": {
+    "cmdDesc": "See current configuration"
+  },
+  "disable": {
+    "cmdDesc": "Disable commands.",
+    "usage": "(command name / subcommand)",
+    "title": "Currently disabled commands",
+    "done": "Successfully disabled!"
+  },
+  "enable": {
+    "cmdDesc": "Enable commands.",
+    "usage": "[command name]",
+    "notDisabled": "That command was not disabled so not doing anything",
+    "done": "Successfully enabled!"
+  },
+  "follow": {
+    "cmdDesc": "Get news and version updates to this bot sent to a specific channel.",
+    "usage": "[channel / channel id]",
+    "success": "Successfully followed"
+  },
+  "goodbye": {
+    "cmdDesc": "Manage goodbye logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Goodbye channel set to {{channel}}",
+      "message": "Goodbye message set to ```\n{{message}}\n```"
+    },
+    "current": {
+      "title": "Current settings for goodbye logs",
+      "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled goodbye logs",
+    "enabled": "Successfully enabled goodbye logs"
+  },
+  "lang": {
+    "cmdDesc": "भाषा बदले",
+    "usage": "(subcommand) (lang)",
+    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
+    "success": "Language successfully set to {{lang}}",
+    "show": "Language is currently set to {{lang}}",
+    "langNotProvided": "You have not provided lang argument"
+  },
+  "modlogs": {
+    "cmdDesc": "Manage ModLogs settings",
+    "usage": "(subcommand)",
+    "channelSet": "ModLogs channel set to {{channel}}",
+    "current": {
+      "title": "Current settings for ModLogs",
+      "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
+    }
+  },
+  "prefix": {
+    "cmdDesc": "Manage prefix for this server",
+    "usage": "(subcommand)"
+  },
+  "serverlogs": {
+    "cmdDesc": "Manage server logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Server logs channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for server logs",
+      "desc": "These are the current Server logs settings of this Server.\nUse `{{prefix}}serverlogs [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled server logs",
+    "enabled": "Successfully enabled server logs"
+  },
+  "welcome": {
+    "cmdDesc": "Manage welcome logs settings",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Welcome channel set to {{channel}}",
+      "message": "Welcome message set to ```\n{{message}}\n```"
+    },
+    "current": {
+      "title": "Current settings for welcome logs",
+      "desc": "These are the current Welcome logs settings of this Server.\nUse `{{prefix}}welcome [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid"
+    },
+    "disabled": "Successfully disabled welcome logs",
+    "enabled": "Successfully enabled welcome logs"
+  },
   "cuddle": {
     "cmdDesc": "Cuddle with a user",
+    "usage": "[@mention / user id]",
     "success": "{{author}} just cuddled to {{user}}",
     "errorYourself": "You can't cuddle yourself."
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
+    "usage": "[@mention / user id]",
     "success": "{{author}} has hugged {{user}}",
     "errorYourself": "You can't hug yourself."
   },
   "kiss": {
     "cmdDesc": "Kiss a user",
+    "usage": "[@mention / user id]",
     "success": "{{author}} has kissed {{user}}",
     "errorYourself": "You can't kiss yourself!"
   },
   "pat": {
     "cmdDesc": "Pats someone",
+    "usage": "[@mention / user id]",
     "success": "{{author}} pats {{user}}",
     "errorYourself": "You can't pat yourself!"
   },
   "slap": {
     "cmdDesc": "Slap a user",
+    "usage": "[@mention / user id]",
     "success": "{{author}} slapped {{user}}",
     "errorYourself": "You can't slap yourself!"
   },
   "tickle": {
     "cmdDesc": "Tickle a user",
+    "usage": "[@mention / user id]",
     "success": "{{author}} tickles {{user}}",
     "errorYourself": "You can't tickle yourself!"
   },
@@ -46,34 +191,166 @@
     "cmdDesc": "Library used to build Welcome-Bot"
   },
   "ping": {
-    "cmdDesc": "Ping the bot"
+    "cmdDesc": "Get ping of the bot"
+  },
+  "report": {
+    "cmdDesc": "Report bugs",
+    "usage": "[bug description]",
+    "done": "Your bug has been reported, Thank You.",
+    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
   "shards": {
     "cmdDesc": "Shows information about the bot's shards"
   },
   "suggest": {
     "cmdDesc": "Give suggestions",
+    "usage": "[suggestion description]",
     "done": "Your suggestion has been added, Thank You.",
-    "view": "You can view it in Welcome-Bot server in <#{{chanid}}> channel."
+    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
   },
   "support": {
-    "cmdDesc": "Get Support for Welcome-Bot"
+    "cmdDesc": "Get Support for Welcome-Bot",
+    "footer": "Official Support Discord for Welcome-Bot"
   },
   "uptime": {
     "cmdDesc": "Get uptime of the bot"
   },
+  "vote": {
+    "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",
+    "title": "Vote for Welcome-Bot",
+    "rewards": {
+      "index": "**Rewards**",
+      "coins": ":dollar: WCoins {{coins}}",
+      "banknote": ":bank: Banknote × 3"
+    },
+    "howToVote": {
+      "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
+      "bls": "**[Vote on botlist.space]({{link}})** to claim your bonus."
+    },
+    "howToVoteServer": "**[Vote on Top.gg for Welcome-Bot server]({{link}})** to claim another bonus.",
+    "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
+  },
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"
   },
+  "balance": {
+    "cmdDesc": "Check your balance, or someone else's. Shows wallect & bank",
+    "title": "{{user}}'s balance",
+    "titleShort": "Balance",
+    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
+    "walletOnly": "Wallet: {{wallet}}",
+    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+  },
+  "beg": {
+    "cmdDesc": "Get money by begging!",
+    "chances": {
+      "failed": "Oh poor beggar, don't you feel ashame :question:",
+      "success": "Woah... Seems you have a way with people :people_hugging:, you got {{wcoins}} from begging",
+      "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
+    }
+  },
+  "buy": {
+    "cmdDesc": "Buy items which are available in the shop",
+    "usage": "[item] (amount)",
+    "notAvailable": "Sorry friend, but that item is not available for sale",
+    "noMoney": "You don't have enough money to buy that! Check the shop",
+    "done": "Successfully bought {{amount}} {{item}}(s)"
+  },
+  "daily": {
+    "cmdDesc": "Get your daily wcoins!",
+    "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
+    "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
+  },
+  "deposit": {
+    "cmdDesc": "Deposit money to your bank",
+    "usage": "[coins / subcommand]",
+    "notAvailable": "Woah... You don't have that much money in your wallet!",
+    "noSpace": "Woah... You don't have space to deposit that money!",
+    "noMoney": "Hey! You don't have anything in wallet to deposit",
+    "missingAmount": "The amount you specified is Not a Number or you did't specify the amount to deposit.",
+    "title": "Money deposited",
+    "success": "Deposited {{amount}} WCoins"
+  },
+  "gift": {
+    "cmdDesc": "Donate some items to another user",
+    "usage": "[@mention / user id] [item] (amount)",
+    "title": "Donated item!",
+    "success": "{{mention}} You gave {{user}} {{amount}} {{item}}(s)",
+    "noItem": "You didn't provide any item",
+    "errorYourself": "Woah, can you donate yourself?"
+  },
+  "give": {
+    "cmdDesc": "Donate money to another user",
+    "usage": "[@mention / user id] [amount]",
+    "title": "Donated money!",
+    "success": "{{mention}} You gave {{user}} {{amount}}, now you have {{yourWallet}} and they've got {{userWallet}}",
+    "errorYourself": "Woah, can you donate yourself?"
+  },
+  "inventory": {
+    "cmdDesc": "Shows yours or some one else's inventory",
+    "noItems": "You don't have anything in your inventory"
+  },
+  "leaderboard": {
+    "cmdDesc": "Shows the leaderboard"
+  },
+  "profile": {
+    "cmdDesc": "Shows your profile or someone else's.",
+    "title": "Profile of {{tag}}"
+  },
+  "rob": {
+    "cmdDesc": "Steal another user's wallet! :dollar:",
+    "usage": "[@mention]",
+    "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
+    "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
+    "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
+    "failed": "You were caught by the police when stealing and you lost {{lostCoins}}"
+  },
+  "setbio": {
+    "cmdDesc": "Set your Welcome-Bot account's bio!",
+    "usage": "[bio]",
+    "success": "Successfully set bio to **{{bio}}**"
+  },
+  "shop": {
+    "cmdDesc": "Shop items",
+    "notAvailable": "Not available",
+    "available": "Available"
+  },
+  "use": {
+    "cmdDesc": "Use your items",
+    "usage": "[item] (count)",
+    "notAnItem": "What are you thinking fool? There is no item like that or it is not usable item",
+    "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
+    "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
+    "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",
+    "banknote": "Your bank space increased by {{added}}"
+  },
+  "withdraw": {
+    "cmdDesc": "Withdraw money from your bank",
+    "usage": "[coins / subcommand]",
+    "notAvailable": "Woah... You don't have that much money in your bank!",
+    "title": "Money withdrawed",
+    "noMoney": "Hey! You don't have anything in bank to withdraw",
+    "isNegative": "Woah! The number you gave is negative, I won't help.",
+    "success": "Withdrawed {{wcoins}} WCoins"
+  },
   "8ball": {
-    "cmdDesc": "Get your fortune by asking your question"
+    "cmdDesc": "Get your fortune by asking your question",
+    "usage": "[question]"
   },
   "coinflip": {
     "cmdDesc": "सिक्का उछालें!",
     "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
+  "duck": {
+    "cmdDesc": "Shows a random duck image"
+  },
+  "emojify": {
+    "cmdDesc": "Emojify a text.",
+    "usage": "[text]"
+  },
   "figlet": {
     "cmdDesc": "Implement the FIGfont spec in JS",
+    "usage": "[string]",
     "error": "Your text has to be smaller than 20 characters"
   },
   "image": {
@@ -81,64 +358,148 @@
   },
   "pokemon": {
     "cmdDesc": "Get a pokemon image",
+    "usage": "[pokemon character]",
     "error": "Oh! Could not find that Pokemon"
   },
   "addemoji": {
     "cmdDesc": "Add emoji from a image link",
+    "usage": "[link] [emoji name]",
     "nameMissing": "Emoji name is missing, please type `{{cmd}}` for help",
     "invalidName": "The length of the emoji name must be between 2 and 32!",
-    "success": "Preview: {{emoji}}\n:{{emojiName}}: added!",
+    "success": "`{{emoji}}`",
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {
     "cmdDesc": "उपयोगकर्ता का अवतार चित्र प्राप्त करें।",
     "profile": "यह {{user}} का अवतार चित्र है"
   },
+  "clone": {
+    "cmdDesc": "Clone a text",
+    "usage": "[text]"
+  },
+  "chanid": {
+    "cmdDesc": "Get channel id",
+    "usage": "[channel]"
+  },
+  "djsdocs": {
+    "cmdDesc": "Search djs docs",
+    "usage": "[query] (--source [source])"
+  },
+  "roleid": {
+    "cmdDesc": "Get role id",
+    "usage": "[@role]"
+  },
+  "screenshot": {
+    "cmdDesc": "Take a screenshot",
+    "usage": "[site]"
+  },
+  "serverid": {
+    "cmdDesc": "Get server id"
+  },
+  "userid": {
+    "cmdDesc": "Get a id of a user",
+    "usage": "[@user]"
+  },
   "hastebin": {
     "cmdDesc": "Upload your text on hastebin!",
+    "usage": "[text] (--extension [value])",
+    "invalidExt": "Invalid Extension",
     "missingText": "Please enter a valid text!",
     "title": "Upload complete!",
     "success": "Here's your link: {{link}}"
   },
   "help": {
     "cmdDesc": "List all commands or get info for a specific command/category.",
+    "usage": "(command / category / --list-categories)",
+    "all": "List of all commands available in the bot",
     "cmdHelp": "Help for {{cmd}} command",
-    "cmds": "Use arrows ⏪⏩",
+    "cmds": "Use arrows ⏪⏩ or `{{prefix}}help [category]`",
     "listcats": "List of categories",
     "bot-help": "Welcome-Bot help",
-    "in-cat": "Commands in this category"
+    "in_cat": "Commands in this category"
   },
   "listemojis": {
     "cmdDesc": "List of all custom emojis in this server, with there IDs."
   },
+  "membercount": {
+    "cmdDesc": "Shows the server member count"
+  },
   "perms": {
     "cmdDesc": "Get permissions given to a specific user. Not providing any user mention will show your permissions",
+    "usage": "(@mention / user id)",
     "message": "Permissions for **{{tag}}** in *{{channel}}* channel"
   },
   "qrcode": {
-    "cmdDesc": "Generate or Read a QR code"
+    "cmdDesc": "Generate or Read a QR code",
+    "usage": "[subcommand] [text / image url]"
+  },
+  "reminder": {
+    "cmdDesc": "Set a reminder",
+    "usage": "[time] (text)",
+    "remind": "Hey {{user}}, a gentle remember for `{{text}}`",
+    "set": "Reminder set!"
+  },
+  "reverse": {
+    "cmdDesc": "Reverse text",
+    "usage": "[text]"
   },
   "serverinfo": {
-    "cmdDesc": "Your server statistics"
+    "cmdDesc": "Your server statistics",
+    "usage": "(--dm)"
+  },
+  "staff": {
+    "cmdDesc": "View this server's staff"
+  },
+  "stealemoji": {
+    "cmdDesc": "Steal emojis from other servers",
+    "usage": "[emoji]",
+    "success": "`{{emoji}}`",
+    "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
+  },
+  "testwelcome": {
+    "cmdDesc": "Test by sending welcome message",
+    "welcomeDisabled": "Welcome logs are disabled and can't be tested right now."
+  },
+  "testgoodbye": {
+    "cmdDesc": "Test by sending goodbye message",
+    "goodbyeDisabled": "Goodbye logs are disabled and can't be tested right now."
   },
   "user": {
-    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned"
-  },
-  "test": {
-    "cmdDesc": "Test by sending welcome message"
+    "cmdDesc": "Get information about a user. It will show your info if no user was mentioned",
+    "usage": "(@mention / user id) (--dm)"
   },
   "version": {
-    "cmdDesc": "Get information on a version or latest version"
+    "cmdDesc": "Get information on a version or latest version",
+    "usage": "(version)"
+  },
+  "cat": {
+    "cmdDesc": "Show a random cat image"
   },
   "ban": {
     "cmdDesc": "Ban a user.",
+    "usage": "[@mention] (reason)",
+    "banned": "User banned",
+    "mySelf": "Please don't try to ban me, you have to do it yourself.",
     "success": "Successfully banned **{{tag}}** from the server!"
   },
+  "dehoist": {
+    "cmdDesc": "Dehoist users that are trying to hoist"
+  },
   "kick": {
-    "cmdDesc": "Kick a user."
+    "cmdDesc": "Kick a user.",
+    "usage": "[@mention] (reason)",
+    "kicked": "User kicked",
+    "mySelf": "Please don't try to kick me, you have to do it yourself."
+  },
+  "lock": {
+    "cmdDesc": "Lock current channel",
+    "locked": "Locked down the channel",
+    "already": "The channel is already locked!"
   },
   "mute": {
     "cmdDesc": "Mute a member",
+    "usage": "[@mention / user id] (reason)",
+    "muted": "User muted",
     "errorYourself": "Woah... Wait. Can you mute yourself?",
     "memberHasPerm": "The member you are trying to mute has {{permission}} permission. So, I won't mute that member",
     "reason": "Muted by {{tag}} for \"{{reason}}\" reason",
@@ -147,6 +508,8 @@
   },
   "unmute": {
     "cmdDesc": "Unmute a member",
+    "usage": "[@mention / user id] (reason)",
+    "unmuted": "User unmuted",
     "errorYourself": "Woah... Wait. Are you muted?",
     "notMuted": "That member is currently not muted",
     "reason": "Unmuted by {{tag}} for \"{{reason}}\" reason",
@@ -154,10 +517,15 @@
     "success": "Successfully unmuted **{{tag}}**!"
   },
   "prune": {
-    "cmdDesc": "Prune Messages."
+    "cmdDesc": "Prune Messages. Add a -f option in the end to delete pinned messages also!"
   },
   "unban": {
     "cmdDesc": "Unban a user."
+  },
+  "unlock": {
+    "cmdDesc": "Unlock current channel",
+    "unlocked": "Unlocked down the channel",
+    "already": "The channel is already unlocked!"
   },
   "back": {
     "cmdDesc": "Play prevoius music",
@@ -167,6 +535,7 @@
   },
   "loop": {
     "cmdDesc": "Manage loop settings for music",
+    "usage": "[subcommand]",
     "pleaseVote": "More than half members in the voice channel must react with 👍 to set loop mode! {{count}} more votes are required.",
     "invalidMode": "Invalid loop mode provided, type `{{prefix}}help loop` for help. You have provided {{mode}}",
     "success": "Loop mode set to {{mode}}.",
@@ -178,13 +547,14 @@
   },
   "play": {
     "cmdDesc": "Play music on channel.\nYou must join a voice channel before using this command.",
+    "usage": "[song name]",
     "cantJoin": "Could not join your voice channel!",
     "voiceNotJoined": "❌ Please join a voice channel before using this command",
     "missingSongName": "You didn't provide me the song name to start playing",
     "voiceChanDiff": "Please join the same voice channel the bot is in",
     "playlistStart": "Starting playlist **{{playlistTitle}}**.\nPlaying the first song, **{{songName}}**! :musical_note:",
     "botDisconnected": "Music has been stopped as I have been disconnected from the voice channel.",
-    "noResults": "The bot can't find any song like that :cry:",
+    "noResults": "The bot can't find any song like that :cry: [Note: Now we only support spotify]",
     "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "Added to queue",
@@ -195,6 +565,12 @@
     "destroyedQueue": "The queue was destroyed, abd I can't play music using that queue. Please create a new queue from play command",
     "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)",
     "forbidden": "I am forbidden to play that song, will try to play some other song that matches"
+  },
+  "seek": {
+    "cmdDesc": "Go forward or backward a specific amount of time in the current song!!",
+    "usage": "[time]",
+    "invalidTime": "You must specify a valid number of time!",
+    "success": "▶️ Music sought successfully!"
   },
   "skip": {
     "cmdDesc": "Skip the current song",
@@ -210,45 +586,8 @@
   },
   "volume": {
     "cmdDesc": "Adjust the volume of the music",
+    "usage": "(0-200)",
     "current": "Current volume is **{{volume}}**%!",
     "success": "Volume adjusted to {{volume}}"
-  },
-  "eval": {
-    "cmdDesc": "Execute a JS statement."
-  },
-  "reload": {
-    "cmdDesc": "Reloads a command"
-  },
-  "restart": {
-    "cmdDesc": "Restart the bot"
-  },
-  "servers-list": {
-    "cmdDesc": "Show the list of servers the bot is in."
-  },
-  "channel": {
-    "cmdDesc": "Manage channel settings for this server\nNot providing any arguments will display the current settings.",
-    "invalidArgs": "Invalid args, please use proper subcommands, see "
-  },
-  "disable": {
-    "cmdDesc": "Disable welcome and goodbye logs."
-  },
-  "enable": {
-    "cmdDesc": "Enable welcome and goodbye logs."
-  },
-  "follow": {
-    "cmdDesc": "Get news and version updates to this bot sent to a specific channel."
-  },
-  "lang": {
-    "cmdDesc": "भाषा बदले",
-    "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language set to {{lang}}",
-    "show": "भाषा {{lang}} हो गयी है।",
-    "langNotProvided": "You have not provided lang argument"
-  },
-  "message": {
-    "cmdDesc": "Manage welcome message for this server"
-  },
-  "prefix": {
-    "cmdDesc": "Manage prefix for this server"
   }
 }
