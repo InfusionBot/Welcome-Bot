@@ -1,10 +1,10 @@
 {
-  "setup": "सेटअप",
+  "anime": "एनिमी",
+  "core": "Core",
+  "economy": "Economy",
+  "fun": "मजेदार",
   "general": "जनरल",
   "mod": "Moderation",
-  "fun": "मजेदार",
   "music": "संगीत",
-  "anime": "एनिमी",
-  "owner": "केवल मालिक",
-  "core": "Core"
+  "admin": "Administration"
 }
