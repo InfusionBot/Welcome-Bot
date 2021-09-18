@@ -1,10 +1,10 @@
 {
-  "setup": "Kurulum",
+  "anime": "Anime",
+  "core": "Temel",
+  "economy": "Economy",
+  "fun": "Eğlence",
   "general": "Genel",
   "mod": "Moderasyon",
-  "fun": "Eğlence",
   "music": "Müzik",
-  "anime": "Anime",
-  "owner": "Kurucuya Özel",
-  "core": "Temel"
+  "admin": "Administration"
 }
