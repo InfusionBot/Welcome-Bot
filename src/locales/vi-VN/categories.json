@@ -1,10 +1,10 @@
 {
-  "setup": "cài đặt",
+  "anime": "Anime",
+  "core": "Core",
+  "economy": "Economy",
+  "fun": "Giải trí",
   "general": "Chung",
   "mod": "Kiểm duyệt",
-  "fun": "Giải trí",
   "music": "Âm nhạc",
-  "anime": "Anime",
-  "owner": "Chỉ chủ sở hữu",
-  "core": "Core"
+  "admin": "Administration"
 }
