@@ -1,10 +1,10 @@
 {
-  "setup": "Uppstart",
+  "anime": "Animerat",
+  "core": "Kärna",
+  "economy": "Economy",
+  "fun": "Roligt",
   "general": "Allmän",
   "mod": "Moderation",
-  "fun": "Roligt",
   "music": "Musik",
-  "anime": "Animerat",
-  "owner": "Owner Only",
-  "core": "Kärna"
+  "admin": "Administration"
 }
