@@ -25,6 +25,7 @@ module.exports = {
         )
             message.crosspost();
         if (
+            message.guild &&
             guildDB.plugins.serverlogs.enabled &&
             oldMessage.content !== message.content
         ) {
@@ -32,12 +33,12 @@ module.exports = {
                 guildDB.plugins.serverlogs.channel
             );
             if (channel) {
-                const embed = new Embed()
-                    .setTitle(
-                        `${t("misc:edited")} - ${message.author} (${
-                            message.author.id
-                        })`
-                    )
+                const embed = new Embed({
+                    tag: message.author.tag,
+                    avatarURL: message.author.displayAvatarURL(),
+                    footer: `ID: ${message.author.id}`,
+                })
+                    .setTitle(`${t("misc:edited")}`)
                     .setDesc(
                         "```diff\n" +
                             `- ${oldMessage.content}\n` +

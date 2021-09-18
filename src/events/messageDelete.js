@@ -23,12 +23,12 @@ module.exports = {
                 guildDB.plugins.serverlogs.channel
             );
             if (channel) {
-                const embed = new Embed()
-                    .setTitle(
-                        `${t("misc:deleted")} - ${message.author} (${
-                            message.author.id
-                        })`
-                    )
+                const embed = new Embed({
+                    tag: message.author.tag,
+                    avatarURL: message.author.displayAvatarURL(),
+                    footer: `ID: ${message.author.id}`,
+                })
+                    .setTitle(`${t("misc:deleted")}`)
                     .setDesc("```diff\n" + `- ${message.content}\n` + "```");
                 channel
                     .send({

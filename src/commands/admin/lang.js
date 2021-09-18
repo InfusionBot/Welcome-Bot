@@ -37,11 +37,9 @@ module.exports = class CMD extends Command {
         for (const l in list) {
             str += `\`${l}\` - ${list[l]}\n`;
         }
+        if (args[1]) args[1] = args[1].toLowerCase();
         const language = this.client.languages.find(
-            (l) =>
-                l.name === args[1] ||
-                l.aliases.includes(args[1]) ||
-                l.aliases.includes(args[1].toLowerCase() ?? "")
+            (l) => l.name === args[1] || l.aliases.includes(args[1])
         )?.name;
         switch (args[0]) {
             case "set":
@@ -54,10 +52,10 @@ module.exports = class CMD extends Command {
                             cmd: `\`${guildDB.prefix}lang list\``,
                         })
                     );
-                updateGuild(message.guild.id, "lang", language);
+                await updateGuild(message.guild.id, "lang", language);
                 return message.reply(
                     t("cmds:lang.success", {
-                        lang: `${list[args[1]]} (${args[1]})`,
+                        lang: `${language.aliases[0]} (${args[1]})`,
                     })
                 );
                 break;

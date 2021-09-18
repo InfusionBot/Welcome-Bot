@@ -47,6 +47,9 @@
     "disabled": "Successfully disabled chatbot",
     "enabled": "Successfully enabled chatbot"
   },
+  "config": {
+    "cmdDesc": "See current configuration"
+  },
   "disable": {
     "cmdDesc": "Disable commands.",
     "usage": "(command name / subcommand)",
@@ -85,8 +88,8 @@
     "cmdDesc": "Change language",
     "usage": "(subcommand) (lang)",
     "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language set to {{lang}}",
-    "show": "Language successfully set to {{lang}}",
+    "success": "Language successfully set to {{lang}}",
+    "show": "Language is currently set to {{lang}}",
     "langNotProvided": "You have not provided lang argument"
   },
   "modlogs": {
@@ -551,7 +554,7 @@
     "voiceChanDiff": "Please join the same voice channel the bot is in",
     "playlistStart": "Starting playlist **{{playlistTitle}}**.\nPlaying the first song, **{{songName}}**! :musical_note:",
     "botDisconnected": "Music has been stopped as I have been disconnected from the voice channel.",
-    "noResults": "The bot can't find any song like that :cry:",
+    "noResults": "The bot can't find any song like that :cry: [Note: Now we only support spotify]",
     "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "Added to queue",

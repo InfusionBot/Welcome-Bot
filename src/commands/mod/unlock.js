@@ -47,8 +47,7 @@ module.exports = class CMD extends Command {
         if (
             !channel.permissionOverwrites.cache
                 .get(this.client.user.id)
-                .allow.toArray()
-                .includes("SEND_MESSAGES")
+                .allow.has(Permissions.FLAGS.SEND_MESSAGES)
         ) {
             await channel.permissionOverwrites.edit(this.client.user.id, {
                 SEND_MESSAGES: true,
@@ -63,8 +62,7 @@ module.exports = class CMD extends Command {
         if (
             channel.permissionOverwrites.cache
                 .get(guild.roles.everyone.id)
-                .allow.toArray()
-                .includes("SEND_MESSAGES")
+                .allow.has(Permissions.FLAGS.SEND_MESSAGES)
         )
             return "cmds:unlock.already";
         await channel.permissionOverwrites.edit(guild.roles.everyone.id, {

@@ -8,21 +8,27 @@ module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
-        const execute = require("../functions/execute");
-        if (!client.initialized) return;
         if (client.debugLevel > 0)
             client.logger.log("messageCreate event", "debug");
+        const execute = require("../functions/execute");
+        if (!client.initialized) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            const lang = message.guild.preferredLocale ?? "en-US";
-            guildDB = await client.db.findOrCreateGuild(message.guild.id, lang);
+            guildDB = await client.db.guildSchema.findOne({
+                guildId: message.guild.id,
+            });
         } else {
-            guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
+            guildDB = {
+                prefix: client.config.defaultPrefix,
+                disabled: [],
+                plugins: {},
+            };
         }
+        if (!guildDB) return;
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&
-            guildDB.plugins.autopublish &&
+            guildDB.plugins?.autopublish &&
             message.crosspostable
         )
             message.crosspost();
@@ -32,6 +38,7 @@ module.exports = {
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
         if (
+            message.guild &&
             guildDB.plugins.chatbot.enabled &&
             message.channel.id === guildDB.plugins.chatbot.channel &&
             process.env.CHATBOT_API
@@ -84,7 +91,7 @@ module.exports = {
             reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
         }
         if (!message.reference) {
-            message.channel.sendTyping();
+            message.channel.sendTyping().catch(() => {});
             message.channel.send(reply);
         } else {
             message.channel.messages

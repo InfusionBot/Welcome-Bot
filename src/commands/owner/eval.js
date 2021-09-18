@@ -37,6 +37,7 @@ module.exports = class CMD extends Command {
             "```js\n" + content + "\n```"
         );
         const result = new Promise((resolve) => resolve(eval(content)));
+        if (!message || !message.channel) return;
         const clean = (text) => {
             if (typeof text === "string") {
                 if (text.includes(message.client.token)) {

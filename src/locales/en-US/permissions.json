@@ -16,7 +16,7 @@
   "EMBED_LINKS": "Embed Links",
   "ATTACH_FILES": "Attach Files",
   "READ_MESSAGE_HISTORY": "Read Message History",
-  "MENTION_EVERYONE": "Mention Everyone",
+  "MENTION_EVERYONE": "Mention @everyone, @here and all roles",
   "USE_EXTERNAL_EMOJIS": "Use External Emojis",
   "VIEW_GUILD_INSIGHTS": "View Server Insights",
   "CONNECT": "Connect",

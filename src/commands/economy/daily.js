@@ -31,15 +31,12 @@ module.exports = class CMD extends Command {
         const dailyCoins = 200;
         const lang = guildDB.lang ?? "en-US";
         const language = this.client.languages.find(
-            (l) =>
-                l.name === lang ||
-                l.aliases.includes(lang) ||
-                l.aliases.includes(lang)
+            (l) => l.name === lang || l.aliases.includes(lang)
         );
         moment.locale(language.moment);
 
         const diff =
-            24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.dailyClaimed);
+            24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.daily);
 
         if (diff > 0) {
             const hours = Math.round(diff / (1000 * 60 * 60));
@@ -62,11 +59,7 @@ module.exports = class CMD extends Command {
                 "wallet",
                 parseInt(userDB.wallet) + dailyCoins
             );
-            await updateUser(
-                message.author.id,
-                "dailyClaimed",
-                new Date().getTime()
-            );
+            await updateUser(message.author.id, "daily", new Date().getTime());
         } catch (e) {
             throw e;
         }

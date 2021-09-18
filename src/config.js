@@ -16,6 +16,12 @@ module.exports = {
     loginLogsChannelId: "880122897472036894",
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",
+    roles: {
+        voteReminder: "886776592666353724",
+    },
+    channels: {
+        general: "836854115526770711",
+    },
     reportsChannelId: "869017115385024543",
     ownerIds: [
         "815204465937481749" /*PuneetGopinath#0001*/,
@@ -52,7 +58,7 @@ module.exports = {
             msgLength: 50, //max goodbye msg length
         },
     },
-    supportGuildInvite: "https://dsc.gg/welcome-bot-guild",
+    supportGuildInvite: "https://discord.gg/vEUnKUNNRB",
     supportGuildInviteReal: (client) => {
         let invite = client.config.supportGuildInvite;
         try {
@@ -63,5 +69,4 @@ module.exports = {
         }
         return invite;
     },
-    supportGuildInviteReal2: "https://discord.gg/vEUnKUNNRB",
 };
