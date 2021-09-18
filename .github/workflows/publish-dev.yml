@@ -1,0 +1,31 @@
+name: Publish dev
+on:
+  workflow_dispatch:
+jobs:
+  npm:
+    name: npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      #- name: Deprecate old versions
+        #run: npm deprecate welcome-bot@"~$(jq --raw-output '.version' package.json)" "no longer supported" || true
+        #env:
+          #NODE_AUTH_TOKEN: {{ secrets.npm_token }}
+
+      - name: Publish
+        run: |
+          npm version --git-tag-version=false $(jq --raw-output '.version' package.json).$(date +%s).$(git rev-parse --short HEAD)
+          npm publish --tag dev || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
