@@ -1,10 +1,10 @@
 {
-  "setup": "Preparar",
+  "anime": "Anime",
+  "core": "Núcleo",
+  "economy": "Economy",
+  "fun": "Diversión",
   "general": "General",
   "mod": "Moderación",
-  "fun": "Diversión",
   "music": "Música",
-  "anime": "Anime",
-  "owner": "Solo el propietario",
-  "core": "Núcleo"
+  "admin": "Administration"
 }
