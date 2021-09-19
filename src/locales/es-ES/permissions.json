@@ -16,7 +16,7 @@
   "EMBED_LINKS": "Insertar Enlaces",
   "ATTACH_FILES": "Adjuntar Archivos",
   "READ_MESSAGE_HISTORY": "Leer el historial de mensajes",
-  "MENTION_EVERYONE": "Mencionar a todos",
+  "MENTION_EVERYONE": "Mention @everyone, @here and all roles",
   "USE_EXTERNAL_EMOJIS": "Usar Emojis Externos",
   "VIEW_GUILD_INSIGHTS": "Ver información del servidor",
   "CONNECT": "Conectar",
@@ -29,7 +29,11 @@
   "MANAGE_NICKNAMES": "Gestionar apodos",
   "MANAGE_ROLES": "Gestionar roles",
   "MANAGE_WEBHOOKS": "Gestionar webhooks",
-  "MANAGE_EMOJIS": "Gestionar emojis",
+  "MANAGE_EMOJIS_AND_STICKERS": "Manage Emojis and Stickers",
   "USE_APPLICATION_COMMANDS": "Usar comandos Slash",
-  "REQUEST_TO_SPEAK": "Solicitud para hablar"
+  "REQUEST_TO_SPEAK": "Solicitud para hablar",
+  "MANAGE_THREADS": "Manage Threads",
+  "USE_PUBLIC_THREADS": "Use Public Threads",
+  "USE_PRIVATE_THREADS": "Use Private Threads",
+  "USE_EXTERNAL_STICKERS": "Use External Stickers"
 }

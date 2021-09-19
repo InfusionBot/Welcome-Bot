@@ -23,5 +23,10 @@
     "name": "tr-TR",
     "aliases": ["turkish", "tr", "tr_tr"],
     "moment": "tr"
+  },
+  {
+    "name": "te-IN",
+    "aliases": ["telugu", "te", "te_in"],
+    "moment": "te"
   }
 ]

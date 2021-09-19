@@ -1,0 +1,10 @@
+{
+  "banknote": {
+    "name": "Banknote(s)",
+    "desc": "Use banknote(s) to increase your bank space"
+  },
+  "topmedal": {
+    "name": "Top medal",
+    "desc": "A medal which only the top 5% of players have!"
+  }
+}

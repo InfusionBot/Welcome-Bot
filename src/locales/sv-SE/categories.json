@@ -1,10 +1,10 @@
 {
-  "setup": "Setup",
-  "general": "General",
+  "anime": "Animerat",
+  "core": "Kärna",
+  "economy": "Economy",
+  "fun": "Roligt",
+  "general": "Allmän",
   "mod": "Moderation",
-  "fun": "Fun",
-  "music": "Music",
-  "anime": "Anime",
-  "owner": "Owner Only",
-  "core": "Core"
+  "music": "Musik",
+  "admin": "Administration"
 }

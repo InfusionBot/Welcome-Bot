@@ -16,7 +16,7 @@
   "EMBED_LINKS": "Gömülü Bağlantı",
   "ATTACH_FILES": "Dosya Ekle",
   "READ_MESSAGE_HISTORY": "Mesaj Geçmişini Oku",
-  "MENTION_EVERYONE": "Herkesi Etiketle",
+  "MENTION_EVERYONE": "Mention @everyone, @here and all roles",
   "USE_EXTERNAL_EMOJIS": "Harici Emoji Kullan",
   "VIEW_GUILD_INSIGHTS": "Sunucu Analizlerini Görüntüle",
   "CONNECT": "Bağlan",
@@ -29,7 +29,11 @@
   "MANAGE_NICKNAMES": "Kullanıcı Adlarını Yönet",
   "MANAGE_ROLES": "Rolleri Yönet",
   "MANAGE_WEBHOOKS": "Webhook'ları Yönet",
-  "MANAGE_EMOJIS": "Emojileri Yönet",
+  "MANAGE_EMOJIS_AND_STICKERS": "Manage Emojis and Stickers",
   "USE_APPLICATION_COMMANDS": "Eğik Çizgi Komutlarını Kullan",
-  "REQUEST_TO_SPEAK": "Konuşma İsteği"
+  "REQUEST_TO_SPEAK": "Konuşma İsteği",
+  "MANAGE_THREADS": "Manage Threads",
+  "USE_PUBLIC_THREADS": "Use Public Threads",
+  "USE_PRIVATE_THREADS": "Use Private Threads",
+  "USE_EXTERNAL_STICKERS": "Use External Stickers"
 }
