@@ -1,9 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "changelog": [
     "**Changes**",
-    "fix(translation)"
+    "fix(translation): whitelist Telugu"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/shard.js",
