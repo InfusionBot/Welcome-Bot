@@ -1,10 +1,10 @@
 {
-  "anime": "Anime",
-  "core": "Core",
+  "anime": "అనిమే",
+  "core": "కోర్",
   "economy": "Economy",
-  "fun": "Fun",
-  "general": "General",
-  "mod": "Moderation",
-  "music": "Music",
+  "fun": "ఫన్",
+  "general": "జనరల్",
+  "mod": "మోడరేషన్",
+  "music": "సంగీతం",
   "admin": "Administration"
 }
