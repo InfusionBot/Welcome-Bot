@@ -19,9 +19,9 @@ jobs:
         run: npm ci --ignore-scripts
 
       #- name: Deprecate old versions
-        #run: npm deprecate welcome-bot@"~$(jq --raw-output '.version' package.json)" "no longer supported" || true
-        #env:
-          #NODE_AUTH_TOKEN: {{ secrets.npm_token }}
+      #run: npm deprecate welcome-bot@"~$(jq --raw-output '.version' package.json)" "no longer supported" || true
+      #env:
+      #NODE_AUTH_TOKEN: {{ secrets.npm_token }}
 
       - name: Publish
         run: |

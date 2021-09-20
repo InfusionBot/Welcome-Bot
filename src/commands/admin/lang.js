@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
                     { name: "set", desc: "Set language" },
                 ],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 4,
                 category: "Administration",
             },
             client
@@ -38,11 +38,13 @@ module.exports = class CMD extends Command {
             str += `\`${l}\` - ${list[l]}\n`;
         }
         if (args[1]) args[1] = args[1].toLowerCase();
-        const language = this.client.languages.find(
-            (l) => l.name === args[1] || l.aliases.includes(args[1])
-        )?.name;
+        let lang, language;
         switch (args[0]) {
             case "set":
+                lang = this.client.languages.find(
+                    (l) => l.name === args[1] || l.aliases.includes(args[1])
+                );
+                language = lang?.name;
                 if (!args[1]) {
                     return message.reply(t("cmds:lang.langNotProvided"));
                 }
@@ -55,7 +57,7 @@ module.exports = class CMD extends Command {
                 await updateGuild(message.guild.id, "lang", language);
                 return message.reply(
                     t("cmds:lang.success", {
-                        lang: `${language.aliases[0]} (${args[1]})`,
+                        lang: `${lang.aliases[0]} (${args[1]})`,
                     })
                 );
                 break;
@@ -65,10 +67,15 @@ module.exports = class CMD extends Command {
                 });
                 break;
             default:
+                lang = this.client.languages.find(
+                    (l) =>
+                        l.name === guildDB.lang ||
+                        l.aliases.includes(guildDB.lang)
+                );
                 return message.reply({
                     embeds: [
                         embed.setDesc(
-                            t("cmds:lang.show", { lang: guildDB.lang })
+                            t("cmds:lang.show", { lang: lang.aliases[0] })
                         ),
                     ],
                 });

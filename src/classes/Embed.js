@@ -7,6 +7,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = class Embed extends MessageEmbed {
     constructor(opts = {}, data = {}) {
         super(data);
+        this.setDesc = this.setDescription;
         let { color = null } = opts;
         const {
             tag = null,
@@ -45,9 +46,5 @@ module.exports = class Embed extends MessageEmbed {
         else if (tag) this.setAuthor(`${tag}`);
         if (footer) this.setFooter(`${footer}`);
         if (timestamp) this.setTimestamp();
-    }
-
-    setDesc(description) {
-        return this.setDescription(description);
     }
 };
