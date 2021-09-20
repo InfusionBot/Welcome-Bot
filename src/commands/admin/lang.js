@@ -68,7 +68,9 @@ module.exports = class CMD extends Command {
                 break;
             default:
                 lang = this.client.languages.find(
-                    (l) => l.name === guildDB.lang || l.aliases.includes(guildDB.lang)
+                    (l) =>
+                        l.name === guildDB.lang ||
+                        l.aliases.includes(guildDB.lang)
                 );
                 return message.reply({
                     embeds: [
