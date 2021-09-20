@@ -2,7 +2,7 @@
   "404": "404 Page Not Found :-(",
   "500": "500 Internal Server Error",
   "noGuild": "No server found",
-  "noGuildBody": "No server to daisplay, make sure your are logged in with the right discord account",
+  "noGuildBody": "No server to display, make sure your are logged in with the right discord account",
   "manageGuild": "Manage Server",
   "settings": "Settings",
   "basicconf": "📝 Basic configuration",
