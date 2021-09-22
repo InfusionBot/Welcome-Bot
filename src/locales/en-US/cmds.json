@@ -554,7 +554,7 @@
     "voiceChanDiff": "Please join the same voice channel the bot is in",
     "playlistStart": "Starting playlist **{{playlistTitle}}**.\nPlaying the first song, **{{songName}}**! :musical_note:",
     "botDisconnected": "Music has been stopped as I have been disconnected from the voice channel.",
-    "noResults": "The bot can't find any song like that :cry: [Note: Now we only support spotify]",
+    "noResults": "The bot can't find any song like that :cry:",
     "queueEnd": "Queue has been ended. No more music to play :musical_note:...",
     "queueAddCount": "{{songCount}} songs added to the queue!",
     "queueAdded": "Added to queue",

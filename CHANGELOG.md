@@ -8,9 +8,17 @@ The displayed date is in the format `DD-MM-YYYY`
 
 [Legend](#legend)
 
-## [v2.0.3]
+## [v2.0.4]
 
 > **Released:** `TBA`
+
+### Changes
+
+- refactor(play): support YT again
+
+## [v2.0.3]
+
+> **Released:** `19-09-2021`
 
 ### Changes
 
@@ -97,6 +105,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor(translations): Lot more translations
 - refactor: remove pokemon, image commands
 
+[v2.0.4]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.4
 [v2.0.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.3
 [v2.0.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.2
 [v2.0.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.1
