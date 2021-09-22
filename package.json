@@ -1,6 +1,6 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.4",
+  "version": "2.0.4-dev",
   "changelog": [
     "**Changes**",
     "refactor(play): support YT again"
