@@ -1,9 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "changelog": [
     "**Changes**",
-    "fix(lang): fix bug not replying after setting language"
+    "refactor(play): support YT again"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
   "main": "src/shard.js",
