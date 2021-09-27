@@ -27,7 +27,7 @@ module.exports = {
         if (!guildDB) return message.reply("Try again after 5 seconds");
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
-            message.channel.type === "GUILD_NEWS" &&
+            message.channel?.type === "GUILD_NEWS" &&
             guildDB.plugins?.autopublish &&
             message.crosspostable
         )
