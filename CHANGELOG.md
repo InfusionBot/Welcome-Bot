@@ -12,8 +12,9 @@ The displayed date is in the format `DD-MM-YYYY`
 
 > **Released:** `TBA`
 
-### Changes
+### Bug fixes
 
+- fix(execute): Array#includes not Array#has
 - refactor(play): support YT again
 
 ## [v2.0.3]

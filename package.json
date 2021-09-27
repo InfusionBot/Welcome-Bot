@@ -1,8 +1,9 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.4",
+  "version": "2.0.4-dev",
   "changelog": [
-    "**Changes**",
+    "**Bug fixes**",
+    "fix(execute): Array#includes not Array#has",
     "refactor(play): support YT again"
   ],
   "description": "A multi-purpose discord bot that helps you monitor (welcome and goodbye logs), moderate (kick or ban users who spam your server), etc...",
