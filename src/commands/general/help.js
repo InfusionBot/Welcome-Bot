@@ -101,7 +101,7 @@ module.exports = class CMD extends Command {
             (c) => c.aliases && c.aliases.includes(name)
         );
         const command = commands.get(name) || alias;
-        const category = categories.find((c) => c.name.toLowerCase() === name);
+        const category = categories.find((c) => c.name.toLowerCase() === `${args.join(" ").toLowerCase()}`);
 
         if (!command && !category) {
             return message.channel.send(
