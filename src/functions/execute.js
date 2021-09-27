@@ -188,7 +188,7 @@ module.exports = async (message, guildDB) => {
             for (let i = 0; i < command.subcommands.length; i++) {
                 subcmds.push(command.subcommands[i].name);
             }
-            if (!subcmds.has(args[0]))
+            if (!subcmds.includes(args[0]))
                 return message.reply(
                     t("errors:invalidSubCmd", {
                         prefix: guildDB.prefix,
