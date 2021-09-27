@@ -24,7 +24,7 @@ module.exports = {
                 plugins: {},
             };
         }
-        if (!guildDB) return message.reply("Try again after 5 seconds");
+        if (!guildDB) return;
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel?.type === "GUILD_NEWS" &&
