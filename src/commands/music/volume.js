@@ -43,9 +43,10 @@ module.exports = class CMD extends Command {
                 })}`);
         }
         queue.setVolume(amount);
-        message.reply(`✅ | 
-            ${t("cmds:volume.success", {
+        message.reply(
+            `✅ | ${t("cmds:volume.success", {
                 volume: amount,
-            })}`);
+            })}`
+        );
     }
 };
