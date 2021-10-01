@@ -43,7 +43,9 @@ module.exports = async (member) => {
                 (ch) => ch.name === guildDB.plugins.welcome.channel
             );
         } else {
-            channel = await member.guild.channels.fetch(guildDB.plugins.welcome.channel);
+            channel = await member.guild.channels.fetch(
+                guildDB.plugins.welcome.channel
+            );
         }
         if (!channel) {
             return "channelNotFound";
