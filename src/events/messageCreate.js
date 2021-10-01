@@ -55,9 +55,7 @@ module.exports = {
             if (message.content.includes(`@`)) {
                 return message.reply(`**Hey, Please don't mention anyone**`);
             }
-            const chat = await require("node-fetch")(chatBotUrl).then((res) =>
-                res.json()
-            );
+            const chat = await require("axios").get(chatBotUrl);
             message.reply(
                 `${
                     chat?.cnt
