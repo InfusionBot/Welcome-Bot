@@ -62,7 +62,8 @@
     "mongoose": "^6.0.2",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
-    "opusscript": "^0.0.8"
+    "opusscript": "^0.0.8",
+    "patreon": "^0.4.1"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
