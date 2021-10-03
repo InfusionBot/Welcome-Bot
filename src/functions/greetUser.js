@@ -31,7 +31,7 @@ const applyText = (canvas, text, fontSize = 60, font = "Bold") => {
 module.exports = async (member) => {
     try {
         const { client } = member;
-        const guildDB = await client.db.findOrCreateGuild(member.guild.id);
+        const guildDB = await client.db.models.Guild.findOne({ guildId: member.guild.id });
         if (
             !guildDB.plugins.welcome.enabled ||
             guildDB.disabled.includes("welcome")
