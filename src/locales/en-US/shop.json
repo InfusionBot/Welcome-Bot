@@ -6,5 +6,13 @@
   "topmedal": {
     "name": "Top medal",
     "desc": "A medal which only the top 5% of players have!"
+  },
+  "laptop": {
+    "name": "Laptop",
+    "desc": "Use a laptop to post memes"
+  },
+  "padlock": {
+    "name": "Padlock",
+    "desc": "Padlock protects someone from robbing you, but that is only 1 time, it breaks when someone tries to rob you"
   }
 }

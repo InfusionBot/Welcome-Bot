@@ -27,8 +27,11 @@ module.exports = class CMD extends Command {
         this.timeout = 200000; //20 secs timeout
         this.getPages = (t) => {
             const pages = [];
-            const { shop } = this.client;
-            shop.each((item) => {
+            const shop = [...this.client.shop.values()];
+            for (let i = 0; i < shop.length; i++) {
+                const item = shop[i];
+                const item2 = shop?.[i + 1];
+                if (item2) i++;
                 const p = pages.length;
                 const { name } = item;
                 pages[p] = new Embed({ color: "blue", timestamp: true })
@@ -47,12 +50,29 @@ module.exports = class CMD extends Command {
                                 : t("cmds:shop.notAvailable")
                         })`
                     );
-            });
+                if (item2) {
+                    const { name: name2 } = item2;
+                    pages[p].addField(
+                        `• ${t(`shop:${name2}.name`)}`,
+                        `IDs: ${item2.ids.join(", ")}\n${
+                            item2.sale
+                                ? item2.price +
+                                  " " +
+                                  this.client.customEmojis.wcoins
+                                : ""
+                        }\n${t(`shop:${name2}.desc`)} (${
+                            item2.sale
+                                ? t("cmds:shop.available")
+                                : t("cmds:shop.notAvailable")
+                        })`
+                    )
+                }
+            };
             return pages;
         };
     }
 
-    execute({ message, args }, t) {
+    execute({ message }, t) {
         const { timeout } = this;
         const pages = this.getPages(t);
         const pagination = new Pagination(this.client, {
