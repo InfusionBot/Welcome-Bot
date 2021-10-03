@@ -1,7 +1,10 @@
 {
   "name": "welcome-bot",
-  "version": "2.0.4-dev",
+  "version": "2.1.0-dev",
   "changelog": [
+    "**New features**",
+    "Add padlock item",
+    "Add laptop item",
     "**Bug fixes**",
     "fix(execute): Array#includes not Array#has",
     "refactor(play): support YT again"

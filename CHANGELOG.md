@@ -17,10 +17,6 @@ The displayed date is in the format `DD-MM-YYYY`
 - Add padlock item
 - Add laptop item
 
-## [v2.0.4]
-
-> **Released:** `TBA`
-
 ### Bug fixes
 
 - fix(execute): Array#includes not Array#has
@@ -115,7 +111,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor(translations): Lot more translations
 - refactor: remove pokemon, image commands
 
-[v2.0.4]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.4
+[v2.1.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.1.0
 [v2.0.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.3
 [v2.0.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.2
 [v2.0.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.1
