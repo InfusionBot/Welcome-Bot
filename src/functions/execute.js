@@ -78,6 +78,8 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
+        if (command.requirements?.premiumOnly && !guildDB.premium?.enabled) return;
+
         if (command.requirements?.guildOnly && message.channel.type === "DM") {
             return message.reply(
                 `I can't execute that command inside DMs, ${message.author}`

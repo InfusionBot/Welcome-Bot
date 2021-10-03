@@ -30,7 +30,7 @@ module.exports = async (client) => {
                     client.package.version.indexOf("dev") === -1
                 ) {
                     const newsChannel = client.channels.cache.get(
-                        client.config.newsChannelId
+                        client.config.channels.newsChannel
                     );
                     if (newsChannel) newsChannel.send(reply);
                     else

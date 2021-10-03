@@ -94,6 +94,16 @@ const guildSchema = new mongoose.Schema({
             },
         },
     },
+    premium: {
+        endsAt: {
+            type: Number,
+            required: false
+        },
+        enabled: {
+            type: Boolean,
+            default: false,
+        }
+    }
 });
 
 const Guild = new mongoose.model("Guild", guildSchema);

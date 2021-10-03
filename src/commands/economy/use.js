@@ -53,9 +53,13 @@ module.exports = class CMD extends Command {
                 userDB.bankLimit = userDB.bankLimit + 100 * count;
                 metadata = t("cmds:use.banknote", { added: 100 * count });
                 break;
+            case "padlock":
+                userDB.active.padlock = true;
+                metadata = t("cmds:use.padlock");
+                break;
             default:
                 throw new Error(
-                    `item, ${item} was tried to be used, but no method was found to implement`
+                    `${item} was tried to be used by ${message.author.tag} (${message.author.id}), but no method was found to implement`
                 );
                 break;
         }

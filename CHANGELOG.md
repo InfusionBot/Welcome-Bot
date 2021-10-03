@@ -8,6 +8,15 @@ The displayed date is in the format `DD-MM-YYYY`
 
 [Legend](#legend)
 
+## [v2.1.0]
+
+> **Released:** `TBA`
+
+### New features
+
+- Add padlock item
+- Add laptop item
+
 ## [v2.0.4]
 
 > **Released:** `TBA`

@@ -12,5 +12,19 @@
     "sale": true,
     "price": 10000000,
     "usable": false
+  },
+  {
+    "name": "laptop",
+    "ids": ["pc", "desktop"],
+    "sale": true,
+    "price": 2500,
+    "usable": false
+  },
+  {
+    "name": "padlock",
+    "ids": ["lock"],
+    "sale": true,
+    "price": 0,
+    "usable": true
   }
 ]

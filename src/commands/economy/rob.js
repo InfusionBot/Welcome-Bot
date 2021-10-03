@@ -19,14 +19,14 @@ module.exports = class CMD extends Command {
                     args: true,
                 },
                 disabled: false,
-                cooldown: 60,
+                cooldown: 30,
                 category: "Economy",
             },
             client
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) {
+    async execute({ message, args, userDB }, t) {
         if (userDB.wallet < 200) {
             this.removeCooldown(message.author);
             return message.reply(t("cmds:rob.notEnoughMoney"));
@@ -55,6 +55,10 @@ module.exports = class CMD extends Command {
         if (typeof userDB2.bankLimit !== "number") {
             this.removeCooldown(message.author);
             return message.reply(t("errors:noAcc"));
+        }
+        if (userDB2.active.padlock) {
+            userDB2.active.padlock = false;
+            await userDB2.save();
         }
         let stolenCoins = Math.round(Math.floor(Math.random() * 200));
         let lostCoins = Math.round(Math.floor(Math.random() * 100));

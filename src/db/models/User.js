@@ -52,6 +52,24 @@ const userSchema = new mongoose.Schema({
             type: Number,
             default: 0,
         },
+        topmedal: {
+            type: Number,
+            default: 0,
+        },
+        laptop: {
+            type: Number,
+            default: 0
+        },
+        padlock: {
+            type: Number,
+            default: 0,
+        },
+    },
+    active: {
+        padlock: {
+            type: Boolean,
+            default: false,
+        },
     },
 });
 

@@ -303,7 +303,8 @@
     "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
     "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
     "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
-    "failed": "You were caught by the police when stealing and you lost {{lostCoins}}"
+    "failed": "You were caught by the police when stealing and you lost {{lostCoins}}",
+    "padlock": "The user who you tried to steal had a padlock enabled, you failed to steal and his padlock broke"
   },
   "setbio": {
     "cmdDesc": "Set your Welcome-Bot account's bio!",
@@ -322,7 +323,8 @@
     "youDontHaveAny": "Hmm, wait... Looks like you don't have any of those",
     "tooMuch": "Hey!\nYou don't have {{count}} {{item}}(s) in your inventory",
     "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",
-    "banknote": "Your bank space increased by {{added}}"
+    "banknote": "Your bank space increased by {{added}}",
+    "padlock": "You have equipped a padlock, if anyone tries to steal you, your pad lock will break"
   },
   "withdraw": {
     "cmdDesc": "Withdraw money from your bank",

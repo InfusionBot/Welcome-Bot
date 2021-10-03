@@ -52,7 +52,7 @@ module.exports = class CMD extends Command {
                 } else {
                     channel = message.guild.channels.cache.find(
                         (ch) => ch.name === channel
-                    ).id;
+                    )?.id;
                 }
                 channel = message.guild.channels.cache.get(channel);
                 if (!channel)

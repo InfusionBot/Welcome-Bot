@@ -9,8 +9,8 @@ module.exports = class DBCache {
         this.client = client;
         this.guilds = new Collection();
         this.users = new Collection();
-        this.guildSchema = require("../schema/guildSchema");
-        this.userSchema = require("../schema/userSchema");
+        this.guildSchema = require("./models/guildSchema");
+        this.userSchema = require("./models/userSchema");
         //TODO: Remove this waste, after executed once on main db
         this.guildSchema.find({}, async (err, guild) => {
             if (err) return console.log(err);
@@ -32,8 +32,8 @@ module.exports = class DBCache {
     }
 
     refreshCache() {
-        this.guildSchema = require("../schema/guildSchema");
-        this.userSchema = require("../schema/userSchema");
+        this.guildSchema = require("./models/guildSchema");
+        this.userSchema = require("./models/userSchema");
         this.client.logger.log("Refreshing db cache", "debug");
         this.guilds.each((guildDB) => {
             const { guildId: id } = guildDB;
