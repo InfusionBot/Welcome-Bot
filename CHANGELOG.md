@@ -17,6 +17,10 @@ The displayed date is in the format `DD-MM-YYYY`
 - Add padlock item
 - Add laptop item
 
+### Changes
+
+- Increase daily coins to 500
+
 ### Bug fixes
 
 - fix(execute): Array#includes not Array#has

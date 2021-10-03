@@ -5,6 +5,8 @@
     "**New features**",
     "Add padlock item",
     "Add laptop item",
+    "**Changes**",
+    "Increase daily coins to 500",
     "**Bug fixes**",
     "fix(execute): Array#includes not Array#has",
     "refactor(play): support YT again"

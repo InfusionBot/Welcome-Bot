@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, guildDB, userDB }, t) {
-        const dailyCoins = 200;
+        const dailyCoins = 500;
         const lang = guildDB.lang ?? "en-US";
         const language = this.client.languages.find(
             (l) => l.name === lang || l.aliases.includes(lang)

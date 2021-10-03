@@ -13,19 +13,18 @@ module.exports = {
         await client.db.findOrCreateGuild(guild.id, lang);
         if (guild.systemChannelId) {
             const channel = await guild.channels.fetch(guild?.systemChannelId);
+            const channel2 = guild.channels.cache.find(
+                (c) =>
+                    c.permissionsFor(client.user.id).has("SEND_MESSAGES") &&
+                    c.type === "GUILD_TEXT"
+            );
             const content = `Thank you for choosing this bot! To get started, type \`${client.config.defaultPrefix}help\`\nJoin the support server: ${client.config.supportGuildInvite}`;
             if (channel) {
                 channel.send(content).catch(() => {
-                    guild.channels.cache
-                        .find(
-                            (c) =>
-                                c
-                                    .permissionsFor(client.user.id)
-                                    .has("SEND_MESSAGES") &&
-                                c.type === "GUILD_TEXT"
-                        )
-                        .send(content);
+                    if (channel2) channel2.send(content);
                 });
+            } else if (channel2) {
+                channel2.send(content);
             }
         }
         const bots = guild.members.cache.filter((m) => m.user.bot).size;
