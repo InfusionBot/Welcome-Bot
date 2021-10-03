@@ -36,8 +36,8 @@ module.exports = class CMD extends Command {
         } else {
             message.reply(t("errors:invalidChannel"));
         }
-        message.client
-            .channels.cache.get(message.client.config.channels.newsChannel)
+        message.client.channels.cache
+            .get(message.client.config.channels.newsChannel)
             .addFollower(channelId)
             .catch((err) => {
                 console.error(err);

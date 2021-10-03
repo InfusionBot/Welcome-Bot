@@ -58,7 +58,7 @@ const userSchema = new mongoose.Schema({
         },
         laptop: {
             type: Number,
-            default: 0
+            default: 0,
         },
         padlock: {
             type: Number,
