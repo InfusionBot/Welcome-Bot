@@ -22,7 +22,7 @@ module.exports = {
                 prefix: client.config.defaultPrefix,
                 disabled: [],
                 plugins: {},
-                premium: {enabled: false},
+                premium: { enabled: false },
             };
         }
         if (!guildDB) return;

@@ -14,7 +14,7 @@ module.exports = {
     channels: {
         loginLogs: "880122897472036894",
         errorLogs: "878431491581964328",
-        newsChannel: "847459283876577360"
+        newsChannel: "847459283876577360",
     },
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",
