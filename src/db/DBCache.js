@@ -9,31 +9,16 @@ module.exports = class DBCache {
         this.client = client;
         this.guilds = new Collection();
         this.users = new Collection();
-        this.guildSchema = require("./models/guildSchema");
-        this.userSchema = require("./models/userSchema");
-        //TODO: Remove this waste, after executed once on main db
-        this.guildSchema.find({}, async (err, guild) => {
-            if (err) return console.log(err);
-            if (!guild.channel) return;
-            guild.plugins.welcome.channel = guild.channel;
-            guild.channel = undefined;
-            await guild.save();
-        });
-        this.userSchema.find({}, async (err, user) => {
-            if (err) return console.log(err);
-            if (!user.dailyClaimed) return;
-            user.daily = new Date(user.dailyClaimed).getTime();
-            user.dailyClaimed = undefined;
-            await user.save();
-        });
+        this.guildSchema = require("./models/Guild");
+        this.userSchema = require("./models/Guild");
+        this.models = require("./models");
         setInterval(() => {
             this.refreshCache();
         }, this.client.config.dbCacheRefreshInterval);
     }
 
     refreshCache() {
-        this.guildSchema = require("./models/guildSchema");
-        this.userSchema = require("./models/userSchema");
+        this.models = require("./models");
         this.client.logger.log("Refreshing db cache", "debug");
         this.guilds.each((guildDB) => {
             const { guildId: id } = guildDB;
@@ -51,7 +36,7 @@ module.exports = class DBCache {
         if (this.guilds.get(guildId)) {
             return this.guilds.get(guildId);
         } else {
-            let guildDB = await this.guildSchema.findOne({ guildId });
+            let guildDB = await this.models.Guild.findOne({ guildId });
             if (guildDB) {
                 this.guilds.set(guildDB.guildId, guildDB);
                 return guildDB;
@@ -62,7 +47,7 @@ module.exports = class DBCache {
                         "debug"
                     );
                 }
-                guildDB = new this.guildSchema({ guildId, lang });
+                guildDB = new this.models.Guild({ guildId, lang });
                 await guildDB.save();
                 this.guilds.set(guildDB.guildId, guildDB);
                 return guildDB;
@@ -74,7 +59,7 @@ module.exports = class DBCache {
         if (this.users.get(userId)) {
             return this.users.get(userId);
         } else {
-            let userDB = await this.userSchema.findOne({ userId });
+            let userDB = await this.models.User.findOne({ userId });
             if (userDB) {
                 this.users.set(userDB.userId, userDB);
                 return userDB;
@@ -85,7 +70,7 @@ module.exports = class DBCache {
                         "debug"
                     );
                 }
-                userDB = new this.userSchema({ userId });
+                userDB = new this.models.User({ userId });
                 await userDB.save();
                 this.users.set(userDB.userId, userDB);
                 return userDB;
@@ -95,7 +80,7 @@ module.exports = class DBCache {
 
     deleteGuild(guildId) {
         return new Promise((resolve, reject) => {
-            this.guildSchema.where({ guildId }).deleteOne((err) => {
+            this.models.Guild.where({ guildId }).deleteOne((err) => {
                 if (err) {
                     return reject("Could not delete guild");
                 } else {
@@ -108,7 +93,7 @@ module.exports = class DBCache {
 
     deleteUser(userId) {
         return new Promise((resolve, reject) => {
-            this.userSchema.where({ userId }).deleteOne((err) => {
+            this.models.User.where({ userId }).deleteOne((err) => {
                 if (err) {
                     return reject("Could not delete user");
                 } else {

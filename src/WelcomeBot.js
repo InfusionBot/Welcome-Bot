@@ -36,9 +36,9 @@ class WelcomeBot extends Client {
         this.logger = new Logger();
         this.username = "Welcome-Bot";
         this.db = new DBCache(this);
-        this.guildSchema = require("./schema/guildSchema");
-        //this.versionSchema = require("./schema/versionSchema");
-        this.userSchema = require("./schema/userSchema");
+        this.guildSchema = require("./db/models/Guild");
+        //this.versionSchema = require("./db/models/Version");
+        this.userSchema = require("./db/models/User");
         this.dashboard = require("./dashboard/app");
         this.dashboard.states = {};
         this.categories = [];
