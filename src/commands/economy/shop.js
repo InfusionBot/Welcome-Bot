@@ -65,9 +65,9 @@ module.exports = class CMD extends Command {
                                 ? t("cmds:shop.available")
                                 : t("cmds:shop.notAvailable")
                         })`
-                    )
+                    );
                 }
-            };
+            }
             return pages;
         };
     }
