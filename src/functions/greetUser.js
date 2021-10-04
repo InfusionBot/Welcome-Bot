@@ -32,15 +32,17 @@ module.exports = async (member) => {
     try {
         const { client } = member;
         let inviter = null;
-        const guildInvites = await member.guild.fetchInvites(); //get all guild invites
-        guildInvites.each((invite) => {
-            //basically a for loop over the invites
-            if (invite.uses != client.invites[invite.code]) {
-                //if it doesn't match what we stored:
-                inviter = invite.inviter;
-                client.invites[invite.code] = invite.uses;
-            }
-        });
+        const guildInvites = await member.guild.invites.fetch(); //get all guild invites
+        if (guildInvites) {
+            guildInvites.each((invite) => {
+                //basically a for loop over the invites
+                if (invite.uses != client.invites[invite.code]) {
+                    //if it doesn't match what we stored:
+                    inviter = invite.inviter;
+                    client.invites[invite.code] = invite.uses;
+                }
+            });
+        }
         const guildDB = await client.db.models.Guild.findOne({
             guildId: member.guild.id,
         });

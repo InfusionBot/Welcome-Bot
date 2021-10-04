@@ -32,15 +32,15 @@ module.exports = async (member) => {
     let msg = guildDB.plugins.goodbye.message;
     //Replace Placeholders with their values
     msg = msg
-    .replace(/{mention}/g, `${member}`)
-    .replace(/{tag}/g, `${member.user.tag}`)
-    .replace(/{username}/g, `${member.user.username}`)
-    .replace(/{server}/g, `${member.guild.name}`)
-    .replace(/{members}/g, `${member.guild.memberCount}`)
-    .replace(
-        /{members_formatted}/g,
-        `${member.guild.memberCount}${nth(member.guild.memberCount)}`
-    );
+        .replace(/{mention}/g, `${member}`)
+        .replace(/{tag}/g, `${member.user.tag}`)
+        .replace(/{username}/g, `${member.user.username}`)
+        .replace(/{server}/g, `${member.guild.name}`)
+        .replace(/{members}/g, `${member.guild.memberCount}`)
+        .replace(
+            /{members_formatted}/g,
+            `${member.guild.memberCount}${nth(member.guild.memberCount)}`
+        );
     const embed = new Embed({ color: "red" })
         .setAuthor(
             member.user.tag,

@@ -44,7 +44,7 @@ module.exports = {
         job.start();
         client.guilds.cache.each((guild) => {
             //on bot start, fetch all guilds and fetch all invites to store
-            guild.fetchInvites().then((guildInvites) => {
+            guild.invites.fetch().then((guildInvites) => {
                 guildInvites.each((guildInvite) => {
                     client.invites[guildInvite.code] = guildInvite.uses;
                 });
