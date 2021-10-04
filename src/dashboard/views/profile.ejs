@@ -40,7 +40,7 @@
                                     <%= translate("cmds:balance.bankOnly", {
                                         bank: userDB2.bank,
                                         bankLimit: userDB2.bankLimit,
-                                        percentage: (userDB2.bankLimit - userDB2.bank) / 100,
+                                        percentage: 100 - (userDB2.bankLimit - userDB2.bank) / 100,
                                     }) %>
                                 </span>
                             </div>

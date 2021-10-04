@@ -237,9 +237,9 @@
     "cmdDesc": "Check your balance, or someone else's. Shows wallect & bank",
     "title": "{{user}}'s balance",
     "titleShort": "Balance",
-    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
+    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}%)",
     "walletOnly": "Wallet: {{wallet}}",
-    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}%)"
   },
   "beg": {
     "cmdDesc": "Get money by begging!",

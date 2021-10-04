@@ -64,7 +64,7 @@ module.exports = class CMD extends Command {
                     wallet,
                     bank,
                     bankLimit,
-                    percentage: (bankLimit - bank) / 100,
+                    percentage: 100 - (bankLimit - bank) / 100,
                 })
             );
         message.channel.send({ embeds: [embed] });

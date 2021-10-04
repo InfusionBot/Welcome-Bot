@@ -25,7 +25,7 @@ const fetchUser = async (userData, client) => {
             }
             const djsGuild = await fetchGuild(guild.id, client);
             if (djsGuild && djsGuild.id) {
-                guild = djsGuild;
+                //guild = djsGuild;
                 guild.botInvited = true;
             } else {
                 guild.botInvited = false;
