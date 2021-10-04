@@ -5,6 +5,13 @@
  */
 const express = require("express");
 const router = express.Router();
+const giveRewards = (userDB) => {
+    userDB.wallet = parseInt(userDB.wallet) + 5000; //Give 5000 coins
+    userDB.markModified("wallet");
+    userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
+    userDB.markModified("inventory.banknote");
+    return userDB;
+};
 //POST /webhooks/bls
 router.post("/bls", async (req, res) => {
     if (req.client.debug) console.log("/webhooks/bls");
@@ -22,16 +29,13 @@ router.post("/bls", async (req, res) => {
     }
     if (!(await client.userDbFuncs.getUser(vUser.id)))
         await client.userDbFuncs.addUser(vUser.id);
-    const userDB = await client.userDbFuncs.getUser(vUser.id);
-    userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
-    userDB.markModified("wallet");
-    userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
-    userDB.markModified("inventory.banknote");
+    let userDB = await client.userDbFuncs.getUser(vUser.id);
+    userDB = giveRewards(userDB);
     await userDB.save();
     const member = client.guilds.cache
         .get(client.config.botGuildId)
         .members.cache.get(vUser.id);
-    if (member) member.roles.add(client.config.votersRole);
+    if (member) member.roles.add(client.config.roles.voters);
     if (process.env.NODE_ENV !== "production") {
         console.log(
             "NODE_ENV not in production so not sending any messages for voting on botlist.space"
@@ -39,15 +43,15 @@ router.post("/bls", async (req, res) => {
         res.sendStatus(200);
         return res.end();
     }
-    if (client.config.votesChannelId) {
+    if (client.config.channels.votes) {
         client.channels.cache
-            .get(client.config.votesChannelId)
+            .get(client.config.channels.votes)
             .send(
                 `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on botlist.space and got 500 WCoins with other rewards 🎉!`
             )
             .catch(console.log);
     } else {
-        console.log("No votesChannelId in config");
+        console.log("No channels.votes in config");
     }
     const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
     vUser
@@ -79,19 +83,16 @@ router.post(
         }
         if (!(await client.userDbFuncs.getUser(vUser.id)))
             await client.userDbFuncs.addUser(vUser.id);
-        const userDB = await client.userDbFuncs.getUser(vUser.id);
-        userDB.wallet = parseInt(userDB.wallet) + 500; //Give 500 coins
-        userDB.markModified("wallet");
-        userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
-        userDB.markModified("inventory.banknote");
+        let userDB = await client.userDbFuncs.getUser(vUser.id);
+        userDB = giveRewards(userDB);
         await userDB.save();
         const member = client.guilds.cache
             .get(client.config.botGuildId)
             .members.cache.get(vUser.id);
-        if (member) member.roles.add(client.config.votersRole);
-        if (client.config.votesChannelId) {
+        if (member) member.roles.add(client.config.roles.voters);
+        if (client.config.channels.votes) {
             client.channels.cache
-                .get(client.config.votesChannelId)
+                .get(client.config.channels.votes)
                 .send(
                     `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${
                         client.username
@@ -101,7 +102,7 @@ router.post(
                 )
                 .catch(console.log);
         } else {
-            console.log("No votesChannelId in config");
+            console.log("No channels.votes in config");
         }
         const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
         vUser

@@ -20,6 +20,7 @@ The displayed date is in the format `DD-MM-YYYY`
 ### Changes
 
 - Increase daily coins to 500
+- Increase vote reward coins to 5000
 
 ### Bug fixes
 
