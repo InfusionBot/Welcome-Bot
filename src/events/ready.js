@@ -42,14 +42,18 @@ module.exports = {
             "America/Los_Angeles"
         );
         job.start();
-        client.guilds.cache.each((guild) => {
-            //on bot start, fetch all guilds and fetch all invites to store
-            guild.invites.fetch().then((guildInvites) => {
-                guildInvites.each((guildInvite) => {
-                    client.invites[guildInvite.code] = guildInvite.uses;
+        try {
+            client.guilds.cache.each((guild) => {
+                //on bot start, fetch all guilds and fetch all invites to store
+                guild.invites.fetch().then((guildInvites) => {
+                    guildInvites.each((guildInvite) => {
+                        client.invites[guildInvite.code] = guildInvite.uses;
+                    });
                 });
             });
-        });
+        } catch (e) {
+            if (client.debug) console.log(e);
+        }
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);

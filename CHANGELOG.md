@@ -16,7 +16,7 @@ The displayed date is in the format `DD-MM-YYYY`
 
 - Add padlock item
 - Add laptop item
-- Track invites from now (Added `inviter_tag` placeholder)
+- Track invites from now (Added `inviter_tag`, `inviter_mention`, `inviter_username` placeholders)
 
 ### Changes
 

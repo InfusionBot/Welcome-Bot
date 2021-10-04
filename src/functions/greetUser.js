@@ -123,9 +123,15 @@ module.exports = async (member) => {
                 `${member.guild.memberCount}${nth(member.guild.memberCount)}`
             );
         if (inviter) {
-            msg = msg.replace(/inviter_tag/g, `${inviter.tag}`);
+            msg = msg
+                .replace(/{inviter_tag}/g, `${inviter.tag}`)
+                .replace(/{inviter_mention}/g, `${inviter}`)
+                .replace(/{inviter_username}/g, `${inviter.username}`);
         } else {
-            msg = msg.replace(/inviter_tag/g, `Unknown inviter`);
+            msg = msg
+                .replace(/{inviter_tag}/g, "Unknown inviter")
+                .replace(/{inviter_mention}/g, "Unknown inviter")
+                .replace(/{inviter_username}/g, "Unknow inviter");
         }
         const sent = await channel.send({
             content: msg,

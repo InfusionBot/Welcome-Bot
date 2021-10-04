@@ -21,4 +21,5 @@ module.exports = [
     Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
     Permissions.FLAGS.CONNECT,
     Permissions.FLAGS.SPEAK,
+    Permissions.FLAGS.CREATE_INSTANT_INVITE,
 ];
