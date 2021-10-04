@@ -15,9 +15,9 @@ module.exports = {
             );
         const { CronJob } = require("cron");
         const job = new CronJob(
-            "0 0 */12 * * *",
+            "0 0 */6 * * *",
             async () => {
-                if (process.env.NODE_ENV !== "production") return;
+                //if (process.env.NODE_ENV !== "production") return;
                 const { Topgg } = require("../classes/");
                 if (!Topgg || !Topgg.api) return;
                 const guild = client.guilds.cache.get(client.config.botGuildId);
@@ -42,6 +42,14 @@ module.exports = {
             "America/Los_Angeles"
         );
         job.start();
+        client.guilds.cache.each((guild) => {
+            //on bot start, fetch all guilds and fetch all invites to store
+            guild.fetchInvites().then((guildInvites) => {
+                guildInvites.each((guildInvite) => {
+                    client.invites[guildInvite.code] = guildInvite.uses;
+                });
+            });
+        });
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);

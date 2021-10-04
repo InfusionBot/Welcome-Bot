@@ -31,6 +31,16 @@ const applyText = (canvas, text, fontSize = 60, font = "Bold") => {
 module.exports = async (member) => {
     try {
         const { client } = member;
+        let inviter = null;
+        const guildInvites = await member.guild.fetchInvites(); //get all guild invites
+        guildInvites.each((invite) => {
+            //basically a for loop over the invites
+            if (invite.uses != client.invites[invite.code]) {
+                //if it doesn't match what we stored:
+                inviter = invite.inviter;
+                client.invites[invite.code] = invite.uses;
+            }
+        });
         const guildDB = await client.db.models.Guild.findOne({
             guildId: member.guild.id,
         });
@@ -101,15 +111,20 @@ module.exports = async (member) => {
         let msg = guildDB.plugins.welcome.message;
         //Replace Placeholders with their values
         msg = msg
-            .replace("{mention}", `${member}`)
-            .replace("{tag}", `${member.user.tag}`)
-            .replace("{username}", `${member.user.username}`)
-            .replace("{server}", `${member.guild.name}`)
-            .replace("{members}", `${member.guild.memberCount}`)
+            .replace(/{mention}/g, `${member}`)
+            .replace(/{tag}/g, `${member.user.tag}`)
+            .replace(/{username}/g, `${member.user.username}`)
+            .replace(/{server}/g, `${member.guild.name}`)
+            .replace(/{members}/g, `${member.guild.memberCount}`)
             .replace(
-                "{members_formatted}",
+                /{members_formatted}/g,
                 `${member.guild.memberCount}${nth(member.guild.memberCount)}`
             );
+        if (inviter) {
+            msg = msg.replace(/inviter_tag/g, `${inviter.tag}`);
+        } else {
+            msg = msg.replace(/inviter_tag/g, `Unknown inviter`);
+        }
         const sent = await channel.send({
             content: msg,
             files: [attachment],
