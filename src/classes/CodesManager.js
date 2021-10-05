@@ -4,21 +4,33 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const Embed = require("./Embed");
+const { Collection } = require("discord.js");
 module.exports = class CodesManager {
-    #valid;
-    #used;
     #codesInfo;
     constructor(client) {
         this.client = client;
-        this.#valid = {};
-        this.#used = {};
-        this.#codesInfo = new Map();
+        this.#codesInfo = new Collection();
+        this.initialize();
+        setInterval(this.initialize, 1 * 60 * 60 * 1000); //Every hour
+    }
+
+    async initialize() {
+        const codes = await this.client.models.Code.find({});
+        for (let i = 0; i < codes.length; i++) {
+            if (codes[i].expiresAt < Date.now()) {
+                this.client.models.Code.findOneAndDelete({
+                    code: codes[i].code,
+                });
+                continue;
+            }
+            this.#codesInfo[codes[i].code] = codes[i];
+        }
     }
 
     async create(exdays = 30) {
         //exdays is the expire days
-        const endsAt = new Date();
-        endsAt.setTime(endsAt.getTime() + exdays * 24 * 60 * 60 * 1000);
+        const expiresAt = new Date();
+        expiresAt.setTime(expiresAt.getTime() + exdays * 24 * 60 * 60 * 1000);
         let code = "";
         const length = 4;
         const characters =
@@ -28,8 +40,7 @@ module.exports = class CodesManager {
                 Math.floor(Math.random() * characters.length)
             );
         }
-        this.#valid.push(code);
-        const info = { endsAt: endsAt.getTime(), code };
+        const info = { expiresAt: expiresAt.getTime(), code };
         this.#codesInfo.set(code, info);
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
@@ -42,8 +53,8 @@ module.exports = class CodesManager {
                     title: "New premium code created",
                     fields: [
                         {
-                            title: "Ends At",
-                            value: `${endsAt}`,
+                            title: "Expires",
+                            value: `${expiresAt}`,
                             inline: true,
                         },
                     ],
@@ -57,11 +68,6 @@ module.exports = class CodesManager {
     async use(code) {
         const info = this.#codesInfo.get(code);
         if (info) return { error: "Invalid code" };
-        const index = this.#valid.indexOf(code);
-        if (index > -1) {
-            this.#valid.splice(index, 1);
-        }
-        this.#used.push(code);
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
         );
@@ -73,8 +79,8 @@ module.exports = class CodesManager {
                     title: "Premium code used",
                     fields: [
                         {
-                            title: "Ends At",
-                            value: `${new Date(info.endsAt)}`,
+                            title: "Expires",
+                            value: `${new Date(info.expiresAt)}`,
                             inline: true,
                         },
                     ],
@@ -86,10 +92,10 @@ module.exports = class CodesManager {
     }
 
     get valid() {
-        return this.#valid;
+        return this.#codesInfo.filter((c) => !c.used);
     }
 
     get used() {
-        return this.#used;
+        return this.#codesInfo.filter((c) => c.used);
     }
 };

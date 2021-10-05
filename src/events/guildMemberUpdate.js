@@ -100,7 +100,7 @@ module.exports = {
                             },
                             {
                                 title: "When does this code expire?",
-                                value: `It expires on ${new Date(info.endsAt)}`,
+                                value: `It expires on ${new Date(info.expiresAt)}`,
                                 inline: true,
                             },
                             {

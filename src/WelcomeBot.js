@@ -86,7 +86,6 @@ class WelcomeBot extends Client {
             leaveOnStop: true,
             enableLive: true,
         });
-        this.codes = new CodesManager(this);
         if (!process.env.TEST_MODE) this.initialize();
     }
 
@@ -96,6 +95,7 @@ class WelcomeBot extends Client {
     }*/
 
     async initialize() {
+        this.codes = new CodesManager(this);
         this.addDbFuncs();
         if (this.debug) this.logger.log(`Loading Locales`);
         await require("./loaders/Locale")(this); //Locale loader is async, so load it seperately
@@ -167,6 +167,10 @@ class WelcomeBot extends Client {
                 }
             }
         }
+    }
+
+    get models() {
+        return this.db.models;
     }
 }
 
