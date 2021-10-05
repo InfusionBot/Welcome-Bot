@@ -41,6 +41,8 @@ module.exports = class CodesManager {
             );
         }
         const info = { expiresAt: expiresAt.getTime(), code };
+        const code = new this.client.models.Code(info);
+        await code.save();
         this.#codesInfo.set(code, info);
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
@@ -68,6 +70,12 @@ module.exports = class CodesManager {
     async use(code) {
         const info = this.#codesInfo.get(code);
         if (info) return { error: "Invalid code" };
+        if (info.used) return { error: "Code already used" };
+        const code = await this.client.models.Code.findOne(info);
+        code.used = true;
+        await code.save();
+        this.#codesInfo.delete(info.code);
+        this.#codesInfo.set(info.code, { ...info, used: true });
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
         );
