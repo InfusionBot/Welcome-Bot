@@ -49,7 +49,7 @@ module.exports = class CodesManager {
         );
         if (channel) {
             const embed = new Embed(
-                { color: "sucess", timestamp: true },
+                { color: "success", timestamp: true },
                 {
                     description: `Code: ${code}`,
                     title: "New premium code created",
