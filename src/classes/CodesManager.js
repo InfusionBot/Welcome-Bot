@@ -41,8 +41,8 @@ module.exports = class CodesManager {
             );
         }
         const info = { expiresAt: expiresAt.getTime(), code };
-        const code = new this.client.models.Code(info);
-        await code.save();
+        const codeDB = new this.client.models.Code(info);
+        await codeDB.save();
         this.#codesInfo.set(code, info);
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
