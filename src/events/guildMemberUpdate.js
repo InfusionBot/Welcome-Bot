@@ -79,7 +79,7 @@ module.exports = {
                         },
                         {
                             title: "How to use my code publicly?",
-                            value: `You can send \`${client.config.defaultPrefix}premiumcode ${info.code}\` in DMs to the bot to use the code publicly.\nIf you send it in a server, then that server will become premium server`
+                            value: `You can send \`${client.config.defaultPrefix}premiumcode ${info.code}\` in DMs to the bot to use the code publicly.\nIf you send it in a server, then that server will become premium server`,
                             inline: true
                         },
                         {
