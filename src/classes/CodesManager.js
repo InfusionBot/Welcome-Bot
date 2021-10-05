@@ -15,9 +15,10 @@ module.exports = class CodesManager {
         this.#codesInfo = new Map();
     }
 
-    async create(exdays = 30) {//exdays is the expire days
+    async create(exdays = 30) {
+        //exdays is the expire days
         const endsAt = new Date();
-        endsAt.setTime(endsAt.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        endsAt.setTime(endsAt.getTime() + exdays * 24 * 60 * 60 * 1000);
         let code = "";
         const length = 4;
         const characters =
@@ -39,11 +40,13 @@ module.exports = class CodesManager {
                 {
                     description: `Code: ${code}`,
                     title: "New premium code created",
-                    fields: [{
-                        title: "Ends At",
-                        value: `${endsAt}`,
-                        inline: true
-                    }]
+                    fields: [
+                        {
+                            title: "Ends At",
+                            value: `${endsAt}`,
+                            inline: true,
+                        },
+                    ],
                 }
             );
             channel.send({ embeds: [embed] });
@@ -68,11 +71,13 @@ module.exports = class CodesManager {
                 {
                     description: `Code: ${code}`,
                     title: "Premium code used",
-                    fields: [{
-                        title: "Ends At",
-                        value: `${new Date(info.endsAt)}`,
-                        inline: true
-                    }]
+                    fields: [
+                        {
+                            title: "Ends At",
+                            value: `${new Date(info.endsAt)}`,
+                            inline: true,
+                        },
+                    ],
                 }
             );
             channel.send({ embeds: [embed] });

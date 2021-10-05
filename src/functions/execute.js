@@ -78,7 +78,10 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
-        if (command.requirements?.premiumOnly && !(guildDB.premium?.enabled || userDB.premium?.enabled)) {
+        if (
+            command.requirements?.premiumOnly &&
+            !(guildDB.premium?.enabled || userDB.premium?.enabled)
+        ) {
             return message.channel.send(t("errors:premiumOnly"));
         }
 

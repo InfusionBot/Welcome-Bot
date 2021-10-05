@@ -73,7 +73,11 @@ module.exports = class CMD extends Command {
                     } channels\n` +
                     `> Version: ${message.client.package.version}\n` +
                     `> All Commands: ${message.client.commands.enabled.size} commands\n` +
-                    `> Premium Commands: ${message.client.commands.enabled.filter(x => x.requirements.premiumOnly).size} commands\n` +
+                    `> Premium Commands: ${
+                        message.client.commands.enabled.filter(
+                            (x) => x.requirements.premiumOnly
+                        ).size
+                    } commands\n` +
                     `> ${message.client.customEmojis.online} ${t(
                         "misc:uptime"
                     )}: ${duration}`
