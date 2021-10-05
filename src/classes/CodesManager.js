@@ -23,7 +23,7 @@ module.exports = class CodesManager {
                 });
                 continue;
             }
-            this.#codesInfo[codes[i].code] = codes[i];
+            this.#codesInfo.set(codes[i].code, codes[i]);
         }
         return codes;
     }
@@ -33,7 +33,7 @@ module.exports = class CodesManager {
         const expiresAt = new Date();
         expiresAt.setTime(expiresAt.getTime() + exdays * 24 * 60 * 60 * 1000);
         let code = "";
-        const length = 4;
+        const length = 6;
         const characters =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwzy0123456789.-_";
         for (let i = 0; i < length; i++) {
