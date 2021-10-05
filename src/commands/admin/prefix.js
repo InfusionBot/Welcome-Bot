@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
                     { name: "reset", desc: "Reset Custom prefix" },
                 ],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
             },
             client

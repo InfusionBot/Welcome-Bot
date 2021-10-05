@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
                     { name: "message", desc: "Set goodbye message" },
                     { name: "channel [#channel]", desc: "Set goodbye channel" },
                 ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
             },
             client

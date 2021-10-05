@@ -36,7 +36,7 @@ module.exports = class CMD extends Command {
             guildDB.premium.code = info.code;
             await guildDB.save();
         }
-        message.react(":white_check_mark:");
+        message.react("✅");
     }
 
     async run({ interaction, guildDB, userDB }, t) {

@@ -19,7 +19,7 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                 },
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
             },
             client

@@ -92,7 +92,6 @@ module.exports = class CodesManager {
     }
 
     getCode(code) {
-        if (!code) throw new TypeError("code not provided");
         return this.#codesInfo.get(code);
     }
 

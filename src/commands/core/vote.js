@@ -15,7 +15,7 @@ module.exports = class CMD extends Command {
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Core",
             },
             client

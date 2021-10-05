@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
                     { name: "disable", desc: "Disable autopublish" },
                     { name: "enable", desc: "Enable autopublish" },
                 ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
                 slash: false,
             },

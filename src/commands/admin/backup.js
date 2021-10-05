@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
                     { name: "load", desc: "Load a backup" },
                     { name: "info", desc: "Info of a backup" },
                 ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
                 slash: false,
             },
