@@ -17,7 +17,7 @@ module.exports = {
         const job = new CronJob(
             "0 0 */6 * * *",
             async () => {
-                //if (process.env.NODE_ENV !== "production") return;
+                if (process.env.NODE_ENV !== "production") return;
                 const { Topgg } = require("../classes/");
                 if (!Topgg || !Topgg.api) return;
                 const guild = client.guilds.cache.get(client.config.botGuildId);
@@ -42,18 +42,15 @@ module.exports = {
             "America/Los_Angeles"
         );
         job.start();
-        try {
-            client.guilds.cache.each((guild) => {
-                //on bot start, fetch all guilds and fetch all invites to store
+        client.guilds.cache.each((guild) => {
+            //on bot start, fetch all guilds and fetch all invites to store
+            if (!guild.me.permissions.has(""))
                 guild.invites.fetch().then((guildInvites) => {
                     guildInvites.each((guildInvite) => {
                         client.invites[guildInvite.code] = guildInvite.uses;
                     });
                 });
-            });
-        } catch (e) {
-            if (client.debug) console.log(e);
-        }
+        });
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);

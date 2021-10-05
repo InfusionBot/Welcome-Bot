@@ -22,7 +22,7 @@ module.exports = class CMD extends Command {
                     { name: "display", desc: "Show current settings" },
                 ],
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
             },
             client

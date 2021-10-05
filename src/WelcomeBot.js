@@ -11,6 +11,7 @@ const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const { Player } = require("discord-player");
 const DBCache = require("./db/DBCache");
+const CodesManager = require("./classes/CodesManager");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -94,6 +95,7 @@ class WelcomeBot extends Client {
     }*/
 
     async initialize() {
+        this.codes = new CodesManager(this);
         this.addDbFuncs();
         if (this.debug) this.logger.log(`Loading Locales`);
         await require("./loaders/Locale")(this); //Locale loader is async, so load it seperately
@@ -165,6 +167,10 @@ class WelcomeBot extends Client {
                 }
             }
         }
+    }
+
+    get models() {
+        return this.db.models;
     }
 }
 

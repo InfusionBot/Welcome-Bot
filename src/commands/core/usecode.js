@@ -9,28 +9,34 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "sample",
-                aliases: ["null"],
-                memberPerms: [],
+                name: "usecode",
+                aliases: [],
+                memberPerms: ["use-code"],
                 botPerms: [],
                 requirements: {
-                    subcommand: false,
-                    args: false,
-                    guildOnly: true,
-                    ownerOnly: false,
+                    args: true,
                 },
                 disabled: false,
-                subcommands: [{ name: "set", desc: "Set this" }],
                 cooldown: 5,
-                category: "General",
+                category: "Core",
                 slash: false,
             },
             client
         );
     }
 
-    execute({ message, args, guildDB, userDB }, t) {
-        return;
+    async execute({ message, args, guildDB, userDB }, t) {
+        const info = await this.client.codes.use(args[0]);
+        if (info.error)
+            return message.reply(`${t(`cmds:usecode.errors.${info.error}`)}`);
+        if (!message.guild) {
+            userDB.premium.code = info.code;
+            await userDB.save();
+        } else {
+            guildDB.premium.code = info.code;
+            await guildDB.save();
+        }
+        message.react("✅");
     }
 
     async run({ interaction, guildDB, userDB }, t) {

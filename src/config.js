@@ -10,20 +10,21 @@ module.exports = {
     botGuildId: "836854115526770708",
     logsChannelId: "855331801635749888",
     suggestionLogsChannelId: "862126837110800414",
-    channels: {
-        loginLogs: "880122897472036894",
-        errorLogs: "878431491581964328",
-        newsChannel: "847459283876577360",
-        votes: "867925583777103872",
-    },
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",
     roles: {
         voteReminder: "886776592666353724",
         voters: "852512614789808138",
+        donator: "851701581702889482",
+        booster: "853295895784456223",
     },
     channels: {
         general: "836854115526770711",
+        loginLogs: "880122897472036894",
+        errorLogs: "878431491581964328",
+        newsChannel: "847459283876577360",
+        votes: "867925583777103872",
+        codes: "894811606083567677",
     },
     reportsChannelId: "869017115385024543",
     ownerIds: [

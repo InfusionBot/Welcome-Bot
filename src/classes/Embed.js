@@ -45,6 +45,7 @@ module.exports = class Embed extends MessageEmbed {
         if (tag && avatarURL) this.setAuthor(`${tag}`, `${avatarURL}`);
         else if (tag) this.setAuthor(`${tag}`);
         if (footer) this.setFooter(`${footer}`);
+        else this.setFooter("Copyright 2021 The Welcome-Bot Team");
         if (timestamp) this.setTimestamp();
     }
 };

@@ -23,6 +23,7 @@ module.exports = {
                 disabled: [],
                 plugins: {},
                 premium: { enabled: false },
+                lang: "en-US",
             };
         }
         if (!guildDB) return;

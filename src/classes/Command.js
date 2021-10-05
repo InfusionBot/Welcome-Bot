@@ -19,6 +19,7 @@ module.exports = class Command {
             subcommand: false,
             guildOnly: false,
             ownerOnly: false,
+            premiumOnly: false,
         });
         //this.usage = options.optional("usage", null);
         this.defaultUsage = client.i18next

@@ -23,7 +23,7 @@ module.exports = class CMD extends Command {
                     { name: "set", desc: "Set language" },
                 ],
                 disabled: false,
-                cooldown: 4,
+                cooldown: 5,
                 category: "Administration",
             },
             client

@@ -17,7 +17,7 @@ module.exports = class CMD extends Command {
                     args: true,
                 },
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "General",
                 slash: true,
                 options: [

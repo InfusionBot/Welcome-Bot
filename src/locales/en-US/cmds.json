@@ -193,6 +193,15 @@
   "ping": {
     "cmdDesc": "Get ping of the bot"
   },
+  "premiumcode": {
+    "cmdDesc": "Get info on a premium code",
+    "usage": "[code]",
+    "embed": {
+      "title": "Info for {{code}} code",
+      "desc": "{{code}}"
+    },
+    "expires": "Expires"
+  },
   "report": {
     "cmdDesc": "Report bugs",
     "usage": "[bug description]",
@@ -214,6 +223,14 @@
   },
   "uptime": {
     "cmdDesc": "Get uptime of the bot"
+  },
+  "usecode": {
+    "cmdDesc": "Redeem a premium code",
+    "usage": "[code]",
+    "errors": {
+      "used": "Code already used",
+      "invalid": "Invalid code"
+    }
   },
   "vote": {
     "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",

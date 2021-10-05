@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
                         desc: "Set server logs channel",
                     },
                 ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
                 slash: false,
             },

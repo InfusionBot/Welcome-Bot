@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
                     { name: "enable", desc: "Enable autorole" },
                     { name: "set [role id]", desc: "Set autorole" },
                 ],
-                cooldown: 10,
+                cooldown: 5,
                 category: "Administration",
             },
             client
