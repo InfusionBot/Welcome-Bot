@@ -84,29 +84,29 @@ module.exports = {
                         description: `Here's your code: ${info.code}`,
                         fields: [
                             {
-                                title: "How to use my code?",
+                                name: "How to use my code?",
                                 value: `Type \`${client.config.defaultPrefix}premiumcode ${info.code}\``,
                                 inline: true,
                             },
                             {
-                                title: "How to use my code publicly?",
+                                name: "How to use my code publicly?",
                                 value: `You can send \`${client.config.defaultPrefix}premiumcode ${info.code}\` in DMs to the bot to use the code publicly.\nIf you send it in a server, then that server will become premium server`,
                                 inline: true,
                             },
                             {
-                                title: "What's tge difference between publicly used codes & premium server?",
+                                name: "What's tge difference between publicly used codes & premium server?",
                                 value: "In a premium server, all members in that server can use my premium commands.\nIf you use it globally then you can use premium commands in any server!",
                                 inline: true,
                             },
                             {
-                                title: "When does this code expire?",
+                                name: "When does this code expire?",
                                 value: `It expires on ${new Date(
                                     info.expiresAt
                                 )}`,
                                 inline: true,
                             },
                             {
-                                title: "I have more questions, where can I ask them?",
+                                name: "I have more questions, where can I ask them?",
                                 value: `Please ask them in the [support server](${client.config.supportGuildInvite})`,
                                 inline: true,
                             },
