@@ -58,7 +58,7 @@ module.exports = class CodesManager {
         return info;
     }
 
-    async use(code) {
+    async use(code, user) {
         if (!code) throw new TypeError("code not provided");
         const info = this.#codesInfo.get(code);
         if (!info) return { error: "invalid" };
@@ -84,6 +84,7 @@ module.exports = class CodesManager {
                             inline: true,
                         },
                     ],
+                    author: {},
                 }
             );
             channel.send({ embeds: [embed] });

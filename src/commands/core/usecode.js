@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const info = await this.client.codes.use(args[0]);
+        const info = await this.client.codes.use(args[0], message.author);
         if (info.error)
             return message.reply(`${t(`cmds:usecode.errors.${info.error}`)}`);
         if (!message.guild) {

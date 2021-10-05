@@ -37,7 +37,7 @@ module.exports = class CMD extends Command {
             .setDesc(`${t("cmds:premiumcode.embed.desc", { code: info.code })}`)
             .addField(
                 `${t("cmds:premiumcode.expires")}`,
-                `${moment(info.expiresAt).humanize()}`
+                `${moment(info.expiresAt).format("MMMM Do YYYY, h:mm:ss a")}`
             );
         message.channel.send({ embeds: [embed] });
     }
