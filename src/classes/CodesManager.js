@@ -55,7 +55,7 @@ module.exports = class CodesManager {
                     title: "New premium code created",
                     fields: [
                         {
-                            title: "Expires",
+                            name: "Expires",
                             value: `${expiresAt}`,
                             inline: true,
                         },
