@@ -78,11 +78,12 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
+        const validCodes = client.codes.valid;
         if (
             command.requirements?.premiumOnly &&
             !(
-                client.codes.valid.includes(guildDB.premium?.code) ||
-                client.codes.valid.includes(userDB.premium?.code)
+                validCodes.includes(guildDB.premium?.code) ||
+                validCodes.includes(userDB.premium?.code)
             )
         ) {
             return message.channel.send(t("errors:premiumOnly"));
