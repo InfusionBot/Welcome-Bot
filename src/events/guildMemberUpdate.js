@@ -73,10 +73,10 @@ module.exports = {
             (addedRoleIds.includes(client.config.roles.donator) ||
                 addedRoleIds.includes(client.config.roles.booster))
         ) {
-            const isDonator = !!addedRoles.includes(
+            const isDonator = !!addedRoleIds.includes(
                 client.config.roles.donator
             );
-            const info = client.codes.create(isDonator ? 365 : 30); //30 days premium code for boosters & 365 (1 year) for donators
+            const info = await client.codes.create(isDonator ? 365 : 30); //30 days premium code for boosters & 365 (1 year) for donators
             newMember.user.send({
                 embeds: [
                     {
