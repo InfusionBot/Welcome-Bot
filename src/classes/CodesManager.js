@@ -79,7 +79,7 @@ module.exports = class CodesManager {
                     title: "Premium code used",
                     fields: [
                         {
-                            title: "Expires",
+                            name: "Expires",
                             value: `${new Date(info.expiresAt)}`,
                             inline: true,
                         },
