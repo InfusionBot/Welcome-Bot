@@ -22,6 +22,8 @@ module.exports = {
     roles: {
         voteReminder: "886776592666353724",
         voters: "852512614789808138",
+        donator: "851701581702889482",
+        booster: "853295895784456223"
     },
     channels: {
         general: "836854115526770711",
