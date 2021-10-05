@@ -19,7 +19,7 @@ const codeSchema = new mongoose.Schema({
     used: {
         type: Boolean,
         default: false,
-    }
+    },
 });
 
 const Code = new mongoose.model("Code", codeSchema);
