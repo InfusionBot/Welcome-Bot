@@ -17,7 +17,7 @@ module.exports = {
         const job = new CronJob(
             "0 0 */6 * * *",
             async () => {
-                //if (process.env.NODE_ENV !== "production") return;
+                if (process.env.NODE_ENV !== "production") return;
                 const { Topgg } = require("../classes/");
                 if (!Topgg || !Topgg.api) return;
                 const guild = client.guilds.cache.get(client.config.botGuildId);
@@ -51,9 +51,7 @@ module.exports = {
                     });
                 });
             });
-        } catch (e) {
-            if (client.debug) console.log(e);
-        }
+        } catch (e) {} //eslint-disable-line no-empty
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);

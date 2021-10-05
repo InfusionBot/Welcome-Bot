@@ -48,20 +48,10 @@ module.exports = class CodesManager {
             this.client.config.channels.codes
         );
         if (channel) {
-            const embed = new Embed(
-                { color: "success", timestamp: true },
-                {
-                    description: `Code: ${code}`,
-                    title: "New premium code created",
-                    fields: [
-                        {
-                            name: "Expires",
-                            value: `${expiresAt}`,
-                            inline: true,
-                        },
-                    ],
-                }
-            );
+            const embed = new Embed({ color: "success", timestamp: true })
+                .setTitle("New premium code created")
+                .setDesc(`Code: ${code}`)
+                .addField("Expires", `${expiresAt}`, true);
             channel.send({ embeds: [embed] });
         }
         return info;
