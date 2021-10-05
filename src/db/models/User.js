@@ -72,8 +72,8 @@ const userSchema = new mongoose.Schema({
         },
     },
     premium: {
-        endsAt: {
-            type: Number,
+        code: {
+            type: String,
             required: false,
         },
         enabled: {
