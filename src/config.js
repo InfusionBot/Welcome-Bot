@@ -15,6 +15,7 @@ module.exports = {
         errorLogs: "878431491581964328",
         newsChannel: "847459283876577360",
         votes: "867925583777103872",
+        codes: "894811606083567677",
     },
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",

@@ -71,6 +71,16 @@ const userSchema = new mongoose.Schema({
             default: false,
         },
     },
+    premium: {
+        endsAt: {
+            type: Number,
+            required: false,
+        },
+        enabled: {
+            type: Boolean,
+            default: false,
+        },
+    },
 });
 
 const User = new mongoose.model("User", userSchema);

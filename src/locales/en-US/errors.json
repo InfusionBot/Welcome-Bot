@@ -32,5 +32,6 @@
   "msgBig": "The {{name}} message is longer than 2000 charcters, so I can't send it",
   "tooLong": "The {{name}} you provided it too long.",
   "invalidSubcmd": "You have provided a invalid subcommand, use `{{prefix}}help {{cmd}}` for more info",
-  "errorAutorole": "Can't add autorole for {{tag}}"
+  "errorAutorole": "Can't add autorole for {{tag}}",
+  "premiumOnly": "This command is premium only.\nYou can get access to premium commands if you are boosting the community server or a donator at our patreon page"
 }

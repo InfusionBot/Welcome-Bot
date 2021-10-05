@@ -11,6 +11,7 @@ const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const { Player } = require("discord-player");
 const DBCache = require("./db/DBCache");
+const CodesManager = require("./classes/CodesManager");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -85,6 +86,7 @@ class WelcomeBot extends Client {
             leaveOnStop: true,
             enableLive: true,
         });
+        this.codes = new CodesManager(this);
         if (!process.env.TEST_MODE) this.initialize();
     }
 
