@@ -78,12 +78,11 @@ module.exports = async (message, guildDB) => {
             return message.reply(t("errors:developerOnly"));
         }
 
-        const validCodes = client.codes.valid;
         if (
             command.requirements?.premiumOnly &&
             !(
-                validCodes?.includes?.(guildDB.premium?.code) ||
-                validCodes?.includes?.(userDB.premium?.code)
+                client.codes.getCode(guildDB?.premium?.code) ||
+                client.codes.getCode(userDB?.premium?.code)
             )
         ) {
             return message.channel.send(t("errors:premiumOnly"));
@@ -236,7 +235,21 @@ module.exports = async (message, guildDB) => {
                 );
             message.channel.sendTyping().catch(() => {});
             try {
-                command.execute({ prefix, message, args, guildDB, userDB }, t);
+                command.execute(
+                    {
+                        prefix,
+                        message,
+                        args,
+                        guildDB,
+                        userDB,
+                        language: client.languages.find(
+                            (l) =>
+                                l.name === guildDB.lang ||
+                                l.aliases.includes(guildDB.lang)
+                        ),
+                    },
+                    t
+                );
             } catch (err) {
                 client.logger.log("Error when executing cmds", "error", [
                     "CMDS",

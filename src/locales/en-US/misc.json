@@ -71,5 +71,6 @@
   "edited": "Message Edited",
   "mem_update": "Member Updated",
   "deleted": "Message Deleted",
-  "nickModify": "Nickname updated"
+  "nickModify": "Nickname updated",
+  "mem_join": "Member Joined"
 }

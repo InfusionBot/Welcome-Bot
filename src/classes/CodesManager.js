@@ -58,9 +58,10 @@ module.exports = class CodesManager {
     }
 
     async use(code) {
+        if (!code) throw new TypeError("code not provided");
         const info = this.#codesInfo.get(code);
-        if (info) return { error: "Invalid code" };
-        if (info.used) return { error: "Code already used" };
+        if (info) return { error: "invalid" };
+        if (info.used) return { error: "used" };
         const codeDB = await this.client.models.Code.findOne(info);
         codeDB.used = true;
         await codeDB.save();
@@ -89,11 +90,20 @@ module.exports = class CodesManager {
         return info;
     }
 
+    getCode(code) {
+        if (!code) throw new TypeError("code not provided");
+        return this.#codesInfo.get(code);
+    }
+
     get valid() {
-        return this.#codesInfo.filter((c) => !c.used);
+        return this.#codesInfo;
     }
 
     get used() {
         return this.#codesInfo.filter((c) => c.used);
+    }
+
+    get notUsed() {
+        return this.#codesInfo.filter((c) => !c.used);
     }
 };

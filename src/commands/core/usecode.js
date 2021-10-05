@@ -5,14 +5,13 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const moment = require("moment");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "premiumcode",
+                name: "usecode",
                 aliases: [],
-                memberPerms: [],
+                memberPerms: ["use-code"],
                 botPerms: [],
                 requirements: {
                     args: true,
@@ -26,20 +25,18 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB, language }, t) {
-        moment.locale(language.moment);
-        const info = await this.client.codes.getCode(args[0]);
-        if (!info) return message.reply(`${t(`cmds:usecode.errors.invalid`)}`);
-        const embed = new Embed()
-            .setTitle(
-                `${t("cmds:premiumcode.embed.title", { code: info.code })}`
-            )
-            .setDesc(`${t("cmds:premiumcode.embed.desc", { code: info.code })}`)
-            .addField(
-                `${t("cmds:premiumcode.expires")}`,
-                `${moment(info.expiresAt).humanize()}`
-            );
-        message.channel.send({ embeds: [embed] });
+    async execute({ message, args, guildDB, userDB }, t) {
+        const info = await this.client.codes.use(args[0]);
+        if (info.error)
+            return message.reply(`${t(`cmds:usecode.errors.${info.error}`)}`);
+        if (!message.guild) {
+            userDB.premium.code = info.code;
+            await userDB.save();
+        } else {
+            guildDB.premium.code = info.code;
+            await guildDB.save();
+        }
+        message.react(":white_check_mark:");
     }
 
     async run({ interaction, guildDB, userDB }, t) {

@@ -85,16 +85,16 @@ module.exports = {
                         fields: [
                             {
                                 name: "How to use my code?",
-                                value: `Type \`${client.config.defaultPrefix}premiumcode ${info.code}\``,
+                                value: `Type \`${client.config.defaultPrefix}usecode ${info.code}\``,
                                 inline: true,
                             },
                             {
                                 name: "How to use my code publicly?",
-                                value: `You can send \`${client.config.defaultPrefix}premiumcode ${info.code}\` in DMs to the bot to use the code publicly.\nIf you send it in a server, then that server will become premium server`,
+                                value: `You can send \`${client.config.defaultPrefix}usecode ${info.code}\` in DMs to the bot to use the code publicly.\nIf you send it in a server, then that server will become premium server`,
                                 inline: true,
                             },
                             {
-                                name: "What's tge difference between publicly used codes & premium server?",
+                                name: "What's the difference between publicly used codes & premium server?",
                                 value: "In a premium server, all members in that server can use my premium commands.\nIf you use it globally then you can use premium commands in any server!",
                                 inline: true,
                             },

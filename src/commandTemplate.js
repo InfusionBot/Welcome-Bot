@@ -21,7 +21,7 @@ module.exports = class CMD extends Command {
                 },
                 disabled: false,
                 subcommands: [{ name: "set", desc: "Set this" }],
-                cooldown: 10,
+                cooldown: 5,
                 category: "General",
                 slash: false,
             },
