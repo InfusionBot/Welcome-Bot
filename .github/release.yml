@@ -6,22 +6,22 @@ changelog:
       - No-changelog
       - Type: invalid
   categories:
-  - title: "### Breaking Changes 🛠"
+  - title: "Breaking Changes 🛠"
     labels:
     - Version: major
-  - title: "### New Features 🎉"
+  - title: "New Features 🎉"
     labels:
     - Version: minor
-  - title: "### 🐛 Bug fixes"
+  - title: "🐛 Bug fixes"
     labels:
       - "Type: bug"
-  - title: "### 📖 Docs"
+  - title: "📖 Docs"
     labels:
       - "Updates: documentation"
-  - title: "### ⚙️ Tests"
+  - title: "⚙️ Tests"
     labels:
       - "Type: tests"
-  - title: "###🔧 Chores"
+  - title: "🔧 Chores"
     labels:
       - "Updates: dependencies"
       - "Updates: npm deps"
