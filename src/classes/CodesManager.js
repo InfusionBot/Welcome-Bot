@@ -60,7 +60,7 @@ module.exports = class CodesManager {
     async use(code) {
         if (!code) throw new TypeError("code not provided");
         const info = this.#codesInfo.get(code);
-        if (info) return { error: "invalid" };
+        if (!info) return { error: "invalid" };
         if (info.used) return { error: "used" };
         const codeDB = await this.client.models.Code.findOne(info);
         codeDB.used = true;
