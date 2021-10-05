@@ -1,0 +1,30 @@
+# release.yml
+
+changelog:
+  exclude:
+    labels:
+      - No-changelog
+      - Type: invalid
+  categories:
+  - title: Breaking Changes 🛠
+    labels:
+    - Version: major
+  - title: Exciting New Features 🎉
+    labels:
+    - Version: minor
+  - title: "🐛 Bug fixes"
+    labels:
+      - "Type: bug"
+  - title: "📖 Docs"
+    labels:
+      - "Updates: documentation"
+  - title: "⚙️ Tests"
+    labels:
+      - "Type: tests"
+  - title: "🔧 Chores"
+    labels:
+      - "Updates: dependencies"
+      - "Updates: npm deps"
+  - title: Other Changes
+    labels:
+       - "*"
