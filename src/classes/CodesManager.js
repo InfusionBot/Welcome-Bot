@@ -71,9 +71,9 @@ module.exports = class CodesManager {
         const info = this.#codesInfo.get(code);
         if (info) return { error: "Invalid code" };
         if (info.used) return { error: "Code already used" };
-        const code = await this.client.models.Code.findOne(info);
-        code.used = true;
-        await code.save();
+        const codeDB = await this.client.models.Code.findOne(info);
+        codeDB.used = true;
+        await codeDB.save();
         this.#codesInfo.delete(info.code);
         this.#codesInfo.set(info.code, { ...info, used: true });
         const channel = await this.client.channels.fetch(
