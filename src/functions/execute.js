@@ -82,8 +82,8 @@ module.exports = async (message, guildDB) => {
         if (
             command.requirements?.premiumOnly &&
             !(
-                validCodes.includes(guildDB.premium?.code) ||
-                validCodes.includes(userDB.premium?.code)
+                validCodes?.includes?.(guildDB.premium?.code) ||
+                validCodes?.includes?.(userDB.premium?.code)
             )
         ) {
             return message.channel.send(t("errors:premiumOnly"));
