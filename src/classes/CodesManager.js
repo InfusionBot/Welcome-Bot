@@ -10,11 +10,11 @@ module.exports = class CodesManager {
     constructor(client) {
         this.client = client;
         this.#codesInfo = new Collection();
-        this.initialize();
-        setInterval(() => this.initialize(), 1 * 60 * 60 * 1000); //Every hour
+        this.refresh();
+        setInterval(() => this.refresh(), 1 * 60 * 60 * 1000); //Every hour
     }
 
-    async initialize() {
+    async refresh() {
         const codes = await this.client.models.Code.find({});
         for (let i = 0; i < codes.length; i++) {
             if (codes[i].expiresAt < Date.now()) {
@@ -25,6 +25,7 @@ module.exports = class CodesManager {
             }
             this.#codesInfo[codes[i].code] = codes[i];
         }
+        return codes;
     }
 
     async create(exdays = 30) {
