@@ -10,8 +10,8 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "usecode",
-                aliases: [],
-                memberPerms: ["use-code"],
+                aliases: ["use-code"],
+                memberPerms: [],
                 botPerms: [],
                 requirements: {
                     args: true,
