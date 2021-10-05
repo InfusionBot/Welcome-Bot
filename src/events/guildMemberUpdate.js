@@ -20,8 +20,12 @@ module.exports = {
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         let diff = "";
         const addedRoles = [];
+        const addedRoleIds = []
         newMember.roles.cache.forEach((role) => {
-            if (!oldMember.roles.cache.has(role.id)) addedRoles.push(role.name);
+            if (!oldMember.roles.cache.has(role.id)) {
+                addedRoles.push(role.name);
+                addedRoleIds.push(role.id);
+            }
         });
         const removedRoles = [];
         oldMember.roles.cache.forEach((role) => {
@@ -64,7 +68,7 @@ module.exports = {
                     .catch(() => {});
             }
         }
-        if (newMember.guild.id === client.config.botGuildId && (addedRoles.includes(client.config.roles.donator) || addedRoles.includes(client.config.roles.booster))) {
+        if (newMember.guild.id === client.config.botGuildId && (addedRolesIds.includes(client.config.roles.donator) || addedRolesIds.includes(client.config.roles.booster))) {
             const isDonator = !!addedRoles.includes(client.config.roles.donator);
             const info = client.codes.create(isDonator ? 365 : 30); //30 days premium code for boosters & 365 (1 year) for donators
             newMember.user.send({ embeds: [
