@@ -70,8 +70,8 @@ module.exports = {
         }
         if (
             newMember.guild.id === client.config.botGuildId &&
-            (addedRolesIds.includes(client.config.roles.donator) ||
-                addedRolesIds.includes(client.config.roles.booster))
+            (addedRoleIds.includes(client.config.roles.donator) ||
+                addedRoleIds.includes(client.config.roles.booster))
         ) {
             const isDonator = !!addedRoles.includes(
                 client.config.roles.donator
