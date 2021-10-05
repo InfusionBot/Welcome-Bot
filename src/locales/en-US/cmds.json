@@ -301,7 +301,7 @@
     "cmdDesc": "Steal another user's wallet! :dollar:",
     "usage": "[@mention]",
     "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
-    "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
+    "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to rob them.",
     "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
     "failed": "You were caught by the police when stealing and you lost {{lostCoins}}",
     "padlock": "The user who you tried to steal had a padlock enabled, you failed to steal and his padlock broke"

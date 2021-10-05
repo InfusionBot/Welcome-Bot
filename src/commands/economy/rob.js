@@ -59,17 +59,18 @@ module.exports = class CMD extends Command {
         if (userDB2.active.padlock) {
             userDB2.active.padlock = false;
             await userDB2.save();
+            return message.reply(t("cmds:rob.padlock"));
         }
-        let stolenCoins = Math.round(Math.floor(Math.random() * 200));
-        let lostCoins = Math.round(Math.floor(Math.random() * 100));
+        let stolenCoins = Math.round(Math.floor(Math.random() * 400));
+        let lostCoins = Math.round(Math.floor(Math.random() * 200));
         if (userDB2.wallet < 200) {
             return message.reply(
                 t("cmds:rob.userNotEnoughMoney", { tag: user.tag })
             );
         }
-        if (stolenCoins > 100 || lostCoins > 100) {
-            stolenCoins = stolenCoins - 10;
-            lostCoins = lostCoins + 10;
+        if (stolenCoins > 200 || lostCoins > 200) {
+            stolenCoins = stolenCoins - 20;
+            lostCoins = lostCoins + 20;
         } else if (stolenCoins >= 50 || lostCoins >= 50) {
             stolenCoins = 0;
             lostCoins = 50;
