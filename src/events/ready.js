@@ -44,13 +44,12 @@ module.exports = {
         job.start();
         client.guilds.cache.each((guild) => {
             //on bot start, fetch all guilds and fetch all invites to store
-            try {
+            if (!guild.me.permissions.has(""))
                 guild.invites.fetch().then((guildInvites) => {
                     guildInvites.each((guildInvite) => {
                         client.invites[guildInvite.code] = guildInvite.uses;
                     });
                 });
-            } catch (e) {} //eslint-disable-line no-empty
         });
         const presence = require("../functions/presence");
         const serverCount = require("../functions/serverCount");

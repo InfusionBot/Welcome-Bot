@@ -11,7 +11,7 @@ module.exports = class CodesManager {
         this.client = client;
         this.#codesInfo = new Collection();
         this.initialize();
-        setInterval(this.initialize, 1 * 60 * 60 * 1000); //Every hour
+        setInterval(() => this.initialize(), 1 * 60 * 60 * 1000); //Every hour
     }
 
     async initialize() {
