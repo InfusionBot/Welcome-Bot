@@ -229,7 +229,8 @@
     "usage": "[code]",
     "errors": {
       "used": "Code already used",
-      "invalid": "Invalid code"
+      "invalid": "Invalid code",
+      "already": "Hey noob, How can someone use a code when they already have a subscription"
     }
   },
   "vote": {
