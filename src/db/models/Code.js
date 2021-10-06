@@ -22,15 +22,15 @@ const codeSchema = new mongoose.Schema({
     },
     userId: {
         type: String,
-        required: true
+        required: true,
     },
     usedBy: {
         type: String,
-        required: false
+        required: false,
     },
     guildId: {
         type: String,
-        required: false
+        required: false,
     },
 });
 
