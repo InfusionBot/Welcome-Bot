@@ -20,6 +20,18 @@ const codeSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    userId: {
+        type: String,
+        required: true
+    },
+    usedBy: {
+        type: String,
+        required: false
+    },
+    guildId: {
+        type: String,
+        required: false
+    },
 });
 
 const Code = new mongoose.model("Code", codeSchema);

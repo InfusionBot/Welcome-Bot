@@ -32,7 +32,9 @@ module.exports = class CMD extends Command {
         ) {
             return message.reply(`${t(`cmds:usecode.errors.already`)}`);
         }
-        const info = await this.client.codes.use(args[0], message.author);
+        const i = [message.author];
+        if (message.guild) i.push(message.guild);
+        const info = await this.client.codes.use(args[0], ...i);
         if (info.error)
             return message.reply(`${t(`cmds:usecode.errors.${info.error}`)}`);
         if (!message.guild) {
