@@ -59,8 +59,10 @@ module.exports = {
             }
             let chat;
             try {
-                chat = await require("axios").get(chatBotUrl).then(res => res.data);
-            } catch(e) {
+                chat = await require("axios")
+                    .get(chatBotUrl)
+                    .then((res) => res.data);
+            } catch (e) {
                 return message.reply("Error: Unknown error");
             }
             message.reply(
