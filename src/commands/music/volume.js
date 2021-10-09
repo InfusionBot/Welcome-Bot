@@ -36,11 +36,12 @@ module.exports = class CMD extends Command {
             );
         }
         if (amount < 0 || amount > 200) {
-            return message.reply(`❌ | 
-                ${t("errors:invalidNumRange", {
+            return message.reply(
+                `❌ | ${t("errors:invalidNumRange", {
                     min: 0,
                     max: 200,
-                })}`);
+                })}`
+            );
         }
         queue.setVolume(amount);
         message.reply(
