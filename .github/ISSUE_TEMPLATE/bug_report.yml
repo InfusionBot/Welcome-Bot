@@ -7,8 +7,12 @@ assignees: []
 body:
   - type: markdown
     attributes:
-      value: "Thank you for opening a new issue!\nPlease remember that you should fill out all files marked with a `*` and that you should give as much information as possible."
-        preview_only: false
+      value: |
+      Thank you for opening a new issue!
+
+
+      Please remember that you should fill out all files marked with a `*` and that you should give as much information as possible."
+      preview_only: false
   - type: checkboxes
     attributes:
       value: "Make sure you have performed these important steps before opening this issue"
