@@ -72,11 +72,7 @@ module.exports = class Command {
         }
         if (this.requirements?.guildOnly && !interaction.inGuild())
             return false; // silently fail if command is for guilds only
-        let userDB = await this.client.userDbFuncs.getUser(interaction.user.id);
-        if (!userDB) {
-            await this.client.userDbFuncs.addUser(interaction.user.id);
-            userDB = await this.client.userDbFuncs.getUser(interaction.user.id);
-        }
+        const userDB = await this.client.db.findOrCreateUser(interaction.user.id);
         const basicPerms = [
             Permissions.FLAGS.VIEW_CHANNEL,
             Permissions.FLAGS.SEND_MESSAGES,
