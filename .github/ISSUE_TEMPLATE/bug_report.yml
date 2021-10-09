@@ -17,12 +17,12 @@ body:
   - type: checkboxes
     attributes:
       value: "Make sure you have performed these important steps before opening this issue"
-    label: Checks
-    options:
+      options:
       - label: >-
           I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue)
           for already existing bug reports.
         required: true
+      label: Checks
   - type: textarea
     attributes:
       value: "Try to describe the bug as detailed as possible.\nUse the below text fields for reproduction steps."
