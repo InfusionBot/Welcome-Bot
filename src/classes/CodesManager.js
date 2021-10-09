@@ -21,6 +21,24 @@ module.exports = class CodesManager {
                 this.client.models.Code.findOneAndDelete({
                     code: codes[i].code,
                 });
+                const channel = await this.client.channels.fetch(
+                    this.client.config.channels.codes
+                );
+                if (channel) {
+                    const embed = new Embed({ color: "error", timestamp: true })
+                        .setTitle("Premium code expired")
+                        .setDesc(`Code: ${codes[i].code}`);
+                    const user = await this.client.users.fetch(codes[i].usedBy);
+                    if (user)
+                        embed.setAuthor(user.tag, user.displayAvatarURL());
+                    else embed.setAuthor("Unknown or Anonymous");
+                    const guild = this.client.guilds.cache.get(
+                        codes[i].guildId
+                    );
+                    if (guild) embed.setFooter(guild.name, guild.iconURL());
+                    else embed.setFooter("Unknown guild. Maybe claimed in DMs");
+                    channel.send({ embeds: [embed] });
+                }
                 continue;
             }
             this.#codesInfo.set(codes[i].code, codes[i]);
@@ -28,12 +46,13 @@ module.exports = class CodesManager {
         return codes;
     }
 
-    async create(exdays = 30) {
+    async create(exdays = 30, user) {
+        if (!user) throw new TypeError("user not provided");
         //exdays is the expire days
         const expiresAt = new Date();
         expiresAt.setTime(expiresAt.getTime() + exdays * 24 * 60 * 60 * 1000);
         let code = "";
-        const length = 6;
+        const length = 8;
         const characters =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwzy0123456789.-_";
         for (let i = 0; i < length; i++) {
@@ -41,7 +60,7 @@ module.exports = class CodesManager {
                 Math.floor(Math.random() * characters.length)
             );
         }
-        const info = { expiresAt: expiresAt.getTime(), code };
+        const info = { expiresAt: expiresAt.getTime(), code, userId: user.id };
         const codeDB = new this.client.models.Code(info);
         await codeDB.save();
         this.#codesInfo.set(code, info);
@@ -53,39 +72,37 @@ module.exports = class CodesManager {
                 .setTitle("New premium code created")
                 .setDesc(`Code: ${code}`)
                 .addField("Expires", `${expiresAt}`, true);
+            if (user) embed.setAuthor(user.tag, user.displayAvatarURL());
+            else embed.setAuthor("Unknown or Anonymous");
             channel.send({ embeds: [embed] });
         }
         return info;
     }
 
-    async use(code) {
-        if (!code) throw new TypeError("code not provided");
+    async use(code, user, guild = null) {
+        if (!code || !user) throw new TypeError("code/user not provided");
         const info = this.#codesInfo.get(code);
         if (!info) return { error: "invalid" };
         if (info.used) return { error: "used" };
         const codeDB = await this.client.models.Code.findOne(info);
         codeDB.used = true;
+        codeDB.usedBy = user.id;
+        if (guild) codeDB.guildId = guild.id;
         await codeDB.save();
         this.#codesInfo.delete(info.code);
-        this.#codesInfo.set(info.code, { ...info, used: true });
+        this.#codesInfo.set(info.code, codeDB.toJSON());
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
         );
         if (channel) {
-            const embed = new Embed(
-                { color: "red", timestamp: true },
-                {
-                    description: `Code: ${code}`,
-                    title: "Premium code used",
-                    fields: [
-                        {
-                            name: "Expires",
-                            value: `${new Date(info.expiresAt)}`,
-                            inline: true,
-                        },
-                    ],
-                }
-            );
+            const embed = new Embed({ color: "red", timestamp: true })
+                .setTitle("Premium code used")
+                .setDesc(`Code: ${code}`)
+                .addField("Expires", `${new Date(info.expiresAt)}`, true);
+            if (user) embed.setAuthor(user.tag, user.displayAvatarURL());
+            else embed.setAuthor("Unknown or Anonymous");
+            if (guild) embed.setFooter(guild.name, guild.iconURL());
+            else embed.setFooter("Unknown guild. Maybe claimed in DMs");
             channel.send({ embeds: [embed] });
         }
         return info;

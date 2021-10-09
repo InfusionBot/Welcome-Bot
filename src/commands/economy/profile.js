@@ -58,7 +58,15 @@ module.exports = class CMD extends Command {
                 })
             )
             .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr)
-            .addField(t("misc:bio"), `${userDB2.bio}`);
+            .addField(`:ledger: ${t("misc:bio")}`, `${userDB2.bio}`)
+            .addField(
+                `:crown: ${t("misc:premium")}`,
+                `${
+                    this.client.codes.getCode(userDB?.premium?.code)
+                        ? t("misc:yes")
+                        : t("misc:no")
+                }`
+            );
         message.reply({ embeds: [embed] });
     }
 };

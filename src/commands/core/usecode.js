@@ -26,7 +26,15 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
-        const info = await this.client.codes.use(args[0]);
+        if (
+            client.codes.getCode(guildDB?.premium?.code) ||
+            client.codes.getCode(userDB?.premium?.code)
+        ) {
+            return message.reply(`${t(`cmds:usecode.errors.already`)}`);
+        }
+        const i = [message.author];
+        if (message.guild) i.push(message.guild);
+        const info = await this.client.codes.use(args[0], ...i);
         if (info.error)
             return message.reply(`${t(`cmds:usecode.errors.${info.error}`)}`);
         if (!message.guild) {

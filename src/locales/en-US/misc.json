@@ -72,5 +72,8 @@
   "mem_update": "Member Updated",
   "deleted": "Message Deleted",
   "nickModify": "Nickname updated",
-  "mem_join": "Member Joined"
+  "mem_join": "Member Joined",
+  "premium": "Premium",
+  "yes": "Yes",
+  "no": "No"
 }
