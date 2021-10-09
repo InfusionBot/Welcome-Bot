@@ -82,7 +82,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: config.cmdDesc
+- Description: See current configuration
 - Usage: w/config 
 - Aliases: `cf`, `configuration`, `conf`
 - Cooldown: 10
@@ -154,7 +154,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Change language
 - Usage: w/lang (subcommand) (lang)
 - Aliases: `language`, `changelang`, `getlang`
-- Cooldown: 10
+- Cooldown: 4
 
 ### `modlogs`
 
@@ -690,7 +690,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 5
 
-## General (23 commands)
+## General (24 commands)
 
 ### `addemoji`
 
@@ -873,6 +873,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Get role id
 - Usage: w/roleid [@role]
 - Aliases: `role-id`, `rid`
+- Cooldown: 5
+
+### `screenshot`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Take a screenshot
+- Usage: w/screenshot [site]
+- Aliases: `ss`
 - Cooldown: 5
 
 ### `serverid`
