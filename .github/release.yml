@@ -8,10 +8,10 @@ changelog:
   categories:
   - title: "Breaking Changes 🛠"
     labels:
-    - Version: major
+    - "Version: major"
   - title: "New Features 🎉"
     labels:
-    - Version: minor
+    - "Version: minor"
   - title: "🐛 Bug fixes"
     labels:
       - "Type: bug"
