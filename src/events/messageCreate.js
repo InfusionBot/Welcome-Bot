@@ -57,7 +57,12 @@ module.exports = {
             if (message.content.includes(`@`)) {
                 return message.reply(`**Hey, Please don't mention anyone**`);
             }
-            const chat = await require("axios").get(chatBotUrl);
+            let chat;
+            try {
+                chat = await require("axios").get(chatBotUrl).then(res => res.data);
+            } catch(e) {
+                return message.reply("Error: Unknown error");
+            }
             message.reply(
                 `${
                     chat?.cnt
