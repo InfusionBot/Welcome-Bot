@@ -16,23 +16,23 @@ body:
         preview_only: false
   - type: checkboxes
     attributes:
-      value: "Make sure you have performed these important steps before opening this issue"
-      options:
-      - label: >-
-          I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue)
-          for already existing bug reports.
-        required: true
+      - value: "Make sure you have performed these important steps before opening this issue"
+      - options:
+        - label: >-
+            I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue)
+            for already existing bug reports.
+          required: true
       label: Checks
   - type: textarea
     attributes:
-      value: "Try to describe the bug as detailed as possible.\nUse the below text fields for reproduction steps."
-    label: Description
-    placeholder: I used the ... command & the bot did ...
+      - label: Description
+      - description: "Try to describe the bug as detailed as possible.\nUse the below text fields for reproduction steps."
+      - placeholder: I used the ... command & the bot did ...
     validations:
       required: true
   - type: textarea
-    attributes: null
-    label: Server id
-    description: Please share your server id
+    attributes:
+      - label: Server id
+      - description: Please share your server id
     validations:
       required: true
