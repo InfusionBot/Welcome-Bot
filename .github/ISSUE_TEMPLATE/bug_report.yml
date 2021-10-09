@@ -12,7 +12,6 @@ body:
 
 
         Please remember that you should fill out all files marked with a `*` and that you should give as much information as possible."
-      preview_only: false
   - type: checkboxes
     attributes:
       value: "Make sure you have performed these important steps before opening this issue"
