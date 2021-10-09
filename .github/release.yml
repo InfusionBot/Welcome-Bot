@@ -3,8 +3,8 @@
 changelog:
   exclude:
     labels:
-      - No-changelog
-      - Type: invalid
+      - "No-changelog"
+      - "Type: invalid"
   categories:
   - title: "Breaking Changes 🛠"
     labels:
