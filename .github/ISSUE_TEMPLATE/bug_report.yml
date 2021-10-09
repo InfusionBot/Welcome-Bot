@@ -18,7 +18,7 @@ body:
     attributes:
       value: "Make sure you have performed these important steps before opening this issue"
       options:
-        label: >-
+        - label: >-
             I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue)
             for already existing bug reports.
           required: true
