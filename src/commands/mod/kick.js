@@ -108,7 +108,7 @@ module.exports = class CMD extends Command {
             interaction.guild.me.roles.highest.position <=
             member.roles.highest.position
         )
-            return interaction.reply(t("misc:higherRoleBot"));
+            return interaction.editReply(t("misc:higherRoleBot"));
 
         const reason = args.slice(1).join(" ") || t("misc:not_spec");
         try {
@@ -116,7 +116,7 @@ module.exports = class CMD extends Command {
         } catch (error) {
             console.error(error);
             //TODO: add translation
-            return interaction.reply(`Failed to kick **${user.tag}**`);
+            return interaction.editReply(`Failed to kick **${user.tag}**`);
         }
 
         if (guildDB.plugins.modlogs) {
@@ -138,7 +138,7 @@ module.exports = class CMD extends Command {
         }
 
         //TODO: add translation
-        return interaction.reply(
+        return interaction.editReply(
             `Successfully kicked **${user.tag}** from the server!`
         );
     }
