@@ -14,7 +14,7 @@ body:
         Please remember that you should fill out all files marked with a `*` and that you should give as much information as possible."
   - type: checkboxes
     attributes:
-      value: "Make sure you have performed these important steps before opening this issue"
+      label: "Make sure you have performed these important steps before opening this issue"
       options:
         - label: "I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue) for already existing bug reports."
           required: true
