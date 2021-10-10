@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **90 commands** in **9 categories**!
+Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -42,7 +42,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage autopublish settings
 - Usage: w/autopublish (subcommand)
 - Aliases: `ap`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `autorole`
 
@@ -57,7 +57,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage autorole settings
 - Usage: w/autorole (subcommand)
 - Aliases: `ar`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `chatbot`
 
@@ -85,7 +85,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: See current configuration
 - Usage: w/config 
 - Aliases: `cf`, `configuration`, `conf`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `disable`
 
@@ -98,7 +98,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Disable commands.
 - Usage: w/disable (command name / subcommand)
 - Aliases: None
-- Cooldown: 10
+- Cooldown: 5
 
 ### `enable`
 
@@ -111,7 +111,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Enable commands.
 - Usage: w/enable [command name]
 - Aliases: None
-- Cooldown: 10
+- Cooldown: 5
 
 ### `follow`
 
@@ -124,7 +124,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Get news and version updates to this bot sent to a specific channel.
 - Usage: w/follow [channel / channel id]
 - Aliases: `getnews`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `goodbye`
 
@@ -140,7 +140,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage goodbye logs settings
 - Usage: w/goodbye (subcommand)
 - Aliases: `goodbyelogs`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `lang`
 
@@ -154,7 +154,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Change language
 - Usage: w/lang (subcommand) (lang)
 - Aliases: `language`, `changelang`, `getlang`
-- Cooldown: 4
+- Cooldown: 5
 
 ### `modlogs`
 
@@ -167,7 +167,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage ModLogs settings
 - Usage: w/modlogs (subcommand)
 - Aliases: `modlog`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `prefix`
 
@@ -181,7 +181,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage prefix for this server
 - Usage: w/prefix (subcommand)
 - Aliases: `getprefix`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `serverlogs`
 
@@ -196,7 +196,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage server logs settings
 - Usage: w/serverlogs (subcommand)
 - Aliases: `server-logs`, `logs`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `welcome`
 
@@ -212,7 +212,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Manage welcome logs settings
 - Usage: w/welcome (subcommand)
 - Aliases: `welcomelogs`
-- Cooldown: 10
+- Cooldown: 5
 
 ## Anime (5 commands)
 
@@ -281,7 +281,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Core (12 commands)
+## Core (14 commands)
 
 ### `botinfo`
 
@@ -346,6 +346,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Get ping of the bot
 - Usage: w/ping 
 - Aliases: `latency`, `pong`
+- Cooldown: 5
+
+### `premiumcode`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get info on a premium code
+- Usage: w/premiumcode [code]
+- Aliases: ``
 - Cooldown: 5
 
 ### `report`
@@ -413,6 +426,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: `bot-uptime`, `botuptime`
 - Cooldown: 10
 
+### `usecode`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Redeem a premium code
+- Usage: w/usecode [code]
+- Aliases: `use-code`
+- Cooldown: 5
+
 ### `vote`
 
 ##### Subcommands:
@@ -424,7 +450,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)
 - Usage: w/vote 
 - Aliases: None
-- Cooldown: 10
+- Cooldown: 5
 
 ### `website`
 
@@ -755,7 +781,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Search djs docs
 - Usage: w/djsdocs [query] (--source [source])
 - Aliases: `djs`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `hastebin`
 
@@ -976,7 +1002,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 
 - Description: Get information about a user. It will show your info if no user was mentioned
 - Usage: w/user (@mention / user id) (--dm)
-- Aliases: `whois`, `ui`, `uinfo`
+- Aliases: `whois`, `ui`, `uinfo`, `userinfo`
 - Cooldown: 10
 
 ### `userid`

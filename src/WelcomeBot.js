@@ -9,9 +9,8 @@ const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
-const { Player } = require("discord-player");
 const DBCache = require("./db/DBCache");
-const CodesManager = require("./classes/CodesManager");
+const { CodesManager, MusicHandler } = require("./handlers/");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -81,11 +80,7 @@ class WelcomeBot extends Client {
             }
         })(this);
         this.staffTags = staffTags;
-        this.player = new Player(this, {
-            leaveOnEmpty: false,
-            leaveOnStop: true,
-            enableLive: true,
-        });
+        this.music = new MusicHandler(this);
         if (!process.env.TEST_MODE) this.initialize();
     }
 

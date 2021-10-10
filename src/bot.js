@@ -52,13 +52,13 @@ process.on("exit", (code) => {
     client.destroy();
 });
 
-const getT = async (guildId) => {
+/*const getT = async (guildId) => {
     const guildDB = await client.db.findOrCreateGuild(guildId);
     return client.i18next.getFixedT(guildDB.lang || "en-US");
 };
 
 let embed = new Embed({ color: "success" });
-client.player
+client.player.manager
     .on("trackAdd", async (queue, track) => {
         embed = new Embed({ color: "success" });
         const t = await getT(queue.metadata.guild.id);
@@ -142,6 +142,6 @@ client.player
                 );
                 break;
         }
-    });
+    });*/
 
 client.login(process.env.DISCORD_TOKEN);

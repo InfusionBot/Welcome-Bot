@@ -53,37 +53,13 @@ module.exports = class CMD extends Command {
                 })
             );
 
-        let queue = message.client.player.getQueue(message.guild);
-        if (!(queue instanceof Queue)) {
-            queue = message.client.player.createQueue(message.guild, {
-                metadata: message,
-            });
-            if (message.client.debug)
-                message.client.logger.log("Creating new queue", "debug", [
-                    "VOICE",
-                ]);
-        }
-        try {
-            if (!queue.connection)
-                await queue.connect(message.member.voice.channel);
-        } catch (e) {
-            message.client.player.deleteQueue(message.guild);
-            message.client.logger.log(
-                "Error when connecting to voice channel",
-                "error",
-                ["VOICE"]
-            );
-            console.log(e);
-            return void message.reply(t("cmds:play.cantJoin"));
-        }
-        const song = await message.client.player.search(name, {
-            requestedBy: message.author,
-        });
-        if (!song || !song.tracks.length) {
-            message.client.player.deleteQueue(message.guild);
+        const { player, connection } = message.client.music.findOrCreatePlayer(message.guild, voice);
+        const tracks = await message.client.music.search(`ytsearch:30 ${name}`);
+        if (!tracks || !tracks.length) {
+            message.client.music.leave(message.guild);
             return message.channel.send(t("cmds:play.noResults"));
         }
-        song.playlist
+        /*song.playlist
             ? queue.addTracks(song.tracks)
             : queue.addTrack(song.tracks[0]);
         if (song.playlist) {
@@ -94,6 +70,7 @@ module.exports = class CMD extends Command {
                 })
             );
         }
-        if (!queue.playing) await queue.play();
+        if (!queue.playing) await queue.play();*/
+        await message.client.music.play(message.guild, tracks[0]);
     }
 };
