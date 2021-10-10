@@ -4,27 +4,27 @@ changelog:
       - "No-changelog"
       - "Type: invalid"
   categories:
-  - title: "Breaking Changes 🛠"
-    labels:
-    - "Version: major"
-  - title: "New Features 🎉"
-    labels:
-    - "Version: minor"
-    - "Type: enhancement"
-  - title: "🐛 Bug fixes"
-    labels:
-      - "Version: patch"
-      - "Type: bug"
-  - title: "📖 Docs"
-    labels:
-      - "Updates: documentation"
-  - title: "⚙️ Tests"
-    labels:
-      - "Type: tests"
-  - title: "🔧 Chores"
-    labels:
-      - "Updates: dependencies"
-      - "Updates: npm deps"
-  - title: "### ❔ Misc"
-    labels:
-       - "*"
+    - title: "Breaking Changes 🛠"
+      labels:
+        - "Version: major"
+    - title: "New Features 🎉"
+      labels:
+        - "Version: minor"
+        - "Type: enhancement"
+    - title: "🐛 Bug fixes"
+      labels:
+        - "Version: patch"
+        - "Type: bug"
+    - title: "📖 Docs"
+      labels:
+        - "Updates: documentation"
+    - title: "⚙️ Tests"
+      labels:
+        - "Type: tests"
+    - title: "🔧 Chores"
+      labels:
+        - "Updates: dependencies"
+        - "Updates: npm deps"
+    - title: "### ❔ Misc"
+      labels:
+        - "*"

@@ -63,20 +63,18 @@ class WelcomeBot extends Client {
         const ownersTags = [];
         (async (client) => {
             for (let i = 0; i < client.config.ownerIds.length; i++) {
-                const user = await client.users.fetch(
-                    client.config.ownerIds[i]
-                );
-                ownersTags.push(`${user?.tag}`);
+                client.users
+                    .fetch(client.config.ownerIds[i])
+                    .then((user) => ownersTags.push(`${user?.tag}`));
             }
         })(this);
         this.ownersTags = ownersTags;
         const staffTags = [];
         (async (client) => {
             for (let i = 0; i < client.config.staffIds.length; i++) {
-                const user = await client.users.fetch(
-                    client.config.staffIds[i]
-                );
-                staffTags.push(`${user?.tag}`);
+                client.users
+                    .fetch(client.config.staffIds[i])
+                    .then((user) => staffTags.push(`${user?.tag}`));
             }
         })(this);
         this.staffTags = staffTags;

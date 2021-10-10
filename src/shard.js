@@ -10,5 +10,11 @@ const manager = new ShardingManager(__dirname + "/bot.js", {
     token: process.env.DISCORD_TOKEN,
 });
 
-manager.on("shardCreate", (shard) => console.log(`[${String(new Date()).split(" ", 5).join(" ")}] || <==> || Launched shard #${shard.id}`));
+manager.on("shardCreate", (shard) =>
+    console.log(
+        `[${String(new Date())
+            .split(" ", 5)
+            .join(" ")}] || <==> || Launched shard #${shard.id}`
+    )
+);
 manager.spawn({ amount: manager.totalShards, timeout: -1 });

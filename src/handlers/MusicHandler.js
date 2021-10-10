@@ -5,8 +5,12 @@
  */
 const { Manager: LavacordManager } = require("lavacord");
 const fs = require("fs");
-const { joinVoiceChannel, entersState, VoiceConnectionStatus } = require("@discordjs/voice");
-const { YAMLException } = require("js-yaml");
+const {
+    joinVoiceChannel,
+    entersState,
+    VoiceConnectionStatus,
+} = require("@discordjs/voice");
+//const { YAMLException } = require("js-yaml");
 class Manager extends LavacordManager {
     constructor(client, nodes, options = {}) {
         super(nodes, options);
@@ -44,10 +48,7 @@ module.exports = class MusicHandler {
         const yml = require("js-yaml").load(
             fs.readFileSync(`${__dirname}/../../application.yml`, "utf8")
         );
-        this.manager = new Manager(
-            client,
-            [{...yml, id: "0"}]
-        );
+        this.manager = new Manager(client, [{ ...yml, id: "0" }]);
         this.players = {};
     }
 
@@ -59,13 +60,16 @@ module.exports = class MusicHandler {
     async search(search) {
         // This gets the best node available, what I mean by that is the idealNodes getter will filter all the connected nodes and then sort them from best to least beast.
         const node = this.manager.idealNodes[0];
-    
+
         const params = new URLSearchParams();
         params.append("identifier", search);
-    
-        return await require("axios").get(`http://${node.host}:${node.port}/loadtracks?${params}`, { headers: { Authorization: node.password } })
-            .then(res => res.data.tracks)
-            .catch(err => {
+
+        return await require("axios")
+            .get(`http://${node.host}:${node.port}/loadtracks?${params}`, {
+                headers: { Authorization: node.password },
+            })
+            .then((res) => res.data.tracks)
+            .catch((err) => {
                 console.error(err);
                 return null;
             });
@@ -77,7 +81,7 @@ module.exports = class MusicHandler {
         const player = await this.manager.join({
             guild: guildId, // Guild id
             channel: channel.id, // Channel id
-            node: "0" // lavalink node id, based on array of nodes
+            node: "0", // lavalink node id, based on array of nodes
         });
         this.players[guildId] = player;
         const conn = this.join(channel);
@@ -87,8 +91,8 @@ module.exports = class MusicHandler {
     async play(guild, track) {
         const player = this.players[guild.id];
         await player.play(track); // Track is a base64 string we get from Lavalink REST API
-        player.on("error", error => console.error(error));
-        player.on("end", data => {
+        player.on("error", (error) => console.error(error));
+        player.on("end", (data) => {
             if (data.reason === "REPLACED") return; // Ignore REPLACED reason to prevent skip loops
             // Play next song
         });
@@ -103,7 +107,11 @@ module.exports = class MusicHandler {
             selfDeaf: false,
         });
         try {
-            conn = await entersState(conn, VoiceConnectionStatus.Ready, /*max time*/ 20000);
+            conn = await entersState(
+                conn,
+                VoiceConnectionStatus.Ready,
+                /*max time*/ 20000
+            );
             return conn;
         } catch (err) {
             conn.destroy();

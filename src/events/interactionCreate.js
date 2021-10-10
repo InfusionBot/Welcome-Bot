@@ -14,13 +14,15 @@ module.exports = {
         await interaction.deferReply();
         let guildDB;
         if (interaction.inGuild() && interaction.channel.type !== "DM") {
-            guildDB = await client.db.guildSchema.findOne({ guildId: interaction.guild.id});
+            guildDB = await client.db.guildSchema.findOne({
+                guildId: interaction.guild.id,
+            });
         } else {
             guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
         }
         const t = client.i18next.getFixedT(guildDB.lang ?? "en-US");
         const userDB = await client.db.userSchema.findOne({
-            userId: interaction.member.user.id
+            userId: interaction.member.user.id,
         });
         const command = client.commands.enabled
             .filter((cmd) => cmd.slash)

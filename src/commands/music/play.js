@@ -53,7 +53,10 @@ module.exports = class CMD extends Command {
                 })
             );
 
-        const { player, connection } = message.client.music.findOrCreatePlayer(message.guild, voice);
+        const { player, connection } = message.client.music.findOrCreatePlayer(
+            message.guild,
+            voice
+        );
         const tracks = await message.client.music.search(`ytsearch:30 ${name}`);
         if (!tracks || !tracks.length) {
             message.client.music.leave(message.guild);

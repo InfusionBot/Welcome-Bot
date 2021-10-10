@@ -26,9 +26,9 @@ module.exports = class CMD extends Command {
                         name: "user",
                         description: "Which user to kick",
                         type: "USER",
-                        required: true
-                    }
-                ]
+                        required: true,
+                    },
+                ],
             },
             client
         );
@@ -40,7 +40,7 @@ module.exports = class CMD extends Command {
             return message.reply(t("errors:invalidUser"));
         }
         let member = await message.guild.members.fetch(user.id);
-            if (!member) return message.reply(t("errors:userNotInGuild"));
+        if (!member) return message.reply(t("errors:userNotInGuild"));
         if (user.id === message.client.user.id)
             return message.reply(t("cmds:kick.mySelf"));
 
