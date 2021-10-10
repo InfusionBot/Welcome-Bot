@@ -105,3 +105,7 @@ dist
 
 # Lavalink
 lavalink.jar
+
+# VSCode folder
+.vscode/*
+!.vscode/extensions.json

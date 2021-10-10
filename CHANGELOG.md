@@ -28,6 +28,10 @@ The displayed date is in the format `DD-MM-YYYY`
 - fix(execute): Array#includes not Array#has
 - refactor(play): support YT again
 
+### New features
+
+- New slash command `kick`
+
 ## [v2.0.3]
 
 > **Released:** `19-09-2021`

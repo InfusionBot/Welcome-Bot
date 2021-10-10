@@ -3,40 +3,32 @@ description: Create a report to help us improve
 title: "Bug report: "
 labels:
   - "Type: bug"
-assignees: ""
+assignees: []
 body:
   - type: markdown
-    attributes: null
-    value: >-
-      Thank you for opening a new issue!
+    attributes:
+      value: |
+        Thank you for opening a new issue!
 
 
-      Please remember that you should fill out all files marked with a `*` and
-      that you should give as much information as possible.
+        Please remember that you should fill out all files marked with a `*` and that you should give as much information as possible."
   - type: checkboxes
-    attributes: null
-    label: Checks
-    description: >-
-      Make sure you have performed these important steps before opening this
-      issue.
-    options:
-      - label: >-
-          I [searched the issues
-          page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue)
-          for already existing bug reports.
-        required: true
+    attributes:
+      label: "Make sure you have performed these important steps before opening this issue"
+      options:
+        - label: "I [searched the issues page](https://github.com/Welcome-Bot/welcome-bot/issues?q=is%3Aissue) for already existing bug reports."
+          required: true
+      label: Checks
   - type: textarea
-    attributes: null
-    label: Description
-    description: |-
-      Try to describe the bug as detailed as possible.
-      Use the below text fields for reproduction steps.
-    placeholder: I used the ... command & the bot did ...
+    attributes:
+      label: Description
+      description: "Try to describe the bug as detailed as possible.\nUse the below text fields for reproduction steps."
+      placeholder: I used the ... command & the bot did ...
     validations:
       required: true
   - type: textarea
-    attributes: null
-    label: Server id
-    description: Please share your server id
+    attributes:
+      label: Server id
+      description: Please share your server id
     validations:
       required: true
