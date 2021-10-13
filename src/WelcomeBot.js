@@ -50,7 +50,7 @@ class WelcomeBot extends Client {
         });
         this.invites = {};
         this.allPerms = require("./data/allPerms");
-        this.musicEmojis = require("./data/customEmojis.json");
+        this.musicEmojis = require("./data/musicEmojis.json");
         this.shop = new Collection();
         const shop = require("./data/shop");
         for (let i = 0; i < shop.length; i++) {

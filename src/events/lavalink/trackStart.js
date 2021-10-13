@@ -23,7 +23,8 @@ module.exports = {
                     track.requester.id
                 }>]`
             )
-            .setThumbnail(track.displayThumbnail("3"));
+            .setThumbnail(track.displayThumbnail("3"))
+            .setFooter(client.user.username, client.user.displayAvatarURL());
         channel.send({ embeds: [embed] });
     },
 };

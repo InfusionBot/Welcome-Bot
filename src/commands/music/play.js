@@ -61,7 +61,7 @@ module.exports = class CMD extends Command {
                 guild: message.guild.id,
                 voiceChannel: voice.id,
                 textChannel: message.channel.id,
-                volume: 50,
+                volume: 100,
                 selfDeafen: true,
             });
         if (player.state !== "CONNECTED") player.connect();
