@@ -10,9 +10,10 @@ module.exports = {
     once: false,
     execute(client, player) {
         const channel = client.channels.cache.get(player.textChannel);
-        const embed = new Embed()
-            .setDescription(`${client.musicEmojis.warn} **Queue ended**`)
-            .setFooter(client.user.username, client.user.displayAvatarURL());
+        const embed = new Embed({
+            tag: client.user.username,
+            avatarURL: client.user.displayAvatarURL(),
+        }).setDescription(`${client.musicEmojis.warn} **Queue ended**`);
         channel.send({ embeds: [embed] });
     },
 };

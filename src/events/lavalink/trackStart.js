@@ -7,7 +7,7 @@
 const { convertTime } = require("../../helpers/Util");
 const { Embed } = require("../../classes");
 module.exports = {
-    name: "tractStart",
+    name: "trackStart",
     once: false,
     execute(client, player, track /*, payload*/) {
         const channel = client.channels.cache.get(player.textChannel);

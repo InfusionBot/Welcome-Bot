@@ -66,6 +66,7 @@ module.exports = class CMD extends Command {
                 selfDeafen: true,
             });
         if (player.state !== "CONNECTED") player.connect();
+        player.set("autoplay", false);
         let res;
         try {
             res = await player.search(name, message.author);
