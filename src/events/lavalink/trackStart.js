@@ -11,7 +11,11 @@ module.exports = {
     once: false,
     execute(client, player, track /*, payload*/) {
         const channel = client.channels.cache.get(player.textChannel);
-        const embed = new Embed()
+        const author = player.get("author");
+        const embed = new Embed({
+            tag: author.tag,
+            avatarURL: author.displayAvatarURL(),
+        })
             .setDescription(
                 `${client.musicEmojis.play} **Started Playing**\n [${
                     track.title
@@ -19,11 +23,7 @@ module.exports = {
                     track.requester.id
                 }>]`
             )
-            .setThumbnail(track.displayThumbnail("3"))
-            .setFooter(
-                player.message.author.tag,
-                player.message.author.displayAvatarURL()
-            );
+            .setThumbnail(track.displayThumbnail("3"));
         channel.send({ embeds: [embed] });
     },
 };

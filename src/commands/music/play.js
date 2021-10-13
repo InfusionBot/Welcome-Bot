@@ -61,12 +61,12 @@ module.exports = class CMD extends Command {
                 guild: message.guild.id,
                 voiceChannel: voice.id,
                 textChannel: message.channel.id,
-                message,
                 volume: 50,
                 selfDeafen: true,
             });
         if (player.state !== "CONNECTED") player.connect();
         player.set("autoplay", false);
+        player.set("author", message.author);
         let res;
         try {
             res = await player.search(name, message.author);
