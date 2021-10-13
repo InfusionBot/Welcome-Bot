@@ -143,13 +143,15 @@ module.exports = function (client) {
         client.logger.log("DISBOTLIST_token is not set", "warn");
     }
 
-    //Top.gg stats
-    TopggAPI.postStats({
-        serverCount: servers,
-        shardCount: 0,
-    })
-        .then(() => {
-            if (client.debug) console.log("Posted stats to Topgg");
+    if (TopggAPI) {
+        //Top.gg stats
+        TopggAPI.postStats({
+            serverCount: servers,
+            shardCount: 0,
         })
-        .catch(console.error);
+            .then(() => {
+                if (client.debug) console.log("Posted stats to Topgg");
+            })
+            .catch(console.error);
+    }
 };

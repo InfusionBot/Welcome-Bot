@@ -3,13 +3,13 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const { Embed } = require("../classes");
+const { Embed } = require("../../classes");
 module.exports = {
     name: "guildMemberAdd",
     once: false,
     async execute(client, member) {
         // When a new member joins
-        require("../functions/greetUser")(member);
+        require("../../functions/greetUser")(member);
         let guildDB = await client.db.findOrCreateGuild(member.guild.id);
         if (!guildDB) {
             await client.wait(5000); //wait 5 secs

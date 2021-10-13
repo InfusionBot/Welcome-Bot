@@ -11,7 +11,6 @@ const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
 });
 
-require("./db/connection");
 const dbAuditor = require("./db/functions/dbAuditor");
 
 process.env.userAgent = "Discord Welcome-Bot " + client.package.version;

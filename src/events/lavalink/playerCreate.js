@@ -4,5 +4,10 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 module.exports = {
-    CodesManager: require("./CodesManager"),
+    name: "playerCreate",
+    once: false,
+    execute(client, player) {
+        if (client.debug)
+            client.logger.debug(`New player created in ${player.guild}.`);
+    },
 };

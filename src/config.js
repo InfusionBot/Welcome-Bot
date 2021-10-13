@@ -26,6 +26,16 @@ module.exports = {
         votes: "867925583777103872",
         codes: "894811606083567677",
     },
+    nodes: [
+        {
+            host: "lava.link",
+            port: 80,
+            password: "anything as a password",
+            identifier: "Lavalink",
+            retryDelay: 3000,
+            secure: false,
+        },
+    ],
     reportsChannelId: "869017115385024543",
     ownerIds: [
         "815204465937481749" /*PuneetGopinath#0001*/,

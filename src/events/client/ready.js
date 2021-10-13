@@ -3,7 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const dbAuditor = require("../db/functions/dbAuditor");
+const dbAuditor = require("../../db/functions/dbAuditor");
 module.exports = {
     name: "ready",
     once: true,
@@ -18,7 +18,7 @@ module.exports = {
             "0 0 */6 * * *",
             async () => {
                 if (process.env.NODE_ENV !== "production") return;
-                const { Topgg } = require("../classes/");
+                const { Topgg } = require("../../classes");
                 if (!Topgg || !Topgg.api) return;
                 const guild = client.guilds.cache.get(client.config.botGuildId);
                 const role = await guild.roles.fetch(
@@ -51,8 +51,8 @@ module.exports = {
                     });
                 });
         });
-        const presence = require("../functions/presence");
-        const serverCount = require("../functions/serverCount");
+        const presence = require("../../functions/presence");
+        const serverCount = require("../../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);
         else client.logger.log("Dashboard not enabled", "debug");
         presence(client);
@@ -68,10 +68,10 @@ module.exports = {
             setInterval(() => {
                 dbAuditor(client);
             }, 3 * 60 * 60 * 1000);
-        require("../functions/versionSender")(client);
+        require("../../functions/versionSender")(client);
         if (process.env.NODE_ENV !== "production")
-            require("../helpers/updateDocs")(client);
-        client.music.initialize();
+            require("../../helpers/updateDocs")(client);
+        client.manager.init(client.user.id);
         client.logger.log(`Welcome-Bot v${client.package.version} started!`);
     },
 };

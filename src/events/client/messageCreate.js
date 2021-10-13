@@ -3,14 +3,14 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const formatChat = require("../functions/formatChat");
+const formatChat = require("../../functions/formatChat");
 module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
         if (client.debugLevel > 0)
             client.logger.log("messageCreate event", "debug");
-        const execute = require("../functions/execute");
+        const execute = require("../../functions/execute");
         if (!client.initialized) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {

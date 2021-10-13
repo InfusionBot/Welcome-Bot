@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
     async execute({ message, args, guildDB }, t) {
         const commands = this.client.commands.enabled;
         const { categories } = this.client;
-        const pages = [new Embed({ color: "blue", timestamp: true })];
+        const pages = [new Embed({ color: "success", timestamp: true })];
         const timeout = 200000; //20 secs timeout
 
         for (let i = 0; i < pages.length; i++) {
@@ -39,7 +39,7 @@ module.exports = class CMD extends Command {
                 const p = pages.length;
                 const commandsCat = [];
                 pages[p] = new Embed({
-                    color: "blue",
+                    color: "success",
                     timestamp: true,
                 }).setTitle(
                     `${t("cmds:help.bot-help")} - ${t(

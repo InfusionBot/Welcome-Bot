@@ -5,14 +5,14 @@
  */
 const mongoose = require("mongoose");
 
-// eslint-disable-next-line no-undef
-mongoose
-    .connect(process.env.MONGO_URL)
-    .then(() => {
-        console.log("Connected to MongoDB!");
-    })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB: ", err);
-    });
-
-module.exports = mongoose;
+module.exports = async () => {
+    // eslint-disable-next-line no-undef
+    await mongoose
+        .connect(process.env.MONGO_URL)
+        .then(() => {
+            console.log("Connected to MongoDB!");
+        })
+        .catch((err) => {
+            console.error("Error connecting to MongoDB: ", err);
+        });
+};

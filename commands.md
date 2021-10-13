@@ -1236,7 +1236,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 You must join a voice channel before using this command.
 - Usage: w/play [song name]
 - Aliases: `joue`
-- Cooldown: 10
+- Cooldown: 5
 
 ### `seek`
 

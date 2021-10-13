@@ -10,7 +10,8 @@ const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const DBCache = require("./db/DBCache");
-const { CodesManager, MusicHandler } = require("./handlers/");
+const { CodesManager } = require("./handlers/");
+const { Manager } = require("erela.js");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -49,6 +50,7 @@ class WelcomeBot extends Client {
         });
         this.invites = {};
         this.allPerms = require("./data/allPerms");
+        this.musicEmojis = require("./data/customEmojis.json");
         this.shop = new Collection();
         const shop = require("./data/shop");
         for (let i = 0; i < shop.length; i++) {
@@ -78,7 +80,6 @@ class WelcomeBot extends Client {
             }
         })(this);
         this.staffTags = staffTags;
-        this.music = new MusicHandler(this);
         if (!process.env.TEST_MODE) this.initialize();
     }
 
@@ -88,8 +89,20 @@ class WelcomeBot extends Client {
     }*/
 
     async initialize() {
-        this.codes = new CodesManager(this);
+        require("./db/connection")().then(() => {
+            this.codes = new CodesManager(this);
+        });
         this.addDbFuncs();
+        this.manager = new Manager({
+            nodes: this.config.nodes,
+            send: ((id, payload) => {
+                const guild = this.guilds.cache.get(id);
+                if (guild) guild.shard.send(payload);
+            }).bind(this),
+            autoPlay: true,
+            plugins: [],
+        });
+        this.on("raw", (d) => this.manager.updateVoiceState(d));
         if (this.debug) this.logger.log(`Loading Locales`);
         await require("./loaders/Locale")(this); //Locale loader is async, so load it seperately
         if (this.debug) this.logger.log(`Finished loading Locales`);
