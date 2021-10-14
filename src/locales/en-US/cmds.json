@@ -581,12 +581,9 @@
     "queueAddCount": "{{count}} songs added to the queue!",
     "queueAdded": "Added to queue",
     "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}\nProgress: {{progress}}",
-    "errorOccurred": "An error occurred... Code: `{{error}}`",
     "starting": "Started Playing",
-    "rateLimited": "Sorry, I can't play the song as I am rate limited",
     "destroyedQueue": "The queue was destroyed, abd I can't play music using that queue. Please create a new queue from play command",
-    "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)",
-    "forbidden": "I am forbidden to play that song, will try to play some other song that matches"
+    "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)"
   },
   "seek": {
     "cmdDesc": "Go forward or backward a specific amount of time in the current song!!",
