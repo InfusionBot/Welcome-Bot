@@ -29,5 +29,9 @@ module.exports = {
         client.channels.cache
             .get(client.config.logsChannelId)
             .send({ embeds: [embed] });
+        //For music
+        const player = client.manager.players.get(guild.id);
+        if (!player) return;
+        if (guild.id === player.guild) player.destroy();
     },
 };

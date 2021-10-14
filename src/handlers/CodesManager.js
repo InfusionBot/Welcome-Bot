@@ -6,10 +6,9 @@
 const Embed = require("../classes/Embed");
 const { Collection } = require("discord.js");
 module.exports = class CodesManager {
-    #codesInfo;
     constructor(client) {
         this.client = client;
-        this.#codesInfo = new Collection();
+        this._codesInfo = new Collection();
         this.refresh();
         setInterval(() => this.refresh(), 1 * 60 * 60 * 1000); //Every hour
     }
@@ -21,6 +20,7 @@ module.exports = class CodesManager {
                 this.client.models.Code.findOneAndDelete({
                     code: codes[i].code,
                 });
+                // eslint-disable-next-line no-await-in-loop
                 const channel = await this.client.channels.fetch(
                     this.client.config.channels.codes
                 );
@@ -28,6 +28,7 @@ module.exports = class CodesManager {
                     const embed = new Embed({ color: "error", timestamp: true })
                         .setTitle("Premium code expired")
                         .setDesc(`Code: ${codes[i].code}`);
+                    // eslint-disable-next-line no-await-in-loop
                     const user = await this.client.users.fetch(codes[i].usedBy);
                     if (user)
                         embed.setAuthor(user.tag, user.displayAvatarURL());
@@ -41,7 +42,7 @@ module.exports = class CodesManager {
                 }
                 continue;
             }
-            this.#codesInfo.set(codes[i].code, codes[i]);
+            this._codesInfo.set(codes[i].code, codes[i]);
         }
         return codes;
     }
@@ -63,7 +64,7 @@ module.exports = class CodesManager {
         const info = { expiresAt: expiresAt.getTime(), code, userId: user.id };
         const codeDB = new this.client.models.Code(info);
         await codeDB.save();
-        this.#codesInfo.set(code, info);
+        this._codesInfo.set(code, info);
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
         );
@@ -72,8 +73,7 @@ module.exports = class CodesManager {
                 .setTitle("New premium code created")
                 .setDesc(`Code: ${code}`)
                 .addField("Expires", `${expiresAt}`, true);
-            if (user) embed.setAuthor(user.tag, user.displayAvatarURL());
-            else embed.setAuthor("Unknown or Anonymous");
+            embed.setAuthor(user.tag, user.displayAvatarURL());
             channel.send({ embeds: [embed] });
         }
         return info;
@@ -81,7 +81,7 @@ module.exports = class CodesManager {
 
     async use(code, user, guild = null) {
         if (!code || !user) throw new TypeError("code/user not provided");
-        const info = this.#codesInfo.get(code);
+        const info = this._codesInfo.get(code);
         if (!info) return { error: "invalid" };
         if (info.used) return { error: "used" };
         const codeDB = await this.client.models.Code.findOne(info);
@@ -89,8 +89,8 @@ module.exports = class CodesManager {
         codeDB.usedBy = user.id;
         if (guild) codeDB.guildId = guild.id;
         await codeDB.save();
-        this.#codesInfo.delete(info.code);
-        this.#codesInfo.set(info.code, codeDB.toJSON());
+        this._codesInfo.delete(info.code);
+        this._codesInfo.set(info.code, codeDB.toJSON());
         const channel = await this.client.channels.fetch(
             this.client.config.channels.codes
         );
@@ -99,8 +99,7 @@ module.exports = class CodesManager {
                 .setTitle("Premium code used")
                 .setDesc(`Code: ${code}`)
                 .addField("Expires", `${new Date(info.expiresAt)}`, true);
-            if (user) embed.setAuthor(user.tag, user.displayAvatarURL());
-            else embed.setAuthor("Unknown or Anonymous");
+            embed.setAuthor(user.tag, user.displayAvatarURL());
             if (guild) embed.setFooter(guild.name, guild.iconURL());
             else embed.setFooter("Unknown guild. Maybe claimed in DMs");
             channel.send({ embeds: [embed] });
@@ -109,18 +108,18 @@ module.exports = class CodesManager {
     }
 
     getCode(code) {
-        return this.#codesInfo.get(code);
+        return this._codesInfo.get(code);
     }
 
     get valid() {
-        return this.#codesInfo;
+        return this._codesInfo;
     }
 
     get used() {
-        return this.#codesInfo.filter((c) => c.used);
+        return this._codesInfo.filter((c) => c.used);
     }
 
     get notUsed() {
-        return this.#codesInfo.filter((c) => !c.used);
+        return this._codesInfo.filter((c) => !c.used);
     }
 };

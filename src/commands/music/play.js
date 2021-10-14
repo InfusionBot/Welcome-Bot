@@ -57,6 +57,7 @@ module.exports = class CMD extends Command {
             this.client.manager.create({
                 guild: message.guild.id,
                 voiceChannel: voice.id,
+                textChannel: message.channel.id,
                 volume: 100,
                 selfDeafen: true,
             });

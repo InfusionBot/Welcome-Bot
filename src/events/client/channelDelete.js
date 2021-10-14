@@ -5,30 +5,37 @@
  */
 const { Embed } = require("../../classes");
 module.exports = {
-    name: "messageDelete",
+    name: "channelDelete",
     once: false,
-    async execute(client, message) {
-        if (message.author.bot || !message.guild) return;
-        const guildDB = await client.models.Guild.findOne(message.guild.id);
+    async execute(client, channel) {
+        const guildDB = await client.models.Guild.findOne(channel.guild.id);
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (guildDB.plugins.serverlogs.enabled) {
-            const channel = await message.guild.channels.fetch(
+            const channel = await channel.guild.channels.fetch(
                 guildDB.plugins.serverlogs.channel
             );
             if (channel) {
                 const embed = new Embed({
-                    tag: message.author.tag,
-                    avatarURL: message.author.displayAvatarURL(),
-                    footer: `ID: ${message.author.id}`,
+                    tag: channel.name,
+                    footer: `ID: ${channel.id}`,
                 })
-                    .setTitle(`${t("misc:deleted")}`)
-                    .setDesc("```diff\n" + `- ${message.content}\n` + "```");
+                    .setTitle(`${t("misc:chanDel")}`)
+                    .setDesc("```diff\n" + `- ${channel.name}\n` + "```");
                 channel
                     .send({
                         embeds: [embed],
                     })
                     .catch(() => {});
             }
+        }
+        //For music
+        if (
+            channel.type === "GUILD_VOICE" &&
+            channel.members.has(client.user.id)
+        ) {
+            const player = client.manager.players.get(channel.guild.id);
+            if (!player) return;
+            player.destroy();
         }
     },
 };

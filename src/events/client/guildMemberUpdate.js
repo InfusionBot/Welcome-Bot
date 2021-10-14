@@ -8,15 +8,13 @@ module.exports = {
     name: "guildMemberUpdate",
     once: false,
     async execute(client, oldMember, newMember) {
-        if (client.debugLevel > 0)
-            client.logger.log("guildMemberUpdate event", "debug");
-        if (oldMember.equals(newMember) || newMember.user.bot) return;
-        let guildDB;
-        if (newMember.guild) {
-            guildDB = await client.db.findOrCreateGuild(newMember.guild.id);
-        } else {
-            guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
-        }
+        if (
+            oldMember.equals(newMember) ||
+            newMember.user.bot ||
+            !newMember.guild
+        )
+            return;
+        const guildDB = await client.models.Guild.findOne(newMember.guild.id);
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         let diff = "";
         const addedRoles = [];

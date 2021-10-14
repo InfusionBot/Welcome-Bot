@@ -73,7 +73,10 @@
   "deleted": "Message Deleted",
   "nickModify": "Nickname updated",
   "mem_join": "Member Joined",
+  "mem_leave": "Member Left",
+  "joinedAt": "Joined At",
   "premium": "Premium",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "chanDel": "Channel Deleted"
 }

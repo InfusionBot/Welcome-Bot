@@ -8,14 +8,14 @@ module.exports = {
     name: "guildMemberAdd",
     once: false,
     async execute(client, member) {
-        // When a new member joins
-        require("../../functions/greetUser")(member);
         let guildDB = await client.db.findOrCreateGuild(member.guild.id);
         if (!guildDB) {
             await client.wait(5000); //wait 5 secs
-            guildDB = await client.db.findOrCreateGuild(member.guild.id);
+            guildDB = await client.models.Guild.findOne(member.guild.id);
             if (!guildDB) return;
         }
+        // When a new member joins
+        require("../../functions/greetUser")(member);
         const t = client.i18next.getFixedT(guildDB.lang ?? "en-US");
         if (guildDB.plugins.autorole.enabled) {
             member.roles

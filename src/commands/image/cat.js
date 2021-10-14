@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message }, t) {
+    async execute({ message } /*, t*/) {
         const image = await require("node-fetch")(
             "http://thecatapi.com/api/images/get?format=src&type=png"
         ).then((res) => res.url);
@@ -42,7 +42,7 @@ module.exports = class CMD extends Command {
         });
     }
 
-    async run({ interaction }, t) {
+    async run({ interaction } /*, t*/) {
         const image = await require("node-fetch")(
             "http://thecatapi.com/api/images/get?format=src&type=png"
         ).then((res) => res.url);

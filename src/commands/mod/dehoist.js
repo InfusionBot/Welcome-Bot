@@ -77,8 +77,4 @@ module.exports = class CMD extends Command {
             message.channel.send({ embeds: [embed] });
         }
     }
-
-    async run({ interaction }, t) {
-        return;
-    }
 };

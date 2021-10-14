@@ -28,7 +28,7 @@ module.exports = class CMD extends Command {
         const player = this.client.manager.get(message.guild.id);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!player || !player.playing)
+        if (!player || player.playing)
             return message.reply(t("cmds:stop.notPlaying"));
         const amount = parseInt(args[0]);
         if (isNaN(amount)) {

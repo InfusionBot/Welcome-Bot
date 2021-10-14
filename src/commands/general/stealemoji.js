@@ -65,8 +65,4 @@ module.exports = class CMD extends Command {
             }
         }
     }
-
-    async run({ interaction }, t) {
-        return;
-    }
 };

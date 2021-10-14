@@ -19,7 +19,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message }, t) {
+    async execute({ message } /*, t*/) {
         const res = await this.fetchJson("https://random-d.uk/api/v1/random");
         const embed = new Embed().setImage(res.url);
         message.reply({ embeds: [embed] });

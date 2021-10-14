@@ -73,7 +73,7 @@ module.exports = class CMD extends Command {
             "Joined:",
             `Joined discord at *${user.createdAt}*` +
                 (message.guild
-                    ? `\n\nJoined **${message.guild.name}** server at *${message.member.joinedAt}*`
+                    ? `\n\nJoined **${message.guild.name}** server at *${member.joinedAt}*`
                     : "")
         );
         if (member && member.nickname)

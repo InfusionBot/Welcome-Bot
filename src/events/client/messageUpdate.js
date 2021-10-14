@@ -8,15 +8,8 @@ module.exports = {
     name: "messageUpdate",
     once: false,
     async execute(client, oldMessage, message) {
-        if (client.debugLevel > 0)
-            client.logger.log("messageUpdate event", "debug");
-        if (message.author.bot) return;
-        let guildDB;
-        if (message.guild && message.channel.type !== "DM") {
-            guildDB = await client.db.findOrCreateGuild(message.guild.id);
-        } else {
-            guildDB = { prefix: client.config.defaultPrefix, disabled: [] };
-        }
+        if (message.author.bot || !message.guild) return;
+        const guildDB = await client.models.Guild.findOne(message.guild.id);
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
             message.channel.type === "GUILD_NEWS" &&
