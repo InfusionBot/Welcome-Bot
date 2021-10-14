@@ -28,16 +28,16 @@ module.exports = class CMD extends Command {
 
     //eslint-disable-next-line no-unused-vars
     execute({ message, args }, t) {
-        const queue = message.client.player.getQueue(message.guild);
+        const player = this.client.manager.get(message.guild.id);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue || !queue.playing)
+        if (!player || !player.playing)
             return message.reply(t("cmds:stop.notPlaying"));
         const time = ms(args.join(" "));
         if (isNaN(time)) {
             return message.reply(t("cmds:seek.invalidTime"));
         }
-        if (queue.seek(time)) message.react("👍");
+        if (player.seek(time)) message.react("👍");
         else message.react("❌");
     }
 };

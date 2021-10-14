@@ -178,6 +178,10 @@ class WelcomeBot extends Client {
     get models() {
         return this.db.models;
     }
+
+    isOwner(id) {
+        return this.config.ownerIds.includes(id);
+    }
 }
 
 module.exports = WelcomeBot;

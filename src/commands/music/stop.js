@@ -24,10 +24,10 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message }, t) {
-        const queue = message.client.player.getQueue(message.guild);
+        const player = this.client.manager.get(message.guild.id);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue || !queue.playing)
+        if (!player || !player.playing)
             return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
         const embed = new Embed({ color: "blue", timestamp: true }).setTitle(
@@ -61,7 +61,7 @@ module.exports = class CMD extends Command {
             collector.on("collect", (reaction) => {
                 const haveVoted = reaction.count - 1;
                 if (haveVoted >= moreVotes) {
-                    message.client.player.deleteQueue(message.guild);
+                    player.destroy();
                     msg.edit({
                         embeds: [embed.setDesc(t("cmds:stop.success"))],
                     });
@@ -84,7 +84,7 @@ module.exports = class CMD extends Command {
                 }
             });
         } else {
-            message.client.player.deleteQueue(message.guild);
+            player.destroy();
             msg.edit({
                 embeds: [embed.setDesc(`🛑 | ${t("cmds:stop.success")}`)],
             });

@@ -1,5 +1,4 @@
 /**
- * Copyright (c) 2021 S Dip
  * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
@@ -9,19 +8,21 @@ const { Embed } = require("../../classes");
 module.exports = {
     name: "trackStart",
     once: false,
-    execute(client, player, track /*, payload*/) {
-        const channel = client.channels.cache.get(player.textChannel);
-        const author = player.get("author");
+    async execute(client, player, track /*, payload*/) {
+        const guildDB = await client.db.findOrCreateGuild(player.guild);
+        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        const channel = player.get("channel");
         const embed = new Embed({
-            tag: author.tag,
-            avatarURL: author.displayAvatarURL(),
+            tag: track.requester.tag,
+            avatarURL: track.requester.displayAvatarURL(),
         })
+            .setTitle(
+                `${client.musicEmojis.play} **${t("cmds:play.starting")}**`
+            )
             .setDescription(
-                `${client.musicEmojis.play} **Started Playing**\n [${
-                    track.title
-                }](${track.uri}) - \`[${convertTime(track.duration)}]\` [<@${
-                    track.requester.id
-                }>]`
+                `[${track.title}](${track.uri}) - \`[${convertTime(
+                    track.duration
+                )}]\`\n[<@${track.requester.id}>]`
             )
             .setThumbnail(track.displayThumbnail("3"))
             .setFooter(client.user.username, client.user.displayAvatarURL());

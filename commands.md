@@ -1232,8 +1232,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: Play music on channel.
-You must join a voice channel before using this command.
+- Description: Play music on voice / stage channel.
 - Usage: w/play [song name]
 - Aliases: `joue`
 - Cooldown: 5
@@ -1288,4 +1287,4 @@ You must join a voice channel before using this command.
 - Description: Adjust the volume of the music
 - Usage: w/volume (0-200)
 - Aliases: `sound-level`, `soundlevel`
-- Cooldown: 10
+- Cooldown: 5

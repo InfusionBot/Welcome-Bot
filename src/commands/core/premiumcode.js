@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB, language }, t) {
+    async execute({ message, args, language }, t) {
         moment.locale(language.moment);
         const info = await this.client.codes.getCode(args[0]);
         if (!info) return message.reply(`${t(`cmds:usecode.errors.invalid`)}`);

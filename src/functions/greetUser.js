@@ -38,6 +38,7 @@ module.exports = async (member) => {
                 //basically a for loop over the invites
                 if (invite.uses != client.invites[invite.code]) {
                     //if it doesn't match what we stored:
+                    // eslint-disable-next-line prefer-destructuring
                     inviter = invite.inviter;
                     client.invites[invite.code] = invite.uses;
                 }

@@ -3,6 +3,7 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+// eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -16,7 +17,7 @@ module.exports = class CMD extends Command {
                     guildOnly: true,
                 },
                 disabled: false,
-                cooldown: 10,
+                cooldown: 5,
                 category: "Music",
             },
             client
@@ -24,15 +25,15 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        const queue = message.client.player.getQueue(message.guild);
+        const player = this.client.manager.get(message.guild.id);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue || !queue.playing)
+        if (!player || !player.playing)
             return message.reply(t("cmds:stop.notPlaying"));
         const amount = parseInt(args[0]);
         if (isNaN(amount)) {
             return message.reply(
-                `🎧 | ${t("cmds:volume.current", { volume: queue.volume })}`
+                `🎧 | ${t("cmds:volume.current", { volume: player.volume })}`
             );
         }
         if (amount < 0 || amount > 200) {
@@ -43,9 +44,17 @@ module.exports = class CMD extends Command {
                 })}`
             );
         }
-        queue.setVolume(amount);
+        player.setVolume(amount);
+        const emoji =
+            this.client.musicEmojis[
+                amount >= 100
+                    ? "volumehigh"
+                    : amount < 50
+                    ? "volumelow"
+                    : "volumemiddle"
+            ];
         message.reply(
-            `✅ | ${t("cmds:volume.success", {
+            `${emoji} | ${t("cmds:volume.success", {
                 volume: amount,
             })}`
         );

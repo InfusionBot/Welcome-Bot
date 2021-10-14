@@ -94,8 +94,4 @@ module.exports = class CMD extends Command {
         }
         await guildDB.save();
     }
-
-    async run({ interaction, guildDB }, t) {
-        return;
-    }
 };

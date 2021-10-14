@@ -39,7 +39,7 @@ module.exports = class CMD extends Command {
         if (!user) {
             return message.reply(t("errors:invalidUser"));
         }
-        let member = await message.guild.members.fetch(user.id);
+        const member = await message.guild.members.fetch(user.id);
         if (!member) return message.reply(t("errors:userNotInGuild"));
         if (user.id === message.client.user.id)
             return message.reply(t("cmds:kick.mySelf"));
@@ -110,7 +110,7 @@ module.exports = class CMD extends Command {
         )
             return interaction.editReply(t("misc:higherRoleBot"));
 
-        const reason = args.slice(1).join(" ") || t("misc:not_spec");
+        const reason = interaction.getUser("user") || t("misc:not_spec");
         try {
             member.kick(reason);
         } catch (error) {
@@ -120,7 +120,7 @@ module.exports = class CMD extends Command {
         }
 
         if (guildDB.plugins.modlogs) {
-            const channel = message.guild.channels.cache.get(
+            const channel = interaction.guild.channels.cache.get(
                 guildDB.plugins.modlogs
             );
             if (channel) {
@@ -130,7 +130,7 @@ module.exports = class CMD extends Command {
                 );
                 embed.addField(
                     t("misc:resMod"),
-                    `${message.author.tag} (${message.author.id})`
+                    `${interaction.user.tag} (${interaction.user.id})`
                 );
                 embed.addField(t("misc:reason"), reason);
                 channel.send({ embeds: [embed] });

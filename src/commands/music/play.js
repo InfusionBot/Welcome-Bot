@@ -1,5 +1,4 @@
 /**
- * Copyright (c) 2021 S Dip
  * Discord Welcome-Bot
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
@@ -29,7 +28,6 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args }, t) {
-        //Thanks to https://github.com/brblacky/lavamusic
         const name = args.join(" ");
         if (!name) return message.reply(t("cmds:play.missingSongName"));
         const voice = message.member.voice.channel;
@@ -54,19 +52,18 @@ module.exports = class CMD extends Command {
                     )}`,
                 })
             );
-
         const player =
             this.client.manager.get(message.guild.id) ||
             this.client.manager.create({
                 guild: message.guild.id,
                 voiceChannel: voice.id,
-                textChannel: message.channel.id,
                 volume: 100,
                 selfDeafen: true,
             });
         if (player.state !== "CONNECTED") player.connect();
         player.set("autoplay", false);
         player.set("author", message.author);
+        player.set("channel", message.channel);
         let res;
         try {
             res = await player.search(name, message.author);
@@ -74,12 +71,20 @@ module.exports = class CMD extends Command {
                 if (!player.queue.current) player.destroy();
                 throw res.exception;
             }
-        } catch (err) {
-            return message.reply(
-                `An error occurred while searching: ${err.message}`
-            );
+        } catch (e) {
+            if (this.client.isOwner(message.author.id))
+                return message.reply(`${t("errors:generic")}: ${e.message}`);
+            return console.log(e);
         }
-        let track, embed;
+        let embed,
+            max = 5,
+            results,
+            collected,
+            first,
+            index,
+            track;
+        const filter = (m) =>
+            m.author.id === message.author.id && /^(\d+|end)$/i.test(m.content);
         switch (res.loadType) {
             case "NO_MATCHES":
                 if (!player.queue.current) player.destroy();
@@ -94,38 +99,102 @@ module.exports = class CMD extends Command {
                     player.play();
                 embed = new Embed()
                     .setTimestamp()
+                    .setTitle(
+                        `${this.client.musicEmojis.playlist} **${t(
+                            "cmds:play.playlist"
+                        )}**`
+                    )
                     .setDescription(
-                        `**Added Playlist to queue**\n${
-                            res.tracks.length
-                        } Songs **${res.playlist.name}** - \`[${convertTime(
+                        `**${res.playlist.name}** - \`[${convertTime(
                             res.playlist.duration
-                        )}]\``
+                        )}]\`\n${t("cmds:play.queueAddCount", {
+                            count: res.tracks.length,
+                        })}`
                     );
                 message.channel.send({ embeds: [embed] });
                 break;
             case "TRACK_LOADED":
-            case "SEARCH_RESULT":
                 track = res.tracks[0];
                 player.queue.add(track);
-                if (!player.playing && !player.paused && !player.queue.size) {
-                    player.play();
-                } else {
-                    embed = new Embed()
-                        .setTimestamp()
-                        .setThumbnail(track.displayThumbnail("hqdefault"))
-                        .setDescription(
-                            `**Added to queue**\n[${track.title}](${
-                                track.uri
-                            }) - \`[${convertTime(track.duration)}]\` [<@${
-                                track.requester.id
-                            }>]`
-                        );
-                    message.channel.send({ embeds: [embed] });
+                this.start(player, track, message, t);
+                break;
+            case "SEARCH_RESULT":
+                if (res.tracks.length < max) max = res.tracks.length;
+
+                results = res.tracks
+                    .slice(0, max)
+                    .map((track, index) => `${++index}. ${track.title}`)
+                    .join("\n");
+                embed = new Embed()
+                    .setTitle(t("cmds:play.select"))
+                    .setDescription(
+                        `\`\`\`yaml\n${results}\`\`\`\n${t(
+                            "cmds:play.cancelText"
+                        )}`
+                    );
+                message.channel.send({ embeds: [embed] });
+
+                try {
+                    collected = await message.channel.awaitMessages({
+                        max: 1,
+                        time: 30e3, //30*10³ = 30000
+                        errors: ["time"],
+                        filter,
+                    });
+                } catch (e) {
+                    /*if (!player.queue.current) player.destroy();
+                    return message.reply("you didn't provide a selection.");*/
+                    index = 0;
+                    if (this.client.debug) console.log(e);
                 }
+
+                if (collected?.size > 0) {
+                    first = collected.first().content;
+                    if (first.toLowerCase() === "cancel") {
+                        if (!player.queue.current) player.destroy();
+                        return message.channel.send(t("cmds:play.cancelled"));
+                    }
+                    index = Number(first) - 1;
+                    if (index < 0 || index > max - 1)
+                        return message.reply(
+                            `The number you provided too small or too big (1-${max}).`
+                        );
+                }
+                track = res.tracks[index];
+                player.queue.add(track);
+                this.start(player, track, message, t);
                 break;
             default:
                 this.client.logger.debug(`Unhandled loadType: ${res.loadType}`);
                 break;
+        }
+    }
+
+    start(player, track, message, t) {
+        if (!player.playing && !player.paused && !player.queue.size) {
+            player.play();
+        } else {
+            const embed = new Embed({
+                tag: track.requester.tag,
+                avatarURL: track.requester.displayAvatarURL(),
+            })
+                .setTimestamp()
+                .setThumbnail(track.displayThumbnail("hqdefault"))
+                .setTitle(
+                    `${this.client.musicEmojis.queue} **${t(
+                        "cmds:play.queueAdded"
+                    )}**`
+                )
+                .setDescription(
+                    `[${track.title}](${track.uri}) - \`[${convertTime(
+                        track.requester.id
+                    )}]\``
+                )
+                .setFooter(
+                    this.client.user.username,
+                    this.client.user.displayAvatarURL()
+                );
+            message.channel.send({ embeds: [embed] });
         }
     }
 };

@@ -17,7 +17,7 @@ const fetchGuild = async (guildId, client) => {
 const fetchUser = async (userData, client) => {
     if (userData.guilds) {
         for (var i = 0; i < userData.guilds.length; i++) {
-            let guild = userData.guilds[i];
+            const guild = userData.guilds[i];
             const perms = new Permissions(BigInt(guild.permissions));
             let admin = false;
             if (perms.has(Permissions.FLAGS.MANAGE_GUILD) || guild.owner) {

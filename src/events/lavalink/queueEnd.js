@@ -8,15 +8,20 @@ const { Embed } = require("../../classes");
 module.exports = {
     name: "queueEnd",
     once: false,
-    execute(client, player) {
-        const channel = client.channels.cache.get(player.textChannel);
+    async execute(client, player) {
+        const guildDB = await client.db.findOrCreateGuild(player.guild);
+        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        const channel = player.get("channel");
         const author = player.get("author");
         const embed = new Embed({
             tag: author.tag,
             avatarURL: author.displayAvatarURL(),
         })
-            .setDescription(`${client.musicEmojis.warn} **Queue ended**`)
+            .setDescription(
+                `${client.musicEmojis.warn} ${t("cmds:play.queueEnd")}`
+            )
             .setFooter(client.user.username, client.user.displayAvatarURL());
         channel.send({ embeds: [embed] });
+        player.destroy();
     },
 };

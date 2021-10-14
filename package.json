@@ -16,7 +16,8 @@
   "scripts": {
     "start": "node src/shard.js",
     "dev": "npx nodemon src/bot.js --watch src",
-    "lint": "eslint src",
+    "lint": "npx eslint src",
+    "lint:fix": "npx eslint src --fix",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "mkcmd": "cp -r src/commandTemplate.js src/commands/$npm_config_cat/$npm_config_command.js",
