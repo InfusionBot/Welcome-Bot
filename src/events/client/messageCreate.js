@@ -13,19 +13,21 @@ module.exports = {
         const execute = require("../../functions/execute");
         if (!client.initialized) return;
         let guildDB;
-        if (message.guild && message.channel.type !== "DM") {
-            guildDB = await client.models.Guild.findOne({
-                guildId: message.guild.id,
-            });
-        } else {
-            guildDB = {
-                prefix: client.config.defaultPrefix,
-                disabled: [],
-                plugins: {},
-                premium: { enabled: false },
-                lang: "en-US",
-            };
-        }
+        try {
+            if (message.guild && message.channel.type !== "DM") {
+                guildDB = await client.models.Guild.findOne({
+                    guildId: message.guild.id,
+                });
+            } else {
+                guildDB = {
+                    prefix: client.config.defaultPrefix,
+                    disabled: [],
+                    plugins: {},
+                    premium: { enabled: false },
+                    lang: "en-US",
+                };
+            }
+        } catch (e) {}
         if (!guildDB) return;
         //const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (
