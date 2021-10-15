@@ -73,7 +73,7 @@ module.exports = class CMD extends Command {
                         max: 100,
                     })
                 );
-            }*/else if (amount < 1) {
+            }*/ else if (amount < 1) {
                 return message.reply(
                     t("errors:invalidNumRange", {
                         min: 1,
