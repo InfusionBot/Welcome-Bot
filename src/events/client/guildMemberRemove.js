@@ -31,9 +31,9 @@ module.exports = {
                 })
                     .setTitle(`${t("misc:mem_leave")}`)
                     .setDesc(
-                        `**${t("misc:joined")}**: ${moment.duration(
-                            moment().diff(member.joinedAt)
-                        ).humanize()}`
+                        `**${t("misc:joined")}**: ${moment
+                            .duration(moment().diff(member.joinedAt))
+                            .humanize()}`
                     );
                 channel
                     .send({

@@ -68,11 +68,7 @@ describe("Commands", () => {
 
     it("should be defined in cmds.json", (done) => {
         const cmdsFile = require("../locales/en-US/cmds.json");
-        const cmds = commands.reduce((arr, command) => {
-            if (command.category.indexOf("Owner") !== -1) return [];
-            const { name } = command;
-            return [...arr, name];
-        }, []);
+        const cmds = commands.filter(c => c.category.indexOf("Owner") === -1).map(c => c.name);
         let errors = [];
         for (let i = 0; i < cmds.length; i++) {
             if (!cmdsFile[cmds[i]]?.cmdDesc) {

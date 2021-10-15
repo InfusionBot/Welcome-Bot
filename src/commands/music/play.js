@@ -17,7 +17,7 @@ module.exports = class CMD extends Command {
                 requirements: {
                     args: true,
                     guildOnly: true,
-                    premiumOnly: true,
+                    //premiumOnly: true,
                 },
                 disabled: false,
                 cooldown: 5,
@@ -63,6 +63,7 @@ module.exports = class CMD extends Command {
             });
         if (player.state !== "CONNECTED") player.connect();
         player.set("autoplay", false);
+        player.set("247", false);
         player.set("author", message.author);
         player.set("channel", message.channel);
         let res;

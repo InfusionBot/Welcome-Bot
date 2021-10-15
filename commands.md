@@ -1206,7 +1206,20 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 10
 
-## Music (8 commands)
+## Music (9 commands)
+
+### `247`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Set player to play for 24/7. Only available to premium users
+- Usage: w/247 
+- Aliases: `24/7`
+- Cooldown: 5
 
 ### `back`
 

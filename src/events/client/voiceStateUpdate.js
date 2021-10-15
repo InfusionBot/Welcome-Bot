@@ -76,8 +76,9 @@ module.exports = {
                     oldState.guild.channels.cache.get(player.voiceChannel)
                         .members.size <= 1
                 ) {
-                    //If player is alive and there is only 1 member left (the 1 member is mostly me), then emit queueEnd
-                    return client.manager.emit("queueEnd", player);
+                    //If player is alive, there is only 1 member left and it is not running for 24/7, then emit queueEnd
+                    if (!player.get("247"))
+                        return client.manager.emit("queueEnd", player);
                 }
             }
         }
