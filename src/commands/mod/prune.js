@@ -82,8 +82,16 @@ module.exports = class CMD extends Command {
                 );
             }
             while (amount > 100) {
-                const args2 = [amount, ...args.slice(1)];
-                this.execute({ message, args: args2, guildDB }, t);
+                messages = await message.channel.messages
+                    .fetch({ limit: 100 })
+                    .then((msgs) => {
+                        if (!args[1] || args[1] !== "-f")
+                            return msgs.filter((msg) => !msg.pinned);
+                        return msgs;
+                    });
+                message.channel.bulkDelete(messages, true).catch((err) => {
+                    message.client.logger.log(err, "error", ["PRUNING"]);
+                });
                 amount = amount - 100;
             }
             messages = await message.channel.messages
