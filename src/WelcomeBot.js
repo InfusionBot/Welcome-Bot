@@ -48,7 +48,6 @@ class WelcomeBot extends Client {
         require("./locales/languages.json").forEach((lang) => {
             this.languages.set(lang.name, lang);
         });
-        this.invites = {};
         this.allPerms = require("./data/allPerms");
         this.musicEmojis = require("./data/musicEmojis.json");
         this.shop = new Collection();

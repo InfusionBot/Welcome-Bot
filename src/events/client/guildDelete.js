@@ -29,9 +29,13 @@ module.exports = {
         client.channels.cache
             .get(client.config.logsChannelId)
             .send({ embeds: [embed] });
+        if (!guild.available) return;
         //For music
         const player = client.manager.players.get(guild.id);
-        if (!player) return;
-        if (guild.id === player.guild) player.destroy();
+        if (player && guild.id === player.guild) {
+            player.destroy();
+        }
+        /*//Invite tracking
+        if (client.invites.has(guild.id)) client.invites.delete(guild.id);*/
     },
 };

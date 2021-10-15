@@ -30,20 +30,25 @@ const applyText = (canvas, text, fontSize = 60, font = "Bold") => {
 };
 module.exports = async (member) => {
     try {
-        const { client } = member;
-        let inviter = null;
-        const guildInvites = await member.guild.invites.fetch(); //get all guild invites
-        if (guildInvites) {
-            guildInvites.each((invite) => {
-                //basically a for loop over the invites
-                if (invite.uses != client.invites[invite.code]) {
-                    //if it doesn't match what we stored:
-                    // eslint-disable-next-line prefer-destructuring
-                    inviter = invite.inviter;
-                    client.invites[invite.code] = invite.uses;
-                }
-            });
-        }
+        const { client, guild } = member;
+        /*let inviter = null;
+        if (guild.me.permissions.has("MANAGE_GUILD")) {
+            const guildInvites = (await member.guild.invites.fetch()) ?? null; //get all guild invites
+            if (guildInvites) {
+                guildInvites.each((invite) => {
+                    //basically a for loop over the invites
+                    if (
+                        invite.uses !=
+                        client.invites.get(guild.id).get(invite.code)
+                    ) {
+                        //if it doesn't match what we stored:
+                        // eslint-disable-next-line prefer-destructuring
+                        inviter = invite.inviter;
+                        client.invites[invite.code] = invite.uses;
+                    }
+                });
+            }
+        }*/
         const guildDB = await client.db.models.Guild.findOne({
             guildId: member.guild.id,
         });
@@ -123,21 +128,25 @@ module.exports = async (member) => {
                 /{members_formatted}/g,
                 `${member.guild.memberCount}${nth(member.guild.memberCount)}`
             );
-        if (inviter) {
-            msg = msg
-                .replace(/{inviter_tag}/g, `${inviter.tag}`)
-                .replace(/{inviter_mention}/g, `${inviter}`)
-                .replace(/{inviter_username}/g, `${inviter.username}`);
-        } else {
-            msg = msg
-                .replace(/{inviter_tag}/g, "Unknown inviter")
-                .replace(/{inviter_mention}/g, "Unknown inviter")
-                .replace(/{inviter_username}/g, "Unknow inviter");
+        /*const invIdk = "Unknown inviter";
+        msg = msg
+            .replace(/{inviter_tag}/g, `${inviter?.tag ?? invIdk}`)
+            .replace(/{inviter_mention}/g, `${inviter ?? invIdk}`)
+            .replace(/{inviter_username}/g, `${inviter?.username ?? invIdk}`);*/
+        let sent;
+        try {
+            sent = await channel.send({
+                content: msg,
+                files: [attachment],
+            });
+        } catch (e) {
+            try {
+                sent = await channel.send({
+                    content: msg,
+                });
+                // eslint-disable-next-line no-empty
+            } catch (e) {}
         }
-        const sent = await channel.send({
-            content: msg,
-            files: [attachment],
-        });
         return sent;
     } catch (e) {
         return e;

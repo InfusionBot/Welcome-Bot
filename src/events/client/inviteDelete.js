@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 module.exports = {
-    name: "inviteCreate",
+    name: "inviteDelete",
     once: false,
     execute(/*client, invite*/) {
         /*if (
@@ -22,6 +22,6 @@ module.exports = {
                 })
                 .catch(() => {});
         }
-        client.invites.get(invite.guild.id).set(invite.code, invite.uses);*/
+        client.invites.get(invite.guild.id).delete(invite.code);*/
     },
 };

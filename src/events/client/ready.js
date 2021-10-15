@@ -8,6 +8,8 @@ module.exports = {
     name: "ready",
     once: true,
     async execute(client) {
+        // "ready" isn't really ready. We need to wait a spell.
+        await client.wait(1000);
         // We logged in
         if (client.debug)
             client.logger.log(
@@ -28,29 +30,24 @@ module.exports = {
                 const membersToRemind = guild.members.cache.filter((m) =>
                     m.roles.cache.has(role.id)
                 );
+                const users = [];
                 membersToRemind.forEach(async (m) => {
                     if (await Topgg.api.hasVoted(m.user.id)) return;
-                    client.channels.cache
-                        .get(client.config.channels.general)
-                        .send(
-                            `Hey ${m}! Gentle reminder for voting! Use vote command`
-                        );
+                    users.push(`${m}`);
                 });
+                client.channels.cache
+                    .get(client.config.channels.general)
+                    .send(
+                        `Hey ${users.join(
+                            ", "
+                        )}!\nGentle reminder for voting! Use vote command`
+                    );
             },
             null,
             true,
             "America/Los_Angeles"
         );
         job.start();
-        client.guilds.cache.each((guild) => {
-            //on bot start, fetch all guilds and fetch all invites to store
-            if (!guild.me.permissions.has(""))
-                guild.invites.fetch().then((guildInvites) => {
-                    guildInvites.each((guildInvite) => {
-                        client.invites[guildInvite.code] = guildInvite.uses;
-                    });
-                });
-        });
         const presence = require("../../functions/presence");
         const serverCount = require("../../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);
@@ -73,5 +70,22 @@ module.exports = {
             require("../../helpers/updateDocs")(client);
         client.manager.init(client.user.id);
         client.logger.log(`Welcome-Bot v${client.package.version} started!`);
+        /*//Invite tracking
+        client.invites = new Map();
+        client.guilds.cache.each((guild) => {
+            //on bot start, fetch all guilds and fetch all invites to store
+            if (guild.me.permissions.has("MANAGE_GUILD")) {
+                //without manage guild we can't fetch invites :(
+                guild.invites
+                    .fetch()
+                    .then((guildInvites) => {
+                        client.invites.set(
+                            guild.id,
+                            new Map(guildInvites.map((inv) => inv.uses))
+                        );
+                    })
+                    .catch(() => {});
+            }
+        });*/
     },
 };

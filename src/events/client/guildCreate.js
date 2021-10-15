@@ -42,5 +42,18 @@ module.exports = {
         client.channels.cache
             .get(client.config.logsChannelId)
             .send({ embeds: [embed] });
+        /*//Invite tracking
+        if (guild.me.permissions.has("MANAGE_GUILD")) {
+            //without manage guild we can't fetch invites :(
+            guild.invites
+                .fetch()
+                .then((guildInvites) => {
+                    client.invites.set(
+                        guild.id,
+                        new Map(guildInvites.map((inv) => inv.uses))
+                    );
+                })
+                .catch(() => {});
+        }*/
     },
 };
