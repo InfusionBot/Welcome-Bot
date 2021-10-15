@@ -10,7 +10,7 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "pat",
+                name: "slap",
                 memberPerms: [],
                 botPerms: [],
                 requirements: {

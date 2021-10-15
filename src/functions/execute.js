@@ -233,7 +233,7 @@ module.exports = async (message, guildDB) => {
                     `Starting to execute cmd: ${command.name}`,
                     "debug"
                 );
-            message.channel.sendTyping().catch(() => {});
+            //message.channel.sendTyping().catch(() => {});
             try {
                 command.execute(
                     {

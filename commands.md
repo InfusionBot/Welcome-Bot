@@ -214,7 +214,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `welcomelogs`
 - Cooldown: 5
 
-## Anime (5 commands)
+## Anime (7 commands)
 
 ### `cuddle`
 
@@ -265,6 +265,32 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 - Description: Pats someone
 - Usage: w/pat [@mention / user id]
+- Aliases: None
+- Cooldown: 5
+
+### `slap`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Slap a user
+- Usage: w/slap [@mention / user id]
+- Aliases: None
+- Cooldown: 5
+
+### `tickle`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Tickle a user
+- Usage: w/tickle [@mention / user id]
 - Aliases: None
 - Cooldown: 5
 

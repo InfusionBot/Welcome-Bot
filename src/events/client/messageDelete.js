@@ -9,7 +9,10 @@ module.exports = {
     once: false,
     async execute(client, message) {
         if (message.author.bot || !message.guild) return;
-        const guildDB = await client.models.Guild.findOne(message.guild.id);
+        const guildDB = await client.models.Guild.findOne({
+            guildId: message.guild.id,
+        });
+        if (!guildDB) return;
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         if (guildDB.plugins.serverlogs.enabled) {
             const channel = await message.guild.channels.fetch(

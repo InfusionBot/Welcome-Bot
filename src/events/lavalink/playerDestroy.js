@@ -8,8 +8,6 @@ module.exports = {
     once: false,
     execute(client, player) {
         if (client.debug)
-            client.logger.debug(
-                `A player was destoryed in ${player.guild} (${player.guild?.id}).`
-            );
+            client.logger.debug(`A player was destoryed in ${player.guild}.`);
     },
 };
