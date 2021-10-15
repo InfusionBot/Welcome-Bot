@@ -11,7 +11,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "prune",
-                aliases: ["purge"],
+                aliases: ["purge", "clear"],
                 memberPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
                 botPerms: [Permissions.FLAGS.MANAGE_MESSAGES],
                 requirements: {
@@ -38,7 +38,6 @@ module.exports = class CMD extends Command {
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
     async execute({ message, args, guildDB }, t) {
         //TODO: Add translation
         let messages;
@@ -62,20 +61,31 @@ module.exports = class CMD extends Command {
                 );
         }
         if (!isNaN(parseInt(args[0]))) {
-            const amount = parseInt(args[0]) + 1;
+            let amount = parseInt(args[0]) + 1;
             if (isNaN(amount)) {
                 return message.reply(
                     "The provided number of messages to delete doesn't seem to be a valid number."
                 );
-            } else if (amount < 1 || amount > 100) {
+            } /*else if (amount < 1 || amount > 100) {
                 return message.reply(
                     t("errors:invalidNumRange", {
                         min: 1,
                         max: 100,
                     })
                 );
+            }*/else if (amount < 1) {
+                return message.reply(
+                    t("errors:invalidNumRange", {
+                        min: 1,
+                        max: "♾️",
+                    })
+                );
             }
-
+            while (amount > 100) {
+                const args2 = [amount, ...args.slice(1)];
+                this.execute({ message, args: args2, guildDB }, t);
+                amount = amount - 100;
+            }
             messages = await message.channel.messages
                 .fetch({ limit: amount })
                 .then((msgs) => {
