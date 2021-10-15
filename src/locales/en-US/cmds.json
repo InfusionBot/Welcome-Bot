@@ -488,10 +488,6 @@
     "cmdDesc": "Get information about a user. It will show your info if no user was mentioned",
     "usage": "(@mention / user id) (--dm)"
   },
-  "version": {
-    "cmdDesc": "Get information on a version or latest version",
-    "usage": "(version)"
-  },
   "cat": {
     "cmdDesc": "Show a random cat image"
   },
