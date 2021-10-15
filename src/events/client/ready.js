@@ -35,6 +35,7 @@ module.exports = {
                     if (await Topgg.api.hasVoted(m.user.id)) return;
                     users.push(`${m}`);
                 });
+                if (!users?.length || !users[0]) return;
                 client.channels.cache
                     .get(client.config.channels.general)
                     .send(

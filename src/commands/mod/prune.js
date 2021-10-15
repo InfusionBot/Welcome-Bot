@@ -93,6 +93,7 @@ module.exports = class CMD extends Command {
                     message.client.logger.log(err, "error", ["PRUNING"]);
                 });
                 amount = amount - 100;
+                await this.client.wait(4000);
             }
             messages = await message.channel.messages
                 .fetch({ limit: amount })
