@@ -27,6 +27,7 @@ module.exports = {
                     lang: "en-US",
                 };
             }
+            // eslint-disable-next-line no-empty
         } catch (e) {}
         if (!guildDB) return;
         //const t = client.i18next.getFixedT(guildDB.lang || "en-US");

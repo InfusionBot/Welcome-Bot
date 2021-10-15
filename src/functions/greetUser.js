@@ -30,7 +30,7 @@ const applyText = (canvas, text, fontSize = 60, font = "Bold") => {
 };
 module.exports = async (member) => {
     try {
-        const { client, guild } = member;
+        const { client /*, guild*/ } = member;
         /*let inviter = null;
         if (guild.me.permissions.has("MANAGE_GUILD")) {
             const guildInvites = (await member.guild.invites.fetch()) ?? null; //get all guild invites
