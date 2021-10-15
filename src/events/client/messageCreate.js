@@ -14,11 +14,7 @@ module.exports = {
         if (!client.initialized) return;
         let guildDB;
         if (message.guild && message.channel.type !== "DM") {
-            guildDB = await client.db.findOrCreateGuild(message.guild.id);
-            if (!guildDB) {
-                await client.wait(5000); //wait 5 secs
-            }
-            guildDB = await client.db.guildSchema.findOne({
+            guildDB = await client.models.Guild.findOne({
                 guildId: message.guild.id,
             });
         } else {
