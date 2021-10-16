@@ -202,6 +202,9 @@
   "shards": {
     "cmdDesc": "Shows information about the bot's shards"
   },
+  "sourcecode": {
+    "cmdDesc": "Link to Welcome-Bot's GitHub repo"
+  },
   "suggest": {
     "cmdDesc": "Give suggestions",
     "usage": "[suggestion description]",
