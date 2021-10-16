@@ -19,7 +19,9 @@ module.exports = {
                     guildId: message.guild.id,
                 });
                 if (!guildDB) {
-                    guildDB = await client.db.findOrCreateGuild(message.guild.id);
+                    guildDB = await client.db.findOrCreateGuild(
+                        message.guild.id
+                    );
                 }
             } else {
                 guildDB = {
