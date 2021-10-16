@@ -18,6 +18,9 @@ module.exports = {
                 guildDB = await client.models.Guild.findOne({
                     guildId: message.guild.id,
                 });
+                if (!guildDB) {
+                    guildDB = await client.db.findOrCreateGuild(message.guild.id);
+                }
             } else {
                 guildDB = {
                     prefix: client.config.defaultPrefix,
