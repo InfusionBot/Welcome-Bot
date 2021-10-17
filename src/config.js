@@ -50,6 +50,7 @@ module.exports = {
         logs: "855331801635749888",
     },
     site: "https://welcome-bot.github.io/",
+    source: "https://github.com/Welcome-Bot/welcome-bot",
     invite: (client) => {
         return client.generateInvite({
             scopes: ["bot", "applications.commands"],
