@@ -19,6 +19,15 @@ module.exports = class CMD extends Command {
                 disabled: false,
                 cooldown: 10,
                 category: "Fun",
+                slash: true,
+                options: [
+                    {
+                        name: "question",
+                        description: "Question to ask",
+                        type: "STRING",
+                        required: true,
+                    },
+                ],
             },
             client
         );
@@ -34,5 +43,17 @@ module.exports = class CMD extends Command {
             .setDescription(`**${res.response}**`)
             .setImage(res.url);
         message.reply({ embeds: [embed] });
+    }
+
+    async run({ interaction }, t) {
+        //TODO: Add translation
+        let res = await fetch("https://nekos.life/api/v2/8ball");
+        res = await res.json();
+        const text = args.join(" ");
+        const embed = new Embed()
+            .setTitle(text)
+            .setDescription(`**${res.response}**`)
+            .setImage(res.url);
+        interaction.followUp({ embeds: [embed] });
     }
 };
