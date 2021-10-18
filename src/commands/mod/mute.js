@@ -72,12 +72,14 @@ module.exports = class CMD extends Command {
                 })
             )
             .then((m) => {
-                m.user.send(
-                    t("cmds:mute.DMtext", {
-                        tag: message.author.tag,
-                        reason: reason,
-                    })
-                );
+                m.user
+                    .send(
+                        t("cmds:mute.DMtext", {
+                            tag: message.author.tag,
+                            reason: reason,
+                        })
+                    )
+                    .catch(() => {});
                 if (guildDB.plugins.modlogs) {
                     this.handleModLogs(message, guildDB, user, reason, t);
                 }
@@ -124,12 +126,14 @@ module.exports = class CMD extends Command {
                 })
             )
             .then((m) => {
-                m.user.send(
-                    t("cmds:mute.DMtext", {
-                        tag: interaction.user.tag,
-                        reason: reason,
-                    })
-                );
+                m.user
+                    .send(
+                        t("cmds:mute.DMtext", {
+                            tag: interaction.user.tag,
+                            reason: reason,
+                        })
+                    )
+                    .catch(() => {});
                 if (guildDB.plugins.modlogs) {
                     this.handleModLogs(interaction, guildDB, user, reason, t);
                 }

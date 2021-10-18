@@ -51,12 +51,14 @@ module.exports = class CMD extends Command {
                 })
             )
             .then((m) => {
-                m.user.send(
-                    t("cmds:unmute.DMtext", {
-                        tag: message.author.tag,
-                        reason: reason,
-                    })
-                );
+                m.user
+                    .send(
+                        t("cmds:unmute.DMtext", {
+                            tag: message.author.tag,
+                            reason: reason,
+                        })
+                    )
+                    .catch(() => {});
                 if (guildDB.plugins.modlogs) {
                     this.handleModLogs(message, guildDB, user, reason, t);
                 }

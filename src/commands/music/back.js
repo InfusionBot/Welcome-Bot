@@ -24,11 +24,14 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args }, t) {
-        const queue = message.client.player.getQueue(message.guild);
+    async execute({ message }, t) {
+        const player = this.client.manager.get(message.guild.id);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue || !queue.playing)
+        if (
+            !player ||
+            (!player.playing && !player.paused && !player.queue.size)
+        )
             return message.reply(t("cmds:stop.notPlaying"));
         const members = voice.members.filter((m) => !m.user.bot);
         const embed = new Embed({ color: "blue", timestamp: true }).setTitle(

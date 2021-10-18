@@ -544,7 +544,7 @@
     "already": "The channel is already unlocked!"
   },
   "247": {
-    "cmdDesc": "Set player to play for 24/7. Only available to premium users"
+    "cmdDesc": "Disables leaving channel after queue finishes. Only available to premium users"
   },
   "back": {
     "cmdDesc": "Play prevoius music",
