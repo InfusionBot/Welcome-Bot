@@ -307,7 +307,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Core (14 commands)
+## Core (15 commands)
 
 ### `botinfo`
 
@@ -412,6 +412,19 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Usage: w/shards 
 - Aliases: `shard`
 - Cooldown: 10
+
+### `sourcecode`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Link to Welcome-Bot's source code
+- Usage: w/sourcecode 
+- Aliases: `source`
+- Cooldown: 5
 
 ### `suggest`
 
@@ -742,7 +755,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 5
 
-## General (24 commands)
+## General (23 commands)
 
 ### `addemoji`
 
@@ -1044,19 +1057,6 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `uid`, `user-id`
 - Cooldown: 5
 
-### `version`
-
-##### Subcommands:
-
-- None
-
-##### Cmd info
-
-- Description: Get information on a version or latest version
-- Usage: w/version (version)
-- Aliases: `vinfo`, `ver`
-- Cooldown: 10
-
 ## Image (2 commands)
 
 ### `cat`
@@ -1164,7 +1164,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 - Description: Prune Messages. Add a -f option in the end to delete pinned messages also!
 - Usage: w/prune 
-- Aliases: `purge`
+- Aliases: `purge`, `clear`
 - Cooldown: 10
 
 ### `unban`
@@ -1216,7 +1216,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: Set player to play for 24/7. Only available to premium users
+- Description: Disables leaving channel after queue finishes. Only available to premium users
 - Usage: w/247 
 - Aliases: `24/7`
 - Cooldown: 5

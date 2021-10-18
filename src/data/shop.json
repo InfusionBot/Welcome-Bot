@@ -24,7 +24,7 @@
     "name": "padlock",
     "ids": ["lock"],
     "sale": true,
-    "price": 0,
+    "price": 5000,
     "usable": true
   }
 ]
