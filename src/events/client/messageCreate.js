@@ -50,7 +50,8 @@ module.exports = {
         if (
             message.guild &&
             guildDB.plugins.chatbot.enabled &&
-            (message.channel.id === guildDB.plugins.chatbot.channel || message.mentions.users.has(client.user.id)) &&
+            (message.channel.id === guildDB.plugins.chatbot.channel ||
+                message.mentions.users.has(client.user.id)) &&
             process.env.CHATBOT_API
         ) {
             const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${
