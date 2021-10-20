@@ -14,28 +14,29 @@ module.exports = class CodesManager {
     }
 
     async refresh() {
+        this._codesInfo = new Collection();
         const codes = await this.client.models.Code.find({});
+        const channel = await this.client.channels.fetch(
+            this.client.config.channels.codes
+        );
         for (let i = 0; i < codes.length; i++) {
             if (codes[i].expiresAt < Date.now()) {
                 this.client.models.Code.findOneAndDelete({
                     code: codes[i].code,
                 });
-                // eslint-disable-next-line no-await-in-loop
-                const channel = await this.client.channels.fetch(
-                    this.client.config.channels.codes
-                );
                 if (channel) {
                     const embed = new Embed({ color: "error", timestamp: true })
                         .setTitle("Premium code expired")
                         .setDesc(`Code: ${codes[i].code}`);
                     // eslint-disable-next-line no-await-in-loop
-                    const user = await this.client.users.fetch(codes[i].usedBy);
+                    let user = null;
+                    if (codes[i]?.usedBy) user = await this.client.users.fetch(codes[i].usedBy);
                     if (user)
                         embed.setAuthor(user.tag, user.displayAvatarURL());
                     else embed.setAuthor("Unknown or Anonymous");
                     const guild = this.client.guilds.cache.get(
-                        codes[i].guildId
-                    );
+                        codes[i]?.guildId
+                    ) ?? null;
                     if (guild) embed.setFooter(guild.name, guild.iconURL());
                     else embed.setFooter("Unknown guild. Maybe claimed in DMs");
                     channel.send({ embeds: [embed] });
