@@ -30,13 +30,13 @@ module.exports = class CodesManager {
                         .setDesc(`Code: ${codes[i].code}`);
                     // eslint-disable-next-line no-await-in-loop
                     let user = null;
-                    if (codes[i]?.usedBy) user = await this.client.users.fetch(codes[i].usedBy);
+                    if (codes[i]?.usedBy)
+                        user = await this.client.users.fetch(codes[i].usedBy);
                     if (user)
                         embed.setAuthor(user.tag, user.displayAvatarURL());
                     else embed.setAuthor("Unknown or Anonymous");
-                    const guild = this.client.guilds.cache.get(
-                        codes[i]?.guildId
-                    ) ?? null;
+                    const guild =
+                        this.client.guilds.cache.get(codes[i]?.guildId) ?? null;
                     if (guild) embed.setFooter(guild.name, guild.iconURL());
                     else embed.setFooter("Unknown guild. Maybe claimed in DMs");
                     channel.send({ embeds: [embed] });
