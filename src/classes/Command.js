@@ -255,8 +255,8 @@ module.exports = class Command {
 
     /* Simple utils */
     async fetchJson(url, options = {}) {
-        const res = await require("node-fetch")(url, options);
-        return res.json();
+        const res = await require("axios")({ url, ...options});
+        return res.data;
     }
 
     async getUserFromIdOrMention(idOrMention) {

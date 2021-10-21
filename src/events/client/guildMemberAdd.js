@@ -31,6 +31,7 @@ module.exports = {
                     tag: member.user.tag,
                     avatarURL: member.user.displayAvatarURL(),
                     footer: `ID: ${member.user.id}`,
+                    timestamp: null,
                 })
                     .setTitle(`${t("misc:mem_join")}`)
                     .setDesc(

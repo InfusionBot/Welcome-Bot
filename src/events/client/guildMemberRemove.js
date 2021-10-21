@@ -18,6 +18,7 @@ module.exports = {
         }
         // When a member leaves or is kicked or is banned
         require("../../functions/sayGoodBye")(member);
+        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-US");
         const t = client.i18next.getFixedT(guildDB.lang ?? "en-US");
         if (guildDB.plugins.serverlogs.enabled) {
             const channel = await member.guild.channels.fetch(
@@ -28,12 +29,13 @@ module.exports = {
                     tag: member.user.tag,
                     avatarURL: member.user.displayAvatarURL(),
                     footer: `ID: ${member.user.id}`,
+                    timestamp: null,
                 })
                     .setTitle(`${t("misc:mem_leave")}`)
                     .setDesc(
                         `**${t("misc:joined")}**: ${moment
-                            .duration(moment().diff(member.joinedAt))
-                            .humanize()}`
+                            .duration(-1, moment().diff(member.joinedAt))
+                            .humanize(true)}`
                     );
                 channel
                     .send({
