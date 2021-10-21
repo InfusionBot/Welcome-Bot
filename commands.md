@@ -701,7 +701,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `wd`, `with`
 - Cooldown: 10
 
-## Fun (4 commands)
+## Fun (5 commands)
 
 ### `8ball`
 
@@ -755,7 +755,20 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `asciify`, `bigtext`
 - Cooldown: 5
 
-## General (23 commands)
+### `randomnumber`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Generates a random number
+- Usage: w/randomnumber 
+- Aliases: ``
+- Cooldown: 5
+
+## General (24 commands)
 
 ### `addemoji`
 

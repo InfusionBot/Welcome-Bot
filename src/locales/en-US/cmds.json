@@ -376,6 +376,10 @@
     "usage": "[string]",
     "error": "Your text has to be smaller than 20 characters"
   },
+  "randomnumber": {
+    "cmdDesc": "Generates a random number",
+    "usage": "(max)"
+  },
   "image": {
     "cmdDesc": "Generate a random pokemon image"
   },

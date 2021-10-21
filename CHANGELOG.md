@@ -31,6 +31,9 @@ The displayed date is in the format `DD-MM-YYYY`
 ### New features
 
 - New slash command `kick`
+- New slash command `8ball`
+- New command `randomnumber`
+- New command `sourcecode`
 
 ## [v2.0.3]
 

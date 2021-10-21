@@ -255,7 +255,7 @@ module.exports = class Command {
 
     /* Simple utils */
     async fetchJson(url, options = {}) {
-        const res = await require("axios")({ url, ...options});
+        const res = await require("axios")({ url, ...options });
         return res.data;
     }
 
