@@ -1,4 +1,4 @@
-Welcome-Bot contains more than **90 commands** in **9 categories**!
+Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 ### **Usage Key!**
 
@@ -281,7 +281,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Core (12 commands)
+## Core (13 commands)
 
 ### `botinfo`
 
@@ -373,6 +373,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Usage: w/shards 
 - Aliases: `shard`
 - Cooldown: 10
+
+### `sourcecode`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Link to Welcome-Bot's source code
+- Usage: w/sourcecode 
+- Aliases: `source`
+- Cooldown: 5
 
 ### `suggest`
 
@@ -636,7 +649,7 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Aliases: `wd`, `with`
 - Cooldown: 10
 
-## Fun (4 commands)
+## Fun (5 commands)
 
 ### `8ball`
 
@@ -688,6 +701,19 @@ Welcome-Bot contains more than **90 commands** in **9 categories**!
 - Description: Implement the FIGfont spec in JS
 - Usage: w/figlet [string]
 - Aliases: `asciify`, `bigtext`
+- Cooldown: 5
+
+### `randomnumber`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Generates a random number
+- Usage: w/randomnumber 
+- Aliases: ``
 - Cooldown: 5
 
 ## General (24 commands)

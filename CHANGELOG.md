@@ -8,7 +8,7 @@ The displayed date is in the format `DD-MM-YYYY`
 
 [Legend](#legend)
 
-## [v2.0.4]
+## [v2.1.0]
 
 > **Released:** `TBA`
 
@@ -20,6 +20,9 @@ The displayed date is in the format `DD-MM-YYYY`
 ### New features
 
 - New slash command `kick`
+- New slash command `8ball`
+- New command `randomnumber`
+- New command `sourcecode`
 
 ## [v2.0.3]
 
@@ -110,7 +113,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - refactor(translations): Lot more translations
 - refactor: remove pokemon, image commands
 
-[v2.0.4]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.4
+[v2.1.0]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.1.0
 [v2.0.3]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.3
 [v2.0.2]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.2
 [v2.0.1]: https://github.com/Welcome-Bot/welcome-bot/releases/tag/v2.0.1
