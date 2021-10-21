@@ -194,7 +194,8 @@
     "cmdDesc": "Get ping of the bot"
   },
   "randomnumber": {
-    "cmdDesc": "Generates a random number"
+    "cmdDesc": "Generates a random number",
+    "usage": "(max)"
   },
   "report": {
     "cmdDesc": "Report bugs",
