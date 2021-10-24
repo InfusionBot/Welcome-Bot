@@ -85,7 +85,7 @@
     "enabled": "Successfully enabled goodbye logs"
   },
   "lang": {
-    "cmdDesc": "भाषा बदले",
+    "cmdDesc": "Change language",
     "usage": "(subcommand) (lang)",
     "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
     "success": "Language successfully set to {{lang}}",
@@ -178,14 +178,14 @@
     "cmdDesc": "Fetches a random waifu and displays it."
   },
   "botinfo": {
-    "cmdDesc": "बोट का जानकारी",
+    "cmdDesc": "Bot information",
     "footer": "Information & Stats of Welcome-Bot"
   },
   "botperms": {
     "cmdDesc": "List of permissions given to bot"
   },
   "invite": {
-    "cmdDesc": "बॉट का आमंत्रण लिंक देखें।"
+    "cmdDesc": "Get Invite link for the bot"
   },
   "lib": {
     "cmdDesc": "Library used to build Welcome-Bot"
@@ -338,7 +338,7 @@
     "usage": "[question]"
   },
   "coinflip": {
-    "cmdDesc": "सिक्का उछालें!",
+    "cmdDesc": "Flip a coin.",
     "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
   "duck": {
@@ -370,8 +370,8 @@
     "error": "{{emojiName}} couldn't be added. Check whether your server still has space for new emojis!"
   },
   "avatar": {
-    "cmdDesc": "उपयोगकर्ता का अवतार चित्र प्राप्त करें।",
-    "profile": "यह {{user}} का अवतार चित्र है"
+    "cmdDesc": "Get a user's avatar",
+    "profile": "Avatar of {{user}}"
   },
   "clone": {
     "cmdDesc": "Clone a text",
