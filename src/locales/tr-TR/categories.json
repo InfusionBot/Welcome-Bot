@@ -1,10 +1,10 @@
 {
   "anime": "Anime",
-  "core": "Temel",
+  "core": "Core",
   "economy": "Economy",
-  "fun": "Eğlence",
-  "general": "Genel",
-  "mod": "Moderasyon",
-  "music": "Müzik",
+  "fun": "Fun",
+  "general": "General",
+  "mod": "Moderation",
+  "music": "Music",
   "admin": "Administration"
 }
