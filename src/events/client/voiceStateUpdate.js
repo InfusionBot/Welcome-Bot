@@ -57,7 +57,7 @@ module.exports = {
         }
         //For music
         if (oldState.channelId && !newState.channelId) {
-            if (oldState.member.user.id === client.user.id) {
+            if (oldState.member && oldState.member.user.id === client.user.id) {
                 //in case, someone kicked the bot, and the player is still alive, then destroy the player
                 const player = client.manager.players.get(oldState.guild.id);
                 if (!player) return;
