@@ -12,10 +12,27 @@ const giveRewards = (userDB) => {
     userDB.markModified("inventory.banknote");
     return userDB;
 };
+router.use((req, res, next) => {
+    console.log(`${req.method} ${req.path} - ${req.ip}`);
+    next();
+});
+const handler = (req, res) => {
+    res.sendStatus(405);
+    res.end();
+};
+router
+    //GET /webhooks/topgg
+    .get("/topgg", handler)
+    //GET /webhooks/bls
+    .get("/bls", handler)
+    //GET /webhooks/donatebot
+    .get("/donatebot", handler);
 //POST /webhooks/bls
 router.post("/bls", async (req, res) => {
-    if (req.client.debug) console.log("/webhooks/bls");
-    if (!process.env.BLS_Wtoken) return res.sendStatus(500);
+    if (!process.env.BLS_Wtoken)
+        return (
+            console.log("No DONATE_Wtoken set in env") && res.sendStatus(500)
+        );
     if (
         !req.headers.authorization ||
         req.headers.authorization !== process.env.BLS_Wtoken
@@ -60,17 +77,11 @@ router.post("/bls", async (req, res) => {
     res.sendStatus(200);
     res.end();
 });
-//GET /webhooks/bls
-router.get("/bls", (req, res) => {
-    res.send("Use POST request instead of GET");
-    res.end();
-});
 const { webhook } = require("../../classes/Topgg");
 //POST /webhooks/topgg
 router.post(
     "/topgg",
     webhook.listener(async (vote, req, res) => {
-        if (req.client.debug) console.log("/webhooks/topgg");
         if (vote.type.toLowerCase() === "test")
             return console.log("topggwebhook test success");
         const { client } = req;
@@ -113,9 +124,16 @@ router.post(
         res.end();
     })
 );
-//GET /webhooks/topgg
-router.get("/topgg", (req, res) => {
-    res.send("Use POST request instead of GET");
-    res.end();
+//POST /webhooks/donatebot
+router.post("/donatebot", (req, res) => {
+    if (!process.env.DONATE_Wtoken)
+        return (
+            console.log("No DONATE_Wtoken set in env") && res.sendStatus(500)
+        );
+    if (
+        !req.headers.authorization ||
+        req.headers.authorization !== process.env.DONATE_Wtoken
+    )
+        return res.sendStatus(401);
 });
 module.exports = router;

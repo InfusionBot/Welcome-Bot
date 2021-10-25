@@ -307,7 +307,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: None
 - Cooldown: 5
 
-## Core (15 commands)
+## Core (16 commands)
 
 ### `botinfo`
 
@@ -334,6 +334,19 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Usage: w/botperms 
 - Aliases: None
 - Cooldown: 10
+
+### `donate`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Donate to get premium perks!
+- Usage: w/donate 
+- Aliases: `premium`
+- Cooldown: 5
 
 ### `invite`
 
@@ -594,7 +607,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 - Description: Donate money to another user
 - Usage: w/give [@mention / user id] [amount]
-- Aliases: `donate`, `share`
+- Aliases: `share`
 - Cooldown: 5
 
 ### `inventory`
@@ -764,11 +777,11 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 ##### Cmd info
 
 - Description: Generates a random number
-- Usage: w/randomnumber 
-- Aliases: ``
+- Usage: w/randomnumber (max)
+- Aliases: `random`
 - Cooldown: 5
 
-## General (24 commands)
+## General (23 commands)
 
 ### `addemoji`
 

@@ -8,6 +8,9 @@ require("dotenv").config();
 const defaultPerms = require("./data/defaultPerms");
 module.exports = {
     botGuildId: "836854115526770708",
+    servers: {
+        main: "836854115526770708",
+    },
     logsChannelId: "855331801635749888",
     suggestionLogsChannelId: "862126837110800414",
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
@@ -17,6 +20,12 @@ module.exports = {
         voters: "852512614789808138",
         donator: "851701581702889482",
         booster: "853295895784456223",
+        donators: {
+            starter: "897162073132380190",
+            classic: "897157343010250762",
+            business: "897157534786420747",
+            ultimate: "897158578417307690",
+        },
     },
     channels: {
         general: "836854115526770711",

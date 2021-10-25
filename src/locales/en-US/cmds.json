@@ -184,6 +184,11 @@
   "botperms": {
     "cmdDesc": "List of permissions given to bot"
   },
+  "donate": {
+    "cmdDesc": "Donate to get premium perks!",
+    "title": "Thanks for considering donating to us!",
+    "description": "Plans:\n1. [Starter Plan]({{link}}{{starter}})\n2. [Classic Plan]({{link}}{{classic}})\n3. [Business Plan]({{link}}{{business}})\n4. [Ultimate Plan]({{link}}{{ultimate}})"
+  },
   "invite": {
     "cmdDesc": "Get Invite link for the bot"
   },

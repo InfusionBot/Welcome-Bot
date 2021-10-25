@@ -9,7 +9,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "give",
-                aliases: ["donate", "share"],
+                aliases: ["share"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {

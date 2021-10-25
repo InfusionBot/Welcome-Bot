@@ -53,15 +53,14 @@ module.exports = class CMD extends Command {
         ];
 
         try {
-            const newCommand = message.client.loadCommand(
-                `${commandFolder}/${folderName}`,
-                command.name
+            const newCommand = this.client.setCmd(
+                require(`${commandFolder}/${folderName}/${command.name}`)
             );
             message.reply(`Command \`${newCommand.name}\` was reloaded!`);
         } catch (err) {
-            message.client.logger.log(JSON.stringify(err, null, 4), "err");
+            console.log(err);
             message.reply(
-                `There was an error while reloading a command \`${command.name}\``
+                `There was an error while reloading a command \`${command.name}\`: ${err}`
             );
         }
     }
