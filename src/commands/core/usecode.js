@@ -26,6 +26,7 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, args, guildDB, userDB }, t) {
+        const { client } = this;
         if (
             client.codes.getCode(guildDB?.premium?.code) ||
             client.codes.getCode(userDB?.premium?.code)
@@ -45,9 +46,5 @@ module.exports = class CMD extends Command {
             await guildDB.save();
         }
         message.react("✅");
-    }
-
-    async run({ interaction, guildDB, userDB }, t) {
-        return;
     }
 };

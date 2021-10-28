@@ -91,7 +91,7 @@ module.exports = class CMD extends Command {
                     return message.reply(t("misc:timeout"));
                 }
             });
-        } else if (player.skip()) {
+        } else if (player.stop()) {
             msg.edit({
                 embeds: [embed.setDesc(t("cmds:skip.success"))],
             });

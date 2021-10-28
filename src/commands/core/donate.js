@@ -24,6 +24,7 @@ module.exports = class CMD extends Command {
     }
 
     execute({ message }, t) {
+        //TODO: check if this user is in the support server
         const embed = new Embed({ color: "success" })
             .setTitle(t("cmds:donate.title"))
             .setDescription(

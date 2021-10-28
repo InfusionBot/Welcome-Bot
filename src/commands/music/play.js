@@ -189,7 +189,7 @@ module.exports = class CMD extends Command {
                 )
                 .setDescription(
                     `[${track.title}](${track.uri}) - \`[${convertTime(
-                        track.requester.id
+                        track.duration
                     )}]\``
                 )
                 .setFooter(

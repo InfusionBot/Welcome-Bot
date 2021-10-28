@@ -125,7 +125,8 @@ router.post(
     })
 );
 //POST /webhooks/donatebot
-router.post("/donatebot", (req, res) => {
+router.post("/donatebot", async (req, res) => {
+    const { client } = req;
     if (!process.env.DONATE_Wtoken)
         return (
             console.log("No DONATE_Wtoken set in env") && res.sendStatus(500)
@@ -135,5 +136,31 @@ router.post("/donatebot", (req, res) => {
         req.headers.authorization !== process.env.DONATE_Wtoken
     )
         return res.sendStatus(401);
+    const webhook = req.data;
+    const user = await client.users.fetch(webhook.raw_buyer_id);
+    let member;
+    try {
+        member = await client.guilds.cache
+            .get(client.config.servers.main)
+            .members.fetch(user.id);
+    } catch (e) {
+        member = null;
+        if (e.toString().indexOf("Unknown Member") === -1) {
+            console.log(e);
+        } else {
+            const channel = await client.channels
+                .fetch(client.config.channels.logs)
+                .catch(() => {});
+            if (channel)
+                channel.send(
+                    `A new donator! :tada:, but he didn't join this server, here's the tag of that user: ${user.tag} (${user.id})`
+                );
+        }
+    }
+    if (webhook.status.toLowerCase() === "completed") {
+        if (member) {
+            member.roles.add(client.config.roles.donator);
+        }
+    }
 });
 module.exports = router;

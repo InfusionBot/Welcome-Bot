@@ -591,7 +591,7 @@
     "playlist": "Added a playlist to queue",
     "queueAddCount": "{{count}} songs added to the queue!",
     "queueAdded": "Added to queue",
-    "details": "Source: {{source}}\n🔗 Link: {{link}}\n👀 Views: {{views}}\nDuration: {{duration}}\nProgress: {{progress}}",
+    "details": "🔗 Link: {{link}}\n:clock: Duration: {{duration}}",
     "starting": "Started Playing",
     "destroyedQueue": "The queue was destroyed, abd I can't play music using that queue. Please create a new queue from play command",
     "playlistAdded": "Playlist \"{{playlist}}\" has been added to the queue. ({{songs}} songs)"

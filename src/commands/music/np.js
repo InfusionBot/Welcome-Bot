@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Embed, Command } = require("../../classes");
+const { convertTime } = require("../../helpers/Util");
 module.exports = class CMD extends Command {
     constructor(client) {
         super(
@@ -24,26 +25,25 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message }, t) {
-        const queue = message.client.player.getQueue(message.guild);
+        const player = this.client.manager.get(message.guild.id);
         const voice = message.member.voice.channel;
         if (!voice) return message.reply(t("cmds:play.voiceNotJoined"));
-        if (!queue || !queue.playing)
+        if (
+            !player ||
+            (!player.playing && !player.paused && !player.queue.size)
+        )
             return message.reply(t("cmds:stop.notPlaying"));
-        const track = queue.nowPlaying();
-        const progress = queue.createProgressBar().split(" ┃ ");
+        const track = player.queue.current;
         const embed = new Embed({ color: "blue", timestamp: true })
             .setTitle(t("cmds:np.playing"))
             .setDescription(track.title)
-            .setImage(track.thumbnail)
+            .setImage(track.displayThumbnail("mqdefault"))
             .addField(
                 "Details",
                 "> " +
                     t("cmds:play.details", {
-                        source: track.source,
-                        link: `[${track.url.slice(0, 35)}...](${track.url})`,
-                        views: `${track.views}`,
-                        duration: track.duration,
-                        progress: `${progress[0]} ┃ ${progress[2]}\n${progress[1]}`,
+                        link: `[${track.uri.slice(0, 35)}...](${track.uri})`,
+                        duration: convertTime(track.duration),
                     })
                         .split("\n")
                         .join("\n> ")

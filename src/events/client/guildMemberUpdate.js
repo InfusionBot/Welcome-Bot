@@ -67,17 +67,10 @@ module.exports = {
             }
         }
         if (
-            newMember.guild.id === client.config.botGuildId &&
-            (addedRoleIds.includes(client.config.roles.donator) ||
-                addedRoleIds.includes(client.config.roles.booster))
+            newMember.guild.id === client.config.servers.main &&
+            addedRoleIds.includes(client.config.roles.booster)
         ) {
-            const isDonator = !!addedRoleIds.includes(
-                client.config.roles.donator
-            );
-            const info = await client.codes.create(
-                isDonator ? 365 : 30,
-                newMember.user
-            ); //30 days premium code for boosters & 365 (1 year) for donators
+            const info = await client.codes.create(30, newMember.user); //30 days premium code for boosters
             newMember.user.send({
                 embeds: [
                     {
@@ -90,20 +83,18 @@ module.exports = {
                                 inline: true,
                             },
                             {
-                                name: "How to use my code publicly?",
-                                value: `You can send \`${client.config.defaultPrefix}usecode ${info.code}\` in DMs to the bot to use the code publicly.\nIf you send it in a server, then that server will become premium server`,
+                                name: "How to use my code for myself?",
+                                value: `You can send \`${client.config.defaultPrefix}usecode ${info.code}\` in DMs to the bot to use the code yourself.\nIf you send it in a server, then that server will become premium server`,
                                 inline: true,
                             },
                             {
-                                name: "What's the difference between publicly used codes & premium server?",
-                                value: "In a premium server, all members in that server can use my premium commands.\nIf you use it globally then you can use premium commands in any server!",
+                                name: "What's the difference between myself used codes & premium server?",
+                                value: "In a premium server, all members in that server can use my premium commands.\nIf you use it yourself then you can use premium commands in any server!",
                                 inline: true,
                             },
                             {
                                 name: "When does this code expire?",
-                                value: `It expires on ${new Date(
-                                    info.expiresAt
-                                )}`,
+                                value: `${new Date(info.expiresAt)}`,
                                 inline: true,
                             },
                             {

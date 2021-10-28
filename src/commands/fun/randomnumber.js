@@ -33,10 +33,12 @@ module.exports = class CMD extends Command {
         const max = parseInt(args[0]) || 100;
         //TODO: Add translation
         const embed = new Embed().setDescription(
-            `Your random number between 0 and ${max} is: **${Math.round(
-                Math.random() * max
-            )}**`
+            `Your random number between 0 and ${max} is: **${this.randomNum(0, max)}**`
         );
         message.channel.send({ embeds: [embed] });
+    }
+
+    randomNum(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 };
