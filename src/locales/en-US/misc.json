@@ -80,5 +80,7 @@
   "no": "No",
   "chanDel": "Channel Deleted",
   "voice_join": "Joined voice channel",
-  "voice_left": "Left voice channel"
+  "voice_left": "Left voice channel",
+  "nameChange": "Name Changed",
+  "avatarUpdate": "Avatar Update"
 }

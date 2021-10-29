@@ -40,10 +40,7 @@ module.exports = {
                 })
                     .setTitle(`${t("misc:edited")}`)
                     .setDesc(
-                        "```diff\n" +
-                            `- ${oldMessage.content}\n` +
-                            `+ ${message.content}\n` +
-                            "```"
+                        `- ${oldMessage.content}\n` + `+ ${message.content}\n`
                     );
                 channel
                     .send({

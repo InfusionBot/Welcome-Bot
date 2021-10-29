@@ -121,6 +121,9 @@
     "disabled": "Successfully disabled server logs",
     "enabled": "Successfully enabled server logs"
   },
+  "slowmode": {
+    "content": "Slowmode is now {{seconds}} seconds!"
+  },
   "welcome": {
     "cmdDesc": "Manage welcome logs settings",
     "usage": "(subcommand)",

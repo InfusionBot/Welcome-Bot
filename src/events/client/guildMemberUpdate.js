@@ -16,7 +16,7 @@ module.exports = {
             return;
         const guildDB = await client.models.Guild.findOne(newMember.guild.id);
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-        let diff = "";
+        let diff = "\n";
         const addedRoles = [];
         const addedRoleIds = [];
         newMember.roles.cache.forEach((role) => {
@@ -31,8 +31,7 @@ module.exports = {
                 removedRoles.push(role.name);
         });
         if (addedRoles.length > 0 || removedRoles.length > 0) {
-            diff += `\n**${t("misc:roles")}**\n`;
-            diff += "```diff";
+            diff += `**${t("misc:roles")}**`;
             if (addedRoles.length > 0) {
                 diff += `\n+ ${addedRoles.join("\n+ ")}`;
             }
@@ -40,12 +39,21 @@ module.exports = {
                 diff += `\n- ${removedRoles.join("\n- ")}`;
             }
         } else if (oldMember.nickname !== newMember.nickname) {
-            diff += `\n**${t("misc:nickModify")}**\n`;
-            diff += "```diff";
+            diff += `**${t("misc:nickModify")}**`;
             diff += `\n- ${oldMember.nickname ?? oldMember.user.username}`;
             diff += `\n+ ${newMember.nickname ?? newMember.user.username}`;
+        } else if (!oldMember.user.equals(newMember.user)) {
+            if (oldMember.user.tag !== newMember.user.tag) {
+                diff += `**${t("misc:nameChange")}**`;
+                diff += `\n- ${oldMember.user.tag}`;
+                diff += `\n+ ${newMember.user.tag}`;
+            } else if (
+                oldMember.user.displayAvatarURL() !==
+                newMember.user.displayAvatarURL()
+            ) {
+                diff += `${newMember}`;
+            }
         }
-        diff += "\n```";
         diff = diff.trim();
         if (guildDB.plugins.serverlogs.enabled) {
             const channel = await newMember.guild.channels.fetch(
@@ -53,12 +61,12 @@ module.exports = {
             );
             if (channel) {
                 const embed = new Embed({
-                    tag: oldMember.user.tag,
-                    avatarURL: oldMember.user.displayAvatarURL(),
+                    tag: newMember.user.tag,
+                    avatarURL: newMember.user.displayAvatarURL(),
                     footer: `ID: ${newMember.user.id}`,
                 })
                     .setTitle(`${t("misc:mem_update")}`)
-                    .setDesc(diff);
+                    .setDescription(diff);
                 channel
                     .send({
                         embeds: [embed],

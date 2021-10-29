@@ -25,7 +25,7 @@ module.exports = {
                     footer: `ID: ${message.author.id}`,
                 })
                     .setTitle(`${t("misc:deleted")}`)
-                    .setDesc("```diff\n" + `- ${message.content}\n` + "```");
+                    .setDesc(`- ${message.content}\n`);
                 channel
                     .send({
                         embeds: [embed],

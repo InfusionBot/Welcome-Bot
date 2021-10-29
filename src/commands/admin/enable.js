@@ -4,7 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { Permissions } = require("discord.js");
-const updateGuild = require("../../db/functions/guild/updateGuild");
+// eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -41,7 +41,8 @@ module.exports = class CMD extends Command {
         } else {
             return message.reply(t("cmds:enable.notDisabled"));
         }
-        updateGuild(message.guild.id, "disabled", disabled);
+        guildDB.disabled = disabled;
+        await guildDB.save();
         return message.reply(t("cmds:enable.done"));
     }
 };
