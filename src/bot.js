@@ -5,7 +5,7 @@
  */
 require("dotenv").config();
 const WelcomeBot = require("./WelcomeBot");
-const { Embed } = require("./classes");
+//const { Embed } = require("./classes");
 
 const client = new WelcomeBot({
     debug: process.env.NODE_ENV === "development",
@@ -47,7 +47,7 @@ process.on("unhandledRejection", (error) => {
                 .catch(() => {});
     }
 });
-process.on("exit", (code) => {
+process.on("exit", (/*code*/) => {
     client.destroy();
 });
 

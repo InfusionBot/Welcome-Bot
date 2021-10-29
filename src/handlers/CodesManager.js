@@ -16,9 +16,13 @@ module.exports = class CodesManager {
     async refresh() {
         this._codesInfo = new Collection();
         const codes = await this.client.models.Code.find({});
-        const channel = await this.client.channels.fetch(
-            this.client.config.channels.codes
-        );
+        let channel;
+        try {
+            channel = await this.client.channels.fetch(
+                this.client.config.channels.codes
+            );
+            // eslint-disable-next-line no-empty
+        } catch (e) {}
         for (let i = 0; i < codes.length; i++) {
             if (codes[i].expiresAt < Date.now()) {
                 this.client.models.Code.findOneAndDelete({

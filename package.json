@@ -51,6 +51,7 @@
     "colors-logger": "^0.4.0",
     "cron": "^1.8.2",
     "csurf": "^1.11.0",
+    "date-events": "^1.0.1",
     "discord-backup": "^3.0.1",
     "discord.js": "^13.2.0",
     "djs-pagination-buttons": "^0.2.4-dev",

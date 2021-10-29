@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const dbAuditor = require("../../db/functions/dbAuditor");
+const clock = require("date-events")();
 module.exports = {
     name: "ready",
     once: true,
@@ -88,5 +89,29 @@ module.exports = {
                     .catch(() => {});
             }
         });*/
+        clock.on("date", (day) => {
+            if (client.debug) console.log(`Day ${day} arrived`);
+            client.models.User.find({}, (err, users) => {
+                if (err) console.log(err);
+                if (users) {
+                    users.forEach(async (userDB) => {
+                        const user = await client.users.fetch(userDB.userId);
+                        const diff =
+                            2 * 24 * 60 * 60 * 1000 -
+                            (new Date().getTime() - userDB.daily); //2 days
+                        if (diff > 0) {
+                            const hours = Math.round(diff / (1000 * 60 * 60));
+                            if (hours == 24 * 2) {
+                                console.log(
+                                    `Resetting daily multiplier for ${user.tag} (${user.id})`
+                                );
+                                userDB.multiplier.daily = 0;
+                                await userDB.save();
+                            }
+                        }
+                    });
+                }
+            });
+        });
     },
 };
