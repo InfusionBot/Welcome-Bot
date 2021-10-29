@@ -34,7 +34,7 @@
   },
   "homepage": "https://welcome-bot.github.io/",
   "dependencies": {
-    "@discordjs/builders": "^0.7.0",
+    "@discordjs/builders": "^0.8.1",
     "@top-gg/sdk": "^3.1.2",
     "ascii-table": "^0.0.9",
     "axios": "^0.23.0",
