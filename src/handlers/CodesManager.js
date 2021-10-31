@@ -102,7 +102,7 @@ module.exports = class CodesManager {
         if (channel) {
             const embed = new Embed({ color: "red", timestamp: true })
                 .setTitle("Premium code used")
-                .setDesc(`Code: ${code}`)
+                .setDescription(`Code: ${code}`)
                 .addField("Expires", `${new Date(info.expiresAt)}`, true);
             embed.setAuthor(user.tag, user.displayAvatarURL());
             if (guild) embed.setFooter(guild.name, guild.iconURL());

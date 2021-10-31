@@ -34,6 +34,8 @@ The displayed date is in the format `DD-MM-YYYY`
 - New slash command `8ball`
 - New command `randomnumber`
 - New command `sourcecode`
+- New command `snipe`
+- New command `slowmode`
 
 ## [v2.0.3]
 

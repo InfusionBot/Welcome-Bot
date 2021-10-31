@@ -8,6 +8,8 @@ module.exports = {
     name: "messageUpdate",
     once: false,
     async execute(client, oldMessage, message) {
+        if (oldMessage.partial) return; // content is null
+        client.editSnipes.set(oldMessage.channel.id, message);
         if (message.author.bot || !message.guild) return;
         let guildDB = await client.db.findOrCreateGuild(message.guild.id);
         if (!guildDB) {

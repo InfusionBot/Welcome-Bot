@@ -781,7 +781,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `random`
 - Cooldown: 5
 
-## General (23 commands)
+## General (24 commands)
 
 ### `addemoji`
 
@@ -1003,6 +1003,19 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Description: Your server statistics
 - Usage: w/serverinfo (--dm)
 - Aliases: `si`, `sinfo`
+- Cooldown: 5
+
+### `snipe`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Shows the last deleted message from a specified channel!
+- Usage: w/snipe (#channel)
+- Aliases: ``
 - Cooldown: 5
 
 ### `staff`

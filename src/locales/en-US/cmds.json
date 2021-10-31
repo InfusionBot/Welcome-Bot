@@ -122,7 +122,13 @@
     "enabled": "Successfully enabled server logs"
   },
   "slowmode": {
+    "cmdDesc": "Set slowmode to the current channel",
     "content": "Slowmode is now {{seconds}} seconds!"
+  },
+  "snipe": {
+    "cmdDesc": "Shows the last deleted message from a specified channel!",
+    "usage": "(#channel)",
+    "nothing": "There's nothing to snipe"
   },
   "welcome": {
     "cmdDesc": "Manage welcome logs settings",

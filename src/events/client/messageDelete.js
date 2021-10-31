@@ -8,6 +8,14 @@ module.exports = {
     name: "messageDelete",
     once: false,
     async execute(client, message) {
+        if (message.partial || (message.embeds.length && !message.content))
+            return; // content is null or deleted embed
+        client.snipes.set(message.channel.id, {
+            ...message,
+            image: message.attachments.first()
+                ? message.attachments.first().proxyURL
+                : null,
+        });
         if (message.author.bot || !message.guild) return;
         const guildDB = await client.models.Guild.findOne({
             guildId: message.guild.id,
