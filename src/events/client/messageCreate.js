@@ -3,6 +3,8 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
+const { Embed } = require("../../classes");
+const { MessageActionRow, MessageButton } = require("discord.js");
 const formatChat = require("../../functions/formatChat");
 module.exports = {
     name: "messageCreate",
@@ -98,17 +100,32 @@ module.exports = {
         if (message.content.split(" ").length > 1) return;
 
         if (!mentionRegex.test(message.content)) return;
-        let reply = `Hi there, ${
-            message.author
-        }\nI am Welcome-Bot\nMy prefix is "${guildDB.prefix}"${
+        let reply = `Hi there, ${message.author}\nI am ${
+            client.user.username
+        }\nMy prefix is "${guildDB.prefix}"${
             message.guild ? " in this server." : ""
         }\nSend \`${guildDB.prefix}help\` to get help`;
         if (message.guild) {
             reply += `\nSend \`${guildDB.prefix}follow #channel\` where #channel is the channel you want to receive updates.`;
         }
+        const embed = new Embed()
+            .setTitle(client.user.tag)
+            .setDescription(reply);
+        const row = new MessageActionRow();
+        const buttons = [
+            new MessageButton()
+                .setLabel("Support")
+                .setStyle("LINK")
+                .setURL(client.config.supportGuildInvite), //support server
+            new MessageButton()
+                .setLabel("Invite me")
+                .setStyle("LINK")
+                .setURL(client.config.invite(client)), //invite the bot
+        ];
+        row.addComponents(...buttons);
         if (!message.reference) {
             message.channel.sendTyping().catch(() => {});
-            message.channel.send(reply);
+            message.channel.send({ embeds: [embed], components: [row] });
         } else {
             message.channel.messages
                 .fetch(message.reference.messageId)
