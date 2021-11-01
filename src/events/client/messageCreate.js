@@ -49,7 +49,18 @@ module.exports = {
         if (!client.application?.owner) await client.application?.fetch();
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
+        if (client.debug && client.debugLevel > 0)
+            client.logger.log("running execute func", "debug");
+        let result;
+        try {
+            result = await execute(message, guildDB);
+        } catch (e) {
+            client.logger.log(e, "error");
+        }
+        if (client.debug && client.debugLevel > 0)
+            client.logger.log("finished running execute func", "debug");
         if (
+            !result &&
             message.guild &&
             guildDB.plugins.chatbot.enabled &&
             (message.channel.id === guildDB.plugins.chatbot.channel ||
@@ -81,16 +92,6 @@ module.exports = {
                 }`
             );
         }
-        if (client.debug && client.debugLevel > 0)
-            client.logger.log("running execute func", "debug");
-        try {
-            execute(message, guildDB);
-        } catch (e) {
-            client.logger.log(e, "error");
-        }
-        if (client.debug && client.debugLevel > 0)
-            client.logger.log("finished running execute func", "debug");
-
         const mentionRegex = new RegExp(
             `^(<@!?${message.client.user.id}>)\\s*`
         );

@@ -42,19 +42,20 @@ module.exports = async (message, guildDB) => {
                     (cmd) => cmd.aliases.length && cmd.aliases.includes(commandName)
                 ))
         ) {
-            return message.channel.send(
+            message.channel.send(
                 `That command was disabled, ${message.author}`
             );
+            return false;
         }*/
 
         if (!command || typeof command === "undefined") {
             if (client.debug && client.debugLevel > 0)
                 client.logger.log(`Can't find command: ${commandName}`);
             //message.reply(errMsg);
-            return;
+            return false;
         }
 
-        if (guildDB.disabled.includes(command.name)) return; //ignore disabled commands
+        if (guildDB.disabled.includes(command.name)) return false; //ignore disabled commands
 
         command.usage = command.getUsage(t); //Don't use defaultUsage if there's an language translation for the command's usage
 
@@ -64,8 +65,8 @@ module.exports = async (message, guildDB) => {
                 .permissionsIn(message.channel)
                 .has(Permissions.FLAGS.SEND_MESSAGES)
         ) {
-            //return message.author.send(t("errors:noSendMsgPerm"));
-            return;
+            //message.author.send(t("errors:noSendMsgPerm"));
+            return false;
         }
 
         if (
@@ -76,7 +77,8 @@ module.exports = async (message, guildDB) => {
                 message.author.id === client.application?.owner.id
             )
         ) {
-            return message.reply(t("errors:developerOnly"));
+            message.reply(t("errors:developerOnly"));
+            return false;
         }
 
         if (
@@ -86,13 +88,15 @@ module.exports = async (message, guildDB) => {
                 client.codes.getCode(userDB?.premium?.code)
             )
         ) {
-            return message.channel.send(t("errors:premiumOnly"));
+            message.channel.send(t("errors:premiumOnly"));
+            return false;
         }
 
         if (command.requirements?.guildOnly && message.channel.type === "DM") {
-            return message.reply(
+            message.reply(
                 `I can't execute that command inside DMs, ${message.author}`
             );
+            return false;
         }
 
         if (
@@ -102,11 +106,12 @@ module.exports = async (message, guildDB) => {
         ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms) {
-                return message.reply(t("errors:iDontHavePermShort"));
+                message.reply(t("errors:iDontHavePermShort"));
+                return false;
             }
             for (var i = 0; i < command.botPerms.length; i++) {
                 if (!botPerms.has(command.botPerms[i])) {
-                    return message.reply(
+                    message.reply(
                         t("errors:iDontHavePermission", {
                             permission: t(
                                 `permissions:${new Permissions(
@@ -118,10 +123,11 @@ module.exports = async (message, guildDB) => {
                             ),
                         })
                     );
+                    return false;
                 }
             }
         }
-
+        let msg;
         if (
             command?.memberPerms &&
             message.channel.type !== "DM" &&
@@ -129,12 +135,20 @@ module.exports = async (message, guildDB) => {
         ) {
             const authorPerms = message.channel.permissionsFor(message.author);
             if (!authorPerms) {
-                message.reply(t("errors:youDontHavePermShort"));
-                if (!client.config.ownerIds.includes(message.author.id)) return;
+                msg = await message.channel.send(
+                    t("errors:youDontHavePermShort")
+                );
+                client.wait(5000).then(() => {
+                    msg.delete();
+                });
+                if (!client.config.ownerIds.includes(message.author.id)) {
+                    return false;
+                }
             }
             for (let i = 0; i < command.memberPerms.length; i++) {
                 if (!authorPerms.has(command.memberPerms[i])) {
-                    message.reply(
+                    // eslint-disable-next-line no-await-in-loop
+                    const msg = await message.channel.send(
                         t("errors:youDontHavePermission", {
                             permission: t(
                                 `permissions:${new Permissions(
@@ -146,8 +160,12 @@ module.exports = async (message, guildDB) => {
                             ),
                         })
                     );
-                    if (!client.config.ownerIds.includes(message.author.id))
-                        return;
+                    client.wait(5000).then(() => {
+                        msg.delete();
+                    });
+                    if (!client.config.ownerIds.includes(message.author.id)) {
+                        return false;
+                    }
                 }
             }
         }
@@ -166,7 +184,8 @@ module.exports = async (message, guildDB) => {
                 `You didn't provide any arguments, ${message.author.tag}!`,
                 reply
             );
-            return message.reply({ embeds: [embed] });
+            message.reply({ embeds: [embed] });
+            return false;
         }
 
         if (command.requirements?.subcommand && !args.length) {
@@ -191,7 +210,8 @@ module.exports = async (message, guildDB) => {
                 "Want help?",
                 `Send \`${guildDB.prefix}help ${command.name}\``
             );
-            return message.reply({ embeds: [embed] });
+            message.reply({ embeds: [embed] });
+            return false;
         }
 
         if (command.subcommands && command.requirements?.subcommand) {
@@ -199,13 +219,15 @@ module.exports = async (message, guildDB) => {
             for (let i = 0; i < command.subcommands.length; i++) {
                 subcmds.push(command.subcommands[i].name);
             }
-            if (!subcmds.includes(args[0]))
-                return message.reply(
+            if (!subcmds.includes(args[0])) {
+                message.reply(
                     t("errors:invalidSubCmd", {
                         prefix: guildDB.prefix,
                         cmd: command.name,
                     })
                 );
+                return false;
+            }
         }
 
         if (client.debug && client.debugLevel >= 3)
@@ -226,7 +248,7 @@ module.exports = async (message, guildDB) => {
                     "\u200b"
                 );
             message.reply({ embeds: [embed] });
-            return;
+            return false;
         }
         if (prerunResult) {
             if (client.debug && client.debugLevel >= 2)
@@ -271,7 +293,7 @@ module.exports = async (message, guildDB) => {
                 )
                     embed.addField("Error", `${err}`);
                 message.reply({ embeds: [embed] });
-                return;
+                return false;
             }
             if (client.debug && client.debugLevel >= 2)
                 client.logger.log(
@@ -284,8 +306,10 @@ module.exports = async (message, guildDB) => {
                 `Finished prerunning cmd: ${command.name}`,
                 "debug"
             );
-    } else if (client.debug && client.debugLevel >= 1) {
+        return true;
+    } else if (client.debug && client.debugLevel > 1) {
         client.logger.log("prefix did not match", "debug");
         console.log("PREFIX match:", message.content.match(prefixRegex));
     }
+    return false;
 };
