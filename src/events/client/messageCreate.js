@@ -56,7 +56,7 @@ module.exports = {
                 message.mentions.users.has(client.user.id)) &&
             process.env.CHATBOT_API
         ) {
-            if (client.debug) client.logger.log("Chatbot", "debug");
+            if (client.debug) client.logger.debug("Chatbot");
             const content = message.cleanContent
                 .replace(/@(everyone)/gi, "everyone")
                 .replace(/@(here)/gi, "here");
