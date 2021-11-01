@@ -57,8 +57,7 @@ module.exports = {
             process.env.CHATBOT_API
         ) {
             if (client.debug) client.logger.log("Chatbot", "debug");
-            const content = message
-                .cleanContent
+            const content = message.cleanContent
                 .replace(/@(everyone)/gi, "everyone")
                 .replace(/@(here)/gi, "here");
             const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${
