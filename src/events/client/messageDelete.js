@@ -32,7 +32,7 @@ module.exports = {
                     avatarURL: message.author.displayAvatarURL(),
                     footer: `ID: ${message.author.id}`,
                 })
-                    .setTitle(`${t("misc:deleted")}`)
+                    .setTitle(`${t("misc:deleted")} - #${message.channel.name}`)
                     .setDesc(`- ${message.content}\n`);
                 channel
                     .send({

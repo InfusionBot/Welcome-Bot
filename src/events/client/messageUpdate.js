@@ -40,7 +40,7 @@ module.exports = {
                     avatarURL: message.author.displayAvatarURL(),
                     footer: `ID: ${message.author.id}`,
                 })
-                    .setTitle(`${t("misc:edited")}`)
+                    .setTitle(`${t("misc:edited")} - #${message.channel.name}`)
                     .setDesc(
                         `- ${oldMessage.content}\n` + `+ ${message.content}\n`
                     );
