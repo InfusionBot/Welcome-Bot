@@ -56,18 +56,15 @@ module.exports = {
                 message.mentions.users.has(client.user.id)) &&
             process.env.CHATBOT_API
         ) {
+            if (client.debug) client.logger.log("Chatbot", "debug");
+            const content = message.cleanContent()
+                .replace(/@(everyone)/gi, "everyone")
+                .replace(/@(here)/gi, "here");
             const chatBotUrl = `http://api.brainshop.ai/get?bid=159117&key=${
                 process.env.CHATBOT_API
             }&uid=${encodeURIComponent(
                 message.author.id
-            )}&msg=${encodeURIComponent(message.content)}`;
-            if (client.debug) client.logger.log("Chatbot", "debug");
-            message.content = message.content
-                .replace(/@(everyone)/gi, "everyone")
-                .replace(/@(here)/gi, "here");
-            if (message.content.includes(`@`)) {
-                return message.reply(`**Hey, Please don't mention anyone**`);
-            }
+            )}&msg=${encodeURIComponent(content)}`;
             let chat;
             try {
                 chat = await require("axios")
