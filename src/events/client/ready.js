@@ -89,8 +89,7 @@ module.exports = {
                     .catch(() => {});
             }
         });*/
-        clock.on("date", (day) => {
-            if (client.debug) console.log(`Day ${day} arrived`);
+        clock.on("hour", () => {
             client.models.User.find({}, (err, users) => {
                 if (err) console.log(err);
                 if (users) {
@@ -99,15 +98,12 @@ module.exports = {
                         const diff =
                             2 * 24 * 60 * 60 * 1000 -
                             (new Date().getTime() - userDB.daily); //2 days
-                        if (diff > 0) {
-                            const hours = Math.round(diff / (1000 * 60 * 60));
-                            if (hours == 24 * 2) {
-                                console.log(
-                                    `Resetting daily multiplier for ${user.tag} (${user.id})`
-                                );
-                                userDB.multiplier.daily = 0;
-                                await userDB.save();
-                            }
+                        if (diff < 0) {
+                            console.log(
+                                `Resetting daily multiplier for ${user.tag} (${user.id})`
+                            );
+                            userDB.multiplier.daily = 0;
+                            await userDB.save();
                         }
                     });
                 }

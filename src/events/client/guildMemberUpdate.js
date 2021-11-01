@@ -14,7 +14,9 @@ module.exports = {
             !newMember.guild
         )
             return;
-        const guildDB = await client.models.Guild.findOne(newMember.guild.id);
+        const guildDB = await client.models.Guild.findOne({
+            guildID: newMember.guild.id,
+        });
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
         let diff = "\n";
         const addedRoles = [];
