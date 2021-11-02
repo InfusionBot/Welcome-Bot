@@ -2,7 +2,7 @@
     "tabWidth": 4,
     "overrides": [
         {
-            "files": ["*.json"],
+            "files": ["*.json", "*.yml"],
             "options": {
                 "tabWidth": 2
             }
@@ -11,12 +11,6 @@
             "files": [".prettierrc.json"],
             "options": {
                 "tabWidth": 4
-            }
-        },
-        {
-            "files": ["*.yml"],
-            "options": {
-                "tabWidth": 2
             }
         }
     ],
