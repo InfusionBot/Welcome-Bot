@@ -40,7 +40,8 @@ class WelcomeBot extends Client {
         this.guildSchema = require("./db/models/Guild");
         this.userSchema = require("./db/models/User");
         this.dashboard = require("./dashboard/app");
-        this.dashboard.states = {};
+        //this.dashboard.states = {};
+        process.env.DASHBOARD_STARTED = true;
         this.snipes = new Collection();
         this.editSnipes = new Collection();
         this.categories = [];

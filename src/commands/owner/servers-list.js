@@ -25,7 +25,13 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message }, t) {
-        const guilds = message.client.guilds.cache;
+        let guilds = message.client.guilds.cache;
+        if (this.client.shard) {
+            const allGuilds = await this.client.shard.fetchClientValues(
+                "guilds.cache"
+            );
+            guilds = [].concat(...allGuilds);
+        }
         const pages = [];
         let i0 = 0; //From
         let i1 = 10; //To

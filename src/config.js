@@ -56,7 +56,9 @@ module.exports = {
     dashboard: {
         port: process.env.PORT || 8000,
         secret: process.env.SESS_SECRET ?? null,
-        enabled: process.env.SESS_SECRET ?? null ? true : false,
+        enabled:
+            (process.env.SESS_SECRET ?? null ? true : false) &&
+            !process.env.DASHBOARD_STARTED,
         logs: "855331801635749888",
     },
     site: "https://welcome-bot.github.io/",

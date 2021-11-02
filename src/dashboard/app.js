@@ -8,7 +8,7 @@ const fs = require("fs");
 const { CheckAuth, fetchUser } = require("./utils");
 const path = require("path");
 const express = require("express");
-
+module.exports = { states: {} };
 module.exports.load = (client) => {
     const session = require("express-session");
     //const csurf = require("csurf");
