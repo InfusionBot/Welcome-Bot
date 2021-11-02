@@ -25,7 +25,7 @@ module.exports = class CodesManager {
         } catch (e) {}
         for (let i = 0; i < codes.length; i++) {
             if (codes[i].expiresAt < Date.now()) {
-                this.client.models.Code.findOneAndDelete({
+                this.client.models.Code.deleteOne({
                     code: codes[i].code,
                 });
                 if (channel) {
