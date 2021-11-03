@@ -4,6 +4,7 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 module.exports = async (client) => {
+    /*
     const Guild = client.models.Guild;
     let actualGuilds = client.shard
         ? await client.shard.broadcastEval((c) =>
@@ -31,5 +32,6 @@ module.exports = async (client) => {
             });
         }
     });
-    console.log("Database audited");
+    console.log("Database audited");*/
+    console.log("Database auditor is disabled ;-;");
 };
