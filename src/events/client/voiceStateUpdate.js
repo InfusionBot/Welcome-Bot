@@ -77,7 +77,7 @@ module.exports = {
                         .members.size <= 1
                 ) {
                     //If player is alive, there is only 1 member left and it is not running for 24/7, then emit queueEnd
-                    if (!player.get("247"))
+                    if (player.get("247") == false)
                         return client.manager.emit("queueEnd", player);
                 }
             }

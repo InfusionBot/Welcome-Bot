@@ -293,6 +293,7 @@
   },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
+    "title": "Here's your daily coins!",
     "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
     "dailyClaimed": "You have already claimed your daily money. Try again in {{duration}}"
   },
@@ -360,6 +361,12 @@
     "used": "You successfully used your {{count}} {{item}}(s).\n{{metadata}}",
     "banknote": "Your bank space increased by {{added}}",
     "padlock": "You have equipped a padlock, if anyone tries to steal you, your pad lock will break"
+  },
+  "weekly": {
+    "cmdDesc": "Get your weekly wcoins!",
+    "title": "Here's your weekly coins!",
+    "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
+    "dailyClaimed": "You have already claimed your weekly money. Try again in {{duration}}"
   },
   "withdraw": {
     "cmdDesc": "Withdraw money from your bank",
@@ -565,7 +572,7 @@
     "already": "The channel is already unlocked!"
   },
   "247": {
-    "cmdDesc": "Disables leaving channel after queue finishes. Only available to premium users"
+    "cmdDesc": "Disables leaving channel after queue finishes."
   },
   "back": {
     "cmdDesc": "Play prevoius music",

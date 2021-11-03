@@ -34,7 +34,8 @@ module.exports = class CMD extends Command {
             (!player.playing && !player.paused && !player.queue.size)
         )
             return message.reply(t("cmds:stop.notPlaying"));
-        player.set("247", !player.get("247"));
+        const twentyfourseven = player.get("247");
+        player.set("247", !twentyfourseven);
         message.react("✅");
     }
 };

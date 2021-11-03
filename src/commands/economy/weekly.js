@@ -10,12 +10,12 @@ module.exports = class CMD extends Command {
     constructor(client) {
         super(
             {
-                name: "daily",
-                //aliases: ["day-coin"],
+                name: "weekly",
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
                     guildOnly: false,
+                    premiumOnly: true,
                 },
                 disabled: false,
                 cooldown: 10,
@@ -26,16 +26,16 @@ module.exports = class CMD extends Command {
     }
 
     async execute({ message, userDB, language }, t) {
-        const dailyCoins = 500;
+        const weeklyCoins = 1e4; //10k
         moment.locale(language.moment);
         const multiplier =
             userDB.multiplier[this.name] === 0
                 ? 1
                 : userDB.multiplier[this.name];
-        const coins = dailyCoins * multiplier;
+        const coins = weeklyCoins * multiplier;
 
         const diff =
-            24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.daily);
+            7 * 24 * 60 * 60 * 1000 - (new Date().getTime() - userDB.weekly);
 
         if (diff > 0) {
             const hours = Math.round(diff / (1000 * 60 * 60));
@@ -54,14 +54,14 @@ module.exports = class CMD extends Command {
 
         try {
             userDB.wallet = Number(userDB.wallet) + coins;
-            userDB.daily = new Date().getTime();
+            userDB.weekly = new Date().getTime();
             userDB.multiplier[this.name] = userDB.multiplier[this.name] + 1;
             await userDB.save();
         } catch (e) {
             throw e;
         }
         const embed = new Embed({ color: "green" })
-            .setTitle(t("cmds:daily.title"))
+            .setTitle(t("cmds:weekly.title"))
             .setDescription(t("cmds:daily.success", { wcoins: `${coins}` }))
             .setFooter(
                 `${t("misc:multiplier")}: ${userDB.multiplier[this.name]}`

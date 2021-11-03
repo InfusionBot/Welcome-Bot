@@ -20,7 +20,7 @@ module.exports = {
             .setDescription(
                 `${client.musicEmojis.warn} ${t("cmds:play.queueEnd")}`
             )
-            .setFooter(client.user.username, client.user.displayAvatarURL());
+            .setFooter(client.user.tag, client.user.displayAvatarURL());
         channel.send({ embeds: [embed] });
         player.destroy();
     },

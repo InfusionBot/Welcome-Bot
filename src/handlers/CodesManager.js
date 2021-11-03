@@ -34,11 +34,12 @@ module.exports = class CodesManager {
                         .setDesc(`Code: ${codes[i].code}`);
                     // eslint-disable-next-line no-await-in-loop
                     let user = null;
-                    if (codes[i]?.usedBy)
-                        user = await this.client.users.fetch(codes[i].usedBy);
+                    if (codes[i].userId)
+                        // eslint-disable-next-line no-await-in-loop
+                        user = await this.client.users.fetch(codes[i].userId);
                     if (user)
                         embed.setAuthor(user.tag, user.displayAvatarURL());
-                    else embed.setAuthor("Unknown or Anonymous");
+                    else embed.setAuthor("Unknown or Anonymous/Not used yet");
                     const guild =
                         this.client.guilds.cache.get(codes[i]?.guildId) ?? null;
                     if (guild) embed.setFooter(guild.name, guild.iconURL());
@@ -70,9 +71,14 @@ module.exports = class CodesManager {
         const codeDB = new this.client.models.Code(info);
         await codeDB.save();
         this._codesInfo.set(code, info);
-        const channel = await this.client.channels.fetch(
-            this.client.config.channels.codes
-        );
+        let channel;
+        try {
+            channel = await this.client.channels.fetch(
+                this.client.config.channels.codes
+            );
+        } catch (e) {
+            channel = null;
+        }
         if (channel) {
             const embed = new Embed({ color: "success", timestamp: true })
                 .setTitle("New premium code created")
@@ -80,6 +86,8 @@ module.exports = class CodesManager {
                 .addField("Expires", `${expiresAt}`, true);
             embed.setAuthor(user.tag, user.displayAvatarURL());
             channel.send({ embeds: [embed] });
+        } else {
+            this.client.logger.error("Can't fetch codes channel");
         }
         return info;
     }
@@ -96,9 +104,14 @@ module.exports = class CodesManager {
         await codeDB.save();
         this._codesInfo.delete(info.code);
         this._codesInfo.set(info.code, codeDB.toJSON());
-        const channel = await this.client.channels.fetch(
-            this.client.config.channels.codes
-        );
+        let channel;
+        try {
+            channel = await this.client.channels.fetch(
+                this.client.config.channels.codes
+            );
+        } catch (e) {
+            channel = null;
+        }
         if (channel) {
             const embed = new Embed({ color: "red", timestamp: true })
                 .setTitle("Premium code used")
@@ -108,6 +121,8 @@ module.exports = class CodesManager {
             if (guild) embed.setFooter(guild.name, guild.iconURL());
             else embed.setFooter("Unknown guild. Maybe claimed in DMs");
             channel.send({ embeds: [embed] });
+        } else {
+            this.client.logger.error("Can't fetch codes channel");
         }
         return info;
     }

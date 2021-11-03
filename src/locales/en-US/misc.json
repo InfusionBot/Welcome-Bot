@@ -83,5 +83,6 @@
   "voice_left": "Left voice channel",
   "nameChange": "Name Changed",
   "avatarUpdate": "Avatar Update",
-  "multiplier": "Multiplier"
+  "multiplier": "Multiplier",
+  "premiumOnly": "Only available to premium users"
 }

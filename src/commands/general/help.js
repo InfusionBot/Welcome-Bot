@@ -126,6 +126,9 @@ module.exports = class CMD extends Command {
                     t
                 ).join(", ")} permission(s) to execute this command.`;
             }
+            if (command.requirements.premiumOnly) {
+                desc += `\n:star: ${t("misc:premiumOnly")}`;
+            }
             pages[0].addField("Description", desc);
             if (command.aliases && command.aliases?.length)
                 pages[0].addField("Aliases: ", command.aliases.join(", "));

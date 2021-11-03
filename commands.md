@@ -517,7 +517,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Aliases: `site`
 - Cooldown: 10
 
-## Economy (15 commands)
+## Economy (16 commands)
 
 ### `balance`
 
@@ -700,6 +700,19 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Usage: w/use [item] (count)
 - Aliases: `equip`, `consume`
 - Cooldown: 5
+
+### `weekly`
+
+##### Subcommands:
+
+- None
+
+##### Cmd info
+
+- Description: Get your weekly wcoins!
+- Usage: w/weekly 
+- Aliases: None
+- Cooldown: 10
 
 ### `withdraw`
 
@@ -1255,7 +1268,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: Disables leaving channel after queue finishes. Only available to premium users
+- Description: Disables leaving channel after queue finishes.
 - Usage: w/247 
 - Aliases: `24/7`
 - Cooldown: 5

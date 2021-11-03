@@ -95,16 +95,30 @@ module.exports = {
                 if (users) {
                     users.forEach(async (userDB) => {
                         const user = await client.users.fetch(userDB.userId);
-                        const diff =
-                            2 * 24 * 60 * 60 * 1000 -
-                            (new Date().getTime() - userDB.daily); //2 days
-                        if (diff < 0) {
-                            console.log(
-                                `Resetting daily multiplier for ${user.tag} (${user.id})`
-                            );
-                            userDB.multiplier.daily = 0;
-                            await userDB.save();
+                        let diff;
+                        if (userDB.daily < 0) {
+                            diff =
+                                2 * 24 * 60 * 60 * 1000 -
+                                (new Date().getTime() - userDB.daily); //2 days
+                            if (diff < 0) {
+                                console.log(
+                                    `Resetting daily multiplier for ${user.tag} (${user.id})`
+                                );
+                                userDB.multiplier.daily = 0;
+                            }
                         }
+                        if (userDB.weekly < 0) {
+                            diff =
+                                14 * 24 * 60 * 60 * 1000 -
+                                (new Date().getTime() - userDB.weekly); //14 days
+                            if (diff < 0) {
+                                console.log(
+                                    `Resetting weekly multiplier for ${user.tag} (${user.id})`
+                                );
+                                userDB.multiplier.weekly = 0;
+                            }
+                        }
+                        await userDB.save();
                     });
                 }
             });

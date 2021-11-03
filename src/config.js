@@ -53,14 +53,6 @@ module.exports = {
     ],
     dbCacheRefreshInterval: 1 * 60 * 60 * 1000, //refresh db cache every hour
     staffIds: ["772421156787191818" /*Kirito#1555*/],
-    dashboard: {
-        port: process.env.PORT || 8000,
-        secret: process.env.SESS_SECRET ?? null,
-        enabled:
-            (process.env.SESS_SECRET ?? null ? true : false) &&
-            !process.env.DASHBOARD_STARTED,
-        logs: "855331801635749888",
-    },
     site: "https://welcome-bot.github.io/",
     source: "https://github.com/Welcome-Bot/welcome-bot",
     invite: (client) => {
@@ -97,3 +89,15 @@ module.exports = {
         return invite;
     },
 };
+Object.defineProperty(module.exports, "dashboard", {
+    get: function () {
+        return {
+            port: process.env.PORT || 8000,
+            secret: process.env.SESS_SECRET ?? null,
+            enabled:
+                (process.env.SESS_SECRET ?? null ? true : false) &&
+                !process.env.DASHBOARD_STARTED,
+            logs: "855331801635749888",
+        };
+    },
+});

@@ -36,6 +36,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - New command `sourcecode`
 - New command `snipe`
 - New command `slowmode`
+- New command `weekly` ⭐ (Premium users)
 
 ## [v2.0.3]
 

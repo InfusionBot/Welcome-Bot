@@ -35,8 +35,20 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
+    weekly: {
+        type: Number,
+        trim: true,
+        required: true,
+        default: 0,
+    },
     multiplier: {
         daily: {
+            type: Number,
+            trim: true,
+            required: true,
+            default: 0,
+        },
+        weekly: {
             type: Number,
             trim: true,
             required: true,
