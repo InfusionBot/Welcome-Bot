@@ -10,8 +10,9 @@ const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const DBCache = require("./db/DBCache");
-const { CodesManager } = require("./handlers/");
+const { CodesManager } = require("./handlers");
 const { Manager } = require("erela.js");
+const { EventEmitter } = require("node:events");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -41,7 +42,6 @@ class WelcomeBot extends Client {
         this.userSchema = require("./db/models/User");
         this.dashboard = require("./dashboard/app");
         //this.dashboard.states = {};
-        process.env.DASHBOARD_STARTED = true;
         this.snipes = new Collection();
         this.editSnipes = new Collection();
         this.categories = [];
@@ -63,6 +63,7 @@ class WelcomeBot extends Client {
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         if (!this.debug) this.debugLevel = -1;
+        this.economy = new EventEmitter();
         const ownersTags = [];
         (async (client) => {
             for (let i = 0; i < client.config.ownerIds.length; i++) {

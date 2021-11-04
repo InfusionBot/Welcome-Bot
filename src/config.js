@@ -41,7 +41,7 @@ module.exports = {
         secret: process.env.SESS_SECRET ?? null,
         get enabled() {
             return (
-                (process.env.SESS_SECRET ?? null ? true : false) &&
+                (process.env?.SESS_SECRET ? true : false) &&
                 !process.env.DASHBOARD_STARTED
             );
         },

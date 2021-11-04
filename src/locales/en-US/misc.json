@@ -60,7 +60,7 @@
   "disabled": "disabled",
   "inventory": "Inventory",
   "thanks": {
-    "vote": "Thanks for voting on {{site}}, you just got 500 WCoins with other rewards 🎉!"
+    "vote": "Thanks for voting on {{site}}, you just got {{coins}} WCoins with other rewards 🎉!"
   },
   "welcome": "Welcome!",
   "sname": "**Server name**",

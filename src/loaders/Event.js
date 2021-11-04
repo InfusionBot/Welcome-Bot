@@ -11,6 +11,7 @@ module.exports = (client) => {
     const eventsFolder = `${__dirname}/../events`;
     const clientEvents = `${eventsFolder}/client`;
     const lavalinkEvents = `${eventsFolder}/lavalink`;
+    const economyEvents = `${eventsFolder}/economy`;
     const eventFiles = {};
     if (fs.existsSync(clientEvents)) {
         eventFiles["client"] = fs
@@ -26,27 +27,49 @@ module.exports = (client) => {
     } else {
         return client.logger.log(`Can't read ${lavalinkEvents}`);
     }
+    if (fs.existsSync(economyEvents)) {
+        eventFiles["economy"] = fs
+            .readdirSync(economyEvents)
+            .filter((file) => file.endsWith(".js"));
+    } else {
+        return client.logger.log(`Can't read ${economyEvents}`);
+    }
     for (const i in eventFiles) {
+        let error = true;
         for (const file of eventFiles[i]) {
             const event = require(`${eventsFolder}/${i}/${file}`);
+            if (!event.name) {
+                event.name = file.replace(".js", "");
+            }
+            if (!event.once) {
+                event.once = false;
+            }
+            const selector =
+                i === "economy"
+                    ? client.economy
+                    : i === "client"
+                    ? client
+                    : client.manager;
             try {
                 if (event.once) {
-                    (i === "client" ? client : client.manager).once(
-                        event.name,
-                        (...args) => event.execute(client, ...args)
+                    selector.once(event.name, (...args) =>
+                        event.execute(client, ...args)
                     );
                 } else {
-                    (i === "client" ? client : client.manager).on(
-                        event.name,
-                        (...args) => event.execute(client, ...args)
+                    selector.on(event.name, (...args) =>
+                        event.execute(client, ...args)
                     );
                 }
-                table.addRow(event.name, "✅");
+                error = false;
             } catch (e) {
                 client.logger.log(`Error occurred when loading ${event.name}`);
                 console.error(e);
-                table.addRow(event.name, "❌");
             }
+        }
+        if (error) {
+            table.addRow(i, "❌");
+        } else {
+            table.addRow(i, "✅");
         }
     }
     console.log(`${table}`);

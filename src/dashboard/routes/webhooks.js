@@ -5,13 +5,6 @@
  */
 const express = require("express");
 const router = express.Router();
-const giveRewards = (userDB) => {
-    userDB.wallet = parseInt(userDB.wallet) + 5000; //Give 5000 coins
-    userDB.markModified("wallet");
-    userDB.inventory.banknote = parseInt(userDB.inventory.banknote) + 3; //Give 3 banknotes
-    userDB.markModified("inventory.banknote");
-    return userDB;
-};
 router.use((req, res, next) => {
     console.log(`${req.method} ${req.path} - ${req.ip}`);
     next();
@@ -30,9 +23,7 @@ router
 //POST /webhooks/bls
 router.post("/bls", async (req, res) => {
     if (!process.env.BLS_Wtoken)
-        return (
-            console.log("No DONATE_Wtoken set in env") && res.sendStatus(500)
-        );
+        return console.log("No BLS_Wtoken set in env") && res.sendStatus(500);
     if (
         !req.headers.authorization ||
         req.headers.authorization !== process.env.BLS_Wtoken
@@ -44,15 +35,6 @@ router.post("/bls", async (req, res) => {
         res.sendStatus(500);
         return console.log("bls webhook: User not found to give vote rewards");
     }
-    if (!(await client.userDbFuncs.getUser(vUser.id)))
-        await client.userDbFuncs.addUser(vUser.id);
-    let userDB = await client.userDbFuncs.getUser(vUser.id);
-    userDB = giveRewards(userDB);
-    await userDB.save();
-    const member = client.guilds.cache
-        .get(client.config.botGuildId)
-        .members.cache.get(vUser.id);
-    if (member) member.roles.add(client.config.roles.voters);
     if (process.env.NODE_ENV !== "production") {
         console.log(
             "NODE_ENV not in production so not sending any messages for voting on botlist.space"
@@ -60,20 +42,7 @@ router.post("/bls", async (req, res) => {
         res.sendStatus(200);
         return res.end();
     }
-    if (client.config.channels.votes) {
-        client.channels.cache
-            .get(client.config.channels.votes)
-            .send(
-                `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${client.username}** on botlist.space and got 500 WCoins with other rewards 🎉!`
-            )
-            .catch(console.log);
-    } else {
-        console.log("No channels.votes in config");
-    }
-    const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
-    vUser
-        .send(t("misc:thanks.vote", { site: "botlist.space" }))
-        .catch(() => {});
+    client.economy.emit("voted", vUser, "botlist.space", req.body);
     res.sendStatus(200);
     res.end();
 });
@@ -92,34 +61,7 @@ router.post(
                 "topgg webhook: User not found to give vote rewards"
             );
         }
-        if (!(await client.userDbFuncs.getUser(vUser.id)))
-            await client.userDbFuncs.addUser(vUser.id);
-        let userDB = await client.userDbFuncs.getUser(vUser.id);
-        userDB = giveRewards(userDB);
-        await userDB.save();
-        const member = client.guilds.cache
-            .get(client.config.botGuildId)
-            .members.cache.get(vUser.id);
-        if (member) member.roles.add(client.config.roles.voters);
-        if (client.config.channels.votes) {
-            client.channels.cache
-                .get(client.config.channels.votes)
-                .send(
-                    `⬆️ **${vUser.tag}** (\`${vUser.id}\`) voted for **${
-                        client.username
-                    } ${
-                        vote.guild ? "Support server" : "itself"
-                    }** on top.gg and got 500 WCoins with other rewards 🎉!`
-                )
-                .catch(console.log);
-        } else {
-            console.log("No channels.votes in config");
-        }
-        const t = req.client.i18next.getFixedT(req.locale ?? "en-US");
-        vUser
-            .send(t("misc:thanks.vote", { site: "top.gg" }))
-            .catch(() => {})
-            .catch(() => {});
+        client.economy.emit("voted", vUser, "top.gg", vote);
         res.sendStatus(200);
         res.end();
     })
