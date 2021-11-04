@@ -24,7 +24,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB }, t) {
+    execute({ message, args }) {
         let commands = this.client.commands.enabled
             .filter((cmd) => cmd.slash)
             .map(({ name, options }) => {
@@ -35,6 +35,14 @@ module.exports = class CMD extends Command {
         commands = [...commands.values()];
         let cmds;
         this.client.guilds.cache.forEach(async (guild) => {
+            let guildDB;
+            try {
+                guildDB = await this.client.models.Guild.findOne({
+                    guildId: guild.id,
+                });
+            } catch (e) {
+                guildDB = null;
+            }
             const guildT = this.client.i18next.getFixedT(
                 guildDB.lang || "en-US"
             );

@@ -5,7 +5,7 @@
  */
 
 module.exports = (client, data) => {
-    const name = "Welcome-Bot";
+    const name = client.username;
     const website = "http://welcome-bot.github.io";
     const birthyear = "2021";
     return data

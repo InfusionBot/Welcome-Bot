@@ -35,7 +35,7 @@ class WelcomeBot extends Client {
         this.initialized = false;
         this.config = config;
         this.logger = new Logger();
-        this.username = "Welcome-Bot";
+        this.username = "InfusionBot";
         this.db = new DBCache(this);
         this.guildSchema = require("./db/models/Guild");
         this.userSchema = require("./db/models/User");
