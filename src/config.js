@@ -36,6 +36,17 @@ module.exports = {
         codes: "894811606083567677",
         logs: "855331801635749888",
     },
+    dashboard: {
+        port: process.env.PORT || 8000,
+        secret: process.env.SESS_SECRET ?? null,
+        get enabled() {
+            return (
+                (process.env.SESS_SECRET ?? null ? true : false) &&
+                !process.env.DASHBOARD_STARTED
+            );
+        },
+        logs: "855331801635749888",
+    },
     nodes: [
         {
             host: "lava.link",
@@ -89,15 +100,3 @@ module.exports = {
         return invite;
     },
 };
-Object.defineProperty(module.exports, "dashboard", {
-    get: function () {
-        return {
-            port: process.env.PORT || 8000,
-            secret: process.env.SESS_SECRET ?? null,
-            enabled:
-                (process.env.SESS_SECRET ?? null ? true : false) &&
-                !process.env.DASHBOARD_STARTED,
-            logs: "855331801635749888",
-        };
-    },
-});
