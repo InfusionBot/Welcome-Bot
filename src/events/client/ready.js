@@ -16,40 +16,6 @@ module.exports = {
             client.logger.log(
                 `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
             );
-        const { CronJob } = require("cron");
-        const job = new CronJob(
-            "0 0 */6 * * *",
-            async () => {
-                if (process.env.NODE_ENV !== "production") return;
-                const { Topgg } = require("../../classes");
-                if (!Topgg || !Topgg.api) return;
-                const guild = client.guilds.cache.get(client.config.botGuildId);
-                const role = await guild.roles.fetch(
-                    client.config.roles.voteReminder
-                );
-                await guild.members.fetch();
-                const membersToRemind = guild.members.cache.filter((m) =>
-                    m.roles.cache.has(role.id)
-                );
-                const users = [];
-                membersToRemind.forEach(async (m) => {
-                    if (await Topgg.api.hasVoted(m.user.id)) return;
-                    users.push(`${m}`);
-                });
-                if (!users?.length || !users[0]) return;
-                client.channels.cache
-                    .get(client.config.channels.general)
-                    .send(
-                        `Hey ${users.join(
-                            ", "
-                        )}!\nGentle reminder for voting! Use vote command`
-                    );
-            },
-            null,
-            true,
-            "America/Los_Angeles"
-        );
-        job.start();
         const presence = require("../../functions/presence");
         const serverCount = require("../../functions/serverCount");
         if (client.config.dashboard.enabled) client.dashboard.load(client);
