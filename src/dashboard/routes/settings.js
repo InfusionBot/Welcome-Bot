@@ -48,6 +48,10 @@ router.post("/", CheckAuth, async (req, res) => {
         userDB.bio = `${data.bio}`;
         userDB.markModified("bio");
     }
+    if (Object.hasOwnProperty.call(data, "locale")) {
+        userDB.locale = `${data.locale}`;
+        userDB.markModified("locale");
+    }
     await userDB.save();
     res.redirect(303, "/settings");
 });

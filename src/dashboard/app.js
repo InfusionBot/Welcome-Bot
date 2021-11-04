@@ -44,11 +44,14 @@ module.exports.load = (client) => {
             }
             if (!req.user) req.user = null;
             req.userDB = req.user
-                ? await client.db.findOrCreateUser(req.user.id)
+                ? await client.db.models.findOne({ userId: req.user.id })
                 : null;
+            if (!req.userDB && req.user) {
+                req.userDB = await client.db.findOrCreateUser(req.user.id);
+            }
             req.locale = "en-US";
-            if (req.userData && req.userData.locale)
-                req.locale = req.userData.locale;
+            if (req.userData?.locale) req.locale = req.userData.locale;
+            else if (req.userDB?.locale) req.locale = req.userDB.locale;
             req.translate = client.i18next.getFixedT(req.locale);
             req.currentURL = `${req.protocol}://${req.get("host")}${
                 req.originalUrl

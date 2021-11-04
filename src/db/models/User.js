@@ -63,6 +63,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "404 No bio set :-(",
     },
+    locale: {
+        type: String,
+        default: "null",
+    },
     logged: {
         type: Boolean,
         default: false,
