@@ -28,8 +28,8 @@ module.exports = class CMD extends Command {
     async execute({ message, userDB, language, donator }, t) {
         moment.locale(language.moment);
         const weeklyCoins =
-            1e4 * (donator ? this.client.config.donorMultiplier : 1);
-        //  10k
+            5e4 * (donator ? this.client.config.donorMultiplier : 1);
+        //  50k
         const multiplier =
             userDB.multiplier[this.name] === 0
                 ? 1

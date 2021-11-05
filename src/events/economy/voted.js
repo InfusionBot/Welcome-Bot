@@ -20,13 +20,13 @@ module.exports = {
         if (!userDB) {
             userDB = await client.db.findOrCreateUser(user.id);
         }
-        userDB.wallet = Number(userDB.wallet) + 5000; //Give 5000 coins
+        userDB.wallet = Number(userDB.wallet) + 10000; //Give 10k coins
         userDB.inventory.banknote = Number(userDB.inventory.banknote) + 3; //Give 3 banknotes
         await userDB.save();
         const t = client.i18next.getFixedT("en-US"); //currently only english support
         try {
             await user
-                .send(t("misc:thanks.vote", { site, coins: "5000" }))
+                .send(t("misc:thanks.vote", { site, coins: "10,000" }))
                 .catch((e) => {
                     throw e;
                 });
@@ -38,6 +38,7 @@ module.exports = {
             channel = await client.channels.fetch(client.config.channels.votes);
         } catch (e) {
             channel = null;
+            client.logger.error("Can't fetch vote log channel");
         }
         if (channel) {
             channel
@@ -46,11 +47,9 @@ module.exports = {
                         client.username
                     }${
                         rawData?.guild ? " Community Server" : ""
-                    }** on ${site} and got 5000 WCoins with other rewards 🎉!`
+                    }** on ${site} and got 10,000 WCoins with other rewards 🎉!`
                 )
                 .catch(console.log);
-        } else {
-            client.logger.error("Can't fetch vote log channel");
         }
     },
 };
