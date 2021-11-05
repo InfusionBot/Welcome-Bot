@@ -18,7 +18,7 @@ module.exports = {
             );
         const presence = require("../../functions/presence");
         const serverCount = require("../../functions/serverCount");
-        client.brodcastEval(
+        client.shard.brodcastEval(
             (c) => {
                 if (c.config.dashboard.enabled) {
                     c.dashboard.load();
