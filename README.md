@@ -1,17 +1,17 @@
-# Discord Welcome-Bot
+# InfusionBot
 
 > A cool multi-purpose discord bot that solves all your problems. I have features such as Moderation, ModLog, Economy, Welcome & Goodbye logs, Fun, Music
 
-Welcome-Bot is a bot built for you, to welcome new users to your servers mainly. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
+InfusionBot is a bot built for you. Customization of welcome messages, in which channel do you want it to send welcome message, etc. can be done easily.
 
-[![GitHub issues](https://img.shields.io/github/issues/Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/issues)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CODE_OF_CONDUCT.md)
+[![GitHub issues](https://img.shields.io/github/issues/InfusionBot/InfusionBot)](https://github.com/InfusionBot/InfusionBot/issues)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/InfusionBot/InfusionBot/blob/main/.github/CODE_OF_CONDUCT.md)
 [![Discord Chat](https://img.shields.io/discord/836854115526770708?color=7289da&label=discord&logo=discord&logoColor=white)][discord]
-[![dependencies](https://status.david-dm.org/gh/Welcome-Bot/welcome-bot.svg)](https://david-dm.org/Welcome-Bot/welcome-bot)
+[![dependencies](https://status.david-dm.org/gh/InfusionBot/InfusionBot.svg)](https://david-dm.org/InfusionBot/InfusionBot)
 [![Crowdin](https://badges.crowdin.net/welcome-bot/localized.svg)](https://crowdin.com/project/welcome-bot)
-[![CI](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml/badge.svg?branch=development&event=push)](https://github.com/Welcome-Bot/welcome-bot/actions/workflows/ci.yml)
-![Codelines](https://img.shields.io/tokei/lines/github/Welcome-Bot/welcome-bot)
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Welcome-Bot/welcome-bot)
+[![CI](https://github.com/InfusionBot/InfusionBot/actions/workflows/ci.yml/badge.svg?branch=development&event=push)](https://github.com/InfusionBot/InfusionBot/actions/workflows/ci.yml)
+![Codelines](https://img.shields.io/tokei/lines/github/InfusionBot/InfusionBot)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/InfusionBot/InfusionBot)
 
 Feel free to add a star ⭐ to the repository to promote the project!
 
@@ -19,10 +19,10 @@ Feel free to add a star ⭐ to the repository to promote the project!
 
 ### Complete bot
 
-Welcome-Bot offers:
+InfusionBot offers:
 - 🇫🇷 Support for translations (limited languages)
 - ✉️ Support for commands in direct messages
-- 🥳 80+ commands
+- 🥳 100+ commands
 
 ### Customizable Settings
 
@@ -30,7 +30,7 @@ Adjust the settings to fit all the needs of your server! You can select the chan
 
 ### Reliable and High Quality
 
-With our revolutionary infrastructure implementation, we’re proud to achieve absolute 99.9% uptime!. This means that Welcome-Bot will always be online, and ready to relay messages between your server staff and users!
+With our revolutionary infrastructure implementation, we’re proud to achieve absolute 99.9% uptime!. This means that InfusionBot will always be online, and ready to relay messages between your server staff and users!
 
 ### Multi-purpose
 
@@ -38,23 +38,23 @@ The bot is multi-purpose!! It means that there are a lot of other uses of the bo
 
 ### Open Source
 
-We are an open source project on [GitHub](https://github.com/Welcome-Bot/welcome-bot). Don’t believe what we’ve said earlier? Check out the source code for yourself! This means the maximum level of transparency, so you’ll never have to worry about privacy concerns.
+We are an open source project on [GitHub](https://github.com/InfusionBot/InfusionBot). Don’t believe what we’ve said earlier? Check out the source code for yourself! This means the maximum level of transparency, so you’ll never have to worry about privacy concerns.
 
 ## Docs
 
-Check out the docs on the [site](https://welcome-bot.github.io/docs)
+Check out the docs on the [site](https://infusionbot.github.io/docs)
 
 **Important note**: Remember to read the privacy policy and terms of service in the documentaion before inviting the bot.
 
 ## Commands
 
-Welcome-Bot has more than 80 commands, keeping a list of commands up to date here won't work out, [visit our site](https://welcome-bot.github.io/docs/commands.html) for list of all commands.
+InfusionBot has more than 100 commands, keeping a list of commands up to date here won't work out, [visit our site](https://infusionbot.github.io/docs/commands.html) for list of all commands.
 
 ## Default values
 
 ### Default message
 
-The default welcome message is `Welcome {mention} to the {server} server!\nYou are our {members_formatted} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://welcome-bot.github.io/docs/commands.html#placeholders-in-welcome-message)
+The default welcome message is `Welcome {mention} to the {server} server!\nYou are our {members_formatted} member`. Some placeholders can be used here, for info on those placeholders, [click here](https://infusionbot.github.io/docs/commands.html#placeholders-in-welcome-message)
 
 ### Default channel
 
@@ -85,21 +85,21 @@ To invite the bot with all the necessary required permissions mentioned above yo
 
 ### Welcome channel
 
-You can set welcome channel, by using the `welcome channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#welcome)
+You can set welcome channel, by using the `welcome channel` command, more info can be found in [docs for commands](https://infusionbot.github.io/docs/commands.html#welcome)
 
 ### Goodbye channel
 
-You can set goodbye channel, by using the `goodbye channel` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#goodbye)
+You can set goodbye channel, by using the `goodbye channel` command, more info can be found in [docs for commands](https://infusionbot.github.io/docs/commands.html#goodbye)
 
 ### Moderation channel
 
 By default the bot will check for a channel named `mod-log`.
 
-You can change this channel name, by using the `modlogs set` command, more info can be found in [docs for commands](https://welcome-bot.github.io/docs/commands.html#modlogs)
+You can change this channel name, by using the `modlogs set` command, more info can be found in [docs for commands](https://infusionbot.github.io/docs/commands.html#modlogs)
 
 ## Botlists
 
-Discord welcome bot can be found on different Botlist sites.  
+InfusionBot can be found on different Botlist sites.  
 Feel free to upvote him to show your support.
 
 ### [discordextremelist.xyz](https://discordextremelist.xyz/en-US/bots/welcome-bot)
@@ -142,7 +142,7 @@ Feel free to upvote him to show your support.
 
 ## Self hosting
 
-**We ask you to please not host your own instance of Welcome-Bot.**  
+**We ask you to please not host your own instance of InfusionBot.**  
 Even though our license allows it, self-hosted instances of the bot have brought us a lot of headache in the past.  
 If you're considering self-hosting, please [try the official instance of the bot first][botinvite].
 If you have any concerns about the security of our instance, please contact us.  
@@ -155,19 +155,19 @@ We'd love to talk and answer any questions you have.
 
 👏 A big thank you goes to all the supporters of this project!
 
-You prove that the Discord Welcome-Bot has some value for you!
+You prove that the InfusionBot has some value for you!
 
 ### Stargazers
 
-[![stargazers image](https://reporoster.com/stars/Welcome-Bot/welcome-bot)][stargazers]
+[![stargazers image](https://reporoster.com/stars/InfusionBot/InfusionBot)][stargazers]
 
 ### Contributors
 
-[![contributors image](https://contrib.rocks/image?repo=Welcome-Bot/welcome-bot)](https://github.com/Welcome-Bot/welcome-bot/contributors)
+[![contributors image](https://contrib.rocks/image?repo=InfusionBot/InfusionBot)](https://github.com/Welcome-Bot/welcome-bot/contributors)
 
 ### Translators
 
-A list of people who helped us in translation is available in [TRANSLATORS.md file](https://github.com/Welcome-Bot/welcome-bot/blob/main/TRANSLATORS.md)
+A list of people who helped us in translation is available in [TRANSLATORS.md file](https://github.com/InfusionBot/InfusionBot/blob/main/TRANSLATORS.md)
 
 ## Questions?
 
@@ -179,10 +179,10 @@ Visit our [Roadmap] for planned and upcoming features.
 
 ## Contributing
 
-You can find the contributing guidelines [here](https://github.com/Welcome-Bot/welcome-bot/blob/main/.github/CONTRIBUTING.md)
+You can find the contributing guidelines [here](https://github.com/InfusionBot/InfusionBot/blob/main/.github/CONTRIBUTING.md)
 
-[stargazers]: https://github.com/Welcome-Bot/welcome-bot/stargazers
+[stargazers]: https://github.com/InfusionBot/InfusionBot/stargazers
 [botinvite]: https://dsc.gg/welcome-bot
 [discord]: https://dsc.gg/welcome-bot-guild
-[license]: https://github.com/Welcome-Bot/welcome-bot/blob/main/LICENSE
-[Roadmap]: https://github.com/Welcome-Bot/welcome-bot/projects/1
+[license]: https://github.com/InfusionBot/InfusionBot/blob/main/LICENSE
+[Roadmap]: https://github.com/InfusionBot/InfusionBot/projects/1

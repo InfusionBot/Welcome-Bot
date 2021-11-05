@@ -10,8 +10,6 @@ module.exports = {
     name: "messageCreate",
     once: false,
     async execute(client, message) {
-        if (client.debugLevel > 0)
-            client.logger.log("messageCreate event", "debug");
         const execute = require("../../functions/execute");
         if (!client.initialized) return;
         let guildDB;

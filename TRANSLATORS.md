@@ -1,6 +1,6 @@
-# Translators of Welcome-Bot!
+# Translators of InfusionBot!
 
-Thanks goes to these wonderful people who helped translate Welcome-Bot to differente languages
+Thanks goes to these wonderful people who helped translate InfusionBot to differente languages
 
 - [PuneetGopinath](https://crowdin.com/profile/PuneetGopinath) - Hindi, Arabic
 - [abhijoshi2k](https://crowdin.com/profile/abhijoshi2k) - English

@@ -148,7 +148,7 @@ class WelcomeBot extends Client {
                 return;
             }
         }
-        return cmd.name ? cmd : disabledCmd;
+        return cmd?.name ? cmd : disabledCmd;
     }
 
     addDbFuncs() {
