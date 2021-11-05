@@ -8,7 +8,14 @@ module.exports = {
     name: "guildDelete",
     once: false,
     async execute(client, guild) {
-        //Bot has been kicked or banned in a guild
+        try {
+            await client.guilds.fetch(guild?.id);
+        } catch (e) {
+            if (e.toString().indexOf("Unknown Guild") !== -1) {
+                return; //invalid guild
+            }
+        }
+        //Bot has been removed from a guild
         if (guild.available) await client.db.deleteGuild(guild.id);
         let members;
         try {
