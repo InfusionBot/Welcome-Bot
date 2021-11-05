@@ -41,10 +41,7 @@ module.exports = {
         port: process.env.PORT || 8000,
         secret: process.env.SESS_SECRET ?? null,
         get enabled() {
-            return (
-                (process.env?.SESS_SECRET ? true : false) &&
-                !process.env.DASHBOARD_STARTED
-            );
+            return process.env?.SESS_SECRET ? true : false;
         },
         logs: "855331801635749888",
     },

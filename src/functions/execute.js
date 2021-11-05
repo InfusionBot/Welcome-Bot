@@ -281,7 +281,11 @@ module.exports = async (message, guildDB) => {
                                 l.name === guildDB.lang ||
                                 l.aliases.includes(guildDB.lang)
                         ),
-                        donator: member && member.roles.cache.any(donatorRoles),
+                        donator:
+                            member &&
+                            member.roles.cache.some((role) =>
+                                donatorRoles.includes(role)
+                            ),
                     },
                     t
                 );

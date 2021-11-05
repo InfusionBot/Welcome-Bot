@@ -18,10 +18,16 @@ module.exports = {
             );
         const presence = require("../../functions/presence");
         const serverCount = require("../../functions/serverCount");
-        if (client.config.dashboard.enabled) {
-            client.dashboard.load(client);
-            process.env.DASHBOARD_STARTED = true;
-        } else client.logger.debug("Dashboard not enabled");
+        client.brodcastEval(
+            (c) => {
+                if (c.config.dashboard.enabled) {
+                    c.dashboard.load();
+                } else {
+                    client.logger.debug("Dashboard disabled");
+                }
+            },
+            { shard: 0 }
+        );
         presence(client);
         // 1 * 60 * (1 second)
         // Update presence every 1 minute

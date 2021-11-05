@@ -16,4 +16,7 @@ manager.on("shardCreate", (shard) => {
             .join(" ")}] || <==> || Launched shard #${shard.id}`
     );
 });
-manager.spawn({ amount: manager.totalShards, timeout: -1 });
+const main = async () => {
+    await manager.spawn({ amount: manager.totalShards, timeout: -1 });
+};
+main();

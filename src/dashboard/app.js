@@ -8,8 +8,10 @@ const fs = require("fs");
 const { CheckAuth, fetchUser } = require("./utils");
 const path = require("path");
 const express = require("express");
-module.exports = { states: {} };
+module.exports = { states: {}, loaded: false };
 module.exports.load = (client) => {
+    if (module.exports.loaded)
+        return client.logger.error("Already loaded dashboard");
     const session = require("express-session");
     //const csurf = require("csurf");
     //const csrf = csurf();
@@ -125,4 +127,5 @@ module.exports.load = (client) => {
     } catch (e) {
         console.log(e);
     }
+    module.exports.loaded = true;
 };
