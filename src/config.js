@@ -15,6 +15,7 @@ module.exports = {
     suggestionLogsChannelId: "862126837110800414",
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",
+    donorMultiplier: 10,
     roles: {
         voteReminder: "886776592666353724",
         voters: "852512614789808138",

@@ -4,7 +4,6 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const { userFromMention } = require("../../helpers/Util.js");
-const getUser = require("../../db/functions/user/getUser");
 const updateUser = require("../../db/functions/user/updateUser");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
@@ -48,7 +47,9 @@ module.exports = class CMD extends Command {
         }
         let userDB2;
         try {
-            userDB2 = await getUser(user.id);
+            userDB2 = await this.client.models.User.findOne({
+                userId: user.id,
+            });
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }

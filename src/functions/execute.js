@@ -229,7 +229,14 @@ module.exports = async (message, guildDB) => {
                 return false;
             }
         }
-
+        let member;
+        try {
+            member = await client.guilds.cache
+                .get(client.config.servers.main)
+                .members.fetch(message.author.id);
+        } catch (e) {
+            member = null;
+        }
         if (client.debug && client.debugLevel >= 3)
             client.logger.log(
                 `Starting to prerun cmd: ${command.name}`,
@@ -258,6 +265,10 @@ module.exports = async (message, guildDB) => {
                 );
             //message.channel.sendTyping().catch(() => {});
             try {
+                const donatorRoles = [
+                    ...Object.values(client.config.roles.donators),
+                    client.config.roles.donator,
+                ];
                 command.execute(
                     {
                         prefix,
@@ -270,6 +281,7 @@ module.exports = async (message, guildDB) => {
                                 l.name === guildDB.lang ||
                                 l.aliases.includes(guildDB.lang)
                         ),
+                        donator: member && member.roles.cache.any(donatorRoles),
                     },
                     t
                 );

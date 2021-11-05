@@ -25,9 +25,11 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, userDB, language }, t) {
-        const weeklyCoins = 1e4; //10k
+    async execute({ message, userDB, language, donator }, t) {
         moment.locale(language.moment);
+        const weeklyCoins =
+            1e4 * (donator ? this.client.config.donorMultiplier : 1);
+        //  10k
         const multiplier =
             userDB.multiplier[this.name] === 0
                 ? 1
@@ -49,7 +51,7 @@ module.exports = class CMD extends Command {
                 duration = moment.duration(hours, "hours");
             }
             duration = duration.humanize();
-            return message.reply(t("cmds:daily.dailyClaimed", { duration }));
+            return message.reply(t("cmds:weekly.weeklyClaimed", { duration }));
         }
 
         try {
@@ -62,7 +64,7 @@ module.exports = class CMD extends Command {
         }
         const embed = new Embed({ color: "green" })
             .setTitle(t("cmds:weekly.title"))
-            .setDescription(t("cmds:daily.success", { wcoins: `${coins}` }))
+            .setDescription(t("cmds:weekly.success", { wcoins: `${coins}` }))
             .setFooter(
                 `${t("misc:multiplier")}: ${userDB.multiplier[this.name]}`
             );

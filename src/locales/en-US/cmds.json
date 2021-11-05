@@ -366,7 +366,7 @@
     "cmdDesc": "Get your weekly wcoins!",
     "title": "Here's your weekly coins!",
     "success": "{{wcoins}} WCoins were placed in your wallet!\n\nYou can get more rewards by voting! (vote command for more info)",
-    "dailyClaimed": "You have already claimed your weekly money. Try again in {{duration}}"
+    "weeklyClaimed": "You have already claimed your weekly money. Try again in {{duration}}"
   },
   "withdraw": {
     "cmdDesc": "Withdraw money from your bank",

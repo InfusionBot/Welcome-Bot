@@ -23,15 +23,16 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, userDB }, t) {
-        const begCoins = 150;
+    async execute({ message, userDB, donator }, t) {
+        const begCoins =
+            150 * (donator ? this.client.config.donorMultiplier : 1);
 
-        let wcoins = Math.floor(Math.random() * begCoins);
+        let wcoins = Math.floor(Math.random() * begCoins) + 1;
         wcoins = Math.round(wcoins);
         let result;
 
         if (wcoins === Infinity) {
-            wcoins = Math.floor(Math.random() * (begCoins - 100));
+            wcoins = Math.floor(Math.random() * (begCoins - 100)) + 1;
         }
 
         if (wcoins > 50 && wcoins !== Infinity) {

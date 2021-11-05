@@ -11,7 +11,6 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "daily",
-                //aliases: ["day-coin"],
                 memberPerms: [],
                 botPerms: [],
                 requirements: {
@@ -25,9 +24,10 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, userDB, language }, t) {
-        const dailyCoins = 500;
+    async execute({ message, userDB, language, donator }, t) {
         moment.locale(language.moment);
+        const dailyCoins =
+            500 * (donator ? this.client.config.donorMultiplier : 1);
         const multiplier =
             userDB.multiplier[this.name] === 0
                 ? 1

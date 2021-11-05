@@ -3,7 +3,6 @@
  * Copyright (c) 2021 The Welcome-Bot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-const getUser = require("../../db/functions/user/getUser");
 const moment = require("moment");
 const { Embed, Command } = require("../../classes");
 module.exports = class CMD extends Command {
@@ -22,8 +21,8 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, guildDB, userDB }, t) {
-        moment.locale(guildDB.lang ? guildDB.lang.toLowerCase() : "en-us");
+    async execute({ message, args, userDB, language }, t) {
+        moment.locale(language.moment);
         const user = args[0]
             ? await this.getUserFromIdOrMention(args[0])
             : message.author;
@@ -34,7 +33,10 @@ module.exports = class CMD extends Command {
         }
         let userDB2;
         try {
-            if (message.author.id !== user.id) userDB2 = await getUser(user.id);
+            if (message.author.id !== user.id)
+                userDB2 = await this.client.models.User.findOne({
+                    userId: user.id,
+                });
         } catch (e) {
             return message.reply(t("errors:noAcc"));
         }
@@ -59,7 +61,7 @@ module.exports = class CMD extends Command {
             .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr)
             .addField(`:ledger: ${t("misc:bio")}`, `${userDB2.bio}`)
             .addField(
-                `:crown: ${t("misc:premium")}`,
+                `:star: ${t("misc:premium")}`,
                 `${
                     this.client.codes.getCode(userDB?.premium?.code)
                         ? t("misc:yes")
