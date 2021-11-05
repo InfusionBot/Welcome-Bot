@@ -8,20 +8,33 @@ module.exports = {
     name: "channelDelete",
     once: false,
     async execute(client, channel) {
-        const guildDB = await client.models.Guild.findOne(channel.guild.id);
+        let guildDB;
+        try {
+            guildDB = await client.models.Guild.findOne({
+                guildId: channel.guild.id,
+            });
+            if (!guildDB) {
+                guildDB = await client.db.findOrCreateGuild(channel.guild.id);
+            }
+            // eslint-disable-next-line no-empty
+        } catch (e) {}
+        if (!guildDB) return;
         const t = client.i18next.getFixedT(guildDB.lang || "en-US");
-        if (guildDB.plugins.serverlogs.enabled) {
-            const channel = await channel.guild.channels.fetch(
+        if (
+            guildDB.plugins.serverlogs.enabled &&
+            !["GUILD_CATEGORY"].includes(channel.type)
+        ) {
+            const serverLogs = await channel.guild.channels.fetch(
                 guildDB.plugins.serverlogs.channel
             );
-            if (channel) {
+            if (serverLogs) {
                 const embed = new Embed({
                     tag: channel.name,
                     footer: `ID: ${channel.id}`,
                 })
                     .setTitle(`${t("misc:chanDel")}`)
                     .setDesc("```diff\n" + `- ${channel.name}\n` + "```");
-                channel
+                serverLogs
                     .send({
                         embeds: [embed],
                     })

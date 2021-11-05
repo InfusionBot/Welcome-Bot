@@ -121,8 +121,6 @@ module.exports.load = (client) => {
     try {
         app.listen(app.get("port"), () => {
             console.log(`Dashboard running on port ${app.get("port")}`);
-        }).catch((e) => {
-            throw e;
         });
     } catch (e) {
         console.log(e);
