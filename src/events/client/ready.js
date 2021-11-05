@@ -19,13 +19,8 @@ module.exports = {
         const presence = require("../../functions/presence");
         const serverCount = require("../../functions/serverCount");
         if (client.config.dashboard.enabled) {
-            try {
-                client.dashboard.load(client);
-                process.env.DASHBOARD_STARTED = true;
-            } catch (e) {
-                client.logger.error("Error loading dashboard");
-                console.log(e);
-            }
+            client.dashboard.load(client);
+            process.env.DASHBOARD_STARTED = true;
         } else client.logger.debug("Dashboard not enabled");
         presence(client);
         // 1 * 60 * (1 second)

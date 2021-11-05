@@ -12,13 +12,12 @@ module.exports = class DBCache {
         this.guildSchema = require("./models/Guild");
         this.userSchema = require("./models/Guild");
         this.models = require("./models");
-        setInterval(() => {
+        /*setInterval(() => {
             this.refreshCache();
-        }, this.client.config.dbCacheRefreshInterval);
+        }, this.client.config.dbCacheRefreshInterval);*/
     }
 
     refreshCache() {
-        this.models = require("./models");
         this.client.logger.log("Refreshing db cache", "debug");
         this.guilds.each((guildDB) => {
             const { guildId: id } = guildDB;

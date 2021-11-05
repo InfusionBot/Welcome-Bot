@@ -15,39 +15,30 @@ const dbAuditor = require("./db/functions/dbAuditor");
 
 process.env.userAgent = "Discord Welcome-Bot " + client.package.version;
 process.on("unhandledRejection", (error) => {
-    if (
-        error.toString().indexOf("No guild with guild ID") !== -1 &&
-        client &&
-        dbAuditor
-    ) {
-        dbAuditor(client);
-    } else {
-        client.logger.log("Unhandled promise rejection", "error");
-        console.error(error);
-        const channel =
-            client.channels.cache.get(client?.config?.channels?.errorLogs) ??
-            null;
-        if (channel)
-            channel
-                .send({
-                    embeds: [
-                        {
-                            title: ":x: An error occurred",
-                            description: `${error}`,
-                            fields: [
-                                {
-                                    name: "Stack trace",
-                                    value: `${error.stack}`,
-                                    inline: true,
-                                },
-                            ],
-                        },
-                    ],
-                })
-                .catch(() => {});
-    }
+    client.logger.log("Unhandled promise rejection", "error");
+    console.error(error);
+    const channel =
+        client.channels.cache.get(client?.config?.channels?.errorLogs) ?? null;
+    if (channel)
+        channel
+            .send({
+                embeds: [
+                    {
+                        title: ":x: An error occurred",
+                        description: `${error}`,
+                        fields: [
+                            {
+                                name: "Stack trace",
+                                value: `${error.stack}`,
+                                inline: true,
+                            },
+                        ],
+                    },
+                ],
+            })
+            .catch(() => {});
 });
-process.on("exit", (/*code*/) => {
+process.on("beforeExit", (/*code*/) => {
     client.destroy();
 });
 

@@ -118,7 +118,13 @@ module.exports.load = (client) => {
             res.end();
         });
 
-    app.listen(app.get("port"), () => {
-        console.log(`Dashboard running on port ${app.get("port")}`);
-    });
+    try {
+        app.listen(app.get("port"), () => {
+            console.log(`Dashboard running on port ${app.get("port")}`);
+        }).catch((e) => {
+            throw e;
+        });
+    } catch (e) {
+        console.log(e);
+    }
 };

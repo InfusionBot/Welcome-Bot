@@ -4,7 +4,13 @@
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
-const { Client, Collection, Intents, Options } = require("discord.js");
+const {
+    Client,
+    Collection,
+    Intents,
+    Options,
+    LimitedCollection,
+} = require("discord.js");
 const config = require("./config");
 const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
@@ -22,14 +28,21 @@ class WelcomeBot extends Client {
                 Intents.FLAGS.GUILD_MEMBERS,
                 //Intents.FLAGS.GUILD_BANS,
                 Intents.FLAGS.GUILD_MESSAGES,
-                Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+                //Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
                 Intents.FLAGS.DIRECT_MESSAGES,
-                Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+                //Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
                 Intents.FLAGS.GUILD_VOICE_STATES,
                 //Intents.FLAGS.GUILD_PRESENCES,
             ],
             makeCache: Options.cacheWithLimits({
-                MessageManager: 200,
+                MessageManager: {
+                    maxSize: 50,
+                    sweepInterval: 5 * 30,
+                    sweepFilter: LimitedCollection.filterByLifetime({
+                        lifetime: 5 * 30,
+                        getComparisonTimestamp: (msg) => msg.createdTimestamp,
+                    }),
+                },
             }),
             partials: ["CHANNEL"],
         });
