@@ -11,7 +11,7 @@ module.exports = class CMD extends Command {
         super(
             {
                 name: "leaderboard",
-                aliases: ["top-10", "rich", "richest"],
+                aliases: ["rich", "richest"],
                 memberPerms: [],
                 botPerms: [],
                 disabled: false,
@@ -23,7 +23,6 @@ module.exports = class CMD extends Command {
         );
     }
 
-    //eslint-disable-next-line no-unused-vars
     async execute({ message }, t) {
         const Users = await this.client.userSchema.find({});
         let array = Users.sort((a, b) => b.wallet - a.wallet).filter((user) =>
@@ -49,8 +48,7 @@ module.exports = class CMD extends Command {
         });
     }
 
-    //eslint-disable-next-line no-unused-vars
-    async run({ interaction, guildDB, userDB }, t) {
+    async run({ interaction }, t) {
         return;
     }
 };
