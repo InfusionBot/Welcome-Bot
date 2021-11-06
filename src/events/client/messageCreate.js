@@ -64,11 +64,24 @@ module.exports = {
                     .execute({ message, noReply: true });
                 guildDB.plugins.gtn.ongoing = false;
                 guildDB.plugins.gtn.number = 0;
+                guildDB.plugins.gtn.min = 0;
+                guildDB.plugins.gtn.max = 0;
                 await guildDB.save();
+                return;
             } else {
                 message.react("❌");
             }
-            return;
+            if (
+                number < guildDB.plugins.gtn.min ||
+                number > guildDB.plugins.gtn.max
+            ) {
+                message.reply(
+                    t("cmds:gtn.minmax", {
+                        min: guildDB.plugins.gtn.min,
+                        max: guildDB.plugins.gtn.max,
+                    })
+                );
+            }
         }
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");

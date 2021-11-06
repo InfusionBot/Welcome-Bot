@@ -77,10 +77,19 @@ module.exports = class CMD extends Command {
                     Number(args[2])
                 );
                 guildDB.plugins.gtn.number = number;
-                guildDB.markModified("plugins.gtn.number");
                 guildDB.plugins.gtn.ongoing = true;
-                guildDB.markModified("plugins.gtn.ongoing");
+                guildDB.plugins.gtn.min = Number(args[1]);
+                guildDB.plugins.gtn.max = Number(args[2]);
                 message.author.send(t("cmds:gtn.dm", { number }));
+                this.client.commands.enabled.get("unlock").execute({
+                    message: {
+                        guild: message.guild,
+                        channel: message.guild.channels.cache.get(
+                            guildDB.plugins.gtn.channel
+                        ),
+                    },
+                    noReply: true,
+                });
                 message.reply(t("cmds:gtn.started"));
                 break;
             case "stop":

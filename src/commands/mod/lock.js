@@ -26,7 +26,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, noReply }, t) {
+    async execute({ message, noReply = false }, t) {
         const { channel, guild } = message;
         const result = await this.lockChannel(channel, guild);
         if (noReply) return;

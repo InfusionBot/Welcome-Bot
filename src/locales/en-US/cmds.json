@@ -98,6 +98,7 @@
       "channel": "The channel you provided is invalid",
       "number": "The max/min number you provided is not a real number"
     },
+    "minmax": "Hehe, the number is between {{min}} and {{max}}! You have either told lower than the min or higher than the max",
     "dm": "The random number is {{number}}! Keep it secret",
     "winner": "{{user}} You won the guess the number event! Congratulations :tada:!",
     "stopped": "Stopped gtn event!",

@@ -106,6 +106,14 @@ const guildSchema = new mongoose.Schema({
                 default: 0,
                 type: Number,
             },
+            min: {
+                default: 0,
+                type: Number,
+            },
+            max: {
+                default: 0,
+                type: Number,
+            },
         },
     },
     premium: {
