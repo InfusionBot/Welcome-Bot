@@ -21,7 +21,7 @@ module.exports = {
         client.shard.broadcastEval(
             (c) => {
                 if (c.config.dashboard.enabled) {
-                    c.dashboard.load();
+                    c.dashboard.load(c);
                 } else {
                     client.logger.debug("Dashboard disabled");
                 }
