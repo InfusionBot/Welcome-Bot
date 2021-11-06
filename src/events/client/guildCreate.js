@@ -27,6 +27,13 @@ module.exports = {
                 channel2.send(content);
             }
         }
+        try {
+            guild.me.setNickname(client.username).catch((e) => {
+                throw e;
+            });
+        } catch (e) {
+            //do nothing
+        }
         const bots = guild.members.cache.filter((m) => m.user.bot).size;
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(`:white_check_mark: Added to "${guild.name}"`)
