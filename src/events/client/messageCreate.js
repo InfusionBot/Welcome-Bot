@@ -57,7 +57,7 @@ module.exports = {
             if (number === guildDB.plugins.gtn.number) {
                 message.react("✅");
                 message.channel.send(
-                    t("cmds:gtn.winner", { user: message.author })
+                    t("cmds:gtn.winner", { user: `${message.author}` })
                 );
                 client.commands.enabled
                     .get("lock")
