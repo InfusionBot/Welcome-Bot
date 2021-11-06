@@ -21,7 +21,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message, args, userDB, language }, t) {
+    async execute({ message, args, userDB, language, donator }, t) {
         moment.locale(language.moment);
         const user = args[0]
             ? await this.getUserFromIdOrMention(args[0])
@@ -48,25 +48,32 @@ module.exports = class CMD extends Command {
         const accCreated = new Date(userDB2.registeredAt);
         const accCreatedStr = moment(accCreated).toString();
         const embed = new Embed({ color: "lightblue", timestamp: true })
-            .setTitle(t("cmds:profile.title", { tag: user.tag }))
+            .setTitle(
+                t("cmds:profile.title", { tag: user.tag }) +
+                    `${donator ? ":star:" : ""}`
+            )
             .addField(
                 t("cmds:balance.titleShort"),
                 t("cmds:balance.bal", {
-                    wallet,
-                    bank,
-                    bankLimit,
-                    percentage: 100 - (bankLimit - bank) / 100,
+                    wallet: Number(wallet).toLocaleString(
+                        userDB.locale == "null" ? "en-US" : userDB.locale
+                    ),
+                    bank: Number(bank).toLocaleString(
+                        userDB.locale == "null" ? "en-US" : userDB.locale
+                    ),
+                    bankLimit: Number(bankLimit).toLocaleString(
+                        userDB.locale == "null" ? "en-US" : userDB.locale
+                    ),
+                    percentage: Number(100 - (bankLimit - bank) / 100).toFixed(
+                        2
+                    ),
                 })
             )
             .addField(`:date: ${t("misc:accCreated")}`, accCreatedStr)
             .addField(`:ledger: ${t("misc:bio")}`, `${userDB2.bio}`)
             .addField(
                 `:star: ${t("misc:premium")}`,
-                `${
-                    this.client.codes.getCode(userDB?.premium?.code)
-                        ? t("misc:yes")
-                        : t("misc:no")
-                }`
+                `${donator ? t("misc:yes") : t("misc:no")}`
             );
         message.reply({ embeds: [embed] });
     }

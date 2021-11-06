@@ -61,10 +61,18 @@ module.exports = class CMD extends Command {
             .setTitle(t("cmds:balance.title", { user: user.username }))
             .setDesc(
                 t("cmds:balance.bal", {
-                    wallet,
-                    bank,
-                    bankLimit,
-                    percentage: 100 - (bankLimit - bank) / 100,
+                    wallet: Number(wallet).toLocaleString(
+                        userDB.locale == "null" ? "en-US" : userDB.locale
+                    ),
+                    bank: Number(bank).toLocaleString(
+                        userDB.locale == "null" ? "en-US" : userDB.locale
+                    ),
+                    bankLimit: Number(bankLimit).toLocaleString(
+                        userDB.locale == "null" ? "en-US" : userDB.locale
+                    ),
+                    percentage: Number(100 - (bankLimit - bank) / 100).toFixed(
+                        2
+                    ),
                 })
             );
         message.channel.send({ embeds: [embed] });

@@ -25,7 +25,7 @@ module.exports = class CMD extends Command {
         );
     }
 
-    execute({ message, args, guildDB, userDB }, t) {
+    execute({ message, args, guildDB, userDB, donator }, t) {
         const versionSender = require("../../functions/versionSender.js");
         const presence = require("../../functions/presence.js");
         const serverCount = require("../../functions/serverCount.js");

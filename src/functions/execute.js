@@ -1,11 +1,10 @@
 /**
- * Discord Welcome-Bot
- * Copyright (c) 2021 The Welcome-Bot Team and Contributors
+ * InfusionBot
+ * Copyright (c) 2021 The InfusionBot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
-require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
-
+const DonorUtil = require("../helpers/DonorUtil");
 module.exports = async (message, guildDB, t) => {
     const { client } = message;
     const userDB = await client.db.findOrCreateUser(message.author.id);
@@ -269,10 +268,6 @@ module.exports = async (message, guildDB, t) => {
                 );
             //message.channel.sendTyping().catch(() => {});
             try {
-                const donatorRoles = [
-                    ...Object.values(client.config.roles.donators),
-                    client.config.roles.donator,
-                ];
                 command.execute(
                     {
                         prefix,
@@ -287,9 +282,9 @@ module.exports = async (message, guildDB, t) => {
                         ),
                         donator:
                             member &&
-                            member.roles.cache.some((role) =>
-                                donatorRoles.includes(role)
-                            ),
+                            member.roles.cache.has(client.config.roles.donator)
+                                ? new DonorUtil(client, member)
+                                : null,
                     },
                     t
                 );
