@@ -47,11 +47,34 @@ module.exports = {
         if (!client.application?.owner) await client.application?.fetch();
         if (message.channel?.partial) await message.channel.fetch();
         if (message?.partial) await message.fetch();
+        const t = client.i18next.getFixedT(guildDB.lang || "en-US");
+        if (
+            message.guild &&
+            guildDB.plugins.gtn.channel === message.channel.id &&
+            guildDB.plugins.gtn.ongoing
+        ) {
+            const number = Number(message.cleanContent);
+            if (number === guildDB.plugins.gtn.number) {
+                message.react("✅");
+                message.channel.send(
+                    t("cmds:gtn.winner", { user: message.author })
+                );
+                client.commands.enabled
+                    .get("lock")
+                    .execute({ message, noReply: true });
+                guildDB.plugins.gtn.ongoing = false;
+                guildDB.plugins.gtn.number = 0;
+                await guildDB.save();
+            } else {
+                message.react("❌");
+            }
+            return;
+        }
         if (client.debug && client.debugLevel > 0)
             client.logger.log("running execute func", "debug");
         let result;
         try {
-            result = await execute(message, guildDB);
+            result = await execute(message, guildDB, t);
         } catch (e) {
             client.logger.log(e, "error");
         }

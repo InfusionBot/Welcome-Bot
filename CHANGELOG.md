@@ -37,6 +37,7 @@ The displayed date is in the format `DD-MM-YYYY`
 - New command `snipe`
 - New command `slowmode`
 - New command `weekly` ⭐ (Premium users)
+- New plugin guess the number
 
 ## [v2.0.3]
 

@@ -6,7 +6,7 @@
 require("../db/connection");
 const { MessageEmbed, Permissions } = require("discord.js");
 
-module.exports = async (message, guildDB) => {
+module.exports = async (message, guildDB, t) => {
     const { client } = message;
     const userDB = await client.db.findOrCreateUser(message.author.id);
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -22,7 +22,6 @@ module.exports = async (message, guildDB) => {
     try {
         [, prefix] = message.content.toLowerCase().match(prefixRegex);
     } catch (e) {} //eslint-disable-line no-empty
-    const t = client.i18next.getFixedT(guildDB.lang || "en-US");
     if (!client.application?.owner) await client.application?.fetch();
     const embed = new MessageEmbed().setColor("#ff0000");
     if (prefix) {

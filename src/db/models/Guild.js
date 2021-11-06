@@ -89,8 +89,22 @@ const guildSchema = new mongoose.Schema({
                 type: Boolean,
             },
             channel: {
-                default: "",
+                default: "0",
                 type: String,
+            },
+        },
+        gtn: {
+            ongoing: {
+                default: false,
+                type: Boolean,
+            },
+            channel: {
+                default: "0",
+                type: String,
+            },
+            number: {
+                default: 0,
+                type: Number,
             },
         },
     },

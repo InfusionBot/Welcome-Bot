@@ -84,6 +84,25 @@
     "disabled": "Successfully disabled goodbye logs",
     "enabled": "Successfully enabled goodbye logs"
   },
+  "gtn": {
+    "cmdDesc": "Manage guess the number logs settings/Start a gtn event",
+    "usage": "(subcommand)",
+    "set": {
+      "channel": "Gtn channel set to {{channel}}"
+    },
+    "current": {
+      "title": "Current settings for guess the number",
+      "desc": "These are the current Gtn settings of this Server.\nUse `{{prefix}}gtn [subcommand]` to change them."
+    },
+    "invalid": {
+      "channel": "The channel you provided is invalid",
+      "number": "The max/min number you provided is not a real number"
+    },
+    "dm": "The random number is {{number}}! Keep it secret",
+    "winner": "{{user}} You won the guess the number event! Congratulations :tada:!",
+    "stopped": "Stopped gtn event!",
+    "started": "Sucessfully started gtn event, I have DMed you the number"
+  },
   "lang": {
     "cmdDesc": "Change language",
     "usage": "(subcommand) (lang)",

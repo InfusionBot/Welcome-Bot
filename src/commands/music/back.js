@@ -65,7 +65,7 @@ module.exports = class CMD extends Command {
             collector.on("collect", (reaction) => {
                 const haveVoted = reaction.count - 1;
                 if (haveVoted >= moreVotes) {
-                    if (queue.back()) {
+                    if (player.back()) {
                         msg.edit({
                             embeds: [embed.setDesc(t("cmds:back.success"))],
                         });
@@ -92,7 +92,7 @@ module.exports = class CMD extends Command {
                     return message.reply(t("misc:timeout"));
                 }
             });
-        } else if (queue.back()) {
+        } else if (player.back()) {
             msg.edit({
                 embeds: [embed.setDesc(t("cmds:back.success"))],
             });

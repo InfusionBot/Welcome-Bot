@@ -26,9 +26,10 @@ module.exports = class CMD extends Command {
         );
     }
 
-    async execute({ message }, t) {
+    async execute({ message, noReply }, t) {
         const { channel, guild } = message;
         const result = await this.lockChannel(channel, guild);
+        if (noReply) return;
         await message.channel.send(t(result));
     }
 
@@ -43,8 +44,7 @@ module.exports = class CMD extends Command {
             await channel.permissionOverwrites.create(this.client.user.id, {
                 SEND_MESSAGES: true,
             });
-        }
-        if (
+        } else if (
             !channel.permissionOverwrites.cache
                 .get(this.client.user.id)
                 .allow.has(Permissions.FLAGS.SEND_MESSAGES)

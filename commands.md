@@ -28,7 +28,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 
 
-## Administration (13 commands)
+## Administration (14 commands)
 
 ### `autopublish`
 
@@ -140,6 +140,20 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 - Description: Manage goodbye logs settings
 - Usage: w/goodbye (subcommand)
 - Aliases: `goodbyelogs`
+- Cooldown: 5
+
+### `gtn`
+
+##### Subcommands:
+
+- `start [min] [max]` - Start guess the number event
+- `channel [#channel]` - Set guess the number channel
+
+##### Cmd info
+
+- Description: Manage guess the number logs settings/Start a gtn event
+- Usage: w/gtn (subcommand)
+- Aliases: `guess-the-number`, `guessthenumber`
 - Cooldown: 5
 
 ### `lang`
@@ -633,7 +647,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 - Description: Shows the leaderboard
 - Usage: w/leaderboard 
-- Aliases: `top-10`, `rich`, `richest`, `top10`
+- Aliases: `rich`, `richest`
 - Cooldown: 10
 
 ### `profile`

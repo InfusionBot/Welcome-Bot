@@ -49,11 +49,11 @@ module.exports = class CMD extends Command {
         //TODO: Add translation
         let res = await fetch("https://nekos.life/api/v2/8ball");
         res = await res.json();
-        const text = args.join(" ");
+        const text = interaction.options.getString("question");
         const embed = new Embed()
             .setTitle(text)
             .setDescription(`**${res.response}**`)
             .setImage(res.url);
-        interaction.followUp({ embeds: [embed] });
+        await interaction.followUp({ embeds: [embed] });
     }
 };

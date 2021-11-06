@@ -97,6 +97,10 @@ const convertTime = (duration) => {
     }
 };
 
+const randomNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+};
+
 module.exports = {
     userFromMention,
     channelIdFromMention,
@@ -107,4 +111,5 @@ module.exports = {
     nth,
     escapeRegex,
     convertTime,
+    randomNum,
 };

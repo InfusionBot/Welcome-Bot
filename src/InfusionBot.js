@@ -95,6 +95,7 @@ class WelcomeBot extends Client {
             }
         })(this);
         this.staffTags = staffTags;
+        this.util = require("./helpers/Util");
         if (!process.env.TEST_MODE) this.initialize();
     }
 
