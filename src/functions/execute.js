@@ -77,7 +77,7 @@ module.exports = async (message, guildDB) => {
                 message.author.id === client.application?.owner.id
             )
         ) {
-            message.reply(t("errors:developerOnly"));
+            message.channel.send(t("errors:developerOnly"));
             return false;
         }
 
@@ -106,23 +106,22 @@ module.exports = async (message, guildDB) => {
         ) {
             const botPerms = message.guild.me.permissionsIn(message.channel);
             if (!botPerms) {
-                message.reply(t("errors:iDontHavePermShort"));
+                message.channel.send(t("errors:iDontHavePermShort"));
                 return false;
             }
             for (var i = 0; i < command.botPerms.length; i++) {
                 if (!botPerms.has(command.botPerms[i])) {
-                    message.reply(
-                        t("errors:iDontHavePermission", {
-                            permission: t(
-                                `permissions:${new Permissions(
-                                    command.botPerms[i]
-                                )
-                                    .toArray()
-                                    .join("")
-                                    .toUpperCase()}`
-                            ),
-                        })
-                    );
+                    const text = t("errors:iDontHavePermission", {
+                        permission: t(
+                            `permissions:${new Permissions(command.botPerms[i])
+                                .toArray()
+                                .join("")
+                                .toUpperCase()}`
+                        ),
+                    });
+                    message.reply(text).catch(() => {
+                        message.channel.send(text);
+                    });
                     return false;
                 }
             }
@@ -184,7 +183,9 @@ module.exports = async (message, guildDB) => {
                 `You didn't provide any arguments, ${message.author.tag}!`,
                 reply
             );
-            message.reply({ embeds: [embed] });
+            message.reply({ embeds: [embed] }).catch(() => {
+                message.channel.send({ embeds: [embed] });
+            });
             return false;
         }
 
@@ -210,7 +211,9 @@ module.exports = async (message, guildDB) => {
                 "Want help?",
                 `Send \`${guildDB.prefix}help ${command.name}\``
             );
-            message.reply({ embeds: [embed] });
+            message.reply({ embeds: [embed] }).catch(() => {
+                message.channel.send({ embeds: [embed] });
+            });
             return false;
         }
 
@@ -220,7 +223,7 @@ module.exports = async (message, guildDB) => {
                 subcmds.push(command.subcommands[i].name);
             }
             if (!subcmds.includes(args[0])) {
-                message.reply(
+                message.channel.send(
                     t("errors:invalidSubCmd", {
                         prefix: guildDB.prefix,
                         cmd: command.name,
@@ -247,14 +250,16 @@ module.exports = async (message, guildDB) => {
             prerunResult = command.prerun(message, guildDB, t);
         } catch (e) {
             client.logger.log("Error when prerunning cmd", "error", ["CMDS"]);
-            console.error(e);
+            console.log(e);
             embed
                 .setTitle(t("errors:generic"))
                 .addField(
                     `Please report this to ${client.ownersTags.join(" OR ")}`,
                     "\u200b"
                 );
-            message.reply({ embeds: [embed] });
+            message.reply({ embeds: [embed] }).catch(() => {
+                message.channel.send({ embeds: [embed] });
+            });
             return false;
         }
         if (prerunResult) {
