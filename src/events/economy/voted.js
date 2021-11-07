@@ -5,28 +5,36 @@
  */
 module.exports = {
     async execute(client, user, site, rawData) {
-        let member;
+        let member, guild;
         try {
-            member = await client.guilds.cache
-                .get(client.config.servers.main)
-                .members.fetch(user.id);
+            guild = await client.util.getGuild(client.config.servers.main);
+            member = await guild.members.fetch(user.id);
         } catch (e) {
             member = null;
         }
-        if (member)
+        if (member) {
             member.roles.add(client.config.roles.voters, `Voted on ${site}`);
+        }
         //TODO: remove the voters role in 12 hours
         let userDB = await client.models.User.findOne({ userId: user.id });
         if (!userDB) {
             userDB = await client.db.findOrCreateUser(user.id);
         }
-        userDB.wallet = Number(userDB.wallet) + 10000; //Give 10k coins
+        const coins = 10000;
+        userDB.wallet = Number(userDB.wallet) + coins; //Give 10k coins
         userDB.inventory.banknote = Number(userDB.inventory.banknote) + 3; //Give 3 banknotes
         await userDB.save();
         const t = client.i18next.getFixedT("en-US"); //currently only english support
         try {
             await user
-                .send(t("misc:thanks.vote", { site, coins: "10,000" }))
+                .send(
+                    t("misc:thanks.vote", {
+                        site,
+                        coins: coins.toLocaleString(
+                            userDB.locale === "null" ? "en-US" : userDB.locale
+                        ),
+                    })
+                )
                 .catch((e) => {
                     throw e;
                 });
@@ -35,7 +43,7 @@ module.exports = {
         }
         let channel;
         try {
-            channel = await client.channels.fetch(client.config.channels.votes);
+            channel = await guild.channels.fetch(client.config.channels.votes);
         } catch (e) {
             channel = null;
             client.logger.error("Can't fetch vote log channel");
@@ -47,7 +55,9 @@ module.exports = {
                         client.username
                     }${
                         rawData?.guild ? " Community Server" : ""
-                    }** on ${site} and got 10,000 WCoins with other rewards 🎉!`
+                    }** on ${site} and got ${coins.toLocaleString(
+                        "en-US"
+                    )} WCoins with other rewards 🎉!`
                 )
                 .catch(console.log);
         }

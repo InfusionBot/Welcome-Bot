@@ -19,6 +19,7 @@ const DBCache = require("./db/DBCache");
 const { CodesManager } = require("./handlers");
 const { Manager } = require("erela.js");
 const { EventEmitter } = require("node:events");
+const Util = require("./Util");
 
 class WelcomeBot extends Client {
     constructor(opts) {
@@ -77,6 +78,7 @@ class WelcomeBot extends Client {
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         if (!this.debug) this.debugLevel = -1;
         this.economy = new EventEmitter();
+        this.util = new Util(this);
         const ownersTags = [];
         (async (client) => {
             for (let i = 0; i < client.config.ownerIds.length; i++) {
