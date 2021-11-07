@@ -44,7 +44,8 @@ module.exports = class Economy extends EventEmitter {
             console.log(e);
         }
         if (
-            (this.checks.voted.topgg.get(user.id) && this.checks.voted.bls.get(user.id)) ||
+            (this.checks.voted.topgg.get(user.id) &&
+                this.checks.voted.bls.get(user.id)) ||
             (topgg && bls)
         )
             return;
