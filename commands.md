@@ -513,7 +513,7 @@ Welcome-Bot contains more than **100 commands** in **9 categories**!
 
 ##### Cmd info
 
-- Description: Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)
+- Description: Vote for InfusionBot and claim your bonus WCoins (500 WCoins)
 - Usage: w/vote 
 - Aliases: None
 - Cooldown: 5

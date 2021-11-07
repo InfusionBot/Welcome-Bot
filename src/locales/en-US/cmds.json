@@ -271,19 +271,14 @@
     }
   },
   "vote": {
-    "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",
-    "title": "Vote for Welcome-Bot",
+    "cmdDesc": "Vote for InfusionBot and claim your bonus WCoins (500 WCoins)",
+    "title": "Vote for InfusionBot",
     "rewards": {
       "index": "**Rewards**",
       "coins": ":dollar: WCoins {{coins}}",
       "banknote": ":bank: Banknote × 3"
     },
-    "howToVote": {
-      "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
-      "bls": "**[Vote on botlist.space]({{link}})** to claim your bonus."
-    },
-    "howToVoteServer": "**[Vote on Top.gg for Welcome-Bot server]({{link}})** to claim another bonus.",
-    "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
+    "youcan": "You are able to vote again!"
   },
   "website": {
     "cmdDesc": "Link to Welcome-Bot's website"

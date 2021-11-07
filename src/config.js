@@ -7,12 +7,12 @@ require("dotenv").config();
 //const { Permissions } = require("discord.js");
 const defaultPerms = require("./data/defaultPerms");
 module.exports = {
+    botId: "848459799783669790",
     botGuildId: "836854115526770708",
     servers: {
         main: "836854115526770708",
     },
     logsChannelId: "855331801635749888",
-    suggestionLogsChannelId: "862126837110800414",
     defaultPrefix: process.env.BOT_PREFIX ?? "w/",
     votersRole: "852512614789808138",
     donorMultiplier: 10,
@@ -33,6 +33,8 @@ module.exports = {
         loginLogs: "880122897472036894",
         errorLogs: "878431491581964328",
         newsChannel: "847459283876577360",
+        suggestionLogs: "862126837110800414",
+        reports: "869017115385024543",
         votes: "867925583777103872",
         codes: "894811606083567677",
         logs: "855331801635749888",
@@ -55,7 +57,6 @@ module.exports = {
             secure: false,
         },
     ],
-    reportsChannelId: "869017115385024543",
     ownerIds: [
         "815204465937481749" /*PuneetGopinath#0001*/,
         "693754859014324295" /*abhijoshi2k#6842*/,

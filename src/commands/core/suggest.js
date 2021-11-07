@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
             .setDesc(text);
         try {
             message.client.channels.cache
-                .get(message.client.config.suggestionLogsChannelId)
+                .get(message.client.config.channels.suggestionLogs)
                 .send({ embeds: [embed] })
                 .then(async (msg) => {
                     await msg.react("👍");
@@ -54,11 +54,11 @@ module.exports = class CMD extends Command {
                 color: "green",
                 footer: t("cmds:suggest.done"),
             })
-                .setTitle(`Join the Welcome-Bot support server`)
+                .setTitle(`Join the ${this.client.username} community server`)
                 .setURL(message.client.config.supportGuildInvite)
                 .setDesc(
                     t("cmds:suggest.view", {
-                        chanid: message.client.config.suggestionLogsChannelId,
+                        chanid: message.client.config.channels.suggestionLogs,
                     })
                 );
             message.channel.send({ embeds: [embed] });

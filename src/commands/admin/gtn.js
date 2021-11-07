@@ -70,7 +70,7 @@ module.exports = class CMD extends Command {
                 break;
             case "start":
                 if (!args[1] || !args[2]) return message.reply(missingArgs);
-                if (Number(args[1]) < 0 || Number(args[2]) < 0)
+                if (isNaN(args[1]) || isNaN(args[2]))
                     return message.reply(t("cmds:gtn.invalid.number"));
                 number = this.client.util.randomNum(
                     Number(args[1]),

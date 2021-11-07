@@ -105,6 +105,12 @@ const userSchema = new mongoose.Schema({
             default: false,
         },
     },
+    settings: {
+        dmNotifications: {
+            type: Boolean,
+            default: true,
+        },
+    },
 });
 
 const User = new mongoose.model("User", userSchema);

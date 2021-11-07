@@ -268,6 +268,13 @@ module.exports = async (message, guildDB, t) => {
                 );
             //message.channel.sendTyping().catch(() => {});
             try {
+                if (command.category === "Economy") {
+                    try {
+                        await client.economy.checkVoted(message.author, t);
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
                 command.execute(
                     {
                         prefix,

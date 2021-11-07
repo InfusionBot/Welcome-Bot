@@ -43,7 +43,7 @@ module.exports = class CMD extends Command {
             .setDesc(text);
         try {
             message.client.channels.cache
-                .get(message.client.config.reportsChannelId)
+                .get(message.client.config.channels.reports)
                 .send({ embeds: [embed] })
                 .then(async (msg) => {
                     await msg.react("👍");
@@ -58,7 +58,7 @@ module.exports = class CMD extends Command {
                 .setURL(message.client.config.supportGuildInvite)
                 .setDesc(
                     t("cmds:report.view", {
-                        chanid: message.client.config.reportsChannelId,
+                        chanid: message.client.config.channels.reports,
                     })
                 );
             message.channel.send({ embeds: [embed] });

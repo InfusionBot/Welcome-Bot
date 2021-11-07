@@ -5,7 +5,7 @@
  */
 //eslint-disable-next-line no-unused-vars
 const { Embed, Command } = require("../../classes");
-const TopggAPI = require("../../classes/Topgg").api;
+const { api: TopggAPI } = require("../../classes/Topgg");
 const { MessageActionRow, MessageButton } = require("discord.js");
 module.exports = class CMD extends Command {
     constructor(client) {
@@ -23,10 +23,10 @@ module.exports = class CMD extends Command {
     }
 
     //eslint-disable-next-line no-unused-vars
-    async execute({ message, args, guildDB, userDB }, t) {
-        const id = "848459799783669790";
-        const userVotedTopgg = await TopggAPI.hasVoted(message.author.id);
-        let userVotedBls = await this.fetchJson(
+    async execute({ message }, t) {
+        const id = this.client.config.botId;
+        const topgg = await TopggAPI.hasVoted(message.author.id);
+        const { upvoted: bls } = await this.fetchJson(
             `https://api.discordlist.space/v2/bots/${id}/upvotes/status/${message.author.id}`,
             {
                 headers: {
@@ -35,7 +35,6 @@ module.exports = class CMD extends Command {
                 },
             }
         );
-        userVotedBls = userVotedBls.upvoted;
         const embed = new Embed({ color: "success", timestamp: true })
             .setTitle(t("cmds:vote.title"))
             .setDesc(
@@ -48,12 +47,12 @@ module.exports = class CMD extends Command {
             .setLabel("top.gg")
             .setURL(`https://top.gg/bot/${id}/vote`)
             .setStyle("LINK");
-        if (userVotedTopgg) buttonTopgg.setDisabled(true);
+        if (topgg) buttonTopgg.setDisabled(true);
         const buttonBls = new MessageButton()
             .setLabel("botlist.space")
             .setURL(`https://discordlist.space/bot/${id}/upvote`)
             .setStyle("LINK");
-        if (userVotedBls) buttonBls.setDisabled(true);
+        if (bls) buttonBls.setDisabled(true);
         /*const buttonGuild = new MessageButton()
             .setLabel(`${this.client.username} ${t("misc:support")}`)
             .setURL(

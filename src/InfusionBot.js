@@ -1,6 +1,6 @@
 /**
- * Discord Welcome-Bot
- * Copyright (c) 2021 The Welcome-Bot Team and Contributors
+ * InfusionBot
+ * Copyright (c) 2021 The InfusionBot Team and Contributors
  * Licensed under Lesser General Public License v2.1 (LGPl-2.1 - https://opensource.org/licenses/lgpl-2.1.php)
  */
 const fs = require("fs");
@@ -16,12 +16,11 @@ const util = require("util");
 const packageJson = require(__dirname + "/../package.json");
 const Logger = require("colors-logger");
 const DBCache = require("./db/DBCache");
-const { CodesManager } = require("./handlers");
+const { CodesManager, Economy } = require("./handlers");
 const { Manager } = require("erela.js");
-const { EventEmitter } = require("node:events");
 const Util = require("./Util");
 
-class WelcomeBot extends Client {
+class InfusionBot extends Client {
     constructor(opts) {
         super({
             intents: [
@@ -77,7 +76,7 @@ class WelcomeBot extends Client {
         this.debug = opts?.debug || process.env.NODE_ENV === "development";
         this.debugLevel = opts?.debugLevel || process.env?.DEBUG_LEVEL || 0;
         if (!this.debug) this.debugLevel = -1;
-        this.economy = new EventEmitter();
+        this.economy = new Economy(this);
         this.util = new Util(this);
         const ownersTags = [];
         (async (client) => {
@@ -202,4 +201,4 @@ class WelcomeBot extends Client {
     }
 }
 
-module.exports = WelcomeBot;
+module.exports = InfusionBot;
