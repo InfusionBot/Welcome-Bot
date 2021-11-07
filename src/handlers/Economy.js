@@ -44,13 +44,12 @@ module.exports = class Economy extends EventEmitter {
             console.log(e);
         }
         if (
-            (this.checks.voted.topgg.get(user.id) &&
-                this.checks.voted.bls.get(user.id)) ||
+            (this.checks.voted.topgg.get(user.id) && this.checks.voted.bls.get(user.id)) ||
             (topgg && bls)
         )
             return;
-        this.checks.voted.topgg.set(user.id, topgg);
-        this.checks.voted.bls.set(user.id, bls);
+        this.checks.voted.topgg.set(user.id, true);
+        this.checks.voted.bls.set(user.id, true);
         embed.setTitle(t("cmds:vote.youcan"));
         const buttonTopgg = new MessageButton()
             .setLabel("top.gg")
