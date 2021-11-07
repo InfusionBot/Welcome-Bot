@@ -67,9 +67,7 @@ module.exports = {
             client.models.User.find({}, async (err, users) => {
                 if (err) console.log(err);
                 if (users) {
-                    console.log(
-                        `Resetting all multipliers`
-                    );
+                    console.log(`Resetting all multipliers`);
                     users.forEach(async (userDB) => {
                         userDB.multiplier.daily = 0;
                         userDB.multiplier.weekly = 0;
