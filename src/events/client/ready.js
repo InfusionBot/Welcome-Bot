@@ -63,35 +63,16 @@ module.exports = {
                     .catch(() => {});
             }
         });*/
-        clock.on("hour", () => {
-            client.models.User.find({}, (err, users) => {
+        clock.on("month", () => {
+            client.models.User.find({}, async (err, users) => {
                 if (err) console.log(err);
                 if (users) {
+                    console.log(
+                        `Resetting all multipliers`
+                    );
                     users.forEach(async (userDB) => {
-                        const user = await client.users.fetch(userDB.userId);
-                        let diff;
-                        if (userDB.daily < 0) {
-                            diff =
-                                2 * 24 * 60 * 60 * 1000 -
-                                (new Date().getTime() - userDB.daily); //2 days
-                            if (diff < 0) {
-                                console.log(
-                                    `Resetting daily multiplier for ${user.tag} (${user.id})`
-                                );
-                                userDB.multiplier.daily = 0;
-                            }
-                        }
-                        if (userDB.weekly < 0) {
-                            diff =
-                                14 * 24 * 60 * 60 * 1000 -
-                                (new Date().getTime() - userDB.weekly); //14 days
-                            if (diff < 0) {
-                                console.log(
-                                    `Resetting weekly multiplier for ${user.tag} (${user.id})`
-                                );
-                                userDB.multiplier.weekly = 0;
-                            }
-                        }
+                        userDB.multiplier.daily = 0;
+                        userDB.multiplier.weekly = 0;
                         await userDB.save();
                     });
                 }
