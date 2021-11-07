@@ -20,8 +20,14 @@ const sendReq = function (data, options) {
     req.write(data);
     req.end();
 };
-module.exports = function (client) {
-    const servers = client.guilds.cache.size;
+module.exports = async (client) => {
+    let servers = client.guilds.cache.size;
+    if (client.shard) {
+        servers = (
+            await client.shard.fetchClientValues("guilds.cache.size")
+        ).reduce((acc, guildCount) => acc + guildCount, 0);
+    }
+    const shards = client.shard ? client.shard.count : 0;
     client.logger.log(`Updating server count. Servers: ${servers}`, "debug");
 
     let data;
@@ -147,7 +153,7 @@ module.exports = function (client) {
         //Top.gg stats
         TopggAPI.postStats({
             serverCount: servers,
-            shardCount: 0,
+            shardCount: shards,
         })
             .then(() => {
                 if (client.debug) console.log("Posted stats to Topgg");
