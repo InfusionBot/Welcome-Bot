@@ -35,12 +35,22 @@ class InfusionBot extends Client {
                 //Intents.FLAGS.GUILD_PRESENCES,
             ],
             makeCache: Options.cacheWithLimits({
+                ...Options.defaultMakeCacheSettings,
                 MessageManager: {
                     maxSize: 50,
                     sweepInterval: 5 * 30,
                     sweepFilter: LimitedCollection.filterByLifetime({
-                        lifetime: 5 * 30,
-                        getComparisonTimestamp: (msg) => msg.createdTimestamp,
+                        lifetime: 1800,
+                        getComparisonTimestamp: (e) =>
+                            e.editedTimestamp ?? e.createdTimestamp,
+                    }),
+                },
+                ThreadManager: {
+                    maxSize: 50,
+                    sweepInterval: 5 * 30,
+                    sweepFilter: LimitedCollection.filterByLifetime({
+                        getComparisonTimestamp: (e) => e.archiveTimestamp,
+                        excludeFromSweep: (e) => !e.archived,
                     }),
                 },
             }),
