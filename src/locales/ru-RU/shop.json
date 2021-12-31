@@ -1,10 +1,10 @@
 {
   "banknote": {
-    "name": "Banknote(s)",
-    "desc": "Use banknote(s) to increase your bank space"
+    "name": "Банкнота(ы)",
+    "desc": "Используй банкноту(ы), чтобы поднять место в банке"
   },
   "topmedal": {
-    "name": "Top medal",
+    "name": "Высшая медаль",
     "desc": "A medal which only the top 5% of players have!"
   }
 }
