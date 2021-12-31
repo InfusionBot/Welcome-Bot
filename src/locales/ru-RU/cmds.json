@@ -26,10 +26,10 @@
     "usage": "[subcommand]",
     "warning": ":warning: Всё серверные каналы, роли и настройки будут очищены. Хотите продолжить? Отправьте `confirm` или `cancel`!",
     "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}backup load {{id}}` to load it",
-    "invalidId": ":x: Invalid backup ID",
-    "cancelled": ":x: Cancelled.",
-    "success": "Backup loaded successfully!",
-    "created": "Backup created! I have sent you the ID in DMs."
+    "invalidId": ":x: Неверный идентификатор сохранения",
+    "cancelled": ":x: Отменено.",
+    "success": "Сохранение успешно загружено!",
+    "created": "Сохранение создано! Я отправил тебе идентификатор в личные сообщения."
   },
   "chatbot": {
     "cmdDesc": "Manage chatbot settings",
@@ -81,52 +81,52 @@
     "invalid": {
       "channel": "Канал, указанный вами, неверный"
     },
-    "disabled": "Successfully disabled goodbye logs",
-    "enabled": "Successfully enabled goodbye logs"
+    "disabled": "Успешно отключены логи прощания",
+    "enabled": "Логи прощания успешно включены"
   },
   "lang": {
-    "cmdDesc": "Change language",
+    "cmdDesc": "Изменить язык",
     "usage": "(subcommand) (lang)",
     "invalid": "Invalid locale, send {{cmd}} to get a list of locales available.",
-    "success": "Language successfully set to {{lang}}",
-    "show": "Language is currently set to {{lang}}",
-    "langNotProvided": "You have not provided lang argument"
+    "success": "Язык успешно установлен на {{lang}}",
+    "show": "Текущий язык установлен на {{lang}}",
+    "langNotProvided": "Вы не указали аргумент языка"
   },
   "modlogs": {
-    "cmdDesc": "Manage ModLogs settings",
+    "cmdDesc": "Управление настройками логов модерации",
     "usage": "(subcommand)",
-    "channelSet": "ModLogs channel set to {{channel}}",
+    "channelSet": "Канал логов модерации установлен на {{channel}}",
     "current": {
-      "title": "Current settings for ModLogs",
-      "desc": "These are the current ModLogs settings of this Server.\nUse `{{prefix}}modlogs [subcommand]` to change them."
+      "title": "Текущие настройки логов модерации",
+      "desc": "Это текущие настройки логов модерации этого сервера.\nИспользуй `{{prefix}}modlogs [subcommand]`, чтобы изменить их."
     }
   },
   "prefix": {
-    "cmdDesc": "Manage prefix for this server",
-    "usage": "(subcommand)"
+    "cmdDesc": "Управление префиксом на этом сервере",
+    "usage": "(подкоманда)"
   },
   "serverlogs": {
-    "cmdDesc": "Manage server logs settings",
-    "usage": "(subcommand)",
+    "cmdDesc": "Управление настройками логов сервера",
+    "usage": "(подкоманда)",
     "set": {
-      "channel": "Server logs channel set to {{channel}}"
+      "channel": "Канал логов на сервере установлен на {{channel}}"
     },
     "current": {
       "title": "Текущие настройки для серверных логов",
-      "desc": "These are the current Server logs settings of this Server.\nUse `{{prefix}}serverlogs [subcommand]` to change them."
+      "desc": "Это текущие настройки логов этого сервера.\nИспользуй `{{prefix}}serverlogs [subcommand]` чтобы изменить их."
     },
     "invalid": {
-      "channel": "The channel you provided is invalid"
+      "channel": "Канал, указанный вами, неверный"
     },
-    "disabled": "Successfully disabled server logs",
-    "enabled": "Successfully enabled server logs"
+    "disabled": "Серверные логи успешно отключены",
+    "enabled": "Серверные логи успешно включены"
   },
   "welcome": {
-    "cmdDesc": "Manage welcome logs settings",
-    "usage": "(subcommand)",
+    "cmdDesc": "Управление настройками приветственных логов",
+    "usage": "(подкоманда)",
     "set": {
-      "channel": "Welcome channel set to {{channel}}",
-      "message": "Welcome message set to ```\n{{message}}\n```"
+      "channel": "Приветственный канал установлен на {{channel}}",
+      "message": "Приветственное сообщение установлено на ```\n{{message}}\n```"
     },
     "current": {
       "title": "Current settings for welcome logs",
@@ -175,86 +175,86 @@
     "errorYourself": "You can't tickle yourself!"
   },
   "waifu": {
-    "cmdDesc": "Fetches a random waifu and displays it."
+    "cmdDesc": "Выбирает случайную Вайфу и показывает её."
   },
   "botinfo": {
-    "cmdDesc": "Bot information",
-    "footer": "Information & Stats of Welcome-Bot"
+    "cmdDesc": "Информация о боте",
+    "footer": "Информация и статистика Welcome-Bot"
   },
   "botperms": {
-    "cmdDesc": "List of permissions given to bot"
+    "cmdDesc": "Список разрешений, данных боту"
   },
   "invite": {
-    "cmdDesc": "Get Invite link for the bot"
+    "cmdDesc": "Получить ссылку-приглашение бота"
   },
   "lib": {
-    "cmdDesc": "Library used to build Welcome-Bot"
+    "cmdDesc": "Библиотека, использованная при создании Welcome-Bot"
   },
   "ping": {
-    "cmdDesc": "Get ping of the bot"
+    "cmdDesc": "Проверить пинг бота"
   },
   "report": {
-    "cmdDesc": "Report bugs",
-    "usage": "[bug description]",
-    "done": "Your bug has been reported, Thank You.",
-    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
+    "cmdDesc": "Сообщить о багах",
+    "usage": "[описание бага]",
+    "done": "Ваш баг был отправлен, спасибо.",
+    "view": "Вы можете просмотреть это на сервере поддержки Welcome-Bot в канале <#{{chanid}}>."
   },
   "shards": {
-    "cmdDesc": "Shows information about the bot's shards"
+    "cmdDesc": "Показывает информацию о шардах бота"
   },
   "suggest": {
-    "cmdDesc": "Give suggestions",
-    "usage": "[suggestion description]",
-    "done": "Your suggestion has been added, Thank You.",
-    "view": "You can view it in Welcome-Bot support server in <#{{chanid}}> channel."
+    "cmdDesc": "Предложить что-то",
+    "usage": "[что хотите предложить]",
+    "done": "Ваше предложение добавлено, спасибо.",
+    "view": "Вы можете просмотреть это на сервере поддержки Welcome-Bot в канале <#{{chanid}}>."
   },
   "support": {
-    "cmdDesc": "Get Support for Welcome-Bot",
-    "footer": "Official Support Discord for Welcome-Bot"
+    "cmdDesc": "Поддержка Welcome-Bot",
+    "footer": "Официальный сервер поддержки Welcome-Bot"
   },
   "uptime": {
-    "cmdDesc": "Get uptime of the bot"
+    "cmdDesc": "Время работы бота"
   },
   "vote": {
-    "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",
+    "cmdDesc": "Проголосуй за Welcome-Bot и забери бонусные WCoin'ы (500 WCoin'ов)",
     "title": "Проголосовать за Welcome-Bot",
     "rewards": {
       "index": "**Награды**",
-      "coins": ":dollar: WCoins {{coins}}",
-      "banknote": ":bank: Banknote × 3"
+      "coins": ":dollar: WCoin'ы {{coins}}",
+      "banknote": ":bank: Банкнота × 3"
     },
     "howToVote": {
-      "dbl": "**[Vote on Top.gg]({{link}})** to claim your bonus.",
-      "bls": "**[Vote on botlist.space]({{link}})** to claim your bonus."
+      "dbl": "**[Голосуй на Top.gg]({{link}})**, чтобы забрать свой бонус.",
+      "bls": "**[Голосуй на botlist.space]({{link}})**, чтобы забрать свой бонус."
     },
-    "howToVoteServer": "**[Vote on Top.gg for Welcome-Bot server]({{link}})** to claim another bonus.",
-    "alreadyVoted": "You have already voted in the last 12 hours, try again soon."
+    "howToVoteServer": "**[Голосуй на Top.gg за сервер Welcome-Bot]({{link}})**, чтобы получить другой бонус.",
+    "alreadyVoted": "Вы уже проголосовали в последние 12 часов, попробуйте ещё раз позже."
   },
   "website": {
-    "cmdDesc": "Link to Welcome-Bot's website"
+    "cmdDesc": "Ссылка на вебсайт Welcome-Bot"
   },
   "balance": {
-    "cmdDesc": "Check your balance, or someone else's. Shows wallect & bank",
-    "title": "{{user}}'s balance",
-    "titleShort": "Balance",
-    "bal": ":dollar: Wallet: {{wallet}}\n:credit_card: Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)",
-    "walletOnly": "Wallet: {{wallet}}",
-    "bankOnly": "Bank: {{bank}}/{{bankLimit}} ({{percentage}}% empty)"
+    "cmdDesc": "Проверить свой или чужой баланс. Показывает кошелёк и банк",
+    "title": "Баланс {{user}}",
+    "titleShort": "Баланс",
+    "bal": ":dollar: Кошелёк: {{wallet}}\n:credit_card: Банк: {{bank}}/{{bankLimit}} ({{percentage}}% пусто)",
+    "walletOnly": "Кошелёк: {{wallet}}",
+    "bankOnly": "Банк: {{bank}}/{{bankLimit}} ({{percentage}}% пусто)"
   },
   "beg": {
-    "cmdDesc": "Get money by begging!",
+    "cmdDesc": "Получи начальные деньги!",
     "chances": {
-      "failed": "Oh poor beggar, don't you feel ashame :question:",
-      "success": "Woah... Seems you have a way with people :people_hugging:, you got {{wcoins}} from begging",
-      "little": "Somehow you managed to beg {{wcoins}} from a poor person :bearded_person:"
+      "failed": "О бедный нищий, тебе не стыдно :question:",
+      "success": "Вау... Похоже, ты умеешь общаться с людьми :people_hugging:, ты получил {{wcoins}} за попрошайничество",
+      "little": "Вам как-то удалось выпросить {{wcoins}} у бедного человека :bearded_person:"
     }
   },
   "buy": {
     "cmdDesc": "Buy items which are available in the shop",
-    "usage": "[item] (amount)",
-    "notAvailable": "Sorry friend, but that item is not available for sale",
-    "noMoney": "You don't have enough money to buy that! Check the shop",
-    "done": "Successfully bought {{amount}} {{item}}(s)"
+    "usage": "[item] (количество)",
+    "notAvailable": "Мне жаль, друг, но этот предмет не может быть продан",
+    "noMoney": "У тебя нет достаточно денег, чтобы купить это! Проверь магазин",
+    "done": "Успешно куплено {{amount}} {{item}}(ов)"
   },
   "daily": {
     "cmdDesc": "Get your daily wcoins!",
