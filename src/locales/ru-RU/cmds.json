@@ -10,21 +10,21 @@
     "enabled": "Successfully enabled autopublish"
   },
   "autorole": {
-    "cmdDesc": "Manage autorole settings",
-    "usage": "(subcommand)",
-    "success": "Autorole set to {{role}}",
+    "cmdDesc": "Управление настройками авторолей",
+    "usage": "(подкоманда)",
+    "success": "Автороль установлена на {{role}}",
     "current": {
-      "title": "Current settings for autorole",
-      "desc": "These are the current Autorole settings of this Server.\nUse `{{prefix}}autorole [subcommand]` to change them."
+      "title": "Текущие настройки для автороли",
+      "desc": "Это текущие настройки автороли этого сервера.\nИспользуй `{{prefix}}autorole [subcommand]`, чтобы изменить их."
     },
-    "invalidRole": "The role id you provided is invalid, use roleid command to get id of a role",
+    "invalidRole": "Идентификатор роли, который вы предоставили, некорректный, используйте команду roleid, чтобы получить её идентификатор",
     "disabled": "Successfully disabled autorole",
-    "enabled": "Successfully enabled autorole"
+    "enabled": "Автороль успешно включена"
   },
   "backup": {
-    "cmdDesc": "Take backup of your server!",
+    "cmdDesc": "Сделай резервную копию своего сервера!",
     "usage": "[subcommand]",
-    "warning": ":warning: All the server channels, roles, and settings will be cleared. Do you want to continue? Send `confirm` or `cancel`!",
+    "warning": ":warning: Всё серверные каналы, роли и настройки будут очищены. Хотите продолжить? Отправьте `confirm` или `cancel`!",
     "dm": "Here is your backup id: `{{id}}`. Use `{{prefix}}backup load {{id}}` to load it",
     "invalidId": ":x: Invalid backup ID",
     "cancelled": ":x: Cancelled.",
@@ -42,44 +42,44 @@
       "desc": "These are the current Chatbot settings of this Server.\nUse `{{prefix}}chatbot [subcommand]` to change them."
     },
     "invalid": {
-      "channel": "The channel you provided is invalid"
+      "channel": "Канал, указанный вами, неверный"
     },
     "disabled": "Successfully disabled chatbot",
     "enabled": "Successfully enabled chatbot"
   },
   "config": {
-    "cmdDesc": "See current configuration"
+    "cmdDesc": "Посмотреть текущую конфигурацию"
   },
   "disable": {
-    "cmdDesc": "Disable commands.",
+    "cmdDesc": "Отключить команды.",
     "usage": "(command name / subcommand)",
-    "title": "Currently disabled commands",
-    "done": "Successfully disabled!"
+    "title": "Текущие отключенные команды",
+    "done": "Успешно отключено!"
   },
   "enable": {
-    "cmdDesc": "Enable commands.",
-    "usage": "[command name]",
-    "notDisabled": "That command was not disabled so not doing anything",
-    "done": "Successfully enabled!"
+    "cmdDesc": "Включить команды.",
+    "usage": "[имя команды]",
+    "notDisabled": "Эта команда не была отключена, поэтому не делаем ничего",
+    "done": "Успешно включено!"
   },
   "follow": {
-    "cmdDesc": "Get news and version updates to this bot sent to a specific channel.",
-    "usage": "[channel / channel id]",
-    "success": "Successfully followed"
+    "cmdDesc": "Получать новости и обновления версий этого бота, отправленные в определенный канал.",
+    "usage": "[канал / идентификатор канала]",
+    "success": "Вы успешно подписались"
   },
   "goodbye": {
-    "cmdDesc": "Manage goodbye logs settings",
+    "cmdDesc": "Управление настройками логов выхода",
     "usage": "(subcommand)",
     "set": {
-      "channel": "Goodbye channel set to {{channel}}",
-      "message": "Goodbye message set to ```\n{{message}}\n```"
+      "channel": "Канал прощания установлен на {{channel}}",
+      "message": "Прощальное сообщение установлено на ```\n{{message}}\n```"
     },
     "current": {
-      "title": "Current settings for goodbye logs",
+      "title": "Текущие настройки логов прощания",
       "desc": "These are the current Goodbye logs settings of this Server.\nUse `{{prefix}}goodbye [subcommand]` to change them."
     },
     "invalid": {
-      "channel": "The channel you provided is invalid"
+      "channel": "Канал, указанный вами, неверный"
     },
     "disabled": "Successfully disabled goodbye logs",
     "enabled": "Successfully enabled goodbye logs"
@@ -112,7 +112,7 @@
       "channel": "Server logs channel set to {{channel}}"
     },
     "current": {
-      "title": "Current settings for server logs",
+      "title": "Текущие настройки для серверных логов",
       "desc": "These are the current Server logs settings of this Server.\nUse `{{prefix}}serverlogs [subcommand]` to change them."
     },
     "invalid": {
@@ -217,9 +217,9 @@
   },
   "vote": {
     "cmdDesc": "Vote for Welcome-Bot and claim your bonus WCoins (500 WCoins)",
-    "title": "Vote for Welcome-Bot",
+    "title": "Проголосовать за Welcome-Bot",
     "rewards": {
-      "index": "**Rewards**",
+      "index": "**Награды**",
       "coins": ":dollar: WCoins {{coins}}",
       "banknote": ":bank: Banknote × 3"
     },
@@ -300,7 +300,7 @@
   "rob": {
     "cmdDesc": "Steal another user's wallet! :dollar:",
     "usage": "[@mention]",
-    "notEnoughMoney": "You must have at least 200 WCoins in your wallet to rob someone",
+    "notEnoughMoney": "У тебя должно быть минимум 200 WCoin'ов в твоём кошельке, чтобы оградить кого-то",
     "userNotEnoughMoney": "User {{tag}} doesn't have at least 200 in their wallet, it's useless to steal them.",
     "success": "You stole {{stolenCoins}} from {{tag}}! :tada:",
     "failed": "You were caught by the police when stealing and you lost {{lostCoins}}"
@@ -476,7 +476,7 @@
     "cmdDesc": "Show a random cat image"
   },
   "ban": {
-    "cmdDesc": "Ban a user.",
+    "cmdDesc": "Забанить участника.",
     "usage": "[@mention] (reason)",
     "banned": "User banned",
     "mySelf": "Please don't try to ban me, you have to do it yourself.",
@@ -551,7 +551,7 @@
     "cantJoin": "Could not join your voice channel!",
     "voiceNotJoined": "❌ Please join a voice channel before using this command",
     "missingSongName": "You didn't provide me the song name to start playing",
-    "voiceChanDiff": "Please join the same voice channel the bot is in",
+    "voiceChanDiff": "Пожалуйста, присоединитесь к тому же голосовому каналу, в котором находится бот",
     "playlistStart": "Starting playlist **{{playlistTitle}}**.\nPlaying the first song, **{{songName}}**! :musical_note:",
     "botDisconnected": "Music has been stopped as I have been disconnected from the voice channel.",
     "noResults": "The bot can't find any song like that :cry: [Note: Now we only support spotify]",
