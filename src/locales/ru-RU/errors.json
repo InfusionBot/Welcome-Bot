@@ -4,7 +4,7 @@
   "pagination": "Your reaction won't be removed automatically, as soon as you react.",
   "noAcc": "That user doesn't have a Welcome-Bot account, they may create one by typing any command of Welcome-Bot",
   "note": "Please note that",
-  "developerOnly": "Only the bot developers can execute that command.",
+  "developerOnly": "Только разработчики бота могут выполнять эту команду.",
   "cooldown": "Woah! Slow down buddy! Wait for {{seconds}} more second(s) before reusing the {{command}} command.",
   "missingArgs": "Arguments are required for this command. Use `{{prefix}}help {{cmd}}` for more info",
   "notTrueOrFalse": "You have to give me a value that is true or false.",
