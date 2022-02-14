@@ -37,7 +37,7 @@
     "@discordjs/builders": "^0.8.1",
     "@top-gg/sdk": "^3.1.2",
     "ascii-table": "^0.0.9",
-    "axios": "^0.23.0",
+    "axios": "^0.26.0",
     "btoa": "^1.2.1",
     "bufferutil": "^4.0.3",
     "canvas": "^2.8.0",
