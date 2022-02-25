@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v3
         with:
           node-version: "16.x"
       - run: npm install npm -g
@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v3
         with:
           node-version: "16.x"
           registry-url: https://registry.npmjs.org/
@@ -44,7 +44,7 @@ jobs:
   #packages: write
   #steps:
   #- uses: actions/checkout@v2
-  #- uses: actions/setup-node@v2.4.1
+  #- uses: actions/setup-node@v3
   #with:
   #node-version: 12
   #registry-url: https://npm.pkg.github.com/
