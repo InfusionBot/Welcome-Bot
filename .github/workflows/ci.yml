@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@548e2346a9987b56d8a4104fe776321ff8e23440
+        uses: docker/metadata-action@f2a13332ac1ce8c0a71aeac48a150dbb1838ab67
         with:
           images: puneetgopinath/discord_welcome-bot
       - name: Build and push Docker image
