@@ -139,47 +139,47 @@
     "enabled": "Successfully enabled welcome logs"
   },
   "cuddle": {
-    "cmdDesc": "Abrazar a un usuario",
+    "cmdDesc": "Cuddle with a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} ha abrazado a {{user}}",
-    "errorYourself": "No puedes abrazarte tu solo."
+    "success": "{{author}} just cuddled to {{user}}",
+    "errorYourself": "You can't cuddle yourself."
   },
   "hug": {
     "cmdDesc": "Give a hug to a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} ha abrazado a {{user}}",
-    "errorYourself": "No puedes abrazarte a ti mismo."
+    "success": "{{author}} has hugged {{user}}",
+    "errorYourself": "You can't hug yourself."
   },
   "kiss": {
-    "cmdDesc": "Besar a un usuario",
+    "cmdDesc": "Kiss a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} ha besado a {{user}}",
-    "errorYourself": "¡No puedes besarte a ti mismo!"
+    "success": "{{author}} has kissed {{user}}",
+    "errorYourself": "You can't kiss yourself!"
   },
   "pat": {
-    "cmdDesc": "Acaricia a alguien",
+    "cmdDesc": "Pats someone",
     "usage": "[@mention / user id]",
-    "success": "{{author}} ha acariciado a {{user}}",
-    "errorYourself": "¡No puedes acariciarte a ti mismo!"
+    "success": "{{author}} pats {{user}}",
+    "errorYourself": "You can't pat yourself!"
   },
   "slap": {
-    "cmdDesc": "Abofetear a un usuario",
+    "cmdDesc": "Slap a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} ha abofeteado a {{user}}",
-    "errorYourself": "¡No puedes abofetearte a ti mismo!"
+    "success": "{{author}} slapped {{user}}",
+    "errorYourself": "You can't slap yourself!"
   },
   "tickle": {
-    "cmdDesc": "Cosquillear a un usuario",
+    "cmdDesc": "Tickle a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} cosquilló a {{user}}",
-    "errorYourself": "¡No puedes hacerte cosquillas a ti mismo!"
+    "success": "{{author}} tickles {{user}}",
+    "errorYourself": "You can't tickle yourself!"
   },
   "waifu": {
     "cmdDesc": "Fetches a random waifu and displays it."
   },
   "botinfo": {
-    "cmdDesc": "Información del bot",
-    "footer": "Información y estadísticas de Welcome-Bot"
+    "cmdDesc": "Bot information",
+    "footer": "Information & Stats of Welcome-Bot"
   },
   "botperms": {
     "cmdDesc": "List of permissions given to bot"
@@ -338,8 +338,8 @@
     "usage": "[question]"
   },
   "coinflip": {
-    "cmdDesc": "Voltear una moneda.",
-    "done": "He volteado una moneda y ha salido {{chosenSide}}"
+    "cmdDesc": "Flip a coin.",
+    "done": "I've flipped a coin and it landed {{chosenSide}}"
   },
   "duck": {
     "cmdDesc": "Shows a random duck image"
@@ -371,7 +371,7 @@
   },
   "avatar": {
     "cmdDesc": "Get a user's avatar",
-    "profile": "Avatar de {{user}}"
+    "profile": "Avatar of {{user}}"
   },
   "clone": {
     "cmdDesc": "Clone a text",
@@ -412,7 +412,7 @@
     "cmdDesc": "List all commands or get info for a specific command/category.",
     "usage": "(command / category / --list-categories)",
     "all": "List of all commands available in the bot",
-    "cmdHelp": "Ayuda para el comando {{cmd}}",
+    "cmdHelp": "Help for {{cmd}} command",
     "cmds": "Use arrows ⏪⏩ or `{{prefix}}help [category]`",
     "listcats": "List of categories",
     "bot-help": "Welcome-Bot help",

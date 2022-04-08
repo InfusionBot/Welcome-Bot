@@ -1,10 +1,10 @@
 {
   "anime": "Anime",
-  "core": "Núcleo",
+  "core": "Core",
   "economy": "Economy",
-  "fun": "Diversión",
+  "fun": "Fun",
   "general": "General",
-  "mod": "Moderación",
-  "music": "Música",
+  "mod": "Moderation",
+  "music": "Music",
   "admin": "Administration"
 }

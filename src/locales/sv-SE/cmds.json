@@ -139,22 +139,22 @@
     "enabled": "Successfully enabled welcome logs"
   },
   "cuddle": {
-    "cmdDesc": "Kramas med en användare",
+    "cmdDesc": "Cuddle with a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} Kramades precis med {{user}}",
-    "errorYourself": "Du kan inte kramas med dig själv."
+    "success": "{{author}} just cuddled to {{user}}",
+    "errorYourself": "You can't cuddle yourself."
   },
   "hug": {
-    "cmdDesc": "Ge en kram till en användare",
+    "cmdDesc": "Give a hug to a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} har kramat {{user}}",
-    "errorYourself": "Du kan inte krama dig själv."
+    "success": "{{author}} has hugged {{user}}",
+    "errorYourself": "You can't hug yourself."
   },
   "kiss": {
-    "cmdDesc": "Kyss en användare",
+    "cmdDesc": "Kiss a user",
     "usage": "[@mention / user id]",
-    "success": "{{author}} har kysst {{user}}",
-    "errorYourself": "Du kan inte kyssa dig själv!"
+    "success": "{{author}} has kissed {{user}}",
+    "errorYourself": "You can't kiss yourself!"
   },
   "pat": {
     "cmdDesc": "Pats someone",

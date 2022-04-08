@@ -1,10 +1,10 @@
 {
-  "anime": "Anime",
-  "core": "Core",
-  "economy": "Economy",
-  "fun": "Fun",
-  "general": "General",
+  "anime": "Аниме",
+  "core": "Ядро",
+  "economy": "Экономика",
+  "fun": "Развлечения",
+  "general": "Общее",
   "mod": "Moderation",
-  "music": "Music",
-  "admin": "Administration"
+  "music": "Музыка",
+  "admin": "Администрирование"
 }

@@ -1,10 +1,10 @@
 {
-  "anime": "Animerat",
-  "core": "Kärna",
+  "anime": "Anime",
+  "core": "Core",
   "economy": "Economy",
-  "fun": "Roligt",
-  "general": "Allmän",
+  "fun": "Fun",
+  "general": "General",
   "mod": "Moderation",
-  "music": "Musik",
+  "music": "Music",
   "admin": "Administration"
 }
